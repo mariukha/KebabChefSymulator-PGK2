@@ -161,6 +161,197 @@ public class KitchenGameTests
         Assert.Contains("MeatBatchSize", names);
     }
 
+    // =========================================================================
+    //  NOWE TESTY — Kamień milowy 2
+    // =========================================================================
+
+    [Test]
+    public void ShopUpgradeCostScalesExponentially()
+    {
+        object def = Create("UpgradeDefinition");
+        SetField(def, "baseCost", 40f);
+        SetField(def, "costScaling", 1.8f);
+
+        MethodInfo method = GetTypeByName("UpgradeDefinition")
+            .GetMethod("GetCostForLevel", BindingFlags.Public | BindingFlags.Instance);
+
+        float cost0 = (float)method.Invoke(def, new object[] { 0 });
+        float cost1 = (float)method.Invoke(def, new object[] { 1 });
+        float cost2 = (float)method.Invoke(def, new object[] { 2 });
+
+        Assert.AreEqual(40f, cost0);
+        Assert.IsTrue(cost1 > cost0, "Koszt poziomu 1 powinien byc wyzszy niz poziomu 0.");
+        Assert.IsTrue(cost2 > cost1, "Koszt poziomu 2 powinien byc wyzszy niz poziomu 1.");
+        // Verify exponential: cost2/cost1 ≈ cost1/cost0 ≈ 1.8
+        float ratio1 = cost1 / cost0;
+        float ratio2 = cost2 / cost1;
+        Assert.AreEqual(ratio1, ratio2, 0.01f, "Skalowanie powinno byc wykladnicze.");
+    }
+
+    [Test]
+    public void ShopEffectDescriptionReturnsCorrectText()
+    {
+        object def = Create("UpgradeDefinition");
+        SetField(def, "type", ParseEnum("UpgradeType", "RewardBonus"));
+        SetField(def, "maxLevel", 3);
+        SetField(def, "effectValues", new float[] { 0f, 0.10f, 0.25f, 0.50f });
+
+        MethodInfo method = GetTypeByName("UpgradeDefinition")
+            .GetMethod("GetEffectDescription", BindingFlags.Public | BindingFlags.Instance);
+
+        string desc0 = (string)method.Invoke(def, new object[] { 0 });
+        string descMax = (string)method.Invoke(def, new object[] { 3 });
+
+        StringAssert.Contains("%", desc0, "Opis powinien zawierac procent.");
+        Assert.AreEqual("MAX", descMax, "Na max poziomie opis powinien byc MAX.");
+    }
+
+    [Test]
+    public void ShopMaxLevelBlocksFurtherUpgradeCheck()
+    {
+        // UpgradeDefinition with maxLevel = 2
+        object def = Create("UpgradeDefinition");
+        SetField(def, "type", ParseEnum("UpgradeType", "GrillSpeed"));
+        SetField(def, "maxLevel", 2);
+        SetField(def, "effectValues", new float[] { 1f, 0.8f, 0.6f });
+
+        MethodInfo getDesc = GetTypeByName("UpgradeDefinition")
+            .GetMethod("GetEffectDescription", BindingFlags.Public | BindingFlags.Instance);
+
+        string atMax = (string)getDesc.Invoke(def, new object[] { 2 });
+        Assert.AreEqual("MAX", atMax);
+    }
+
+    [Test]
+    public void EconomySaveDataRoundTrip()
+    {
+        object econ = Create("EconomySaveData");
+        SetField(econ, "currentBalance", 999.5f);
+        SetField(econ, "totalEarned", 1500f);
+        SetField(econ, "totalSpent", 500.5f);
+
+        string json = JsonUtility.ToJson(econ);
+        object restored = JsonUtility.FromJson(json, GetTypeByName("EconomySaveData"));
+
+        Assert.AreEqual(999.5f, (float)GetField(restored, "currentBalance"), 0.01f);
+        Assert.AreEqual(1500f, (float)GetField(restored, "totalEarned"), 0.01f);
+        Assert.AreEqual(500.5f, (float)GetField(restored, "totalSpent"), 0.01f);
+    }
+
+    [Test]
+    public void NetworkItemStateEmptyRoundTrip()
+    {
+        // Test that empty state serializes and deserializes correctly
+        Type nisType = GetTypeByName("NetworkItemState");
+        MethodInfo emptyMethod = nisType.GetMethod("Empty", BindingFlags.Public | BindingFlags.Static);
+        object emptyState = emptyMethod.Invoke(null, null);
+
+        bool exists = (bool)nisType.GetField("exists").GetValue(emptyState);
+        Assert.IsFalse(exists, "Pusty NetworkItemState powinien miec exists = false.");
+
+        MethodInfo toItem = nisType.GetMethod("ToKitchenItem", BindingFlags.Public | BindingFlags.Instance);
+        object item = toItem.Invoke(emptyState, null);
+        Assert.IsNull(item, "Pusty stan powinien zwrocic null KitchenItem.");
+    }
+
+    [Test]
+    public void NetworkItemStateDishRoundTrip()
+    {
+        object dish = CreateDish(
+            CreatePreparedIngredient("Lavash", "Raw"),
+            CreatePreparedIngredient("Meat", "Cooked"),
+            CreatePreparedIngredient("Tomato", "Chopped"),
+            CreatePreparedIngredient("GarlicSauce", "Raw"));
+
+        Type nisType = GetTypeByName("NetworkItemState");
+        MethodInfo fromItem = nisType.GetMethod("FromKitchenItem", BindingFlags.Public | BindingFlags.Static);
+        object netState = fromItem.Invoke(null, new object[] { dish });
+
+        bool exists = (bool)nisType.GetField("exists").GetValue(netState);
+        Assert.IsTrue(exists);
+
+        int contentCount = (int)nisType.GetField("contentCount").GetValue(netState);
+        Assert.AreEqual(4, contentCount, "Danie z 4 skladnikami powinno miec contentCount = 4.");
+
+        MethodInfo toItem = nisType.GetMethod("ToKitchenItem", BindingFlags.Public | BindingFlags.Instance);
+        object restored = toItem.Invoke(netState, null);
+        Assert.IsNotNull(restored);
+        Assert.IsTrue((bool)GetField(restored, "isDish"));
+        Assert.AreEqual(4, ((IList)GetField(restored, "contents")).Count);
+    }
+
+    [Test]
+    public void ValidatorRejectsExtraIngredients()
+    {
+        object order = Create("Order");
+        IList requirements = (IList)GetField(order, "wymaganeSkladniki");
+        requirements.Add(CreateIngredientRequirement("Meat", "Cooked"));
+
+        // Dish has meat + extra tomato
+        object dish = CreateDish(
+            CreatePreparedIngredient("Meat", "Cooked"),
+            CreatePreparedIngredient("Tomato", "Chopped"));
+
+        object[] args = { order, dish, null };
+        bool result = (bool)GetTypeByName("KitchenOrderValidator")
+            .GetMethod("MatchesOrder", BindingFlags.Public | BindingFlags.Static)
+            .Invoke(null, args);
+
+        Assert.IsFalse(result, "Walidator powinien odrzucic kebab z nadmiarowymi skladnikami.");
+        StringAssert.Contains("nadmiarowe", args[2] as string);
+    }
+
+    [Test]
+    public void ValidatorRejectsNonDishItem()
+    {
+        object order = Create("Order");
+        IList requirements = (IList)GetField(order, "wymaganeSkladniki");
+        requirements.Add(CreateIngredientRequirement("Meat", "Cooked"));
+
+        // Not a dish - just a raw ingredient
+        object item = Create("KitchenItem");
+        SetField(item, "isDish", false);
+        SetField(item, "ingredientKind", ParseEnum("IngredientKind", "Meat"));
+
+        object[] args = { order, item, null };
+        bool result = (bool)GetTypeByName("KitchenOrderValidator")
+            .GetMethod("MatchesOrder", BindingFlags.Public | BindingFlags.Static)
+            .Invoke(null, args);
+
+        Assert.IsFalse(result, "Walidator powinien odrzucic pojedynczy skladnik.");
+    }
+
+    [Test]
+    public void OrderClonePreservesAllFields()
+    {
+        object original = Create("Order");
+        SetField(original, "orderId", "test-clone");
+        SetField(original, "nazwaKlienta", "TestKlient");
+        SetField(original, "nazwaZamowienia", "TestKebab");
+        SetField(original, "czasNaRealizacje", 77f);
+        SetField(original, "nagrodaPieniezna", 42f);
+
+        IList reqs = (IList)GetField(original, "wymaganeSkladniki");
+        reqs.Add(CreateIngredientRequirement("Meat", "Cooked", 2));
+        reqs.Add(CreateIngredientRequirement("Tomato", "Chopped"));
+
+        MethodInfo cloneMethod = GetTypeByName("Order")
+            .GetMethod("Clone", BindingFlags.Public | BindingFlags.Instance);
+        object clone = cloneMethod.Invoke(original, null);
+
+        Assert.AreEqual("test-clone", GetField(clone, "orderId"));
+        Assert.AreEqual("TestKlient", GetField(clone, "nazwaKlienta"));
+        Assert.AreEqual(77f, (float)GetField(clone, "czasNaRealizacje"));
+        Assert.AreEqual(42f, (float)GetField(clone, "nagrodaPieniezna"));
+
+        IList clonedReqs = (IList)GetField(clone, "wymaganeSkladniki");
+        Assert.AreEqual(2, clonedReqs.Count);
+
+        // Verify deep copy - modifying original shouldn't affect clone
+        reqs.Add(CreateIngredientRequirement("Onion", "Chopped"));
+        Assert.AreEqual(2, clonedReqs.Count, "Klon powinien byc niezalezny od oryginalu.");
+    }
+
     private static object CreateDish(params object[] ingredients)
     {
         object dish = Create("KitchenItem");

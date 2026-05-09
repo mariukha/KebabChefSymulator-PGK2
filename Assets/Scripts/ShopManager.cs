@@ -119,11 +119,11 @@ public class ShopManager : NetworkBehaviour
 
         if (!IsServer)
         {
-            netGrillSpeedLevel.OnValueChanged += (oldVal, newVal) => HandleLevelChanged(UpgradeType.GrillSpeed, newVal);
-            netCuttingSpeedLevel.OnValueChanged += (oldVal, newVal) => HandleLevelChanged(UpgradeType.CuttingSpeed, newVal);
-            netRewardBonusLevel.OnValueChanged += (oldVal, newVal) => HandleLevelChanged(UpgradeType.RewardBonus, newVal);
-            netOrderTimeLevel.OnValueChanged += (oldVal, newVal) => HandleLevelChanged(UpgradeType.OrderTime, newVal);
-            netMeatBatchSizeLevel.OnValueChanged += (oldVal, newVal) => HandleLevelChanged(UpgradeType.MeatBatchSize, newVal);
+            netGrillSpeedLevel.OnValueChanged += OnGrillSpeedLevelChanged;
+            netCuttingSpeedLevel.OnValueChanged += OnCuttingSpeedLevelChanged;
+            netRewardBonusLevel.OnValueChanged += OnRewardBonusLevelChanged;
+            netOrderTimeLevel.OnValueChanged += OnOrderTimeLevelChanged;
+            netMeatBatchSizeLevel.OnValueChanged += OnMeatBatchSizeLevelChanged;
         }
     }
 
@@ -133,13 +133,20 @@ public class ShopManager : NetworkBehaviour
 
         if (!IsServer)
         {
-            netGrillSpeedLevel.OnValueChanged -= (oldVal, newVal) => HandleLevelChanged(UpgradeType.GrillSpeed, newVal);
-            netCuttingSpeedLevel.OnValueChanged -= (oldVal, newVal) => HandleLevelChanged(UpgradeType.CuttingSpeed, newVal);
-            netRewardBonusLevel.OnValueChanged -= (oldVal, newVal) => HandleLevelChanged(UpgradeType.RewardBonus, newVal);
-            netOrderTimeLevel.OnValueChanged -= (oldVal, newVal) => HandleLevelChanged(UpgradeType.OrderTime, newVal);
-            netMeatBatchSizeLevel.OnValueChanged -= (oldVal, newVal) => HandleLevelChanged(UpgradeType.MeatBatchSize, newVal);
+            netGrillSpeedLevel.OnValueChanged -= OnGrillSpeedLevelChanged;
+            netCuttingSpeedLevel.OnValueChanged -= OnCuttingSpeedLevelChanged;
+            netRewardBonusLevel.OnValueChanged -= OnRewardBonusLevelChanged;
+            netOrderTimeLevel.OnValueChanged -= OnOrderTimeLevelChanged;
+            netMeatBatchSizeLevel.OnValueChanged -= OnMeatBatchSizeLevelChanged;
         }
     }
+
+    // Cached delegates for proper unsubscription (lambdas create new instances on each call)
+    private void OnGrillSpeedLevelChanged(int oldVal, int newVal) => HandleLevelChanged(UpgradeType.GrillSpeed, newVal);
+    private void OnCuttingSpeedLevelChanged(int oldVal, int newVal) => HandleLevelChanged(UpgradeType.CuttingSpeed, newVal);
+    private void OnRewardBonusLevelChanged(int oldVal, int newVal) => HandleLevelChanged(UpgradeType.RewardBonus, newVal);
+    private void OnOrderTimeLevelChanged(int oldVal, int newVal) => HandleLevelChanged(UpgradeType.OrderTime, newVal);
+    private void OnMeatBatchSizeLevelChanged(int oldVal, int newVal) => HandleLevelChanged(UpgradeType.MeatBatchSize, newVal);
 
     private void HandleLevelChanged(UpgradeType type, int newLevel)
     {

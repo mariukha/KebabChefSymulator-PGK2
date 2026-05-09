@@ -31,6 +31,15 @@ public class NetworkKitchenStation : NetworkBehaviour
 
     private KitchenStation localStation;
 
+    // Dirty-checking: cache previous state to avoid redundant network writes
+    private bool lastIsProcessing;
+    private float lastProcessEndTime;
+    private int lastPreparedMeatServings;
+    private bool lastHasLavash;
+    private int lastAssemblyCount;
+    private NetworkItemState lastStationItem;
+    private float nextSyncTime;
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -127,14 +136,53 @@ public class NetworkKitchenStation : NetworkBehaviour
         netHasLavash.Value = localStation.HasLavash;
         netAssemblyCount.Value = localStation.AssemblyCount;
         netStationItem.Value = NetworkItemState.FromKitchenItem(localStation.StationItem);
+
+        // Update cached state for dirty-checking
+        lastIsProcessing = localStation.IsProcessing;
+        lastProcessEndTime = localStation.ProcessEndTime;
+        lastPreparedMeatServings = localStation.PreparedMeatServings;
+        lastHasLavash = localStation.HasLavash;
+        lastAssemblyCount = localStation.AssemblyCount;
+        lastStationItem = NetworkItemState.FromKitchenItem(localStation.StationItem);
+    }
+
+    /// <summary>
+    /// Checks if any station state field has changed since the last sync.
+    /// Avoids redundant NetworkVariable writes, reducing bandwidth.
+    /// </summary>
+    private bool IsStateDirty()
+    {
+        if (localStation == null)
+        {
+            return false;
+        }
+
+        if (localStation.IsProcessing != lastIsProcessing) return true;
+        if (localStation.HasLavash != lastHasLavash) return true;
+        if (localStation.PreparedMeatServings != lastPreparedMeatServings) return true;
+        if (localStation.AssemblyCount != lastAssemblyCount) return true;
+
+        // For floats, use approximate comparison to avoid floating-point noise
+        if (Mathf.Abs(localStation.ProcessEndTime - lastProcessEndTime) > 0.01f) return true;
+
+        NetworkItemState currentItem = NetworkItemState.FromKitchenItem(localStation.StationItem);
+        if (currentItem.exists != lastStationItem.exists) return true;
+        if (currentItem.ingredientKind != lastStationItem.ingredientKind) return true;
+        if (currentItem.state != lastStationItem.state) return true;
+
+        return false;
     }
 
     private void Update()
     {
         if (IsServer && localStation != null)
         {
-            // Sync state periodically because processing timers finish in KitchenStation.Update()
-            SyncStationState();
+            // Throttled dirty-check: sync only when state changed, at most every 0.1s
+            if (Time.time >= nextSyncTime && IsStateDirty())
+            {
+                SyncStationState();
+                nextSyncTime = Time.time + 0.1f;
+            }
         }
     }
 

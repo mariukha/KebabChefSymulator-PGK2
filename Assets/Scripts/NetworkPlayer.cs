@@ -264,6 +264,8 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    private float nextHeldItemSyncTime;
+
     private void Update()
     {
         if (!IsSpawned)
@@ -271,8 +273,8 @@ public class NetworkPlayer : NetworkBehaviour
             return;
         }
 
-        // Sync held item to server (owner -> server -> all)
-        if (IsOwner && cachedInteraction != null)
+        // Throttled held item sync: owner -> server -> all (max every 0.15s to reduce traffic)
+        if (IsOwner && cachedInteraction != null && Time.time >= nextHeldItemSyncTime)
         {
             NetworkItemState currentState = NetworkItemState.FromKitchenItem(cachedInteraction.HeldItem);
             if (currentState.exists != netHeldItem.Value.exists ||
@@ -281,6 +283,7 @@ public class NetworkPlayer : NetworkBehaviour
                 currentState.isDish != netHeldItem.Value.isDish)
             {
                 UpdateHeldItemServerRpc(currentState);
+                nextHeldItemSyncTime = Time.time + 0.15f;
             }
         }
     }

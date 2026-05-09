@@ -1,3 +1,4 @@
+using Unity.Netcode;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
@@ -139,7 +140,24 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
         {
-            currentInteractable.Interact(this);
+            // In multiplayer, route station interactions through the server
+            bool isMultiplayer = NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening;
+            NetworkKitchenStation networkStation = isMultiplayer
+                ? currentInteractable.GetComponent<NetworkKitchenStation>()
+                : null;
+
+            if (networkStation != null)
+            {
+                // Send interaction request to server with current held item state
+                NetworkItemState heldState = NetworkItemState.FromKitchenItem(heldItem);
+                ulong localClientId = NetworkManager.Singleton.LocalClientId;
+                networkStation.InteractServerRpc(localClientId, heldState);
+            }
+            else
+            {
+                // Offline mode or non-station interactable — handle locally
+                currentInteractable.Interact(this);
+            }
         }
     }
 }

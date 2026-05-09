@@ -1,6 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Stacja kuchenna - obsługuje interakcje gracza ze stanowiskiem.
+/// Typy stacji: źródło składników, deska do krojenia, grill (doner),
+/// stanowisko montażu kebaba, punkt wydania zamówienia.
+/// Integruje się z VFXManager dla efektów cząsteczkowych.
+/// </summary>
 public class KitchenStation : Interactable
 {
     [SerializeField] private string stationName = "Stacja";
@@ -22,6 +28,10 @@ public class KitchenStation : Interactable
     private float processEndTime;
     private KitchenStation linkedMeatTray;
     private Transform meatVisual;
+
+    // Efekt pulsowania gotowej stacji (scale bounce)
+    private float pulsePhase;
+    private Vector3 baseScale;
 
     public bool IsProcessing => isProcessing;
     public float ProcessEndTime => processEndTime;
@@ -71,10 +81,36 @@ public class KitchenStation : Interactable
     {
         if (!isProcessing || Time.time < processEndTime)
         {
+            UpdatePulseEffect();
             return;
         }
 
         FinishProcessing();
+    }
+
+    /// <summary>
+    /// Subtelny efekt pulsowania skali na stacjach z gotowym przedmiotem.
+    /// Przyciąga uwagę gracza do stacji wymagającej interakcji.
+    /// </summary>
+    private void UpdatePulseEffect()
+    {
+        bool shouldPulse = !isProcessing && (
+            stationItem != null ||
+            (IsMeatTrayStation() && preparedMeatServings > 0));
+
+        if (!shouldPulse)
+        {
+            return;
+        }
+
+        if (baseScale == Vector3.zero)
+        {
+            baseScale = transform.localScale;
+        }
+
+        pulsePhase += Time.deltaTime * 2.5f;
+        float pulse = 1f + Mathf.Sin(pulsePhase) * 0.018f;
+        transform.localScale = baseScale * pulse;
     }
 
     public override string GetPrompt(PlayerInteraction player)
@@ -241,6 +277,13 @@ public class KitchenStation : Interactable
         processEndTime = Time.time + adjustedDuration;
         player.SetFeedback("Rozpoczeto przygotowanie: " + KitchenNaming.GetIngredientLabel(stationItem.ingredientKind));
         ApplyCurrentColor();
+
+        // Efekt wizualny: cząsteczki krojenia z kolorem składnika
+        if (stationType == KitchenStationType.CuttingBoard && VFXManager.Instance != null)
+        {
+            Color chopColor = sourceIngredient != null ? sourceIngredient.kolorDebug : new Color(0.6f, 0.8f, 0.3f);
+            VFXManager.Instance.PlayChopEffect(transform.position, chopColor);
+        }
     }
 
     private void HandleMeatTraySource(PlayerInteraction player)
@@ -303,6 +346,12 @@ public class KitchenStation : Interactable
         processEndTime = Time.time + adjustedDonerDuration;
         player.SetFeedback("Rozpoczeto scinanie miesa z donera.");
         ApplyCurrentColor();
+
+        // Efekt wizualny: para nad donererm podczas pieczenia/krojenia
+        if (VFXManager.Instance != null)
+        {
+            VFXManager.Instance.PlaySteamEffect(transform.position);
+        }
     }
 
     private void HandleAssembly(PlayerInteraction player)
@@ -388,6 +437,21 @@ public class KitchenStation : Interactable
         {
             player.ClearHeldItem();
             DeliveryTrayDisplay.ShowServedKebab();
+
+            // Efekty wizualne udanej dostawy
+            if (VFXManager.Instance != null)
+            {
+                VFXManager.Instance.PlayDeliverySuccessEffect(transform.position);
+                VFXManager.Instance.PlayMoneyEffect(transform.position);
+            }
+        }
+        else
+        {
+            // Efekt wizualny nieudanej dostawy
+            if (VFXManager.Instance != null)
+            {
+                VFXManager.Instance.PlayDeliveryFailEffect(transform.position);
+            }
         }
 
         player.SetFeedback(message, 3.5f);
@@ -487,6 +551,12 @@ public class KitchenStation : Interactable
         isProcessing = false;
         if (stationType == KitchenStationType.Grill && IsDonerStation())
         {
+            // Zatrzymaj parę z grilla po zakończeniu
+            if (VFXManager.Instance != null)
+            {
+                VFXManager.Instance.StopSteamEffect(transform.position);
+            }
+
             if (linkedMeatTray != null)
             {
                 int batchSize = ShopManager.Instance != null

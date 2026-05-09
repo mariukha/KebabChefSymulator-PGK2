@@ -109,6 +109,11 @@ public class KitchenGameBootstrap : MonoBehaviour
             managerObject.AddComponent<ShopManager>();
         }
 
+        if (FindFirstObjectByType<VFXManager>() == null)
+        {
+            managerObject.AddComponent<VFXManager>();
+        }
+
         orderManager.InitializeCatalogIfNeeded();
     }
 
@@ -302,7 +307,9 @@ public class KitchenGameBootstrap : MonoBehaviour
         KitchenStation station = stationObject.AddComponent<KitchenStation>();
         station.Configure(stationName, stationType, sourceIngredient, processingDuration, renderer);
 
-        // Add network sync component for multiplayer
+        // NetworkBehaviour (NetworkKitchenStation) requires a NetworkObject on the same GameObject.
+        // Without it, IsServer/IsOwner checks and RPCs would fail silently.
+        stationObject.AddComponent<NetworkObject>();
         stationObject.AddComponent<NetworkKitchenStation>();
 
         GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);

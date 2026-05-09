@@ -19,6 +19,13 @@ public class KitchenHUD : MonoBehaviour
     private Image promptBackground;
     private RectTransform upgradeBar;
 
+    // Floating money text animation
+    private Text floatingMoneyText;
+    private float floatingMoneyTimer;
+    private float floatingMoneyStartY;
+    private float lastKnownBalance;
+    private float balancePulseTimer;
+
     private void Awake()
     {
         CreateCanvas();
@@ -51,6 +58,7 @@ public class KitchenHUD : MonoBehaviour
         if (!lobbyOpen)
         {
             RefreshTexts();
+            UpdateFloatingMoney();
         }
     }
 
@@ -223,6 +231,26 @@ public class KitchenHUD : MonoBehaviour
             FontStyle.Bold,
             new Color(1f, 1f, 1f, 0.92f));
         crosshairText.text = "+";
+
+        // Floating money text (hidden by default, shown when player earns money)
+        floatingMoneyText = CreateText(
+            canvasObject.transform,
+            "FloatingMoney",
+            font,
+            22,
+            TextAnchor.MiddleCenter,
+            new Vector2(0.5f, 0.5f),
+            new Vector2(0.5f, 0.5f),
+            new Vector2(0.5f, 0.5f),
+            new Vector2(0f, 80f),
+            new Vector2(300f, 40f),
+            FontStyle.Bold,
+            new Color(0.22f, 0.82f, 0.42f, 0f));
+        floatingMoneyText.text = string.Empty;
+        floatingMoneyStartY = 80f;
+
+        // Initialize balance tracking
+        lastKnownBalance = EconomyManager.Instance != null ? EconomyManager.Instance.CurrentBalance : 0f;
     }
 
     private void RefreshTexts()
@@ -268,6 +296,83 @@ public class KitchenHUD : MonoBehaviour
         }
 
         UpdateUpgradeStatus();
+
+        // Detect balance change and trigger floating money effect
+        float currentBalance = EconomyManager.Instance != null ? EconomyManager.Instance.CurrentBalance : 0f;
+        if (currentBalance > lastKnownBalance + 0.01f)
+        {
+            float earned = currentBalance - lastKnownBalance;
+            ShowFloatingMoney(earned);
+        }
+        lastKnownBalance = currentBalance;
+
+        // Pulse balance text color when recently changed
+        if (balancePulseTimer > 0f)
+        {
+            balancePulseTimer -= Time.deltaTime;
+            float t = Mathf.Clamp01(balancePulseTimer / 0.8f);
+            // Interpolate from bright gold/green back to normal white
+            balanceText.color = Color.Lerp(
+                new Color(0.95f, 0.97f, 1f, 0.94f),
+                new Color(0.22f, 1f, 0.42f, 1f),
+                t);
+        }
+    }
+
+    /// <summary>
+    /// Pokazuje animowany tekst "+X zl" unoszacy sie od srodka ekranu.
+    /// Wywoływany automatycznie gdy balance wzrosnie.
+    /// </summary>
+    private void ShowFloatingMoney(float amount)
+    {
+        if (floatingMoneyText == null)
+        {
+            return;
+        }
+
+        floatingMoneyText.text = "+" + amount.ToString("F0") + " zl";
+        floatingMoneyText.color = new Color(0.22f, 0.92f, 0.42f, 1f);
+        floatingMoneyTimer = 1.6f;
+        balancePulseTimer = 0.8f;
+
+        RectTransform rect = floatingMoneyText.GetComponent<RectTransform>();
+        if (rect != null)
+        {
+            rect.anchoredPosition = new Vector2(0f, floatingMoneyStartY);
+        }
+    }
+
+    /// <summary>
+    /// Animuje floating money text: unosi sie do gory i zanika.
+    /// </summary>
+    private void UpdateFloatingMoney()
+    {
+        if (floatingMoneyText == null || floatingMoneyTimer <= 0f)
+        {
+            return;
+        }
+
+        floatingMoneyTimer -= Time.deltaTime;
+        float progress = 1f - Mathf.Clamp01(floatingMoneyTimer / 1.6f);
+
+        // Ruch do gory
+        RectTransform rect = floatingMoneyText.GetComponent<RectTransform>();
+        if (rect != null)
+        {
+            float yOffset = floatingMoneyStartY + progress * 60f;
+            rect.anchoredPosition = new Vector2(0f, yOffset);
+        }
+
+        // Fade out w drugiej polowie animacji
+        float alpha = progress < 0.5f ? 1f : Mathf.Lerp(1f, 0f, (progress - 0.5f) * 2f);
+        float scale = 1f + Mathf.Sin(progress * Mathf.PI) * 0.15f;
+        floatingMoneyText.color = new Color(0.22f, 0.92f, 0.42f, alpha);
+        floatingMoneyText.fontSize = Mathf.RoundToInt(22f * scale);
+
+        if (floatingMoneyTimer <= 0f)
+        {
+            floatingMoneyText.text = string.Empty;
+        }
     }
 
     private void UpdateUpgradeStatus()
