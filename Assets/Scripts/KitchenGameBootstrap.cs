@@ -114,6 +114,11 @@ public class KitchenGameBootstrap : MonoBehaviour
             managerObject.AddComponent<VFXManager>();
         }
 
+        if (FindFirstObjectByType<RelayManager>() == null)
+        {
+            managerObject.AddComponent<RelayManager>();
+        }
+
         orderManager.InitializeCatalogIfNeeded();
     }
 

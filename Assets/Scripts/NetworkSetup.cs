@@ -134,6 +134,20 @@ public class NetworkSetup : MonoBehaviour
         return prefab;
     }
 
+    /// <summary>
+    /// Rejestruje handler prefabów graczy w NetworkManager.
+    /// Wywoływane przed StartHost/StartClient (zarówno bezpośrednio, jak i przez RelayManager).
+    /// </summary>
+    public void RegisterPrefabHandler()
+    {
+        if (NetworkManager.Singleton != null && playerPrefabInstance != null)
+        {
+            // Remove previous handler if exists, then re-add
+            try { NetworkManager.Singleton.PrefabHandler.RemoveHandler(PlayerPrefabHash); } catch { }
+            NetworkManager.Singleton.PrefabHandler.AddHandler(PlayerPrefabHash, new PlayerPrefabHandler(playerPrefabInstance));
+        }
+    }
+
     public bool StartHost(string address = "0.0.0.0")
     {
         if (NetworkManager.Singleton == null)
@@ -150,13 +164,10 @@ public class NetworkSetup : MonoBehaviour
             transport.ConnectionData.Port = DefaultPort;
         }
 
-        NetworkManager.Singleton.PrefabHandler.AddHandler(PlayerPrefabHash, new PlayerPrefabHandler(playerPrefabInstance));
+        RegisterPrefabHandler();
 
         bool result = NetworkManager.Singleton.StartHost();
         Debug.Log("[NetworkSetup] StartHost: " + (result ? "OK" : "FAIL"));
-
-        // We no longer manually instantiate localPlayer here.
-        // We spawn it via NetworkObject.SpawnAsPlayerObject in OnClientConnected.
 
         return result;
     }
@@ -176,7 +187,7 @@ public class NetworkSetup : MonoBehaviour
             transport.ConnectionData.Port = DefaultPort;
         }
 
-        NetworkManager.Singleton.PrefabHandler.AddHandler(PlayerPrefabHash, new PlayerPrefabHandler(playerPrefabInstance));
+        RegisterPrefabHandler();
 
         bool result = NetworkManager.Singleton.StartClient();
         Debug.Log("[NetworkSetup] StartClient -> " + ipAddress + ": " + (result ? "OK" : "FAIL"));

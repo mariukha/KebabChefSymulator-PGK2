@@ -1,3 +1,5 @@
+using System.Net;
+using System.Net.Sockets;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
@@ -166,7 +168,7 @@ public class LobbyUI : MonoBehaviour
         // Subtitle
         Text subTitle = CreateText(lobbyPanel.transform, "Subtitle", font, 13, TextAnchor.MiddleCenter,
             SubText, FontStyle.Normal);
-        subTitle.text = "Wspolna kuchnia — do 4 graczy w sieci LAN";
+        subTitle.text = "Do 4 graczy  |  Przez internet — bez VPN!";
         PositionRect(subTitle, new Vector2(0.5f, 1f), new Vector2(0f, -85f), new Vector2(460f, 22f));
 
         // === Nickname Input ===
@@ -192,22 +194,22 @@ public class LobbyUI : MonoBehaviour
 
         Text orText = CreateText(lobbyPanel.transform, "OrText", font, 12, TextAnchor.MiddleCenter,
             SubText, FontStyle.Normal);
-        orText.text = "lub dolacz do istniejacego serwera";
+        orText.text = "lub dolacz do pokoju znajomego";
         PositionRect(orText, new Vector2(0.5f, 1f), new Vector2(0f, -280f), new Vector2(460f, 20f));
 
-        // === IP Input ===
-        Text ipLabel = CreateText(lobbyPanel.transform, "IpLabel", font, 12, TextAnchor.MiddleLeft,
+        // === Join Code Input (zamiast IP) ===
+        Text codeLabel = CreateText(lobbyPanel.transform, "CodeLabel", font, 12, TextAnchor.MiddleLeft,
             WhiteText, FontStyle.Normal);
-        ipLabel.text = "Adres IP serwera:";
-        PositionRect(ipLabel, new Vector2(0.5f, 1f), new Vector2(-110f, -310f), new Vector2(200f, 22f));
+        codeLabel.text = "Kod pokoju:";
+        PositionRect(codeLabel, new Vector2(0.5f, 1f), new Vector2(-130f, -310f), new Vector2(200f, 22f));
 
-        ipInputField = CreateInputField(lobbyPanel.transform, "IpInput", font,
-            "127.0.0.1", "Wpisz adres IP...",
+        ipInputField = CreateInputField(lobbyPanel.transform, "CodeInput", font,
+            "", "Wpisz kod pokoju...",
             new Vector2(0.5f, 1f), new Vector2(0f, -343f), new Vector2(440f, 42f));
 
         // === Join button ===
         joinButton = CreateStyledButton(lobbyPanel.transform, "JoinButton", font,
-            "\u279C  DOLACZ DO GRY (JOIN)", JoinButtonColor, JoinButtonHover,
+            "\u279C  DOLACZ DO POKOJU (JOIN)", JoinButtonColor, JoinButtonHover,
             new Vector2(0.5f, 1f), new Vector2(0f, -400f), new Vector2(440f, 48f));
         joinButton.onClick.AddListener(OnJoinClicked);
 
@@ -288,51 +290,75 @@ public class LobbyUI : MonoBehaviour
         }
     }
 
-    private void OnHostClicked()
+    private async void OnHostClicked()
     {
-        if (NetworkSetup.Instance == null)
+        if (RelayManager.Instance == null)
         {
-            SetStatus("Blad: NetworkSetup nie istnieje.", 5f);
+            SetStatus("Blad: RelayManager nie istnieje.", 5f);
             return;
         }
 
         SaveNickname();
-        SetStatus("Tworzenie serwera...", 0f);
+        SetStatus("Tworzenie pokoju...", 0f);
 
-        if (NetworkSetup.Instance.StartHost())
+        // Disable buttons during async operation
+        if (hostButton != null) hostButton.interactable = false;
+        if (joinButton != null) joinButton.interactable = false;
+
+        string code = await RelayManager.Instance.CreateRelay(3);
+
+        if (hostButton != null) hostButton.interactable = true;
+        if (joinButton != null) joinButton.interactable = true;
+
+        if (code != null)
         {
-            SetStatus("Serwer uruchomiony! Oczekiwanie na graczy...", 0f);
+            SetStatus("POKOJ UTWORZONY!  Kod:  " + code, 0f);
+            // Also put the code in the input field so it's easy to copy
+            if (ipInputField != null)
+            {
+                ipInputField.text = code;
+            }
         }
         else
         {
-            SetStatus("Blad: nie udalo sie uruchomic serwera.", 5f);
+            SetStatus("Blad: " + RelayManager.Instance.LastError, 5f);
         }
     }
 
-    private void OnJoinClicked()
+    private async void OnJoinClicked()
     {
-        if (NetworkSetup.Instance == null)
+        if (RelayManager.Instance == null)
         {
-            SetStatus("Blad: NetworkSetup nie istnieje.", 5f);
+            SetStatus("Blad: RelayManager nie istnieje.", 5f);
             return;
         }
 
-        string ip = ipInputField != null ? ipInputField.text.Trim() : "127.0.0.1";
-        if (string.IsNullOrWhiteSpace(ip))
+        string code = ipInputField != null ? ipInputField.text.Trim().ToUpperInvariant() : "";
+        if (string.IsNullOrWhiteSpace(code))
         {
-            ip = "127.0.0.1";
+            SetStatus("Wpisz kod pokoju!", 3f);
+            return;
         }
 
         SaveNickname();
-        SetStatus("Laczenie z " + ip + "...", 0f);
+        SetStatus("Dolaczanie do pokoju " + code + "...", 0f);
 
-        if (NetworkSetup.Instance.StartClient(ip))
+        // Disable buttons during async operation
+        if (hostButton != null) hostButton.interactable = false;
+        if (joinButton != null) joinButton.interactable = false;
+
+        bool success = await RelayManager.Instance.JoinRelay(code);
+
+        if (hostButton != null) hostButton.interactable = true;
+        if (joinButton != null) joinButton.interactable = true;
+
+        if (success)
         {
-            SetStatus("Laczenie...", 0f);
+            SetStatus("Polaczono! Kod pokoju: " + code, 0f);
         }
         else
         {
-            SetStatus("Blad: nie udalo sie polaczyc.", 5f);
+            SetStatus("Blad: " + RelayManager.Instance.LastError, 5f);
         }
     }
 
@@ -375,6 +401,35 @@ public class LobbyUI : MonoBehaviour
         }
 
         LocalPlayerNickname = nick;
+    }
+
+    /// <summary>
+    /// Zwraca adresy IP maszyny (LAN), żeby host mógł je podać znajomym.
+    /// Szuka adresów IPv4 w sieci lokalnej.
+    /// </summary>
+    private string GetLocalIPAddresses()
+    {
+        try
+        {
+            string result = "";
+            foreach (IPAddress ip in Dns.GetHostAddresses(Dns.GetHostName()))
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    string addr = ip.ToString();
+                    // Skip loopback
+                    if (addr == "127.0.0.1") continue;
+                    if (result.Length > 0) result += ", ";
+                    result += addr;
+                }
+            }
+
+            return string.IsNullOrEmpty(result) ? "127.0.0.1" : result;
+        }
+        catch
+        {
+            return "127.0.0.1";
+        }
     }
 
     // === UI Builder Helpers ===
