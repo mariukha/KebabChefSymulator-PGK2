@@ -29,6 +29,11 @@ public class KitchenStation : Interactable
     private KitchenStation linkedMeatTray;
     private Transform meatVisual;
 
+    // Dynamiczne modele 3D
+    private GameObject dynamicStationItemVisual;
+    private GameObject dynamicLavashVisual;
+    private List<GameObject> dynamicAssemblyVisuals = new List<GameObject>();
+
     // Efekt pulsowania gotowej stacji (scale bounce)
     private float pulsePhase;
     private Vector3 baseScale;
@@ -75,6 +80,7 @@ public class KitchenStation : Interactable
     public void RefreshVisualState()
     {
         ApplyCurrentColor();
+        UpdateDynamicVisuals();
     }
 
     private void Update()
@@ -657,6 +663,52 @@ public class KitchenStation : Interactable
         }
 
         visualRenderer.material.color = color;
+    }
+
+    private void UpdateDynamicVisuals()
+    {
+        // 1. Czyszczenie starych modeli
+        if (dynamicStationItemVisual != null) Destroy(dynamicStationItemVisual);
+        if (dynamicLavashVisual != null) Destroy(dynamicLavashVisual);
+        foreach (var vis in dynamicAssemblyVisuals) if (vis != null) Destroy(vis);
+        dynamicAssemblyVisuals.Clear();
+
+        // Jeśli stacja przygotowuje przedmiot, może być on w trakcie procesu, ale nadal go wyświetlamy
+        if (stationItem != null)
+        {
+            Vector3 itemPos = new Vector3(0f, 0.93f, 0f);
+            Vector3 itemRot = stationItem.isDish ? new Vector3(0f, 0f, 90f) : Vector3.zero;
+            float itemSize = stationItem.isDish ? 0.3f : 0.25f;
+
+            dynamicStationItemVisual = KitchenItemVisualFactory.CreateItemVisual(
+                stationItem.ingredientKind, stationItem.state, stationItem.isDish,
+                transform, itemPos, itemRot, itemSize);
+        }
+        else if (stationType == KitchenStationType.Assembly)
+        {
+            // Na stacji montażu wyświetlamy lawasz i składniki, dopóki nie zostanie zawinięty w stationItem
+            if (hasLavash)
+            {
+                dynamicLavashVisual = KitchenItemVisualFactory.CreateItemVisual(
+                    IngredientKind.Lavash, IngredientProcessState.Raw, false,
+                    transform, new Vector3(0f, 0.91f, 0f), new Vector3(0f, 12f, 0f), 0.72f);
+            }
+
+            for (int i = 0; i < assemblyIngredients.Count; i++)
+            {
+                var ingredient = assemblyIngredients[i];
+                // Rozmieść składniki lekko wokół środka na lawaszu
+                float angle = i * (360f / Mathf.Max(1, assemblyIngredients.Count)) * Mathf.Deg2Rad;
+                float radius = 0.08f;
+                Vector3 offset = new Vector3(Mathf.Cos(angle) * radius, 0.02f + (i * 0.01f), Mathf.Sin(angle) * radius);
+
+                GameObject ingVis = KitchenItemVisualFactory.CreateItemVisual(
+                    ingredient.ingredientKind, ingredient.state, false,
+                    transform, new Vector3(0f, 0.91f, 0f) + offset, Vector3.zero, 0.18f);
+
+                if (ingVis != null) dynamicAssemblyVisuals.Add(ingVis);
+            }
+        }
     }
 
     private void RefreshSpecialVisuals()

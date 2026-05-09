@@ -270,35 +270,7 @@ public class NetworkPlayer : NetworkBehaviour
     // =========================================================================
 
     /// <summary>
-    /// Returns the color for a given ingredient kind.
-    /// </summary>
-    private static Color GetIngredientColor(IngredientKind kind, IngredientProcessState state)
-    {
-        switch (kind)
-        {
-            case IngredientKind.Meat:
-                return state == IngredientProcessState.Cooked
-                    ? new Color(0.55f, 0.30f, 0.15f)
-                    : new Color(0.65f, 0.25f, 0.18f);
-            case IngredientKind.Tomato:
-                return new Color(0.86f, 0.2f, 0.2f);
-            case IngredientKind.Onion:
-                return new Color(0.93f, 0.9f, 0.75f);
-            case IngredientKind.Lettuce:
-                return new Color(0.35f, 0.7f, 0.25f);
-            case IngredientKind.GarlicSauce:
-                return new Color(0.95f, 0.95f, 0.85f);
-            case IngredientKind.Lavash:
-                return new Color(0.86f, 0.74f, 0.5f);
-            case IngredientKind.Kebab:
-                return new Color(0.76f, 0.57f, 0.35f);
-            default:
-                return new Color(0.7f, 0.7f, 0.7f);
-        }
-    }
-
-    /// <summary>
-    /// Creates or updates the 3D visual for the held item.
+    /// Creates or updates the 3D visual for the held item using real GLB models.
     /// For LOCAL player: attached to camera (visible in front of face).
     /// For REMOTE player: attached to body (visible to others).
     /// </summary>
@@ -322,66 +294,36 @@ public class NetworkPlayer : NetworkBehaviour
         if (!itemState.exists) return;
         if (heldItemVisual != null) return; // already showing correct item
 
-        // Create visual
         bool isDish = itemState.isDish;
-        Color itemColor = GetIngredientColor(itemState.ingredientKind, itemState.state);
 
-        Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-        if (shader == null) shader = Shader.Find("Standard");
-
-        if (isDish)
-        {
-            // Kebab = cylinder (rolled wrap)
-            heldItemVisual = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            heldItemVisual.transform.localScale = new Vector3(0.12f, 0.2f, 0.12f);
-        }
-        else
-        {
-            // Single ingredient = small cube
-            heldItemVisual = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            heldItemVisual.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
-        }
-
-        heldItemVisual.name = "HeldItemVisual";
-
-        // Disable collider so it doesn't interfere with interactions
-        Collider col = heldItemVisual.GetComponent<Collider>();
-        if (col != null) col.enabled = false;
-
-        // Apply material
-        Renderer rend = heldItemVisual.GetComponent<Renderer>();
-        if (rend != null)
-        {
-            rend.material = new Material(shader);
-            rend.material.color = itemColor;
-        }
-
-        // Position the visual
         if (IsOwner && playerCamera != null)
         {
-            // Local player: in front of camera (bottom-right of view)
-            heldItemVisual.transform.SetParent(playerCamera.transform);
-            heldItemVisual.transform.localPosition = new Vector3(0.3f, -0.25f, 0.5f);
-            heldItemVisual.transform.localRotation = isDish
-                ? Quaternion.Euler(0f, 0f, 90f)
-                : Quaternion.Euler(15f, 25f, 0f);
+            // Local player: model attached to camera, bottom-right of view
+            Vector3 localPos = new Vector3(0.3f, -0.25f, 0.5f);
+            Vector3 localRot = isDish ? new Vector3(0f, 0f, 90f) : new Vector3(15f, 25f, 0f);
+            float modelSize = isDish ? 0.25f : 0.18f;
+
+            heldItemVisual = KitchenItemVisualFactory.CreateItemVisual(
+                itemState.ingredientKind, itemState.state, isDish,
+                playerCamera.transform, localPos, localRot, modelSize);
+
+            if (heldItemVisual != null)
+            {
+                HeldItemBob bob = heldItemVisual.AddComponent<HeldItemBob>();
+                bob.amplitude = 0.008f;
+                bob.speed = 2.5f;
+            }
         }
         else
         {
-            // Remote player: in front of body at hand height
-            heldItemVisual.transform.SetParent(transform);
-            heldItemVisual.transform.localPosition = new Vector3(0.25f, 1.2f, 0.35f);
-            heldItemVisual.transform.localRotation = isDish
-                ? Quaternion.Euler(0f, 0f, 90f)
-                : Quaternion.identity;
-        }
+            // Remote player: model at hand height
+            Vector3 localPos = new Vector3(0.25f, 1.2f, 0.35f);
+            Vector3 localRot = isDish ? new Vector3(0f, 0f, 90f) : Vector3.zero;
+            float modelSize = isDish ? 0.3f : 0.2f;
 
-        // Add slight floating animation for local player
-        if (IsOwner)
-        {
-            HeldItemBob bob = heldItemVisual.AddComponent<HeldItemBob>();
-            bob.amplitude = 0.01f;
-            bob.speed = 2.5f;
+            heldItemVisual = KitchenItemVisualFactory.CreateItemVisual(
+                itemState.ingredientKind, itemState.state, isDish,
+                transform, localPos, localRot, modelSize);
         }
     }
 
