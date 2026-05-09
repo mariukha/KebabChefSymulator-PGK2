@@ -140,7 +140,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
         {
-            // In multiplayer, route station interactions through the player's NetworkBehaviour
+            
             bool isMultiplayer = NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening;
             NetworkKitchenStation networkStation = isMultiplayer
                 ? currentInteractable.GetComponent<NetworkKitchenStation>()
@@ -148,7 +148,7 @@ public class PlayerInteraction : MonoBehaviour
 
             if (networkStation != null && isMultiplayer)
             {
-                // Find our own NetworkPlayer to send the RPC through
+                
                 NetworkPlayer localPlayer = GetComponentInParent<NetworkPlayer>();
                 if (localPlayer == null)
                 {
@@ -163,7 +163,7 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
-                // Offline mode or non-station interactable — handle locally
+                
                 currentInteractable.Interact(this);
             }
         }

@@ -1,17 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// Centralny manager efektów wizualnych (VFX).
-/// Tworzy systemy cząsteczkowe programistycznie — bez prefabów.
-/// Używany przez KitchenStation i KitchenHUD do wizualnego feedbacku.
-/// 
-/// Dostępne efekty:
-///   - Para z grilla (Steam)             — biały dym unoszący się podczas pieczenia
-///   - Krojenie warzyw (Chop)            — kolorowe odłamki przy desce do krojenia
-///   - Zarobione pieniądze (Money)       — złote cząsteczki przy kasie/ekranie
-///   - Udana dostawa (DeliverySuccess)   — zielony rozbłysk + cząsteczki
-///   - Nieudana dostawa (DeliveryFail)   — czerwony rozbłysk
-/// </summary>
 public class VFXManager : MonoBehaviour
 {
     public static VFXManager Instance { get; private set; }
@@ -27,14 +15,6 @@ public class VFXManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // =========================================================================
-    //  PUBLIC API — inne skrypty wywołują te metody
-    // =========================================================================
-
-    /// <summary>
-    /// Efekt pary/dymu nad stacją grillową.
-    /// Wywoływany przez KitchenStation przy rozpoczęciu pieczenia.
-    /// </summary>
     public void PlaySteamEffect(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Steam", worldPosition + Vector3.up * 1.4f);
@@ -84,18 +64,11 @@ public class VFXManager : MonoBehaviour
         ps.Play();
     }
 
-    /// <summary>
-    /// Zatrzymuje efekt pary na danej pozycji (szuka aktywnego systemu).
-    /// </summary>
     public void StopSteamEffect(Vector3 worldPosition)
     {
         StopEffectNear("VFX_Steam", worldPosition, 2.0f);
     }
 
-    /// <summary>
-    /// Efekt krojenia — kolorowe odpryski warzyw.
-    /// Wywoływany przy rozpoczęciu krojenia na desce.
-    /// </summary>
     public void PlayChopEffect(Vector3 worldPosition, Color ingredientColor)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Chop", worldPosition + Vector3.up * 1.2f);
@@ -142,10 +115,6 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 1.5f);
     }
 
-    /// <summary>
-    /// Efekt zarobienia pieniędzy — złote cząsteczki wznoszące się.
-    /// Wywoływany przy udanej dostawie kebaba.
-    /// </summary>
     public void PlayMoneyEffect(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Money", worldPosition + Vector3.up * 1.0f);
@@ -200,9 +169,6 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 2.5f);
     }
 
-    /// <summary>
-    /// Zielony rozbłysk przy udanej dostawie zamówienia.
-    /// </summary>
     public void PlayDeliverySuccessEffect(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_DeliveryOK", worldPosition + Vector3.up * 1.5f);
@@ -249,9 +215,6 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 2f);
     }
 
-    /// <summary>
-    /// Czerwony rozbłysk przy nieudanej dostawie.
-    /// </summary>
     public void PlayDeliveryFailEffect(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_DeliveryFail", worldPosition + Vector3.up * 1.5f);
@@ -298,14 +261,6 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 1.5f);
     }
 
-    // =========================================================================
-    //  INTERNAL HELPERS
-    // =========================================================================
-
-    /// <summary>
-    /// Tworzy nowy GameObject z ParticleSystem i materiałem particle.
-    /// Ustawia pozycję w przestrzeni świata.
-    /// </summary>
     private ParticleSystem CreateParticleSystem(string effectName, Vector3 worldPosition)
     {
         GameObject effectObject = new GameObject(effectName);
@@ -313,22 +268,16 @@ public class VFXManager : MonoBehaviour
 
         ParticleSystem ps = effectObject.AddComponent<ParticleSystem>();
 
-        // Domyślny materiał cząsteczkowy (addytywny, miękki)
         ParticleSystemRenderer psRenderer = effectObject.GetComponent<ParticleSystemRenderer>();
         psRenderer.material = CreateParticleMaterial();
         psRenderer.renderMode = ParticleSystemRenderMode.Billboard;
 
-        // Wyłącz domyślną emisję — każdy efekt konfiguruje własną
         var emission = ps.emission;
         emission.rateOverTime = 0f;
 
         return ps;
     }
 
-    /// <summary>
-    /// Tworzy materiał addytywny dla cząsteczek.
-    /// Używa wbudowanego shadera Particles/Standard Unlit.
-    /// </summary>
     private Material CreateParticleMaterial()
     {
         Shader shader = Shader.Find("Particles/Standard Unlit");
@@ -344,32 +293,27 @@ public class VFXManager : MonoBehaviour
 
         if (shader == null)
         {
-            // Ostatni fallback — standardowy shader
+            
             shader = Shader.Find("Standard");
         }
 
         Material material = new Material(shader);
         material.color = Color.white;
 
-        // Konfiguracja renderowania transparentnego
         if (material.HasProperty("_Surface"))
         {
-            material.SetFloat("_Surface", 1f); // Transparent
+            material.SetFloat("_Surface", 1f); 
         }
 
         if (material.HasProperty("_Blend"))
         {
-            material.SetFloat("_Blend", 1f); // Additive
+            material.SetFloat("_Blend", 1f); 
         }
 
         material.renderQueue = 3100;
         return material;
     }
 
-    /// <summary>
-    /// Znajduje i zatrzymuje efekt cząsteczkowy o podanej nazwie w promieniu od pozycji.
-    /// Używane do zatrzymywania pętlowych efektów (np. para z grilla).
-    /// </summary>
     private void StopEffectNear(string effectName, Vector3 position, float maxDistance)
     {
         ParticleSystem[] allSystems = FindObjectsByType<ParticleSystem>(

@@ -155,7 +155,7 @@ public class KitchenOrderBoard : MonoBehaviour
         }
         else
         {
-            // Fallback for clients without full Order object
+            
             metaText.text = "TIME     " + timeRemaining + " s\n";
             ingredientsText.text = orderDesc;
         }

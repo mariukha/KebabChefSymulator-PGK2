@@ -1,12 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Stacja kuchenna - obsługuje interakcje gracza ze stanowiskiem.
-/// Typy stacji: źródło składników, deska do krojenia, grill (doner),
-/// stanowisko montażu kebaba, punkt wydania zamówienia.
-/// Integruje się z VFXManager dla efektów cząsteczkowych.
-/// </summary>
 public class KitchenStation : Interactable
 {
     [SerializeField] private string stationName = "Stacja";
@@ -29,12 +23,10 @@ public class KitchenStation : Interactable
     private KitchenStation linkedMeatTray;
     private Transform meatVisual;
 
-    // Dynamiczne modele 3D
     private GameObject dynamicStationItemVisual;
     private GameObject dynamicLavashVisual;
     private List<GameObject> dynamicAssemblyVisuals = new List<GameObject>();
 
-    // Efekt pulsowania gotowej stacji (scale bounce)
     private float pulsePhase;
     private Vector3 baseScale;
 
@@ -85,7 +77,7 @@ public class KitchenStation : Interactable
 
     private void Update()
     {
-        // In multiplayer, only the server should process timers (clients receive state via NetworkKitchenStation)
+        
         if (Unity.Netcode.NetworkManager.Singleton != null &&
             Unity.Netcode.NetworkManager.Singleton.IsListening &&
             !Unity.Netcode.NetworkManager.Singleton.IsServer)
@@ -103,10 +95,6 @@ public class KitchenStation : Interactable
         FinishProcessing();
     }
 
-    /// <summary>
-    /// Subtelny efekt pulsowania skali na stacjach z gotowym przedmiotem.
-    /// Przyciąga uwagę gracza do stacji wymagającej interakcji.
-    /// </summary>
     private void UpdatePulseEffect()
     {
         bool shouldPulse = !isProcessing && (
@@ -293,7 +281,6 @@ public class KitchenStation : Interactable
         player.SetFeedback("Rozpoczeto przygotowanie: " + KitchenNaming.GetIngredientLabel(stationItem.ingredientKind));
         ApplyCurrentColor();
 
-        // Efekt wizualny: cząsteczki krojenia z kolorem składnika
         if (stationType == KitchenStationType.CuttingBoard && VFXManager.Instance != null)
         {
             Color chopColor = sourceIngredient != null ? sourceIngredient.kolorDebug : new Color(0.6f, 0.8f, 0.3f);
@@ -362,7 +349,6 @@ public class KitchenStation : Interactable
         player.SetFeedback("Rozpoczeto scinanie miesa z donera.");
         ApplyCurrentColor();
 
-        // Efekt wizualny: para nad donererm podczas pieczenia/krojenia
         if (VFXManager.Instance != null)
         {
             VFXManager.Instance.PlaySteamEffect(transform.position);
@@ -453,7 +439,6 @@ public class KitchenStation : Interactable
             player.ClearHeldItem();
             DeliveryTrayDisplay.ShowServedKebab();
 
-            // Efekty wizualne udanej dostawy
             if (VFXManager.Instance != null)
             {
                 VFXManager.Instance.PlayDeliverySuccessEffect(transform.position);
@@ -462,7 +447,7 @@ public class KitchenStation : Interactable
         }
         else
         {
-            // Efekt wizualny nieudanej dostawy
+            
             if (VFXManager.Instance != null)
             {
                 VFXManager.Instance.PlayDeliveryFailEffect(transform.position);
@@ -566,7 +551,7 @@ public class KitchenStation : Interactable
         isProcessing = false;
         if (stationType == KitchenStationType.Grill && IsDonerStation())
         {
-            // Zatrzymaj parę z grilla po zakończeniu
+            
             if (VFXManager.Instance != null)
             {
                 VFXManager.Instance.StopSteamEffect(transform.position);
@@ -667,13 +652,12 @@ public class KitchenStation : Interactable
 
     private void UpdateDynamicVisuals()
     {
-        // 1. Czyszczenie starych modeli
+        
         if (dynamicStationItemVisual != null) Destroy(dynamicStationItemVisual);
         if (dynamicLavashVisual != null) Destroy(dynamicLavashVisual);
         foreach (var vis in dynamicAssemblyVisuals) if (vis != null) Destroy(vis);
         dynamicAssemblyVisuals.Clear();
 
-        // Jeśli stacja przygotowuje przedmiot, może być on w trakcie procesu, ale nadal go wyświetlamy
         if (stationItem != null)
         {
             Vector3 itemPos = new Vector3(0f, 0.38f, 0f);
@@ -686,7 +670,7 @@ public class KitchenStation : Interactable
         }
         else if (stationType == KitchenStationType.Assembly)
         {
-            // Na stacji montażu wyświetlamy lawasz i składniki, dopóki nie zostanie zawinięty w stationItem
+            
             if (hasLavash)
             {
                 dynamicLavashVisual = KitchenItemVisualFactory.CreateItemVisual(
@@ -697,7 +681,7 @@ public class KitchenStation : Interactable
             for (int i = 0; i < assemblyIngredients.Count; i++)
             {
                 var ingredient = assemblyIngredients[i];
-                // Rozmieść składniki lekko wokół środka na lawaszu
+                
                 float angle = i * (360f / Mathf.Max(1, assemblyIngredients.Count)) * Mathf.Deg2Rad;
                 float radius = 0.08f;
                 Vector3 offset = new Vector3(Mathf.Cos(angle) * radius, 0.02f + (i * 0.01f), Mathf.Sin(angle) * radius);

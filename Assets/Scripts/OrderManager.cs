@@ -12,7 +12,6 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private List<Order> orderTemplates = new List<Order>();
     [SerializeField] private Order activeOrder;
 
-    // Plain fields instead of NetworkVariable (synced via NetworkPlayer broadcast)
     private string activeOrderDescription = "";
     private float remainingTime;
     private int completedOrders;
@@ -55,7 +54,7 @@ public class OrderManager : MonoBehaviour
 
     private void Start()
     {
-        // Start first order if none active
+        
         if (activeOrder == null)
         {
             NoweZamowienie();
@@ -64,7 +63,7 @@ public class OrderManager : MonoBehaviour
 
     private void Update()
     {
-        // Only the host should run game logic (server-authoritative)
+        
         bool isServer = Unity.Netcode.NetworkManager.Singleton == null ||
                         !Unity.Netcode.NetworkManager.Singleton.IsListening ||
                         Unity.Netcode.NetworkManager.Singleton.IsServer;
@@ -167,9 +166,6 @@ public class OrderManager : MonoBehaviour
         Debug.Log(desc);
     }
 
-    /// <summary>
-    /// Used by NetworkPlayer to sync order state to clients.
-    /// </summary>
     public void SetOrderStateFromNetwork(string description, float time, int completed, int failed, string message)
     {
         activeOrderDescription = description;

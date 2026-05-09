@@ -57,9 +57,6 @@ public class EconomyManager : MonoBehaviour
         return true;
     }
 
-    /// <summary>
-    /// Used by NetworkPlayer to sync balance to clients.
-    /// </summary>
     public void SetBalanceFromNetwork(float newBalance, float newTotalEarned)
     {
         balance = newBalance;

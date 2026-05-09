@@ -3,11 +3,6 @@ using Unity.Netcode.Components;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
 
-/// <summary>
-/// Programmatically creates and configures the NetworkManager with UnityTransport.
-/// Handles player prefab registration and connection lifecycle using INetworkPrefabInstanceHandler.
-/// Created by KitchenGameBootstrap before any network operations.
-/// </summary>
 using System.Reflection;
 public class NetworkSetup : MonoBehaviour
 {
@@ -64,7 +59,6 @@ public class NetworkSetup : MonoBehaviour
             go.SetActive(true);
             NetworkObject no = go.GetComponent<NetworkObject>();
             
-            // Assign the same fake hash so the client matches it properly internally if needed
             var prop = typeof(NetworkObject).GetProperty("GlobalObjectIdHash", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
             if (prop != null)
             {
@@ -94,21 +88,17 @@ public class NetworkSetup : MonoBehaviour
         transport.ConnectionData.Port = DefaultPort;
         transport.ConnectionData.ServerListenAddress = "0.0.0.0";
 
-        // Long timeouts: server always accepts connections, no time limit on joining
-        transport.DisconnectTimeoutMS = 300000;  // 5 minutes before considering client dead
-        transport.ConnectTimeoutMS = 30000;       // 30 seconds to establish connection
+        transport.DisconnectTimeoutMS = 300000;  
+        transport.ConnectTimeoutMS = 30000;       
 
         networkManager.NetworkConfig = new NetworkConfig();
         networkManager.NetworkConfig.NetworkTransport = transport;
 
         playerPrefabInstance = CreatePlayerPrefab();
-        // We set PlayerPrefab to null and handle spawning manually to avoid auto-spawn failures
+        
         networkManager.NetworkConfig.PlayerPrefab = null;
         networkManager.NetworkConfig.ConnectionApproval = false;
 
-        // CRITICAL: Disable scene management — we have one scene, no need for scene sync.
-        // Without this, NGO throws 'Scene Hash does not exist in HashToBuildIndex table'
-        // because dynamically loaded scenes aren't in the Build Settings scene list.
         networkManager.NetworkConfig.EnableSceneManagement = false;
 
         networkManager.OnClientConnectedCallback += OnClientConnected;
@@ -137,9 +127,6 @@ public class NetworkSetup : MonoBehaviour
         prefab.AddComponent<SimplePlayerController>();
         prefab.AddComponent<PlayerInteraction>();
 
-        // ClientNetworkTransform: owner-authoritative — each client controls their own position,
-        // which is then replicated to the server and all other clients.
-        // Without this, client movement via CharacterController.Move() would be overridden by the server.
         ClientNetworkTransform netTransform = prefab.AddComponent<ClientNetworkTransform>();
         netTransform.SyncPositionX = true;
         netTransform.SyncPositionY = true;
@@ -152,15 +139,11 @@ public class NetworkSetup : MonoBehaviour
         return prefab;
     }
 
-    /// <summary>
-    /// Rejestruje handler prefabów graczy w NetworkManager.
-    /// Wywoływane przed StartHost/StartClient (zarówno bezpośrednio, jak i przez RelayManager).
-    /// </summary>
     public void RegisterPrefabHandler()
     {
         if (NetworkManager.Singleton != null && playerPrefabInstance != null)
         {
-            // Remove previous handler if exists, then re-add
+            
             try { NetworkManager.Singleton.PrefabHandler.RemoveHandler(PlayerPrefabHash); } catch { }
             NetworkManager.Singleton.PrefabHandler.AddHandler(PlayerPrefabHash, new PlayerPrefabHandler(playerPrefabInstance));
         }
@@ -228,13 +211,11 @@ public class NetworkSetup : MonoBehaviour
 
         if (NetworkManager.Singleton.IsServer)
         {
-            // Server spawns the player object for the connected client
+            
             GameObject playerInstance = Instantiate(playerPrefabInstance);
             playerInstance.SetActive(true);
             NetworkObject no = playerInstance.GetComponent<NetworkObject>();
 
-            // Assign the custom hash via reflection before spawning.
-            // NGO 2.x uses a FIELD, NGO 1.x uses a PROPERTY — try both.
             SetGlobalObjectIdHash(no, PlayerPrefabHash);
 
             no.SpawnAsPlayerObject(clientId);
@@ -246,15 +227,10 @@ public class NetworkSetup : MonoBehaviour
         Debug.Log("[NetworkSetup] Klient rozlaczony: " + clientId);
     }
 
-    /// <summary>
-    /// Sets GlobalObjectIdHash on a NetworkObject via reflection.
-    /// Tries multiple strategies because the member type/name varies between NGO versions.
-    /// </summary>
     public static void SetGlobalObjectIdHash(NetworkObject networkObject, uint hash)
     {
         System.Type type = typeof(NetworkObject);
 
-        // Strategy 1: Try as field (NGO 2.x — internal field)
         string[] fieldNames = { "GlobalObjectIdHash", "m_GlobalObjectIdHash", "m_PrefabHash" };
         foreach (string fieldName in fieldNames)
         {
@@ -268,7 +244,6 @@ public class NetworkSetup : MonoBehaviour
             }
         }
 
-        // Strategy 2: Try as property (NGO 1.x)
         string[] propNames = { "GlobalObjectIdHash", "PrefabHash" };
         foreach (string propName in propNames)
         {
@@ -282,7 +257,6 @@ public class NetworkSetup : MonoBehaviour
             }
         }
 
-        // Strategy 3: Brute-force — search ALL uint fields
         var allFields = type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
         foreach (var f in allFields)
         {

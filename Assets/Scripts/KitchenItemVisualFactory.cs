@@ -1,17 +1,9 @@
 using UnityEngine;
 
-/// <summary>
-/// Helper class to create 3D visual representations of kitchen items
-/// using the project's GLB models from Resources/Models/.
-/// Used for held item display and station item display.
-/// </summary>
 public static class KitchenItemVisualFactory
 {
     private const string ModelPath = "Models/";
 
-    /// <summary>
-    /// Returns the model resource name and color for a given ingredient.
-    /// </summary>
     public static string GetModelName(IngredientKind kind, IngredientProcessState state, bool isDish)
     {
         if (isDish || kind == IngredientKind.Kebab)
@@ -38,10 +30,6 @@ public static class KitchenItemVisualFactory
         }
     }
 
-    /// <summary>
-    /// Creates a 3D model visual for a kitchen item.
-    /// Returns the root GameObject or null if model not found.
-    /// </summary>
     public static GameObject CreateItemVisual(
         IngredientKind kind,
         IngredientProcessState state,
@@ -57,7 +45,7 @@ public static class KitchenItemVisualFactory
         GameObject prefab = Resources.Load<GameObject>(ModelPath + modelName);
         if (prefab == null)
         {
-            // Fallback: create a colored primitive
+            
             return CreateFallbackVisual(kind, state, isDish, parent, localPosition, targetSize);
         }
 
@@ -67,10 +55,8 @@ public static class KitchenItemVisualFactory
         model.transform.localRotation = Quaternion.Euler(localRotation);
         model.transform.localScale = Vector3.one;
 
-        // Scale to target size
         ScaleToSize(model.transform, targetSize);
 
-        // Disable all colliders
         Collider[] colliders = model.GetComponentsInChildren<Collider>();
         foreach (Collider col in colliders)
         {
@@ -80,9 +66,6 @@ public static class KitchenItemVisualFactory
         return model;
     }
 
-    /// <summary>
-    /// Creates a simple colored primitive as fallback when model is missing.
-    /// </summary>
     private static GameObject CreateFallbackVisual(
         IngredientKind kind,
         IngredientProcessState state,
@@ -123,9 +106,6 @@ public static class KitchenItemVisualFactory
         return obj;
     }
 
-    /// <summary>
-    /// Returns characteristic color for an ingredient.
-    /// </summary>
     public static Color GetIngredientColor(IngredientKind kind, IngredientProcessState state)
     {
         switch (kind)
@@ -151,9 +131,6 @@ public static class KitchenItemVisualFactory
         }
     }
 
-    /// <summary>
-    /// Scales a model so its largest dimension matches targetSize.
-    /// </summary>
     private static void ScaleToSize(Transform modelRoot, float targetSize)
     {
         Renderer[] renderers = modelRoot.GetComponentsInChildren<Renderer>();

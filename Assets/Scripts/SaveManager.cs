@@ -54,7 +54,7 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
-        // In multiplayer, only the host saves
+        
         if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening && !NetworkManager.Singleton.IsServer)
         {
             return;

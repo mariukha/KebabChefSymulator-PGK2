@@ -4,15 +4,9 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Multiplayer lobby UI with Host/Join functionality.
-/// Styled to match the game's dark-blue kitchen aesthetic.
-/// Created programmatically using uGUI (no prefabs).
-/// Shows on startup, hides when game session begins.
-/// </summary>
 public class LobbyUI : MonoBehaviour
 {
-    // UI Color palette (matches KitchenOrderBoard style)
+    
     private static readonly Color PanelBackground = new Color(0.035f, 0.05f, 0.075f, 0.96f);
     private static readonly Color CardBackground = new Color(0.07f, 0.09f, 0.13f, 0.92f);
     private static readonly Color FrameColor = new Color(0.12f, 0.12f, 0.13f);
@@ -38,9 +32,6 @@ public class LobbyUI : MonoBehaviour
     private GameObject connectedPanel;
     private InputField nicknameInputField;
 
-    /// <summary>
-    /// Statyczny nick gracza — ustawiany w lobby, odczytywany przez NetworkPlayer przy spawnie.
-    /// </summary>
     public static string LocalPlayerNickname { get; private set; } = "Gracz";
 
     private bool isLobbyVisible = true;
@@ -62,7 +53,6 @@ public class LobbyUI : MonoBehaviour
 
         UpdateConnectionState();
 
-        // F1 key toggles lobby visibility (press to open, press to close)
         if (Input.GetKeyDown(KeyCode.F1))
         {
             if (isLobbyVisible)
@@ -120,7 +110,6 @@ public class LobbyUI : MonoBehaviour
             font = Resources.GetBuiltinResource<Font>("Arial.ttf");
         }
 
-        // Canvas
         GameObject canvasObject = new GameObject("LobbyCanvas");
         canvasObject.transform.SetParent(transform, false);
         lobbyCanvas = canvasObject.AddComponent<Canvas>();
@@ -132,7 +121,6 @@ public class LobbyUI : MonoBehaviour
         scaler.referenceResolution = new Vector2(1920f, 1080f);
         canvasObject.AddComponent<GraphicRaycaster>();
 
-        // Full-screen darkened backdrop
         GameObject backdrop = CreatePanel(canvasObject.transform, "Backdrop",
             Vector2.zero, Vector2.one, new Vector2(0.5f, 0.5f),
             Vector2.zero, Vector2.zero, new Color(0f, 0f, 0f, 0.75f));
@@ -142,20 +130,16 @@ public class LobbyUI : MonoBehaviour
         backdropRect.offsetMin = Vector2.zero;
         backdropRect.offsetMax = Vector2.zero;
 
-        // Main panel (centered card)
         lobbyPanel = CreatePanel(canvasObject.transform, "LobbyPanel",
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
             Vector2.zero, new Vector2(520f, 580f), PanelBackground);
 
-        // Frame border
         CreatePanelBorder(lobbyPanel.transform, new Vector2(520f, 580f), FrameColor);
 
-        // Header
         GameObject header = CreatePanel(lobbyPanel.transform, "Header",
             new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f),
             new Vector2(0f, -8f), new Vector2(-16f, 60f), HeaderColor);
 
-        // Title
         Text titleText = CreateText(header.transform, "Title", font, 22, TextAnchor.MiddleCenter,
             GoldText, FontStyle.Bold);
         titleText.text = "\u2726  KEBAB CHEF  —  MULTIPLAYER  \u2726";
@@ -165,13 +149,11 @@ public class LobbyUI : MonoBehaviour
         titleRect.offsetMin = Vector2.zero;
         titleRect.offsetMax = Vector2.zero;
 
-        // Subtitle
         Text subTitle = CreateText(lobbyPanel.transform, "Subtitle", font, 13, TextAnchor.MiddleCenter,
             SubText, FontStyle.Normal);
-        subTitle.text = "Do 4 graczy  |  Przez internet — bez VPN!";
+        subTitle.text = "Gra wieloosobowa do 4 graczy";
         PositionRect(subTitle, new Vector2(0.5f, 1f), new Vector2(0f, -85f), new Vector2(460f, 22f));
 
-        // === Nickname Input ===
         Text nickLabel = CreateText(lobbyPanel.transform, "NickLabel", font, 12, TextAnchor.MiddleLeft,
             WhiteText, FontStyle.Normal);
         nickLabel.text = "Twoj nick:";
@@ -181,13 +163,11 @@ public class LobbyUI : MonoBehaviour
             "Gracz", "Wpisz nick...",
             new Vector2(0.5f, 1f), new Vector2(0f, -148f), new Vector2(440f, 42f));
 
-        // === Host Section ===
         hostButton = CreateStyledButton(lobbyPanel.transform, "HostButton", font,
             "\u25B6  STWORZ GRE (HOST)", HostButtonColor, HostButtonHover,
             new Vector2(0.5f, 1f), new Vector2(0f, -215f), new Vector2(440f, 52f));
         hostButton.onClick.AddListener(OnHostClicked);
 
-        // === Separator ===
         CreatePanel(lobbyPanel.transform, "Separator",
             new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 0.5f),
             new Vector2(0f, -260f), new Vector2(380f, 1f), new Color(1f, 1f, 1f, 0.08f));
@@ -197,7 +177,6 @@ public class LobbyUI : MonoBehaviour
         orText.text = "lub dolacz do pokoju znajomego";
         PositionRect(orText, new Vector2(0.5f, 1f), new Vector2(0f, -280f), new Vector2(460f, 20f));
 
-        // === Join Code Input (zamiast IP) ===
         Text codeLabel = CreateText(lobbyPanel.transform, "CodeLabel", font, 12, TextAnchor.MiddleLeft,
             WhiteText, FontStyle.Normal);
         codeLabel.text = "Kod pokoju:";
@@ -207,19 +186,16 @@ public class LobbyUI : MonoBehaviour
             "", "Wpisz kod pokoju...",
             new Vector2(0.5f, 1f), new Vector2(0f, -343f), new Vector2(440f, 42f));
 
-        // === Join button ===
         joinButton = CreateStyledButton(lobbyPanel.transform, "JoinButton", font,
             "\u279C  DOLACZ DO POKOJU (JOIN)", JoinButtonColor, JoinButtonHover,
             new Vector2(0.5f, 1f), new Vector2(0f, -400f), new Vector2(440f, 48f));
         joinButton.onClick.AddListener(OnJoinClicked);
 
-        // === Status ===
         statusText = CreateText(lobbyPanel.transform, "StatusText", font, 13, TextAnchor.MiddleCenter,
             GoldText, FontStyle.Normal);
         statusText.text = string.Empty;
         PositionRect(statusText, new Vector2(0.5f, 1f), new Vector2(0f, -455f), new Vector2(460f, 24f));
 
-        // === Connected Panel (shown after connection) ===
         connectedPanel = CreatePanel(lobbyPanel.transform, "ConnectedPanel",
             new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
             new Vector2(0f, 15f), new Vector2(440f, 60f), new Color(0.08f, 0.14f, 0.1f, 0.9f));
@@ -240,7 +216,6 @@ public class LobbyUI : MonoBehaviour
             new Vector2(0.85f, 0.5f), new Vector2(0f, 0f), new Vector2(110f, 34f));
         disconnectButton.onClick.AddListener(OnDisconnectClicked);
 
-        // Ensure EventSystem
         if (FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
         {
             GameObject eventSystem = new GameObject("EventSystem");
@@ -280,7 +255,6 @@ public class LobbyUI : MonoBehaviour
             playerCountText.text = role + " — Graczy: " + count;
         }
 
-        // No auto-hide: player controls lobby visibility with F1 toggle
     }
 
     private async void OnHostClicked()
@@ -294,7 +268,6 @@ public class LobbyUI : MonoBehaviour
         SaveNickname();
         SetStatus("Tworzenie pokoju...", 0f);
 
-        // Disable buttons during async operation
         if (hostButton != null) hostButton.interactable = false;
         if (joinButton != null) joinButton.interactable = false;
 
@@ -306,12 +279,12 @@ public class LobbyUI : MonoBehaviour
         if (code != null)
         {
             SetStatus("POKOJ UTWORZONY!  Kod:  " + code, 0f);
-            // Also put the code in the input field so it's easy to copy
+            
             if (ipInputField != null)
             {
                 ipInputField.text = code;
             }
-            // Auto-hide lobby after 2 seconds so player can start playing
+            
             Invoke(nameof(HideLobby), 2f);
         }
         else
@@ -338,7 +311,6 @@ public class LobbyUI : MonoBehaviour
         SaveNickname();
         SetStatus("Dolaczanie do pokoju " + code + "...", 0f);
 
-        // Disable buttons during async operation
         if (hostButton != null) hostButton.interactable = false;
         if (joinButton != null) joinButton.interactable = false;
 
@@ -350,7 +322,7 @@ public class LobbyUI : MonoBehaviour
         if (success)
         {
             SetStatus("Polaczono! Kod pokoju: " + code, 0f);
-            // Auto-hide lobby after 2 seconds so player can start playing
+            
             Invoke(nameof(HideLobby), 2f);
         }
         else
@@ -379,10 +351,6 @@ public class LobbyUI : MonoBehaviour
         statusClearTime = clearAfter > 0f ? Time.unscaledTime + clearAfter : 0f;
     }
 
-    /// <summary>
-    /// Zapisuje nick z pola tekstowego do statycznej właściwości.
-    /// Wywoływane tuż przed Host/Join.
-    /// </summary>
     private void SaveNickname()
     {
         string nick = nicknameInputField != null ? nicknameInputField.text.Trim() : "";
@@ -391,7 +359,6 @@ public class LobbyUI : MonoBehaviour
             nick = "Gracz";
         }
 
-        // Limit to 20 characters to fit in FixedString32Bytes
         if (nick.Length > 20)
         {
             nick = nick.Substring(0, 20);
@@ -400,10 +367,6 @@ public class LobbyUI : MonoBehaviour
         LocalPlayerNickname = nick;
     }
 
-    /// <summary>
-    /// Zwraca adresy IP maszyny (LAN), żeby host mógł je podać znajomym.
-    /// Szuka adresów IPv4 w sieci lokalnej.
-    /// </summary>
     private string GetLocalIPAddresses()
     {
         try
@@ -414,7 +377,7 @@ public class LobbyUI : MonoBehaviour
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
                     string addr = ip.ToString();
-                    // Skip loopback
+                    
                     if (addr == "127.0.0.1") continue;
                     if (result.Length > 0) result += ", ";
                     result += addr;
@@ -428,8 +391,6 @@ public class LobbyUI : MonoBehaviour
             return "127.0.0.1";
         }
     }
-
-    // === UI Builder Helpers ===
 
     private GameObject CreatePanel(Transform parent, string name,
         Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot,
@@ -532,10 +493,8 @@ public class LobbyUI : MonoBehaviour
         GameObject inputObj = CreatePanel(parent, name, anchor, anchor,
             new Vector2(0.5f, 0.5f), anchoredPos, size, InputFieldBg);
 
-        // Border
         CreatePanelBorder(inputObj.transform, size, new Color(0.2f, 0.25f, 0.35f));
 
-        // Placeholder
         Text placeholderText = CreateText(inputObj.transform, "Placeholder", font, 14,
             TextAnchor.MiddleLeft, new Color(0.4f, 0.45f, 0.55f), FontStyle.Italic);
         placeholderText.text = placeholder;
@@ -545,7 +504,6 @@ public class LobbyUI : MonoBehaviour
         phRect.offsetMin = new Vector2(14f, 0f);
         phRect.offsetMax = new Vector2(-14f, 0f);
 
-        // Input text
         Text inputText = CreateText(inputObj.transform, "Text", font, 15,
             TextAnchor.MiddleLeft, WhiteText, FontStyle.Normal);
         RectTransform itRect = inputText.GetComponent<RectTransform>();

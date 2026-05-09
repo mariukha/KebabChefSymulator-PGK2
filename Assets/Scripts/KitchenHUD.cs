@@ -19,7 +19,6 @@ public class KitchenHUD : MonoBehaviour
     private Image promptBackground;
     private RectTransform upgradeBar;
 
-    // Floating money text animation
     private Text floatingMoneyText;
     private float floatingMoneyTimer;
     private float floatingMoneyStartY;
@@ -35,7 +34,7 @@ public class KitchenHUD : MonoBehaviour
     {
         if (playerInteraction == null)
         {
-            // Find the LOCAL player's interaction (not a remote player's disabled one)
+            
             NetworkPlayer[] players = FindObjectsByType<NetworkPlayer>(
                 FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             foreach (NetworkPlayer np in players)
@@ -58,7 +57,6 @@ public class KitchenHUD : MonoBehaviour
             cachedLobbyUI = FindFirstObjectByType<LobbyUI>();
         }
 
-        // Hide HUD when lobby is open
         bool lobbyOpen = cachedLobbyUI != null && cachedLobbyUI.IsLobbyOpen;
         if (hudCanvas != null)
         {
@@ -242,7 +240,6 @@ public class KitchenHUD : MonoBehaviour
             new Color(1f, 1f, 1f, 0.92f));
         crosshairText.text = "+";
 
-        // Floating money text (hidden by default, shown when player earns money)
         floatingMoneyText = CreateText(
             canvasObject.transform,
             "FloatingMoney",
@@ -259,7 +256,6 @@ public class KitchenHUD : MonoBehaviour
         floatingMoneyText.text = string.Empty;
         floatingMoneyStartY = 80f;
 
-        // Initialize balance tracking
         lastKnownBalance = EconomyManager.Instance != null ? EconomyManager.Instance.CurrentBalance : 0f;
     }
 
@@ -307,7 +303,6 @@ public class KitchenHUD : MonoBehaviour
 
         UpdateUpgradeStatus();
 
-        // Detect balance change and trigger floating money effect
         float currentBalance = EconomyManager.Instance != null ? EconomyManager.Instance.CurrentBalance : 0f;
         if (currentBalance > lastKnownBalance + 0.01f)
         {
@@ -316,12 +311,11 @@ public class KitchenHUD : MonoBehaviour
         }
         lastKnownBalance = currentBalance;
 
-        // Pulse balance text color when recently changed
         if (balancePulseTimer > 0f)
         {
             balancePulseTimer -= Time.deltaTime;
             float t = Mathf.Clamp01(balancePulseTimer / 0.8f);
-            // Interpolate from bright gold/green back to normal white
+            
             balanceText.color = Color.Lerp(
                 new Color(0.95f, 0.97f, 1f, 0.94f),
                 new Color(0.22f, 1f, 0.42f, 1f),
@@ -329,10 +323,6 @@ public class KitchenHUD : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Pokazuje animowany tekst "+X zl" unoszacy sie od srodka ekranu.
-    /// Wywoływany automatycznie gdy balance wzrosnie.
-    /// </summary>
     private void ShowFloatingMoney(float amount)
     {
         if (floatingMoneyText == null)
@@ -352,9 +342,6 @@ public class KitchenHUD : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Animuje floating money text: unosi sie do gory i zanika.
-    /// </summary>
     private void UpdateFloatingMoney()
     {
         if (floatingMoneyText == null || floatingMoneyTimer <= 0f)
@@ -365,7 +352,6 @@ public class KitchenHUD : MonoBehaviour
         floatingMoneyTimer -= Time.deltaTime;
         float progress = 1f - Mathf.Clamp01(floatingMoneyTimer / 1.6f);
 
-        // Ruch do gory
         RectTransform rect = floatingMoneyText.GetComponent<RectTransform>();
         if (rect != null)
         {
@@ -373,7 +359,6 @@ public class KitchenHUD : MonoBehaviour
             rect.anchoredPosition = new Vector2(0f, yOffset);
         }
 
-        // Fade out w drugiej polowie animacji
         float alpha = progress < 0.5f ? 1f : Mathf.Lerp(1f, 0f, (progress - 0.5f) * 2f);
         float scale = 1f + Mathf.Sin(progress * Mathf.PI) * 0.15f;
         floatingMoneyText.color = new Color(0.22f, 0.92f, 0.42f, alpha);

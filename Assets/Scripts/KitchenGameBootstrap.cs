@@ -39,8 +39,6 @@ public class KitchenGameBootstrap : MonoBehaviour
         BuildOrderBoardIfNeeded();
         ConfigureLighting();
 
-        // In network mode, player spawning is handled by NetworkManager.
-        // In offline/solo mode, create local player directly.
         bool networkActive = NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening;
         if (!networkActive)
         {
@@ -112,11 +110,6 @@ public class KitchenGameBootstrap : MonoBehaviour
 
         orderManager.InitializeCatalogIfNeeded();
     }
-
-    // Player creation is now handled by NetworkPlayer.OnNetworkSpawn() in multiplayer mode.
-    // This method is kept for reference but no longer called from Start().
-
-    // HUD creation is now handled by NetworkPlayer.SetupLocalPlayer() in multiplayer mode.
 
     private void BuildKitchenIfNeeded()
     {
@@ -207,8 +200,6 @@ public class KitchenGameBootstrap : MonoBehaviour
         KitchenOrderBoard board = boardObject.AddComponent<KitchenOrderBoard>();
         board.Initialize();
     }
-
-    // Initial player view is now set in NetworkPlayer.SetupLocalPlayer().
 
     private void ConfigureLighting()
     {
@@ -303,11 +294,8 @@ public class KitchenGameBootstrap : MonoBehaviour
         KitchenStation station = stationObject.AddComponent<KitchenStation>();
         station.Configure(stationName, stationType, sourceIngredient, processingDuration, renderer);
 
-        // NetworkKitchenStation is a plain MonoBehaviour that handles state sync
-        // through NetworkPlayer RPCs (no NetworkObject needed).
         NetworkKitchenStation netStation = stationObject.AddComponent<NetworkKitchenStation>();
         netStation.StationIndex = stationIndexCounter++;
-
 
         GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         marker.name = stationName + "_Marker";

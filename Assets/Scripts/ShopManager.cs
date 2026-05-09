@@ -88,7 +88,6 @@ public class ShopManager : MonoBehaviour
     private readonly Dictionary<UpgradeType, UpgradeDefinition> definitions =
         new Dictionary<UpgradeType, UpgradeDefinition>();
 
-    // Upgrade levels — plain ints (synced via NetworkPlayer broadcast)
     private int grillSpeedLevel;
     private int cuttingSpeedLevel;
     private int rewardBonusLevel;
@@ -113,7 +112,6 @@ public class ShopManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // Cached delegates for value change notifications
     private void HandleLevelChanged(UpgradeType type, int newLevel)
     {
         OnUpgradePurchased?.Invoke(type, newLevel);
@@ -278,10 +276,6 @@ public class ShopManager : MonoBehaviour
         return EconomyManager.Instance.CurrentBalance >= GetNextUpgradeCost(type);
     }
 
-    /// <summary>
-    /// Processes an upgrade purchase. Called directly on host, or via NetworkPlayer ServerRpc on clients.
-    /// Returns true if successful.
-    /// </summary>
     public bool TryPurchaseUpgrade(UpgradeType type)
     {
         if (IsMaxLevel(type))

@@ -8,35 +8,14 @@ using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
 
-/// <summary>
-/// Менеджер Unity Relay — позволяет подключаться через интернет без VPN и проброса портов.
-/// 
-/// Принцип работы:
-///   1. Хост вызывает CreateRelay() → получает код комнаты (например "ABCD12")
-///   2. Хост говорит код другу
-///   3. Друг вызывает JoinRelay("ABCD12") → подключается через серверы Unity
-/// 
-/// Трафик идёт через Relay-серверы Unity, поэтому NAT/firewall не мешает.
-/// Бесплатный тариф: до 50 одновременных подключений.
-/// </summary>
 public class RelayManager : MonoBehaviour
 {
     public static RelayManager Instance { get; private set; }
 
-    /// <summary>
-    /// Код комнаты, сгенерированный при создании хоста.
-    /// Другие игроки вводят этот код чтобы подключиться.
-    /// </summary>
     public string JoinCode { get; private set; } = string.Empty;
 
-    /// <summary>
-    /// Состояние инициализации Unity Services.
-    /// </summary>
     public bool IsServicesInitialized { get; private set; }
 
-    /// <summary>
-    /// Текст последней ошибки (для отображения в UI).
-    /// </summary>
     public string LastError { get; private set; } = string.Empty;
 
     private void Awake()
@@ -50,11 +29,6 @@ public class RelayManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-    /// <summary>
-    /// Инициализация Unity Gaming Services (однократно).
-    /// Нужна перед использованием Relay.
-    /// Авторизация анонимная — не требует аккаунта от игроков.
-    /// </summary>
     public async Task InitializeServices()
     {
         if (IsServicesInitialized)
@@ -64,10 +38,9 @@ public class RelayManager : MonoBehaviour
 
         try
         {
-            // Инициализация Unity Services (Relay, Authentication)
+            
             await UnityServices.InitializeAsync();
 
-            // Анонимная авторизация — игрокам не нужен аккаунт
             if (!AuthenticationService.Instance.IsSignedIn)
             {
                 await AuthenticationService.Instance.SignInAnonymouslyAsync();
@@ -83,11 +56,6 @@ public class RelayManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// ХОСТ: создаёт Relay-комнату и запускает сервер.
-    /// Возвращает код комнаты (join code) или null при ошибке.
-    /// Максимум 3 дополнительных игрока (хост + 3 = 4 всего).
-    /// </summary>
     public async Task<string> CreateRelay(int maxPlayers = 3)
     {
         try
@@ -99,16 +67,12 @@ public class RelayManager : MonoBehaviour
                 return null;
             }
 
-            // Создаём Relay-аллокацию на серверах Unity
-            // maxPlayers = количество ДОПОЛНИТЕЛЬНЫХ игроков (без хоста)
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(maxPlayers);
 
-            // Получаем код комнаты — короткий текст для передачи друзьям
             JoinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
             Debug.Log("[RelayManager] Relay utworzony. Kod: " + JoinCode);
 
-            // Настраиваем UnityTransport для работы через Relay
             UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
             transport.SetRelayServerData(
                 allocation.RelayServer.IpV4,
@@ -118,7 +82,6 @@ public class RelayManager : MonoBehaviour
                 allocation.ConnectionData
             );
 
-            // Запускаем хост
             NetworkSetup.Instance.RegisterPrefabHandler();
             bool started = NetworkManager.Singleton.StartHost();
 
@@ -141,10 +104,6 @@ public class RelayManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// КЛИЕНТ: подключается к существующей комнате по коду.
-    /// Код — это текст вроде "ABCD12", полученный от хоста.
-    /// </summary>
     public async Task<bool> JoinRelay(string joinCode)
     {
         try
@@ -164,12 +123,10 @@ public class RelayManager : MonoBehaviour
 
             joinCode = joinCode.Trim().ToUpperInvariant();
 
-            // Подключаемся к Relay-комнате по коду
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
 
             Debug.Log("[RelayManager] Dolaczono do Relay. Kod: " + joinCode);
 
-            // Настраиваем UnityTransport для работы через Relay
             UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
             transport.SetRelayServerData(
                 joinAllocation.RelayServer.IpV4,
@@ -180,7 +137,6 @@ public class RelayManager : MonoBehaviour
                 joinAllocation.HostConnectionData
             );
 
-            // Запускаем клиент
             NetworkSetup.Instance.RegisterPrefabHandler();
             bool started = NetworkManager.Singleton.StartClient();
 

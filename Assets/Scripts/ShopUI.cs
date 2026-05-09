@@ -53,7 +53,7 @@ public class ShopUI : MonoBehaviour
 
     private void Update()
     {
-        // Don't allow shop when lobby is open
+        
         LobbyUI lobby = FindFirstObjectByType<LobbyUI>();
         bool lobbyOpen = lobby != null && lobby.IsLobbyOpen;
 
@@ -254,16 +254,16 @@ public class ShopUI : MonoBehaviour
 
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsListening)
         {
-            // In multiplayer: route through server
+            
             if (Unity.Netcode.NetworkManager.Singleton.IsServer)
             {
-                // Host can purchase directly
+                
                 bool success = ShopManager.Instance.TryPurchaseUpgrade(type);
                 HandlePurchaseResult(success, type);
             }
             else
             {
-                // Client sends request to server via NetworkPlayer
+                
                 NetworkPlayer localPlayer = NetworkPlayer.FindLocalPlayer();
                 if (localPlayer != null)
                 {
@@ -273,7 +273,7 @@ public class ShopUI : MonoBehaviour
         }
         else
         {
-            // Offline mode
+            
             bool success = ShopManager.Instance.TryPurchaseUpgrade(type);
             HandlePurchaseResult(success, type);
         }

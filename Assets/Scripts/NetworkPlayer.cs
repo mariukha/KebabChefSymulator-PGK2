@@ -2,16 +2,6 @@ using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
-/// <summary>
-/// NetworkBehaviour wrapper for each connected player.
-/// Handles owner-specific setup (camera, input) and remote player visualization.
-/// Also acts as the central hub for ALL network sync:
-///   - Station states (server -> clients via ClientRpc)
-///   - Economy / Shop upgrades (server -> clients)
-///   - Held item visuals (via NetworkVariable)
-///   - Interaction routing (client -> server via ServerRpc)
-/// This is the ONLY NetworkObject type in the game (besides NetworkManager).
-/// </summary>
 public class NetworkPlayer : NetworkBehaviour
 {
     private const float EyeHeight = 1.75f;
@@ -56,11 +46,9 @@ public class NetworkPlayer : NetworkBehaviour
     private SimplePlayerController cachedController;
     private PlayerInteraction cachedInteraction;
 
-    // Held item visual
     private GameObject heldItemVisual;
     private NetworkItemState lastVisualState;
 
-    // Station sync state (server-side)
     private NetworkKitchenStation[] cachedStations;
     private float nextStationSyncTime;
     private float nextEconomySyncTime;
@@ -123,10 +111,6 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    // =========================================================================
-    //  LOCAL PLAYER SETUP
-    // =========================================================================
-
     private bool isLocalPlayerSetup = false;
 
     private void SetupLocalPlayer()
@@ -136,7 +120,6 @@ public class NetworkPlayer : NetworkBehaviour
 
         gameObject.name = "Player_Local";
 
-        // Create camera
         GameObject cameraObject = new GameObject("PlayerCamera");
         cameraObject.transform.SetParent(transform);
         cameraObject.transform.localPosition = new Vector3(0f, EyeHeight, 0f);
@@ -197,10 +180,6 @@ public class NetworkPlayer : NetworkBehaviour
 
         Debug.Log("[NetworkPlayer] Lokalny gracz skonfigurowany. Nick: " + nickname);
     }
-
-    // =========================================================================
-    //  REMOTE PLAYER VISUAL
-    // =========================================================================
 
     private void SetupRemotePlayer()
     {
@@ -266,18 +245,9 @@ public class NetworkPlayer : NetworkBehaviour
         remotePlayerVisual = body;
     }
 
-    // =========================================================================
-    //  HELD ITEM VISUAL (visible to all players)
-    // =========================================================================
-
-    /// <summary>
-    /// Creates or updates the 3D visual for the held item using real GLB models.
-    /// For LOCAL player: attached to camera (visible in front of face).
-    /// For REMOTE player: attached to body (visible to others).
-    /// </summary>
     private void UpdateHeldItemVisual(NetworkItemState itemState)
     {
-        // Destroy old visual if item changed or disappeared
+        
         if (heldItemVisual != null)
         {
             if (!itemState.exists ||
@@ -293,13 +263,13 @@ public class NetworkPlayer : NetworkBehaviour
         lastVisualState = itemState;
 
         if (!itemState.exists) return;
-        if (heldItemVisual != null) return; // already showing correct item
+        if (heldItemVisual != null) return; 
 
         bool isDish = itemState.isDish;
 
         if (IsOwner && playerCamera != null)
         {
-            // Local player: model attached to camera, bottom-right of view
+            
             Vector3 localPos = new Vector3(0.3f, -0.25f, 0.5f);
             Vector3 localRot = isDish ? new Vector3(0f, 0f, 90f) : new Vector3(15f, 25f, 0f);
             float modelSize = isDish ? 0.25f : 0.18f;
@@ -317,7 +287,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
         else
         {
-            // Remote player: model at hand height
+            
             Vector3 localPos = new Vector3(0.25f, 1.2f, 0.35f);
             Vector3 localRot = isDish ? new Vector3(0f, 0f, 90f) : Vector3.zero;
             float modelSize = isDish ? 0.3f : 0.2f;
@@ -333,10 +303,6 @@ public class NetworkPlayer : NetworkBehaviour
         UpdateHeldItemVisual(newValue);
     }
 
-    // =========================================================================
-    //  UPDATE LOOP
-    // =========================================================================
-
     private string pendingNickname;
     private float nextHeldItemSyncTime;
 
@@ -344,14 +310,12 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (!IsSpawned) return;
 
-        // Send deferred nickname
         if (pendingNickname != null && IsOwner)
         {
             SetPlayerNameServerRpc(pendingNickname);
             pendingNickname = null;
         }
 
-        // Held item sync (owner -> server)
         if (IsOwner && cachedInteraction != null && Time.time >= nextHeldItemSyncTime)
         {
             NetworkItemState currentState = NetworkItemState.FromKitchenItem(cachedInteraction.HeldItem);
@@ -365,7 +329,6 @@ public class NetworkPlayer : NetworkBehaviour
             }
         }
 
-        // SERVER: broadcast station states + economy + shop + orders to all clients
         if (IsServer && IsOwner)
         {
             BroadcastStationStates();
@@ -374,10 +337,6 @@ public class NetworkPlayer : NetworkBehaviour
             BroadcastOrders();
         }
     }
-
-    // =========================================================================
-    //  STATION STATE SYNC (Server -> All Clients via ClientRpc)
-    // =========================================================================
 
     private void BroadcastStationStates()
     {
@@ -390,7 +349,6 @@ public class NetworkPlayer : NetworkBehaviour
                 FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
         }
 
-        // Send dirty stations
         for (int i = 0; i < cachedStations.Length; i++)
         {
             if (cachedStations[i] == null) continue;
@@ -404,10 +362,9 @@ public class NetworkPlayer : NetworkBehaviour
     [ClientRpc]
     private void SyncStationStateClientRpc(StationStateSnapshot snapshot)
     {
-        // Server/host already has the correct state
+        
         if (IsServer) return;
 
-        // Find matching station on client by index
         if (cachedStations == null)
         {
             cachedStations = FindObjectsByType<NetworkKitchenStation>(
@@ -423,10 +380,6 @@ public class NetworkPlayer : NetworkBehaviour
             }
         }
     }
-
-    // =========================================================================
-    //  ECONOMY SYNC
-    // =========================================================================
 
     private void BroadcastEconomy()
     {
@@ -449,10 +402,6 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    // =========================================================================
-    //  ORDER SYNC
-    // =========================================================================
-
     private void BroadcastOrders()
     {
         if (Time.time < nextOrderSyncTime) return;
@@ -465,8 +414,6 @@ public class NetworkPlayer : NetworkBehaviour
             int comp = OrderManager.Instance.CompletedOrders;
             int fail = OrderManager.Instance.FailedOrders;
             
-            // To prevent massive string allocations every frame, only send if something changes?
-            // For now, since remaining time changes constantly, we just send it.
             SyncOrdersClientRpc(desc, time, comp, fail);
         }
     }
@@ -481,10 +428,6 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    // =========================================================================
-    //  SHOP UPGRADE SYNC (Server -> All Clients)
-    // =========================================================================
-
     private void BroadcastShopUpgrades()
     {
         if (Time.time < nextShopSyncTime) return;
@@ -492,7 +435,6 @@ public class NetworkPlayer : NetworkBehaviour
 
         if (ShopManager.Instance == null) return;
 
-        // Pack all 5 upgrade levels into one RPC
         int grillLvl = ShopManager.Instance.GetUpgradeLevel(UpgradeType.GrillSpeed);
         int cutLvl = ShopManager.Instance.GetUpgradeLevel(UpgradeType.CuttingSpeed);
         int rewardLvl = ShopManager.Instance.GetUpgradeLevel(UpgradeType.RewardBonus);
@@ -515,9 +457,6 @@ public class NetworkPlayer : NetworkBehaviour
         ShopManager.Instance.SetUpgradeLevel(UpgradeType.MeatBatchSize, meatLvl);
     }
 
-    /// <summary>
-    /// Client requests to purchase an upgrade. Server processes it and broadcasts result.
-    /// </summary>
     [ServerRpc(RequireOwnership = false)]
     public void PurchaseUpgradeServerRpc(int upgradeTypeInt, ServerRpcParams rpcParams = default)
     {
@@ -529,7 +468,6 @@ public class NetworkPlayer : NetworkBehaviour
             success = ShopManager.Instance.TryPurchaseUpgrade(type);
         }
 
-        // Send result back to all clients if success, or just sender if fail
         if (success)
         {
             nextShopSyncTime = 0f;
@@ -557,20 +495,11 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    // =========================================================================
-    //  STATION INTERACTION (Client -> Server -> Client)
-    // =========================================================================
-
-    /// <summary>
-    /// Client sends interaction request for a station identified by index.
-    /// Server processes the interaction and sends back results.
-    /// </summary>
     [ServerRpc(RequireOwnership = false)]
     public void InteractWithStationServerRpc(int stationIndex, NetworkItemState heldItem, ServerRpcParams rpcParams = default)
     {
         ulong senderClientId = rpcParams.Receive.SenderClientId;
 
-        // Find the station on the server
         if (cachedStations == null)
         {
             cachedStations = FindObjectsByType<NetworkKitchenStation>(
@@ -593,14 +522,12 @@ public class NetworkPlayer : NetworkBehaviour
             return;
         }
 
-        // Find the requesting player's PlayerInteraction on the server
         NetworkPlayer requestingPlayer = FindNetworkPlayerByClientId(senderClientId);
         if (requestingPlayer == null) return;
 
         PlayerInteraction interaction = requestingPlayer.GetComponent<PlayerInteraction>();
         if (interaction == null) return;
 
-        // Sync held item from client -> server
         interaction.ClearHeldItem();
         KitchenItem clientItem = heldItem.ToKitchenItem();
         if (clientItem != null)
@@ -608,10 +535,8 @@ public class NetworkPlayer : NetworkBehaviour
             interaction.TryReceiveItem(clientItem);
         }
 
-        // Process the interaction on the server
         targetStation.ServerInteract(interaction);
 
-        // Send back results to the requesting client
         NetworkItemState updatedHeld = NetworkItemState.FromKitchenItem(interaction.HeldItem);
         string feedback = interaction.FeedbackMessage;
 
@@ -629,7 +554,6 @@ public class NetworkPlayer : NetworkBehaviour
         PlayerInteraction localInteraction = FindLocalPlayerInteraction();
         if (localInteraction == null) return;
 
-        // Update held item
         localInteraction.ClearHeldItem();
         KitchenItem newItem = itemState.ToKitchenItem();
         if (newItem != null)
@@ -637,16 +561,11 @@ public class NetworkPlayer : NetworkBehaviour
             localInteraction.TryReceiveItem(newItem);
         }
 
-        // Show feedback
         if (!string.IsNullOrEmpty(feedback))
         {
             localInteraction.SetFeedback(feedback);
         }
     }
-
-    // =========================================================================
-    //  PLAYER RPCs
-    // =========================================================================
 
     [ServerRpc]
     private void UpdateHeldItemServerRpc(NetworkItemState newState)
@@ -661,10 +580,6 @@ public class NetworkPlayer : NetworkBehaviour
         if (requestedName.Length > 20) requestedName = requestedName.Substring(0, 20);
         playerName.Value = new FixedString32Bytes(requestedName);
     }
-
-    // =========================================================================
-    //  VALUE CHANGED HANDLERS
-    // =========================================================================
 
     private void OnPlayerNameChanged(FixedString32Bytes oldValue, FixedString32Bytes newValue)
     {
@@ -684,16 +599,8 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    // =========================================================================
-    //  PUBLIC ACCESSORS
-    // =========================================================================
-
     public string PlayerName => playerName.Value.ToString();
     public int PlayerIndex => playerIndex.Value;
-
-    // =========================================================================
-    //  HELPERS
-    // =========================================================================
 
     private static NetworkPlayer FindNetworkPlayerByClientId(ulong clientId)
     {
@@ -719,9 +626,6 @@ public class NetworkPlayer : NetworkBehaviour
         return null;
     }
 
-    /// <summary>
-    /// Finds the local player's NetworkPlayer instance.
-    /// </summary>
     public static NetworkPlayer FindLocalPlayer()
     {
         NetworkPlayer[] players = FindObjectsByType<NetworkPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
@@ -736,9 +640,6 @@ public class NetworkPlayer : NetworkBehaviour
     }
 }
 
-/// <summary>
-/// Simple bobbing animation for held item visual.
-/// </summary>
 public class HeldItemBob : MonoBehaviour
 {
     public float amplitude = 0.01f;

@@ -1,16 +1,9 @@
 using UnityEngine;
 
-/// <summary>
-/// Lightweight station sync helper (plain MonoBehaviour, no NetworkObject needed).
-/// On the SERVER: periodically checks for dirty state, provides data for NetworkPlayer to broadcast.
-/// On the CLIENT: receives state updates from NetworkPlayer and applies to local KitchenStation.
-/// Interaction routing goes through NetworkPlayer.InteractWithStationServerRpc().
-/// </summary>
 public class NetworkKitchenStation : MonoBehaviour
 {
     private KitchenStation localStation;
 
-    // Dirty-checking cache (server only)
     private bool lastIsProcessing;
     private float lastProcessEndTime;
     private int lastPreparedMeatServings;
@@ -18,10 +11,6 @@ public class NetworkKitchenStation : MonoBehaviour
     private int lastAssemblyCount;
     private NetworkItemState lastStationItem;
 
-    /// <summary>
-    /// Unique station index, assigned at creation time by KitchenGameBootstrap.
-    /// Used to match stations between server and client.
-    /// </summary>
     public int StationIndex { get; set; }
 
     private void Start()
@@ -29,10 +18,6 @@ public class NetworkKitchenStation : MonoBehaviour
         localStation = GetComponent<KitchenStation>();
     }
 
-    /// <summary>
-    /// Returns true if station state has changed since last snapshot.
-    /// Called by NetworkPlayer on the server to decide what to broadcast.
-    /// </summary>
     public bool IsStateDirty()
     {
         if (localStation == null) return false;
@@ -51,10 +36,6 @@ public class NetworkKitchenStation : MonoBehaviour
         return false;
     }
 
-    /// <summary>
-    /// Captures current station state into a serializable struct for network broadcast.
-    /// Updates dirty-check cache.
-    /// </summary>
     public StationStateSnapshot CaptureSnapshot()
     {
         if (localStation == null) return default;
@@ -78,9 +59,6 @@ public class NetworkKitchenStation : MonoBehaviour
         };
     }
 
-    /// <summary>
-    /// Applies state received from server broadcast (client-side).
-    /// </summary>
     public void ApplySnapshot(StationStateSnapshot snapshot)
     {
         if (localStation == null)
@@ -100,10 +78,6 @@ public class NetworkKitchenStation : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Server-side: processes interaction on this station.
-    /// Called by NetworkPlayer.InteractWithStationServerRpc().
-    /// </summary>
     public void ServerInteract(PlayerInteraction interaction)
     {
         if (localStation != null)
@@ -113,9 +87,6 @@ public class NetworkKitchenStation : MonoBehaviour
     }
 }
 
-/// <summary>
-/// Compact station state for network transmission via RPC.
-/// </summary>
 public struct StationStateSnapshot : Unity.Netcode.INetworkSerializable
 {
     public int stationIndex;

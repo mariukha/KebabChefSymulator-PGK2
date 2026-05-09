@@ -1,10 +1,6 @@
 using Unity.Collections;
 using Unity.Netcode;
 
-/// <summary>
-/// Lightweight struct for synchronizing KitchenItem state over the network.
-/// Implements INetworkSerializable so it can be used in NetworkVariable and RPC parameters.
-/// </summary>
 public struct NetworkItemState : INetworkSerializable
 {
     public FixedString64Bytes itemName;
@@ -13,7 +9,6 @@ public struct NetworkItemState : INetworkSerializable
     public bool isDish;
     public bool exists;
 
-    // Dish contents (max 8 ingredients in a kebab)
     public int contentCount;
     public IngredientKind content0Kind;
     public IngredientProcessState content0State;
