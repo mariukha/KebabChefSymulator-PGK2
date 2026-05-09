@@ -5,9 +5,11 @@ using UnityEngine;
 /// <summary>
 /// NetworkBehaviour wrapper for each connected player.
 /// Handles owner-specific setup (camera, input) and remote player visualization.
-/// Also acts as the central hub for station sync and interactions:
-///   - Server periodically broadcasts station states via ClientRpc
-///   - Client sends interaction requests via ServerRpc
+/// Also acts as the central hub for ALL network sync:
+///   - Station states (server -> clients via ClientRpc)
+///   - Economy / Shop upgrades (server -> clients)
+///   - Held item visuals (via NetworkVariable)
+///   - Interaction routing (client -> server via ServerRpc)
 /// This is the ONLY NetworkObject type in the game (besides NetworkManager).
 /// </summary>
 public class NetworkPlayer : NetworkBehaviour
@@ -15,6 +17,7 @@ public class NetworkPlayer : NetworkBehaviour
     private const float EyeHeight = 1.75f;
     private const float StationSyncInterval = 0.15f;
     private const float EconomySyncInterval = 0.5f;
+    private const float ShopSyncInterval = 1.0f;
 
     private static readonly Vector3[] SpawnPoints = new Vector3[]
     {
@@ -53,10 +56,15 @@ public class NetworkPlayer : NetworkBehaviour
     private SimplePlayerController cachedController;
     private PlayerInteraction cachedInteraction;
 
+    // Held item visual
+    private GameObject heldItemVisual;
+    private NetworkItemState lastVisualState;
+
     // Station sync state (server-side)
     private NetworkKitchenStation[] cachedStations;
     private float nextStationSyncTime;
     private float nextEconomySyncTime;
+    private float nextShopSyncTime;
 
     public Camera PlayerCamera => playerCamera;
 
@@ -85,6 +93,7 @@ public class NetworkPlayer : NetworkBehaviour
 
         playerName.OnValueChanged += OnPlayerNameChanged;
         playerIndex.OnValueChanged += OnPlayerIndexChanged;
+        netHeldItem.OnValueChanged += OnHeldItemChanged;
     }
 
     private void Start()
@@ -100,10 +109,16 @@ public class NetworkPlayer : NetworkBehaviour
         base.OnNetworkDespawn();
         playerName.OnValueChanged -= OnPlayerNameChanged;
         playerIndex.OnValueChanged -= OnPlayerIndexChanged;
+        netHeldItem.OnValueChanged -= OnHeldItemChanged;
 
         if (IsOwner && playerCamera != null)
         {
             Destroy(playerCamera.gameObject);
+        }
+
+        if (heldItemVisual != null)
+        {
+            Destroy(heldItemVisual);
         }
     }
 
@@ -251,6 +266,131 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     // =========================================================================
+    //  HELD ITEM VISUAL (visible to all players)
+    // =========================================================================
+
+    /// <summary>
+    /// Returns the color for a given ingredient kind.
+    /// </summary>
+    private static Color GetIngredientColor(IngredientKind kind, IngredientProcessState state)
+    {
+        switch (kind)
+        {
+            case IngredientKind.Meat:
+                return state == IngredientProcessState.Cooked
+                    ? new Color(0.55f, 0.30f, 0.15f)
+                    : new Color(0.65f, 0.25f, 0.18f);
+            case IngredientKind.Tomato:
+                return new Color(0.86f, 0.2f, 0.2f);
+            case IngredientKind.Onion:
+                return new Color(0.93f, 0.9f, 0.75f);
+            case IngredientKind.Lettuce:
+                return new Color(0.35f, 0.7f, 0.25f);
+            case IngredientKind.GarlicSauce:
+                return new Color(0.95f, 0.95f, 0.85f);
+            case IngredientKind.Lavash:
+                return new Color(0.86f, 0.74f, 0.5f);
+            case IngredientKind.Kebab:
+                return new Color(0.76f, 0.57f, 0.35f);
+            default:
+                return new Color(0.7f, 0.7f, 0.7f);
+        }
+    }
+
+    /// <summary>
+    /// Creates or updates the 3D visual for the held item.
+    /// For LOCAL player: attached to camera (visible in front of face).
+    /// For REMOTE player: attached to body (visible to others).
+    /// </summary>
+    private void UpdateHeldItemVisual(NetworkItemState itemState)
+    {
+        // Destroy old visual if item changed or disappeared
+        if (heldItemVisual != null)
+        {
+            if (!itemState.exists ||
+                itemState.ingredientKind != lastVisualState.ingredientKind ||
+                itemState.state != lastVisualState.state ||
+                itemState.isDish != lastVisualState.isDish)
+            {
+                Destroy(heldItemVisual);
+                heldItemVisual = null;
+            }
+        }
+
+        lastVisualState = itemState;
+
+        if (!itemState.exists) return;
+        if (heldItemVisual != null) return; // already showing correct item
+
+        // Create visual
+        bool isDish = itemState.isDish;
+        Color itemColor = GetIngredientColor(itemState.ingredientKind, itemState.state);
+
+        Shader shader = Shader.Find("Universal Render Pipeline/Lit");
+        if (shader == null) shader = Shader.Find("Standard");
+
+        if (isDish)
+        {
+            // Kebab = cylinder (rolled wrap)
+            heldItemVisual = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            heldItemVisual.transform.localScale = new Vector3(0.12f, 0.2f, 0.12f);
+        }
+        else
+        {
+            // Single ingredient = small cube
+            heldItemVisual = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            heldItemVisual.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+        }
+
+        heldItemVisual.name = "HeldItemVisual";
+
+        // Disable collider so it doesn't interfere with interactions
+        Collider col = heldItemVisual.GetComponent<Collider>();
+        if (col != null) col.enabled = false;
+
+        // Apply material
+        Renderer rend = heldItemVisual.GetComponent<Renderer>();
+        if (rend != null)
+        {
+            rend.material = new Material(shader);
+            rend.material.color = itemColor;
+        }
+
+        // Position the visual
+        if (IsOwner && playerCamera != null)
+        {
+            // Local player: in front of camera (bottom-right of view)
+            heldItemVisual.transform.SetParent(playerCamera.transform);
+            heldItemVisual.transform.localPosition = new Vector3(0.3f, -0.25f, 0.5f);
+            heldItemVisual.transform.localRotation = isDish
+                ? Quaternion.Euler(0f, 0f, 90f)
+                : Quaternion.Euler(15f, 25f, 0f);
+        }
+        else
+        {
+            // Remote player: in front of body at hand height
+            heldItemVisual.transform.SetParent(transform);
+            heldItemVisual.transform.localPosition = new Vector3(0.25f, 1.2f, 0.35f);
+            heldItemVisual.transform.localRotation = isDish
+                ? Quaternion.Euler(0f, 0f, 90f)
+                : Quaternion.identity;
+        }
+
+        // Add slight floating animation for local player
+        if (IsOwner)
+        {
+            HeldItemBob bob = heldItemVisual.AddComponent<HeldItemBob>();
+            bob.amplitude = 0.01f;
+            bob.speed = 2.5f;
+        }
+    }
+
+    private void OnHeldItemChanged(NetworkItemState oldValue, NetworkItemState newValue)
+    {
+        UpdateHeldItemVisual(newValue);
+    }
+
+    // =========================================================================
     //  UPDATE LOOP
     // =========================================================================
 
@@ -282,11 +422,12 @@ public class NetworkPlayer : NetworkBehaviour
             }
         }
 
-        // SERVER: broadcast station states + economy to all clients
+        // SERVER: broadcast station states + economy + shop to all clients
         if (IsServer && IsOwner)
         {
             BroadcastStationStates();
             BroadcastEconomy();
+            BroadcastShopUpgrades();
         }
     }
 
@@ -361,6 +502,81 @@ public class NetworkPlayer : NetworkBehaviour
         if (EconomyManager.Instance != null)
         {
             EconomyManager.Instance.SetBalanceFromNetwork(balance, totalEarned);
+        }
+    }
+
+    // =========================================================================
+    //  SHOP UPGRADE SYNC (Server -> All Clients)
+    // =========================================================================
+
+    private void BroadcastShopUpgrades()
+    {
+        if (Time.time < nextShopSyncTime) return;
+        nextShopSyncTime = Time.time + ShopSyncInterval;
+
+        if (ShopManager.Instance == null) return;
+
+        // Pack all 5 upgrade levels into one RPC
+        int grillLvl = ShopManager.Instance.GetUpgradeLevel(UpgradeType.GrillSpeed);
+        int cutLvl = ShopManager.Instance.GetUpgradeLevel(UpgradeType.CuttingSpeed);
+        int rewardLvl = ShopManager.Instance.GetUpgradeLevel(UpgradeType.RewardBonus);
+        int timeLvl = ShopManager.Instance.GetUpgradeLevel(UpgradeType.OrderTime);
+        int meatLvl = ShopManager.Instance.GetUpgradeLevel(UpgradeType.MeatBatchSize);
+
+        SyncShopUpgradesClientRpc(grillLvl, cutLvl, rewardLvl, timeLvl, meatLvl);
+    }
+
+    [ClientRpc]
+    private void SyncShopUpgradesClientRpc(int grillLvl, int cutLvl, int rewardLvl, int timeLvl, int meatLvl)
+    {
+        if (IsServer) return;
+        if (ShopManager.Instance == null) return;
+
+        ShopManager.Instance.SetUpgradeLevel(UpgradeType.GrillSpeed, grillLvl);
+        ShopManager.Instance.SetUpgradeLevel(UpgradeType.CuttingSpeed, cutLvl);
+        ShopManager.Instance.SetUpgradeLevel(UpgradeType.RewardBonus, rewardLvl);
+        ShopManager.Instance.SetUpgradeLevel(UpgradeType.OrderTime, timeLvl);
+        ShopManager.Instance.SetUpgradeLevel(UpgradeType.MeatBatchSize, meatLvl);
+    }
+
+    /// <summary>
+    /// Client requests to purchase an upgrade. Server processes it and broadcasts result.
+    /// </summary>
+    [ServerRpc(RequireOwnership = false)]
+    public void PurchaseUpgradeServerRpc(int upgradeTypeInt, ServerRpcParams rpcParams = default)
+    {
+        UpgradeType type = (UpgradeType)upgradeTypeInt;
+        bool success = false;
+
+        if (ShopManager.Instance != null)
+        {
+            success = ShopManager.Instance.TryPurchaseUpgrade(type);
+        }
+
+        // Send result back to requesting client
+        ulong senderClientId = rpcParams.Receive.SenderClientId;
+        ClientRpcParams targetClient = new ClientRpcParams
+        {
+            Send = new ClientRpcSendParams { TargetClientIds = new ulong[] { senderClientId } }
+        };
+
+        PurchaseResultClientRpc(success, upgradeTypeInt, targetClient);
+
+        // Force immediate shop/economy sync to all clients
+        if (success)
+        {
+            nextShopSyncTime = 0f;
+            nextEconomySyncTime = 0f;
+        }
+    }
+
+    [ClientRpc]
+    private void PurchaseResultClientRpc(bool success, int upgradeTypeInt, ClientRpcParams clientRpcParams = default)
+    {
+        ShopUI shopUI = FindFirstObjectByType<ShopUI>();
+        if (shopUI != null)
+        {
+            shopUI.HandlePurchaseResult(success, (UpgradeType)upgradeTypeInt);
         }
     }
 
@@ -524,5 +740,42 @@ public class NetworkPlayer : NetworkBehaviour
             }
         }
         return null;
+    }
+
+    /// <summary>
+    /// Finds the local player's NetworkPlayer instance.
+    /// </summary>
+    public static NetworkPlayer FindLocalPlayer()
+    {
+        NetworkPlayer[] players = FindObjectsByType<NetworkPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (NetworkPlayer player in players)
+        {
+            if (player.IsOwner)
+            {
+                return player;
+            }
+        }
+        return null;
+    }
+}
+
+/// <summary>
+/// Simple bobbing animation for held item visual.
+/// </summary>
+public class HeldItemBob : MonoBehaviour
+{
+    public float amplitude = 0.01f;
+    public float speed = 2.5f;
+    private Vector3 basePosition;
+
+    private void Start()
+    {
+        basePosition = transform.localPosition;
+    }
+
+    private void Update()
+    {
+        float offset = Mathf.Sin(Time.time * speed) * amplitude;
+        transform.localPosition = basePosition + new Vector3(0f, offset, 0f);
     }
 }
