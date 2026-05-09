@@ -1,5 +1,6 @@
 using System.Collections;
 using System.IO;
+using Unity.Netcode;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
@@ -24,9 +25,20 @@ public class SaveManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator Start()
+    private void Start()
     {
-        yield return null;
+        if (NetworkManager.Singleton != null)
+        {
+            NetworkManager.Singleton.OnServerStarted += OnServerStarted;
+            if (NetworkManager.Singleton.IsServer)
+            {
+                LoadGame();
+            }
+        }
+    }
+
+    private void OnServerStarted()
+    {
         LoadGame();
     }
 
@@ -42,6 +54,12 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
+        // In multiplayer, only the host saves
+        if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening && !NetworkManager.Singleton.IsServer)
+        {
+            return;
+        }
+
         GameSaveData data = new GameSaveData();
 
         if (EconomyManager.Instance != null)
@@ -54,6 +72,11 @@ public class SaveManager : MonoBehaviour
             data.orderProgress = OrderManager.Instance.CaptureProgress();
         }
 
+        if (ShopManager.Instance != null)
+        {
+            data.shop = ShopManager.Instance.CaptureState();
+        }
+
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(SavePath, json);
         Debug.Log("Stan gry zapisany do pliku: " + SavePath);
@@ -61,6 +84,11 @@ public class SaveManager : MonoBehaviour
 
     public void LoadGame()
     {
+        if (NetworkManager.Singleton != null && !NetworkManager.Singleton.IsServer)
+        {
+            return;
+        }
+
         if (!File.Exists(SavePath))
         {
             Debug.Log("Brak pliku zapisu. Start nowej sesji.");
@@ -85,12 +113,25 @@ public class SaveManager : MonoBehaviour
             OrderManager.Instance.RestoreProgress(data.orderProgress);
         }
 
+        if (ShopManager.Instance != null)
+        {
+            ShopManager.Instance.RestoreState(data.shop);
+        }
+
         Debug.Log("Stan gry wczytany z pliku.");
     }
 
     private void OnApplicationQuit()
     {
         SaveGame();
+    }
+
+    private void OnDestroy()
+    {
+        if (NetworkManager.Singleton != null)
+        {
+            NetworkManager.Singleton.OnServerStarted -= OnServerStarted;
+        }
     }
 }
 
@@ -99,6 +140,7 @@ public class GameSaveData
 {
     public EconomySaveData economy = new EconomySaveData();
     public OrderProgressSaveData orderProgress = new OrderProgressSaveData();
+    public ShopSaveData shop = new ShopSaveData();
 }
 
 [System.Serializable]

@@ -1,9 +1,11 @@
+using Unity.Collections;
 using System.Globalization;
 using System.Collections.Generic;
 using System.Text;
+using Unity.Netcode;
 using UnityEngine;
 
-public class OrderManager : MonoBehaviour
+public class OrderManager : NetworkBehaviour
 {
     public static OrderManager Instance { get; private set; }
 
@@ -11,19 +13,21 @@ public class OrderManager : MonoBehaviour
 
     [SerializeField] private List<Order> orderTemplates = new List<Order>();
     [SerializeField] private Order activeOrder;
-    [SerializeField] private float remainingOrderTime;
-    [SerializeField] private int completedOrders;
-    [SerializeField] private int failedOrders;
-    [SerializeField] private string lastOrderMessage = "Przygotuj pierwszy kebab.";
+
+    public NetworkVariable<FixedString512Bytes> netActiveOrderDescription = new NetworkVariable<FixedString512Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    public NetworkVariable<float> netRemainingTime = new NetworkVariable<float>(0f, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    public NetworkVariable<int> netCompletedOrders = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    public NetworkVariable<int> netFailedOrders = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    public NetworkVariable<FixedString512Bytes> netLastMessage = new NetworkVariable<FixedString512Bytes>("Przygotuj pierwszy kebab.", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     private readonly Dictionary<IngredientKind, IngredientData> ingredientLookup =
         new Dictionary<IngredientKind, IngredientData>();
 
-    public Order ActiveOrder => activeOrder;
-    public float RemainingOrderTime => remainingOrderTime;
-    public int CompletedOrders => completedOrders;
-    public int FailedOrders => failedOrders;
-    public string LastOrderMessage => lastOrderMessage;
+    public Order ActiveOrder => activeOrder; // Available locally on host mostly, but UI can use description string
+    public float RemainingOrderTime => netRemainingTime.Value;
+    public int CompletedOrders => netCompletedOrders.Value;
+    public int FailedOrders => netFailedOrders.Value;
+    public string LastOrderMessage => netLastMessage.Value.ToString();
 
     private void Awake()
     {
@@ -41,9 +45,9 @@ public class OrderManager : MonoBehaviour
         BuildDefaultTemplatesIfNeeded();
     }
 
-    private void Start()
+    public override void OnNetworkSpawn()
     {
-        if (activeOrder == null)
+        if (IsServer && activeOrder == null)
         {
             NoweZamowienie();
         }
@@ -51,19 +55,19 @@ public class OrderManager : MonoBehaviour
 
     private void Update()
     {
-        if (activeOrder == null)
+        if (!IsServer || activeOrder == null)
         {
             return;
         }
 
-        remainingOrderTime -= Time.deltaTime;
-        if (remainingOrderTime > 0f)
+        netRemainingTime.Value -= Time.deltaTime;
+        if (netRemainingTime.Value > 0f)
         {
             return;
         }
 
-        failedOrders++;
-        lastOrderMessage = "Klient odszedl. Zamowienie nie zostalo przygotowane na czas.";
+        netFailedOrders.Value++;
+        netLastMessage.Value = new FixedString512Bytes("Klient odszedl. Zamowienie nie zostalo przygotowane na czas.");
         NoweZamowienie();
     }
 
@@ -104,6 +108,12 @@ public class OrderManager : MonoBehaviour
 
     public bool TryDeliverDish(KitchenItem item, out string message)
     {
+        if (!IsServer)
+        {
+            message = "Tylko serwer moze wydawac zamowienia.";
+            return false;
+        }
+
         if (activeOrder == null)
         {
             message = "Brak aktywnego zamowienia.";
@@ -114,11 +124,11 @@ public class OrderManager : MonoBehaviour
         if (!KitchenOrderValidator.MatchesOrder(activeOrder, item, out failureReason))
         {
             message = "Zly kebab: " + failureReason;
-            lastOrderMessage = message;
+            netLastMessage.Value = new Unity.Collections.FixedString512Bytes(message);
             return false;
         }
 
-        completedOrders++;
+        netCompletedOrders.Value++;
         float reward = activeOrder.nagrodaPieniezna;
 
         if (EconomyManager.Instance != null)
@@ -127,33 +137,48 @@ public class OrderManager : MonoBehaviour
         }
 
         message = "Zamowienie zrealizowane. Nagroda: " + reward + " zl.";
-        lastOrderMessage = message;
+        netLastMessage.Value = new Unity.Collections.FixedString512Bytes(message);
         NoweZamowienie();
         SaveManager.Instance?.SaveGame();
         return true;
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void TryDeliverDishServerRpc(NetworkItemState itemState, ulong clientId)
+    {
+        string message;
+        TryDeliverDish(itemState.ToKitchenItem(), out message);
+    }
+
     public void NoweZamowienie()
     {
+        if (!IsServer)
+        {
+            return;
+        }
+
         InitializeCatalogIfNeeded();
         BuildDefaultTemplatesIfNeeded();
 
         int index = Random.Range(0, orderTemplates.Count);
         activeOrder = orderTemplates[index].Clone();
         activeOrder.nagrodaPieniezna = CalculateReward(activeOrder.wymaganeSkladniki);
-        remainingOrderTime = activeOrder.czasNaRealizacje;
-        lastOrderMessage = "Nowe zamowienie: " + activeOrder.BuildDescription();
-        Debug.Log(lastOrderMessage);
+        float timeBonus = ShopManager.Instance != null ? ShopManager.Instance.GetOrderTimeBonus() : 0f;
+        netRemainingTime.Value = activeOrder.czasNaRealizacje + timeBonus;
+        string desc = "Nowe zamowienie: " + activeOrder.BuildDescription();
+        netLastMessage.Value = new Unity.Collections.FixedString512Bytes(desc);
+        netActiveOrderDescription.Value = new Unity.Collections.FixedString512Bytes(desc);
+        Debug.Log(desc);
     }
 
     public OrderProgressSaveData CaptureProgress()
     {
         OrderProgressSaveData data = new OrderProgressSaveData
         {
-            completedOrders = completedOrders,
-            failedOrders = failedOrders,
-            remainingOrderTime = remainingOrderTime,
-            lastOrderMessage = lastOrderMessage
+            completedOrders = netCompletedOrders.Value,
+            failedOrders = netFailedOrders.Value,
+            remainingOrderTime = netRemainingTime.Value,
+            lastOrderMessage = netLastMessage.Value.ToString()
         };
 
         if (activeOrder == null)
@@ -183,16 +208,17 @@ public class OrderManager : MonoBehaviour
 
     public void RestoreProgress(OrderProgressSaveData data)
     {
-        if (data == null)
+        if (data == null || !IsServer)
         {
             return;
         }
 
-        completedOrders = Mathf.Max(0, data.completedOrders);
-        failedOrders = Mathf.Max(0, data.failedOrders);
-        lastOrderMessage = string.IsNullOrWhiteSpace(data.lastOrderMessage)
-            ? lastOrderMessage
-            : data.lastOrderMessage;
+        netCompletedOrders.Value = Mathf.Max(0, data.completedOrders);
+        netFailedOrders.Value = Mathf.Max(0, data.failedOrders);
+        if (!string.IsNullOrWhiteSpace(data.lastOrderMessage))
+        {
+            netLastMessage.Value = new Unity.Collections.FixedString512Bytes(data.lastOrderMessage);
+        }
 
         if (data.activeOrder == null || data.activeOrder.requirements == null || data.activeOrder.requirements.Count == 0)
         {
@@ -218,7 +244,8 @@ public class OrderManager : MonoBehaviour
                 requirement.quantity));
         }
 
-        remainingOrderTime = Mathf.Max(5f, data.remainingOrderTime);
+        netRemainingTime.Value = Mathf.Max(5f, data.remainingOrderTime);
+        netActiveOrderDescription.Value = new Unity.Collections.FixedString512Bytes("Wczytane: " + activeOrder.BuildDescription());
     }
 
     private void EnsureRuntimeIngredient(
@@ -377,6 +404,7 @@ public class OrderManager : MonoBehaviour
             }
         }
 
-        return Mathf.Round(total);
+        float rewardMultiplier = ShopManager.Instance != null ? ShopManager.Instance.GetRewardMultiplier() : 1f;
+        return Mathf.Round(total * rewardMultiplier);
     }
 }

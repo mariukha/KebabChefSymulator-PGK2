@@ -17,6 +17,8 @@ public class SimplePlayerController : MonoBehaviour
     private float verticalVelocity;
     private bool hasInitialLookTarget;
     private Vector3 initialLookTarget;
+    private ShopUI cachedShopUI;
+    private LobbyUI cachedLobbyUI;
 
     private void Awake()
     {
@@ -95,14 +97,44 @@ public class SimplePlayerController : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
-        HandleRotation();
+        if (cachedShopUI == null)
+        {
+            cachedShopUI = FindFirstObjectByType<ShopUI>();
+        }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (cachedLobbyUI == null)
+        {
+            cachedLobbyUI = FindFirstObjectByType<LobbyUI>();
+        }
+
+        bool shopOpen = cachedShopUI != null && cachedShopUI.IsShopOpen;
+        bool lobbyOpen = cachedLobbyUI != null && cachedLobbyUI.IsLobbyOpen;
+        bool inputBlocked = shopOpen || lobbyOpen;
+
+        if (!inputBlocked)
+        {
+            HandleMovement();
+            HandleRotation();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !inputBlocked)
         {
             bool shouldUnlock = Cursor.lockState == CursorLockMode.Locked;
             Cursor.lockState = shouldUnlock ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = shouldUnlock;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F11))
+        {
+            if (Screen.fullScreen)
+            {
+                Screen.SetResolution(1280, 720, FullScreenMode.Windowed);
+            }
+            else
+            {
+                Resolution current = Screen.currentResolution;
+                Screen.SetResolution(current.width, current.height, FullScreenMode.FullScreenWindow);
+            }
         }
     }
 

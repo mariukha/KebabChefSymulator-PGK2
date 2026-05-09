@@ -23,6 +23,23 @@ public class KitchenStation : Interactable
     private KitchenStation linkedMeatTray;
     private Transform meatVisual;
 
+    public bool IsProcessing => isProcessing;
+    public float ProcessEndTime => processEndTime;
+    public int PreparedMeatServings => preparedMeatServings;
+    public bool HasLavash => hasLavash;
+    public int AssemblyCount => assemblyIngredients.Count;
+    public KitchenItem StationItem => stationItem;
+
+    public void SyncNetworkState(bool netIsProcessing, float netProcessEndTime, int netPreparedMeatServings, bool netHasLavash, NetworkItemState netStationItem)
+    {
+        isProcessing = netIsProcessing;
+        processEndTime = netProcessEndTime;
+        preparedMeatServings = netPreparedMeatServings;
+        hasLavash = netHasLavash;
+        stationItem = netStationItem.exists ? netStationItem.ToKitchenItem() : null;
+        RefreshVisualState();
+    }
+
     public void Configure(
         string stationName,
         KitchenStationType stationType,
@@ -220,7 +237,8 @@ public class KitchenStation : Interactable
 
         stationItem = player.RemoveHeldItem();
         isProcessing = true;
-        processEndTime = Time.time + processingDuration;
+        float adjustedDuration = processingDuration * GetShopSpeedMultiplier();
+        processEndTime = Time.time + adjustedDuration;
         player.SetFeedback("Rozpoczeto przygotowanie: " + KitchenNaming.GetIngredientLabel(stationItem.ingredientKind));
         ApplyCurrentColor();
     }
@@ -281,7 +299,8 @@ public class KitchenStation : Interactable
         }
 
         isProcessing = true;
-        processEndTime = Time.time + processingDuration;
+        float adjustedDonerDuration = processingDuration * GetShopSpeedMultiplier();
+        processEndTime = Time.time + adjustedDonerDuration;
         player.SetFeedback("Rozpoczeto scinanie miesa z donera.");
         ApplyCurrentColor();
     }
@@ -470,7 +489,10 @@ public class KitchenStation : Interactable
         {
             if (linkedMeatTray != null)
             {
-                linkedMeatTray.ReceivePreparedMeat(preparedMeatBatchSize);
+                int batchSize = ShopManager.Instance != null
+                    ? ShopManager.Instance.GetMeatBatchSize()
+                    : preparedMeatBatchSize;
+                linkedMeatTray.ReceivePreparedMeat(batchSize);
             }
 
             ApplyCurrentColor();
@@ -574,5 +596,15 @@ public class KitchenStation : Interactable
         {
             meatVisual.gameObject.SetActive(preparedMeatServings > 0);
         }
+    }
+
+    private float GetShopSpeedMultiplier()
+    {
+        if (ShopManager.Instance == null)
+        {
+            return 1f;
+        }
+
+        return ShopManager.Instance.GetProcessingSpeedMultiplier(stationType);
     }
 }

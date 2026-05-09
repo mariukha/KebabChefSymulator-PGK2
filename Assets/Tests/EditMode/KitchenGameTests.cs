@@ -85,6 +85,82 @@ public class KitchenGameTests
         Assert.AreEqual(1, ((IList)GetField(restoredOrder, "requirements")).Count);
     }
 
+    [Test]
+    public void ShopSaveDataRoundTripPreservesUpgrades()
+    {
+        object shopData = Create("ShopSaveData");
+        SetField(shopData, "totalUpgradesPurchased", 3);
+
+        IList levels = (IList)GetField(shopData, "upgradeLevels");
+        object entry = Create("UpgradeLevelEntry");
+        SetField(entry, "upgradeType", "GrillSpeed");
+        SetField(entry, "level", 2);
+        levels.Add(entry);
+
+        object entry2 = Create("UpgradeLevelEntry");
+        SetField(entry2, "upgradeType", "RewardBonus");
+        SetField(entry2, "level", 1);
+        levels.Add(entry2);
+
+        string json = JsonUtility.ToJson(shopData);
+        object restored = JsonUtility.FromJson(json, GetTypeByName("ShopSaveData"));
+
+        Assert.AreEqual(3, (int)GetField(restored, "totalUpgradesPurchased"));
+        IList restoredLevels = (IList)GetField(restored, "upgradeLevels");
+        Assert.AreEqual(2, restoredLevels.Count);
+        Assert.AreEqual("GrillSpeed", GetField(restoredLevels[0], "upgradeType") as string);
+        Assert.AreEqual(2, (int)GetField(restoredLevels[0], "level"));
+        Assert.AreEqual("RewardBonus", GetField(restoredLevels[1], "upgradeType") as string);
+        Assert.AreEqual(1, (int)GetField(restoredLevels[1], "level"));
+    }
+
+    [Test]
+    public void GameSaveDataIncludesShopField()
+    {
+        object saveData = Create("GameSaveData");
+        object shop = GetField(saveData, "shop");
+
+        Assert.IsNotNull(shop);
+
+        IList levels = (IList)GetField(shop, "upgradeLevels");
+        Assert.IsNotNull(levels);
+        Assert.AreEqual(0, levels.Count);
+    }
+
+    [Test]
+    public void UpgradeDefinitionCostScalesCorrectly()
+    {
+        object definition = Create("UpgradeDefinition");
+        SetField(definition, "baseCost", 50f);
+        SetField(definition, "costScaling", 2f);
+
+        MethodInfo method = GetTypeByName("UpgradeDefinition")
+            .GetMethod("GetCostForLevel", BindingFlags.Public | BindingFlags.Instance);
+
+        float costLevel0 = (float)method.Invoke(definition, new object[] { 0 });
+        float costLevel1 = (float)method.Invoke(definition, new object[] { 1 });
+        float costLevel2 = (float)method.Invoke(definition, new object[] { 2 });
+
+        Assert.AreEqual(50f, costLevel0);
+        Assert.AreEqual(100f, costLevel1);
+        Assert.AreEqual(200f, costLevel2);
+    }
+
+    [Test]
+    public void UpgradeTypeEnumHasFiveValues()
+    {
+        Type upgradeType = GetTypeByName("UpgradeType");
+        Assert.IsTrue(upgradeType.IsEnum);
+
+        string[] names = Enum.GetNames(upgradeType);
+        Assert.AreEqual(5, names.Length);
+        Assert.Contains("GrillSpeed", names);
+        Assert.Contains("CuttingSpeed", names);
+        Assert.Contains("RewardBonus", names);
+        Assert.Contains("OrderTime", names);
+        Assert.Contains("MeatBatchSize", names);
+    }
+
     private static object CreateDish(params object[] ingredients)
     {
         object dish = Create("KitchenItem");

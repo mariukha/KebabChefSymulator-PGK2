@@ -1,3 +1,4 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -30,14 +31,44 @@ public class KitchenGameBootstrap : MonoBehaviour
 
     private void Start()
     {
+        EnsureNetworkSetup();
         EnsureManagers();
-        EnsurePlayer();
-        EnsureHud();
         BuildEnvironmentIfNeeded();
         BuildKitchenIfNeeded();
         BuildOrderBoardIfNeeded();
         ConfigureLighting();
-        ApplyInitialPlayerView();
+
+        // In network mode, player spawning is handled by NetworkManager.
+        // In offline/solo mode, create local player directly.
+        bool networkActive = NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening;
+        if (!networkActive)
+        {
+            // Show lobby and wait for network to start.
+            // Player will be spawned by NetworkPlayer.OnNetworkSpawn().
+            // But still create environment so lobby has a backdrop.
+            LobbyUI lobby = FindFirstObjectByType<LobbyUI>();
+            if (lobby != null)
+            {
+                lobby.ShowLobby();
+            }
+        }
+    }
+
+    private void EnsureNetworkSetup()
+    {
+        if (FindFirstObjectByType<NetworkSetup>() != null)
+        {
+            return;
+        }
+
+        GameObject networkObject = new GameObject("NetworkSetup");
+        networkObject.AddComponent<NetworkSetup>();
+
+        if (FindFirstObjectByType<LobbyUI>() == null)
+        {
+            GameObject lobbyObject = new GameObject("LobbyUI");
+            lobbyObject.AddComponent<LobbyUI>();
+        }
     }
 
     private void EnsureManagers()
@@ -46,7 +77,16 @@ public class KitchenGameBootstrap : MonoBehaviour
         if (managerObject == null)
         {
             managerObject = new GameObject("GameManager");
+            // Add NetworkObject before any NetworkBehaviours!
+            managerObject.AddComponent<NetworkObject>();
         }
+
+        if (managerObject.GetComponent<NetworkObject>() == null)
+        {
+            managerObject.AddComponent<NetworkObject>();
+        }
+        
+        managerObject.AddComponent<DumpHierarchy>();
 
         if (FindFirstObjectByType<EconomyManager>() == null)
         {
@@ -64,64 +104,18 @@ public class KitchenGameBootstrap : MonoBehaviour
             managerObject.AddComponent<SaveManager>();
         }
 
+        if (FindFirstObjectByType<ShopManager>() == null)
+        {
+            managerObject.AddComponent<ShopManager>();
+        }
+
         orderManager.InitializeCatalogIfNeeded();
     }
 
-    private void EnsurePlayer()
-    {
-        GameObject playerObject = GameObject.Find("Player");
-        if (playerObject == null)
-        {
-            playerObject = new GameObject("Player");
-        }
-        playerObject.transform.position = PlayerSpawnPosition;
-        playerObject.transform.rotation = Quaternion.identity;
+    // Player creation is now handled by NetworkPlayer.OnNetworkSpawn() in multiplayer mode.
+    // This method is kept for reference but no longer called from Start().
 
-        SimplePlayerController controller = playerObject.GetComponent<SimplePlayerController>();
-        if (controller == null)
-        {
-            controller = playerObject.AddComponent<SimplePlayerController>();
-        }
-
-        PlayerInteraction interaction = playerObject.GetComponent<PlayerInteraction>();
-        if (interaction == null)
-        {
-            interaction = playerObject.AddComponent<PlayerInteraction>();
-        }
-
-        Camera camera = playerObject.GetComponentInChildren<Camera>();
-        if (camera == null)
-        {
-            GameObject cameraObject = new GameObject("PlayerCamera");
-            cameraObject.transform.SetParent(playerObject.transform);
-            cameraObject.transform.localPosition = new Vector3(0f, PlayerEyeHeight, 0f);
-            cameraObject.transform.localRotation = Quaternion.identity;
-            camera = cameraObject.AddComponent<Camera>();
-            camera.tag = "MainCamera";
-        }
-
-        if (camera.transform.parent == playerObject.transform)
-        {
-            camera.transform.localPosition = new Vector3(0f, PlayerEyeHeight, 0f);
-        }
-
-        controller.playerCamera = camera;
-        interaction.playerCamera = camera;
-        interaction.interactableLayer = 1 << InteractableLayer;
-        interaction.interactionDistance = 5.5f;
-        controller.SetInitialLookTarget(CustomerLookTarget);
-    }
-
-    private void EnsureHud()
-    {
-        if (FindFirstObjectByType<KitchenHUD>() != null)
-        {
-            return;
-        }
-
-        GameObject hudObject = new GameObject("KitchenHUD");
-        hudObject.AddComponent<KitchenHUD>();
-    }
+    // HUD creation is now handled by NetworkPlayer.SetupLocalPlayer() in multiplayer mode.
 
     private void BuildKitchenIfNeeded()
     {
@@ -213,14 +207,7 @@ public class KitchenGameBootstrap : MonoBehaviour
         board.Initialize();
     }
 
-    private void ApplyInitialPlayerView()
-    {
-        SimplePlayerController controller = FindFirstObjectByType<SimplePlayerController>();
-        if (controller != null)
-        {
-            controller.SetLookAt(CustomerLookTarget);
-        }
-    }
+    // Initial player view is now set in NetworkPlayer.SetupLocalPlayer().
 
     private void ConfigureLighting()
     {
@@ -314,6 +301,9 @@ public class KitchenGameBootstrap : MonoBehaviour
 
         KitchenStation station = stationObject.AddComponent<KitchenStation>();
         station.Configure(stationName, stationType, sourceIngredient, processingDuration, renderer);
+
+        // Add network sync component for multiplayer
+        stationObject.AddComponent<NetworkKitchenStation>();
 
         GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         marker.name = stationName + "_Marker";

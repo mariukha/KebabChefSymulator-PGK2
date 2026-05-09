@@ -12,6 +12,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private float feedbackUntilTime;
     private Interactable currentInteractable;
+    private ShopUI cachedShopUI;
+    private LobbyUI cachedLobbyUI;
 
     public string CurrentPrompt => currentPrompt;
     public string FeedbackMessage => Time.time <= feedbackUntilTime ? feedbackMessage : string.Empty;
@@ -110,6 +112,24 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandleInput()
     {
+        if (cachedShopUI == null)
+        {
+            cachedShopUI = FindFirstObjectByType<ShopUI>();
+        }
+
+        if (cachedLobbyUI == null)
+        {
+            cachedLobbyUI = FindFirstObjectByType<LobbyUI>();
+        }
+
+        bool shopOpen = cachedShopUI != null && cachedShopUI.IsShopOpen;
+        bool lobbyOpen = cachedLobbyUI != null && cachedLobbyUI.IsLobbyOpen;
+
+        if (shopOpen || lobbyOpen)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Q) && heldItem != null)
         {
             SetFeedback("Wyrzucono: " + heldItem.BuildSummary());

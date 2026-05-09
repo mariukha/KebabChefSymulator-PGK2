@@ -112,7 +112,13 @@ public class KitchenOrderBoard : MonoBehaviour
             return;
         }
 
-        if (OrderManager.Instance == null || OrderManager.Instance.ActiveOrder == null)
+        if (OrderManager.Instance == null)
+        {
+            return;
+        }
+
+        string orderDesc = OrderManager.Instance.netActiveOrderDescription.Value.ToString();
+        if (string.IsNullOrEmpty(orderDesc))
         {
             headerText.text = "LIVE ORDERS";
             metaText.text = "No active order";
@@ -125,24 +131,34 @@ public class KitchenOrderBoard : MonoBehaviour
             return;
         }
 
-        Order order = OrderManager.Instance.ActiveOrder;
         float timeRemaining = Mathf.CeilToInt(OrderManager.Instance.RemainingOrderTime);
-        float reward = order.nagrodaPieniezna;
 
         headerText.text = "LIVE ORDERS";
-        metaText.text =
-            "CLIENT   " + order.nazwaKlienta + "\n" +
-            "DISH     " + order.nazwaZamowienia + "\n" +
-            "TIME     " + timeRemaining + " s\n" +
-            "REWARD   " + reward + " zl";
-
-        System.Text.StringBuilder builder = new System.Text.StringBuilder();
-        builder.AppendLine("INGREDIENTS");
-        foreach (IngredientRequirement requirement in order.wymaganeSkladniki)
+        
+        Order order = OrderManager.Instance.ActiveOrder;
+        if (order != null)
         {
-            builder.AppendLine("• " + requirement.ToDisplayString());
+            float reward = order.nagrodaPieniezna;
+            metaText.text =
+                "CLIENT   " + order.nazwaKlienta + "\n" +
+                "DISH     " + order.nazwaZamowienia + "\n" +
+                "TIME     " + timeRemaining + " s\n" +
+                "REWARD   " + reward + " zl";
+
+            System.Text.StringBuilder builder = new System.Text.StringBuilder();
+            builder.AppendLine("INGREDIENTS");
+            foreach (IngredientRequirement requirement in order.wymaganeSkladniki)
+            {
+                builder.AppendLine("• " + requirement.ToDisplayString());
+            }
+            ingredientsText.text = builder.ToString();
         }
-        ingredientsText.text = builder.ToString();
+        else
+        {
+            // Fallback for clients without full Order object
+            metaText.text = "TIME     " + timeRemaining + " s\n";
+            ingredientsText.text = orderDesc;
+        }
 
         footerText.text =
             "Completed " + OrderManager.Instance.CompletedOrders +
@@ -150,7 +166,8 @@ public class KitchenOrderBoard : MonoBehaviour
 
         if (urgencyBar != null)
         {
-            urgencyBar.color = GetUrgencyColor(OrderManager.Instance.RemainingOrderTime, order.czasNaRealizacje);
+            float fullTime = order != null ? order.czasNaRealizacje : 120f;
+            urgencyBar.color = GetUrgencyColor(OrderManager.Instance.RemainingOrderTime, fullTime);
         }
     }
 
