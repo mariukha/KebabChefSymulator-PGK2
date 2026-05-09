@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.Netcode;
 using UnityEngine;
 
 public enum UpgradeType
@@ -89,11 +88,12 @@ public class ShopManager : MonoBehaviour
     private readonly Dictionary<UpgradeType, UpgradeDefinition> definitions =
         new Dictionary<UpgradeType, UpgradeDefinition>();
 
-    public NetworkVariable<int> netGrillSpeedLevel = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    public NetworkVariable<int> netCuttingSpeedLevel = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    public NetworkVariable<int> netRewardBonusLevel = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    public NetworkVariable<int> netOrderTimeLevel = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    public NetworkVariable<int> netMeatBatchSizeLevel = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    // Upgrade levels — plain ints (synced via NetworkPlayer broadcast)
+    private int grillSpeedLevel;
+    private int cuttingSpeedLevel;
+    private int rewardBonusLevel;
+    private int orderTimeLevel;
+    private int meatBatchSizeLevel;
 
     [SerializeField] private int totalUpgradesPurchased;
 
@@ -113,41 +113,7 @@ public class ShopManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
-
-        if (!IsServer)
-        {
-            netGrillSpeedLevel.OnValueChanged += OnGrillSpeedLevelChanged;
-            netCuttingSpeedLevel.OnValueChanged += OnCuttingSpeedLevelChanged;
-            netRewardBonusLevel.OnValueChanged += OnRewardBonusLevelChanged;
-            netOrderTimeLevel.OnValueChanged += OnOrderTimeLevelChanged;
-            netMeatBatchSizeLevel.OnValueChanged += OnMeatBatchSizeLevelChanged;
-        }
-    }
-
-    public override void OnNetworkDespawn()
-    {
-        base.OnNetworkDespawn();
-
-        if (!IsServer)
-        {
-            netGrillSpeedLevel.OnValueChanged -= OnGrillSpeedLevelChanged;
-            netCuttingSpeedLevel.OnValueChanged -= OnCuttingSpeedLevelChanged;
-            netRewardBonusLevel.OnValueChanged -= OnRewardBonusLevelChanged;
-            netOrderTimeLevel.OnValueChanged -= OnOrderTimeLevelChanged;
-            netMeatBatchSizeLevel.OnValueChanged -= OnMeatBatchSizeLevelChanged;
-        }
-    }
-
-    // Cached delegates for proper unsubscription (lambdas create new instances on each call)
-    private void OnGrillSpeedLevelChanged(int oldVal, int newVal) => HandleLevelChanged(UpgradeType.GrillSpeed, newVal);
-    private void OnCuttingSpeedLevelChanged(int oldVal, int newVal) => HandleLevelChanged(UpgradeType.CuttingSpeed, newVal);
-    private void OnRewardBonusLevelChanged(int oldVal, int newVal) => HandleLevelChanged(UpgradeType.RewardBonus, newVal);
-    private void OnOrderTimeLevelChanged(int oldVal, int newVal) => HandleLevelChanged(UpgradeType.OrderTime, newVal);
-    private void OnMeatBatchSizeLevelChanged(int oldVal, int newVal) => HandleLevelChanged(UpgradeType.MeatBatchSize, newVal);
-
+    // Cached delegates for value change notifications
     private void HandleLevelChanged(UpgradeType type, int newLevel)
     {
         OnUpgradePurchased?.Invoke(type, newLevel);
@@ -248,12 +214,24 @@ public class ShopManager : MonoBehaviour
     {
         switch (type)
         {
-            case UpgradeType.GrillSpeed: return netGrillSpeedLevel.Value;
-            case UpgradeType.CuttingSpeed: return netCuttingSpeedLevel.Value;
-            case UpgradeType.RewardBonus: return netRewardBonusLevel.Value;
-            case UpgradeType.OrderTime: return netOrderTimeLevel.Value;
-            case UpgradeType.MeatBatchSize: return netMeatBatchSizeLevel.Value;
+            case UpgradeType.GrillSpeed: return grillSpeedLevel;
+            case UpgradeType.CuttingSpeed: return cuttingSpeedLevel;
+            case UpgradeType.RewardBonus: return rewardBonusLevel;
+            case UpgradeType.OrderTime: return orderTimeLevel;
+            case UpgradeType.MeatBatchSize: return meatBatchSizeLevel;
             default: return 0;
+        }
+    }
+
+    public void SetUpgradeLevel(UpgradeType type, int level)
+    {
+        switch (type)
+        {
+            case UpgradeType.GrillSpeed: grillSpeedLevel = level; break;
+            case UpgradeType.CuttingSpeed: cuttingSpeedLevel = level; break;
+            case UpgradeType.RewardBonus: rewardBonusLevel = level; break;
+            case UpgradeType.OrderTime: orderTimeLevel = level; break;
+            case UpgradeType.MeatBatchSize: meatBatchSizeLevel = level; break;
         }
     }
 
@@ -300,38 +278,30 @@ public class ShopManager : MonoBehaviour
         return EconomyManager.Instance.CurrentBalance >= GetNextUpgradeCost(type);
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void PurchaseUpgradeServerRpc(UpgradeType type, ulong clientId)
+    /// <summary>
+    /// Processes an upgrade purchase. Called directly on host, or via NetworkPlayer ServerRpc on clients.
+    /// Returns true if successful.
+    /// </summary>
+    public bool TryPurchaseUpgrade(UpgradeType type)
     {
         if (IsMaxLevel(type))
         {
-            SendPurchaseResultClientRpc(false, type, clientId, RpcTargetSingle(clientId));
-            return;
+            return false;
         }
 
         if (EconomyManager.Instance == null)
         {
-            SendPurchaseResultClientRpc(false, type, clientId, RpcTargetSingle(clientId));
-            return;
+            return false;
         }
 
         float cost = GetNextUpgradeCost(type);
         if (!EconomyManager.Instance.SpendMoney(cost))
         {
-            SendPurchaseResultClientRpc(false, type, clientId, RpcTargetSingle(clientId));
-            return;
+            return false;
         }
 
         int newLevel = GetUpgradeLevel(type) + 1;
-
-        switch (type)
-        {
-            case UpgradeType.GrillSpeed: netGrillSpeedLevel.Value = newLevel; break;
-            case UpgradeType.CuttingSpeed: netCuttingSpeedLevel.Value = newLevel; break;
-            case UpgradeType.RewardBonus: netRewardBonusLevel.Value = newLevel; break;
-            case UpgradeType.OrderTime: netOrderTimeLevel.Value = newLevel; break;
-            case UpgradeType.MeatBatchSize: netMeatBatchSizeLevel.Value = newLevel; break;
-        }
+        SetUpgradeLevel(type, newLevel);
 
         totalUpgradesPurchased++;
 
@@ -340,28 +310,7 @@ public class ShopManager : MonoBehaviour
         HandleLevelChanged(type, newLevel);
         SaveManager.Instance?.SaveGame();
 
-        SendPurchaseResultClientRpc(true, type, clientId, RpcTargetSingle(clientId));
-    }
-
-    private ClientRpcParams RpcTargetSingle(ulong clientId)
-    {
-        return new ClientRpcParams
-        {
-            Send = new ClientRpcSendParams
-            {
-                TargetClientIds = new ulong[] { clientId }
-            }
-        };
-    }
-
-    [ClientRpc]
-    private void SendPurchaseResultClientRpc(bool success, UpgradeType type, ulong clientId, ClientRpcParams clientRpcParams = default)
-    {
-        ShopUI ui = FindFirstObjectByType<ShopUI>();
-        if (ui != null && NetworkManager.Singleton.LocalClientId == clientId)
-        {
-            ui.HandlePurchaseResult(success, type);
-        }
+        return true;
     }
 
     public float GetProcessingSpeedMultiplier(KitchenStationType stationType)
@@ -440,7 +389,7 @@ public class ShopManager : MonoBehaviour
 
     public void RestoreState(ShopSaveData data)
     {
-        if (data == null || !IsServer)
+        if (data == null)
         {
             return;
         }
@@ -462,15 +411,7 @@ public class ShopManager : MonoBehaviour
             UpgradeDefinition definition = GetDefinition(parsedType);
             int maxAllowed = definition != null ? definition.maxLevel : 10;
             int restoredLevel = Mathf.Clamp(entry.level, 0, maxAllowed);
-            
-            switch (parsedType)
-            {
-                case UpgradeType.GrillSpeed: netGrillSpeedLevel.Value = restoredLevel; break;
-                case UpgradeType.CuttingSpeed: netCuttingSpeedLevel.Value = restoredLevel; break;
-                case UpgradeType.RewardBonus: netRewardBonusLevel.Value = restoredLevel; break;
-                case UpgradeType.OrderTime: netOrderTimeLevel.Value = restoredLevel; break;
-                case UpgradeType.MeatBatchSize: netMeatBatchSizeLevel.Value = restoredLevel; break;
-            }
+            SetUpgradeLevel(parsedType, restoredLevel);
         }
     }
 }

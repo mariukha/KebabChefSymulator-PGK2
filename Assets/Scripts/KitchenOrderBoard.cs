@@ -117,7 +117,7 @@ public class KitchenOrderBoard : MonoBehaviour
             return;
         }
 
-        string orderDesc = OrderManager.Instance.netActiveOrderDescription.Value.ToString();
+        string orderDesc = OrderManager.Instance.ActiveOrderDescription;
         if (string.IsNullOrEmpty(orderDesc))
         {
             headerText.text = "LIVE ORDERS";

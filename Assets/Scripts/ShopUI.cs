@@ -254,7 +254,8 @@ public class ShopUI : MonoBehaviour
 
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsListening)
         {
-            ShopManager.Instance.PurchaseUpgradeServerRpc(type, Unity.Netcode.NetworkManager.Singleton.LocalClientId);
+            bool success = ShopManager.Instance.TryPurchaseUpgrade(type);
+            HandlePurchaseResult(success, type);
         }
     }
 

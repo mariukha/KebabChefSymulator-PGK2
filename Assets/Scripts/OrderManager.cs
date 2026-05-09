@@ -1,8 +1,6 @@
-using Unity.Collections;
 using System.Globalization;
 using System.Collections.Generic;
 using System.Text;
-using Unity.Netcode;
 using UnityEngine;
 
 public class OrderManager : MonoBehaviour
@@ -14,20 +12,22 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private List<Order> orderTemplates = new List<Order>();
     [SerializeField] private Order activeOrder;
 
-    public NetworkVariable<FixedString512Bytes> netActiveOrderDescription = new NetworkVariable<FixedString512Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    public NetworkVariable<float> netRemainingTime = new NetworkVariable<float>(0f, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    public NetworkVariable<int> netCompletedOrders = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    public NetworkVariable<int> netFailedOrders = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    public NetworkVariable<FixedString512Bytes> netLastMessage = new NetworkVariable<FixedString512Bytes>("Przygotuj pierwszy kebab.", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    // Plain fields instead of NetworkVariable (synced via NetworkPlayer broadcast)
+    private string activeOrderDescription = "";
+    private float remainingTime;
+    private int completedOrders;
+    private int failedOrders;
+    private string lastMessage = "Przygotuj pierwszy kebab.";
 
     private readonly Dictionary<IngredientKind, IngredientData> ingredientLookup =
         new Dictionary<IngredientKind, IngredientData>();
 
-    public Order ActiveOrder => activeOrder; // Available locally on host mostly, but UI can use description string
-    public float RemainingOrderTime => netRemainingTime.Value;
-    public int CompletedOrders => netCompletedOrders.Value;
-    public int FailedOrders => netFailedOrders.Value;
-    public string LastOrderMessage => netLastMessage.Value.ToString();
+    public Order ActiveOrder => activeOrder;
+    public float RemainingOrderTime => remainingTime;
+    public int CompletedOrders => completedOrders;
+    public int FailedOrders => failedOrders;
+    public string LastOrderMessage => lastMessage;
+    public string ActiveOrderDescription => activeOrderDescription;
 
     private void Awake()
     {
@@ -45,9 +45,10 @@ public class OrderManager : MonoBehaviour
         BuildDefaultTemplatesIfNeeded();
     }
 
-    public override void OnNetworkSpawn()
+    private void Start()
     {
-        if (IsServer && activeOrder == null)
+        // Start first order if none active
+        if (activeOrder == null)
         {
             NoweZamowienie();
         }
@@ -55,19 +56,24 @@ public class OrderManager : MonoBehaviour
 
     private void Update()
     {
-        if (!IsServer || activeOrder == null)
+        // Only the host should run game logic (server-authoritative)
+        bool isServer = Unity.Netcode.NetworkManager.Singleton == null ||
+                        !Unity.Netcode.NetworkManager.Singleton.IsListening ||
+                        Unity.Netcode.NetworkManager.Singleton.IsServer;
+
+        if (!isServer || activeOrder == null)
         {
             return;
         }
 
-        netRemainingTime.Value -= Time.deltaTime;
-        if (netRemainingTime.Value > 0f)
+        remainingTime -= Time.deltaTime;
+        if (remainingTime > 0f)
         {
             return;
         }
 
-        netFailedOrders.Value++;
-        netLastMessage.Value = new FixedString512Bytes("Klient odszedl. Zamowienie nie zostalo przygotowane na czas.");
+        failedOrders++;
+        lastMessage = "Klient odszedl. Zamowienie nie zostalo przygotowane na czas.";
         NoweZamowienie();
     }
 
@@ -108,12 +114,6 @@ public class OrderManager : MonoBehaviour
 
     public bool TryDeliverDish(KitchenItem item, out string message)
     {
-        if (!IsServer)
-        {
-            message = "Tylko serwer moze wydawac zamowienia.";
-            return false;
-        }
-
         if (activeOrder == null)
         {
             message = "Brak aktywnego zamowienia.";
@@ -124,11 +124,11 @@ public class OrderManager : MonoBehaviour
         if (!KitchenOrderValidator.MatchesOrder(activeOrder, item, out failureReason))
         {
             message = "Zly kebab: " + failureReason;
-            netLastMessage.Value = new Unity.Collections.FixedString512Bytes(message);
+            lastMessage = message;
             return false;
         }
 
-        netCompletedOrders.Value++;
+        completedOrders++;
         float reward = activeOrder.nagrodaPieniezna;
 
         if (EconomyManager.Instance != null)
@@ -137,26 +137,14 @@ public class OrderManager : MonoBehaviour
         }
 
         message = "Zamowienie zrealizowane. Nagroda: " + reward + " zl.";
-        netLastMessage.Value = new Unity.Collections.FixedString512Bytes(message);
+        lastMessage = message;
         NoweZamowienie();
         SaveManager.Instance?.SaveGame();
         return true;
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void TryDeliverDishServerRpc(NetworkItemState itemState, ulong clientId)
-    {
-        string message;
-        TryDeliverDish(itemState.ToKitchenItem(), out message);
-    }
-
     public void NoweZamowienie()
     {
-        if (!IsServer)
-        {
-            return;
-        }
-
         InitializeCatalogIfNeeded();
         BuildDefaultTemplatesIfNeeded();
 
@@ -164,21 +152,33 @@ public class OrderManager : MonoBehaviour
         activeOrder = orderTemplates[index].Clone();
         activeOrder.nagrodaPieniezna = CalculateReward(activeOrder.wymaganeSkladniki);
         float timeBonus = ShopManager.Instance != null ? ShopManager.Instance.GetOrderTimeBonus() : 0f;
-        netRemainingTime.Value = activeOrder.czasNaRealizacje + timeBonus;
+        remainingTime = activeOrder.czasNaRealizacje + timeBonus;
         string desc = "Nowe zamowienie: " + activeOrder.BuildDescription();
-        netLastMessage.Value = new Unity.Collections.FixedString512Bytes(desc);
-        netActiveOrderDescription.Value = new Unity.Collections.FixedString512Bytes(desc);
+        lastMessage = desc;
+        activeOrderDescription = desc;
         Debug.Log(desc);
+    }
+
+    /// <summary>
+    /// Used by NetworkPlayer to sync order state to clients.
+    /// </summary>
+    public void SetOrderStateFromNetwork(string description, float time, int completed, int failed, string message)
+    {
+        activeOrderDescription = description;
+        remainingTime = time;
+        completedOrders = completed;
+        failedOrders = failed;
+        lastMessage = message;
     }
 
     public OrderProgressSaveData CaptureProgress()
     {
         OrderProgressSaveData data = new OrderProgressSaveData
         {
-            completedOrders = netCompletedOrders.Value,
-            failedOrders = netFailedOrders.Value,
-            remainingOrderTime = netRemainingTime.Value,
-            lastOrderMessage = netLastMessage.Value.ToString()
+            completedOrders = completedOrders,
+            failedOrders = failedOrders,
+            remainingOrderTime = remainingTime,
+            lastOrderMessage = lastMessage
         };
 
         if (activeOrder == null)
@@ -208,16 +208,16 @@ public class OrderManager : MonoBehaviour
 
     public void RestoreProgress(OrderProgressSaveData data)
     {
-        if (data == null || !IsServer)
+        if (data == null)
         {
             return;
         }
 
-        netCompletedOrders.Value = Mathf.Max(0, data.completedOrders);
-        netFailedOrders.Value = Mathf.Max(0, data.failedOrders);
+        completedOrders = Mathf.Max(0, data.completedOrders);
+        failedOrders = Mathf.Max(0, data.failedOrders);
         if (!string.IsNullOrWhiteSpace(data.lastOrderMessage))
         {
-            netLastMessage.Value = new Unity.Collections.FixedString512Bytes(data.lastOrderMessage);
+            lastMessage = data.lastOrderMessage;
         }
 
         if (data.activeOrder == null || data.activeOrder.requirements == null || data.activeOrder.requirements.Count == 0)
@@ -244,8 +244,8 @@ public class OrderManager : MonoBehaviour
                 requirement.quantity));
         }
 
-        netRemainingTime.Value = Mathf.Max(5f, data.remainingOrderTime);
-        netActiveOrderDescription.Value = new Unity.Collections.FixedString512Bytes("Wczytane: " + activeOrder.BuildDescription());
+        remainingTime = Mathf.Max(5f, data.remainingOrderTime);
+        activeOrderDescription = "Wczytane: " + activeOrder.BuildDescription();
     }
 
     private void EnsureRuntimeIngredient(
