@@ -35,7 +35,17 @@ public class KitchenHUD : MonoBehaviour
     {
         if (playerInteraction == null)
         {
-            playerInteraction = FindFirstObjectByType<PlayerInteraction>();
+            // Find the LOCAL player's interaction (not a remote player's disabled one)
+            NetworkPlayer[] players = FindObjectsByType<NetworkPlayer>(
+                FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            foreach (NetworkPlayer np in players)
+            {
+                if (np.IsOwner)
+                {
+                    playerInteraction = np.GetComponent<PlayerInteraction>();
+                    break;
+                }
+            }
         }
 
         if (cachedShopUI == null)
@@ -161,7 +171,7 @@ public class KitchenHUD : MonoBehaviour
             new Vector2(120f, 14f),
             FontStyle.Normal,
             new Color(0.78f, 0.72f, 0.45f, 0.85f));
-        shopHintText.text = "B: Sklep | TAB: Gracze | L: Lobby";
+        shopHintText.text = "B: Sklep | TAB: Gracze | F1: Lobby";
 
         upgradeStatusText = CreateText(
             upgradeBar,

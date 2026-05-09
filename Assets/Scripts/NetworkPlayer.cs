@@ -75,6 +75,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
 
         playerName.OnValueChanged += OnPlayerNameChanged;
+        playerIndex.OnValueChanged += OnPlayerIndexChanged;
     }
 
     private void Start()
@@ -91,6 +92,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         base.OnNetworkDespawn();
         playerName.OnValueChanged -= OnPlayerNameChanged;
+        playerIndex.OnValueChanged -= OnPlayerIndexChanged;
 
         if (IsOwner && playerCamera != null)
         {
@@ -163,6 +165,11 @@ public class NetworkPlayer : NetworkBehaviour
         if (IsSpawned)
         {
             SetPlayerNameServerRpc(nickname);
+        }
+        else
+        {
+            // Defer nickname send until spawned (can happen on client)
+            pendingNickname = nickname;
         }
 
         // Look at customer area
@@ -278,6 +285,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    private string pendingNickname;
     private float nextHeldItemSyncTime;
 
     private void Update()
@@ -285,6 +293,13 @@ public class NetworkPlayer : NetworkBehaviour
         if (!IsSpawned)
         {
             return;
+        }
+
+        // Send deferred nickname if it was pending
+        if (pendingNickname != null && IsOwner && IsSpawned)
+        {
+            SetPlayerNameServerRpc(pendingNickname);
+            pendingNickname = null;
         }
 
         // Throttled held item sync: owner -> server -> all (max every 0.15s to reduce traffic)
@@ -338,4 +353,21 @@ public class NetworkPlayer : NetworkBehaviour
     /// Publiczny dostęp do indeksu gracza (określa kolor i spawn point).
     /// </summary>
     public int PlayerIndex => playerIndex.Value;
+
+    /// <summary>
+    /// When playerIndex changes (e.g. from server initial assignment),
+    /// update remote visual color so late-joining clients see correct colors.
+    /// </summary>
+    private void OnPlayerIndexChanged(int oldValue, int newValue)
+    {
+        if (!IsOwner && remotePlayerVisual != null)
+        {
+            int colorIndex = newValue % PlayerColors.Length;
+            Renderer bodyRenderer = remotePlayerVisual.GetComponent<Renderer>();
+            if (bodyRenderer != null)
+            {
+                bodyRenderer.material.color = PlayerColors[colorIndex];
+            }
+        }
+    }
 }

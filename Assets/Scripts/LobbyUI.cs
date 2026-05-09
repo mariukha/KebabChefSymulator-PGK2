@@ -62,8 +62,8 @@ public class LobbyUI : MonoBehaviour
 
         UpdateConnectionState();
 
-        // L key toggles lobby visibility (allows reopening to check status or for late joiners)
-        if (Input.GetKeyDown(KeyCode.L))
+        // F1 key toggles lobby visibility (press to open, press to close)
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             if (isLobbyVisible)
             {
@@ -280,14 +280,7 @@ public class LobbyUI : MonoBehaviour
             playerCountText.text = role + " — Graczy: " + count;
         }
 
-        // Auto-hide lobby 5 seconds after successful connection
-        // Player can always reopen with L key to check status or disconnect
-        if (isLobbyVisible && connected && NetworkManager.Singleton != null &&
-            NetworkManager.Singleton.IsListening &&
-            NetworkManager.Singleton.LocalTime.Time > 5.0)
-        {
-            HideLobby();
-        }
+        // No auto-hide: player controls lobby visibility with F1 toggle
     }
 
     private async void OnHostClicked()
@@ -318,6 +311,8 @@ public class LobbyUI : MonoBehaviour
             {
                 ipInputField.text = code;
             }
+            // Auto-hide lobby after 2 seconds so player can start playing
+            Invoke(nameof(HideLobby), 2f);
         }
         else
         {
@@ -355,6 +350,8 @@ public class LobbyUI : MonoBehaviour
         if (success)
         {
             SetStatus("Polaczono! Kod pokoju: " + code, 0f);
+            // Auto-hide lobby after 2 seconds so player can start playing
+            Invoke(nameof(HideLobby), 2f);
         }
         else
         {

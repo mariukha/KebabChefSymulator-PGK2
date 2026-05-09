@@ -136,10 +136,10 @@ public class NetworkSetup : MonoBehaviour
         prefab.AddComponent<SimplePlayerController>();
         prefab.AddComponent<PlayerInteraction>();
 
-        // NetworkTransform syncs position/rotation from server to clients.
-        // Without this, client would stay at (0,0,0) even though server moved them to spawn point.
-        NetworkTransform netTransform = prefab.AddComponent<NetworkTransform>();
-        // Only server sets authoritative position (server-auth movement)
+        // ClientNetworkTransform: owner-authoritative — each client controls their own position,
+        // which is then replicated to the server and all other clients.
+        // Without this, client movement via CharacterController.Move() would be overridden by the server.
+        ClientNetworkTransform netTransform = prefab.AddComponent<ClientNetworkTransform>();
         netTransform.SyncPositionX = true;
         netTransform.SyncPositionY = true;
         netTransform.SyncPositionZ = true;
@@ -182,6 +182,7 @@ public class NetworkSetup : MonoBehaviour
         }
 
         RegisterPrefabHandler();
+        KitchenGameBootstrap.RegisterClientSideHandlers();
 
         bool result = NetworkManager.Singleton.StartHost();
         Debug.Log("[NetworkSetup] StartHost: " + (result ? "OK" : "FAIL"));
@@ -205,6 +206,7 @@ public class NetworkSetup : MonoBehaviour
         }
 
         RegisterPrefabHandler();
+        KitchenGameBootstrap.RegisterClientSideHandlers();
 
         bool result = NetworkManager.Singleton.StartClient();
         Debug.Log("[NetworkSetup] StartClient -> " + ipAddress + ": " + (result ? "OK" : "FAIL"));

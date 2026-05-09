@@ -79,6 +79,15 @@ public class KitchenStation : Interactable
 
     private void Update()
     {
+        // In multiplayer, only the server should process timers (clients receive state via NetworkKitchenStation)
+        if (Unity.Netcode.NetworkManager.Singleton != null &&
+            Unity.Netcode.NetworkManager.Singleton.IsListening &&
+            !Unity.Netcode.NetworkManager.Singleton.IsServer)
+        {
+            UpdatePulseEffect();
+            return;
+        }
+
         if (!isProcessing || Time.time < processEndTime)
         {
             UpdatePulseEffect();

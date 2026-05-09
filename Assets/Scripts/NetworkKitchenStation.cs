@@ -58,6 +58,10 @@ public class NetworkKitchenStation : NetworkBehaviour
             netHasLavash.OnValueChanged += OnLavashChanged;
             netAssemblyCount.OnValueChanged += OnAssemblyChanged;
             netStationItem.OnValueChanged += OnStationItemChanged;
+
+            // Apply current state immediately for late-joining clients
+            // (NetworkVariables already contain the server's current values)
+            ApplyStateToLocal();
         }
     }
 
@@ -144,6 +148,18 @@ public class NetworkKitchenStation : NetworkBehaviour
         lastHasLavash = localStation.HasLavash;
         lastAssemblyCount = localStation.AssemblyCount;
         lastStationItem = NetworkItemState.FromKitchenItem(localStation.StationItem);
+    }
+
+    /// <summary>
+    /// Public method called by KitchenGameBootstrap when a new client connects.
+    /// Forces an immediate sync of the station state to all clients.
+    /// </summary>
+    public void ForceSync()
+    {
+        if (IsServer)
+        {
+            SyncStationState();
+        }
     }
 
     /// <summary>
