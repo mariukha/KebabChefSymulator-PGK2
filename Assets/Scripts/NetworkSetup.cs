@@ -123,6 +123,7 @@ public class NetworkSetup : MonoBehaviour
         prefab.SetActive(false);
 
         NetworkObject networkObject = prefab.AddComponent<NetworkObject>();
+        SetGlobalObjectIdHash(networkObject, PlayerPrefabHash);
 
         NetworkPlayer networkPlayer = prefab.AddComponent<NetworkPlayer>();
 
@@ -231,14 +232,11 @@ public class NetworkSetup : MonoBehaviour
             GameObject playerInstance = Instantiate(playerPrefabInstance);
             playerInstance.SetActive(true);
             NetworkObject no = playerInstance.GetComponent<NetworkObject>();
-            
-            // Assign the custom hash via reflection before spawning
-            var prop = typeof(NetworkObject).GetProperty("GlobalObjectIdHash", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            if (prop != null)
-            {
-                prop.SetValue(no, PlayerPrefabHash);
-            }
-            
+
+            // Assign the custom hash via reflection before spawning.
+            // NGO 2.x uses a FIELD, NGO 1.x uses a PROPERTY — try both.
+            SetGlobalObjectIdHash(no, PlayerPrefabHash);
+
             no.SpawnAsPlayerObject(clientId);
         }
     }
@@ -246,6 +244,58 @@ public class NetworkSetup : MonoBehaviour
     private void OnClientDisconnected(ulong clientId)
     {
         Debug.Log("[NetworkSetup] Klient rozlaczony: " + clientId);
+    }
+
+    /// <summary>
+    /// Sets GlobalObjectIdHash on a NetworkObject via reflection.
+    /// Tries multiple strategies because the member type/name varies between NGO versions.
+    /// </summary>
+    public static void SetGlobalObjectIdHash(NetworkObject networkObject, uint hash)
+    {
+        System.Type type = typeof(NetworkObject);
+
+        // Strategy 1: Try as field (NGO 2.x — internal field)
+        string[] fieldNames = { "GlobalObjectIdHash", "m_GlobalObjectIdHash", "m_PrefabHash" };
+        foreach (string fieldName in fieldNames)
+        {
+            var field = type.GetField(fieldName,
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (field != null)
+            {
+                field.SetValue(networkObject, hash);
+                Debug.Log("[NetworkSetup] Hash set via field '" + fieldName + "' = " + hash);
+                return;
+            }
+        }
+
+        // Strategy 2: Try as property (NGO 1.x)
+        string[] propNames = { "GlobalObjectIdHash", "PrefabHash" };
+        foreach (string propName in propNames)
+        {
+            var prop = type.GetProperty(propName,
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (prop != null && prop.CanWrite)
+            {
+                prop.SetValue(networkObject, hash);
+                Debug.Log("[NetworkSetup] Hash set via property '" + propName + "' = " + hash);
+                return;
+            }
+        }
+
+        // Strategy 3: Brute-force — search ALL uint fields
+        var allFields = type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        foreach (var f in allFields)
+        {
+            if (f.FieldType == typeof(uint) && f.Name.ToLower().Contains("hash"))
+            {
+                f.SetValue(networkObject, hash);
+                Debug.Log("[NetworkSetup] Hash set via brute-force field '" + f.Name + "' = " + hash);
+                return;
+            }
+        }
+
+        Debug.LogError("[NetworkSetup] FAILED to set GlobalObjectIdHash! No matching field/property found. " +
+            "Available fields: " + string.Join(", ", System.Array.ConvertAll(allFields, f => f.Name + ":" + f.FieldType.Name)));
     }
 
     private void OnDestroy()
