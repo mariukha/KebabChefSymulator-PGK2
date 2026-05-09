@@ -68,13 +68,13 @@ public class KitchenStation : Interactable
         this.processingDuration = processingDuration;
         this.visualRenderer = visualRenderer;
         PromptMessage = stationName;
-        ApplyCurrentColor();
+        RefreshVisualState();
     }
 
     public void SetLinkedMeatTray(KitchenStation trayStation)
     {
         linkedMeatTray = trayStation;
-        ApplyCurrentColor();
+        RefreshVisualState();
     }
 
     public void RefreshVisualState()
@@ -580,13 +580,13 @@ public class KitchenStation : Interactable
                 linkedMeatTray.ReceivePreparedMeat(batchSize);
             }
 
-            ApplyCurrentColor();
+            RefreshVisualState();
             return;
         }
 
         if (stationItem == null)
         {
-            ApplyCurrentColor();
+            RefreshVisualState();
             return;
         }
 
@@ -599,7 +599,7 @@ public class KitchenStation : Interactable
             stationItem.state = IngredientProcessState.Cooked;
         }
 
-        ApplyCurrentColor();
+        RefreshVisualState();
     }
 
     private void ResetAssembly()
@@ -611,7 +611,7 @@ public class KitchenStation : Interactable
     private void ReceivePreparedMeat(int servings)
     {
         preparedMeatServings = Mathf.Max(0, servings);
-        ApplyCurrentColor();
+        RefreshVisualState();
     }
 
     private bool HasPreparedMeat()
@@ -676,7 +676,7 @@ public class KitchenStation : Interactable
         // Jeśli stacja przygotowuje przedmiot, może być on w trakcie procesu, ale nadal go wyświetlamy
         if (stationItem != null)
         {
-            Vector3 itemPos = new Vector3(0f, 0.93f, 0f);
+            Vector3 itemPos = new Vector3(0f, 0.38f, 0f);
             Vector3 itemRot = stationItem.isDish ? new Vector3(0f, 0f, 90f) : Vector3.zero;
             float itemSize = stationItem.isDish ? 0.3f : 0.25f;
 
@@ -691,7 +691,7 @@ public class KitchenStation : Interactable
             {
                 dynamicLavashVisual = KitchenItemVisualFactory.CreateItemVisual(
                     IngredientKind.Lavash, IngredientProcessState.Raw, false,
-                    transform, new Vector3(0f, 0.91f, 0f), new Vector3(0f, 12f, 0f), 0.72f);
+                    transform, new Vector3(0f, 0.36f, 0f), new Vector3(0f, 12f, 0f), 0.72f);
             }
 
             for (int i = 0; i < assemblyIngredients.Count; i++)
@@ -704,7 +704,7 @@ public class KitchenStation : Interactable
 
                 GameObject ingVis = KitchenItemVisualFactory.CreateItemVisual(
                     ingredient.ingredientKind, ingredient.state, false,
-                    transform, new Vector3(0f, 0.91f, 0f) + offset, Vector3.zero, 0.18f);
+                    transform, new Vector3(0f, 0.36f, 0f) + offset, Vector3.zero, 0.18f);
 
                 if (ingVis != null) dynamicAssemblyVisuals.Add(ingVis);
             }

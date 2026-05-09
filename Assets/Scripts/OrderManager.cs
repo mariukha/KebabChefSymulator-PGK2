@@ -29,6 +29,14 @@ public class OrderManager : MonoBehaviour
     public string LastOrderMessage => lastMessage;
     public string ActiveOrderDescription => activeOrderDescription;
 
+    public void SyncNetworkState(string desc, float time, int comp, int fail)
+    {
+        activeOrderDescription = desc;
+        remainingTime = time;
+        completedOrders = comp;
+        failedOrders = fail;
+    }
+
     private void Awake()
     {
         if (Instance == null)

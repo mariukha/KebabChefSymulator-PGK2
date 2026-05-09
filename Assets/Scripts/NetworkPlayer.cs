@@ -65,6 +65,7 @@ public class NetworkPlayer : NetworkBehaviour
     private float nextStationSyncTime;
     private float nextEconomySyncTime;
     private float nextShopSyncTime;
+    private float nextOrderSyncTime;
 
     public Camera PlayerCamera => playerCamera;
 
@@ -364,12 +365,13 @@ public class NetworkPlayer : NetworkBehaviour
             }
         }
 
-        // SERVER: broadcast station states + economy + shop to all clients
+        // SERVER: broadcast station states + economy + shop + orders to all clients
         if (IsServer && IsOwner)
         {
             BroadcastStationStates();
             BroadcastEconomy();
             BroadcastShopUpgrades();
+            BroadcastOrders();
         }
     }
 
@@ -448,6 +450,38 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     // =========================================================================
+    //  ORDER SYNC
+    // =========================================================================
+
+    private void BroadcastOrders()
+    {
+        if (Time.time < nextOrderSyncTime) return;
+        nextOrderSyncTime = Time.time + 0.25f;
+
+        if (OrderManager.Instance != null)
+        {
+            string desc = OrderManager.Instance.ActiveOrderDescription ?? "";
+            float time = OrderManager.Instance.RemainingOrderTime;
+            int comp = OrderManager.Instance.CompletedOrders;
+            int fail = OrderManager.Instance.FailedOrders;
+            
+            // To prevent massive string allocations every frame, only send if something changes?
+            // For now, since remaining time changes constantly, we just send it.
+            SyncOrdersClientRpc(desc, time, comp, fail);
+        }
+    }
+
+    [ClientRpc]
+    private void SyncOrdersClientRpc(string desc, float time, int comp, int fail)
+    {
+        if (IsServer) return;
+        if (OrderManager.Instance != null)
+        {
+            OrderManager.Instance.SyncNetworkState(desc, time, comp, fail);
+        }
+    }
+
+    // =========================================================================
     //  SHOP UPGRADE SYNC (Server -> All Clients)
     // =========================================================================
 
@@ -495,20 +529,21 @@ public class NetworkPlayer : NetworkBehaviour
             success = ShopManager.Instance.TryPurchaseUpgrade(type);
         }
 
-        // Send result back to requesting client
-        ulong senderClientId = rpcParams.Receive.SenderClientId;
-        ClientRpcParams targetClient = new ClientRpcParams
-        {
-            Send = new ClientRpcSendParams { TargetClientIds = new ulong[] { senderClientId } }
-        };
-
-        PurchaseResultClientRpc(success, upgradeTypeInt, targetClient);
-
-        // Force immediate shop/economy sync to all clients
+        // Send result back to all clients if success, or just sender if fail
         if (success)
         {
             nextShopSyncTime = 0f;
             nextEconomySyncTime = 0f;
+            PurchaseResultClientRpc(true, upgradeTypeInt);
+        }
+        else
+        {
+            ulong senderClientId = rpcParams.Receive.SenderClientId;
+            ClientRpcParams targetClient = new ClientRpcParams
+            {
+                Send = new ClientRpcSendParams { TargetClientIds = new ulong[] { senderClientId } }
+            };
+            PurchaseResultClientRpc(false, upgradeTypeInt, targetClient);
         }
     }
 
