@@ -1,4 +1,5 @@
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
 
@@ -105,6 +106,11 @@ public class NetworkSetup : MonoBehaviour
         networkManager.NetworkConfig.PlayerPrefab = null;
         networkManager.NetworkConfig.ConnectionApproval = false;
 
+        // CRITICAL: Disable scene management — we have one scene, no need for scene sync.
+        // Without this, NGO throws 'Scene Hash does not exist in HashToBuildIndex table'
+        // because dynamically loaded scenes aren't in the Build Settings scene list.
+        networkManager.NetworkConfig.EnableSceneManagement = false;
+
         networkManager.OnClientConnectedCallback += OnClientConnected;
         networkManager.OnClientDisconnectCallback += OnClientDisconnected;
 
@@ -129,6 +135,17 @@ public class NetworkSetup : MonoBehaviour
 
         prefab.AddComponent<SimplePlayerController>();
         prefab.AddComponent<PlayerInteraction>();
+
+        // NetworkTransform syncs position/rotation from server to clients.
+        // Without this, client would stay at (0,0,0) even though server moved them to spawn point.
+        NetworkTransform netTransform = prefab.AddComponent<NetworkTransform>();
+        // Only server sets authoritative position (server-auth movement)
+        netTransform.SyncPositionX = true;
+        netTransform.SyncPositionY = true;
+        netTransform.SyncPositionZ = true;
+        netTransform.SyncRotAngleY = true;
+        netTransform.SyncRotAngleX = false;
+        netTransform.SyncRotAngleZ = false;
 
         DontDestroyOnLoad(prefab);
         return prefab;
