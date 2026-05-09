@@ -58,6 +58,7 @@ public class NetworkPlayer : NetworkBehaviour
         {
             int index = (int)(OwnerClientId % (ulong)SpawnPoints.Length);
             playerIndex.Value = index;
+            // Default name — will be overridden by client's SetPlayerNameServerRpc
             playerName.Value = new FixedString32Bytes("Gracz " + (index + 1));
 
             transform.position = SpawnPoints[index];
@@ -147,9 +148,22 @@ public class NetworkPlayer : NetworkBehaviour
             shopUiObject.AddComponent<ShopUI>();
         }
 
+        if (FindFirstObjectByType<PlayerListUI>() == null)
+        {
+            GameObject playerListObject = new GameObject("PlayerListUI");
+            playerListObject.AddComponent<PlayerListUI>();
+        }
+
         // Lock cursor for FPS
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // Send player's chosen nickname to the server
+        string nickname = LobbyUI.LocalPlayerNickname;
+        if (IsSpawned)
+        {
+            SetPlayerNameServerRpc(nickname);
+        }
 
         // Look at customer area
         Vector3 customerLookTarget = new Vector3(0f, 1.55f, -4.8f);
@@ -159,7 +173,7 @@ public class NetworkPlayer : NetworkBehaviour
             cachedController.SetLookAt(customerLookTarget);
         }
 
-        Debug.Log("[NetworkPlayer] Lokalny gracz skonfigurowany. Index: " + playerIndex.Value);
+        Debug.Log("[NetworkPlayer] Lokalny gracz skonfigurowany. Nick: " + nickname);
     }
 
     private void SetupRemotePlayer()
@@ -293,4 +307,35 @@ public class NetworkPlayer : NetworkBehaviour
     {
         netHeldItem.Value = newState;
     }
+
+    /// <summary>
+    /// Klient wysyła swój wybrany nick do serwera.
+    /// Serwer zapisuje go w NetworkVariable, co propaguje do wszystkich klientów.
+    /// </summary>
+    [ServerRpc]
+    public void SetPlayerNameServerRpc(string requestedName)
+    {
+        if (string.IsNullOrWhiteSpace(requestedName))
+        {
+            requestedName = "Gracz";
+        }
+
+        if (requestedName.Length > 20)
+        {
+            requestedName = requestedName.Substring(0, 20);
+        }
+
+        playerName.Value = new FixedString32Bytes(requestedName);
+    }
+
+    /// <summary>
+    /// Publiczny dostęp do aktualnego nicku gracza.
+    /// Używany przez PlayerListUI do wyświetlania listy graczy.
+    /// </summary>
+    public string PlayerName => playerName.Value.ToString();
+
+    /// <summary>
+    /// Publiczny dostęp do indeksu gracza (określa kolor i spawn point).
+    /// </summary>
+    public int PlayerIndex => playerIndex.Value;
 }

@@ -34,6 +34,12 @@ public class LobbyUI : MonoBehaviour
     private Button joinButton;
     private Button disconnectButton;
     private GameObject connectedPanel;
+    private InputField nicknameInputField;
+
+    /// <summary>
+    /// Statyczny nick gracza — ustawiany w lobby, odczytywany przez NetworkPlayer przy spawnie.
+    /// </summary>
+    public static string LocalPlayerNickname { get; private set; } = "Gracz";
 
     private bool isLobbyVisible = true;
     private float statusClearTime;
@@ -53,6 +59,19 @@ public class LobbyUI : MonoBehaviour
         }
 
         UpdateConnectionState();
+
+        // L key toggles lobby visibility (allows reopening to check status or for late joiners)
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (isLobbyVisible)
+            {
+                HideLobby();
+            }
+            else
+            {
+                ShowLobby();
+            }
+        }
 
         if (statusClearTime > 0f && Time.unscaledTime >= statusClearTime)
         {
@@ -124,10 +143,10 @@ public class LobbyUI : MonoBehaviour
         // Main panel (centered card)
         lobbyPanel = CreatePanel(canvasObject.transform, "LobbyPanel",
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
-            Vector2.zero, new Vector2(520f, 480f), PanelBackground);
+            Vector2.zero, new Vector2(520f, 580f), PanelBackground);
 
         // Frame border
-        CreatePanelBorder(lobbyPanel.transform, new Vector2(520f, 480f), FrameColor);
+        CreatePanelBorder(lobbyPanel.transform, new Vector2(520f, 580f), FrameColor);
 
         // Header
         GameObject header = CreatePanel(lobbyPanel.transform, "Header",
@@ -150,43 +169,53 @@ public class LobbyUI : MonoBehaviour
         subTitle.text = "Wspolna kuchnia — do 4 graczy w sieci LAN";
         PositionRect(subTitle, new Vector2(0.5f, 1f), new Vector2(0f, -85f), new Vector2(460f, 22f));
 
+        // === Nickname Input ===
+        Text nickLabel = CreateText(lobbyPanel.transform, "NickLabel", font, 12, TextAnchor.MiddleLeft,
+            WhiteText, FontStyle.Normal);
+        nickLabel.text = "Twoj nick:";
+        PositionRect(nickLabel, new Vector2(0.5f, 1f), new Vector2(-130f, -115f), new Vector2(200f, 22f));
+
+        nicknameInputField = CreateInputField(lobbyPanel.transform, "NickInput", font,
+            "Gracz", "Wpisz nick...",
+            new Vector2(0.5f, 1f), new Vector2(0f, -148f), new Vector2(440f, 42f));
+
         // === Host Section ===
         hostButton = CreateStyledButton(lobbyPanel.transform, "HostButton", font,
             "\u25B6  STWORZ GRE (HOST)", HostButtonColor, HostButtonHover,
-            new Vector2(0.5f, 1f), new Vector2(0f, -135f), new Vector2(440f, 52f));
+            new Vector2(0.5f, 1f), new Vector2(0f, -215f), new Vector2(440f, 52f));
         hostButton.onClick.AddListener(OnHostClicked);
 
         // === Separator ===
         CreatePanel(lobbyPanel.transform, "Separator",
             new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 0.5f),
-            new Vector2(0f, -180f), new Vector2(380f, 1f), new Color(1f, 1f, 1f, 0.08f));
+            new Vector2(0f, -260f), new Vector2(380f, 1f), new Color(1f, 1f, 1f, 0.08f));
 
         Text orText = CreateText(lobbyPanel.transform, "OrText", font, 12, TextAnchor.MiddleCenter,
             SubText, FontStyle.Normal);
         orText.text = "lub dolacz do istniejacego serwera";
-        PositionRect(orText, new Vector2(0.5f, 1f), new Vector2(0f, -200f), new Vector2(460f, 20f));
+        PositionRect(orText, new Vector2(0.5f, 1f), new Vector2(0f, -280f), new Vector2(460f, 20f));
 
         // === IP Input ===
         Text ipLabel = CreateText(lobbyPanel.transform, "IpLabel", font, 12, TextAnchor.MiddleLeft,
             WhiteText, FontStyle.Normal);
         ipLabel.text = "Adres IP serwera:";
-        PositionRect(ipLabel, new Vector2(0.5f, 1f), new Vector2(-110f, -235f), new Vector2(200f, 22f));
+        PositionRect(ipLabel, new Vector2(0.5f, 1f), new Vector2(-110f, -310f), new Vector2(200f, 22f));
 
         ipInputField = CreateInputField(lobbyPanel.transform, "IpInput", font,
             "127.0.0.1", "Wpisz adres IP...",
-            new Vector2(0.5f, 1f), new Vector2(0f, -268f), new Vector2(440f, 42f));
+            new Vector2(0.5f, 1f), new Vector2(0f, -343f), new Vector2(440f, 42f));
 
         // === Join button ===
         joinButton = CreateStyledButton(lobbyPanel.transform, "JoinButton", font,
             "\u279C  DOLACZ DO GRY (JOIN)", JoinButtonColor, JoinButtonHover,
-            new Vector2(0.5f, 1f), new Vector2(0f, -325f), new Vector2(440f, 48f));
+            new Vector2(0.5f, 1f), new Vector2(0f, -400f), new Vector2(440f, 48f));
         joinButton.onClick.AddListener(OnJoinClicked);
 
         // === Status ===
         statusText = CreateText(lobbyPanel.transform, "StatusText", font, 13, TextAnchor.MiddleCenter,
             GoldText, FontStyle.Normal);
         statusText.text = string.Empty;
-        PositionRect(statusText, new Vector2(0.5f, 1f), new Vector2(0f, -380f), new Vector2(460f, 24f));
+        PositionRect(statusText, new Vector2(0.5f, 1f), new Vector2(0f, -455f), new Vector2(460f, 24f));
 
         // === Connected Panel (shown after connection) ===
         connectedPanel = CreatePanel(lobbyPanel.transform, "ConnectedPanel",
@@ -249,10 +278,11 @@ public class LobbyUI : MonoBehaviour
             playerCountText.text = role + " — Graczy: " + count;
         }
 
-        // Auto-hide lobby once game is active for a few seconds
+        // Auto-hide lobby 5 seconds after successful connection
+        // Player can always reopen with L key to check status or disconnect
         if (isLobbyVisible && connected && NetworkManager.Singleton != null &&
             NetworkManager.Singleton.IsListening &&
-            NetworkManager.Singleton.LocalTime.Time > 3.0)
+            NetworkManager.Singleton.LocalTime.Time > 5.0)
         {
             HideLobby();
         }
@@ -266,6 +296,7 @@ public class LobbyUI : MonoBehaviour
             return;
         }
 
+        SaveNickname();
         SetStatus("Tworzenie serwera...", 0f);
 
         if (NetworkSetup.Instance.StartHost())
@@ -292,6 +323,7 @@ public class LobbyUI : MonoBehaviour
             ip = "127.0.0.1";
         }
 
+        SaveNickname();
         SetStatus("Laczenie z " + ip + "...", 0f);
 
         if (NetworkSetup.Instance.StartClient(ip))
@@ -322,6 +354,27 @@ public class LobbyUI : MonoBehaviour
         }
 
         statusClearTime = clearAfter > 0f ? Time.unscaledTime + clearAfter : 0f;
+    }
+
+    /// <summary>
+    /// Zapisuje nick z pola tekstowego do statycznej właściwości.
+    /// Wywoływane tuż przed Host/Join.
+    /// </summary>
+    private void SaveNickname()
+    {
+        string nick = nicknameInputField != null ? nicknameInputField.text.Trim() : "";
+        if (string.IsNullOrWhiteSpace(nick))
+        {
+            nick = "Gracz";
+        }
+
+        // Limit to 20 characters to fit in FixedString32Bytes
+        if (nick.Length > 20)
+        {
+            nick = nick.Substring(0, 20);
+        }
+
+        LocalPlayerNickname = nick;
     }
 
     // === UI Builder Helpers ===

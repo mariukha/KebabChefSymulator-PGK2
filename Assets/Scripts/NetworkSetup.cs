@@ -93,6 +93,10 @@ public class NetworkSetup : MonoBehaviour
         transport.ConnectionData.Port = DefaultPort;
         transport.ConnectionData.ServerListenAddress = "0.0.0.0";
 
+        // Long timeouts: server always accepts connections, no time limit on joining
+        transport.DisconnectTimeoutMS = 300000;  // 5 minutes before considering client dead
+        transport.ConnectTimeoutMS = 30000;       // 30 seconds to establish connection
+
         networkManager.NetworkConfig = new NetworkConfig();
         networkManager.NetworkConfig.NetworkTransport = transport;
 

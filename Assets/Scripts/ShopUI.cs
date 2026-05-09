@@ -57,7 +57,7 @@ public class ShopUI : MonoBehaviour
         LobbyUI lobby = FindFirstObjectByType<LobbyUI>();
         bool lobbyOpen = lobby != null && lobby.IsLobbyOpen;
 
-        if (Input.GetKeyDown(KeyCode.Tab) && !lobbyOpen)
+        if (Input.GetKeyDown(KeyCode.B) && !lobbyOpen)
         {
             ToggleShop();
         }

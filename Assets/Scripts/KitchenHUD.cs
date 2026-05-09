@@ -161,7 +161,7 @@ public class KitchenHUD : MonoBehaviour
             new Vector2(120f, 14f),
             FontStyle.Normal,
             new Color(0.78f, 0.72f, 0.45f, 0.85f));
-        shopHintText.text = "TAB: Sklep";
+        shopHintText.text = "B: Sklep | TAB: Gracze | L: Lobby";
 
         upgradeStatusText = CreateText(
             upgradeBar,
