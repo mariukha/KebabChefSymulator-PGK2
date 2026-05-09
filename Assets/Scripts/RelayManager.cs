@@ -118,10 +118,6 @@ public class RelayManager : MonoBehaviour
                 allocation.ConnectionData
             );
 
-            // Register handlers for existing scene objects (stations, managers)
-            // so server-spawned NetworkObjects map to client's pre-created local instances
-            KitchenGameBootstrap.RegisterClientSideHandlers();
-
             // Запускаем хост
             NetworkSetup.Instance.RegisterPrefabHandler();
             bool started = NetworkManager.Singleton.StartHost();
@@ -183,9 +179,6 @@ public class RelayManager : MonoBehaviour
                 joinAllocation.ConnectionData,
                 joinAllocation.HostConnectionData
             );
-
-            // Register handlers for existing scene objects (stations, managers)
-            KitchenGameBootstrap.RegisterClientSideHandlers();
 
             // Запускаем клиент
             NetworkSetup.Instance.RegisterPrefabHandler();

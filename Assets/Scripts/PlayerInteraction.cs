@@ -140,18 +140,26 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
         {
-            // In multiplayer, route station interactions through the server
+            // In multiplayer, route station interactions through the player's NetworkBehaviour
             bool isMultiplayer = NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening;
             NetworkKitchenStation networkStation = isMultiplayer
                 ? currentInteractable.GetComponent<NetworkKitchenStation>()
                 : null;
 
-            if (networkStation != null)
+            if (networkStation != null && isMultiplayer)
             {
-                // Send interaction request to server with current held item state
-                NetworkItemState heldState = NetworkItemState.FromKitchenItem(heldItem);
-                ulong localClientId = NetworkManager.Singleton.LocalClientId;
-                networkStation.InteractServerRpc(localClientId, heldState);
+                // Find our own NetworkPlayer to send the RPC through
+                NetworkPlayer localPlayer = GetComponentInParent<NetworkPlayer>();
+                if (localPlayer == null)
+                {
+                    localPlayer = FindLocalNetworkPlayer();
+                }
+
+                if (localPlayer != null)
+                {
+                    NetworkItemState heldState = NetworkItemState.FromKitchenItem(heldItem);
+                    localPlayer.InteractWithStationServerRpc(networkStation.StationIndex, heldState);
+                }
             }
             else
             {
@@ -159,5 +167,18 @@ public class PlayerInteraction : MonoBehaviour
                 currentInteractable.Interact(this);
             }
         }
+    }
+
+    private static NetworkPlayer FindLocalNetworkPlayer()
+    {
+        NetworkPlayer[] players = FindObjectsByType<NetworkPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (NetworkPlayer player in players)
+        {
+            if (player.IsOwner)
+            {
+                return player;
+            }
+        }
+        return null;
     }
 }

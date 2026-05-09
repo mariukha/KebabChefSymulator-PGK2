@@ -82,7 +82,7 @@ public class UpgradeLevelEntry
     public int level;
 }
 
-public class ShopManager : NetworkBehaviour
+public class ShopManager : MonoBehaviour
 {
     public static ShopManager Instance { get; private set; }
 

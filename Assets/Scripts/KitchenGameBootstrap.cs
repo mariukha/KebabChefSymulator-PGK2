@@ -1,4 +1,3 @@
-using System.Reflection;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -6,6 +5,7 @@ using UnityEngine.Rendering;
 public class KitchenGameBootstrap : MonoBehaviour
 {
     private const int InteractableLayer = 6;
+    private int stationIndexCounter = 0;
     private const string ModelPath = "Models/";
     private const float PlayerEyeHeight = 1.75f;
     private const float WorktopLocalY = 0.34f;
@@ -30,8 +30,6 @@ public class KitchenGameBootstrap : MonoBehaviour
         bootstrapper.AddComponent<KitchenGameBootstrap>();
     }
 
-    private bool networkObjectsSpawned;
-
     private void Start()
     {
         EnsureNetworkSetup();
@@ -41,173 +39,16 @@ public class KitchenGameBootstrap : MonoBehaviour
         BuildOrderBoardIfNeeded();
         ConfigureLighting();
 
-        // Subscribe to network events to spawn NetworkObjects when server starts
-        if (NetworkManager.Singleton != null)
-        {
-            NetworkManager.Singleton.OnServerStarted += OnServerStarted;
-            NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnectedLate;
-        }
-
         // In network mode, player spawning is handled by NetworkManager.
         // In offline/solo mode, create local player directly.
         bool networkActive = NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening;
         if (!networkActive)
         {
-            // Show lobby and wait for network to start.
-            // Player will be spawned by NetworkPlayer.OnNetworkSpawn().
-            // But still create environment so lobby has a backdrop.
             LobbyUI lobby = FindFirstObjectByType<LobbyUI>();
             if (lobby != null)
             {
                 lobby.ShowLobby();
             }
-        }
-    }
-
-    /// <summary>
-    /// When the server starts (host clicks Create), spawn all NetworkObjects
-    /// (stations, managers) so their NetworkVariables sync to clients.
-    /// </summary>
-    private void OnServerStarted()
-    {
-        if (networkObjectsSpawned) return;
-        networkObjectsSpawned = true;
-
-        SpawnAllNetworkObjects();
-        Debug.Log("[KitchenGameBootstrap] Serwer uruchomiony — NetworkObjects zaspawnowane.");
-    }
-
-    /// <summary>
-    /// When a client connects late, force-refresh all station states so they see current items.
-    /// </summary>
-    private void OnClientConnectedLate(ulong clientId)
-    {
-        if (!NetworkManager.Singleton.IsServer) return;
-
-        // Force sync all station states to the newly connected client
-        NetworkKitchenStation[] stations = FindObjectsByType<NetworkKitchenStation>(
-            FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-        foreach (NetworkKitchenStation station in stations)
-        {
-            station.ForceSync();
-        }
-    }
-
-    /// <summary>
-    /// Assigns deterministic hashes to all NetworkObjects (stations, managers),
-    /// registers INetworkPrefabInstanceHandler so the client reuses existing local objects,
-    /// then spawns them on the server.
-    /// </summary>
-    private void SpawnAllNetworkObjects()
-    {
-        NetworkObject[] allNetObjects = FindObjectsByType<NetworkObject>(
-            FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-
-        foreach (NetworkObject netObj in allNetObjects)
-        {
-            if (netObj.IsSpawned) continue;
-            if (netObj.GetComponent<NetworkPlayer>() != null) continue;
-
-            // Deterministic hash based on object name (both server and client create the same objects)
-            uint hash = ComputeDeterministicHash(netObj.gameObject.name);
-
-            var prop = typeof(NetworkObject).GetProperty("GlobalObjectIdHash",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            if (prop != null)
-            {
-                prop.SetValue(netObj, hash);
-            }
-
-            // Register handler so client reuses its existing local object
-            try { NetworkManager.Singleton.PrefabHandler.RemoveHandler(hash); } catch { }
-            NetworkManager.Singleton.PrefabHandler.AddHandler(hash,
-                new ExistingObjectPrefabHandler(netObj.gameObject));
-
-            netObj.Spawn();
-        }
-    }
-
-    /// <summary>
-    /// Registers handlers on the client side for all unspawned NetworkObjects,
-    /// so when the server's spawn message arrives, the client maps it to the existing local object.
-    /// Called before connecting as client.
-    /// </summary>
-    public static void RegisterClientSideHandlers()
-    {
-        if (NetworkManager.Singleton == null) return;
-
-        NetworkObject[] allNetObjects = FindObjectsByType<NetworkObject>(
-            FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-
-        foreach (NetworkObject netObj in allNetObjects)
-        {
-            if (netObj.IsSpawned) continue;
-            if (netObj.GetComponent<NetworkPlayer>() != null) continue;
-
-            uint hash = ComputeDeterministicHash(netObj.gameObject.name);
-
-            var prop = typeof(NetworkObject).GetProperty("GlobalObjectIdHash",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            if (prop != null)
-            {
-                prop.SetValue(netObj, hash);
-            }
-
-            try { NetworkManager.Singleton.PrefabHandler.RemoveHandler(hash); } catch { }
-            NetworkManager.Singleton.PrefabHandler.AddHandler(hash,
-                new ExistingObjectPrefabHandler(netObj.gameObject));
-        }
-    }
-
-    /// <summary>
-    /// Generates a deterministic uint hash from a string.
-    /// Must produce the same hash on server and client for the same object name.
-    /// </summary>
-    private static uint ComputeDeterministicHash(string name)
-    {
-        // FNV-1a hash — fast, deterministic, good distribution
-        uint hash = 2166136261u;
-        foreach (char c in name)
-        {
-            hash ^= c;
-            hash *= 16777619u;
-        }
-        // Ensure non-zero and in high range to avoid collisions with player prefab hash
-        return (hash & 0x7FFFFFFFu) | 0x40000000u;
-    }
-
-    /// <summary>
-    /// INetworkPrefabInstanceHandler that returns an existing GameObject instead of instantiating a new one.
-    /// Used for stations and managers that are already created locally on both server and client.
-    /// </summary>
-    private class ExistingObjectPrefabHandler : INetworkPrefabInstanceHandler
-    {
-        private GameObject existingObject;
-
-        public ExistingObjectPrefabHandler(GameObject existingObject)
-        {
-            this.existingObject = existingObject;
-        }
-
-        public NetworkObject Instantiate(ulong ownerClientId, Vector3 position, Quaternion rotation)
-        {
-            if (existingObject == null) return null;
-            existingObject.SetActive(true);
-            return existingObject.GetComponent<NetworkObject>();
-        }
-
-        public void Destroy(NetworkObject networkObject)
-        {
-            // Don't destroy — these are persistent scene objects
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (NetworkManager.Singleton != null)
-        {
-            NetworkManager.Singleton.OnServerStarted -= OnServerStarted;
-            NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnectedLate;
         }
     }
 
@@ -234,13 +75,6 @@ public class KitchenGameBootstrap : MonoBehaviour
         if (managerObject == null)
         {
             managerObject = new GameObject("GameManager");
-            // Add NetworkObject before any NetworkBehaviours!
-            managerObject.AddComponent<NetworkObject>();
-        }
-
-        if (managerObject.GetComponent<NetworkObject>() == null)
-        {
-            managerObject.AddComponent<NetworkObject>();
         }
         
         managerObject.AddComponent<DumpHierarchy>();
@@ -469,10 +303,11 @@ public class KitchenGameBootstrap : MonoBehaviour
         KitchenStation station = stationObject.AddComponent<KitchenStation>();
         station.Configure(stationName, stationType, sourceIngredient, processingDuration, renderer);
 
-        // NetworkBehaviour (NetworkKitchenStation) requires a NetworkObject on the same GameObject.
-        // Without it, IsServer/IsOwner checks and RPCs would fail silently.
-        stationObject.AddComponent<NetworkObject>();
-        stationObject.AddComponent<NetworkKitchenStation>();
+        // NetworkKitchenStation is a plain MonoBehaviour that handles state sync
+        // through NetworkPlayer RPCs (no NetworkObject needed).
+        NetworkKitchenStation netStation = stationObject.AddComponent<NetworkKitchenStation>();
+        netStation.StationIndex = stationIndexCounter++;
+
 
         GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         marker.name = stationName + "_Marker";

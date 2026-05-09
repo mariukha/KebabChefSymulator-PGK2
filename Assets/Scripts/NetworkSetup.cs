@@ -182,7 +182,6 @@ public class NetworkSetup : MonoBehaviour
         }
 
         RegisterPrefabHandler();
-        KitchenGameBootstrap.RegisterClientSideHandlers();
 
         bool result = NetworkManager.Singleton.StartHost();
         Debug.Log("[NetworkSetup] StartHost: " + (result ? "OK" : "FAIL"));
@@ -206,7 +205,6 @@ public class NetworkSetup : MonoBehaviour
         }
 
         RegisterPrefabHandler();
-        KitchenGameBootstrap.RegisterClientSideHandlers();
 
         bool result = NetworkManager.Singleton.StartClient();
         Debug.Log("[NetworkSetup] StartClient -> " + ipAddress + ": " + (result ? "OK" : "FAIL"));

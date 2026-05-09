@@ -5,7 +5,7 @@ using System.Text;
 using Unity.Netcode;
 using UnityEngine;
 
-public class OrderManager : NetworkBehaviour
+public class OrderManager : MonoBehaviour
 {
     public static OrderManager Instance { get; private set; }
 

@@ -5,11 +5,16 @@ using UnityEngine;
 /// <summary>
 /// NetworkBehaviour wrapper for each connected player.
 /// Handles owner-specific setup (camera, input) and remote player visualization.
-/// Synchronizes held item state and player name across the network.
+/// Also acts as the central hub for station sync and interactions:
+///   - Server periodically broadcasts station states via ClientRpc
+///   - Client sends interaction requests via ServerRpc
+/// This is the ONLY NetworkObject type in the game (besides NetworkManager).
 /// </summary>
 public class NetworkPlayer : NetworkBehaviour
 {
     private const float EyeHeight = 1.75f;
+    private const float StationSyncInterval = 0.15f;
+    private const float EconomySyncInterval = 0.5f;
 
     private static readonly Vector3[] SpawnPoints = new Vector3[]
     {
@@ -48,6 +53,11 @@ public class NetworkPlayer : NetworkBehaviour
     private SimplePlayerController cachedController;
     private PlayerInteraction cachedInteraction;
 
+    // Station sync state (server-side)
+    private NetworkKitchenStation[] cachedStations;
+    private float nextStationSyncTime;
+    private float nextEconomySyncTime;
+
     public Camera PlayerCamera => playerCamera;
 
     public override void OnNetworkSpawn()
@@ -58,7 +68,6 @@ public class NetworkPlayer : NetworkBehaviour
         {
             int index = (int)(OwnerClientId % (ulong)SpawnPoints.Length);
             playerIndex.Value = index;
-            // Default name — will be overridden by client's SetPlayerNameServerRpc
             playerName.Value = new FixedString32Bytes("Gracz " + (index + 1));
 
             transform.position = SpawnPoints[index];
@@ -80,8 +89,6 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void Start()
     {
-        // Fallback: If not spawned correctly by NGO (e.g. dynamic prefab without hash),
-        // we still need to initialize the local player so the game is playable.
         if (!IsSpawned && NetworkManager.Singleton != null && NetworkManager.Singleton.IsHost)
         {
             SetupLocalPlayer();
@@ -99,6 +106,10 @@ public class NetworkPlayer : NetworkBehaviour
             Destroy(playerCamera.gameObject);
         }
     }
+
+    // =========================================================================
+    //  LOCAL PLAYER SETUP
+    // =========================================================================
 
     private bool isLocalPlayerSetup = false;
 
@@ -119,7 +130,6 @@ public class NetworkPlayer : NetworkBehaviour
         playerCamera.nearClipPlane = 0.1f;
         playerCamera.farClipPlane = 100f;
 
-        // Configure controller
         cachedController = GetComponent<SimplePlayerController>();
         if (cachedController != null)
         {
@@ -127,7 +137,6 @@ public class NetworkPlayer : NetworkBehaviour
             cachedController.enabled = true;
         }
 
-        // Configure interaction
         cachedInteraction = GetComponent<PlayerInteraction>();
         if (cachedInteraction != null)
         {
@@ -137,30 +146,22 @@ public class NetworkPlayer : NetworkBehaviour
             cachedInteraction.enabled = true;
         }
 
-        // Ensure HUD exists
         if (FindFirstObjectByType<KitchenHUD>() == null)
         {
-            GameObject hudObject = new GameObject("KitchenHUD");
-            hudObject.AddComponent<KitchenHUD>();
+            new GameObject("KitchenHUD").AddComponent<KitchenHUD>();
         }
-
         if (FindFirstObjectByType<ShopUI>() == null)
         {
-            GameObject shopUiObject = new GameObject("ShopUI");
-            shopUiObject.AddComponent<ShopUI>();
+            new GameObject("ShopUI").AddComponent<ShopUI>();
         }
-
         if (FindFirstObjectByType<PlayerListUI>() == null)
         {
-            GameObject playerListObject = new GameObject("PlayerListUI");
-            playerListObject.AddComponent<PlayerListUI>();
+            new GameObject("PlayerListUI").AddComponent<PlayerListUI>();
         }
 
-        // Lock cursor for FPS
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // Send player's chosen nickname to the server
         string nickname = LobbyUI.LocalPlayerNickname;
         if (IsSpawned)
         {
@@ -168,11 +169,9 @@ public class NetworkPlayer : NetworkBehaviour
         }
         else
         {
-            // Defer nickname send until spawned (can happen on client)
             pendingNickname = nickname;
         }
 
-        // Look at customer area
         Vector3 customerLookTarget = new Vector3(0f, 1.55f, -4.8f);
         if (cachedController != null)
         {
@@ -183,53 +182,37 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("[NetworkPlayer] Lokalny gracz skonfigurowany. Nick: " + nickname);
     }
 
+    // =========================================================================
+    //  REMOTE PLAYER VISUAL
+    // =========================================================================
+
     private void SetupRemotePlayer()
     {
         gameObject.name = "Player_Remote_" + OwnerClientId;
 
-        // Disable input components for remote players
         SimplePlayerController controller = GetComponent<SimplePlayerController>();
-        if (controller != null)
-        {
-            controller.enabled = false;
-        }
+        if (controller != null) controller.enabled = false;
 
         PlayerInteraction interaction = GetComponent<PlayerInteraction>();
-        if (interaction != null)
-        {
-            interaction.enabled = false;
-        }
+        if (interaction != null) interaction.enabled = false;
 
-        // Destroy any cameras that might have been created
         Camera cam = GetComponentInChildren<Camera>();
-        if (cam != null)
-        {
-            Destroy(cam.gameObject);
-        }
+        if (cam != null) Destroy(cam.gameObject);
 
-        // Create visible body for remote player
         CreateRemoteVisual();
-
         Debug.Log("[NetworkPlayer] Zdalny gracz skonfigurowany: " + OwnerClientId);
     }
 
     private void CreateRemoteVisual()
     {
-        if (remotePlayerVisual != null)
-        {
-            return;
-        }
+        if (remotePlayerVisual != null) return;
 
         int colorIndex = playerIndex.Value % PlayerColors.Length;
         Color bodyColor = PlayerColors[colorIndex];
 
         Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-        if (shader == null)
-        {
-            shader = Shader.Find("Standard");
-        }
+        if (shader == null) shader = Shader.Find("Standard");
 
-        // Body capsule
         GameObject body = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         body.name = "RemoteBody";
         body.transform.SetParent(transform);
@@ -238,14 +221,9 @@ public class NetworkPlayer : NetworkBehaviour
         Renderer bodyRenderer = body.GetComponent<Renderer>();
         bodyRenderer.material = new Material(shader);
         bodyRenderer.material.color = bodyColor;
-
         Collider bodyCollider = body.GetComponent<Collider>();
-        if (bodyCollider != null)
-        {
-            bodyCollider.enabled = false;
-        }
+        if (bodyCollider != null) bodyCollider.enabled = false;
 
-        // Head sphere
         GameObject head = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         head.name = "RemoteHead";
         head.transform.SetParent(transform);
@@ -254,14 +232,9 @@ public class NetworkPlayer : NetworkBehaviour
         Renderer headRenderer = head.GetComponent<Renderer>();
         headRenderer.material = new Material(shader);
         headRenderer.material.color = new Color(0.92f, 0.78f, 0.63f);
-
         Collider headCollider = head.GetComponent<Collider>();
-        if (headCollider != null)
-        {
-            headCollider.enabled = false;
-        }
+        if (headCollider != null) headCollider.enabled = false;
 
-        // Name label
         GameObject labelObject = new GameObject("NameLabel");
         labelObject.transform.SetParent(transform);
         labelObject.transform.localPosition = new Vector3(0f, 2.1f, 0f);
@@ -277,32 +250,25 @@ public class NetworkPlayer : NetworkBehaviour
         remotePlayerVisual = body;
     }
 
-    private void OnPlayerNameChanged(FixedString32Bytes oldValue, FixedString32Bytes newValue)
-    {
-        if (nameLabel != null)
-        {
-            nameLabel.text = newValue.ToString();
-        }
-    }
+    // =========================================================================
+    //  UPDATE LOOP
+    // =========================================================================
 
     private string pendingNickname;
     private float nextHeldItemSyncTime;
 
     private void Update()
     {
-        if (!IsSpawned)
-        {
-            return;
-        }
+        if (!IsSpawned) return;
 
-        // Send deferred nickname if it was pending
-        if (pendingNickname != null && IsOwner && IsSpawned)
+        // Send deferred nickname
+        if (pendingNickname != null && IsOwner)
         {
             SetPlayerNameServerRpc(pendingNickname);
             pendingNickname = null;
         }
 
-        // Throttled held item sync: owner -> server -> all (max every 0.15s to reduce traffic)
+        // Held item sync (owner -> server)
         if (IsOwner && cachedInteraction != null && Time.time >= nextHeldItemSyncTime)
         {
             NetworkItemState currentState = NetworkItemState.FromKitchenItem(cachedInteraction.HeldItem);
@@ -315,7 +281,179 @@ public class NetworkPlayer : NetworkBehaviour
                 nextHeldItemSyncTime = Time.time + 0.15f;
             }
         }
+
+        // SERVER: broadcast station states + economy to all clients
+        if (IsServer && IsOwner)
+        {
+            BroadcastStationStates();
+            BroadcastEconomy();
+        }
     }
+
+    // =========================================================================
+    //  STATION STATE SYNC (Server -> All Clients via ClientRpc)
+    // =========================================================================
+
+    private void BroadcastStationStates()
+    {
+        if (Time.time < nextStationSyncTime) return;
+        nextStationSyncTime = Time.time + StationSyncInterval;
+
+        if (cachedStations == null)
+        {
+            cachedStations = FindObjectsByType<NetworkKitchenStation>(
+                FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
+        }
+
+        // Send dirty stations
+        for (int i = 0; i < cachedStations.Length; i++)
+        {
+            if (cachedStations[i] == null) continue;
+            if (!cachedStations[i].IsStateDirty()) continue;
+
+            StationStateSnapshot snapshot = cachedStations[i].CaptureSnapshot();
+            SyncStationStateClientRpc(snapshot);
+        }
+    }
+
+    [ClientRpc]
+    private void SyncStationStateClientRpc(StationStateSnapshot snapshot)
+    {
+        // Server/host already has the correct state
+        if (IsServer) return;
+
+        // Find matching station on client by index
+        if (cachedStations == null)
+        {
+            cachedStations = FindObjectsByType<NetworkKitchenStation>(
+                FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
+        }
+
+        foreach (NetworkKitchenStation station in cachedStations)
+        {
+            if (station != null && station.StationIndex == snapshot.stationIndex)
+            {
+                station.ApplySnapshot(snapshot);
+                break;
+            }
+        }
+    }
+
+    // =========================================================================
+    //  ECONOMY SYNC
+    // =========================================================================
+
+    private void BroadcastEconomy()
+    {
+        if (Time.time < nextEconomySyncTime) return;
+        nextEconomySyncTime = Time.time + EconomySyncInterval;
+
+        if (EconomyManager.Instance != null)
+        {
+            SyncEconomyClientRpc(EconomyManager.Instance.CurrentBalance, EconomyManager.Instance.TotalEarned);
+        }
+    }
+
+    [ClientRpc]
+    private void SyncEconomyClientRpc(float balance, float totalEarned)
+    {
+        if (IsServer) return;
+        if (EconomyManager.Instance != null)
+        {
+            EconomyManager.Instance.SetBalanceFromNetwork(balance, totalEarned);
+        }
+    }
+
+    // =========================================================================
+    //  STATION INTERACTION (Client -> Server -> Client)
+    // =========================================================================
+
+    /// <summary>
+    /// Client sends interaction request for a station identified by index.
+    /// Server processes the interaction and sends back results.
+    /// </summary>
+    [ServerRpc(RequireOwnership = false)]
+    public void InteractWithStationServerRpc(int stationIndex, NetworkItemState heldItem, ServerRpcParams rpcParams = default)
+    {
+        ulong senderClientId = rpcParams.Receive.SenderClientId;
+
+        // Find the station on the server
+        if (cachedStations == null)
+        {
+            cachedStations = FindObjectsByType<NetworkKitchenStation>(
+                FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
+        }
+
+        NetworkKitchenStation targetStation = null;
+        foreach (NetworkKitchenStation station in cachedStations)
+        {
+            if (station != null && station.StationIndex == stationIndex)
+            {
+                targetStation = station;
+                break;
+            }
+        }
+
+        if (targetStation == null)
+        {
+            Debug.LogWarning("[NetworkPlayer] Station not found: " + stationIndex);
+            return;
+        }
+
+        // Find the requesting player's PlayerInteraction on the server
+        NetworkPlayer requestingPlayer = FindNetworkPlayerByClientId(senderClientId);
+        if (requestingPlayer == null) return;
+
+        PlayerInteraction interaction = requestingPlayer.GetComponent<PlayerInteraction>();
+        if (interaction == null) return;
+
+        // Sync held item from client -> server
+        interaction.ClearHeldItem();
+        KitchenItem clientItem = heldItem.ToKitchenItem();
+        if (clientItem != null)
+        {
+            interaction.TryReceiveItem(clientItem);
+        }
+
+        // Process the interaction on the server
+        targetStation.ServerInteract(interaction);
+
+        // Send back results to the requesting client
+        NetworkItemState updatedHeld = NetworkItemState.FromKitchenItem(interaction.HeldItem);
+        string feedback = interaction.FeedbackMessage;
+
+        ClientRpcParams targetClient = new ClientRpcParams
+        {
+            Send = new ClientRpcSendParams { TargetClientIds = new ulong[] { senderClientId } }
+        };
+
+        SyncInteractionResultClientRpc(updatedHeld, feedback, targetClient);
+    }
+
+    [ClientRpc]
+    private void SyncInteractionResultClientRpc(NetworkItemState itemState, string feedback, ClientRpcParams clientRpcParams = default)
+    {
+        PlayerInteraction localInteraction = FindLocalPlayerInteraction();
+        if (localInteraction == null) return;
+
+        // Update held item
+        localInteraction.ClearHeldItem();
+        KitchenItem newItem = itemState.ToKitchenItem();
+        if (newItem != null)
+        {
+            localInteraction.TryReceiveItem(newItem);
+        }
+
+        // Show feedback
+        if (!string.IsNullOrEmpty(feedback))
+        {
+            localInteraction.SetFeedback(feedback);
+        }
+    }
+
+    // =========================================================================
+    //  PLAYER RPCs
+    // =========================================================================
 
     [ServerRpc]
     private void UpdateHeldItemServerRpc(NetworkItemState newState)
@@ -323,41 +461,23 @@ public class NetworkPlayer : NetworkBehaviour
         netHeldItem.Value = newState;
     }
 
-    /// <summary>
-    /// Klient wysyła swój wybrany nick do serwera.
-    /// Serwer zapisuje go w NetworkVariable, co propaguje do wszystkich klientów.
-    /// </summary>
     [ServerRpc]
     public void SetPlayerNameServerRpc(string requestedName)
     {
-        if (string.IsNullOrWhiteSpace(requestedName))
-        {
-            requestedName = "Gracz";
-        }
-
-        if (requestedName.Length > 20)
-        {
-            requestedName = requestedName.Substring(0, 20);
-        }
-
+        if (string.IsNullOrWhiteSpace(requestedName)) requestedName = "Gracz";
+        if (requestedName.Length > 20) requestedName = requestedName.Substring(0, 20);
         playerName.Value = new FixedString32Bytes(requestedName);
     }
 
-    /// <summary>
-    /// Publiczny dostęp do aktualnego nicku gracza.
-    /// Używany przez PlayerListUI do wyświetlania listy graczy.
-    /// </summary>
-    public string PlayerName => playerName.Value.ToString();
+    // =========================================================================
+    //  VALUE CHANGED HANDLERS
+    // =========================================================================
 
-    /// <summary>
-    /// Publiczny dostęp do indeksu gracza (określa kolor i spawn point).
-    /// </summary>
-    public int PlayerIndex => playerIndex.Value;
+    private void OnPlayerNameChanged(FixedString32Bytes oldValue, FixedString32Bytes newValue)
+    {
+        if (nameLabel != null) nameLabel.text = newValue.ToString();
+    }
 
-    /// <summary>
-    /// When playerIndex changes (e.g. from server initial assignment),
-    /// update remote visual color so late-joining clients see correct colors.
-    /// </summary>
     private void OnPlayerIndexChanged(int oldValue, int newValue)
     {
         if (!IsOwner && remotePlayerVisual != null)
@@ -369,5 +489,40 @@ public class NetworkPlayer : NetworkBehaviour
                 bodyRenderer.material.color = PlayerColors[colorIndex];
             }
         }
+    }
+
+    // =========================================================================
+    //  PUBLIC ACCESSORS
+    // =========================================================================
+
+    public string PlayerName => playerName.Value.ToString();
+    public int PlayerIndex => playerIndex.Value;
+
+    // =========================================================================
+    //  HELPERS
+    // =========================================================================
+
+    private static NetworkPlayer FindNetworkPlayerByClientId(ulong clientId)
+    {
+        if (NetworkManager.Singleton == null) return null;
+
+        NetworkClient client;
+        if (!NetworkManager.Singleton.ConnectedClients.TryGetValue(clientId, out client)) return null;
+        if (client.PlayerObject == null) return null;
+
+        return client.PlayerObject.GetComponent<NetworkPlayer>();
+    }
+
+    private static PlayerInteraction FindLocalPlayerInteraction()
+    {
+        NetworkPlayer[] players = FindObjectsByType<NetworkPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (NetworkPlayer player in players)
+        {
+            if (player.IsOwner)
+            {
+                return player.GetComponent<PlayerInteraction>();
+            }
+        }
+        return null;
     }
 }
