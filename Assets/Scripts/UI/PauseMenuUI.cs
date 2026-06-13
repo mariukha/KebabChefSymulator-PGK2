@@ -140,6 +140,37 @@ public class PauseMenuUI : MonoBehaviour
             NetworkSetup.Instance.Disconnect();
         }
 
+        // After disconnect, the player camera is destroyed (async) — always create a fallback
+        // so the main menu UI can render. SetupLocalPlayer will clean it up when re-entering.
+        {
+            // Destroy any existing cameras that belong to network players (they'll be orphaned)
+            Camera[] allCams = FindObjectsByType<Camera>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            foreach (Camera c in allCams)
+            {
+                if (c != null && c.GetComponentInParent<NetworkPlayer>() != null)
+                {
+                    Destroy(c.gameObject);
+                }
+            }
+
+            GameObject fallbackCam = new GameObject("FallbackCamera");
+            Camera cam = fallbackCam.AddComponent<Camera>();
+            cam.tag = "MainCamera";
+            cam.clearFlags = CameraClearFlags.SolidColor;
+            cam.backgroundColor = new Color(0.05f, 0.05f, 0.05f, 1f);
+            cam.nearClipPlane = 0.1f;
+            cam.farClipPlane = 100f;
+            fallbackCam.transform.position = new Vector3(0f, 1.75f, -1.9f);
+
+            if (FindFirstObjectByType<AudioListener>() == null)
+            {
+                fallbackCam.AddComponent<AudioListener>();
+            }
+
+            var urpData = fallbackCam.AddComponent<UnityEngine.Rendering.Universal.UniversalAdditionalCameraData>();
+            urpData.renderPostProcessing = true;
+        }
+
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
