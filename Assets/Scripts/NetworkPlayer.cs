@@ -5,8 +5,15 @@ using UnityEngine.Playables;
 using UnityEngine.Animations;
 using System.Linq;
 
+public enum NetworkVFXType
+{
+    Steam, StopSteam, DonerSmoke, StopDonerSmoke, Chop, Pickup, Drop, Ready, Wrap, Upgrade, Money, DeliverySuccess, DeliveryFail, Timeout
+}
+
 public class NetworkPlayer : NetworkBehaviour
 {
+    public static NetworkPlayer LocalInstance { get; private set; }
+
     private const float EyeHeight = 1.75f;
     private const float StationSyncInterval = 0.15f;
     private const float EconomySyncInterval = 0.5f;
@@ -64,6 +71,8 @@ public class NetworkPlayer : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
+
+        if (IsOwner) LocalInstance = this;
 
         if (IsServer)
         {
@@ -320,6 +329,23 @@ public class NetworkPlayer : NetworkBehaviour
         if (col != null) col.enabled = false;
     }
 
+    private Transform GetRightHandBone()
+    {
+        if (remotePlayerVisual != null)
+        {
+            Transform[] allBones = remotePlayerVisual.GetComponentsInChildren<Transform>();
+            foreach (Transform t in allBones)
+            {
+                if (t.name.Contains("RightHand") && !t.name.Contains("Thumb") && !t.name.Contains("Index") && 
+                    !t.name.Contains("Middle") && !t.name.Contains("Ring") && !t.name.Contains("Pinky"))
+                {
+                    return t;
+                }
+            }
+        }
+        return transform;
+    }
+
     private void UpdateHeldItemVisual(NetworkItemState itemState)
     {
 
@@ -344,13 +370,26 @@ public class NetworkPlayer : NetworkBehaviour
 
         if (!IsOwner)
         {
-            Vector3 localPos = new Vector3(0.25f, 1.2f, 0.35f);
-            Vector3 localRot = isDish ? new Vector3(0f, 0f, 90f) : Vector3.zero;
+            Transform parentBone = GetRightHandBone();
+            Vector3 localPos;
+            Vector3 localRot;
+
+            if (parentBone == transform)
+            {
+                localPos = new Vector3(0.25f, 1.2f, 0.35f);
+                localRot = isDish ? new Vector3(0f, 0f, 90f) : Vector3.zero;
+            }
+            else
+            {
+                localPos = new Vector3(0.12f, 0.04f, 0.02f);
+                localRot = isDish ? new Vector3(0f, 90f, 90f) : new Vector3(0f, 90f, 0f);
+            }
+
             float modelSize = isDish ? 0.3f : 0.2f;
 
             heldItemVisual = KitchenItemVisualFactory.CreateItemVisual(
                 itemState.ingredientKind, itemState.state, isDish,
-                transform, localPos, localRot, modelSize);
+                parentBone, localPos, localRot, modelSize);
         }
     }
 
@@ -467,22 +506,54 @@ public class NetworkPlayer : NetworkBehaviour
 
         if (OrderManager.Instance != null)
         {
+            int index = OrderManager.Instance.ActiveTemplateIndex;
             string desc = OrderManager.Instance.ActiveOrderDescription ?? "";
             float time = OrderManager.Instance.RemainingOrderTime;
             int comp = OrderManager.Instance.CompletedOrders;
             int fail = OrderManager.Instance.FailedOrders;
 
-            SyncOrdersClientRpc(desc, time, comp, fail);
+            SyncOrdersClientRpc(index, desc, time, comp, fail);
         }
     }
 
     [ClientRpc]
-    private void SyncOrdersClientRpc(string desc, float time, int comp, int fail)
+    private void SyncOrdersClientRpc(int templateIndex, string desc, float time, int comp, int fail)
     {
         if (IsServer) return;
         if (OrderManager.Instance != null)
         {
-            OrderManager.Instance.SyncNetworkState(desc, time, comp, fail);
+            OrderManager.Instance.SyncNetworkState(templateIndex, desc, time, comp, fail);
+        }
+    }
+
+    public void BroadcastVFX(NetworkVFXType type, Vector3 pos, Color color = default)
+    {
+        if (!IsServer) return;
+        PlayVFXClientRpc(type, pos, color);
+    }
+
+    [ClientRpc]
+    private void PlayVFXClientRpc(NetworkVFXType type, Vector3 pos, Color color)
+    {
+        if (IsServer) return; // Server already played it
+        if (VFXManager.Instance == null) return;
+
+        switch (type)
+        {
+            case NetworkVFXType.Steam: VFXManager.Instance.PlaySteamEffectLocal(pos); break;
+            case NetworkVFXType.StopSteam: VFXManager.Instance.StopSteamEffectLocal(pos); break;
+            case NetworkVFXType.DonerSmoke: VFXManager.Instance.PlayDonerSmokeEffectLocal(pos); break;
+            case NetworkVFXType.StopDonerSmoke: VFXManager.Instance.StopDonerSmokeEffectLocal(pos); break;
+            case NetworkVFXType.Chop: VFXManager.Instance.PlayChopEffectLocal(pos, color); break;
+            case NetworkVFXType.Pickup: VFXManager.Instance.PlayPickupEffectLocal(pos, color); break;
+            case NetworkVFXType.Drop: VFXManager.Instance.PlayDropEffectLocal(pos); break;
+            case NetworkVFXType.Ready: VFXManager.Instance.PlayReadyEffectLocal(pos, color); break;
+            case NetworkVFXType.Wrap: VFXManager.Instance.PlayWrapEffectLocal(pos); break;
+            case NetworkVFXType.Upgrade: VFXManager.Instance.PlayUpgradeEffectLocal(pos, color); break;
+            case NetworkVFXType.Money: VFXManager.Instance.PlayMoneyEffectLocal(pos); break;
+            case NetworkVFXType.DeliverySuccess: VFXManager.Instance.PlayDeliverySuccessEffectLocal(pos); break;
+            case NetworkVFXType.DeliveryFail: VFXManager.Instance.PlayDeliveryFailEffectLocal(pos); break;
+            case NetworkVFXType.Timeout: VFXManager.Instance.PlayTimeoutEffectLocal(); break;
         }
     }
 

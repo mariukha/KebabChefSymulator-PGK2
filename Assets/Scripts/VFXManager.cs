@@ -19,7 +19,119 @@ public class VFXManager : MonoBehaviour
         Destroy(gameObject);
     }
 
+    
     public void PlaySteamEffect(Vector3 worldPosition)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Steam, worldPosition);
+        PlaySteamEffectLocal(worldPosition);
+    }
+
+
+    public void StopSteamEffect(Vector3 worldPosition)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.StopSteam, worldPosition);
+        StopSteamEffectLocal(worldPosition);
+    }
+
+
+    public void PlayDonerSmokeEffect(Vector3 worldPosition)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.DonerSmoke, worldPosition);
+        PlayDonerSmokeEffectLocal(worldPosition);
+    }
+
+
+    public void StopDonerSmokeEffect(Vector3 worldPosition)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.StopDonerSmoke, worldPosition);
+        StopDonerSmokeEffectLocal(worldPosition);
+    }
+
+
+    public void PlayChopEffect(Vector3 worldPosition, Color ingredientColor)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Chop, worldPosition, ingredientColor);
+        PlayChopEffectLocal(worldPosition, ingredientColor);
+    }
+
+
+    public void PlayPickupEffect(Vector3 worldPosition, Color tint)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Pickup, worldPosition, tint);
+        PlayPickupEffectLocal(worldPosition, tint);
+    }
+
+
+    public void PlayDropEffect(Vector3 worldPosition)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Drop, worldPosition);
+        PlayDropEffectLocal(worldPosition);
+    }
+
+
+    public void PlayReadyEffect(Vector3 worldPosition, Color tint)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Ready, worldPosition, tint);
+        PlayReadyEffectLocal(worldPosition, tint);
+    }
+
+
+    public void PlayWrapEffect(Vector3 worldPosition)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Wrap, worldPosition);
+        PlayWrapEffectLocal(worldPosition);
+    }
+
+
+    public void PlayUpgradeEffect(Vector3 worldPosition, Color accent)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Upgrade, worldPosition, accent);
+        PlayUpgradeEffectLocal(worldPosition, accent);
+    }
+
+
+    public void PlayMoneyEffect(Vector3 worldPosition)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Money, worldPosition);
+        PlayMoneyEffectLocal(worldPosition);
+    }
+
+
+    public void PlayDeliverySuccessEffect(Vector3 worldPosition)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.DeliverySuccess, worldPosition);
+        PlayDeliverySuccessEffectLocal(worldPosition);
+    }
+
+
+    public void PlayDeliveryFailEffect(Vector3 worldPosition)
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.DeliveryFail, worldPosition);
+        PlayDeliveryFailEffectLocal(worldPosition);
+    }
+
+
+    public void PlayTimeoutEffect()
+    {
+        if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
+            NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Timeout, Vector3.zero);
+        PlayTimeoutEffectLocal();
+    }
+
+public void PlaySteamEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Steam", worldPosition + Vector3.up * 1.25f);
 
@@ -61,12 +173,12 @@ public class VFXManager : MonoBehaviour
         ps.Play();
     }
 
-    public void StopSteamEffect(Vector3 worldPosition)
+    public void StopSteamEffectLocal(Vector3 worldPosition)
     {
         StopEffectNear("VFX_Steam", worldPosition, 2.0f);
     }
 
-    public void PlayDonerSmokeEffect(Vector3 worldPosition)
+    public void PlayDonerSmokeEffectLocal(Vector3 worldPosition)
     {
         Vector3 basePosition = worldPosition + Vector3.up * 1.08f;
         ParticleSystem smoke = CreateParticleSystem("VFX_DonerSmoke", basePosition, true);
@@ -152,13 +264,13 @@ public class VFXManager : MonoBehaviour
         oilVapor.Play();
     }
 
-    public void StopDonerSmokeEffect(Vector3 worldPosition)
+    public void StopDonerSmokeEffectLocal(Vector3 worldPosition)
     {
         StopEffectNear("VFX_DonerSmoke", worldPosition, 2.1f);
         StopEffectNear("VFX_DonerOilyVapor", worldPosition, 2.1f);
     }
 
-    public void PlayChopEffect(Vector3 worldPosition, Color ingredientColor)
+    public void PlayChopEffectLocal(Vector3 worldPosition, Color ingredientColor)
     {
         ParticleSystem bits = CreateParticleSystem("VFX_ChopBits", worldPosition + Vector3.up * 0.92f);
 
@@ -211,7 +323,7 @@ public class VFXManager : MonoBehaviour
         Destroy(slash.gameObject, 0.45f);
     }
 
-    public void PlayPickupEffect(Vector3 worldPosition, Color tint)
+    public void PlayPickupEffectLocal(Vector3 worldPosition, Color tint)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Pickup", worldPosition + Vector3.up * 0.66f);
 
@@ -238,7 +350,7 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 0.8f);
     }
 
-    public void PlayDropEffect(Vector3 worldPosition)
+    public void PlayDropEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_DropDust", worldPosition + Vector3.up * 0.22f);
 
@@ -271,7 +383,7 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 1.0f);
     }
 
-    public void PlayReadyEffect(Vector3 worldPosition, Color tint)
+    public void PlayReadyEffectLocal(Vector3 worldPosition, Color tint)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Ready", worldPosition + Vector3.up * 0.95f);
 
@@ -305,7 +417,7 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 1.4f);
     }
 
-    public void PlayWrapEffect(Vector3 worldPosition)
+    public void PlayWrapEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Wrap", worldPosition + Vector3.up * 0.9f);
 
@@ -341,7 +453,7 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 1.2f);
     }
 
-    public void PlayUpgradeEffect(Vector3 worldPosition, Color accent)
+    public void PlayUpgradeEffectLocal(Vector3 worldPosition, Color accent)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Upgrade", worldPosition);
 
@@ -376,7 +488,7 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 1.8f);
     }
 
-    public void PlayMoneyEffect(Vector3 worldPosition)
+    public void PlayMoneyEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Money", worldPosition + Vector3.up * 1.05f);
 
@@ -411,7 +523,7 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 2.0f);
     }
 
-    public void PlayDeliverySuccessEffect(Vector3 worldPosition)
+    public void PlayDeliverySuccessEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_DeliveryOK", worldPosition + Vector3.up * 1.28f);
 
@@ -445,7 +557,7 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 1.8f);
     }
 
-    public void PlayDeliveryFailEffect(Vector3 worldPosition)
+    public void PlayDeliveryFailEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_DeliveryFail", worldPosition + Vector3.up * 1.12f);
 
@@ -480,7 +592,7 @@ public class VFXManager : MonoBehaviour
         Destroy(ps.gameObject, 1.4f);
     }
 
-    public void PlayTimeoutEffect()
+    public void PlayTimeoutEffectLocal()
     {
         Vector3 position = GetCameraFacingPosition(2.2f, -0.12f);
         PlayDeliveryFailEffect(position);

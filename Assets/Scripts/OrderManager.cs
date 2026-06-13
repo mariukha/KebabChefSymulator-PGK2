@@ -12,6 +12,7 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private List<Order> orderTemplates = new List<Order>();
     [SerializeField] private Order activeOrder;
 
+    public int ActiveTemplateIndex { get; private set; } = -1;
     private string activeOrderDescription = "";
     private float remainingTime;
     private int completedOrders;
@@ -30,12 +31,23 @@ public class OrderManager : MonoBehaviour
     public bool HasActiveOrder => activeOrder != null;
     public float RemainingTime => remainingTime;
 
-    public void SyncNetworkState(string desc, float time, int comp, int fail)
+    public void SyncNetworkState(int templateIndex, string desc, float time, int comp, int fail)
     {
+        InitializeCatalogIfNeeded();
+        BuildDefaultTemplatesIfNeeded();
+
+        if (templateIndex >= 0 && templateIndex < orderTemplates.Count && ActiveTemplateIndex != templateIndex)
+        {
+            ActiveTemplateIndex = templateIndex;
+            activeOrder = orderTemplates[templateIndex].Clone();
+            activeOrder.nagrodaPieniezna = CalculateReward(activeOrder.wymaganeSkladniki);
+        }
+
         activeOrderDescription = desc;
         remainingTime = time;
         completedOrders = comp;
         failedOrders = fail;
+        lastMessage = desc;
     }
 
     private void Awake()
@@ -56,7 +68,11 @@ public class OrderManager : MonoBehaviour
 
     private void Start()
     {
-        if (activeOrder == null)
+        bool isMultiplayerClient = Unity.Netcode.NetworkManager.Singleton != null && 
+                                   Unity.Netcode.NetworkManager.Singleton.IsListening &&
+                                   !Unity.Netcode.NetworkManager.Singleton.IsServer;
+
+        if (activeOrder == null && !isMultiplayerClient)
         {
             NoweZamowienie();
         }
@@ -158,6 +174,7 @@ public class OrderManager : MonoBehaviour
 
         int maxIndex = GetAvailableTemplateCount();
         int index = Random.Range(0, maxIndex);
+        ActiveTemplateIndex = index;
         activeOrder = orderTemplates[index].Clone();
         activeOrder.nagrodaPieniezna = CalculateReward(activeOrder.wymaganeSkladniki);
         float timeBonus = ShopManager.Instance != null ? ShopManager.Instance.GetOrderTimeBonus() : 0f;
