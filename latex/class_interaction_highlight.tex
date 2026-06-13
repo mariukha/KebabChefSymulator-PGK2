@@ -1,0 +1,268 @@
+\doxysection{Dokumentacja klasy Interaction\+Highlight}
+\hypertarget{class_interaction_highlight}{}\label{class_interaction_highlight}\index{InteractionHighlight@{InteractionHighlight}}
+
+
+Dodaje wizualny efekt podświetlenia do interaktywnych obiektów, gdy gracz na nie patrzy. Wykorzystuje wzmocnienie koloru emisji na rendererach obiektu (bez potrzeby niestandardowych shaderów). Tworzy także subtelną pulsację skali podświetlonego obiektu.  
+
+
+Diagram dziedziczenia dla Interaction\+Highlight\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_interaction_highlight}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_interaction_highlight_a573e7614e492dcdeaf3fe86acf317796}{Set\+Target}} (Game\+Object target)
+\begin{DoxyCompactList}\small\item\em Ustawia cel podświetlenia interakcji. Wywoływać co klatkę z klasy \doxylink{class_player_interaction}{Player\+Interaction} z aktualnym celem (lub null gdy brak celu). Jeśli cel zmienia się, poprzednie podświetlenie jest usuwane i nakładane na nowy obiekt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_interaction_highlight}{Interaction\+Highlight}} \mbox{\hyperlink{class_interaction_highlight_a9ac63cf28b9091072c31eeaa2d43df63}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna instancja Singletona klasy \doxylink{class_interaction_highlight}{Interaction\+Highlight}. Umożliwia globalny dostęp do systemu podświetlania z dowolnego miejsca w kodzie. \end{DoxyCompactList}\item 
+static Material\+Property\+Block \mbox{\hyperlink{class_interaction_highlight_ac3e91a85d75e6924c145b744fbc75324}{prop\+Block}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Współdzielony blok właściwości materiału używany do modyfikacji emisji rendererów bez tworzenia nowych instancji materiałów. Inicjalizowany leniwie przy pierwszym dostępie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_interaction_highlight_a8cc778fbb46fbaa3707fe451bd1e37a8}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton — ustawia instancję lub niszczy duplikat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_interaction_highlight_a5e1937e4ddfe4cd5e7185d7c174ceb31}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Unity wywoływana co klatkę. Aktualizuje pulsację skali podświetlonego obiektu — sinusoidalne oscylowanie rozmiaru rendererów wokół ich oryginalnych skal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_interaction_highlight_ab6d8783b56bda45c8c1a2e735ce4c690}{Apply\+Highlight}} ()
+\begin{DoxyCompactList}\small\item\em Stosuje efekt podświetlenia na aktualnym celu interakcji. Pobiera wszystkie renderery z obiektu i jego dzieci, zapamiętuje oryginalne wartości emisji i skal, a następnie ustawia kolor emisji podświetlenia i aktywuje słowo kluczowe "{}\+\_\+\+EMISSION"{} w materiałach. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_interaction_highlight_a60fee5047c442a62bdc16cf5fd3bcf0a}{Clear\+Highlight}} ()
+\begin{DoxyCompactList}\small\item\em Usuwa efekt podświetlenia z aktualnego celu interakcji. Przywraca oryginalne kolory emisji i skale rendererów, a następnie czyści wszystkie referencje do podświetlonego obiektu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_interaction_highlight_ac89988706b7911f286fbefea229bba86}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Unity wywoływana przy niszczeniu obiektu. Czyści podświetlenie (jeśli aktywne) i resetuje statyczną referencję Singletona. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_interaction_highlight_a4c57ff8c571df8897ffaafa5b4600a6e}{current\+Target}}
+\begin{DoxyCompactList}\small\item\em Aktualnie podświetlony obiekt gry (cel interakcji). Null, gdy żaden obiekt nie jest podświetlony. \end{DoxyCompactList}\item 
+Renderer\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_interaction_highlight_a3606fdf1d37b49a9f8f741ecd37fa498}{current\+Renderers}}
+\begin{DoxyCompactList}\small\item\em Tablica rendererów aktualnie podświetlonego obiektu i jego dzieci. Używana do stosowania i usuwania efektu emisji. \end{DoxyCompactList}\item 
+Color\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_interaction_highlight_ad1128b9127ba65b460da908384fae680}{original\+Emissions}}
+\begin{DoxyCompactList}\small\item\em Tablica oryginalnych kolorów emisji rendererów przed zastosowaniem podświetlenia. Przechowywana w celu przywrócenia oryginalnych wartości przy usuwaniu podświetlenia. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_interaction_highlight_abe0348fd6ef4efd0ef57e55383b13822}{is\+Highlighting}}
+\begin{DoxyCompactList}\small\item\em Flaga określająca, czy efekt podświetlenia jest aktualnie aktywny. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_interaction_highlight_aac7ae7073b3c7955a9c87cf2e0ce2492}{pulse\+Phase}}
+\begin{DoxyCompactList}\small\item\em Akumulator fazy pulsacji skali obiektu (rośnie z prędkością \doxylink{class_interaction_highlight_a0fb78fd7082c5a89c2b33b6295011b4e}{Pulse\+Speed}). \end{DoxyCompactList}\item 
+Vector3\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_interaction_highlight_ac1c2d2e9dfb1f9d894ea2bd6d67e5d2b}{original\+Scales}}
+\begin{DoxyCompactList}\small\item\em Tablica oryginalnych skal lokalnych rendererów przed zastosowaniem pulsacji. Przechowywana w celu przywrócenia oryginalnych wartości przy usuwaniu podświetlenia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static readonly Color \mbox{\hyperlink{class_interaction_highlight_aa70557f5770e937c32d0ae672d5e8a09}{Highlight\+Emission}} = new Color(0.\+35f, 0.\+28f, 0.\+12f)
+\begin{DoxyCompactList}\small\item\em Kolor emisji stosowany na podświetlonym obiekcie. Ciepły, brązowo-\/złoty odcień nawiązujący do estetyki kuchni kebabowej. \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_interaction_highlight_abd839f8b7eee710ae19eef7b73fdc1f7}{Pulse\+Amplitude}} = 0.\+012f
+\begin{DoxyCompactList}\small\item\em Amplituda pulsacji skali podświetlonego obiektu (mnożnik). Wartość 0.\+012 oznacza oscylację skali o ±1.2\% wokół oryginalnej wartości. \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_interaction_highlight_a0fb78fd7082c5a89c2b33b6295011b4e}{Pulse\+Speed}} = 4f
+\begin{DoxyCompactList}\small\item\em Szybkość pulsacji skali podświetlonego obiektu (w radianach na sekundę). \end{DoxyCompactList}\item 
+static Material\+Property\+Block \mbox{\hyperlink{class_interaction_highlight_af326f9c92a0909380182feabe2f90f8b}{\+\_\+prop\+Block}}
+\begin{DoxyCompactList}\small\item\em Statyczna, leniwie inicjalizowana instancja Material\+Property\+Block. Pole bazowe dla właściwości \doxylink{class_interaction_highlight_ac3e91a85d75e6924c145b744fbc75324}{prop\+Block}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Dodaje wizualny efekt podświetlenia do interaktywnych obiektów, gdy gracz na nie patrzy. Wykorzystuje wzmocnienie koloru emisji na rendererach obiektu (bez potrzeby niestandardowych shaderów). Tworzy także subtelną pulsację skali podświetlonego obiektu. 
+
+Klasa implementuje wzorzec Singleton. Podświetlenie jest realizowane przez ustawienie koloru emisji w Material\+Property\+Block, co nie modyfikuje współdzielonych materiałów. Pulsacja skali dodaje dodatkowy wizualny sygnał, że obiekt jest interaktywny. Metoda \doxylink{class_interaction_highlight_a573e7614e492dcdeaf3fe86acf317796}{Set\+Target} powinna być wywoływana co klatkę z systemu interakcji gracza. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_interaction_highlight_ab6d8783b56bda45c8c1a2e735ce4c690}\index{InteractionHighlight@{InteractionHighlight}!ApplyHighlight@{ApplyHighlight}}
+\index{ApplyHighlight@{ApplyHighlight}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{ApplyHighlight()}{ApplyHighlight()}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_ab6d8783b56bda45c8c1a2e735ce4c690} 
+void Interaction\+Highlight.\+Apply\+Highlight (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Stosuje efekt podświetlenia na aktualnym celu interakcji. Pobiera wszystkie renderery z obiektu i jego dzieci, zapamiętuje oryginalne wartości emisji i skal, a następnie ustawia kolor emisji podświetlenia i aktywuje słowo kluczowe "{}\+\_\+\+EMISSION"{} w materiałach. 
+
+\Hypertarget{class_interaction_highlight_a8cc778fbb46fbaa3707fe451bd1e37a8}\index{InteractionHighlight@{InteractionHighlight}!Awake@{Awake}}
+\index{Awake@{Awake}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_a8cc778fbb46fbaa3707fe451bd1e37a8} 
+void Interaction\+Highlight.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton — ustawia instancję lub niszczy duplikat. 
+
+\Hypertarget{class_interaction_highlight_a60fee5047c442a62bdc16cf5fd3bcf0a}\index{InteractionHighlight@{InteractionHighlight}!ClearHighlight@{ClearHighlight}}
+\index{ClearHighlight@{ClearHighlight}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{ClearHighlight()}{ClearHighlight()}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_a60fee5047c442a62bdc16cf5fd3bcf0a} 
+void Interaction\+Highlight.\+Clear\+Highlight (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Usuwa efekt podświetlenia z aktualnego celu interakcji. Przywraca oryginalne kolory emisji i skale rendererów, a następnie czyści wszystkie referencje do podświetlonego obiektu. 
+
+\Hypertarget{class_interaction_highlight_ac89988706b7911f286fbefea229bba86}\index{InteractionHighlight@{InteractionHighlight}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_ac89988706b7911f286fbefea229bba86} 
+void Interaction\+Highlight.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Unity wywoływana przy niszczeniu obiektu. Czyści podświetlenie (jeśli aktywne) i resetuje statyczną referencję Singletona. 
+
+\Hypertarget{class_interaction_highlight_a573e7614e492dcdeaf3fe86acf317796}\index{InteractionHighlight@{InteractionHighlight}!SetTarget@{SetTarget}}
+\index{SetTarget@{SetTarget}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{SetTarget()}{SetTarget()}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_a573e7614e492dcdeaf3fe86acf317796} 
+void Interaction\+Highlight.\+Set\+Target (\begin{DoxyParamCaption}\item[{Game\+Object}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia cel podświetlenia interakcji. Wywoływać co klatkę z klasy \doxylink{class_player_interaction}{Player\+Interaction} z aktualnym celem (lub null gdy brak celu). Jeśli cel zmienia się, poprzednie podświetlenie jest usuwane i nakładane na nowy obiekt. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em target} & Obiekt gry do podświetlenia lub null, aby usunąć podświetlenie.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_interaction_highlight_a5e1937e4ddfe4cd5e7185d7c174ceb31}\index{InteractionHighlight@{InteractionHighlight}!Update@{Update}}
+\index{Update@{Update}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_a5e1937e4ddfe4cd5e7185d7c174ceb31} 
+void Interaction\+Highlight.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Unity wywoływana co klatkę. Aktualizuje pulsację skali podświetlonego obiektu — sinusoidalne oscylowanie rozmiaru rendererów wokół ich oryginalnych skal. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_interaction_highlight_af326f9c92a0909380182feabe2f90f8b}\index{InteractionHighlight@{InteractionHighlight}!\_propBlock@{\_propBlock}}
+\index{\_propBlock@{\_propBlock}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{\_propBlock}{\_propBlock}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_af326f9c92a0909380182feabe2f90f8b} 
+Material\+Property\+Block Interaction\+Highlight.\+\_\+prop\+Block\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Statyczna, leniwie inicjalizowana instancja Material\+Property\+Block. Pole bazowe dla właściwości \doxylink{class_interaction_highlight_ac3e91a85d75e6924c145b744fbc75324}{prop\+Block}. 
+
+\Hypertarget{class_interaction_highlight_a3606fdf1d37b49a9f8f741ecd37fa498}\index{InteractionHighlight@{InteractionHighlight}!currentRenderers@{currentRenderers}}
+\index{currentRenderers@{currentRenderers}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{currentRenderers}{currentRenderers}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_a3606fdf1d37b49a9f8f741ecd37fa498} 
+Renderer \mbox{[}$\,$\mbox{]} Interaction\+Highlight.\+current\+Renderers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tablica rendererów aktualnie podświetlonego obiektu i jego dzieci. Używana do stosowania i usuwania efektu emisji. 
+
+\Hypertarget{class_interaction_highlight_a4c57ff8c571df8897ffaafa5b4600a6e}\index{InteractionHighlight@{InteractionHighlight}!currentTarget@{currentTarget}}
+\index{currentTarget@{currentTarget}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{currentTarget}{currentTarget}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_a4c57ff8c571df8897ffaafa5b4600a6e} 
+Game\+Object Interaction\+Highlight.\+current\+Target\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualnie podświetlony obiekt gry (cel interakcji). Null, gdy żaden obiekt nie jest podświetlony. 
+
+\Hypertarget{class_interaction_highlight_aa70557f5770e937c32d0ae672d5e8a09}\index{InteractionHighlight@{InteractionHighlight}!HighlightEmission@{HighlightEmission}}
+\index{HighlightEmission@{HighlightEmission}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{HighlightEmission}{HighlightEmission}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_aa70557f5770e937c32d0ae672d5e8a09} 
+readonly Color Interaction\+Highlight.\+Highlight\+Emission = new Color(0.\+35f, 0.\+28f, 0.\+12f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor emisji stosowany na podświetlonym obiekcie. Ciepły, brązowo-\/złoty odcień nawiązujący do estetyki kuchni kebabowej. 
+
+\Hypertarget{class_interaction_highlight_abe0348fd6ef4efd0ef57e55383b13822}\index{InteractionHighlight@{InteractionHighlight}!isHighlighting@{isHighlighting}}
+\index{isHighlighting@{isHighlighting}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{isHighlighting}{isHighlighting}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_abe0348fd6ef4efd0ef57e55383b13822} 
+bool Interaction\+Highlight.\+is\+Highlighting\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga określająca, czy efekt podświetlenia jest aktualnie aktywny. 
+
+\Hypertarget{class_interaction_highlight_ad1128b9127ba65b460da908384fae680}\index{InteractionHighlight@{InteractionHighlight}!originalEmissions@{originalEmissions}}
+\index{originalEmissions@{originalEmissions}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{originalEmissions}{originalEmissions}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_ad1128b9127ba65b460da908384fae680} 
+Color \mbox{[}$\,$\mbox{]} Interaction\+Highlight.\+original\+Emissions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tablica oryginalnych kolorów emisji rendererów przed zastosowaniem podświetlenia. Przechowywana w celu przywrócenia oryginalnych wartości przy usuwaniu podświetlenia. 
+
+\Hypertarget{class_interaction_highlight_ac1c2d2e9dfb1f9d894ea2bd6d67e5d2b}\index{InteractionHighlight@{InteractionHighlight}!originalScales@{originalScales}}
+\index{originalScales@{originalScales}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{originalScales}{originalScales}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_ac1c2d2e9dfb1f9d894ea2bd6d67e5d2b} 
+Vector3 \mbox{[}$\,$\mbox{]} Interaction\+Highlight.\+original\+Scales\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tablica oryginalnych skal lokalnych rendererów przed zastosowaniem pulsacji. Przechowywana w celu przywrócenia oryginalnych wartości przy usuwaniu podświetlenia. 
+
+\Hypertarget{class_interaction_highlight_abd839f8b7eee710ae19eef7b73fdc1f7}\index{InteractionHighlight@{InteractionHighlight}!PulseAmplitude@{PulseAmplitude}}
+\index{PulseAmplitude@{PulseAmplitude}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{PulseAmplitude}{PulseAmplitude}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_abd839f8b7eee710ae19eef7b73fdc1f7} 
+const float Interaction\+Highlight.\+Pulse\+Amplitude = 0.\+012f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Amplituda pulsacji skali podświetlonego obiektu (mnożnik). Wartość 0.\+012 oznacza oscylację skali o ±1.2\% wokół oryginalnej wartości. 
+
+\Hypertarget{class_interaction_highlight_aac7ae7073b3c7955a9c87cf2e0ce2492}\index{InteractionHighlight@{InteractionHighlight}!pulsePhase@{pulsePhase}}
+\index{pulsePhase@{pulsePhase}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{pulsePhase}{pulsePhase}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_aac7ae7073b3c7955a9c87cf2e0ce2492} 
+float Interaction\+Highlight.\+pulse\+Phase\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Akumulator fazy pulsacji skali obiektu (rośnie z prędkością \doxylink{class_interaction_highlight_a0fb78fd7082c5a89c2b33b6295011b4e}{Pulse\+Speed}). 
+
+\Hypertarget{class_interaction_highlight_a0fb78fd7082c5a89c2b33b6295011b4e}\index{InteractionHighlight@{InteractionHighlight}!PulseSpeed@{PulseSpeed}}
+\index{PulseSpeed@{PulseSpeed}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{PulseSpeed}{PulseSpeed}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_a0fb78fd7082c5a89c2b33b6295011b4e} 
+const float Interaction\+Highlight.\+Pulse\+Speed = 4f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Szybkość pulsacji skali podświetlonego obiektu (w radianach na sekundę). 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_interaction_highlight_a9ac63cf28b9091072c31eeaa2d43df63}\index{InteractionHighlight@{InteractionHighlight}!Instance@{Instance}}
+\index{Instance@{Instance}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_a9ac63cf28b9091072c31eeaa2d43df63} 
+\mbox{\hyperlink{class_interaction_highlight}{Interaction\+Highlight}} Interaction\+Highlight.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna instancja Singletona klasy \doxylink{class_interaction_highlight}{Interaction\+Highlight}. Umożliwia globalny dostęp do systemu podświetlania z dowolnego miejsca w kodzie. 
+
+\Hypertarget{class_interaction_highlight_ac3e91a85d75e6924c145b744fbc75324}\index{InteractionHighlight@{InteractionHighlight}!propBlock@{propBlock}}
+\index{propBlock@{propBlock}!InteractionHighlight@{InteractionHighlight}}
+\doxysubsubsection{\texorpdfstring{propBlock}{propBlock}}
+{\footnotesize\ttfamily \label{class_interaction_highlight_ac3e91a85d75e6924c145b744fbc75324} 
+Material\+Property\+Block Interaction\+Highlight.\+prop\+Block\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private]}}
+
+
+
+Współdzielony blok właściwości materiału używany do modyfikacji emisji rendererów bez tworzenia nowych instancji materiałów. Inicjalizowany leniwie przy pierwszym dostępie. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Effects/\mbox{\hyperlink{_interaction_highlight_8cs}{Interaction\+Highlight.\+cs}}\end{DoxyCompactItemize}

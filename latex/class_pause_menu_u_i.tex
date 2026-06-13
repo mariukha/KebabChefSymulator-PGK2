@@ -1,0 +1,349 @@
+\doxysection{Dokumentacja klasy Pause\+Menu\+UI}
+\hypertarget{class_pause_menu_u_i}{}\label{class_pause_menu_u_i}\index{PauseMenuUI@{PauseMenuUI}}
+
+
+Professional pause menu. Esc to toggle. Settings live in the dedicated \doxylink{class_settings_menu_u_i}{Settings\+Menu\+UI} panel.  
+
+
+Diagram dziedziczenia dla Pause\+Menu\+UI\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_pause_menu_u_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_af2efdcd94bb5550400f6e38f30d3ba96}{Pause}} ()
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_af7b94ef693794b2338e21755e38475e5}{Resume}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_pause_menu_u_i}{Pause\+Menu\+UI}} \mbox{\hyperlink{class_pause_menu_u_i_a7273bc8ee94e9396ed91106d786a088b}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_pause_menu_u_i_ae6149cd13e39ce6c1b69fd20a39039f1}{Is\+Paused}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_ac3ef0c34198e493f4d0aab5b0a4f41c3}{Awake}} ()
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_a281d361f61fa99860f6e51fd0f994812}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_a38a9a0a3b77d302165c2b1e88eb3aa70}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_ae33ddef026d0588c386d1c180c0b4f1d}{Return\+To\+Main\+Menu}} ()
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_a904e534d824fc249b53e407beb21fd1a}{Save\+Settings}} ()
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_aa3312d292cf9fe9c8da9469a56ebb860}{Open\+Settings}} ()
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_af8335b225dce88090fb69bffe9b18110}{Create\+UI}} ()
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_a20f9fe719ab882f6c94e00014d9f84b3}{Make\+Button}} (Transform parent, string label, Color bg, Color hover, Vector2 anchor, Vector2 pos, Vector2 size, Unity\+Engine.\+Events.\+Unity\+Action action)
+\item 
+Image \mbox{\hyperlink{class_pause_menu_u_i_abf08d8ac3f3278d16a986491f1744f1f}{Make\+Full\+Rect}} (Transform parent, string name, Color color)
+\item 
+Game\+Object \mbox{\hyperlink{class_pause_menu_u_i_ac6d8c64654c3b55a83153ea1080e1b6a}{Make\+Panel}} (Transform parent, string name, Color color, Vector2 anchor, Vector2 pos, Vector2 size)
+\item 
+Image \mbox{\hyperlink{class_pause_menu_u_i_ad2cbeb6e51012f7ab0c2e2e422abfd95}{Make\+Rect\+Image}} (Transform parent, string name, Color color)
+\item 
+Text \mbox{\hyperlink{class_pause_menu_u_i_a76e95a8585388a96e68e8b30c4c2f011}{Txt}} (Transform parent, string content, int size, Font\+Style style, Color color, Text\+Anchor anchor)
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_a28796296b0bc074ea09c6b24780e46e3}{Set\+Rect}} (Component c, float anchorX, float anchorY, float posX, float posY, float w, float h)
+\item 
+void \mbox{\hyperlink{class_pause_menu_u_i_aebc30256dca22a224ff5db23ce10c953}{On\+Destroy}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Canvas \mbox{\hyperlink{class_pause_menu_u_i_a23ce17142298d81eca9002c4def97246}{pause\+Canvas}}
+\item 
+Canvas\+Group \mbox{\hyperlink{class_pause_menu_u_i_a8deb2e2220895ae7b36c3308138c3f2f}{canvas\+Group}}
+\item 
+bool \mbox{\hyperlink{class_pause_menu_u_i_af7b3784c21c7688ed875276ac0b58f79}{is\+Open}}
+\item 
+float \mbox{\hyperlink{class_pause_menu_u_i_a56870d3523d5e48ce7335b750e01e79a}{anim\+Progress}}
+\item 
+bool \mbox{\hyperlink{class_pause_menu_u_i_ab10f5c72e4bc494b85b26e8d49653c03}{was\+Time\+Scale\+Zero}}
+\item 
+\mbox{\hyperlink{class_main_menu_u_i}{Main\+Menu\+UI}} \mbox{\hyperlink{class_pause_menu_u_i_a1f475e943aa994864d30bf4d607fcb8b}{cached\+Main\+Menu\+UI}}
+\item 
+\mbox{\hyperlink{class_lobby_u_i}{Lobby\+UI}} \mbox{\hyperlink{class_pause_menu_u_i_a8f3fb96d9c33b5767eb3b5b354708395}{cached\+Lobby\+UI}}
+\item 
+Font \mbox{\hyperlink{class_pause_menu_u_i_ade0478ad9e9364c8e440e4923871bd0a}{cached\+Font}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_a131517e13a0c0b11d005f91457861773}{Overlay\+Color}} = new Color(0.\+008f, 0.\+01f, 0.\+018f, 0.\+88f)
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_a6d737e691811f00cb6f4c21a98e75a14}{Panel\+Bg}} = new Color(0.\+03f, 0.\+035f, 0.\+055f, 0.\+97f)
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_a19a1e85a18fb3833a38dc91d65bc7527}{Panel\+Border}} = new Color(0.\+08f, 0.\+09f, 0.\+12f)
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_ab473a320da8859e6fa2f0b599ebbbf98}{Accent\+Gold}} = new Color(0.\+875f, 0.\+725f, 0.\+32f)
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_a6982a1ae462d7561bf3413d9d6d1a2c2}{Text\+Primary}} = new Color(0.\+9f, 0.\+91f, 0.\+93f)
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_a609b585b129463a71e940e55508778cd}{Btn\+Resume\+Bg}} = new Color(0.\+06f, 0.\+36f, 0.\+17f)
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_a1eb6a08d348ae5cea9f54b302481b9f7}{Btn\+Resume\+Hover}} = new Color(0.\+08f, 0.\+48f, 0.\+23f)
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_a59dd4eb88a45a197c19ff515c1bf7d63}{Btn\+Settings\+Bg}} = new Color(0.\+055f, 0.\+12f, 0.\+22f)
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_a058779330230ae6d1bf58257977bcfe7}{Btn\+Settings\+Hover}} = new Color(0.\+08f, 0.\+18f, 0.\+32f)
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_acfd5b4b442e5af67bd006f3db6f3914b}{Btn\+Quit\+Bg}} = new Color(0.\+44f, 0.\+075f, 0.\+065f)
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_a4ff26082f1621adb380aef8dce1df368}{Btn\+Quit\+Hover}} = new Color(0.\+58f, 0.\+11f, 0.\+095f)
+\item 
+static readonly Color \mbox{\hyperlink{class_pause_menu_u_i_ab2b3b5e8cf82dfbed439e9318347d65d}{Divider\+Color}} = new Color(0.\+12f, 0.\+13f, 0.\+17f)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Professional pause menu. Esc to toggle. Settings live in the dedicated \doxylink{class_settings_menu_u_i}{Settings\+Menu\+UI} panel. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_pause_menu_u_i_ac3ef0c34198e493f4d0aab5b0a4f41c3}\index{PauseMenuUI@{PauseMenuUI}!Awake@{Awake}}
+\index{Awake@{Awake}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_ac3ef0c34198e493f4d0aab5b0a4f41c3} 
+void Pause\+Menu\+UI.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_af8335b225dce88090fb69bffe9b18110}\index{PauseMenuUI@{PauseMenuUI}!CreateUI@{CreateUI}}
+\index{CreateUI@{CreateUI}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{CreateUI()}{CreateUI()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_af8335b225dce88090fb69bffe9b18110} 
+void Pause\+Menu\+UI.\+Create\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a20f9fe719ab882f6c94e00014d9f84b3}\index{PauseMenuUI@{PauseMenuUI}!MakeButton@{MakeButton}}
+\index{MakeButton@{MakeButton}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeButton()}{MakeButton()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a20f9fe719ab882f6c94e00014d9f84b3} 
+void Pause\+Menu\+UI.\+Make\+Button (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{label}{, }\item[{Color}]{bg}{, }\item[{Color}]{hover}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{pos}{, }\item[{Vector2}]{size}{, }\item[{Unity\+Engine.\+Events.\+Unity\+Action}]{action}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_abf08d8ac3f3278d16a986491f1744f1f}\index{PauseMenuUI@{PauseMenuUI}!MakeFullRect@{MakeFullRect}}
+\index{MakeFullRect@{MakeFullRect}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeFullRect()}{MakeFullRect()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_abf08d8ac3f3278d16a986491f1744f1f} 
+Image Pause\+Menu\+UI.\+Make\+Full\+Rect (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_ac6d8c64654c3b55a83153ea1080e1b6a}\index{PauseMenuUI@{PauseMenuUI}!MakePanel@{MakePanel}}
+\index{MakePanel@{MakePanel}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakePanel()}{MakePanel()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_ac6d8c64654c3b55a83153ea1080e1b6a} 
+Game\+Object Pause\+Menu\+UI.\+Make\+Panel (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Color}]{color}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{pos}{, }\item[{Vector2}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_ad2cbeb6e51012f7ab0c2e2e422abfd95}\index{PauseMenuUI@{PauseMenuUI}!MakeRectImage@{MakeRectImage}}
+\index{MakeRectImage@{MakeRectImage}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeRectImage()}{MakeRectImage()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_ad2cbeb6e51012f7ab0c2e2e422abfd95} 
+Image Pause\+Menu\+UI.\+Make\+Rect\+Image (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_aebc30256dca22a224ff5db23ce10c953}\index{PauseMenuUI@{PauseMenuUI}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_aebc30256dca22a224ff5db23ce10c953} 
+void Pause\+Menu\+UI.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_aa3312d292cf9fe9c8da9469a56ebb860}\index{PauseMenuUI@{PauseMenuUI}!OpenSettings@{OpenSettings}}
+\index{OpenSettings@{OpenSettings}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{OpenSettings()}{OpenSettings()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_aa3312d292cf9fe9c8da9469a56ebb860} 
+void Pause\+Menu\+UI.\+Open\+Settings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_af2efdcd94bb5550400f6e38f30d3ba96}\index{PauseMenuUI@{PauseMenuUI}!Pause@{Pause}}
+\index{Pause@{Pause}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{Pause()}{Pause()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_af2efdcd94bb5550400f6e38f30d3ba96} 
+void Pause\+Menu\+UI.\+Pause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_pause_menu_u_i_af7b94ef693794b2338e21755e38475e5}\index{PauseMenuUI@{PauseMenuUI}!Resume@{Resume}}
+\index{Resume@{Resume}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{Resume()}{Resume()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_af7b94ef693794b2338e21755e38475e5} 
+void Pause\+Menu\+UI.\+Resume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_pause_menu_u_i_ae33ddef026d0588c386d1c180c0b4f1d}\index{PauseMenuUI@{PauseMenuUI}!ReturnToMainMenu@{ReturnToMainMenu}}
+\index{ReturnToMainMenu@{ReturnToMainMenu}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{ReturnToMainMenu()}{ReturnToMainMenu()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_ae33ddef026d0588c386d1c180c0b4f1d} 
+void Pause\+Menu\+UI.\+Return\+To\+Main\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a904e534d824fc249b53e407beb21fd1a}\index{PauseMenuUI@{PauseMenuUI}!SaveSettings@{SaveSettings}}
+\index{SaveSettings@{SaveSettings}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{SaveSettings()}{SaveSettings()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a904e534d824fc249b53e407beb21fd1a} 
+void Pause\+Menu\+UI.\+Save\+Settings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a28796296b0bc074ea09c6b24780e46e3}\index{PauseMenuUI@{PauseMenuUI}!SetRect@{SetRect}}
+\index{SetRect@{SetRect}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{SetRect()}{SetRect()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a28796296b0bc074ea09c6b24780e46e3} 
+void Pause\+Menu\+UI.\+Set\+Rect (\begin{DoxyParamCaption}\item[{Component}]{c}{, }\item[{float}]{anchorX}{, }\item[{float}]{anchorY}{, }\item[{float}]{posX}{, }\item[{float}]{posY}{, }\item[{float}]{w}{, }\item[{float}]{h}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a281d361f61fa99860f6e51fd0f994812}\index{PauseMenuUI@{PauseMenuUI}!Start@{Start}}
+\index{Start@{Start}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a281d361f61fa99860f6e51fd0f994812} 
+void Pause\+Menu\+UI.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a76e95a8585388a96e68e8b30c4c2f011}\index{PauseMenuUI@{PauseMenuUI}!Txt@{Txt}}
+\index{Txt@{Txt}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{Txt()}{Txt()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a76e95a8585388a96e68e8b30c4c2f011} 
+Text Pause\+Menu\+UI.\+Txt (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{content}{, }\item[{int}]{size}{, }\item[{Font\+Style}]{style}{, }\item[{Color}]{color}{, }\item[{Text\+Anchor}]{anchor}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a38a9a0a3b77d302165c2b1e88eb3aa70}\index{PauseMenuUI@{PauseMenuUI}!Update@{Update}}
+\index{Update@{Update}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a38a9a0a3b77d302165c2b1e88eb3aa70} 
+void Pause\+Menu\+UI.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_pause_menu_u_i_ab473a320da8859e6fa2f0b599ebbbf98}\index{PauseMenuUI@{PauseMenuUI}!AccentGold@{AccentGold}}
+\index{AccentGold@{AccentGold}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{AccentGold}{AccentGold}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_ab473a320da8859e6fa2f0b599ebbbf98} 
+readonly Color Pause\+Menu\+UI.\+Accent\+Gold = new Color(0.\+875f, 0.\+725f, 0.\+32f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a56870d3523d5e48ce7335b750e01e79a}\index{PauseMenuUI@{PauseMenuUI}!animProgress@{animProgress}}
+\index{animProgress@{animProgress}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{animProgress}{animProgress}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a56870d3523d5e48ce7335b750e01e79a} 
+float Pause\+Menu\+UI.\+anim\+Progress\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_acfd5b4b442e5af67bd006f3db6f3914b}\index{PauseMenuUI@{PauseMenuUI}!BtnQuitBg@{BtnQuitBg}}
+\index{BtnQuitBg@{BtnQuitBg}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnQuitBg}{BtnQuitBg}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_acfd5b4b442e5af67bd006f3db6f3914b} 
+readonly Color Pause\+Menu\+UI.\+Btn\+Quit\+Bg = new Color(0.\+44f, 0.\+075f, 0.\+065f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a4ff26082f1621adb380aef8dce1df368}\index{PauseMenuUI@{PauseMenuUI}!BtnQuitHover@{BtnQuitHover}}
+\index{BtnQuitHover@{BtnQuitHover}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnQuitHover}{BtnQuitHover}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a4ff26082f1621adb380aef8dce1df368} 
+readonly Color Pause\+Menu\+UI.\+Btn\+Quit\+Hover = new Color(0.\+58f, 0.\+11f, 0.\+095f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a609b585b129463a71e940e55508778cd}\index{PauseMenuUI@{PauseMenuUI}!BtnResumeBg@{BtnResumeBg}}
+\index{BtnResumeBg@{BtnResumeBg}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnResumeBg}{BtnResumeBg}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a609b585b129463a71e940e55508778cd} 
+readonly Color Pause\+Menu\+UI.\+Btn\+Resume\+Bg = new Color(0.\+06f, 0.\+36f, 0.\+17f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a1eb6a08d348ae5cea9f54b302481b9f7}\index{PauseMenuUI@{PauseMenuUI}!BtnResumeHover@{BtnResumeHover}}
+\index{BtnResumeHover@{BtnResumeHover}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnResumeHover}{BtnResumeHover}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a1eb6a08d348ae5cea9f54b302481b9f7} 
+readonly Color Pause\+Menu\+UI.\+Btn\+Resume\+Hover = new Color(0.\+08f, 0.\+48f, 0.\+23f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a59dd4eb88a45a197c19ff515c1bf7d63}\index{PauseMenuUI@{PauseMenuUI}!BtnSettingsBg@{BtnSettingsBg}}
+\index{BtnSettingsBg@{BtnSettingsBg}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnSettingsBg}{BtnSettingsBg}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a59dd4eb88a45a197c19ff515c1bf7d63} 
+readonly Color Pause\+Menu\+UI.\+Btn\+Settings\+Bg = new Color(0.\+055f, 0.\+12f, 0.\+22f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a058779330230ae6d1bf58257977bcfe7}\index{PauseMenuUI@{PauseMenuUI}!BtnSettingsHover@{BtnSettingsHover}}
+\index{BtnSettingsHover@{BtnSettingsHover}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnSettingsHover}{BtnSettingsHover}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a058779330230ae6d1bf58257977bcfe7} 
+readonly Color Pause\+Menu\+UI.\+Btn\+Settings\+Hover = new Color(0.\+08f, 0.\+18f, 0.\+32f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_ade0478ad9e9364c8e440e4923871bd0a}\index{PauseMenuUI@{PauseMenuUI}!cachedFont@{cachedFont}}
+\index{cachedFont@{cachedFont}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{cachedFont}{cachedFont}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_ade0478ad9e9364c8e440e4923871bd0a} 
+Font Pause\+Menu\+UI.\+cached\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a8f3fb96d9c33b5767eb3b5b354708395}\index{PauseMenuUI@{PauseMenuUI}!cachedLobbyUI@{cachedLobbyUI}}
+\index{cachedLobbyUI@{cachedLobbyUI}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{cachedLobbyUI}{cachedLobbyUI}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a8f3fb96d9c33b5767eb3b5b354708395} 
+\mbox{\hyperlink{class_lobby_u_i}{Lobby\+UI}} Pause\+Menu\+UI.\+cached\+Lobby\+UI\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a1f475e943aa994864d30bf4d607fcb8b}\index{PauseMenuUI@{PauseMenuUI}!cachedMainMenuUI@{cachedMainMenuUI}}
+\index{cachedMainMenuUI@{cachedMainMenuUI}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{cachedMainMenuUI}{cachedMainMenuUI}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a1f475e943aa994864d30bf4d607fcb8b} 
+\mbox{\hyperlink{class_main_menu_u_i}{Main\+Menu\+UI}} Pause\+Menu\+UI.\+cached\+Main\+Menu\+UI\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a8deb2e2220895ae7b36c3308138c3f2f}\index{PauseMenuUI@{PauseMenuUI}!canvasGroup@{canvasGroup}}
+\index{canvasGroup@{canvasGroup}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{canvasGroup}{canvasGroup}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a8deb2e2220895ae7b36c3308138c3f2f} 
+Canvas\+Group Pause\+Menu\+UI.\+canvas\+Group\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_ab2b3b5e8cf82dfbed439e9318347d65d}\index{PauseMenuUI@{PauseMenuUI}!DividerColor@{DividerColor}}
+\index{DividerColor@{DividerColor}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{DividerColor}{DividerColor}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_ab2b3b5e8cf82dfbed439e9318347d65d} 
+readonly Color Pause\+Menu\+UI.\+Divider\+Color = new Color(0.\+12f, 0.\+13f, 0.\+17f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_af7b3784c21c7688ed875276ac0b58f79}\index{PauseMenuUI@{PauseMenuUI}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{isOpen}{isOpen}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_af7b3784c21c7688ed875276ac0b58f79} 
+bool Pause\+Menu\+UI.\+is\+Open\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a131517e13a0c0b11d005f91457861773}\index{PauseMenuUI@{PauseMenuUI}!OverlayColor@{OverlayColor}}
+\index{OverlayColor@{OverlayColor}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{OverlayColor}{OverlayColor}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a131517e13a0c0b11d005f91457861773} 
+readonly Color Pause\+Menu\+UI.\+Overlay\+Color = new Color(0.\+008f, 0.\+01f, 0.\+018f, 0.\+88f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a6d737e691811f00cb6f4c21a98e75a14}\index{PauseMenuUI@{PauseMenuUI}!PanelBg@{PanelBg}}
+\index{PanelBg@{PanelBg}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{PanelBg}{PanelBg}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a6d737e691811f00cb6f4c21a98e75a14} 
+readonly Color Pause\+Menu\+UI.\+Panel\+Bg = new Color(0.\+03f, 0.\+035f, 0.\+055f, 0.\+97f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a19a1e85a18fb3833a38dc91d65bc7527}\index{PauseMenuUI@{PauseMenuUI}!PanelBorder@{PanelBorder}}
+\index{PanelBorder@{PanelBorder}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{PanelBorder}{PanelBorder}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a19a1e85a18fb3833a38dc91d65bc7527} 
+readonly Color Pause\+Menu\+UI.\+Panel\+Border = new Color(0.\+08f, 0.\+09f, 0.\+12f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a23ce17142298d81eca9002c4def97246}\index{PauseMenuUI@{PauseMenuUI}!pauseCanvas@{pauseCanvas}}
+\index{pauseCanvas@{pauseCanvas}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{pauseCanvas}{pauseCanvas}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a23ce17142298d81eca9002c4def97246} 
+Canvas Pause\+Menu\+UI.\+pause\+Canvas\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_a6982a1ae462d7561bf3413d9d6d1a2c2}\index{PauseMenuUI@{PauseMenuUI}!TextPrimary@{TextPrimary}}
+\index{TextPrimary@{TextPrimary}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{TextPrimary}{TextPrimary}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a6982a1ae462d7561bf3413d9d6d1a2c2} 
+readonly Color Pause\+Menu\+UI.\+Text\+Primary = new Color(0.\+9f, 0.\+91f, 0.\+93f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_pause_menu_u_i_ab10f5c72e4bc494b85b26e8d49653c03}\index{PauseMenuUI@{PauseMenuUI}!wasTimeScaleZero@{wasTimeScaleZero}}
+\index{wasTimeScaleZero@{wasTimeScaleZero}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{wasTimeScaleZero}{wasTimeScaleZero}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_ab10f5c72e4bc494b85b26e8d49653c03} 
+bool Pause\+Menu\+UI.\+was\+Time\+Scale\+Zero\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_pause_menu_u_i_a7273bc8ee94e9396ed91106d786a088b}\index{PauseMenuUI@{PauseMenuUI}!Instance@{Instance}}
+\index{Instance@{Instance}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_a7273bc8ee94e9396ed91106d786a088b} 
+\mbox{\hyperlink{class_pause_menu_u_i}{Pause\+Menu\+UI}} Pause\+Menu\+UI.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+\Hypertarget{class_pause_menu_u_i_ae6149cd13e39ce6c1b69fd20a39039f1}\index{PauseMenuUI@{PauseMenuUI}!IsPaused@{IsPaused}}
+\index{IsPaused@{IsPaused}!PauseMenuUI@{PauseMenuUI}}
+\doxysubsubsection{\texorpdfstring{IsPaused}{IsPaused}}
+{\footnotesize\ttfamily \label{class_pause_menu_u_i_ae6149cd13e39ce6c1b69fd20a39039f1} 
+bool Pause\+Menu\+UI.\+Is\+Paused\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+UI/\mbox{\hyperlink{_pause_menu_u_i_8cs}{Pause\+Menu\+UI.\+cs}}\end{DoxyCompactItemize}

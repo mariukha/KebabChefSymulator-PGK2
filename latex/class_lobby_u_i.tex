@@ -1,0 +1,713 @@
+\doxysection{Dokumentacja klasy Lobby\+UI}
+\hypertarget{class_lobby_u_i}{}\label{class_lobby_u_i}\index{LobbyUI@{LobbyUI}}
+
+
+Klasa zarządzająca interfejsem użytkownika lobby sieciowego. Odpowiada za wyświetlanie panelu lobby, tworzenie i dołączanie do pokojów wieloosobowych, zarządzanie pseudonimem gracza oraz obsługę stanu połączenia.  
+
+
+Diagram dziedziczenia dla Lobby\+UI\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_lobby_u_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_lobby_u_i_abdeb7aeaabf3e324c3d79d6104d7294c}{Show\+Lobby}} ()
+\begin{DoxyCompactList}\small\item\em Wyświetla panel lobby na ekranie. Odblokowuje kursor myszy, aby gracz mógł korzystać z interfejsu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lobby_u_i_aafdf2a5b33a0c88943fcb04e25e9cb30}{Hide\+Lobby}} ()
+\begin{DoxyCompactList}\small\item\em Ukrywa panel lobby i blokuje kursor myszy (powrót do trybu gry). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_lobby_u_i_a1050401dcd7f18c815db01dde859f872}{Local\+Player\+Nickname}} = "{}Gracz"{}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pseudonim lokalnego gracza używany w sesji sieciowej. Domyślna wartość to "{}\+Gracz"{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lobby_u_i_a6ce45465a5a161065ac61ec7b6a736a2}{Is\+Lobby\+Open}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Sprawdza czy panel lobby jest aktualnie otwarty i widoczny. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_lobby_u_i_a35781abf05278449f53da4aa21dc2157}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje interfejs lobby podczas przebudzenia obiektu. Tworzy canvas i panel lobby, a następnie ukrywa je do momentu otwarcia przez gracza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lobby_u_i_aff393023d15eb47e537119e2e831c11a}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizacja wywoływana co klatkę. Zarządza stanem połączenia, obsługuje wejście klawiszowe (F1 do przełączania lobby) oraz czyści komunikaty statusu po upływie czasu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lobby_u_i_a1c3b042eba3812da4f025dcf9b759ec5}{Create\+Lobby\+Canvas}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy cały interfejs lobby programistycznie, w tym canvas, panele, przyciski, pola tekstowe i nagłówki. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lobby_u_i_afc525a01304364316cce84e464331733}{Update\+Connection\+State}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje stan interfejsu w zależności od bieżącego stanu połączenia sieciowego. Włącza/wyłącza przyciski oraz aktualizuje informacje o liczbie graczy. \end{DoxyCompactList}\item 
+async void \mbox{\hyperlink{class_lobby_u_i_a955e912c0f68f1a97fb41a502e145dff}{On\+Host\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em Obsługuje kliknięcie przycisku tworzenia pokoju (hostowania). Tworzy nowy pokój za pomocą systemu Relay i wyświetla kod pokoju. \end{DoxyCompactList}\item 
+async void \mbox{\hyperlink{class_lobby_u_i_ae606e85bf20673c26b6e26d01e4e5395}{On\+Join\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em Obsługuje kliknięcie przycisku dołączania do istniejącego pokoju. Łączy się z pokojem za pomocą podanego kodu Relay. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lobby_u_i_a4463a52551b9f93bd32cb659debc1db5}{On\+Disconnect\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em Obsługuje kliknięcie przycisku rozłączania. Kończy bieżącą sesję sieciową i wyświetla komunikat potwierdzający. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lobby_u_i_a6a7be5c41ce5d29c332da9f22d75e513}{Set\+Status}} (string message, float clear\+After)
+\begin{DoxyCompactList}\small\item\em Ustawia komunikat statusu w panelu lobby. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lobby_u_i_a92f529e8f058516657ae87dc865a8a2e}{Save\+Nickname}} ()
+\begin{DoxyCompactList}\small\item\em Zapisuje pseudonim gracza z pola wprowadzania do właściwości statycznej. Przycinanie białych znaków, walidacja pustego nicku (domyślnie "{}\+Gracz"{}) oraz ograniczenie długości do 20 znaków. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_lobby_u_i_a5f1d81123a0dd344c43db24e2421a9b8}{Create\+Panel}} (Transform parent, string name, Vector2 anchor\+Min, Vector2 anchor\+Max, Vector2 pivot, Vector2 anchored\+Position, Vector2 size, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy obiekt panelu UI z komponentem Image i skonfigurowanym Rect\+Transform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lobby_u_i_a3d6102b5f078e6e04fea8d3c49af78c3}{Create\+Panel\+Border}} (Transform parent, Vector2 panel\+Size, Color border\+Color)
+\begin{DoxyCompactList}\small\item\em Tworzy ramkę (obramowanie) wokół panelu, składającą się z czterech cienkich paneli umieszczonych na górze, dole, lewej i prawej stronie. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_lobby_u_i_ab9cdea6829827936b9f291a3fd6183f2}{Create\+Text}} (Transform parent, string name, Font font, int size, Text\+Anchor alignment, Color color, Font\+Style style)
+\begin{DoxyCompactList}\small\item\em Tworzy element tekstowy UI z określonym stylem, czcionką i efektem cienia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lobby_u_i_a417a6111b302b04247aad9b22ff6936a}{Position\+Rect}} (Component comp, Vector2 anchor, Vector2 anchored\+Pos, Vector2 size)
+\begin{DoxyCompactList}\small\item\em Ustawia pozycję i rozmiar Rect\+Transform danego komponentu, używając pojedynczego punktu zakotwiczenia. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{class_lobby_u_i_ae1b55fc63d6aaa57c0a1bfb77dfed4c9}{Create\+Styled\+Button}} (Transform parent, string name, Font font, string label, Color normal\+Color, Color hover\+Color, Vector2 anchor, Vector2 anchored\+Pos, Vector2 size)
+\begin{DoxyCompactList}\small\item\em Tworzy stylizowany przycisk UI z efektami kolorystycznymi dla różnych stanów (normalny, najechanie, naciśnięcie, wyłączony). \end{DoxyCompactList}\item 
+Input\+Field \mbox{\hyperlink{class_lobby_u_i_adaab56062b3d1be84aa8de5667f02b3f}{Create\+Input\+Field}} (Transform parent, string name, Font font, string default\+Text, string placeholder, Vector2 anchor, Vector2 anchored\+Pos, Vector2 size)
+\begin{DoxyCompactList}\small\item\em Tworzy pole wprowadzania tekstu (Input\+Field) z tekstem zastępczym, ramką i odpowiednim stylem wizualnym. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Canvas \mbox{\hyperlink{class_lobby_u_i_ad14fde83a9b70f36bf9a4300419689ba}{lobby\+Canvas}}
+\begin{DoxyCompactList}\small\item\em Komponent Canvas używany do renderowania interfejsu lobby. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_lobby_u_i_ac7527926b6076b81856e9ea74b7fb4ae}{lobby\+Panel}}
+\begin{DoxyCompactList}\small\item\em Główny obiekt panelu lobby zawierający wszystkie elementy interfejsu. \end{DoxyCompactList}\item 
+Input\+Field \mbox{\hyperlink{class_lobby_u_i_a6fde275fc7a24500a4d53b6618628866}{ip\+Input\+Field}}
+\begin{DoxyCompactList}\small\item\em Pole wprowadzania kodu pokoju (adresu IP lub kodu Relay). \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_lobby_u_i_a26456f1f56c63b77f087b1f1d2b63956}{status\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst wyświetlający komunikaty statusu (np. błędy, potwierdzenia). \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_lobby_u_i_a07c188d5cded6bef40d37786312d87f1}{player\+Count\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst wyświetlający liczbę połączonych graczy i rolę (HOST/\+KLIENT). \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{class_lobby_u_i_a39797a79009c824a788bc3de42f7d96f}{host\+Button}}
+\begin{DoxyCompactList}\small\item\em Przycisk do tworzenia nowego pokoju (hostowania). \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{class_lobby_u_i_a51e3175a1c1aee7e785c599051beca79}{join\+Button}}
+\begin{DoxyCompactList}\small\item\em Przycisk do dołączania do istniejącego pokoju. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{class_lobby_u_i_a612846eec4f6b6e4ca716a4e7f7752dd}{disconnect\+Button}}
+\begin{DoxyCompactList}\small\item\em Przycisk do rozłączania się z aktualną sesją sieciowej. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_lobby_u_i_a75a20367a143a9807f29fb07ba679953}{connected\+Panel}}
+\begin{DoxyCompactList}\small\item\em Panel wyświetlany gdy gracz jest połączony, zawierający informacje o sesji. \end{DoxyCompactList}\item 
+Input\+Field \mbox{\hyperlink{class_lobby_u_i_ad213e64302caff75fb7bb8844b37ccc0}{nickname\+Input\+Field}}
+\begin{DoxyCompactList}\small\item\em Pole wprowadzania pseudonimu gracza. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lobby_u_i_ae667cf45849d758c6e5c421418d80eb9}{is\+Lobby\+Visible}}
+\begin{DoxyCompactList}\small\item\em Flaga określająca czy panel lobby jest aktualnie widoczny. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_lobby_u_i_afeece3aaddcbba8749d484eac2a9a374}{status\+Clear\+Time}}
+\begin{DoxyCompactList}\small\item\em Czas (w skali nieskalowanej), po którym komunikat statusu powinien zostać wyczyszczony. Wartość 0 oznacza brak automatycznego czyszczenia. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_lobby_u_i_a52f39aec56ab256f7143f63a35e8a339}{last\+Action\+Time}}
+\begin{DoxyCompactList}\small\item\em Czas ostatniej akcji sieciowej (host/join), używany do zapobiegania spamowaniu przycisków. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_aa58ad6e152b8587a441d262d5a8060d5}{Panel\+Background}} = new Color(0.\+012f, 0.\+014f, 0.\+018f, 0.\+95f)
+\begin{DoxyCompactList}\small\item\em Kolor tła głównego panelu lobby. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_a977fe891fcfe0e2769fd5da5e6fee610}{Card\+Background}} = new Color(0.\+035f, 0.\+045f, 0.\+06f, 0.\+76f)
+\begin{DoxyCompactList}\small\item\em Kolor tła kart i sekcji wewnątrz panelu. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_ae1f803efc683a22d6d870849b2fe2905}{Frame\+Color}} = new Color(0.\+16f, 0.\+17f, 0.\+19f, 0.\+95f)
+\begin{DoxyCompactList}\small\item\em Kolor ramki otaczającej panel lobby. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_a2bd5412381ebbc369494cbf0a7e4bcc0}{Header\+Color}} = new Color(0.\+032f, 0.\+038f, 0.\+052f, 0.\+94f)
+\begin{DoxyCompactList}\small\item\em Kolor tła nagłówka panelu. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_a98cb1f6de5fcad26986e628169fe19e2}{Gold\+Text}} = new Color(0.\+86f, 0.\+68f, 0.\+28f)
+\begin{DoxyCompactList}\small\item\em Kolor złotego tekstu używany dla tytułów i komunikatów statusu. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_a9e58a27819df3e78f304b92a034f4b8d}{White\+Text}} = new Color(0.\+9f, 0.\+91f, 0.\+93f, 0.\+92f)
+\begin{DoxyCompactList}\small\item\em Kolor białego tekstu używany dla etykiet i zawartości przycisków. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_a3d7aac3461ef3a34ad78dbbccce9f3d9}{Sub\+Text}} = new Color(0.\+58f, 0.\+62f, 0.\+69f)
+\begin{DoxyCompactList}\small\item\em Kolor tekstu drugorzędnego (podpisy, wskazówki). \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_abe4da2072c004d355c5f73b8d16eef5d}{Host\+Button\+Color}} = new Color(0.\+05f, 0.\+34f, 0.\+16f)
+\begin{DoxyCompactList}\small\item\em Kolor przycisku "{}\+Utwórz pokój"{} w stanie normalnym. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_a2cd95c35e90b950e8d3a2264506cb739}{Host\+Button\+Hover}} = new Color(0.\+08f, 0.\+46f, 0.\+22f)
+\begin{DoxyCompactList}\small\item\em Kolor przycisku "{}\+Utwórz pokój"{} przy najechaniu kursorem. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_a4f99c2ef4f49d61e70013e53c673af69}{Join\+Button\+Color}} = new Color(0.\+06f, 0.\+19f, 0.\+42f)
+\begin{DoxyCompactList}\small\item\em Kolor przycisku "{}\+Dołącz"{} w stanie normalnym. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_abfaeb1c16f2cca6bbfac6370c5636d50}{Join\+Button\+Hover}} = new Color(0.\+09f, 0.\+28f, 0.\+58f)
+\begin{DoxyCompactList}\small\item\em Kolor przycisku "{}\+Dołącz"{} przy najechaniu kursorem. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_ac2ab35d8416f6ecb75bd100fd50e2827}{Disconnect\+Color}} = new Color(0.\+48f, 0.\+08f, 0.\+07f)
+\begin{DoxyCompactList}\small\item\em Kolor przycisku rozłączania. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_lobby_u_i_acc4f3a9ea1a9dbf038295893703de2f0}{Input\+Field\+Bg}} = new Color(0.\+035f, 0.\+045f, 0.\+06f, 0.\+95f)
+\begin{DoxyCompactList}\small\item\em Kolor tła pól wprowadzania tekstu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa zarządzająca interfejsem użytkownika lobby sieciowego. Odpowiada za wyświetlanie panelu lobby, tworzenie i dołączanie do pokojów wieloosobowych, zarządzanie pseudonimem gracza oraz obsługę stanu połączenia. 
+
+Panel lobby jest tworzony programistycznie w metodzie \doxylink{class_lobby_u_i_a1c3b042eba3812da4f025dcf9b759ec5}{Create\+Lobby\+Canvas}. Interfejs można otworzyć klawiszem F1 (o ile gra nie jest w trybie solo). Komunikacja sieciowa odbywa się za pośrednictwem \doxylink{class_relay_manager}{Relay\+Manager} oraz \doxylink{class_network_setup}{Network\+Setup}. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_lobby_u_i_a35781abf05278449f53da4aa21dc2157}\index{LobbyUI@{LobbyUI}!Awake@{Awake}}
+\index{Awake@{Awake}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a35781abf05278449f53da4aa21dc2157} 
+void Lobby\+UI.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje interfejs lobby podczas przebudzenia obiektu. Tworzy canvas i panel lobby, a następnie ukrywa je do momentu otwarcia przez gracza. 
+
+\Hypertarget{class_lobby_u_i_adaab56062b3d1be84aa8de5667f02b3f}\index{LobbyUI@{LobbyUI}!CreateInputField@{CreateInputField}}
+\index{CreateInputField@{CreateInputField}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{CreateInputField()}{CreateInputField()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_adaab56062b3d1be84aa8de5667f02b3f} 
+Input\+Field Lobby\+UI.\+Create\+Input\+Field (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Font}]{font}{, }\item[{string}]{default\+Text}{, }\item[{string}]{placeholder}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{anchored\+Pos}{, }\item[{Vector2}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy pole wprowadzania tekstu (Input\+Field) z tekstem zastępczym, ramką i odpowiednim stylem wizualnym. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla pola wprowadzania.\\
+\hline
+{\em name} & Nazwa obiektu pola w hierarchii.\\
+\hline
+{\em font} & Czcionka używana w polu tekstowym.\\
+\hline
+{\em default\+Text} & Domyślny tekst wyświetlany w polu.\\
+\hline
+{\em placeholder} & Tekst zastępczy (placeholder) wyświetlany gdy pole jest puste.\\
+\hline
+{\em anchor} & Punkt zakotwiczenia pola.\\
+\hline
+{\em anchored\+Pos} & Pozycja zakotwiczona pola.\\
+\hline
+{\em size} & Rozmiar pola wprowadzania.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony komponent Input\+Field.
+\end{DoxyReturn}
+\Hypertarget{class_lobby_u_i_a1c3b042eba3812da4f025dcf9b759ec5}\index{LobbyUI@{LobbyUI}!CreateLobbyCanvas@{CreateLobbyCanvas}}
+\index{CreateLobbyCanvas@{CreateLobbyCanvas}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{CreateLobbyCanvas()}{CreateLobbyCanvas()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a1c3b042eba3812da4f025dcf9b759ec5} 
+void Lobby\+UI.\+Create\+Lobby\+Canvas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy cały interfejs lobby programistycznie, w tym canvas, panele, przyciski, pola tekstowe i nagłówki. 
+
+Metoda buduje kompletny interfejs użytkownika bez użycia prefabów. Tworzy następujące elementy\+: 
+\begin{DoxyItemize}
+\item Canvas z Canvas\+Scaler i Graphic\+Raycaster 
+\item Tło przyciemniające (backdrop) 
+\item Panel główny z ramką 
+\item Nagłówek z tytułem "{}\+ONLINE LOBBY"{} 
+\item Pole nicku gracza 
+\item Przycisk hostowania 
+\item Pole kodu pokoju i przycisk dołączania 
+\item Panel stanu połączenia z przyciskiem rozłączania 
+\item Event\+System (jeśli nie istnieje) 
+\end{DoxyItemize}\Hypertarget{class_lobby_u_i_a5f1d81123a0dd344c43db24e2421a9b8}\index{LobbyUI@{LobbyUI}!CreatePanel@{CreatePanel}}
+\index{CreatePanel@{CreatePanel}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{CreatePanel()}{CreatePanel()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a5f1d81123a0dd344c43db24e2421a9b8} 
+Game\+Object Lobby\+UI.\+Create\+Panel (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Vector2}]{anchor\+Min}{, }\item[{Vector2}]{anchor\+Max}{, }\item[{Vector2}]{pivot}{, }\item[{Vector2}]{anchored\+Position}{, }\item[{Vector2}]{size}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy obiekt panelu UI z komponentem Image i skonfigurowanym Rect\+Transform. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica, pod którym panel zostanie utworzony.\\
+\hline
+{\em name} & Nazwa obiektu panelu w hierarchii.\\
+\hline
+{\em anchor\+Min} & Minimalny punkt zakotwiczenia Rect\+Transform.\\
+\hline
+{\em anchor\+Max} & Maksymalny punkt zakotwiczenia Rect\+Transform.\\
+\hline
+{\em pivot} & Punkt obrotu (pivot) Rect\+Transform.\\
+\hline
+{\em anchored\+Position} & Pozycja zakotwiczona panelu.\\
+\hline
+{\em size} & Rozmiar panelu (size\+Delta).\\
+\hline
+{\em color} & Kolor tła panelu (Image).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony obiekt Game\+Object panelu.
+\end{DoxyReturn}
+\Hypertarget{class_lobby_u_i_a3d6102b5f078e6e04fea8d3c49af78c3}\index{LobbyUI@{LobbyUI}!CreatePanelBorder@{CreatePanelBorder}}
+\index{CreatePanelBorder@{CreatePanelBorder}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{CreatePanelBorder()}{CreatePanelBorder()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a3d6102b5f078e6e04fea8d3c49af78c3} 
+void Lobby\+UI.\+Create\+Panel\+Border (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{Vector2}]{panel\+Size}{, }\item[{Color}]{border\+Color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy ramkę (obramowanie) wokół panelu, składającą się z czterech cienkich paneli umieszczonych na górze, dole, lewej i prawej stronie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica (panel, wokół którego tworzona jest ramka).\\
+\hline
+{\em panel\+Size} & Rozmiar panelu rodzica (używany do pozycjonowania ramki).\\
+\hline
+{\em border\+Color} & Kolor ramki.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_lobby_u_i_ae1b55fc63d6aaa57c0a1bfb77dfed4c9}\index{LobbyUI@{LobbyUI}!CreateStyledButton@{CreateStyledButton}}
+\index{CreateStyledButton@{CreateStyledButton}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{CreateStyledButton()}{CreateStyledButton()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_ae1b55fc63d6aaa57c0a1bfb77dfed4c9} 
+Button Lobby\+UI.\+Create\+Styled\+Button (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Font}]{font}{, }\item[{string}]{label}{, }\item[{Color}]{normal\+Color}{, }\item[{Color}]{hover\+Color}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{anchored\+Pos}{, }\item[{Vector2}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy stylizowany przycisk UI z efektami kolorystycznymi dla różnych stanów (normalny, najechanie, naciśnięcie, wyłączony). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla przycisku.\\
+\hline
+{\em name} & Nazwa obiektu przycisku w hierarchii.\\
+\hline
+{\em font} & Czcionka etykiety przycisku.\\
+\hline
+{\em label} & Tekst wyświetlany na przycisku.\\
+\hline
+{\em normal\+Color} & Kolor przycisku w stanie normalnym.\\
+\hline
+{\em hover\+Color} & Kolor przycisku przy najechaniu kursorem.\\
+\hline
+{\em anchor} & Punkt zakotwiczenia przycisku.\\
+\hline
+{\em anchored\+Pos} & Pozycja zakotwiczona przycisku.\\
+\hline
+{\em size} & Rozmiar przycisku.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony komponent Button.
+\end{DoxyReturn}
+\Hypertarget{class_lobby_u_i_ab9cdea6829827936b9f291a3fd6183f2}\index{LobbyUI@{LobbyUI}!CreateText@{CreateText}}
+\index{CreateText@{CreateText}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{CreateText()}{CreateText()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_ab9cdea6829827936b9f291a3fd6183f2} 
+Text Lobby\+UI.\+Create\+Text (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Font}]{font}{, }\item[{int}]{size}{, }\item[{Text\+Anchor}]{alignment}{, }\item[{Color}]{color}{, }\item[{Font\+Style}]{style}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy element tekstowy UI z określonym stylem, czcionką i efektem cienia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla tekstu.\\
+\hline
+{\em name} & Nazwa obiektu tekstowego w hierarchii.\\
+\hline
+{\em font} & Czcionka używana do renderowania tekstu.\\
+\hline
+{\em size} & Rozmiar czcionki w pikselach.\\
+\hline
+{\em alignment} & Wyrównanie tekstu (np. środek, lewo, prawo).\\
+\hline
+{\em color} & Kolor tekstu.\\
+\hline
+{\em style} & Styl czcionki (normalny, pogrubiony, kursywa).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony komponent Text.
+\end{DoxyReturn}
+\Hypertarget{class_lobby_u_i_aafdf2a5b33a0c88943fcb04e25e9cb30}\index{LobbyUI@{LobbyUI}!HideLobby@{HideLobby}}
+\index{HideLobby@{HideLobby}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{HideLobby()}{HideLobby()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_aafdf2a5b33a0c88943fcb04e25e9cb30} 
+void Lobby\+UI.\+Hide\+Lobby (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ukrywa panel lobby i blokuje kursor myszy (powrót do trybu gry). 
+
+\Hypertarget{class_lobby_u_i_a4463a52551b9f93bd32cb659debc1db5}\index{LobbyUI@{LobbyUI}!OnDisconnectClicked@{OnDisconnectClicked}}
+\index{OnDisconnectClicked@{OnDisconnectClicked}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{OnDisconnectClicked()}{OnDisconnectClicked()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a4463a52551b9f93bd32cb659debc1db5} 
+void Lobby\+UI.\+On\+Disconnect\+Clicked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje kliknięcie przycisku rozłączania. Kończy bieżącą sesję sieciową i wyświetla komunikat potwierdzający. 
+
+\Hypertarget{class_lobby_u_i_a955e912c0f68f1a97fb41a502e145dff}\index{LobbyUI@{LobbyUI}!OnHostClicked@{OnHostClicked}}
+\index{OnHostClicked@{OnHostClicked}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{OnHostClicked()}{OnHostClicked()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a955e912c0f68f1a97fb41a502e145dff} 
+async void Lobby\+UI.\+On\+Host\+Clicked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje kliknięcie przycisku tworzenia pokoju (hostowania). Tworzy nowy pokój za pomocą systemu Relay i wyświetla kod pokoju. 
+
+Metoda jest asynchroniczna. Zawiera zabezpieczenie przed wielokrotnym kliknięciem (cooldown 3 sekundy). Po pomyślnym utworzeniu pokoju, kod jest wstawiany do pola tekstowego, a lobby jest automatycznie ukrywane po 2 sekundach. \Hypertarget{class_lobby_u_i_ae606e85bf20673c26b6e26d01e4e5395}\index{LobbyUI@{LobbyUI}!OnJoinClicked@{OnJoinClicked}}
+\index{OnJoinClicked@{OnJoinClicked}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{OnJoinClicked()}{OnJoinClicked()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_ae606e85bf20673c26b6e26d01e4e5395} 
+async void Lobby\+UI.\+On\+Join\+Clicked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje kliknięcie przycisku dołączania do istniejącego pokoju. Łączy się z pokojem za pomocą podanego kodu Relay. 
+
+Metoda jest asynchroniczna. Waliduje kod pokoju przed próbą połączenia. Kod jest konwertowany na wielkie litery i oczyszczany z białych znaków. Po pomyślnym dołączeniu, lobby jest automatycznie ukrywane po 2 sekundach. \Hypertarget{class_lobby_u_i_a417a6111b302b04247aad9b22ff6936a}\index{LobbyUI@{LobbyUI}!PositionRect@{PositionRect}}
+\index{PositionRect@{PositionRect}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{PositionRect()}{PositionRect()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a417a6111b302b04247aad9b22ff6936a} 
+void Lobby\+UI.\+Position\+Rect (\begin{DoxyParamCaption}\item[{Component}]{comp}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{anchored\+Pos}{, }\item[{Vector2}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ustawia pozycję i rozmiar Rect\+Transform danego komponentu, używając pojedynczego punktu zakotwiczenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em comp} & Komponent, którego Rect\+Transform ma zostać skonfigurowany.\\
+\hline
+{\em anchor} & Punkt zakotwiczenia (anchor\+Min i anchor\+Max ustawione na tę samą wartość).\\
+\hline
+{\em anchored\+Pos} & Pozycja zakotwiczona elementu.\\
+\hline
+{\em size} & Rozmiar elementu (size\+Delta).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_lobby_u_i_a92f529e8f058516657ae87dc865a8a2e}\index{LobbyUI@{LobbyUI}!SaveNickname@{SaveNickname}}
+\index{SaveNickname@{SaveNickname}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{SaveNickname()}{SaveNickname()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a92f529e8f058516657ae87dc865a8a2e} 
+void Lobby\+UI.\+Save\+Nickname (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Zapisuje pseudonim gracza z pola wprowadzania do właściwości statycznej. Przycinanie białych znaków, walidacja pustego nicku (domyślnie "{}\+Gracz"{}) oraz ograniczenie długości do 20 znaków. 
+
+\Hypertarget{class_lobby_u_i_a6a7be5c41ce5d29c332da9f22d75e513}\index{LobbyUI@{LobbyUI}!SetStatus@{SetStatus}}
+\index{SetStatus@{SetStatus}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{SetStatus()}{SetStatus()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a6a7be5c41ce5d29c332da9f22d75e513} 
+void Lobby\+UI.\+Set\+Status (\begin{DoxyParamCaption}\item[{string}]{message}{, }\item[{float}]{clear\+After}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ustawia komunikat statusu w panelu lobby. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em message} & Treść komunikatu do wyświetlenia.\\
+\hline
+{\em clear\+After} & Czas w sekundach, po którym komunikat zostanie automatycznie wyczyszczony. Wartość 0 oznacza, że komunikat nie będzie automatycznie usuwany. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_lobby_u_i_abdeb7aeaabf3e324c3d79d6104d7294c}\index{LobbyUI@{LobbyUI}!ShowLobby@{ShowLobby}}
+\index{ShowLobby@{ShowLobby}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{ShowLobby()}{ShowLobby()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_abdeb7aeaabf3e324c3d79d6104d7294c} 
+void Lobby\+UI.\+Show\+Lobby (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Wyświetla panel lobby na ekranie. Odblokowuje kursor myszy, aby gracz mógł korzystać z interfejsu. 
+
+Jeśli gra jest w trybie solo (\doxylink{class_main_menu_u_i_a1da249fb27ba968eb8e79f4a17aaee3e}{Main\+Menu\+UI.\+Is\+Solo\+Mode}), metoda zamiast tego ukrywa lobby. \Hypertarget{class_lobby_u_i_aff393023d15eb47e537119e2e831c11a}\index{LobbyUI@{LobbyUI}!Update@{Update}}
+\index{Update@{Update}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_aff393023d15eb47e537119e2e831c11a} 
+void Lobby\+UI.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizacja wywoływana co klatkę. Zarządza stanem połączenia, obsługuje wejście klawiszowe (F1 do przełączania lobby) oraz czyści komunikaty statusu po upływie czasu. 
+
+\Hypertarget{class_lobby_u_i_afc525a01304364316cce84e464331733}\index{LobbyUI@{LobbyUI}!UpdateConnectionState@{UpdateConnectionState}}
+\index{UpdateConnectionState@{UpdateConnectionState}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{UpdateConnectionState()}{UpdateConnectionState()}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_afc525a01304364316cce84e464331733} 
+void Lobby\+UI.\+Update\+Connection\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje stan interfejsu w zależności od bieżącego stanu połączenia sieciowego. Włącza/wyłącza przyciski oraz aktualizuje informacje o liczbie graczy. 
+
+Gdy gracz jest połączony, przyciski hostowania i dołączania zostają dezaktywowane, a panel połączenia (\doxylink{class_lobby_u_i_a75a20367a143a9807f29fb07ba679953}{connected\+Panel}) jest wyświetlany z informacją o roli (HOST/\+KLIENT) oraz liczbie podłączonych graczy. 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_lobby_u_i_a977fe891fcfe0e2769fd5da5e6fee610}\index{LobbyUI@{LobbyUI}!CardBackground@{CardBackground}}
+\index{CardBackground@{CardBackground}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{CardBackground}{CardBackground}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a977fe891fcfe0e2769fd5da5e6fee610} 
+readonly Color Lobby\+UI.\+Card\+Background = new Color(0.\+035f, 0.\+045f, 0.\+06f, 0.\+76f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła kart i sekcji wewnątrz panelu. 
+
+\Hypertarget{class_lobby_u_i_a75a20367a143a9807f29fb07ba679953}\index{LobbyUI@{LobbyUI}!connectedPanel@{connectedPanel}}
+\index{connectedPanel@{connectedPanel}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{connectedPanel}{connectedPanel}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a75a20367a143a9807f29fb07ba679953} 
+Game\+Object Lobby\+UI.\+connected\+Panel\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Panel wyświetlany gdy gracz jest połączony, zawierający informacje o sesji. 
+
+\Hypertarget{class_lobby_u_i_a612846eec4f6b6e4ca716a4e7f7752dd}\index{LobbyUI@{LobbyUI}!disconnectButton@{disconnectButton}}
+\index{disconnectButton@{disconnectButton}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{disconnectButton}{disconnectButton}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a612846eec4f6b6e4ca716a4e7f7752dd} 
+Button Lobby\+UI.\+disconnect\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Przycisk do rozłączania się z aktualną sesją sieciowej. 
+
+\Hypertarget{class_lobby_u_i_ac2ab35d8416f6ecb75bd100fd50e2827}\index{LobbyUI@{LobbyUI}!DisconnectColor@{DisconnectColor}}
+\index{DisconnectColor@{DisconnectColor}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{DisconnectColor}{DisconnectColor}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_ac2ab35d8416f6ecb75bd100fd50e2827} 
+readonly Color Lobby\+UI.\+Disconnect\+Color = new Color(0.\+48f, 0.\+08f, 0.\+07f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor przycisku rozłączania. 
+
+\Hypertarget{class_lobby_u_i_ae1f803efc683a22d6d870849b2fe2905}\index{LobbyUI@{LobbyUI}!FrameColor@{FrameColor}}
+\index{FrameColor@{FrameColor}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{FrameColor}{FrameColor}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_ae1f803efc683a22d6d870849b2fe2905} 
+readonly Color Lobby\+UI.\+Frame\+Color = new Color(0.\+16f, 0.\+17f, 0.\+19f, 0.\+95f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor ramki otaczającej panel lobby. 
+
+\Hypertarget{class_lobby_u_i_a98cb1f6de5fcad26986e628169fe19e2}\index{LobbyUI@{LobbyUI}!GoldText@{GoldText}}
+\index{GoldText@{GoldText}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{GoldText}{GoldText}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a98cb1f6de5fcad26986e628169fe19e2} 
+readonly Color Lobby\+UI.\+Gold\+Text = new Color(0.\+86f, 0.\+68f, 0.\+28f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor złotego tekstu używany dla tytułów i komunikatów statusu. 
+
+\Hypertarget{class_lobby_u_i_a2bd5412381ebbc369494cbf0a7e4bcc0}\index{LobbyUI@{LobbyUI}!HeaderColor@{HeaderColor}}
+\index{HeaderColor@{HeaderColor}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{HeaderColor}{HeaderColor}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a2bd5412381ebbc369494cbf0a7e4bcc0} 
+readonly Color Lobby\+UI.\+Header\+Color = new Color(0.\+032f, 0.\+038f, 0.\+052f, 0.\+94f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła nagłówka panelu. 
+
+\Hypertarget{class_lobby_u_i_a39797a79009c824a788bc3de42f7d96f}\index{LobbyUI@{LobbyUI}!hostButton@{hostButton}}
+\index{hostButton@{hostButton}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{hostButton}{hostButton}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a39797a79009c824a788bc3de42f7d96f} 
+Button Lobby\+UI.\+host\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Przycisk do tworzenia nowego pokoju (hostowania). 
+
+\Hypertarget{class_lobby_u_i_abe4da2072c004d355c5f73b8d16eef5d}\index{LobbyUI@{LobbyUI}!HostButtonColor@{HostButtonColor}}
+\index{HostButtonColor@{HostButtonColor}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{HostButtonColor}{HostButtonColor}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_abe4da2072c004d355c5f73b8d16eef5d} 
+readonly Color Lobby\+UI.\+Host\+Button\+Color = new Color(0.\+05f, 0.\+34f, 0.\+16f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor przycisku "{}\+Utwórz pokój"{} w stanie normalnym. 
+
+\Hypertarget{class_lobby_u_i_a2cd95c35e90b950e8d3a2264506cb739}\index{LobbyUI@{LobbyUI}!HostButtonHover@{HostButtonHover}}
+\index{HostButtonHover@{HostButtonHover}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{HostButtonHover}{HostButtonHover}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a2cd95c35e90b950e8d3a2264506cb739} 
+readonly Color Lobby\+UI.\+Host\+Button\+Hover = new Color(0.\+08f, 0.\+46f, 0.\+22f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor przycisku "{}\+Utwórz pokój"{} przy najechaniu kursorem. 
+
+\Hypertarget{class_lobby_u_i_acc4f3a9ea1a9dbf038295893703de2f0}\index{LobbyUI@{LobbyUI}!InputFieldBg@{InputFieldBg}}
+\index{InputFieldBg@{InputFieldBg}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{InputFieldBg}{InputFieldBg}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_acc4f3a9ea1a9dbf038295893703de2f0} 
+readonly Color Lobby\+UI.\+Input\+Field\+Bg = new Color(0.\+035f, 0.\+045f, 0.\+06f, 0.\+95f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła pól wprowadzania tekstu. 
+
+\Hypertarget{class_lobby_u_i_a6fde275fc7a24500a4d53b6618628866}\index{LobbyUI@{LobbyUI}!ipInputField@{ipInputField}}
+\index{ipInputField@{ipInputField}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{ipInputField}{ipInputField}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a6fde275fc7a24500a4d53b6618628866} 
+Input\+Field Lobby\+UI.\+ip\+Input\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pole wprowadzania kodu pokoju (adresu IP lub kodu Relay). 
+
+\Hypertarget{class_lobby_u_i_ae667cf45849d758c6e5c421418d80eb9}\index{LobbyUI@{LobbyUI}!isLobbyVisible@{isLobbyVisible}}
+\index{isLobbyVisible@{isLobbyVisible}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{isLobbyVisible}{isLobbyVisible}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_ae667cf45849d758c6e5c421418d80eb9} 
+bool Lobby\+UI.\+is\+Lobby\+Visible\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga określająca czy panel lobby jest aktualnie widoczny. 
+
+\Hypertarget{class_lobby_u_i_a51e3175a1c1aee7e785c599051beca79}\index{LobbyUI@{LobbyUI}!joinButton@{joinButton}}
+\index{joinButton@{joinButton}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{joinButton}{joinButton}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a51e3175a1c1aee7e785c599051beca79} 
+Button Lobby\+UI.\+join\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Przycisk do dołączania do istniejącego pokoju. 
+
+\Hypertarget{class_lobby_u_i_a4f99c2ef4f49d61e70013e53c673af69}\index{LobbyUI@{LobbyUI}!JoinButtonColor@{JoinButtonColor}}
+\index{JoinButtonColor@{JoinButtonColor}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{JoinButtonColor}{JoinButtonColor}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a4f99c2ef4f49d61e70013e53c673af69} 
+readonly Color Lobby\+UI.\+Join\+Button\+Color = new Color(0.\+06f, 0.\+19f, 0.\+42f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor przycisku "{}\+Dołącz"{} w stanie normalnym. 
+
+\Hypertarget{class_lobby_u_i_abfaeb1c16f2cca6bbfac6370c5636d50}\index{LobbyUI@{LobbyUI}!JoinButtonHover@{JoinButtonHover}}
+\index{JoinButtonHover@{JoinButtonHover}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{JoinButtonHover}{JoinButtonHover}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_abfaeb1c16f2cca6bbfac6370c5636d50} 
+readonly Color Lobby\+UI.\+Join\+Button\+Hover = new Color(0.\+09f, 0.\+28f, 0.\+58f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor przycisku "{}\+Dołącz"{} przy najechaniu kursorem. 
+
+\Hypertarget{class_lobby_u_i_a52f39aec56ab256f7143f63a35e8a339}\index{LobbyUI@{LobbyUI}!lastActionTime@{lastActionTime}}
+\index{lastActionTime@{lastActionTime}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{lastActionTime}{lastActionTime}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a52f39aec56ab256f7143f63a35e8a339} 
+float Lobby\+UI.\+last\+Action\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czas ostatniej akcji sieciowej (host/join), używany do zapobiegania spamowaniu przycisków. 
+
+\Hypertarget{class_lobby_u_i_ad14fde83a9b70f36bf9a4300419689ba}\index{LobbyUI@{LobbyUI}!lobbyCanvas@{lobbyCanvas}}
+\index{lobbyCanvas@{lobbyCanvas}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{lobbyCanvas}{lobbyCanvas}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_ad14fde83a9b70f36bf9a4300419689ba} 
+Canvas Lobby\+UI.\+lobby\+Canvas\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Komponent Canvas używany do renderowania interfejsu lobby. 
+
+\Hypertarget{class_lobby_u_i_ac7527926b6076b81856e9ea74b7fb4ae}\index{LobbyUI@{LobbyUI}!lobbyPanel@{lobbyPanel}}
+\index{lobbyPanel@{lobbyPanel}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{lobbyPanel}{lobbyPanel}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_ac7527926b6076b81856e9ea74b7fb4ae} 
+Game\+Object Lobby\+UI.\+lobby\+Panel\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Główny obiekt panelu lobby zawierający wszystkie elementy interfejsu. 
+
+\Hypertarget{class_lobby_u_i_ad213e64302caff75fb7bb8844b37ccc0}\index{LobbyUI@{LobbyUI}!nicknameInputField@{nicknameInputField}}
+\index{nicknameInputField@{nicknameInputField}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{nicknameInputField}{nicknameInputField}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_ad213e64302caff75fb7bb8844b37ccc0} 
+Input\+Field Lobby\+UI.\+nickname\+Input\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pole wprowadzania pseudonimu gracza. 
+
+\Hypertarget{class_lobby_u_i_aa58ad6e152b8587a441d262d5a8060d5}\index{LobbyUI@{LobbyUI}!PanelBackground@{PanelBackground}}
+\index{PanelBackground@{PanelBackground}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{PanelBackground}{PanelBackground}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_aa58ad6e152b8587a441d262d5a8060d5} 
+readonly Color Lobby\+UI.\+Panel\+Background = new Color(0.\+012f, 0.\+014f, 0.\+018f, 0.\+95f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła głównego panelu lobby. 
+
+\Hypertarget{class_lobby_u_i_a07c188d5cded6bef40d37786312d87f1}\index{LobbyUI@{LobbyUI}!playerCountText@{playerCountText}}
+\index{playerCountText@{playerCountText}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{playerCountText}{playerCountText}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a07c188d5cded6bef40d37786312d87f1} 
+Text Lobby\+UI.\+player\+Count\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst wyświetlający liczbę połączonych graczy i rolę (HOST/\+KLIENT). 
+
+\Hypertarget{class_lobby_u_i_afeece3aaddcbba8749d484eac2a9a374}\index{LobbyUI@{LobbyUI}!statusClearTime@{statusClearTime}}
+\index{statusClearTime@{statusClearTime}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{statusClearTime}{statusClearTime}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_afeece3aaddcbba8749d484eac2a9a374} 
+float Lobby\+UI.\+status\+Clear\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czas (w skali nieskalowanej), po którym komunikat statusu powinien zostać wyczyszczony. Wartość 0 oznacza brak automatycznego czyszczenia. 
+
+\Hypertarget{class_lobby_u_i_a26456f1f56c63b77f087b1f1d2b63956}\index{LobbyUI@{LobbyUI}!statusText@{statusText}}
+\index{statusText@{statusText}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{statusText}{statusText}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a26456f1f56c63b77f087b1f1d2b63956} 
+Text Lobby\+UI.\+status\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst wyświetlający komunikaty statusu (np. błędy, potwierdzenia). 
+
+\Hypertarget{class_lobby_u_i_a3d7aac3461ef3a34ad78dbbccce9f3d9}\index{LobbyUI@{LobbyUI}!SubText@{SubText}}
+\index{SubText@{SubText}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{SubText}{SubText}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a3d7aac3461ef3a34ad78dbbccce9f3d9} 
+readonly Color Lobby\+UI.\+Sub\+Text = new Color(0.\+58f, 0.\+62f, 0.\+69f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tekstu drugorzędnego (podpisy, wskazówki). 
+
+\Hypertarget{class_lobby_u_i_a9e58a27819df3e78f304b92a034f4b8d}\index{LobbyUI@{LobbyUI}!WhiteText@{WhiteText}}
+\index{WhiteText@{WhiteText}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{WhiteText}{WhiteText}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a9e58a27819df3e78f304b92a034f4b8d} 
+readonly Color Lobby\+UI.\+White\+Text = new Color(0.\+9f, 0.\+91f, 0.\+93f, 0.\+92f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor białego tekstu używany dla etykiet i zawartości przycisków. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_lobby_u_i_a6ce45465a5a161065ac61ec7b6a736a2}\index{LobbyUI@{LobbyUI}!IsLobbyOpen@{IsLobbyOpen}}
+\index{IsLobbyOpen@{IsLobbyOpen}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{IsLobbyOpen}{IsLobbyOpen}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a6ce45465a5a161065ac61ec7b6a736a2} 
+bool Lobby\+UI.\+Is\+Lobby\+Open\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Sprawdza czy panel lobby jest aktualnie otwarty i widoczny. 
+
+{\ttfamily true} jeśli lobby jest widoczne, panel istnieje i jest aktywny; w przeciwnym razie {\ttfamily false}. \Hypertarget{class_lobby_u_i_a1050401dcd7f18c815db01dde859f872}\index{LobbyUI@{LobbyUI}!LocalPlayerNickname@{LocalPlayerNickname}}
+\index{LocalPlayerNickname@{LocalPlayerNickname}!LobbyUI@{LobbyUI}}
+\doxysubsubsection{\texorpdfstring{LocalPlayerNickname}{LocalPlayerNickname}}
+{\footnotesize\ttfamily \label{class_lobby_u_i_a1050401dcd7f18c815db01dde859f872} 
+string Lobby\+UI.\+Local\+Player\+Nickname = "{}Gracz"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Pseudonim lokalnego gracza używany w sesji sieciowej. Domyślna wartość to "{}\+Gracz"{}. 
+
+Aktualny pseudonim gracza jako ciąg znaków.
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_lobby_u_i_8cs}{Lobby\+UI.\+cs}}\end{DoxyCompactItemize}

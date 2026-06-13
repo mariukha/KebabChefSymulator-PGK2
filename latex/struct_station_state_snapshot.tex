@@ -1,0 +1,385 @@
+\doxysection{Dokumentacja struktury Station\+State\+Snapshot}
+\hypertarget{struct_station_state_snapshot}{}\label{struct_station_state_snapshot}\index{StationStateSnapshot@{StationStateSnapshot}}
+
+
+Struktura przechowująca migawkę stanu stacji kuchennej do przesyłania przez sieć.  
+
+
+Diagram dziedziczenia dla Station\+State\+Snapshot\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{struct_station_state_snapshot}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{struct_station_state_snapshot_a16510c56eed1859ac844433996ea3516}{Set\+Assembly\+Slot}} (int index, \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} state)
+\begin{DoxyCompactList}\small\item\em Ustawia rodzaj i stan przetworzenia składnika w określonym slocie montażowym. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_station_state_snapshot_af6adf10d812aa800ca2df64c14004dcd}{Get\+Assembly\+Slot}} (int index, out \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind, out \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} state)
+\begin{DoxyCompactList}\small\item\em Pobiera rodzaj i stan przetworzenia składnika z określonego slotu montażowego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_station_state_snapshot_ab6384842cf10eab647af1bacf239b02e}{Network\+Serialize$<$ T $>$}} (Unity.\+Netcode.\+Buffer\+Serializer$<$ T $>$ serializer)
+\begin{DoxyCompactList}\small\item\em Serializuje lub deserializuje dane migawki przez bufor sieciowy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_station_state_snapshot_a6bf110eed339196270e76c94e5f770b2}{station\+Index}}
+\begin{DoxyCompactList}\small\item\em Indeks stacji kuchennej, do której należy ta migawka. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_station_state_snapshot_a9c82164c50ea041f61cd0c53b3636b63}{is\+Processing}}
+\begin{DoxyCompactList}\small\item\em Czy stacja aktualnie przetwarza składnik. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{struct_station_state_snapshot_a73a9a52d53bf8aeae5ccddb7572dbe09}{remaining\+Process\+Time}}
+\begin{DoxyCompactList}\small\item\em Pozostały czas przetwarzania (w sekundach). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_station_state_snapshot_ae8b6d52b0f89b39a3064c63748867b8d}{prepared\+Meat\+Servings}}
+\begin{DoxyCompactList}\small\item\em Liczba przygotowanych porcji mięsa na stacji. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_station_state_snapshot_af33cba142d574e6fa89a1bc7ba337f10}{has\+Lavash}}
+\begin{DoxyCompactList}\small\item\em Czy na stacji znajduje się lawasz. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_station_state_snapshot_a710163b4b9d840b09fd294661958b6e5}{assembly\+Count}}
+\begin{DoxyCompactList}\small\item\em Liczba składników w zestawie montażowym (assembly). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} \mbox{\hyperlink{struct_station_state_snapshot_ad15a43b490e2f1214702bc08dbb8e782}{station\+Item}}
+\begin{DoxyCompactList}\small\item\em Stan sieciowy przedmiotu znajdującego się na stacji. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{struct_station_state_snapshot_a42b7614a732ba2a64af64b379d106ac2}{assembly0\+Kind}}
+\begin{DoxyCompactList}\small\item\em Rodzaj składnika w slocie montażowym 0. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{struct_station_state_snapshot_ab41383b23ae1e4e443f53ef0b3731633}{assembly0\+State}}
+\begin{DoxyCompactList}\small\item\em Stan przetworzenia składnika w slocie montażowym 0. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{struct_station_state_snapshot_abcac1867a037efe033bfca95ecaab887}{assembly1\+Kind}}
+\begin{DoxyCompactList}\small\item\em Rodzaj składnika w slocie montażowym 1. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{struct_station_state_snapshot_a4bc9ace6fbcb5b06c46405db34f1c954}{assembly1\+State}}
+\begin{DoxyCompactList}\small\item\em Stan przetworzenia składnika w slocie montażowym 1. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{struct_station_state_snapshot_a440d5e8e75a76ba8fab0fe8b3a25a080}{assembly2\+Kind}}
+\begin{DoxyCompactList}\small\item\em Rodzaj składnika w slocie montażowym 2. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{struct_station_state_snapshot_a00bf89fd2809d1ded783106b6a6719ba}{assembly2\+State}}
+\begin{DoxyCompactList}\small\item\em Stan przetworzenia składnika w slocie montażowym 2. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{struct_station_state_snapshot_a54cb163bae47354c58cd329f5b273c3a}{assembly3\+Kind}}
+\begin{DoxyCompactList}\small\item\em Rodzaj składnika w slocie montażowym 3. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{struct_station_state_snapshot_a08ac653e98090f290a93f245908a15e0}{assembly3\+State}}
+\begin{DoxyCompactList}\small\item\em Stan przetworzenia składnika w slocie montażowym 3. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{struct_station_state_snapshot_a421b5f9826d6bc73229a6107dc111394}{assembly4\+Kind}}
+\begin{DoxyCompactList}\small\item\em Rodzaj składnika w slocie montażowym 4. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{struct_station_state_snapshot_acdf0dfc20e9dfe17372730974ba32a35}{assembly4\+State}}
+\begin{DoxyCompactList}\small\item\em Stan przetworzenia składnika w slocie montażowym 4. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{struct_station_state_snapshot_aa4df010f2c7b4e0cf610bc3ed5f57141}{assembly5\+Kind}}
+\begin{DoxyCompactList}\small\item\em Rodzaj składnika w slocie montażowym 5. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{struct_station_state_snapshot_a72c38ba47e8aeaab178b4ff83b6d9c42}{assembly5\+State}}
+\begin{DoxyCompactList}\small\item\em Stan przetworzenia składnika w slocie montażowym 5. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{struct_station_state_snapshot_acc15f87d7ea4a54bda8a30c371cc8827}{assembly6\+Kind}}
+\begin{DoxyCompactList}\small\item\em Rodzaj składnika w slocie montażowym 6. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{struct_station_state_snapshot_a053aeb2772b532ccad9f28dbca5c972a}{assembly6\+State}}
+\begin{DoxyCompactList}\small\item\em Stan przetworzenia składnika w slocie montażowym 6. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{struct_station_state_snapshot_a426ec1e3a28f89063c3ce26100fcec72}{assembly7\+Kind}}
+\begin{DoxyCompactList}\small\item\em Rodzaj składnika w slocie montażowym 7. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{struct_station_state_snapshot_af29eb0a7ee687f5db76dcd493e54613a}{assembly7\+State}}
+\begin{DoxyCompactList}\small\item\em Stan przetworzenia składnika w slocie montażowym 7. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Struktura przechowująca migawkę stanu stacji kuchennej do przesyłania przez sieć. 
+
+Implementuje Unity.\+Netcode.\+INetwork\+Serializable do serializacji binarnej. Zawiera informacje o stanie przetwarzania, przedmiocie na stacji, obecności lawasza, przygotowanych porcjach mięsa oraz do 8 składnikach w zestawie montażowym (assembly). Serializacja składników montażowych jest optymalizowana — przesyłane są tylko te sloty, które są w użyciu (na podstawie \doxylink{struct_station_state_snapshot_a710163b4b9d840b09fd294661958b6e5}{assembly\+Count}). 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{struct_station_state_snapshot_af6adf10d812aa800ca2df64c14004dcd}\index{StationStateSnapshot@{StationStateSnapshot}!GetAssemblySlot@{GetAssemblySlot}}
+\index{GetAssemblySlot@{GetAssemblySlot}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{GetAssemblySlot()}{GetAssemblySlot()}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_af6adf10d812aa800ca2df64c14004dcd} 
+void Station\+State\+Snapshot.\+Get\+Assembly\+Slot (\begin{DoxyParamCaption}\item[{int}]{index}{, }\item[{out \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{, }\item[{out \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pobiera rodzaj i stan przetworzenia składnika z określonego slotu montażowego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em index} & Indeks slotu (0-\/7).\\
+\hline
+{\em kind} & Wynikowy rodzaj składnika.\\
+\hline
+{\em state} & Wynikowy stan przetworzenia składnika.\\
+\hline
+\end{DoxyParams}
+
+
+Dla indeksów spoza zakresu 0-\/7 zwraca wartości domyślne\+: \doxylink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f}{Ingredient\+Kind.\+Meat} i \doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}{Ingredient\+Process\+State.\+Raw}. \Hypertarget{struct_station_state_snapshot_ab6384842cf10eab647af1bacf239b02e}\index{StationStateSnapshot@{StationStateSnapshot}!NetworkSerialize$<$ T $>$@{NetworkSerialize$<$ T $>$}}
+\index{NetworkSerialize$<$ T $>$@{NetworkSerialize$<$ T $>$}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{NetworkSerialize$<$ T $>$()}{NetworkSerialize< T >()}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_ab6384842cf10eab647af1bacf239b02e} 
+void Station\+State\+Snapshot.\+Network\+Serialize$<$ T $>$ (\begin{DoxyParamCaption}\item[{Unity.\+Netcode.\+Buffer\+Serializer$<$ T $>$}]{serializer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Serializuje lub deserializuje dane migawki przez bufor sieciowy. 
+
+
+\begin{DoxyTemplParams}{Parametry Szablonu}
+{\em T} & Typ implementujący Unity.\+Netcode.\+IReader\+Writer.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parametry}
+{\em serializer} & Serializer bufora sieciowego.\\
+\hline
+\end{DoxyParams}
+
+
+Optymalizuje transfer danych — sloty montażowe są serializowane tylko do wartości \doxylink{struct_station_state_snapshot_a710163b4b9d840b09fd294661958b6e5}{assembly\+Count} (maksymalnie 8), co zmniejsza rozmiar pakietu sieciowego. \begin{Desc}
+\item[Ograniczenia typów]\begin{description}
+\item[{\em T} : {\em Unity.\+Netcode.\+IReader\+Writer}]\end{description}
+\end{Desc}
+\Hypertarget{struct_station_state_snapshot_a16510c56eed1859ac844433996ea3516}\index{StationStateSnapshot@{StationStateSnapshot}!SetAssemblySlot@{SetAssemblySlot}}
+\index{SetAssemblySlot@{SetAssemblySlot}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{SetAssemblySlot()}{SetAssemblySlot()}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a16510c56eed1859ac844433996ea3516} 
+void Station\+State\+Snapshot.\+Set\+Assembly\+Slot (\begin{DoxyParamCaption}\item[{int}]{index}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia rodzaj i stan przetworzenia składnika w określonym slocie montażowym. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em index} & Indeks slotu (0-\/7).\\
+\hline
+{\em kind} & Rodzaj składnika do ustawienia.\\
+\hline
+{\em state} & Stan przetworzenia składnika do ustawienia.\\
+\hline
+\end{DoxyParams}
+
+
+Indeksy spoza zakresu 0-\/7 są ignorowane. 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{struct_station_state_snapshot_a42b7614a732ba2a64af64b379d106ac2}\index{StationStateSnapshot@{StationStateSnapshot}!assembly0Kind@{assembly0Kind}}
+\index{assembly0Kind@{assembly0Kind}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly0Kind}{assembly0Kind}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a42b7614a732ba2a64af64b379d106ac2} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Station\+State\+Snapshot.\+assembly0\+Kind}
+
+
+
+Rodzaj składnika w slocie montażowym 0. 
+
+\Hypertarget{struct_station_state_snapshot_ab41383b23ae1e4e443f53ef0b3731633}\index{StationStateSnapshot@{StationStateSnapshot}!assembly0State@{assembly0State}}
+\index{assembly0State@{assembly0State}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly0State}{assembly0State}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_ab41383b23ae1e4e443f53ef0b3731633} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Station\+State\+Snapshot.\+assembly0\+State}
+
+
+
+Stan przetworzenia składnika w slocie montażowym 0. 
+
+\Hypertarget{struct_station_state_snapshot_abcac1867a037efe033bfca95ecaab887}\index{StationStateSnapshot@{StationStateSnapshot}!assembly1Kind@{assembly1Kind}}
+\index{assembly1Kind@{assembly1Kind}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly1Kind}{assembly1Kind}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_abcac1867a037efe033bfca95ecaab887} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Station\+State\+Snapshot.\+assembly1\+Kind}
+
+
+
+Rodzaj składnika w slocie montażowym 1. 
+
+\Hypertarget{struct_station_state_snapshot_a4bc9ace6fbcb5b06c46405db34f1c954}\index{StationStateSnapshot@{StationStateSnapshot}!assembly1State@{assembly1State}}
+\index{assembly1State@{assembly1State}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly1State}{assembly1State}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a4bc9ace6fbcb5b06c46405db34f1c954} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Station\+State\+Snapshot.\+assembly1\+State}
+
+
+
+Stan przetworzenia składnika w slocie montażowym 1. 
+
+\Hypertarget{struct_station_state_snapshot_a440d5e8e75a76ba8fab0fe8b3a25a080}\index{StationStateSnapshot@{StationStateSnapshot}!assembly2Kind@{assembly2Kind}}
+\index{assembly2Kind@{assembly2Kind}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly2Kind}{assembly2Kind}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a440d5e8e75a76ba8fab0fe8b3a25a080} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Station\+State\+Snapshot.\+assembly2\+Kind}
+
+
+
+Rodzaj składnika w slocie montażowym 2. 
+
+\Hypertarget{struct_station_state_snapshot_a00bf89fd2809d1ded783106b6a6719ba}\index{StationStateSnapshot@{StationStateSnapshot}!assembly2State@{assembly2State}}
+\index{assembly2State@{assembly2State}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly2State}{assembly2State}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a00bf89fd2809d1ded783106b6a6719ba} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Station\+State\+Snapshot.\+assembly2\+State}
+
+
+
+Stan przetworzenia składnika w slocie montażowym 2. 
+
+\Hypertarget{struct_station_state_snapshot_a54cb163bae47354c58cd329f5b273c3a}\index{StationStateSnapshot@{StationStateSnapshot}!assembly3Kind@{assembly3Kind}}
+\index{assembly3Kind@{assembly3Kind}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly3Kind}{assembly3Kind}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a54cb163bae47354c58cd329f5b273c3a} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Station\+State\+Snapshot.\+assembly3\+Kind}
+
+
+
+Rodzaj składnika w slocie montażowym 3. 
+
+\Hypertarget{struct_station_state_snapshot_a08ac653e98090f290a93f245908a15e0}\index{StationStateSnapshot@{StationStateSnapshot}!assembly3State@{assembly3State}}
+\index{assembly3State@{assembly3State}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly3State}{assembly3State}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a08ac653e98090f290a93f245908a15e0} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Station\+State\+Snapshot.\+assembly3\+State}
+
+
+
+Stan przetworzenia składnika w slocie montażowym 3. 
+
+\Hypertarget{struct_station_state_snapshot_a421b5f9826d6bc73229a6107dc111394}\index{StationStateSnapshot@{StationStateSnapshot}!assembly4Kind@{assembly4Kind}}
+\index{assembly4Kind@{assembly4Kind}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly4Kind}{assembly4Kind}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a421b5f9826d6bc73229a6107dc111394} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Station\+State\+Snapshot.\+assembly4\+Kind}
+
+
+
+Rodzaj składnika w slocie montażowym 4. 
+
+\Hypertarget{struct_station_state_snapshot_acdf0dfc20e9dfe17372730974ba32a35}\index{StationStateSnapshot@{StationStateSnapshot}!assembly4State@{assembly4State}}
+\index{assembly4State@{assembly4State}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly4State}{assembly4State}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_acdf0dfc20e9dfe17372730974ba32a35} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Station\+State\+Snapshot.\+assembly4\+State}
+
+
+
+Stan przetworzenia składnika w slocie montażowym 4. 
+
+\Hypertarget{struct_station_state_snapshot_aa4df010f2c7b4e0cf610bc3ed5f57141}\index{StationStateSnapshot@{StationStateSnapshot}!assembly5Kind@{assembly5Kind}}
+\index{assembly5Kind@{assembly5Kind}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly5Kind}{assembly5Kind}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_aa4df010f2c7b4e0cf610bc3ed5f57141} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Station\+State\+Snapshot.\+assembly5\+Kind}
+
+
+
+Rodzaj składnika w slocie montażowym 5. 
+
+\Hypertarget{struct_station_state_snapshot_a72c38ba47e8aeaab178b4ff83b6d9c42}\index{StationStateSnapshot@{StationStateSnapshot}!assembly5State@{assembly5State}}
+\index{assembly5State@{assembly5State}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly5State}{assembly5State}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a72c38ba47e8aeaab178b4ff83b6d9c42} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Station\+State\+Snapshot.\+assembly5\+State}
+
+
+
+Stan przetworzenia składnika w slocie montażowym 5. 
+
+\Hypertarget{struct_station_state_snapshot_acc15f87d7ea4a54bda8a30c371cc8827}\index{StationStateSnapshot@{StationStateSnapshot}!assembly6Kind@{assembly6Kind}}
+\index{assembly6Kind@{assembly6Kind}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly6Kind}{assembly6Kind}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_acc15f87d7ea4a54bda8a30c371cc8827} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Station\+State\+Snapshot.\+assembly6\+Kind}
+
+
+
+Rodzaj składnika w slocie montażowym 6. 
+
+\Hypertarget{struct_station_state_snapshot_a053aeb2772b532ccad9f28dbca5c972a}\index{StationStateSnapshot@{StationStateSnapshot}!assembly6State@{assembly6State}}
+\index{assembly6State@{assembly6State}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly6State}{assembly6State}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a053aeb2772b532ccad9f28dbca5c972a} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Station\+State\+Snapshot.\+assembly6\+State}
+
+
+
+Stan przetworzenia składnika w slocie montażowym 6. 
+
+\Hypertarget{struct_station_state_snapshot_a426ec1e3a28f89063c3ce26100fcec72}\index{StationStateSnapshot@{StationStateSnapshot}!assembly7Kind@{assembly7Kind}}
+\index{assembly7Kind@{assembly7Kind}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly7Kind}{assembly7Kind}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a426ec1e3a28f89063c3ce26100fcec72} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Station\+State\+Snapshot.\+assembly7\+Kind}
+
+
+
+Rodzaj składnika w slocie montażowym 7. 
+
+\Hypertarget{struct_station_state_snapshot_af29eb0a7ee687f5db76dcd493e54613a}\index{StationStateSnapshot@{StationStateSnapshot}!assembly7State@{assembly7State}}
+\index{assembly7State@{assembly7State}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assembly7State}{assembly7State}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_af29eb0a7ee687f5db76dcd493e54613a} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Station\+State\+Snapshot.\+assembly7\+State}
+
+
+
+Stan przetworzenia składnika w slocie montażowym 7. 
+
+\Hypertarget{struct_station_state_snapshot_a710163b4b9d840b09fd294661958b6e5}\index{StationStateSnapshot@{StationStateSnapshot}!assemblyCount@{assemblyCount}}
+\index{assemblyCount@{assemblyCount}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{assemblyCount}{assemblyCount}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a710163b4b9d840b09fd294661958b6e5} 
+int Station\+State\+Snapshot.\+assembly\+Count}
+
+
+
+Liczba składników w zestawie montażowym (assembly). 
+
+\Hypertarget{struct_station_state_snapshot_af33cba142d574e6fa89a1bc7ba337f10}\index{StationStateSnapshot@{StationStateSnapshot}!hasLavash@{hasLavash}}
+\index{hasLavash@{hasLavash}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{hasLavash}{hasLavash}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_af33cba142d574e6fa89a1bc7ba337f10} 
+bool Station\+State\+Snapshot.\+has\+Lavash}
+
+
+
+Czy na stacji znajduje się lawasz. 
+
+\Hypertarget{struct_station_state_snapshot_a9c82164c50ea041f61cd0c53b3636b63}\index{StationStateSnapshot@{StationStateSnapshot}!isProcessing@{isProcessing}}
+\index{isProcessing@{isProcessing}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{isProcessing}{isProcessing}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a9c82164c50ea041f61cd0c53b3636b63} 
+bool Station\+State\+Snapshot.\+is\+Processing}
+
+
+
+Czy stacja aktualnie przetwarza składnik. 
+
+\Hypertarget{struct_station_state_snapshot_ae8b6d52b0f89b39a3064c63748867b8d}\index{StationStateSnapshot@{StationStateSnapshot}!preparedMeatServings@{preparedMeatServings}}
+\index{preparedMeatServings@{preparedMeatServings}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{preparedMeatServings}{preparedMeatServings}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_ae8b6d52b0f89b39a3064c63748867b8d} 
+int Station\+State\+Snapshot.\+prepared\+Meat\+Servings}
+
+
+
+Liczba przygotowanych porcji mięsa na stacji. 
+
+\Hypertarget{struct_station_state_snapshot_a73a9a52d53bf8aeae5ccddb7572dbe09}\index{StationStateSnapshot@{StationStateSnapshot}!remainingProcessTime@{remainingProcessTime}}
+\index{remainingProcessTime@{remainingProcessTime}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{remainingProcessTime}{remainingProcessTime}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a73a9a52d53bf8aeae5ccddb7572dbe09} 
+float Station\+State\+Snapshot.\+remaining\+Process\+Time}
+
+
+
+Pozostały czas przetwarzania (w sekundach). 
+
+\Hypertarget{struct_station_state_snapshot_a6bf110eed339196270e76c94e5f770b2}\index{StationStateSnapshot@{StationStateSnapshot}!stationIndex@{stationIndex}}
+\index{stationIndex@{stationIndex}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{stationIndex}{stationIndex}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_a6bf110eed339196270e76c94e5f770b2} 
+int Station\+State\+Snapshot.\+station\+Index}
+
+
+
+Indeks stacji kuchennej, do której należy ta migawka. 
+
+\Hypertarget{struct_station_state_snapshot_ad15a43b490e2f1214702bc08dbb8e782}\index{StationStateSnapshot@{StationStateSnapshot}!stationItem@{stationItem}}
+\index{stationItem@{stationItem}!StationStateSnapshot@{StationStateSnapshot}}
+\doxysubsubsection{\texorpdfstring{stationItem}{stationItem}}
+{\footnotesize\ttfamily \label{struct_station_state_snapshot_ad15a43b490e2f1214702bc08dbb8e782} 
+\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} Station\+State\+Snapshot.\+station\+Item}
+
+
+
+Stan sieciowy przedmiotu znajdującego się na stacji. 
+
+
+
+Dokumentacja dla tej struktury została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_network_kitchen_station_8cs}{Network\+Kitchen\+Station.\+cs}}\end{DoxyCompactItemize}

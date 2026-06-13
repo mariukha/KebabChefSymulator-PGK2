@@ -1,25 +1,90 @@
+/// \file SimplePlayerController.cs
+/// \brief Plik zawierający klasę SimplePlayerController odpowiedzialną za ruch i sterowanie kamerą gracza.
+/// \details Implementuje prosty kontroler pierwszoosobowy z obsługą ruchu za pomocą klawiatury,
+/// obrotu kamery za pomocą myszy, grawitacji oraz blokowania wejścia podczas otwartych menu.
+
 using UnityEngine;
 
+/// <summary>
+/// Prosty kontroler ruchu gracza w trybie pierwszoosobowym.
+/// Obsługuje poruszanie się postaci za pomocą klawiszy WASD, obrót kamery za pomocą myszy,
+/// grawitację, blokowanie/odblokowywanie kursora oraz przełączanie trybu okna (F11).
+/// Blokuje sterowanie, gdy otwarte jest menu główne, sklep, lobby, pauza lub ustawienia.
+/// </summary>
 public class SimplePlayerController : MonoBehaviour
 {
+    /// <summary>
+    /// Wysokość oczu gracza nad poziomem podłoża (w jednostkach Unity).
+    /// Określa pozycję kamery względem postaci.
+    /// </summary>
     private const float EyeHeight = 1.75f;
 
+    /// <summary>
+    /// Prędkość poruszania się gracza (w jednostkach Unity na sekundę).
+    /// </summary>
     [Header("Ustawienia ruchu")]
     public float speed = 4.5f;
+
+    /// <summary>
+    /// Czułość myszy wpływająca na szybkość obrotu kamery.
+    /// Wartość jest pobierana z <see cref="GameSettingsManager"/> podczas startu.
+    /// </summary>
     public float sensitivity = 2.0f;
+
+    /// <summary>
+    /// Przyspieszenie grawitacyjne stosowane do gracza (ujemna wartość oznacza kierunek w dół).
+    /// </summary>
     public float gravity = -20f;
 
+    /// <summary>
+    /// Kamera gracza używana do widoku pierwszoosobowego i obrotu.
+    /// </summary>
     [Header("Referencje")]
     public Camera playerCamera;
 
+    /// <summary>
+    /// Komponent CharacterController używany do fizycznego poruszania postaci z obsługą kolizji.
+    /// </summary>
     private CharacterController characterController;
+
+    /// <summary>
+    /// Bieżący kąt obrotu kamery w osi X (pochylenie w górę/dół).
+    /// Wartość jest ograniczana do zakresu [-85°, 85°], aby zapobiec odwróceniu kamery.
+    /// </summary>
     private float rotationX;
+
+    /// <summary>
+    /// Bieżąca prędkość pionowa gracza, uwzględniająca grawitację.
+    /// </summary>
     private float verticalVelocity;
+
+    /// <summary>
+    /// Flaga określająca, czy ustawiono początkowy cel patrzenia przed inicjalizacją.
+    /// </summary>
     private bool hasInitialLookTarget;
+
+    /// <summary>
+    /// Pozycja w świecie, na którą gracz powinien patrzeć przy starcie.
+    /// Używana, gdy cel patrzenia jest ustawiany przed wywołaniem Start().
+    /// </summary>
     private Vector3 initialLookTarget;
+
+    /// <summary>
+    /// Zbuforowana referencja do interfejsu sklepu, aby uniknąć wielokrotnego wyszukiwania.
+    /// </summary>
     private ShopUI cachedShopUI;
+
+    /// <summary>
+    /// Zbuforowana referencja do interfejsu lobby, aby uniknąć wielokrotnego wyszukiwania.
+    /// </summary>
     private LobbyUI cachedLobbyUI;
 
+    /// <summary>
+    /// Inicjalizuje CharacterController w metodzie Awake.
+    /// Jeśli komponent nie jest obecny, tworzy go z domyślnymi parametrami
+    /// (wysokość 1.8, środek na 0.9, promień 0.35).
+    /// Konfiguruje także wysokość kroku i limit nachylenia terenu.
+    /// </summary>
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -35,6 +100,11 @@ public class SimplePlayerController : MonoBehaviour
         characterController.slopeLimit = 45f;
     }
 
+    /// <summary>
+    /// Inicjalizacja gracza przy starcie sceny.
+    /// Blokuje i ukrywa kursor, ładuje czułość myszy z ustawień gry,
+    /// ustawia kamerę na wysokości oczu i opcjonalnie kieruje widok na cel początkowy.
+    /// </summary>
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -63,12 +133,22 @@ public class SimplePlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ustawia początkowy cel patrzenia, który zostanie zastosowany w metodzie Start().
+    /// Używane, gdy cel patrzenia musi być określony przed inicjalizacją kontrolera.
+    /// </summary>
+    /// <param name="worldTarget">Pozycja w świecie, na którą gracz powinien patrzeć.</param>
     public void SetInitialLookTarget(Vector3 worldTarget)
     {
         initialLookTarget = worldTarget;
         hasInitialLookTarget = true;
     }
 
+    /// <summary>
+    /// Natychmiast kieruje wzrok gracza na wskazany punkt w świecie.
+    /// Obraca postać w osi Y, aby patrzeć w kierunku celu, i ustawia pochylenie kamery w osi X.
+    /// </summary>
+    /// <param name="worldTarget">Pozycja w świecie, na którą gracz powinien skierować wzrok.</param>
     public void SetLookAt(Vector3 worldTarget)
     {
         if (playerCamera == null)
@@ -99,6 +179,12 @@ public class SimplePlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Główna pętla aktualizacji wywoływana co klatkę.
+    /// Sprawdza, czy interfejsy użytkownika blokują sterowanie (sklep, lobby, menu, pauza, ustawienia).
+    /// Jeśli sterowanie nie jest zablokowane, obsługuje ruch i obrót kamery.
+    /// Obsługuje również klawisz Escape (blokada/odblokowanie kursora) i F11 (przełączanie trybu okna).
+    /// </summary>
     private void Update()
     {
         if (cachedShopUI == null)
@@ -138,6 +224,11 @@ public class SimplePlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Obsługuje ruch gracza na podstawie wejścia z klawiatury (osie Vertical i Horizontal).
+    /// Stosuje normalizację wektora ruchu, grawitację oraz porusza postać za pomocą CharacterController.
+    /// Resetuje prędkość pionową do małej ujemnej wartości, gdy gracz stoi na ziemi.
+    /// </summary>
     private void HandleMovement()
     {
         float moveForward = Input.GetAxisRaw("Vertical");
@@ -157,6 +248,12 @@ public class SimplePlayerController : MonoBehaviour
         characterController.Move(move * speed * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Obsługuje obrót kamery i postaci na podstawie ruchu myszy.
+    /// Obraca postać wokół osi Y (lewo/prawo) i kamerę wokół osi X (góra/dół).
+    /// Pochylenie kamery jest ograniczone do zakresu [-85°, 85°].
+    /// Obrót jest aktywny tylko gdy kursor jest zablokowany.
+    /// </summary>
     private void HandleRotation()
     {
         if (playerCamera == null || Cursor.lockState != CursorLockMode.Locked)
@@ -174,6 +271,12 @@ public class SimplePlayerController : MonoBehaviour
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
     }
 
+    /// <summary>
+    /// Normalizuje kąt do zakresu [-180°, 180°].
+    /// Używane do konwersji kątów Eulera, które mogą wykraczać poza standardowy zakres.
+    /// </summary>
+    /// <param name="angle">Kąt do znormalizowania w stopniach.</param>
+    /// <returns>Znormalizowany kąt w zakresie [-180°, 180°].</returns>
     private float NormalizeAngle(float angle)
     {
         while (angle > 180f)

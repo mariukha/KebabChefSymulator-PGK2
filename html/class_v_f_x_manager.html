@@ -1,0 +1,1855 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy VFXManager</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="class_v_f_x_manager-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy VFXManager</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Centralny menedżer efektów wizualnych (VFX) w symulatorze szefa kuchni kebabowej. Implementuje wzorzec Singleton, zapewniając jedną globalną instancję dostępną z dowolnego miejsca.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla VFXManager</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_v_f_x_manager.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a81152d56f03254b681c9312ced5d353a" id="r_a81152d56f03254b681c9312ced5d353a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81152d56f03254b681c9312ced5d353a">PlaySteamEffect</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:a81152d56f03254b681c9312ced5d353a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt pary wodnej w podanej pozycji na świecie. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza efekt do wszystkich klientów.  <br /></td></tr>
+<tr class="separator:a81152d56f03254b681c9312ced5d353a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0283bec5f510e595acc77f1e0db09d15" id="r_a0283bec5f510e595acc77f1e0db09d15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0283bec5f510e595acc77f1e0db09d15">StopSteamEffect</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:a0283bec5f510e595acc77f1e0db09d15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zatrzymuje efekt pary wodnej w podanej pozycji na świecie. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza zatrzymanie do wszystkich klientów.  <br /></td></tr>
+<tr class="separator:a0283bec5f510e595acc77f1e0db09d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0101a9f77832cedfa96c93dcffdfa4a6" id="r_a0101a9f77832cedfa96c93dcffdfa4a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0101a9f77832cedfa96c93dcffdfa4a6">PlayDonerSmokeEffect</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:a0101a9f77832cedfa96c93dcffdfa4a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dymu z grilla kebabowego (doner) w podanej pozycji. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza efekt do wszystkich klientów.  <br /></td></tr>
+<tr class="separator:a0101a9f77832cedfa96c93dcffdfa4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aa3f3379483bcc164d92a2761df8fff" id="r_a3aa3f3379483bcc164d92a2761df8fff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3aa3f3379483bcc164d92a2761df8fff">StopDonerSmokeEffect</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:a3aa3f3379483bcc164d92a2761df8fff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zatrzymuje efekt dymu z grilla kebabowego (doner) w podanej pozycji. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza zatrzymanie do wszystkich klientów.  <br /></td></tr>
+<tr class="separator:a3aa3f3379483bcc164d92a2761df8fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c78f2d59441d17a975e8c1d9814022f" id="r_a4c78f2d59441d17a975e8c1d9814022f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c78f2d59441d17a975e8c1d9814022f">PlayChopEffect</a> (Vector3 worldPosition, Color ingredientColor)</td></tr>
+<tr class="memdesc:a4c78f2d59441d17a975e8c1d9814022f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt krojenia składnika w podanej pozycji z kolorystyką składnika. Generuje odłamki i błysk noża. Rozgłasza efekt sieciowo, jeśli jest serwerem.  <br /></td></tr>
+<tr class="separator:a4c78f2d59441d17a975e8c1d9814022f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e2db75acf4748d6e875b117b5f14c3c" id="r_a4e2db75acf4748d6e875b117b5f14c3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e2db75acf4748d6e875b117b5f14c3c">PlayPickupEffect</a> (Vector3 worldPosition, Color tint)</td></tr>
+<tr class="memdesc:a4e2db75acf4748d6e875b117b5f14c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt podnoszenia przedmiotu z zabarwieniem odpowiadającym kolorowi przedmiotu. Rozgłasza efekt sieciowo, jeśli jest serwerem.  <br /></td></tr>
+<tr class="separator:a4e2db75acf4748d6e875b117b5f14c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a699c511b17c4a92e0c50e3eb6209d6a6" id="r_a699c511b17c4a92e0c50e3eb6209d6a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a699c511b17c4a92e0c50e3eb6209d6a6">PlayDropEffect</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:a699c511b17c4a92e0c50e3eb6209d6a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt upuszczenia przedmiotu (chmurka kurzu) w podanej pozycji. Rozgłasza efekt sieciowo, jeśli jest serwerem.  <br /></td></tr>
+<tr class="separator:a699c511b17c4a92e0c50e3eb6209d6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a389445e6f2cb4a44a92f0dce371c721b" id="r_a389445e6f2cb4a44a92f0dce371c721b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a389445e6f2cb4a44a92f0dce371c721b">PlayReadyEffect</a> (Vector3 worldPosition, Color tint)</td></tr>
+<tr class="memdesc:a389445e6f2cb4a44a92f0dce371c721b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt gotowości potrawy (iskry i blask) z zabarwieniem koloru. Rozgłasza efekt sieciowo, jeśli jest serwerem.  <br /></td></tr>
+<tr class="separator:a389445e6f2cb4a44a92f0dce371c721b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adba2172f6b23e6db661ad33b245014ca" id="r_adba2172f6b23e6db661ad33b245014ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adba2172f6b23e6db661ad33b245014ca">PlayWrapEffect</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:adba2172f6b23e6db661ad33b245014ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt zawijania kebaba (wirujące cząsteczki w ciepłych odcieniach). Rozgłasza efekt sieciowo, jeśli jest serwerem.  <br /></td></tr>
+<tr class="separator:adba2172f6b23e6db661ad33b245014ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3041571eb2860743639f2a9f852b66c" id="r_aa3041571eb2860743639f2a9f852b66c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3041571eb2860743639f2a9f852b66c">PlayUpgradeEffect</a> (Vector3 worldPosition, Color accent)</td></tr>
+<tr class="memdesc:aa3041571eb2860743639f2a9f852b66c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt ulepszenia stacji roboczej (eksplozja złotych iskier). Rozgłasza efekt sieciowo, jeśli jest serwerem.  <br /></td></tr>
+<tr class="separator:aa3041571eb2860743639f2a9f852b66c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2d4fd8681b70df01e0e627d4e944365" id="r_ab2d4fd8681b70df01e0e627d4e944365"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2d4fd8681b70df01e0e627d4e944365">PlayMoneyEffect</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:ab2d4fd8681b70df01e0e627d4e944365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt zarobienia pieniędzy (złote, unoszące się cząsteczki). Rozgłasza efekt sieciowo, jeśli jest serwerem.  <br /></td></tr>
+<tr class="separator:ab2d4fd8681b70df01e0e627d4e944365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99859707eac32afa3aac03812eb577c0" id="r_a99859707eac32afa3aac03812eb577c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99859707eac32afa3aac03812eb577c0">PlayDeliverySuccessEffect</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:a99859707eac32afa3aac03812eb577c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt udanego dostarczenia zamówienia (zielone iskry w kształcie sfery). Rozgłasza efekt sieciowo, jeśli jest serwerem.  <br /></td></tr>
+<tr class="separator:a99859707eac32afa3aac03812eb577c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a661cc91120beeff5be87685431dd048b" id="r_a661cc91120beeff5be87685431dd048b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a661cc91120beeff5be87685431dd048b">PlayDeliveryFailEffect</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:a661cc91120beeff5be87685431dd048b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt nieudanego dostarczenia zamówienia (czerwone cząsteczki opadające). Rozgłasza efekt sieciowo, jeśli jest serwerem.  <br /></td></tr>
+<tr class="separator:a661cc91120beeff5be87685431dd048b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3be961ff2ea3ce017f84fc55ca0cba5" id="r_ad3be961ff2ea3ce017f84fc55ca0cba5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3be961ff2ea3ce017f84fc55ca0cba5">PlayTimeoutEffect</a> ()</td></tr>
+<tr class="memdesc:ad3be961ff2ea3ce017f84fc55ca0cba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt upływu czasu (timeout) — efekt nieudanego dostarczenia wyświetlany przed kamerą. Rozgłasza efekt sieciowo, jeśli jest serwerem.  <br /></td></tr>
+<tr class="separator:ad3be961ff2ea3ce017f84fc55ca0cba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0920cbd053446853523b4e43207ffea7" id="r_a0920cbd053446853523b4e43207ffea7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0920cbd053446853523b4e43207ffea7">PlaySteamEffectLocal</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:a0920cbd053446853523b4e43207ffea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt pary wodnej lokalnie (bez rozgłaszania sieciowego). Tworzy system cząsteczkowy symulujący unoszącą się parę z naczynia — cząsteczki powoli wznoszą się do góry, rozrastając się i zanikając.  <br /></td></tr>
+<tr class="separator:a0920cbd053446853523b4e43207ffea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac45849c3ba54463883b4aeb7a778ea4" id="r_aac45849c3ba54463883b4aeb7a778ea4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac45849c3ba54463883b4aeb7a778ea4">StopSteamEffectLocal</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:aac45849c3ba54463883b4aeb7a778ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zatrzymuje efekt pary wodnej lokalnie w pobliżu podanej pozycji. Wyszukuje aktywne systemy cząsteczkowe o nazwie "VFX_Steam" w promieniu 2 jednostek.  <br /></td></tr>
+<tr class="separator:aac45849c3ba54463883b4aeb7a778ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adba4a0e2bd794919e4a23788d68c425e" id="r_adba4a0e2bd794919e4a23788d68c425e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adba4a0e2bd794919e4a23788d68c425e">PlayDonerSmokeEffectLocal</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:adba4a0e2bd794919e4a23788d68c425e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dymu z grilla kebabowego (doner) lokalnie. Tworzy dwa systemy cząsteczkowe: główny ciemny dym oraz delikatną mgłę tłuszczową, które razem symulują realistyczny dym unoszący się z obracającego się mięsa.  <br /></td></tr>
+<tr class="separator:adba4a0e2bd794919e4a23788d68c425e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39f1fdf4954ca868c51ecb1ce3728f2b" id="r_a39f1fdf4954ca868c51ecb1ce3728f2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39f1fdf4954ca868c51ecb1ce3728f2b">StopDonerSmokeEffectLocal</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:a39f1fdf4954ca868c51ecb1ce3728f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zatrzymuje efekt dymu z donera lokalnie w pobliżu podanej pozycji. Wyszukuje i zatrzymuje zarówno główny dym ("VFX_DonerSmoke"), jak i mgłę tłuszczową ("VFX_DonerOilyVapor").  <br /></td></tr>
+<tr class="separator:a39f1fdf4954ca868c51ecb1ce3728f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a174fc12dfc4dbe70a6685ffef0da31" id="r_a6a174fc12dfc4dbe70a6685ffef0da31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a174fc12dfc4dbe70a6685ffef0da31">PlayChopEffectLocal</a> (Vector3 worldPosition, Color ingredientColor)</td></tr>
+<tr class="memdesc:a6a174fc12dfc4dbe70a6685ffef0da31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt krojenia składnika lokalnie. Tworzy dwa systemy cząsteczkowe: odłamki krojonego składnika (zabarwione kolorem składnika) oraz krótki błysk noża (jasny, szybko zanikający).  <br /></td></tr>
+<tr class="separator:a6a174fc12dfc4dbe70a6685ffef0da31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4eaafc525c64555ccbc16603174909d" id="r_ab4eaafc525c64555ccbc16603174909d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4eaafc525c64555ccbc16603174909d">PlayPickupEffectLocal</a> (Vector3 worldPosition, Color tint)</td></tr>
+<tr class="memdesc:ab4eaafc525c64555ccbc16603174909d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt podnoszenia przedmiotu lokalnie. Tworzy jednorazowy system cząsteczkowy z delikatnymi, unoszącymi się w górę cząsteczkami zabarwionymi kolorem podniesionego przedmiotu.  <br /></td></tr>
+<tr class="separator:ab4eaafc525c64555ccbc16603174909d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeecdb00a9506b6479c6faee283e8d9fb" id="r_aeecdb00a9506b6479c6faee283e8d9fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeecdb00a9506b6479c6faee283e8d9fb">PlayDropEffectLocal</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:aeecdb00a9506b6479c6faee283e8d9fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt upuszczenia przedmiotu lokalnie. Tworzy jednorazowy system cząsteczkowy symulujący chmurę kurzu unoszącą się z miejsca upadku.  <br /></td></tr>
+<tr class="separator:aeecdb00a9506b6479c6faee283e8d9fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a657cb55ba4781e02946942397a05fe36" id="r_a657cb55ba4781e02946942397a05fe36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a657cb55ba4781e02946942397a05fe36">PlayReadyEffectLocal</a> (Vector3 worldPosition, Color tint)</td></tr>
+<tr class="memdesc:a657cb55ba4781e02946942397a05fe36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt gotowości potrawy lokalnie. Tworzy system cząsteczkowy z unoszącymi się iskrami w ciepłych, złoto-zielonych odcieniach, sygnalizujący graczowi, że potrawa jest gotowa do wydania.  <br /></td></tr>
+<tr class="separator:a657cb55ba4781e02946942397a05fe36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ac94be1a5167935dc75b5cf85658042" id="r_a4ac94be1a5167935dc75b5cf85658042"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ac94be1a5167935dc75b5cf85658042">PlayWrapEffectLocal</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:a4ac94be1a5167935dc75b5cf85658042"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt zawijania kebaba lokalnie. Tworzy system cząsteczkowy z wirującymi cząsteczkami w ciepłych, brązowo-złotych odcieniach, unoszącymi się delikatnie w górę — wizualizuje proces zawijania kebaba w tortillę.  <br /></td></tr>
+<tr class="separator:a4ac94be1a5167935dc75b5cf85658042"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c7c29a61356c12bb4f8e8c1f6a5b7d0" id="r_a3c7c29a61356c12bb4f8e8c1f6a5b7d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c7c29a61356c12bb4f8e8c1f6a5b7d0">PlayUpgradeEffectLocal</a> (Vector3 worldPosition, Color accent)</td></tr>
+<tr class="memdesc:a3c7c29a61356c12bb4f8e8c1f6a5b7d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt ulepszenia stacji roboczej lokalnie. Tworzy system cząsteczkowy z dużą liczbą złotych iskier eksplodujących ze sfery, unoszących się w górę z szumem — efektowna wizualizacja zakupu ulepszenia.  <br /></td></tr>
+<tr class="separator:a3c7c29a61356c12bb4f8e8c1f6a5b7d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4a19271537050cd870b51a565a6ab2a" id="r_ad4a19271537050cd870b51a565a6ab2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4a19271537050cd870b51a565a6ab2a">PlayMoneyEffectLocal</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:ad4a19271537050cd870b51a565a6ab2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt zarobienia pieniędzy lokalnie. Tworzy system cząsteczkowy z unoszącymi się złotymi iskrami — wizualizacja zarobku gracza, np. po dostarczeniu zamówienia.  <br /></td></tr>
+<tr class="separator:ad4a19271537050cd870b51a565a6ab2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ab5942db4d0a4aa6f6dbe712239dd57" id="r_a5ab5942db4d0a4aa6f6dbe712239dd57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ab5942db4d0a4aa6f6dbe712239dd57">PlayDeliverySuccessEffectLocal</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:a5ab5942db4d0a4aa6f6dbe712239dd57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt udanego dostarczenia zamówienia lokalnie. Tworzy system cząsteczkowy z zielonymi iskrami eksplodującymi ze sfery — pozytywna wizualizacja poprawnie zrealizowanego zamówienia klienta.  <br /></td></tr>
+<tr class="separator:a5ab5942db4d0a4aa6f6dbe712239dd57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2b1de9e564badab8337c1db65a66eac" id="r_aa2b1de9e564badab8337c1db65a66eac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2b1de9e564badab8337c1db65a66eac">PlayDeliveryFailEffectLocal</a> (Vector3 worldPosition)</td></tr>
+<tr class="memdesc:aa2b1de9e564badab8337c1db65a66eac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt nieudanego dostarczenia zamówienia lokalnie. Tworzy system cząsteczkowy z czerwonymi cząsteczkami opadającymi w dół — negatywna wizualizacja błędnie zrealizowanego zamówienia klienta.  <br /></td></tr>
+<tr class="separator:aa2b1de9e564badab8337c1db65a66eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37fb460a7d3970328e1ffa77005d86cd" id="r_a37fb460a7d3970328e1ffa77005d86cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37fb460a7d3970328e1ffa77005d86cd">PlayTimeoutEffectLocal</a> ()</td></tr>
+<tr class="memdesc:a37fb460a7d3970328e1ffa77005d86cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt upływu czasu (timeout) lokalnie. Wyświetla efekt nieudanego dostarczenia w pozycji przed kamerą gracza, sygnalizując, że czas na realizację zamówienia upłynął.  <br /></td></tr>
+<tr class="separator:a37fb460a7d3970328e1ffa77005d86cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c1774874bbd409117f57346814e9394" id="r_a8c1774874bbd409117f57346814e9394"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c1774874bbd409117f57346814e9394">GetCameraFacingPosition</a> (float distance=2.0f, float verticalOffset=-0.1f)</td></tr>
+<tr class="memdesc:a8c1774874bbd409117f57346814e9394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oblicza pozycję w przestrzeni świata znajdującą się przed główną kamerą. Używana do wyświetlania efektów wizualnych w polu widzenia gracza.  <br /></td></tr>
+<tr class="separator:a8c1774874bbd409117f57346814e9394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:a730262c013cba85ea06bd3a7c39e82f7" id="r_a730262c013cba85ea06bd3a7c39e82f7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_v_f_x_manager.html">VFXManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a730262c013cba85ea06bd3a7c39e82f7">Instance</a><code> [get, private set]</code></td></tr>
+<tr class="memdesc:a730262c013cba85ea06bd3a7c39e82f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statyczna instancja Singletona klasy <a class="el" href="class_v_f_x_manager.html" title="Centralny menedżer efektów wizualnych (VFX) w symulatorze szefa kuchni kebabowej. Implementuje wzorze...">VFXManager</a>. Umożliwia globalny dostęp do menedżera efektów wizualnych.  <br /></td></tr>
+<tr class="separator:a730262c013cba85ea06bd3a7c39e82f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:a2145d9370921d149a80bbbd611815ab2" id="r_a2145d9370921d149a80bbbd611815ab2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2145d9370921d149a80bbbd611815ab2">Awake</a> ()</td></tr>
+<tr class="memdesc:a2145d9370921d149a80bbbd611815ab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton — ustawia instancję lub niszczy duplikat.  <br /></td></tr>
+<tr class="separator:a2145d9370921d149a80bbbd611815ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad089a21363311efc9053c3693a9ac883" id="r_ad089a21363311efc9053c3693a9ac883"><td class="memItemLeft" align="right" valign="top">ParticleSystem&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad089a21363311efc9053c3693a9ac883">CreateParticleSystem</a> (string effectName, Vector3 worldPosition)</td></tr>
+<tr class="memdesc:ad089a21363311efc9053c3693a9ac883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy nowy obiekt gry z systemem cząsteczkowym używając standardowego materiału cząsteczkowego.  <br /></td></tr>
+<tr class="separator:ad089a21363311efc9053c3693a9ac883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2adfd00745a44f9a4d0f5c4afba850bd" id="r_a2adfd00745a44f9a4d0f5c4afba850bd"><td class="memItemLeft" align="right" valign="top">ParticleSystem&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2adfd00745a44f9a4d0f5c4afba850bd">CreateParticleSystem</a> (string effectName, Vector3 worldPosition, bool useSmokeMaterial)</td></tr>
+<tr class="memdesc:a2adfd00745a44f9a4d0f5c4afba850bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy nowy obiekt gry z systemem cząsteczkowym i przypisuje odpowiedni materiał. System jest tworzony w stanie zatrzymanym z wyzerowaną emisją — wymaga dalszej konfiguracji.  <br /></td></tr>
+<tr class="separator:a2adfd00745a44f9a4d0f5c4afba850bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a218abde17667829a14b9ae471c50bfac" id="r_a218abde17667829a14b9ae471c50bfac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a218abde17667829a14b9ae471c50bfac">ConfigureBurst</a> (ParticleSystem ps, short minCount, short maxCount)</td></tr>
+<tr class="memdesc:a218abde17667829a14b9ae471c50bfac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konfiguruje jednorazową emisję cząsteczek (burst) dla podanego systemu cząsteczkowego. Wyłącza ciągłą emisję i ustawia pojedynczy burst z losową liczbą cząsteczek w zadanym zakresie.  <br /></td></tr>
+<tr class="separator:a218abde17667829a14b9ae471c50bfac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4a737340f514c5c08be1dce01e15990" id="r_ac4a737340f514c5c08be1dce01e15990"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4a737340f514c5c08be1dce01e15990">ApplyColorGradient</a> (ParticleSystem ps, Color start, Color end, float startAlpha, float midAlpha, float endAlpha)</td></tr>
+<tr class="memdesc:ac4a737340f514c5c08be1dce01e15990"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stosuje gradient koloru i przezroczystości do systemu cząsteczkowego w trakcie ich życia. Tworzy trójpunktowy gradient koloru (początek, środek, koniec) i trójpunktowy gradient przezroczystości.  <br /></td></tr>
+<tr class="separator:ac4a737340f514c5c08be1dce01e15990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8e3534b5a7d3f98fb564e2c11172d36" id="r_ae8e3534b5a7d3f98fb564e2c11172d36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8e3534b5a7d3f98fb564e2c11172d36">ApplySizeCurve</a> (ParticleSystem ps, params Keyframe[] keys)</td></tr>
+<tr class="memdesc:ae8e3534b5a7d3f98fb564e2c11172d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stosuje krzywą rozmiaru do systemu cząsteczkowego w trakcie ich życia. Pozwala na płynną zmianę rozmiaru cząsteczek w czasie — np. powiększanie i zmniejszanie.  <br /></td></tr>
+<tr class="separator:ae8e3534b5a7d3f98fb564e2c11172d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a576f299186e2e069e9f09e47bddd5936" id="r_a576f299186e2e069e9f09e47bddd5936"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a576f299186e2e069e9f09e47bddd5936">ApplyNoise</a> (ParticleSystem ps, float strength, float frequency)</td></tr>
+<tr class="memdesc:a576f299186e2e069e9f09e47bddd5936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stosuje moduł szumu (noise) do systemu cząsteczkowego, dodając organiczny, losowy ruch cząsteczkom.  <br /></td></tr>
+<tr class="separator:a576f299186e2e069e9f09e47bddd5936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d1411a79761d0367cff74302e27cd66" id="r_a2d1411a79761d0367cff74302e27cd66"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d1411a79761d0367cff74302e27cd66">WithAlpha</a> (Color color, float alpha)</td></tr>
+<tr class="memdesc:a2d1411a79761d0367cff74302e27cd66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy kopię koloru z nową wartością przezroczystości (kanał alfa). Metoda pomocnicza używana do ustawiania przezroczystości kolorów cząsteczek.  <br /></td></tr>
+<tr class="separator:a2d1411a79761d0367cff74302e27cd66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a436c5adf82e221b9ec5669387a75a6c3" id="r_a436c5adf82e221b9ec5669387a75a6c3"><td class="memItemLeft" align="right" valign="top">Material&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a436c5adf82e221b9ec5669387a75a6c3">CreateParticleMaterial</a> ()</td></tr>
+<tr class="memdesc:a436c5adf82e221b9ec5669387a75a6c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy lub zwraca buforowany materiał dla standardowych efektów cząsteczkowych. Próbuje użyć shadera "Particles/Standard Unlit", a w przypadku jego braku wybiera alternatywne shadery (URP, Legacy, Standard).  <br /></td></tr>
+<tr class="separator:a436c5adf82e221b9ec5669387a75a6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a241f15c54de39867769d580f5a957ba4" id="r_a241f15c54de39867769d580f5a957ba4"><td class="memItemLeft" align="right" valign="top">Material&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a241f15c54de39867769d580f5a957ba4">CreateSmokeMaterial</a> ()</td></tr>
+<tr class="memdesc:a241f15c54de39867769d580f5a957ba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy lub zwraca buforowany materiał do efektów dymnych. Używa trybu mieszania alfa (alpha blended) zamiast addytywnego, co daje bardziej realistyczny wygląd dymu.  <br /></td></tr>
+<tr class="separator:a241f15c54de39867769d580f5a957ba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cda6cc7affdbac780aad3142c1d1067" id="r_a7cda6cc7affdbac780aad3142c1d1067"><td class="memItemLeft" align="right" valign="top">Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cda6cc7affdbac780aad3142c1d1067">CreateSoftParticleTexture</a> ()</td></tr>
+<tr class="memdesc:a7cda6cc7affdbac780aad3142c1d1067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy lub zwraca buforowaną proceduralną teksturę miękkich cząsteczek. Generuje okrągłą teksturę 64x64 pikseli z gładkim radialnym gradientem alfa — jasne białe centrum zanikające do pełnej przezroczystości na krawędziach.  <br /></td></tr>
+<tr class="separator:a7cda6cc7affdbac780aad3142c1d1067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09e12dc5f1f203020bd54523838c232f" id="r_a09e12dc5f1f203020bd54523838c232f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09e12dc5f1f203020bd54523838c232f">StopEffectNear</a> (string effectName, Vector3 position, float maxDistance)</td></tr>
+<tr class="memdesc:a09e12dc5f1f203020bd54523838c232f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyszukuje i zatrzymuje wszystkie aktywne systemy cząsteczkowe o podanej nazwie znajdujące się w określonym promieniu od podanej pozycji. Zatrzymane systemy są niszczone po 2 sekundach (czas na zanikanie istniejących cząsteczek).  <br /></td></tr>
+<tr class="separator:a09e12dc5f1f203020bd54523838c232f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27000dee351fed9fb6866b1bfc8c19fe" id="r_a27000dee351fed9fb6866b1bfc8c19fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27000dee351fed9fb6866b1bfc8c19fe">OnDestroy</a> ()</td></tr>
+<tr class="memdesc:a27000dee351fed9fb6866b1bfc8c19fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda Unity wywoływana przy niszczeniu obiektu. Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników.  <br /></td></tr>
+<tr class="separator:a27000dee351fed9fb6866b1bfc8c19fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a13e1b791178ee2258f5c0382b75ef062" id="r_a13e1b791178ee2258f5c0382b75ef062"><td class="memItemLeft" align="right" valign="top">Material&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13e1b791178ee2258f5c0382b75ef062">cachedParticleMaterial</a></td></tr>
+<tr class="memdesc:a13e1b791178ee2258f5c0382b75ef062"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowany materiał używany przez standardowe efekty cząsteczkowe. Tworzony przy pierwszym użyciu i ponownie wykorzystywany w celu oszczędności pamięci.  <br /></td></tr>
+<tr class="separator:a13e1b791178ee2258f5c0382b75ef062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8021b28e1a34cb723febaa7149a1b596" id="r_a8021b28e1a34cb723febaa7149a1b596"><td class="memItemLeft" align="right" valign="top">Material&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8021b28e1a34cb723febaa7149a1b596">cachedSmokeMaterial</a></td></tr>
+<tr class="memdesc:a8021b28e1a34cb723febaa7149a1b596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowany materiał używany przez efekty dymne (np. dym z donera). Wykorzystuje tryb mieszania alfa zamiast addytywnego, co daje bardziej realistyczny dym.  <br /></td></tr>
+<tr class="separator:a8021b28e1a34cb723febaa7149a1b596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fb54494415314f23cce7a13044e3ded" id="r_a8fb54494415314f23cce7a13044e3ded"><td class="memItemLeft" align="right" valign="top">Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fb54494415314f23cce7a13044e3ded">cachedParticleTexture</a></td></tr>
+<tr class="memdesc:a8fb54494415314f23cce7a13044e3ded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowana tekstura proceduralna dla miękkich cząsteczek. Generowana raz przy pierwszym użyciu — okrągły gradient z gładkim zanikaniem krawędzi.  <br /></td></tr>
+<tr class="separator:a8fb54494415314f23cce7a13044e3ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Centralny menedżer efektów wizualnych (VFX) w symulatorze szefa kuchni kebabowej. Implementuje wzorzec Singleton, zapewniając jedną globalną instancję dostępną z dowolnego miejsca. </p>
+<p>Klasa tworzy systemy cząsteczkowe proceduralnie w czasie wykonania (bez prefabrykatów), generując materiały i tekstury programowo. Każdy efekt publiczny automatycznie rozgłasza zdarzenie przez sieć (jeśli działa jako serwer), a następnie odtwarza efekt lokalnie. Metody z sufiksem "Local" służą do bezpośredniego odtwarzania efektu na bieżącym kliencie. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ac4a737340f514c5c08be1dce01e15990" name="ac4a737340f514c5c08be1dce01e15990"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4a737340f514c5c08be1dce01e15990">&#9670;&#160;</a></span>ApplyColorGradient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.ApplyColorGradient </td>
+          <td>(</td>
+          <td class="paramtype">ParticleSystem</td>          <td class="paramname"><span class="paramname"><em>ps</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>end</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>startAlpha</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>midAlpha</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>endAlpha</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stosuje gradient koloru i przezroczystości do systemu cząsteczkowego w trakcie ich życia. Tworzy trójpunktowy gradient koloru (początek, środek, koniec) i trójpunktowy gradient przezroczystości. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>System cząsteczkowy, do którego stosowany jest gradient.</td></tr>
+    <tr><td class="paramname">start</td><td>Kolor początkowy cząsteczki (przy narodzinach).</td></tr>
+    <tr><td class="paramname">end</td><td>Kolor końcowy cząsteczki (przy śmierci).</td></tr>
+    <tr><td class="paramname">startAlpha</td><td>Przezroczystość początkowa (0 = pełna przezroczystość, 1 = pełna nieprzezroczystość).</td></tr>
+    <tr><td class="paramname">midAlpha</td><td>Przezroczystość w połowie czasu życia cząsteczki.</td></tr>
+    <tr><td class="paramname">endAlpha</td><td>Przezroczystość końcowa cząsteczki.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a576f299186e2e069e9f09e47bddd5936" name="a576f299186e2e069e9f09e47bddd5936"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a576f299186e2e069e9f09e47bddd5936">&#9670;&#160;</a></span>ApplyNoise()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.ApplyNoise </td>
+          <td>(</td>
+          <td class="paramtype">ParticleSystem</td>          <td class="paramname"><span class="paramname"><em>ps</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>strength</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>frequency</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stosuje moduł szumu (noise) do systemu cząsteczkowego, dodając organiczny, losowy ruch cząsteczkom. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>System cząsteczkowy, do którego stosowany jest szum.</td></tr>
+    <tr><td class="paramname">strength</td><td>Siła wpływu szumu na ruch cząsteczek.</td></tr>
+    <tr><td class="paramname">frequency</td><td>Częstotliwość szumu — wyższe wartości tworzą bardziej chaotyczny ruch.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae8e3534b5a7d3f98fb564e2c11172d36" name="ae8e3534b5a7d3f98fb564e2c11172d36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8e3534b5a7d3f98fb564e2c11172d36">&#9670;&#160;</a></span>ApplySizeCurve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.ApplySizeCurve </td>
+          <td>(</td>
+          <td class="paramtype">ParticleSystem</td>          <td class="paramname"><span class="paramname"><em>ps</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">params Keyframe[]</td>          <td class="paramname"><span class="paramname"><em>keys</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stosuje krzywą rozmiaru do systemu cząsteczkowego w trakcie ich życia. Pozwala na płynną zmianę rozmiaru cząsteczek w czasie — np. powiększanie i zmniejszanie. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>System cząsteczkowy, do którego stosowana jest krzywa rozmiaru.</td></tr>
+    <tr><td class="paramname">keys</td><td>Tablica klatek kluczowych krzywej animacji rozmiaru (czas 0-1, wartość mnożnika).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2145d9370921d149a80bbbd611815ab2" name="a2145d9370921d149a80bbbd611815ab2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2145d9370921d149a80bbbd611815ab2">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton — ustawia instancję lub niszczy duplikat. </p>
+
+</div>
+</div>
+<a id="a218abde17667829a14b9ae471c50bfac" name="a218abde17667829a14b9ae471c50bfac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a218abde17667829a14b9ae471c50bfac">&#9670;&#160;</a></span>ConfigureBurst()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.ConfigureBurst </td>
+          <td>(</td>
+          <td class="paramtype">ParticleSystem</td>          <td class="paramname"><span class="paramname"><em>ps</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short</td>          <td class="paramname"><span class="paramname"><em>minCount</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short</td>          <td class="paramname"><span class="paramname"><em>maxCount</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Konfiguruje jednorazową emisję cząsteczek (burst) dla podanego systemu cząsteczkowego. Wyłącza ciągłą emisję i ustawia pojedynczy burst z losową liczbą cząsteczek w zadanym zakresie. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>System cząsteczkowy, dla którego konfigurowany jest burst.</td></tr>
+    <tr><td class="paramname">minCount</td><td>Minimalna liczba cząsteczek emitowanych w jednym burście.</td></tr>
+    <tr><td class="paramname">maxCount</td><td>Maksymalna liczba cząsteczek emitowanych w jednym burście.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a436c5adf82e221b9ec5669387a75a6c3" name="a436c5adf82e221b9ec5669387a75a6c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a436c5adf82e221b9ec5669387a75a6c3">&#9670;&#160;</a></span>CreateParticleMaterial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Material VFXManager.CreateParticleMaterial </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy lub zwraca buforowany materiał dla standardowych efektów cząsteczkowych. Próbuje użyć shadera "Particles/Standard Unlit", a w przypadku jego braku wybiera alternatywne shadery (URP, Legacy, Standard). </p>
+<p>Materiał jest konfigurowany z proceduralną teksturą miękkich cząsteczek, trybem powierzchni transparentnej i addytywnym trybem mieszania. Kolejka renderowania ustawiona na 3100. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Buforowany materiał cząsteczkowy gotowy do użycia.</dd></dl>
+
+</div>
+</div>
+<a id="ad089a21363311efc9053c3693a9ac883" name="ad089a21363311efc9053c3693a9ac883"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad089a21363311efc9053c3693a9ac883">&#9670;&#160;</a></span>CreateParticleSystem() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ParticleSystem VFXManager.CreateParticleSystem </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>effectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy nowy obiekt gry z systemem cząsteczkowym używając standardowego materiału cząsteczkowego. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">effectName</td><td>Nazwa obiektu gry dla systemu cząsteczkowego (używana do identyfikacji i wyszukiwania).</td></tr>
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której zostanie umieszczony system cząsteczkowy.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Skonfigurowany komponent ParticleSystem gotowy do dalszej konfiguracji i odtworzenia.</dd></dl>
+
+</div>
+</div>
+<a id="a2adfd00745a44f9a4d0f5c4afba850bd" name="a2adfd00745a44f9a4d0f5c4afba850bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2adfd00745a44f9a4d0f5c4afba850bd">&#9670;&#160;</a></span>CreateParticleSystem() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ParticleSystem VFXManager.CreateParticleSystem </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>effectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>useSmokeMaterial</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy nowy obiekt gry z systemem cząsteczkowym i przypisuje odpowiedni materiał. System jest tworzony w stanie zatrzymanym z wyzerowaną emisją — wymaga dalszej konfiguracji. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">effectName</td><td>Nazwa obiektu gry dla systemu cząsteczkowego (używana do identyfikacji i wyszukiwania).</td></tr>
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której zostanie umieszczony system cząsteczkowy.</td></tr>
+    <tr><td class="paramname">useSmokeMaterial</td><td>Jeśli <code>true</code>, używa materiału dymnego (alpha blend); w przeciwnym razie używa standardowego materiału cząsteczkowego (addytywnego).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Skonfigurowany komponent ParticleSystem gotowy do dalszej konfiguracji i odtworzenia.</dd></dl>
+
+</div>
+</div>
+<a id="a241f15c54de39867769d580f5a957ba4" name="a241f15c54de39867769d580f5a957ba4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a241f15c54de39867769d580f5a957ba4">&#9670;&#160;</a></span>CreateSmokeMaterial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Material VFXManager.CreateSmokeMaterial </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy lub zwraca buforowany materiał do efektów dymnych. Używa trybu mieszania alfa (alpha blended) zamiast addytywnego, co daje bardziej realistyczny wygląd dymu. </p>
+<p>Kolejka renderowania ustawiona na 3000 (niższa niż standardowy materiał cząsteczkowy), dzięki czemu dym renderuje się za innymi efektami cząsteczkowymi. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Buforowany materiał dymny gotowy do użycia.</dd></dl>
+
+</div>
+</div>
+<a id="a7cda6cc7affdbac780aad3142c1d1067" name="a7cda6cc7affdbac780aad3142c1d1067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cda6cc7affdbac780aad3142c1d1067">&#9670;&#160;</a></span>CreateSoftParticleTexture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Texture2D VFXManager.CreateSoftParticleTexture </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy lub zwraca buforowaną proceduralną teksturę miękkich cząsteczek. Generuje okrągłą teksturę 64x64 pikseli z gładkim radialnym gradientem alfa — jasne białe centrum zanikające do pełnej przezroczystości na krawędziach. </p>
+<p>Tekstura używa kwadratowego zanikania alfa (alpha*alpha) po zastosowaniu SmoothStep, co daje bardzo miękkie, naturalne krawędzie cząsteczek bez ostrych artefaktów. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Buforowana tekstura cząsteczkowa 64x64.</dd></dl>
+
+</div>
+</div>
+<a id="a8c1774874bbd409117f57346814e9394" name="a8c1774874bbd409117f57346814e9394"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c1774874bbd409117f57346814e9394">&#9670;&#160;</a></span>GetCameraFacingPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 VFXManager.GetCameraFacingPosition </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>distance</em></span><span class="paramdefsep"> = </span><span class="paramdefval">2::0f</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>verticalOffset</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-0::1f</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oblicza pozycję w przestrzeni świata znajdującą się przed główną kamerą. Używana do wyświetlania efektów wizualnych w polu widzenia gracza. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">distance</td><td>Odległość od kamery do pozycji efektu (domyślnie 2.0).</td></tr>
+    <tr><td class="paramname">verticalOffset</td><td>Pionowe przesunięcie pozycji efektu (domyślnie -0.1 — lekko poniżej środka).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Pozycja w przestrzeni świata przed kamerą. Jeśli kamera nie istnieje, zwraca Vector3.up.</dd></dl>
+
+</div>
+</div>
+<a id="a27000dee351fed9fb6866b1bfc8c19fe" name="a27000dee351fed9fb6866b1bfc8c19fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27000dee351fed9fb6866b1bfc8c19fe">&#9670;&#160;</a></span>OnDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.OnDestroy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda Unity wywoływana przy niszczeniu obiektu. Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników. </p>
+
+</div>
+</div>
+<a id="a4c78f2d59441d17a975e8c1d9814022f" name="a4c78f2d59441d17a975e8c1d9814022f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c78f2d59441d17a975e8c1d9814022f">&#9670;&#160;</a></span>PlayChopEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayChopEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>ingredientColor</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt krojenia składnika w podanej pozycji z kolorystyką składnika. Generuje odłamki i błysk noża. Rozgłasza efekt sieciowo, jeśli jest serwerem. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której ma się pojawić efekt krojenia.</td></tr>
+    <tr><td class="paramname">ingredientColor</td><td>Kolor krojonego składnika, używany do zabarwienia odłamków.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6a174fc12dfc4dbe70a6685ffef0da31" name="a6a174fc12dfc4dbe70a6685ffef0da31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a174fc12dfc4dbe70a6685ffef0da31">&#9670;&#160;</a></span>PlayChopEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayChopEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>ingredientColor</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt krojenia składnika lokalnie. Tworzy dwa systemy cząsteczkowe: odłamki krojonego składnika (zabarwione kolorem składnika) oraz krótki błysk noża (jasny, szybko zanikający). </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której następuje krojenie.</td></tr>
+    <tr><td class="paramname">ingredientColor</td><td>Kolor krojonego składnika używany do zabarwienia odłamków.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a661cc91120beeff5be87685431dd048b" name="a661cc91120beeff5be87685431dd048b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a661cc91120beeff5be87685431dd048b">&#9670;&#160;</a></span>PlayDeliveryFailEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayDeliveryFailEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt nieudanego dostarczenia zamówienia (czerwone cząsteczki opadające). Rozgłasza efekt sieciowo, jeśli jest serwerem. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której nastąpiło nieudane dostarczenie.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa2b1de9e564badab8337c1db65a66eac" name="aa2b1de9e564badab8337c1db65a66eac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2b1de9e564badab8337c1db65a66eac">&#9670;&#160;</a></span>PlayDeliveryFailEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayDeliveryFailEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt nieudanego dostarczenia zamówienia lokalnie. Tworzy system cząsteczkowy z czerwonymi cząsteczkami opadającymi w dół — negatywna wizualizacja błędnie zrealizowanego zamówienia klienta. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której nastąpiło nieudane dostarczenie.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a99859707eac32afa3aac03812eb577c0" name="a99859707eac32afa3aac03812eb577c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99859707eac32afa3aac03812eb577c0">&#9670;&#160;</a></span>PlayDeliverySuccessEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayDeliverySuccessEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt udanego dostarczenia zamówienia (zielone iskry w kształcie sfery). Rozgłasza efekt sieciowo, jeśli jest serwerem. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której nastąpiło udane dostarczenie.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5ab5942db4d0a4aa6f6dbe712239dd57" name="a5ab5942db4d0a4aa6f6dbe712239dd57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ab5942db4d0a4aa6f6dbe712239dd57">&#9670;&#160;</a></span>PlayDeliverySuccessEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayDeliverySuccessEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt udanego dostarczenia zamówienia lokalnie. Tworzy system cząsteczkowy z zielonymi iskrami eksplodującymi ze sfery — pozytywna wizualizacja poprawnie zrealizowanego zamówienia klienta. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której nastąpiło udane dostarczenie.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0101a9f77832cedfa96c93dcffdfa4a6" name="a0101a9f77832cedfa96c93dcffdfa4a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0101a9f77832cedfa96c93dcffdfa4a6">&#9670;&#160;</a></span>PlayDonerSmokeEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayDonerSmokeEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dymu z grilla kebabowego (doner) w podanej pozycji. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza efekt do wszystkich klientów. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której ma się pojawić dym z donera.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adba4a0e2bd794919e4a23788d68c425e" name="adba4a0e2bd794919e4a23788d68c425e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adba4a0e2bd794919e4a23788d68c425e">&#9670;&#160;</a></span>PlayDonerSmokeEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayDonerSmokeEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dymu z grilla kebabowego (doner) lokalnie. Tworzy dwa systemy cząsteczkowe: główny ciemny dym oraz delikatną mgłę tłuszczową, które razem symulują realistyczny dym unoszący się z obracającego się mięsa. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata donera. Efekt jest przesunięty 1.08 jednostki w górę.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a699c511b17c4a92e0c50e3eb6209d6a6" name="a699c511b17c4a92e0c50e3eb6209d6a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a699c511b17c4a92e0c50e3eb6209d6a6">&#9670;&#160;</a></span>PlayDropEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayDropEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt upuszczenia przedmiotu (chmurka kurzu) w podanej pozycji. Rozgłasza efekt sieciowo, jeśli jest serwerem. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której gracz upuszcza przedmiot.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aeecdb00a9506b6479c6faee283e8d9fb" name="aeecdb00a9506b6479c6faee283e8d9fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeecdb00a9506b6479c6faee283e8d9fb">&#9670;&#160;</a></span>PlayDropEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayDropEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt upuszczenia przedmiotu lokalnie. Tworzy jednorazowy system cząsteczkowy symulujący chmurę kurzu unoszącą się z miejsca upadku. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której przedmiot jest upuszczany.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab2d4fd8681b70df01e0e627d4e944365" name="ab2d4fd8681b70df01e0e627d4e944365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2d4fd8681b70df01e0e627d4e944365">&#9670;&#160;</a></span>PlayMoneyEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayMoneyEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt zarobienia pieniędzy (złote, unoszące się cząsteczki). Rozgłasza efekt sieciowo, jeśli jest serwerem. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której gracz zarabia pieniądze.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad4a19271537050cd870b51a565a6ab2a" name="ad4a19271537050cd870b51a565a6ab2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4a19271537050cd870b51a565a6ab2a">&#9670;&#160;</a></span>PlayMoneyEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayMoneyEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt zarobienia pieniędzy lokalnie. Tworzy system cząsteczkowy z unoszącymi się złotymi iskrami — wizualizacja zarobku gracza, np. po dostarczeniu zamówienia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której gracz zarabia pieniądze.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4e2db75acf4748d6e875b117b5f14c3c" name="a4e2db75acf4748d6e875b117b5f14c3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e2db75acf4748d6e875b117b5f14c3c">&#9670;&#160;</a></span>PlayPickupEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayPickupEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>tint</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt podnoszenia przedmiotu z zabarwieniem odpowiadającym kolorowi przedmiotu. Rozgłasza efekt sieciowo, jeśli jest serwerem. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której gracz podnosi przedmiot.</td></tr>
+    <tr><td class="paramname">tint</td><td>Odcień koloru efektu, dopasowany do podnoszonego przedmiotu.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab4eaafc525c64555ccbc16603174909d" name="ab4eaafc525c64555ccbc16603174909d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4eaafc525c64555ccbc16603174909d">&#9670;&#160;</a></span>PlayPickupEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayPickupEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>tint</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt podnoszenia przedmiotu lokalnie. Tworzy jednorazowy system cząsteczkowy z delikatnymi, unoszącymi się w górę cząsteczkami zabarwionymi kolorem podniesionego przedmiotu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, z której gracz podnosi przedmiot.</td></tr>
+    <tr><td class="paramname">tint</td><td>Odcień koloru efektu, dopasowany do podnoszonego przedmiotu.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a389445e6f2cb4a44a92f0dce371c721b" name="a389445e6f2cb4a44a92f0dce371c721b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a389445e6f2cb4a44a92f0dce371c721b">&#9670;&#160;</a></span>PlayReadyEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayReadyEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>tint</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt gotowości potrawy (iskry i blask) z zabarwieniem koloru. Rozgłasza efekt sieciowo, jeśli jest serwerem. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której potrawa jest gotowa.</td></tr>
+    <tr><td class="paramname">tint</td><td>Odcień koloru efektu gotowości, dopasowany do typu potrawy.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a657cb55ba4781e02946942397a05fe36" name="a657cb55ba4781e02946942397a05fe36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a657cb55ba4781e02946942397a05fe36">&#9670;&#160;</a></span>PlayReadyEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayReadyEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>tint</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt gotowości potrawy lokalnie. Tworzy system cząsteczkowy z unoszącymi się iskrami w ciepłych, złoto-zielonych odcieniach, sygnalizujący graczowi, że potrawa jest gotowa do wydania. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której potrawa jest gotowa.</td></tr>
+    <tr><td class="paramname">tint</td><td>Odcień koloru efektu, dopasowany do typu gotowej potrawy.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a81152d56f03254b681c9312ced5d353a" name="a81152d56f03254b681c9312ced5d353a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81152d56f03254b681c9312ced5d353a">&#9670;&#160;</a></span>PlaySteamEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlaySteamEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt pary wodnej w podanej pozycji na świecie. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza efekt do wszystkich klientów. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której ma się pojawić efekt pary.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0920cbd053446853523b4e43207ffea7" name="a0920cbd053446853523b4e43207ffea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0920cbd053446853523b4e43207ffea7">&#9670;&#160;</a></span>PlaySteamEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlaySteamEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt pary wodnej lokalnie (bez rozgłaszania sieciowego). Tworzy system cząsteczkowy symulujący unoszącą się parę z naczynia — cząsteczki powoli wznoszą się do góry, rozrastając się i zanikając. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której ma się pojawić para. Efekt jest przesunięty 1.25 jednostki w górę.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad3be961ff2ea3ce017f84fc55ca0cba5" name="ad3be961ff2ea3ce017f84fc55ca0cba5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3be961ff2ea3ce017f84fc55ca0cba5">&#9670;&#160;</a></span>PlayTimeoutEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayTimeoutEffect </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt upływu czasu (timeout) — efekt nieudanego dostarczenia wyświetlany przed kamerą. Rozgłasza efekt sieciowo, jeśli jest serwerem. </p>
+
+</div>
+</div>
+<a id="a37fb460a7d3970328e1ffa77005d86cd" name="a37fb460a7d3970328e1ffa77005d86cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37fb460a7d3970328e1ffa77005d86cd">&#9670;&#160;</a></span>PlayTimeoutEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayTimeoutEffectLocal </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt upływu czasu (timeout) lokalnie. Wyświetla efekt nieudanego dostarczenia w pozycji przed kamerą gracza, sygnalizując, że czas na realizację zamówienia upłynął. </p>
+
+</div>
+</div>
+<a id="aa3041571eb2860743639f2a9f852b66c" name="aa3041571eb2860743639f2a9f852b66c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3041571eb2860743639f2a9f852b66c">&#9670;&#160;</a></span>PlayUpgradeEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayUpgradeEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>accent</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt ulepszenia stacji roboczej (eksplozja złotych iskier). Rozgłasza efekt sieciowo, jeśli jest serwerem. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której następuje ulepszenie.</td></tr>
+    <tr><td class="paramname">accent</td><td>Kolor akcentu ulepszenia, wpływający na odcień cząsteczek.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3c7c29a61356c12bb4f8e8c1f6a5b7d0" name="a3c7c29a61356c12bb4f8e8c1f6a5b7d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c7c29a61356c12bb4f8e8c1f6a5b7d0">&#9670;&#160;</a></span>PlayUpgradeEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayUpgradeEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>accent</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt ulepszenia stacji roboczej lokalnie. Tworzy system cząsteczkowy z dużą liczbą złotych iskier eksplodujących ze sfery, unoszących się w górę z szumem — efektowna wizualizacja zakupu ulepszenia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której następuje ulepszenie.</td></tr>
+    <tr><td class="paramname">accent</td><td>Kolor akcentu ulepszenia, mieszany ze złotym odcieniem.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adba2172f6b23e6db661ad33b245014ca" name="adba2172f6b23e6db661ad33b245014ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adba2172f6b23e6db661ad33b245014ca">&#9670;&#160;</a></span>PlayWrapEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayWrapEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt zawijania kebaba (wirujące cząsteczki w ciepłych odcieniach). Rozgłasza efekt sieciowo, jeśli jest serwerem. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której następuje zawijanie kebaba.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4ac94be1a5167935dc75b5cf85658042" name="a4ac94be1a5167935dc75b5cf85658042"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ac94be1a5167935dc75b5cf85658042">&#9670;&#160;</a></span>PlayWrapEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.PlayWrapEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt zawijania kebaba lokalnie. Tworzy system cząsteczkowy z wirującymi cząsteczkami w ciepłych, brązowo-złotych odcieniach, unoszącymi się delikatnie w górę — wizualizuje proces zawijania kebaba w tortillę. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której następuje zawijanie kebaba.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3aa3f3379483bcc164d92a2761df8fff" name="a3aa3f3379483bcc164d92a2761df8fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aa3f3379483bcc164d92a2761df8fff">&#9670;&#160;</a></span>StopDonerSmokeEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.StopDonerSmokeEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zatrzymuje efekt dymu z grilla kebabowego (doner) w podanej pozycji. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza zatrzymanie do wszystkich klientów. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której należy zatrzymać dym z donera.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a39f1fdf4954ca868c51ecb1ce3728f2b" name="a39f1fdf4954ca868c51ecb1ce3728f2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39f1fdf4954ca868c51ecb1ce3728f2b">&#9670;&#160;</a></span>StopDonerSmokeEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.StopDonerSmokeEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zatrzymuje efekt dymu z donera lokalnie w pobliżu podanej pozycji. Wyszukuje i zatrzymuje zarówno główny dym ("VFX_DonerSmoke"), jak i mgłę tłuszczową ("VFX_DonerOilyVapor"). </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w pobliżu której należy zatrzymać efekty dymu.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a09e12dc5f1f203020bd54523838c232f" name="a09e12dc5f1f203020bd54523838c232f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09e12dc5f1f203020bd54523838c232f">&#9670;&#160;</a></span>StopEffectNear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.StopEffectNear </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>effectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxDistance</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyszukuje i zatrzymuje wszystkie aktywne systemy cząsteczkowe o podanej nazwie znajdujące się w określonym promieniu od podanej pozycji. Zatrzymane systemy są niszczone po 2 sekundach (czas na zanikanie istniejących cząsteczek). </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">effectName</td><td>Nazwa obiektu gry systemu cząsteczkowego do wyszukania.</td></tr>
+    <tr><td class="paramname">position</td><td>Pozycja w przestrzeni świata, od której mierzona jest odległość (z przesunięciem 1.25 w górę).</td></tr>
+    <tr><td class="paramname">maxDistance</td><td>Maksymalna odległość, w jakiej efekty zostaną zatrzymane.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0283bec5f510e595acc77f1e0db09d15" name="a0283bec5f510e595acc77f1e0db09d15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0283bec5f510e595acc77f1e0db09d15">&#9670;&#160;</a></span>StopSteamEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.StopSteamEffect </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zatrzymuje efekt pary wodnej w podanej pozycji na świecie. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza zatrzymanie do wszystkich klientów. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w której należy zatrzymać efekt pary.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aac45849c3ba54463883b4aeb7a778ea4" name="aac45849c3ba54463883b4aeb7a778ea4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac45849c3ba54463883b4aeb7a778ea4">&#9670;&#160;</a></span>StopSteamEffectLocal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VFXManager.StopSteamEffectLocal </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>worldPosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zatrzymuje efekt pary wodnej lokalnie w pobliżu podanej pozycji. Wyszukuje aktywne systemy cząsteczkowe o nazwie "VFX_Steam" w promieniu 2 jednostek. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">worldPosition</td><td>Pozycja w przestrzeni świata, w pobliżu której należy zatrzymać efekt pary.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2d1411a79761d0367cff74302e27cd66" name="a2d1411a79761d0367cff74302e27cd66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d1411a79761d0367cff74302e27cd66">&#9670;&#160;</a></span>WithAlpha()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color VFXManager.WithAlpha </td>
+          <td>(</td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>alpha</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy kopię koloru z nową wartością przezroczystości (kanał alfa). Metoda pomocnicza używana do ustawiania przezroczystości kolorów cząsteczek. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">color</td><td>Bazowy kolor, którego składowe RGB zostaną zachowane.</td></tr>
+    <tr><td class="paramname">alpha</td><td>Nowa wartość przezroczystości (0 = pełna przezroczystość, 1 = pełna nieprzezroczystość).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Nowy kolor z zachowanymi składowymi RGB i nową wartością alfa.</dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a13e1b791178ee2258f5c0382b75ef062" name="a13e1b791178ee2258f5c0382b75ef062"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13e1b791178ee2258f5c0382b75ef062">&#9670;&#160;</a></span>cachedParticleMaterial</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Material VFXManager.cachedParticleMaterial</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowany materiał używany przez standardowe efekty cząsteczkowe. Tworzony przy pierwszym użyciu i ponownie wykorzystywany w celu oszczędności pamięci. </p>
+
+</div>
+</div>
+<a id="a8fb54494415314f23cce7a13044e3ded" name="a8fb54494415314f23cce7a13044e3ded"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fb54494415314f23cce7a13044e3ded">&#9670;&#160;</a></span>cachedParticleTexture</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Texture2D VFXManager.cachedParticleTexture</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowana tekstura proceduralna dla miękkich cząsteczek. Generowana raz przy pierwszym użyciu — okrągły gradient z gładkim zanikaniem krawędzi. </p>
+
+</div>
+</div>
+<a id="a8021b28e1a34cb723febaa7149a1b596" name="a8021b28e1a34cb723febaa7149a1b596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8021b28e1a34cb723febaa7149a1b596">&#9670;&#160;</a></span>cachedSmokeMaterial</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Material VFXManager.cachedSmokeMaterial</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowany materiał używany przez efekty dymne (np. dym z donera). Wykorzystuje tryb mieszania alfa zamiast addytywnego, co daje bardziej realistyczny dym. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="a730262c013cba85ea06bd3a7c39e82f7" name="a730262c013cba85ea06bd3a7c39e82f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a730262c013cba85ea06bd3a7c39e82f7">&#9670;&#160;</a></span>Instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_v_f_x_manager.html">VFXManager</a> VFXManager.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Statyczna instancja Singletona klasy <a class="el" href="class_v_f_x_manager.html" title="Centralny menedżer efektów wizualnych (VFX) w symulatorze szefa kuchni kebabowej. Implementuje wzorze...">VFXManager</a>. Umożliwia globalny dostęp do menedżera efektów wizualnych. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_v_f_x_manager_8cs.html">VFXManager.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

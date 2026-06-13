@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy MenuButtonHover</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-attribs">Atrybuty publiczne</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="class_menu_button_hover-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy MenuButtonHover</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Komponent obsługujący płynne skalowanie przycisków menu przy najechaniu kursorem.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla MenuButtonHover</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_menu_button_hover.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:acad9b2f264b3998a3de9b664a2417bda" id="r_acad9b2f264b3998a3de9b664a2417bda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acad9b2f264b3998a3de9b664a2417bda">OnPointerEnter</a> (UnityEngine.EventSystems.PointerEventData e)</td></tr>
+<tr class="memdesc:acad9b2f264b3998a3de9b664a2417bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje zdarzenie wejścia kursora na przycisk — ustawia skalę docelową na powiększoną.  <br /></td></tr>
+<tr class="separator:acad9b2f264b3998a3de9b664a2417bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17bf05b42eec30a0dfbd0888a8e1d5ab" id="r_a17bf05b42eec30a0dfbd0888a8e1d5ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17bf05b42eec30a0dfbd0888a8e1d5ab">OnPointerExit</a> (UnityEngine.EventSystems.PointerEventData e)</td></tr>
+<tr class="memdesc:a17bf05b42eec30a0dfbd0888a8e1d5ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje zdarzenie wyjścia kursora z przycisku — ustawia skalę docelową na normalną.  <br /></td></tr>
+<tr class="separator:a17bf05b42eec30a0dfbd0888a8e1d5ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atrybuty publiczne</h2></td></tr>
+<tr class="memitem:a08f04a00c5536304b835805cc2c835bd" id="r_a08f04a00c5536304b835805cc2c835bd"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08f04a00c5536304b835805cc2c835bd">normalScale</a> = Vector3.one</td></tr>
+<tr class="memdesc:a08f04a00c5536304b835805cc2c835bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skala przycisku w stanie normalnym (bez najechania kursorem).  <br /></td></tr>
+<tr class="separator:a08f04a00c5536304b835805cc2c835bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9fca5b6cfb1277bc1b582d1bdc9c36a" id="r_ac9fca5b6cfb1277bc1b582d1bdc9c36a"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9fca5b6cfb1277bc1b582d1bdc9c36a">hoverScale</a> = new Vector3(1.03f, 1.03f, 1f)</td></tr>
+<tr class="memdesc:ac9fca5b6cfb1277bc1b582d1bdc9c36a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skala przycisku po najechaniu kursorem (lekkie powiększenie).  <br /></td></tr>
+<tr class="separator:ac9fca5b6cfb1277bc1b582d1bdc9c36a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:a2fd9756876171824eeeb72591d2cd8e6" id="r_a2fd9756876171824eeeb72591d2cd8e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fd9756876171824eeeb72591d2cd8e6">Awake</a> ()</td></tr>
+<tr class="memdesc:a2fd9756876171824eeeb72591d2cd8e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizuje komponent, pobierając RectTransform i ustawiając domyślną skalę docelową.  <br /></td></tr>
+<tr class="separator:a2fd9756876171824eeeb72591d2cd8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a350a2be525774cf15292a1d60c1f4538" id="r_a350a2be525774cf15292a1d60c1f4538"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a350a2be525774cf15292a1d60c1f4538">Update</a> ()</td></tr>
+<tr class="memdesc:a350a2be525774cf15292a1d60c1f4538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Animuje skalę przycisku w kierunku docelowej skali za pomocą interpolacji liniowej. Używa Time.unscaledDeltaTime, aby animacja działała nawet gdy gra jest wstrzymana.  <br /></td></tr>
+<tr class="separator:a350a2be525774cf15292a1d60c1f4538"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a9aa2743ca65d1800c70001975fbbdd58" id="r_a9aa2743ca65d1800c70001975fbbdd58"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9aa2743ca65d1800c70001975fbbdd58">targetScale</a></td></tr>
+<tr class="memdesc:a9aa2743ca65d1800c70001975fbbdd58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docelowa skala, do której animacja zmierza w bieżącej klatce.  <br /></td></tr>
+<tr class="separator:a9aa2743ca65d1800c70001975fbbdd58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d1ddef24262fa07fd88089be2a2f067" id="r_a5d1ddef24262fa07fd88089be2a2f067"><td class="memItemLeft" align="right" valign="top">RectTransform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d1ddef24262fa07fd88089be2a2f067">rect</a></td></tr>
+<tr class="memdesc:a5d1ddef24262fa07fd88089be2a2f067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowany RectTransform przycisku używany do animacji skalowania.  <br /></td></tr>
+<tr class="separator:a5d1ddef24262fa07fd88089be2a2f067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Komponent obsługujący płynne skalowanie przycisków menu przy najechaniu kursorem. </p>
+<p>Implementuje interfejsy IPointerEnterHandler i IPointerExitHandler, aby reagować na zdarzenia wejścia i wyjścia kursora. Animuje skalę przycisku za pomocą interpolacji liniowej (Lerp) niezależnie od Time.timeScale. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a2fd9756876171824eeeb72591d2cd8e6" name="a2fd9756876171824eeeb72591d2cd8e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fd9756876171824eeeb72591d2cd8e6">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuButtonHover.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicjalizuje komponent, pobierając RectTransform i ustawiając domyślną skalę docelową. </p>
+
+</div>
+</div>
+<a id="acad9b2f264b3998a3de9b664a2417bda" name="acad9b2f264b3998a3de9b664a2417bda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acad9b2f264b3998a3de9b664a2417bda">&#9670;&#160;</a></span>OnPointerEnter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuButtonHover.OnPointerEnter </td>
+          <td>(</td>
+          <td class="paramtype">UnityEngine.EventSystems.PointerEventData</td>          <td class="paramname"><span class="paramname"><em>e</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje zdarzenie wejścia kursora na przycisk — ustawia skalę docelową na powiększoną. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Dane zdarzenia wskaźnika.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a17bf05b42eec30a0dfbd0888a8e1d5ab" name="a17bf05b42eec30a0dfbd0888a8e1d5ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17bf05b42eec30a0dfbd0888a8e1d5ab">&#9670;&#160;</a></span>OnPointerExit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuButtonHover.OnPointerExit </td>
+          <td>(</td>
+          <td class="paramtype">UnityEngine.EventSystems.PointerEventData</td>          <td class="paramname"><span class="paramname"><em>e</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje zdarzenie wyjścia kursora z przycisku — ustawia skalę docelową na normalną. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Dane zdarzenia wskaźnika.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a350a2be525774cf15292a1d60c1f4538" name="a350a2be525774cf15292a1d60c1f4538"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a350a2be525774cf15292a1d60c1f4538">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuButtonHover.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Animuje skalę przycisku w kierunku docelowej skali za pomocą interpolacji liniowej. Używa Time.unscaledDeltaTime, aby animacja działała nawet gdy gra jest wstrzymana. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="ac9fca5b6cfb1277bc1b582d1bdc9c36a" name="ac9fca5b6cfb1277bc1b582d1bdc9c36a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9fca5b6cfb1277bc1b582d1bdc9c36a">&#9670;&#160;</a></span>hoverScale</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 MenuButtonHover.hoverScale = new Vector3(1.03f, 1.03f, 1f)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Skala przycisku po najechaniu kursorem (lekkie powiększenie). </p>
+
+</div>
+</div>
+<a id="a08f04a00c5536304b835805cc2c835bd" name="a08f04a00c5536304b835805cc2c835bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08f04a00c5536304b835805cc2c835bd">&#9670;&#160;</a></span>normalScale</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 MenuButtonHover.normalScale = Vector3.one</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Skala przycisku w stanie normalnym (bez najechania kursorem). </p>
+
+</div>
+</div>
+<a id="a5d1ddef24262fa07fd88089be2a2f067" name="a5d1ddef24262fa07fd88089be2a2f067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d1ddef24262fa07fd88089be2a2f067">&#9670;&#160;</a></span>rect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RectTransform MenuButtonHover.rect</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowany RectTransform przycisku używany do animacji skalowania. </p>
+
+</div>
+</div>
+<a id="a9aa2743ca65d1800c70001975fbbdd58" name="a9aa2743ca65d1800c70001975fbbdd58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aa2743ca65d1800c70001975fbbdd58">&#9670;&#160;</a></span>targetScale</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 MenuButtonHover.targetScale</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Docelowa skala, do której animacja zmierza w bieżącej klatce. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/UI/<a class="el" href="_main_menu_u_i_8cs.html">MainMenuUI.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

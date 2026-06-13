@@ -1,0 +1,1150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy PlayerListUI</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="#pri-static-attribs">Statyczne atrybuty prywatne</a> &#124;
+<a href="class_player_list_u_i-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy PlayerListUI</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa zarządzająca interfejsem użytkownika listy graczy online. Wyświetla tabelę z maksymalnie 4 graczami, ich pseudonimami, kolorami identyfikacyjnymi, rolami sieciowymi oraz pingiem.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla PlayerListUI</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_player_list_u_i.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:af11adbf9aea09f93ffabd8ec933ebc56" id="r_af11adbf9aea09f93ffabd8ec933ebc56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af11adbf9aea09f93ffabd8ec933ebc56">Awake</a> ()</td></tr>
+<tr class="memdesc:af11adbf9aea09f93ffabd8ec933ebc56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizuje interfejs listy graczy podczas przebudzenia obiektu. Wywołuje <a class="el" href="#a13d35efd3f5ad05525de91f0a3aca67c" title="Tworzy cały interfejs listy graczy programistycznie, bez użycia prefabów.">CreateUI</a> do zbudowania struktury UI.  <br /></td></tr>
+<tr class="separator:af11adbf9aea09f93ffabd8ec933ebc56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50405c0608498a7eca9c3a10bff48390" id="r_a50405c0608498a7eca9c3a10bff48390"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50405c0608498a7eca9c3a10bff48390">Update</a> ()</td></tr>
+<tr class="memdesc:a50405c0608498a7eca9c3a10bff48390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizacja wywoływana co klatkę. Obsługuje wejście klawiszowe (TAB) do wyświetlania i ukrywania listy graczy oraz odświeża dane graczy, gdy lista jest widoczna.  <br /></td></tr>
+<tr class="separator:a50405c0608498a7eca9c3a10bff48390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36752df95f3024c4a421990c683ab915" id="r_a36752df95f3024c4a421990c683ab915"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36752df95f3024c4a421990c683ab915">ShowList</a> ()</td></tr>
+<tr class="memdesc:a36752df95f3024c4a421990c683ab915"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyświetla listę graczy, włączając canvas nakładki.  <br /></td></tr>
+<tr class="separator:a36752df95f3024c4a421990c683ab915"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3772148c4777f0e5eebb382928632d8d" id="r_a3772148c4777f0e5eebb382928632d8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3772148c4777f0e5eebb382928632d8d">HideList</a> ()</td></tr>
+<tr class="memdesc:a3772148c4777f0e5eebb382928632d8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ukrywa listę graczy, wyłączając canvas nakładki.  <br /></td></tr>
+<tr class="separator:a3772148c4777f0e5eebb382928632d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13d35efd3f5ad05525de91f0a3aca67c" id="r_a13d35efd3f5ad05525de91f0a3aca67c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13d35efd3f5ad05525de91f0a3aca67c">CreateUI</a> ()</td></tr>
+<tr class="memdesc:a13d35efd3f5ad05525de91f0a3aca67c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy cały interfejs listy graczy programistycznie, bez użycia prefabów.  <br /></td></tr>
+<tr class="separator:a13d35efd3f5ad05525de91f0a3aca67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9709ab437523b81e26a2beeda926dc83" id="r_a9709ab437523b81e26a2beeda926dc83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9709ab437523b81e26a2beeda926dc83">CreatePlayerRow</a> (int index)</td></tr>
+<tr class="memdesc:a9709ab437523b81e26a2beeda926dc83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy pojedynczy wiersz gracza w tabeli listy. Wiersz zawiera kolorową kropkę identyfikacyjną, pseudonim, rolę sieciową i ping.  <br /></td></tr>
+<tr class="separator:a9709ab437523b81e26a2beeda926dc83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6e6b4f970b7e2e68c1c71f7b5d7d623" id="r_aa6e6b4f970b7e2e68c1c71f7b5d7d623"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6e6b4f970b7e2e68c1c71f7b5d7d623">RefreshPlayerData</a> ()</td></tr>
+<tr class="memdesc:aa6e6b4f970b7e2e68c1c71f7b5d7d623"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odświeża dane graczy wyświetlane na liście. Wyszukuje wszystkie aktywne obiekty <a class="el" href="class_network_player.html" title="Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.">NetworkPlayer</a> na scenie i aktualizuje odpowiadające im wiersze w tabeli.  <br /></td></tr>
+<tr class="separator:aa6e6b4f970b7e2e68c1c71f7b5d7d623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeac891209570c7dad189598a239a25c8" id="r_aeac891209570c7dad189598a239a25c8"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeac891209570c7dad189598a239a25c8">CreatePanel</a> (Transform parent, string name, Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot, Vector2 anchoredPosition, Vector2 size, Color color)</td></tr>
+<tr class="memdesc:aeac891209570c7dad189598a239a25c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy obiekt panelu UI z komponentem Image i skonfigurowanym RectTransform.  <br /></td></tr>
+<tr class="separator:aeac891209570c7dad189598a239a25c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af255d4f611f8ede7b9b2d4fc777bc144" id="r_af255d4f611f8ede7b9b2d4fc777bc144"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af255d4f611f8ede7b9b2d4fc777bc144">CreatePanelBorder</a> (Transform parent, Color borderColor)</td></tr>
+<tr class="memdesc:af255d4f611f8ede7b9b2d4fc777bc144"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy ramkę (obramowanie) wokół panelu, składającą się z czterech cienkich paneli o grubości 2 pikseli umieszczonych na górze, dole, lewej i prawej stronie.  <br /></td></tr>
+<tr class="separator:af255d4f611f8ede7b9b2d4fc777bc144"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa929c888664f9176551d6ede8a10b797" id="r_aa929c888664f9176551d6ede8a10b797"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa929c888664f9176551d6ede8a10b797">CreateText</a> (Transform parent, string name, int size, TextAnchor alignment, Color color, FontStyle style)</td></tr>
+<tr class="memdesc:aa929c888664f9176551d6ede8a10b797"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy element tekstowy UI z określonym stylem, używając buforowanej czcionki.  <br /></td></tr>
+<tr class="separator:aa929c888664f9176551d6ede8a10b797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae838e034ebc0e248fba163d96107b40a" id="r_ae838e034ebc0e248fba163d96107b40a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae838e034ebc0e248fba163d96107b40a">PositionRect</a> (Component comp, Vector2 anchor, Vector2 pos, Vector2 size)</td></tr>
+<tr class="memdesc:ae838e034ebc0e248fba163d96107b40a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia pozycję i rozmiar RectTransform danego komponentu, używając pojedynczego punktu zakotwiczenia.  <br /></td></tr>
+<tr class="separator:ae838e034ebc0e248fba163d96107b40a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a02defc53272d05f7bdbcbca8cbfdddb9" id="r_a02defc53272d05f7bdbcbca8cbfdddb9"><td class="memItemLeft" align="right" valign="top">Canvas&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02defc53272d05f7bdbcbca8cbfdddb9">listCanvas</a></td></tr>
+<tr class="memdesc:a02defc53272d05f7bdbcbca8cbfdddb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Komponent Canvas używany do renderowania nakładki listy graczy.  <br /></td></tr>
+<tr class="separator:a02defc53272d05f7bdbcbca8cbfdddb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5765bc5b603f667d9f791800e4f604db" id="r_a5765bc5b603f667d9f791800e4f604db"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5765bc5b603f667d9f791800e4f604db">listPanel</a></td></tr>
+<tr class="memdesc:a5765bc5b603f667d9f791800e4f604db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Główny obiekt panelu listy graczy zawierający wszystkie elementy interfejsu.  <br /></td></tr>
+<tr class="separator:a5765bc5b603f667d9f791800e4f604db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57e316fa84f7f374b939295784f5edf5" id="r_a57e316fa84f7f374b939295784f5edf5"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57e316fa84f7f374b939295784f5edf5">titleText</a></td></tr>
+<tr class="memdesc:a57e316fa84f7f374b939295784f5edf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst tytułowy wyświetlający "GRACZE ONLINE" wraz z liczbą połączonych graczy.  <br /></td></tr>
+<tr class="separator:a57e316fa84f7f374b939295784f5edf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72d20dcb56c3fb7bd98d5b5f3dd7f577" id="r_a72d20dcb56c3fb7bd98d5b5f3dd7f577"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72d20dcb56c3fb7bd98d5b5f3dd7f577">hintText</a></td></tr>
+<tr class="memdesc:a72d20dcb56c3fb7bd98d5b5f3dd7f577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst podpowiedzi na dole panelu informujący o sterowaniu (TAB, B).  <br /></td></tr>
+<tr class="separator:a72d20dcb56c3fb7bd98d5b5f3dd7f577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab82b7694f48073743f54663b3a731a80" id="r_ab82b7694f48073743f54663b3a731a80"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab82b7694f48073743f54663b3a731a80">rowContainer</a></td></tr>
+<tr class="memdesc:ab82b7694f48073743f54663b3a731a80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kontener przechowujący wiersze z danymi poszczególnych graczy.  <br /></td></tr>
+<tr class="separator:ab82b7694f48073743f54663b3a731a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cca8b72c191e6e808e22dda8418e438" id="r_a0cca8b72c191e6e808e22dda8418e438"><td class="memItemLeft" align="right" valign="top">GameObject[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cca8b72c191e6e808e22dda8418e438">playerRows</a> = new GameObject[4]</td></tr>
+<tr class="memdesc:a0cca8b72c191e6e808e22dda8418e438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tablica obiektów GameObject reprezentujących wiersze graczy (maksymalnie 4).  <br /></td></tr>
+<tr class="separator:a0cca8b72c191e6e808e22dda8418e438"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c84e7dcbc91b0c94b32a2816e8270f9" id="r_a8c84e7dcbc91b0c94b32a2816e8270f9"><td class="memItemLeft" align="right" valign="top">Image[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c84e7dcbc91b0c94b32a2816e8270f9">playerColorDots</a> = new Image[4]</td></tr>
+<tr class="memdesc:a8c84e7dcbc91b0c94b32a2816e8270f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tablica kolorowych kropek identyfikujących poszczególnych graczy. Każdy gracz ma przypisany unikalny kolor z palety <a class="el" href="class_network_player.html#a9da055a3ae82ffcd9938ce9c00765da7" title="Tablica kolorów przypisywanych graczom na podstawie ich indeksu.">NetworkPlayer.PlayerColors</a>.  <br /></td></tr>
+<tr class="separator:a8c84e7dcbc91b0c94b32a2816e8270f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2047aa76570648347f795162bc094f8f" id="r_a2047aa76570648347f795162bc094f8f"><td class="memItemLeft" align="right" valign="top">Text[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2047aa76570648347f795162bc094f8f">playerNameTexts</a> = new Text[4]</td></tr>
+<tr class="memdesc:a2047aa76570648347f795162bc094f8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tablica tekstów wyświetlających pseudonimy graczy. Pseudonim lokalnego gracza jest oznaczony sufiksem "(TY)".  <br /></td></tr>
+<tr class="separator:a2047aa76570648347f795162bc094f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75088b5f113f5fc2a5412f69aeb65d8a" id="r_a75088b5f113f5fc2a5412f69aeb65d8a"><td class="memItemLeft" align="right" valign="top">Text[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75088b5f113f5fc2a5412f69aeb65d8a">playerRoleTexts</a> = new Text[4]</td></tr>
+<tr class="memdesc:a75088b5f113f5fc2a5412f69aeb65d8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tablica tekstów wyświetlających role graczy (HOST lub KLIENT).  <br /></td></tr>
+<tr class="separator:a75088b5f113f5fc2a5412f69aeb65d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e7883b0990b6563e86bf393e1881a13" id="r_a5e7883b0990b6563e86bf393e1881a13"><td class="memItemLeft" align="right" valign="top">Text[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e7883b0990b6563e86bf393e1881a13">playerPingTexts</a> = new Text[4]</td></tr>
+<tr class="memdesc:a5e7883b0990b6563e86bf393e1881a13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tablica tekstów wyświetlających przybliżone wartości pingu graczy.  <br /></td></tr>
+<tr class="separator:a5e7883b0990b6563e86bf393e1881a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af76b94fec1fd81abd1520d0cd74ec2e9" id="r_af76b94fec1fd81abd1520d0cd74ec2e9"><td class="memItemLeft" align="right" valign="top">Font&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af76b94fec1fd81abd1520d0cd74ec2e9">cachedFont</a></td></tr>
+<tr class="memdesc:af76b94fec1fd81abd1520d0cd74ec2e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowana czcionka używana do renderowania wszystkich elementów tekstowych. Ładowana raz podczas inicjalizacji z zasobów wbudowanych.  <br /></td></tr>
+<tr class="separator:af76b94fec1fd81abd1520d0cd74ec2e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada1009fe2fadbb368b7842c1d15e3166" id="r_ada1009fe2fadbb368b7842c1d15e3166"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada1009fe2fadbb368b7842c1d15e3166">isVisible</a></td></tr>
+<tr class="memdesc:ada1009fe2fadbb368b7842c1d15e3166"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flaga określająca czy lista graczy jest aktualnie widoczna na ekranie.  <br /></td></tr>
+<tr class="separator:ada1009fe2fadbb368b7842c1d15e3166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Statyczne atrybuty prywatne</h2></td></tr>
+<tr class="memitem:aa7b86a5cb00f182fb1a338a80a4b3f90" id="r_aa7b86a5cb00f182fb1a338a80a4b3f90"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7b86a5cb00f182fb1a338a80a4b3f90">PanelBackground</a> = new Color(0.025f, 0.03f, 0.045f, 0.94f)</td></tr>
+<tr class="memdesc:aa7b86a5cb00f182fb1a338a80a4b3f90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor tła głównego panelu listy graczy.  <br /></td></tr>
+<tr class="separator:aa7b86a5cb00f182fb1a338a80a4b3f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d1292f351790686b0e72059a94208b7" id="r_a2d1292f351790686b0e72059a94208b7"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d1292f351790686b0e72059a94208b7">HeaderColor</a> = new Color(0.06f, 0.10f, 0.16f, 0.95f)</td></tr>
+<tr class="memdesc:a2d1292f351790686b0e72059a94208b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor tła nagłówka panelu listy graczy.  <br /></td></tr>
+<tr class="separator:a2d1292f351790686b0e72059a94208b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a772cf0eb1655856a2c1a1597fbff76e8" id="r_a772cf0eb1655856a2c1a1597fbff76e8"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a772cf0eb1655856a2c1a1597fbff76e8">RowEven</a> = new Color(0.05f, 0.07f, 0.10f, 0.80f)</td></tr>
+<tr class="memdesc:a772cf0eb1655856a2c1a1597fbff76e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor tła parzystych wierszy listy graczy (efekt naprzemiennych kolorów).  <br /></td></tr>
+<tr class="separator:a772cf0eb1655856a2c1a1597fbff76e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42a44d1bdc62b1787ec901f5c74b45a4" id="r_a42a44d1bdc62b1787ec901f5c74b45a4"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42a44d1bdc62b1787ec901f5c74b45a4">RowOdd</a> = new Color(0.07f, 0.09f, 0.13f, 0.80f)</td></tr>
+<tr class="memdesc:a42a44d1bdc62b1787ec901f5c74b45a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor tła nieparzystych wierszy listy graczy (efekt naprzemiennych kolorów).  <br /></td></tr>
+<tr class="separator:a42a44d1bdc62b1787ec901f5c74b45a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08102d933433ed8a863f3fe52a3a9cf9" id="r_a08102d933433ed8a863f3fe52a3a9cf9"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08102d933433ed8a863f3fe52a3a9cf9">GoldText</a> = new Color(0.875f, 0.725f, 0.32f)</td></tr>
+<tr class="memdesc:a08102d933433ed8a863f3fe52a3a9cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor złotego tekstu używany dla tytułu listy.  <br /></td></tr>
+<tr class="separator:a08102d933433ed8a863f3fe52a3a9cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af899ad8debb14884e6e45763654c83c5" id="r_af899ad8debb14884e6e45763654c83c5"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af899ad8debb14884e6e45763654c83c5">WhiteText</a> = new Color(0.9f, 0.91f, 0.93f, 0.92f)</td></tr>
+<tr class="memdesc:af899ad8debb14884e6e45763654c83c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor białego tekstu używany dla pseudonimów graczy.  <br /></td></tr>
+<tr class="separator:af899ad8debb14884e6e45763654c83c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab66f1d7bd3043002f32e31e9d28fb7" id="r_a3ab66f1d7bd3043002f32e31e9d28fb7"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ab66f1d7bd3043002f32e31e9d28fb7">SubText</a> = new Color(0.65f, 0.70f, 0.78f)</td></tr>
+<tr class="memdesc:a3ab66f1d7bd3043002f32e31e9d28fb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor tekstu drugorzędnego używany dla nagłówków kolumn, ról i pingu.  <br /></td></tr>
+<tr class="separator:a3ab66f1d7bd3043002f32e31e9d28fb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aa5db81ba5cfe3c3ea227c8e8431481" id="r_a1aa5db81ba5cfe3c3ea227c8e8431481"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1aa5db81ba5cfe3c3ea227c8e8431481">FrameColor</a> = new Color(0.14f, 0.16f, 0.20f)</td></tr>
+<tr class="memdesc:a1aa5db81ba5cfe3c3ea227c8e8431481"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor ramki otaczającej panel listy graczy.  <br /></td></tr>
+<tr class="separator:a1aa5db81ba5cfe3c3ea227c8e8431481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa zarządzająca interfejsem użytkownika listy graczy online. Wyświetla tabelę z maksymalnie 4 graczami, ich pseudonimami, kolorami identyfikacyjnymi, rolami sieciowymi oraz pingiem. </p>
+<p>Lista jest widoczna tylko podczas przytrzymywania klawisza TAB. Interfejs jest tworzony w całości programistycznie w metodzie <a class="el" href="#a13d35efd3f5ad05525de91f0a3aca67c" title="Tworzy cały interfejs listy graczy programistycznie, bez użycia prefabów.">CreateUI</a>. Dane graczy są odświeżane co klatkę z obiektów <a class="el" href="class_network_player.html" title="Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.">NetworkPlayer</a>. Panel obsługuje do 4 graczy jednocześnie. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="af11adbf9aea09f93ffabd8ec933ebc56" name="af11adbf9aea09f93ffabd8ec933ebc56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af11adbf9aea09f93ffabd8ec933ebc56">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerListUI.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicjalizuje interfejs listy graczy podczas przebudzenia obiektu. Wywołuje <a class="el" href="#a13d35efd3f5ad05525de91f0a3aca67c" title="Tworzy cały interfejs listy graczy programistycznie, bez użycia prefabów.">CreateUI</a> do zbudowania struktury UI. </p>
+
+</div>
+</div>
+<a id="aeac891209570c7dad189598a239a25c8" name="aeac891209570c7dad189598a239a25c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeac891209570c7dad189598a239a25c8">&#9670;&#160;</a></span>CreatePanel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject PlayerListUI.CreatePanel </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchorMin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchorMax</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>pivot</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy obiekt panelu UI z komponentem Image i skonfigurowanym RectTransform. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transform rodzica, pod którym panel zostanie utworzony.</td></tr>
+    <tr><td class="paramname">name</td><td>Nazwa obiektu panelu w hierarchii.</td></tr>
+    <tr><td class="paramname">anchorMin</td><td>Minimalny punkt zakotwiczenia RectTransform.</td></tr>
+    <tr><td class="paramname">anchorMax</td><td>Maksymalny punkt zakotwiczenia RectTransform.</td></tr>
+    <tr><td class="paramname">pivot</td><td>Punkt obrotu (pivot) RectTransform.</td></tr>
+    <tr><td class="paramname">anchoredPosition</td><td>Pozycja zakotwiczona panelu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar panelu (sizeDelta).</td></tr>
+    <tr><td class="paramname">color</td><td>Kolor tła panelu (Image).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Utworzony obiekt GameObject panelu.</dd></dl>
+
+</div>
+</div>
+<a id="af255d4f611f8ede7b9b2d4fc777bc144" name="af255d4f611f8ede7b9b2d4fc777bc144"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af255d4f611f8ede7b9b2d4fc777bc144">&#9670;&#160;</a></span>CreatePanelBorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerListUI.CreatePanelBorder </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>borderColor</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy ramkę (obramowanie) wokół panelu, składającą się z czterech cienkich paneli o grubości 2 pikseli umieszczonych na górze, dole, lewej i prawej stronie. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transform rodzica (panel, wokół którego tworzona jest ramka).</td></tr>
+    <tr><td class="paramname">borderColor</td><td>Kolor ramki.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9709ab437523b81e26a2beeda926dc83" name="a9709ab437523b81e26a2beeda926dc83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9709ab437523b81e26a2beeda926dc83">&#9670;&#160;</a></span>CreatePlayerRow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerListUI.CreatePlayerRow </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy pojedynczy wiersz gracza w tabeli listy. Wiersz zawiera kolorową kropkę identyfikacyjną, pseudonim, rolę sieciową i ping. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Indeks wiersza (0-3). Określa pozycję pionową, kolor tła (parzyste/nieparzyste) oraz domyślny kolor kropki identyfikacyjnej gracza. </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Wiersze są domyślnie nieaktywne i aktywowane dopiero gdy odpowiadający im gracz jest połączony i zspawnowany na serwerze. </p>
+
+</div>
+</div>
+<a id="aa929c888664f9176551d6ede8a10b797" name="aa929c888664f9176551d6ede8a10b797"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa929c888664f9176551d6ede8a10b797">&#9670;&#160;</a></span>CreateText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text PlayerListUI.CreateText </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TextAnchor</td>          <td class="paramname"><span class="paramname"><em>alignment</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FontStyle</td>          <td class="paramname"><span class="paramname"><em>style</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy element tekstowy UI z określonym stylem, używając buforowanej czcionki. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transform rodzica dla tekstu.</td></tr>
+    <tr><td class="paramname">name</td><td>Nazwa obiektu tekstowego w hierarchii.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar czcionki w pikselach.</td></tr>
+    <tr><td class="paramname">alignment</td><td>Wyrównanie tekstu (np. środek, lewo, prawo).</td></tr>
+    <tr><td class="paramname">color</td><td>Kolor tekstu.</td></tr>
+    <tr><td class="paramname">style</td><td>Styl czcionki (normalny, pogrubiony, kursywa).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Utworzony komponent Text.</dd></dl>
+
+</div>
+</div>
+<a id="a13d35efd3f5ad05525de91f0a3aca67c" name="a13d35efd3f5ad05525de91f0a3aca67c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13d35efd3f5ad05525de91f0a3aca67c">&#9670;&#160;</a></span>CreateUI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerListUI.CreateUI </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy cały interfejs listy graczy programistycznie, bez użycia prefabów. </p>
+<p>Buduje następujące elementy: </p><ul>
+<li>
+Canvas z CanvasScaler i GraphicRaycaster (sortingOrder 150) </li>
+<li>
+Półprzezroczyste tło przyciemniające (backdrop) </li>
+<li>
+Panel główny z ramką i nagłówkiem </li>
+<li>
+Nagłówki kolumn: NICK, ROLA, PING </li>
+<li>
+4 wiersze graczy z kropką kolorową, pseudonimem, rolą i pingiem </li>
+<li>
+Tekst podpowiedzi na dole panelu </li>
+</ul>
+
+</div>
+</div>
+<a id="a3772148c4777f0e5eebb382928632d8d" name="a3772148c4777f0e5eebb382928632d8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3772148c4777f0e5eebb382928632d8d">&#9670;&#160;</a></span>HideList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerListUI.HideList </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ukrywa listę graczy, wyłączając canvas nakładki. </p>
+
+</div>
+</div>
+<a id="ae838e034ebc0e248fba163d96107b40a" name="ae838e034ebc0e248fba163d96107b40a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae838e034ebc0e248fba163d96107b40a">&#9670;&#160;</a></span>PositionRect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerListUI.PositionRect </td>
+          <td>(</td>
+          <td class="paramtype">Component</td>          <td class="paramname"><span class="paramname"><em>comp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia pozycję i rozmiar RectTransform danego komponentu, używając pojedynczego punktu zakotwiczenia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">comp</td><td>Komponent, którego RectTransform ma zostać skonfigurowany.</td></tr>
+    <tr><td class="paramname">anchor</td><td>Punkt zakotwiczenia (anchorMin i anchorMax ustawione na tę samą wartość).</td></tr>
+    <tr><td class="paramname">pos</td><td>Pozycja zakotwiczona elementu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar elementu (sizeDelta).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa6e6b4f970b7e2e68c1c71f7b5d7d623" name="aa6e6b4f970b7e2e68c1c71f7b5d7d623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6e6b4f970b7e2e68c1c71f7b5d7d623">&#9670;&#160;</a></span>RefreshPlayerData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerListUI.RefreshPlayerData </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odświeża dane graczy wyświetlane na liście. Wyszukuje wszystkie aktywne obiekty <a class="el" href="class_network_player.html" title="Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.">NetworkPlayer</a> na scenie i aktualizuje odpowiadające im wiersze w tabeli. </p>
+<p>Dla każdego spawnerowanego gracza aktualizowane są: </p><ul>
+<li>
+Kolor kropki identyfikacyjnej (na podstawie indeksu gracza) </li>
+<li>
+Pseudonim (z dopiskiem "(TY)" dla lokalnego gracza) </li>
+<li>
+Rola sieciowa (HOST z zielonym kolorem tekstu lub KLIENT) </li>
+<li>
+Ping (przybliżona wartość lub "—" dla hosta) </li>
+</ul>
+<p>Tytuł panelu jest aktualizowany z bieżącą liczbą połączonych graczy (np. "GRACZE ONLINE — 3/4"). </p>
+
+</div>
+</div>
+<a id="a36752df95f3024c4a421990c683ab915" name="a36752df95f3024c4a421990c683ab915"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36752df95f3024c4a421990c683ab915">&#9670;&#160;</a></span>ShowList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerListUI.ShowList </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyświetla listę graczy, włączając canvas nakładki. </p>
+
+</div>
+</div>
+<a id="a50405c0608498a7eca9c3a10bff48390" name="a50405c0608498a7eca9c3a10bff48390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50405c0608498a7eca9c3a10bff48390">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerListUI.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizacja wywoływana co klatkę. Obsługuje wejście klawiszowe (TAB) do wyświetlania i ukrywania listy graczy oraz odświeża dane graczy, gdy lista jest widoczna. </p>
+<p>Lista jest wyświetlana po naciśnięciu klawisza TAB i ukrywana po jego puszczeniu, co odpowiada typowemu wzorcowi "przytrzymaj aby zobaczyć" znanemu z gier wieloosobowych. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="af76b94fec1fd81abd1520d0cd74ec2e9" name="af76b94fec1fd81abd1520d0cd74ec2e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af76b94fec1fd81abd1520d0cd74ec2e9">&#9670;&#160;</a></span>cachedFont</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Font PlayerListUI.cachedFont</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowana czcionka używana do renderowania wszystkich elementów tekstowych. Ładowana raz podczas inicjalizacji z zasobów wbudowanych. </p>
+
+</div>
+</div>
+<a id="a1aa5db81ba5cfe3c3ea227c8e8431481" name="a1aa5db81ba5cfe3c3ea227c8e8431481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aa5db81ba5cfe3c3ea227c8e8431481">&#9670;&#160;</a></span>FrameColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PlayerListUI.FrameColor = new Color(0.14f, 0.16f, 0.20f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor ramki otaczającej panel listy graczy. </p>
+
+</div>
+</div>
+<a id="a08102d933433ed8a863f3fe52a3a9cf9" name="a08102d933433ed8a863f3fe52a3a9cf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08102d933433ed8a863f3fe52a3a9cf9">&#9670;&#160;</a></span>GoldText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PlayerListUI.GoldText = new Color(0.875f, 0.725f, 0.32f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor złotego tekstu używany dla tytułu listy. </p>
+
+</div>
+</div>
+<a id="a2d1292f351790686b0e72059a94208b7" name="a2d1292f351790686b0e72059a94208b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d1292f351790686b0e72059a94208b7">&#9670;&#160;</a></span>HeaderColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PlayerListUI.HeaderColor = new Color(0.06f, 0.10f, 0.16f, 0.95f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor tła nagłówka panelu listy graczy. </p>
+
+</div>
+</div>
+<a id="a72d20dcb56c3fb7bd98d5b5f3dd7f577" name="a72d20dcb56c3fb7bd98d5b5f3dd7f577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72d20dcb56c3fb7bd98d5b5f3dd7f577">&#9670;&#160;</a></span>hintText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text PlayerListUI.hintText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst podpowiedzi na dole panelu informujący o sterowaniu (TAB, B). </p>
+
+</div>
+</div>
+<a id="ada1009fe2fadbb368b7842c1d15e3166" name="ada1009fe2fadbb368b7842c1d15e3166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada1009fe2fadbb368b7842c1d15e3166">&#9670;&#160;</a></span>isVisible</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PlayerListUI.isVisible</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flaga określająca czy lista graczy jest aktualnie widoczna na ekranie. </p>
+
+</div>
+</div>
+<a id="a02defc53272d05f7bdbcbca8cbfdddb9" name="a02defc53272d05f7bdbcbca8cbfdddb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02defc53272d05f7bdbcbca8cbfdddb9">&#9670;&#160;</a></span>listCanvas</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Canvas PlayerListUI.listCanvas</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Komponent Canvas używany do renderowania nakładki listy graczy. </p>
+
+</div>
+</div>
+<a id="a5765bc5b603f667d9f791800e4f604db" name="a5765bc5b603f667d9f791800e4f604db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5765bc5b603f667d9f791800e4f604db">&#9670;&#160;</a></span>listPanel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject PlayerListUI.listPanel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Główny obiekt panelu listy graczy zawierający wszystkie elementy interfejsu. </p>
+
+</div>
+</div>
+<a id="aa7b86a5cb00f182fb1a338a80a4b3f90" name="aa7b86a5cb00f182fb1a338a80a4b3f90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7b86a5cb00f182fb1a338a80a4b3f90">&#9670;&#160;</a></span>PanelBackground</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PlayerListUI.PanelBackground = new Color(0.025f, 0.03f, 0.045f, 0.94f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor tła głównego panelu listy graczy. </p>
+
+</div>
+</div>
+<a id="a8c84e7dcbc91b0c94b32a2816e8270f9" name="a8c84e7dcbc91b0c94b32a2816e8270f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c84e7dcbc91b0c94b32a2816e8270f9">&#9670;&#160;</a></span>playerColorDots</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image [] PlayerListUI.playerColorDots = new Image[4]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tablica kolorowych kropek identyfikujących poszczególnych graczy. Każdy gracz ma przypisany unikalny kolor z palety <a class="el" href="class_network_player.html#a9da055a3ae82ffcd9938ce9c00765da7" title="Tablica kolorów przypisywanych graczom na podstawie ich indeksu.">NetworkPlayer.PlayerColors</a>. </p>
+
+</div>
+</div>
+<a id="a2047aa76570648347f795162bc094f8f" name="a2047aa76570648347f795162bc094f8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2047aa76570648347f795162bc094f8f">&#9670;&#160;</a></span>playerNameTexts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text [] PlayerListUI.playerNameTexts = new Text[4]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tablica tekstów wyświetlających pseudonimy graczy. Pseudonim lokalnego gracza jest oznaczony sufiksem "(TY)". </p>
+
+</div>
+</div>
+<a id="a5e7883b0990b6563e86bf393e1881a13" name="a5e7883b0990b6563e86bf393e1881a13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e7883b0990b6563e86bf393e1881a13">&#9670;&#160;</a></span>playerPingTexts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text [] PlayerListUI.playerPingTexts = new Text[4]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tablica tekstów wyświetlających przybliżone wartości pingu graczy. </p>
+
+</div>
+</div>
+<a id="a75088b5f113f5fc2a5412f69aeb65d8a" name="a75088b5f113f5fc2a5412f69aeb65d8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75088b5f113f5fc2a5412f69aeb65d8a">&#9670;&#160;</a></span>playerRoleTexts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text [] PlayerListUI.playerRoleTexts = new Text[4]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tablica tekstów wyświetlających role graczy (HOST lub KLIENT). </p>
+
+</div>
+</div>
+<a id="a0cca8b72c191e6e808e22dda8418e438" name="a0cca8b72c191e6e808e22dda8418e438"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cca8b72c191e6e808e22dda8418e438">&#9670;&#160;</a></span>playerRows</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject [] PlayerListUI.playerRows = new GameObject[4]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tablica obiektów GameObject reprezentujących wiersze graczy (maksymalnie 4). </p>
+
+</div>
+</div>
+<a id="ab82b7694f48073743f54663b3a731a80" name="ab82b7694f48073743f54663b3a731a80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab82b7694f48073743f54663b3a731a80">&#9670;&#160;</a></span>rowContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject PlayerListUI.rowContainer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kontener przechowujący wiersze z danymi poszczególnych graczy. </p>
+
+</div>
+</div>
+<a id="a772cf0eb1655856a2c1a1597fbff76e8" name="a772cf0eb1655856a2c1a1597fbff76e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a772cf0eb1655856a2c1a1597fbff76e8">&#9670;&#160;</a></span>RowEven</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PlayerListUI.RowEven = new Color(0.05f, 0.07f, 0.10f, 0.80f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor tła parzystych wierszy listy graczy (efekt naprzemiennych kolorów). </p>
+
+</div>
+</div>
+<a id="a42a44d1bdc62b1787ec901f5c74b45a4" name="a42a44d1bdc62b1787ec901f5c74b45a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42a44d1bdc62b1787ec901f5c74b45a4">&#9670;&#160;</a></span>RowOdd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PlayerListUI.RowOdd = new Color(0.07f, 0.09f, 0.13f, 0.80f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor tła nieparzystych wierszy listy graczy (efekt naprzemiennych kolorów). </p>
+
+</div>
+</div>
+<a id="a3ab66f1d7bd3043002f32e31e9d28fb7" name="a3ab66f1d7bd3043002f32e31e9d28fb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ab66f1d7bd3043002f32e31e9d28fb7">&#9670;&#160;</a></span>SubText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PlayerListUI.SubText = new Color(0.65f, 0.70f, 0.78f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor tekstu drugorzędnego używany dla nagłówków kolumn, ról i pingu. </p>
+
+</div>
+</div>
+<a id="a57e316fa84f7f374b939295784f5edf5" name="a57e316fa84f7f374b939295784f5edf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57e316fa84f7f374b939295784f5edf5">&#9670;&#160;</a></span>titleText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text PlayerListUI.titleText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst tytułowy wyświetlający "GRACZE ONLINE" wraz z liczbą połączonych graczy. </p>
+
+</div>
+</div>
+<a id="af899ad8debb14884e6e45763654c83c5" name="af899ad8debb14884e6e45763654c83c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af899ad8debb14884e6e45763654c83c5">&#9670;&#160;</a></span>WhiteText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PlayerListUI.WhiteText = new Color(0.9f, 0.91f, 0.93f, 0.92f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor białego tekstu używany dla pseudonimów graczy. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_player_list_u_i_8cs.html">PlayerListUI.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

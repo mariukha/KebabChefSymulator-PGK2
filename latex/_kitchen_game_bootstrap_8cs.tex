@@ -1,0 +1,24 @@
+\doxysection{Dokumentacja pliku Assets/\+Scripts/\+Kitchen\+Game\+Bootstrap.cs}
+\hypertarget{_kitchen_game_bootstrap_8cs}{}\label{_kitchen_game_bootstrap_8cs}\index{Assets/Scripts/KitchenGameBootstrap.cs@{Assets/Scripts/KitchenGameBootstrap.cs}}
+
+
+Główny plik bootstrapowy gry kuchennej — odpowiada za inicjalizację i budowanie całego środowiska kuchni w czasie wykonania.  
+
+
+\doxysubsubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_kitchen_game_bootstrap}{Kitchen\+Game\+Bootstrap}}
+\begin{DoxyCompactList}\small\item\em Główna klasa bootstrapowa gry kuchennej. Odpowiada za proceduralne generowanie całej sceny kuchni kebabowej w czasie wykonania, włączając w to środowisko (podłoga, ściany, sufit), stacje kuchenne, oświetlenie, modele 3D, konfigurację sieciową oraz inicjalizację wszystkich menedżerów gry. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_billboard_label}{Billboard\+Label}}
+\begin{DoxyCompactList}\small\item\em Komponent billboard — obraca obiekt tak, aby zawsze był zwrócony przodem do głównej kamery. Używany głównie do etykiet tekstowych 3D nad stacjami kuchennymi. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_delivery_tray_display}{Delivery\+Tray\+Display}}
+\begin{DoxyCompactList}\small\item\em Zarządza wyświetlaniem serwowanego kebaba na tacy przy okienku wydawania. Kebab jest pokazywany na określony czas po każdym wydaniu zamówienia, a następnie automatycznie ukrywany. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_customer_animator}{Customer\+Animator}}
+\begin{DoxyCompactList}\small\item\em Komponent animujący model klienta za pomocą systemu Playable API Unity. Ładuje klip animacji idle z zasobów i odtwarza go w pętli. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Główny plik bootstrapowy gry kuchennej — odpowiada za inicjalizację i budowanie całego środowiska kuchni w czasie wykonania. 
+
+Zawiera klasę \doxylink{class_kitchen_game_bootstrap}{Kitchen\+Game\+Bootstrap}, która jest punktem wejścia do procedurowego generowania sceny kuchni kebabowej. Plik obejmuje również klasy pomocnicze\+: \doxylink{class_billboard_label}{Billboard\+Label} do etykiet śledzących kamerę, \doxylink{class_delivery_tray_display}{Delivery\+Tray\+Display} do wyświetlania serwowanego kebaba na tacy oraz \doxylink{class_customer_animator}{Customer\+Animator} do animacji klienta. Klasy te wspólnie odpowiadają za tworzenie otoczenia 3D, stacji kuchennych, oświetlenia, efektów wizualnych oraz konfigurację sieciową i menedżerów gry. 

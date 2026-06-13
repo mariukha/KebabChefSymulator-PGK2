@@ -1,0 +1,514 @@
+\doxysection{Dokumentacja klasy Shop\+UI}
+\hypertarget{class_shop_u_i}{}\label{class_shop_u_i}\index{ShopUI@{ShopUI}}
+Diagram dziedziczenia dla Shop\+UI\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_shop_u_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_shop_u_i_1_1_shop_upgrade_row}{Shop\+Upgrade\+Row}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_shop_u_i_aba2c224c5aa7a6fafd78ce0e3efa3d54}{Toggle\+Shop}} ()
+\item 
+void \mbox{\hyperlink{class_shop_u_i_a1ba9c11bb6d3aa4b84e1712cef2be628}{Open\+Shop}} ()
+\item 
+void \mbox{\hyperlink{class_shop_u_i_a94cc5dd8a09c6209c8b527acd08b8329}{Close\+Shop}} ()
+\item 
+void \mbox{\hyperlink{class_shop_u_i_ad247ae862d1c1d8ad06a40fccfbca3d3}{Handle\+Purchase\+Result}} (bool success, \mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} type)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_shop_u_i_a8aa60f9cae6224cc401d237016c8baf3}{Is\+Shop\+Open}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_shop_u_i_a7b33d83a5d8b4ae770bead88c42e0a6f}{Awake}} ()
+\item 
+void \mbox{\hyperlink{class_shop_u_i_a310e60e95b3f421cd958be0afda70585}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_shop_u_i_af593fc1607f62932818aab87cc146cdf}{Ensure\+Event\+System}} ()
+\item 
+void \mbox{\hyperlink{class_shop_u_i_aee40b64c58139120f9dcd09334a096eb}{Update\+Animation}} ()
+\item 
+void \mbox{\hyperlink{class_shop_u_i_a010f576d9e9c39d73c7e34eacc7818cb}{Update\+Feedback}} ()
+\item 
+void \mbox{\hyperlink{class_shop_u_i_af72a5d1e04beac7cca2d6510076e0291}{Refresh\+Content}} ()
+\item 
+void \mbox{\hyperlink{class_shop_u_i_ae4b0edfe8be1a3510b3a82d6d7f2aa04}{Refresh\+Row}} (\mbox{\hyperlink{class_shop_u_i_1_1_shop_upgrade_row}{Shop\+Upgrade\+Row}} row, \mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}} definition)
+\item 
+string \mbox{\hyperlink{class_shop_u_i_afbbaa40bbb1ef9756c99957fb4f39b82}{Build\+Level\+Indicator}} (int current\+Level, int max\+Level)
+\item 
+void \mbox{\hyperlink{class_shop_u_i_a2b47b0b9f5802cf1d51d3129243a957b}{On\+Upgrade\+Button\+Clicked}} (\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} type)
+\item 
+void \mbox{\hyperlink{class_shop_u_i_a60c14b185631d69402ef243c7e4a29ed}{Play\+Purchase\+Feedback}} (\mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}} definition)
+\item 
+void \mbox{\hyperlink{class_shop_u_i_ae6722be1d8e4250c3559f3bb261c98f2}{Show\+Feedback}} (string message, bool success)
+\item 
+void \mbox{\hyperlink{class_shop_u_i_aecd9907b131d69625ff90cd6c1510b70}{Create\+Shop\+Canvas}} ()
+\item 
+void \mbox{\hyperlink{class_shop_u_i_aae463b92dd8865e391af0dd3b724ac3d}{Create\+Overlay}} (Transform parent)
+\item 
+Transform \mbox{\hyperlink{class_shop_u_i_ad242e8f369bfe8a63e5bac501070c123}{Create\+Content\+Panel}} (Transform parent)
+\item 
+void \mbox{\hyperlink{class_shop_u_i_a92eb8c9c949c87e2c15da47962498b39}{Create\+Header}} (Transform parent)
+\item 
+void \mbox{\hyperlink{class_shop_u_i_a8feb74a7bc18529df2478ae57de5eac1}{Create\+Upgrade\+Rows}} (Transform parent)
+\item 
+\mbox{\hyperlink{class_shop_u_i_1_1_shop_upgrade_row}{Shop\+Upgrade\+Row}} \mbox{\hyperlink{class_shop_u_i_aefbc637cee730512fdb5f3d57445f5c6}{Create\+Single\+Upgrade\+Row}} (Transform parent, \mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}} definition, float y\+Pos, float height)
+\item 
+void \mbox{\hyperlink{class_shop_u_i_a9911dbec3d2344b4a95525b9898f5efc}{Create\+Footer}} (Transform parent)
+\item 
+void \mbox{\hyperlink{class_shop_u_i_a03411f005a1e4578859827b4dbf1a221}{Create\+Divider}} (Transform parent, Vector2 position)
+\item 
+Text \mbox{\hyperlink{class_shop_u_i_a33af2878d6daec0a4e5f7c8005d44257}{Create\+Text\+Element}} (Transform parent, string object\+Name, string default\+Text, int font\+Size, Font\+Style style, Text\+Anchor alignment, Color color)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Canvas \mbox{\hyperlink{class_shop_u_i_a1b5dd82fc8853e5c38f3f376529d6feb}{shop\+Canvas}}
+\item 
+Game\+Object \mbox{\hyperlink{class_shop_u_i_a0171f0c4cb579b68fd353422d0459013}{shop\+Panel}}
+\item 
+Text \mbox{\hyperlink{class_shop_u_i_a7fe87df2e89777ed4475642292f2c4bf}{balance\+Text}}
+\item 
+Text \mbox{\hyperlink{class_shop_u_i_a45b2a7d2bc8bf51757830cf37461f58a}{title\+Text}}
+\item 
+Text \mbox{\hyperlink{class_shop_u_i_a999fac6472076cc454197f5810f57d4c}{hint\+Text}}
+\item 
+Text \mbox{\hyperlink{class_shop_u_i_a340271421cce01b4b4b25889198d8182}{purchase\+Feedback\+Text}}
+\item 
+readonly List$<$ \mbox{\hyperlink{class_shop_u_i_1_1_shop_upgrade_row}{Shop\+Upgrade\+Row}} $>$ \mbox{\hyperlink{class_shop_u_i_af57d2f0b3d92567587d794fc4f2edc27}{upgrade\+Rows}} = new List$<$\mbox{\hyperlink{class_shop_u_i_1_1_shop_upgrade_row}{Shop\+Upgrade\+Row}}$>$()
+\item 
+bool \mbox{\hyperlink{class_shop_u_i_a2f54d4967386dbcdf8230e9984e80d82}{is\+Open}}
+\item 
+float \mbox{\hyperlink{class_shop_u_i_afca33510d47668035d0e9ced235c74b6}{feedback\+Timer}}
+\item 
+float \mbox{\hyperlink{class_shop_u_i_aeef666fe18e0b9617e0f42577eb2793c}{panel\+Animation\+Progress}}
+\item 
+Canvas\+Group \mbox{\hyperlink{class_shop_u_i_a7e05297d76ba5bb2f31fa8495e9a0bd9}{panel\+Canvas\+Group}}
+\item 
+Font \mbox{\hyperlink{class_shop_u_i_afa4944ad163adf3de8bda2406b261852}{cached\+Font}}
+\item 
+\mbox{\hyperlink{class_lobby_u_i}{Lobby\+UI}} \mbox{\hyperlink{class_shop_u_i_a14b91ee6639ed6e5e5d8d5f0464ba898}{cached\+Lobby\+UI}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+const float \mbox{\hyperlink{class_shop_u_i_aa41605cd57e04c309e2142226ad7c37d}{Feedback\+Duration}} = 2.\+5f
+\item 
+const float \mbox{\hyperlink{class_shop_u_i_a3575aae10fa4777ed6898e75ac52fdea}{Animation\+Speed}} = 8f
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_addba383280da9ba940d132d31c42bcb1}{Background\+Overlay}} = new Color(0.\+005f, 0.\+008f, 0.\+012f, 0.\+82f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a062975b98e772a27f5fb5832f1fcd0e1}{Panel\+Color}} = new Color(0.\+018f, 0.\+022f, 0.\+028f, 0.\+98f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_aa2323137290c6ba0592c0998cafbb91a}{Panel\+Border\+Color}} = new Color(0.\+15f, 0.\+16f, 0.\+17f, 0.\+95f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a459b7a9efc5c7533013f3131364d7be4}{Header\+Color}} = new Color(0.\+028f, 0.\+034f, 0.\+044f, 0.\+96f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a212dd015f9788a3eebc40d927e23f3b3}{Title\+Color}} = new Color(0.\+875f, 0.\+725f, 0.\+32f, 1f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a77cb57401c3702053ca2186a439d414b}{Balance\+Value\+Color}} = new Color(0.\+22f, 0.\+82f, 0.\+42f, 1f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_aa5afeb315c297fd0b922ec98cb090137}{Row\+Background\+Color}} = new Color(0.\+035f, 0.\+043f, 0.\+056f, 0.\+94f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a77df9ebd0de7414e5883c2a4a66637d3}{Name\+Color}} = new Color(0.\+93f, 0.\+97f, 1f, 1f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a8ffbc9ca5cdcda93d465458587c5c6cd}{Description\+Color}} = new Color(0.\+65f, 0.\+72f, 0.\+82f, 1f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_adddc2dc40da8a5d75738bbe36acdae18}{Level\+Active\+Color}} = new Color(0.\+875f, 0.\+78f, 0.\+52f, 1f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a8d9bd3122af04314c66dd8f362f6e880}{Cost\+Color}} = new Color(0.\+96f, 0.\+97f, 0.\+99f, 1f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a82235760527a82d8c3ec571db25dba2e}{Button\+Normal\+Color}} = new Color(0.\+08f, 0.\+38f, 0.\+18f, 1f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a48b620f1e62b94ab59552225a21a3411}{Button\+Disabled\+Color}} = new Color(0.\+12f, 0.\+13f, 0.\+15f, 0.\+82f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_af07ede864202c48b0c0ca875a24e6afd}{Button\+Maxed\+Color}} = new Color(0.\+14f, 0.\+28f, 0.\+42f, 0.\+9f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a99e30dfbafd3e44263c55c550d3378ab}{Button\+Text\+Color}} = new Color(0.\+98f, 0.\+99f, 1f, 1f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a6ada0d88e312a9418e537f65a6b2add0}{Hint\+Color}} = new Color(0.\+50f, 0.\+58f, 0.\+68f, 0.\+85f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a7624716a936af2ef0b8a0bb007eee53d}{Feedback\+Success\+Color}} = new Color(0.\+22f, 0.\+82f, 0.\+42f, 1f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_adc5f62795e87e4b76004275ebc07d306}{Feedback\+Fail\+Color}} = new Color(0.\+92f, 0.\+24f, 0.\+2f, 1f)
+\item 
+static readonly Color \mbox{\hyperlink{class_shop_u_i_a0b189a109facde5015388c144873c844}{Divider\+Color}} = new Color(0.\+16f, 0.\+17f, 0.\+18f, 0.\+62f)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_shop_u_i_a7b33d83a5d8b4ae770bead88c42e0a6f}\index{ShopUI@{ShopUI}!Awake@{Awake}}
+\index{Awake@{Awake}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a7b33d83a5d8b4ae770bead88c42e0a6f} 
+void Shop\+UI.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_afbbaa40bbb1ef9756c99957fb4f39b82}\index{ShopUI@{ShopUI}!BuildLevelIndicator@{BuildLevelIndicator}}
+\index{BuildLevelIndicator@{BuildLevelIndicator}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{BuildLevelIndicator()}{BuildLevelIndicator()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_afbbaa40bbb1ef9756c99957fb4f39b82} 
+string Shop\+UI.\+Build\+Level\+Indicator (\begin{DoxyParamCaption}\item[{int}]{current\+Level}{, }\item[{int}]{max\+Level}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a94cc5dd8a09c6209c8b527acd08b8329}\index{ShopUI@{ShopUI}!CloseShop@{CloseShop}}
+\index{CloseShop@{CloseShop}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{CloseShop()}{CloseShop()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a94cc5dd8a09c6209c8b527acd08b8329} 
+void Shop\+UI.\+Close\+Shop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_shop_u_i_ad242e8f369bfe8a63e5bac501070c123}\index{ShopUI@{ShopUI}!CreateContentPanel@{CreateContentPanel}}
+\index{CreateContentPanel@{CreateContentPanel}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{CreateContentPanel()}{CreateContentPanel()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_ad242e8f369bfe8a63e5bac501070c123} 
+Transform Shop\+UI.\+Create\+Content\+Panel (\begin{DoxyParamCaption}\item[{Transform}]{parent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a03411f005a1e4578859827b4dbf1a221}\index{ShopUI@{ShopUI}!CreateDivider@{CreateDivider}}
+\index{CreateDivider@{CreateDivider}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{CreateDivider()}{CreateDivider()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a03411f005a1e4578859827b4dbf1a221} 
+void Shop\+UI.\+Create\+Divider (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{Vector2}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a9911dbec3d2344b4a95525b9898f5efc}\index{ShopUI@{ShopUI}!CreateFooter@{CreateFooter}}
+\index{CreateFooter@{CreateFooter}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{CreateFooter()}{CreateFooter()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a9911dbec3d2344b4a95525b9898f5efc} 
+void Shop\+UI.\+Create\+Footer (\begin{DoxyParamCaption}\item[{Transform}]{parent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a92eb8c9c949c87e2c15da47962498b39}\index{ShopUI@{ShopUI}!CreateHeader@{CreateHeader}}
+\index{CreateHeader@{CreateHeader}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{CreateHeader()}{CreateHeader()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a92eb8c9c949c87e2c15da47962498b39} 
+void Shop\+UI.\+Create\+Header (\begin{DoxyParamCaption}\item[{Transform}]{parent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_aae463b92dd8865e391af0dd3b724ac3d}\index{ShopUI@{ShopUI}!CreateOverlay@{CreateOverlay}}
+\index{CreateOverlay@{CreateOverlay}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{CreateOverlay()}{CreateOverlay()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_aae463b92dd8865e391af0dd3b724ac3d} 
+void Shop\+UI.\+Create\+Overlay (\begin{DoxyParamCaption}\item[{Transform}]{parent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_aecd9907b131d69625ff90cd6c1510b70}\index{ShopUI@{ShopUI}!CreateShopCanvas@{CreateShopCanvas}}
+\index{CreateShopCanvas@{CreateShopCanvas}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{CreateShopCanvas()}{CreateShopCanvas()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_aecd9907b131d69625ff90cd6c1510b70} 
+void Shop\+UI.\+Create\+Shop\+Canvas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_aefbc637cee730512fdb5f3d57445f5c6}\index{ShopUI@{ShopUI}!CreateSingleUpgradeRow@{CreateSingleUpgradeRow}}
+\index{CreateSingleUpgradeRow@{CreateSingleUpgradeRow}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{CreateSingleUpgradeRow()}{CreateSingleUpgradeRow()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_aefbc637cee730512fdb5f3d57445f5c6} 
+\mbox{\hyperlink{class_shop_u_i_1_1_shop_upgrade_row}{Shop\+Upgrade\+Row}} Shop\+UI.\+Create\+Single\+Upgrade\+Row (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{\mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}}}]{definition}{, }\item[{float}]{y\+Pos}{, }\item[{float}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a33af2878d6daec0a4e5f7c8005d44257}\index{ShopUI@{ShopUI}!CreateTextElement@{CreateTextElement}}
+\index{CreateTextElement@{CreateTextElement}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{CreateTextElement()}{CreateTextElement()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a33af2878d6daec0a4e5f7c8005d44257} 
+Text Shop\+UI.\+Create\+Text\+Element (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{string}]{default\+Text}{, }\item[{int}]{font\+Size}{, }\item[{Font\+Style}]{style}{, }\item[{Text\+Anchor}]{alignment}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a8feb74a7bc18529df2478ae57de5eac1}\index{ShopUI@{ShopUI}!CreateUpgradeRows@{CreateUpgradeRows}}
+\index{CreateUpgradeRows@{CreateUpgradeRows}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{CreateUpgradeRows()}{CreateUpgradeRows()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a8feb74a7bc18529df2478ae57de5eac1} 
+void Shop\+UI.\+Create\+Upgrade\+Rows (\begin{DoxyParamCaption}\item[{Transform}]{parent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_af593fc1607f62932818aab87cc146cdf}\index{ShopUI@{ShopUI}!EnsureEventSystem@{EnsureEventSystem}}
+\index{EnsureEventSystem@{EnsureEventSystem}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{EnsureEventSystem()}{EnsureEventSystem()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_af593fc1607f62932818aab87cc146cdf} 
+void Shop\+UI.\+Ensure\+Event\+System (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_ad247ae862d1c1d8ad06a40fccfbca3d3}\index{ShopUI@{ShopUI}!HandlePurchaseResult@{HandlePurchaseResult}}
+\index{HandlePurchaseResult@{HandlePurchaseResult}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{HandlePurchaseResult()}{HandlePurchaseResult()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_ad247ae862d1c1d8ad06a40fccfbca3d3} 
+void Shop\+UI.\+Handle\+Purchase\+Result (\begin{DoxyParamCaption}\item[{bool}]{success}{, }\item[{\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_shop_u_i_a2b47b0b9f5802cf1d51d3129243a957b}\index{ShopUI@{ShopUI}!OnUpgradeButtonClicked@{OnUpgradeButtonClicked}}
+\index{OnUpgradeButtonClicked@{OnUpgradeButtonClicked}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{OnUpgradeButtonClicked()}{OnUpgradeButtonClicked()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a2b47b0b9f5802cf1d51d3129243a957b} 
+void Shop\+UI.\+On\+Upgrade\+Button\+Clicked (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a1ba9c11bb6d3aa4b84e1712cef2be628}\index{ShopUI@{ShopUI}!OpenShop@{OpenShop}}
+\index{OpenShop@{OpenShop}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{OpenShop()}{OpenShop()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a1ba9c11bb6d3aa4b84e1712cef2be628} 
+void Shop\+UI.\+Open\+Shop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_shop_u_i_a60c14b185631d69402ef243c7e4a29ed}\index{ShopUI@{ShopUI}!PlayPurchaseFeedback@{PlayPurchaseFeedback}}
+\index{PlayPurchaseFeedback@{PlayPurchaseFeedback}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{PlayPurchaseFeedback()}{PlayPurchaseFeedback()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a60c14b185631d69402ef243c7e4a29ed} 
+void Shop\+UI.\+Play\+Purchase\+Feedback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}}}]{definition}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_af72a5d1e04beac7cca2d6510076e0291}\index{ShopUI@{ShopUI}!RefreshContent@{RefreshContent}}
+\index{RefreshContent@{RefreshContent}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{RefreshContent()}{RefreshContent()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_af72a5d1e04beac7cca2d6510076e0291} 
+void Shop\+UI.\+Refresh\+Content (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_ae4b0edfe8be1a3510b3a82d6d7f2aa04}\index{ShopUI@{ShopUI}!RefreshRow@{RefreshRow}}
+\index{RefreshRow@{RefreshRow}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{RefreshRow()}{RefreshRow()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_ae4b0edfe8be1a3510b3a82d6d7f2aa04} 
+void Shop\+UI.\+Refresh\+Row (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shop_u_i_1_1_shop_upgrade_row}{Shop\+Upgrade\+Row}}}]{row}{, }\item[{\mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}}}]{definition}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_ae6722be1d8e4250c3559f3bb261c98f2}\index{ShopUI@{ShopUI}!ShowFeedback@{ShowFeedback}}
+\index{ShowFeedback@{ShowFeedback}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{ShowFeedback()}{ShowFeedback()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_ae6722be1d8e4250c3559f3bb261c98f2} 
+void Shop\+UI.\+Show\+Feedback (\begin{DoxyParamCaption}\item[{string}]{message}{, }\item[{bool}]{success}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_aba2c224c5aa7a6fafd78ce0e3efa3d54}\index{ShopUI@{ShopUI}!ToggleShop@{ToggleShop}}
+\index{ToggleShop@{ToggleShop}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{ToggleShop()}{ToggleShop()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_aba2c224c5aa7a6fafd78ce0e3efa3d54} 
+void Shop\+UI.\+Toggle\+Shop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_shop_u_i_a310e60e95b3f421cd958be0afda70585}\index{ShopUI@{ShopUI}!Update@{Update}}
+\index{Update@{Update}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a310e60e95b3f421cd958be0afda70585} 
+void Shop\+UI.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_aee40b64c58139120f9dcd09334a096eb}\index{ShopUI@{ShopUI}!UpdateAnimation@{UpdateAnimation}}
+\index{UpdateAnimation@{UpdateAnimation}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{UpdateAnimation()}{UpdateAnimation()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_aee40b64c58139120f9dcd09334a096eb} 
+void Shop\+UI.\+Update\+Animation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a010f576d9e9c39d73c7e34eacc7818cb}\index{ShopUI@{ShopUI}!UpdateFeedback@{UpdateFeedback}}
+\index{UpdateFeedback@{UpdateFeedback}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{UpdateFeedback()}{UpdateFeedback()}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a010f576d9e9c39d73c7e34eacc7818cb} 
+void Shop\+UI.\+Update\+Feedback (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_shop_u_i_a3575aae10fa4777ed6898e75ac52fdea}\index{ShopUI@{ShopUI}!AnimationSpeed@{AnimationSpeed}}
+\index{AnimationSpeed@{AnimationSpeed}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{AnimationSpeed}{AnimationSpeed}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a3575aae10fa4777ed6898e75ac52fdea} 
+const float Shop\+UI.\+Animation\+Speed = 8f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_addba383280da9ba940d132d31c42bcb1}\index{ShopUI@{ShopUI}!BackgroundOverlay@{BackgroundOverlay}}
+\index{BackgroundOverlay@{BackgroundOverlay}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{BackgroundOverlay}{BackgroundOverlay}}
+{\footnotesize\ttfamily \label{class_shop_u_i_addba383280da9ba940d132d31c42bcb1} 
+readonly Color Shop\+UI.\+Background\+Overlay = new Color(0.\+005f, 0.\+008f, 0.\+012f, 0.\+82f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a7fe87df2e89777ed4475642292f2c4bf}\index{ShopUI@{ShopUI}!balanceText@{balanceText}}
+\index{balanceText@{balanceText}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{balanceText}{balanceText}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a7fe87df2e89777ed4475642292f2c4bf} 
+Text Shop\+UI.\+balance\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a77cb57401c3702053ca2186a439d414b}\index{ShopUI@{ShopUI}!BalanceValueColor@{BalanceValueColor}}
+\index{BalanceValueColor@{BalanceValueColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{BalanceValueColor}{BalanceValueColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a77cb57401c3702053ca2186a439d414b} 
+readonly Color Shop\+UI.\+Balance\+Value\+Color = new Color(0.\+22f, 0.\+82f, 0.\+42f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a48b620f1e62b94ab59552225a21a3411}\index{ShopUI@{ShopUI}!ButtonDisabledColor@{ButtonDisabledColor}}
+\index{ButtonDisabledColor@{ButtonDisabledColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{ButtonDisabledColor}{ButtonDisabledColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a48b620f1e62b94ab59552225a21a3411} 
+readonly Color Shop\+UI.\+Button\+Disabled\+Color = new Color(0.\+12f, 0.\+13f, 0.\+15f, 0.\+82f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_af07ede864202c48b0c0ca875a24e6afd}\index{ShopUI@{ShopUI}!ButtonMaxedColor@{ButtonMaxedColor}}
+\index{ButtonMaxedColor@{ButtonMaxedColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{ButtonMaxedColor}{ButtonMaxedColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_af07ede864202c48b0c0ca875a24e6afd} 
+readonly Color Shop\+UI.\+Button\+Maxed\+Color = new Color(0.\+14f, 0.\+28f, 0.\+42f, 0.\+9f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a82235760527a82d8c3ec571db25dba2e}\index{ShopUI@{ShopUI}!ButtonNormalColor@{ButtonNormalColor}}
+\index{ButtonNormalColor@{ButtonNormalColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{ButtonNormalColor}{ButtonNormalColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a82235760527a82d8c3ec571db25dba2e} 
+readonly Color Shop\+UI.\+Button\+Normal\+Color = new Color(0.\+08f, 0.\+38f, 0.\+18f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a99e30dfbafd3e44263c55c550d3378ab}\index{ShopUI@{ShopUI}!ButtonTextColor@{ButtonTextColor}}
+\index{ButtonTextColor@{ButtonTextColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{ButtonTextColor}{ButtonTextColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a99e30dfbafd3e44263c55c550d3378ab} 
+readonly Color Shop\+UI.\+Button\+Text\+Color = new Color(0.\+98f, 0.\+99f, 1f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_afa4944ad163adf3de8bda2406b261852}\index{ShopUI@{ShopUI}!cachedFont@{cachedFont}}
+\index{cachedFont@{cachedFont}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{cachedFont}{cachedFont}}
+{\footnotesize\ttfamily \label{class_shop_u_i_afa4944ad163adf3de8bda2406b261852} 
+Font Shop\+UI.\+cached\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a14b91ee6639ed6e5e5d8d5f0464ba898}\index{ShopUI@{ShopUI}!cachedLobbyUI@{cachedLobbyUI}}
+\index{cachedLobbyUI@{cachedLobbyUI}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{cachedLobbyUI}{cachedLobbyUI}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a14b91ee6639ed6e5e5d8d5f0464ba898} 
+\mbox{\hyperlink{class_lobby_u_i}{Lobby\+UI}} Shop\+UI.\+cached\+Lobby\+UI\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a8d9bd3122af04314c66dd8f362f6e880}\index{ShopUI@{ShopUI}!CostColor@{CostColor}}
+\index{CostColor@{CostColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{CostColor}{CostColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a8d9bd3122af04314c66dd8f362f6e880} 
+readonly Color Shop\+UI.\+Cost\+Color = new Color(0.\+96f, 0.\+97f, 0.\+99f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a8ffbc9ca5cdcda93d465458587c5c6cd}\index{ShopUI@{ShopUI}!DescriptionColor@{DescriptionColor}}
+\index{DescriptionColor@{DescriptionColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{DescriptionColor}{DescriptionColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a8ffbc9ca5cdcda93d465458587c5c6cd} 
+readonly Color Shop\+UI.\+Description\+Color = new Color(0.\+65f, 0.\+72f, 0.\+82f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a0b189a109facde5015388c144873c844}\index{ShopUI@{ShopUI}!DividerColor@{DividerColor}}
+\index{DividerColor@{DividerColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{DividerColor}{DividerColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a0b189a109facde5015388c144873c844} 
+readonly Color Shop\+UI.\+Divider\+Color = new Color(0.\+16f, 0.\+17f, 0.\+18f, 0.\+62f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_aa41605cd57e04c309e2142226ad7c37d}\index{ShopUI@{ShopUI}!FeedbackDuration@{FeedbackDuration}}
+\index{FeedbackDuration@{FeedbackDuration}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{FeedbackDuration}{FeedbackDuration}}
+{\footnotesize\ttfamily \label{class_shop_u_i_aa41605cd57e04c309e2142226ad7c37d} 
+const float Shop\+UI.\+Feedback\+Duration = 2.\+5f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_adc5f62795e87e4b76004275ebc07d306}\index{ShopUI@{ShopUI}!FeedbackFailColor@{FeedbackFailColor}}
+\index{FeedbackFailColor@{FeedbackFailColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{FeedbackFailColor}{FeedbackFailColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_adc5f62795e87e4b76004275ebc07d306} 
+readonly Color Shop\+UI.\+Feedback\+Fail\+Color = new Color(0.\+92f, 0.\+24f, 0.\+2f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a7624716a936af2ef0b8a0bb007eee53d}\index{ShopUI@{ShopUI}!FeedbackSuccessColor@{FeedbackSuccessColor}}
+\index{FeedbackSuccessColor@{FeedbackSuccessColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{FeedbackSuccessColor}{FeedbackSuccessColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a7624716a936af2ef0b8a0bb007eee53d} 
+readonly Color Shop\+UI.\+Feedback\+Success\+Color = new Color(0.\+22f, 0.\+82f, 0.\+42f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_afca33510d47668035d0e9ced235c74b6}\index{ShopUI@{ShopUI}!feedbackTimer@{feedbackTimer}}
+\index{feedbackTimer@{feedbackTimer}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{feedbackTimer}{feedbackTimer}}
+{\footnotesize\ttfamily \label{class_shop_u_i_afca33510d47668035d0e9ced235c74b6} 
+float Shop\+UI.\+feedback\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a459b7a9efc5c7533013f3131364d7be4}\index{ShopUI@{ShopUI}!HeaderColor@{HeaderColor}}
+\index{HeaderColor@{HeaderColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{HeaderColor}{HeaderColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a459b7a9efc5c7533013f3131364d7be4} 
+readonly Color Shop\+UI.\+Header\+Color = new Color(0.\+028f, 0.\+034f, 0.\+044f, 0.\+96f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a6ada0d88e312a9418e537f65a6b2add0}\index{ShopUI@{ShopUI}!HintColor@{HintColor}}
+\index{HintColor@{HintColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{HintColor}{HintColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a6ada0d88e312a9418e537f65a6b2add0} 
+readonly Color Shop\+UI.\+Hint\+Color = new Color(0.\+50f, 0.\+58f, 0.\+68f, 0.\+85f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a999fac6472076cc454197f5810f57d4c}\index{ShopUI@{ShopUI}!hintText@{hintText}}
+\index{hintText@{hintText}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{hintText}{hintText}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a999fac6472076cc454197f5810f57d4c} 
+Text Shop\+UI.\+hint\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a2f54d4967386dbcdf8230e9984e80d82}\index{ShopUI@{ShopUI}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{isOpen}{isOpen}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a2f54d4967386dbcdf8230e9984e80d82} 
+bool Shop\+UI.\+is\+Open\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_adddc2dc40da8a5d75738bbe36acdae18}\index{ShopUI@{ShopUI}!LevelActiveColor@{LevelActiveColor}}
+\index{LevelActiveColor@{LevelActiveColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{LevelActiveColor}{LevelActiveColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_adddc2dc40da8a5d75738bbe36acdae18} 
+readonly Color Shop\+UI.\+Level\+Active\+Color = new Color(0.\+875f, 0.\+78f, 0.\+52f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a77df9ebd0de7414e5883c2a4a66637d3}\index{ShopUI@{ShopUI}!NameColor@{NameColor}}
+\index{NameColor@{NameColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{NameColor}{NameColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a77df9ebd0de7414e5883c2a4a66637d3} 
+readonly Color Shop\+UI.\+Name\+Color = new Color(0.\+93f, 0.\+97f, 1f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_aeef666fe18e0b9617e0f42577eb2793c}\index{ShopUI@{ShopUI}!panelAnimationProgress@{panelAnimationProgress}}
+\index{panelAnimationProgress@{panelAnimationProgress}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{panelAnimationProgress}{panelAnimationProgress}}
+{\footnotesize\ttfamily \label{class_shop_u_i_aeef666fe18e0b9617e0f42577eb2793c} 
+float Shop\+UI.\+panel\+Animation\+Progress\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_aa2323137290c6ba0592c0998cafbb91a}\index{ShopUI@{ShopUI}!PanelBorderColor@{PanelBorderColor}}
+\index{PanelBorderColor@{PanelBorderColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{PanelBorderColor}{PanelBorderColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_aa2323137290c6ba0592c0998cafbb91a} 
+readonly Color Shop\+UI.\+Panel\+Border\+Color = new Color(0.\+15f, 0.\+16f, 0.\+17f, 0.\+95f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a7e05297d76ba5bb2f31fa8495e9a0bd9}\index{ShopUI@{ShopUI}!panelCanvasGroup@{panelCanvasGroup}}
+\index{panelCanvasGroup@{panelCanvasGroup}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{panelCanvasGroup}{panelCanvasGroup}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a7e05297d76ba5bb2f31fa8495e9a0bd9} 
+Canvas\+Group Shop\+UI.\+panel\+Canvas\+Group\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a062975b98e772a27f5fb5832f1fcd0e1}\index{ShopUI@{ShopUI}!PanelColor@{PanelColor}}
+\index{PanelColor@{PanelColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{PanelColor}{PanelColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a062975b98e772a27f5fb5832f1fcd0e1} 
+readonly Color Shop\+UI.\+Panel\+Color = new Color(0.\+018f, 0.\+022f, 0.\+028f, 0.\+98f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a340271421cce01b4b4b25889198d8182}\index{ShopUI@{ShopUI}!purchaseFeedbackText@{purchaseFeedbackText}}
+\index{purchaseFeedbackText@{purchaseFeedbackText}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{purchaseFeedbackText}{purchaseFeedbackText}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a340271421cce01b4b4b25889198d8182} 
+Text Shop\+UI.\+purchase\+Feedback\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_aa5afeb315c297fd0b922ec98cb090137}\index{ShopUI@{ShopUI}!RowBackgroundColor@{RowBackgroundColor}}
+\index{RowBackgroundColor@{RowBackgroundColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{RowBackgroundColor}{RowBackgroundColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_aa5afeb315c297fd0b922ec98cb090137} 
+readonly Color Shop\+UI.\+Row\+Background\+Color = new Color(0.\+035f, 0.\+043f, 0.\+056f, 0.\+94f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a1b5dd82fc8853e5c38f3f376529d6feb}\index{ShopUI@{ShopUI}!shopCanvas@{shopCanvas}}
+\index{shopCanvas@{shopCanvas}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{shopCanvas}{shopCanvas}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a1b5dd82fc8853e5c38f3f376529d6feb} 
+Canvas Shop\+UI.\+shop\+Canvas\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a0171f0c4cb579b68fd353422d0459013}\index{ShopUI@{ShopUI}!shopPanel@{shopPanel}}
+\index{shopPanel@{shopPanel}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{shopPanel}{shopPanel}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a0171f0c4cb579b68fd353422d0459013} 
+Game\+Object Shop\+UI.\+shop\+Panel\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a212dd015f9788a3eebc40d927e23f3b3}\index{ShopUI@{ShopUI}!TitleColor@{TitleColor}}
+\index{TitleColor@{TitleColor}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{TitleColor}{TitleColor}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a212dd015f9788a3eebc40d927e23f3b3} 
+readonly Color Shop\+UI.\+Title\+Color = new Color(0.\+875f, 0.\+725f, 0.\+32f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_a45b2a7d2bc8bf51757830cf37461f58a}\index{ShopUI@{ShopUI}!titleText@{titleText}}
+\index{titleText@{titleText}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{titleText}{titleText}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a45b2a7d2bc8bf51757830cf37461f58a} 
+Text Shop\+UI.\+title\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_shop_u_i_af57d2f0b3d92567587d794fc4f2edc27}\index{ShopUI@{ShopUI}!upgradeRows@{upgradeRows}}
+\index{upgradeRows@{upgradeRows}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{upgradeRows}{upgradeRows}}
+{\footnotesize\ttfamily \label{class_shop_u_i_af57d2f0b3d92567587d794fc4f2edc27} 
+readonly List$<$\mbox{\hyperlink{class_shop_u_i_1_1_shop_upgrade_row}{Shop\+Upgrade\+Row}}$>$ Shop\+UI.\+upgrade\+Rows = new List$<$\mbox{\hyperlink{class_shop_u_i_1_1_shop_upgrade_row}{Shop\+Upgrade\+Row}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_shop_u_i_a8aa60f9cae6224cc401d237016c8baf3}\index{ShopUI@{ShopUI}!IsShopOpen@{IsShopOpen}}
+\index{IsShopOpen@{IsShopOpen}!ShopUI@{ShopUI}}
+\doxysubsubsection{\texorpdfstring{IsShopOpen}{IsShopOpen}}
+{\footnotesize\ttfamily \label{class_shop_u_i_a8aa60f9cae6224cc401d237016c8baf3} 
+bool Shop\+UI.\+Is\+Shop\+Open\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_shop_u_i_8cs}{Shop\+UI.\+cs}}\end{DoxyCompactItemize}

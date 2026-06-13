@@ -1,0 +1,107 @@
+\doxysection{Dokumentacja klasy Customer\+Animator}
+\hypertarget{class_customer_animator}{}\label{class_customer_animator}\index{CustomerAnimator@{CustomerAnimator}}
+
+
+Komponent animujący model klienta za pomocą systemu Playable API Unity. Ładuje klip animacji idle z zasobów i odtwarza go w pętli.  
+
+
+Diagram dziedziczenia dla Customer\+Animator\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_customer_animator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_customer_animator_a843c39d51603357b97100eb7cc21dee3}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje system animacji klienta — ładuje klip idle z Resources, tworzy graf Playable i rozpoczyna odtwarzanie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_customer_animator_a338e3a1fad895a706483cf8fb4915f84}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Ręcznie zapętla animację idle — resetuje czas odtwarzania po osiągnięciu końca klipu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_customer_animator_a793e695c2abaeaecd51192a7ea0706ac}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Niszczy graf Playable przy niszczeniu komponentu, aby zwolnić zasoby natywne. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Unity\+Engine.\+Playables.\+Playable\+Graph \mbox{\hyperlink{class_customer_animator_a58c3f2f0663686549b540ce96687ec71}{graph}}
+\begin{DoxyCompactList}\small\item\em Graf odtwarzania Playable — zarządza łańcuchem odtwarzania animacji. Musi być jawnie niszczony w On\+Destroy, aby uniknąć wycieków pamięci. \end{DoxyCompactList}\item 
+Unity\+Engine.\+Animations.\+Animation\+Clip\+Playable \mbox{\hyperlink{class_customer_animator_a8f0f00a093dc571291be9e1095721aa0}{idle\+Playable}}
+\begin{DoxyCompactList}\small\item\em Playable opakowujący klip animacji idle klienta. Pozwala na kontrolę czasu odtwarzania animacji. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_customer_animator_ae50feb554976a1c33cb0d1f3122a1132}{clip\+Length}}
+\begin{DoxyCompactList}\small\item\em Długość klipu animacji idle w sekundach. Używana do ręcznego zapętlania animacji w Update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Komponent animujący model klienta za pomocą systemu Playable API Unity. Ładuje klip animacji idle z zasobów i odtwarza go w pętli. 
+
+Używa niskiego poziomu Playable API zamiast Animator Controller, co pozwala na dynamiczne ładowanie i odtwarzanie animacji bez potrzeby tworzenia kontrolera animacji w edytorze. Animacja jest ręcznie zapętlana w metodzie Update, resetując czas po osiągnięciu końca klipu. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_customer_animator_a793e695c2abaeaecd51192a7ea0706ac}\index{CustomerAnimator@{CustomerAnimator}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!CustomerAnimator@{CustomerAnimator}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_customer_animator_a793e695c2abaeaecd51192a7ea0706ac} 
+void Customer\+Animator.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Niszczy graf Playable przy niszczeniu komponentu, aby zwolnić zasoby natywne. 
+
+Graf Playable\+Graph alokuje pamięć natywną, która nie jest zarządzana przez garbage collector .NET — musi być jawnie zwolniona wywołaniem Destroy(). \Hypertarget{class_customer_animator_a843c39d51603357b97100eb7cc21dee3}\index{CustomerAnimator@{CustomerAnimator}!Start@{Start}}
+\index{Start@{Start}!CustomerAnimator@{CustomerAnimator}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_customer_animator_a843c39d51603357b97100eb7cc21dee3} 
+void Customer\+Animator.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje system animacji klienta — ładuje klip idle z Resources, tworzy graf Playable i rozpoczyna odtwarzanie. 
+
+Wyszukuje klipy animacji w katalogu "{}\+Models/klient\+\_\+idle"{} i wybiera pierwszy klip, który nie jest podglądem (nie zaczyna się od "{}\+\_\+\+\_\+preview"{}). Jeśli na obiekcie nie ma komponentu Animator, zostaje on automatycznie dodany. \Hypertarget{class_customer_animator_a338e3a1fad895a706483cf8fb4915f84}\index{CustomerAnimator@{CustomerAnimator}!Update@{Update}}
+\index{Update@{Update}!CustomerAnimator@{CustomerAnimator}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_customer_animator_a338e3a1fad895a706483cf8fb4915f84} 
+void Customer\+Animator.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ręcznie zapętla animację idle — resetuje czas odtwarzania po osiągnięciu końca klipu. 
+
+Konieczne, ponieważ Playable API nie zapętla automatycznie klipów animacji bez dodatkowej konfiguracji. Używa operatora modulo na czasie, aby zachować płynne przejście między iteracjami animacji. 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_customer_animator_ae50feb554976a1c33cb0d1f3122a1132}\index{CustomerAnimator@{CustomerAnimator}!clipLength@{clipLength}}
+\index{clipLength@{clipLength}!CustomerAnimator@{CustomerAnimator}}
+\doxysubsubsection{\texorpdfstring{clipLength}{clipLength}}
+{\footnotesize\ttfamily \label{class_customer_animator_ae50feb554976a1c33cb0d1f3122a1132} 
+float Customer\+Animator.\+clip\+Length\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Długość klipu animacji idle w sekundach. Używana do ręcznego zapętlania animacji w Update. 
+
+\Hypertarget{class_customer_animator_a58c3f2f0663686549b540ce96687ec71}\index{CustomerAnimator@{CustomerAnimator}!graph@{graph}}
+\index{graph@{graph}!CustomerAnimator@{CustomerAnimator}}
+\doxysubsubsection{\texorpdfstring{graph}{graph}}
+{\footnotesize\ttfamily \label{class_customer_animator_a58c3f2f0663686549b540ce96687ec71} 
+Unity\+Engine.\+Playables.\+Playable\+Graph Customer\+Animator.\+graph\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Graf odtwarzania Playable — zarządza łańcuchem odtwarzania animacji. Musi być jawnie niszczony w On\+Destroy, aby uniknąć wycieków pamięci. 
+
+\Hypertarget{class_customer_animator_a8f0f00a093dc571291be9e1095721aa0}\index{CustomerAnimator@{CustomerAnimator}!idlePlayable@{idlePlayable}}
+\index{idlePlayable@{idlePlayable}!CustomerAnimator@{CustomerAnimator}}
+\doxysubsubsection{\texorpdfstring{idlePlayable}{idlePlayable}}
+{\footnotesize\ttfamily \label{class_customer_animator_a8f0f00a093dc571291be9e1095721aa0} 
+Unity\+Engine.\+Animations.\+Animation\+Clip\+Playable Customer\+Animator.\+idle\+Playable\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Playable opakowujący klip animacji idle klienta. Pozwala na kontrolę czasu odtwarzania animacji. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_game_bootstrap_8cs}{Kitchen\+Game\+Bootstrap.\+cs}}\end{DoxyCompactItemize}

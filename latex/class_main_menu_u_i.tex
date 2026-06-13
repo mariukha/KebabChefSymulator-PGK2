@@ -1,0 +1,598 @@
+\doxysection{Dokumentacja klasy Main\+Menu\+UI}
+\hypertarget{class_main_menu_u_i}{}\label{class_main_menu_u_i}\index{MainMenuUI@{MainMenuUI}}
+Diagram dziedziczenia dla Main\+Menu\+UI\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_main_menu_u_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_main_menu_u_i_aeeb2386f5887b07c2a86374cddeaa1e0}{Show}} ()
+\begin{DoxyCompactList}\small\item\em Wyświetla menu główne, zatrzymując czas gry i odblokowując kursor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_u_i_a807f17f64a565eeea9d26ab3f0966721}{Hide}} ()
+\begin{DoxyCompactList}\small\item\em Ukrywa menu główne, wznawiając czas gry i blokując kursor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_main_menu_u_i_a1da249fb27ba968eb8e79f4a17aaee3e}{Is\+Solo\+Mode}} = false\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Określa, czy gra jest w trybie solo. Ustawiane przy wyborze trybu gry z menu głównego. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_main_menu_u_i_ab795709482d0b762372a9c58efdf29e7}{Is\+Menu\+Open}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Zwraca informację, czy menu główne jest aktualnie otwarte i widoczne. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_main_menu_u_i_a236c86f4748b6c41088f2d36bd64a5da}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje czcionkę, tworzy interfejs użytkownika i wyświetla menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_u_i_ac24ae8003cd223a1111143015ed3f60f}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje animację przejścia menu w każdej klatce. Kontroluje przezroczystość, interaktywność oraz stan kursora i czasu gry. Gdy menu jest widoczne, czas gry jest zatrzymany, a kursor odblokowany. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_u_i_a21847a5e7cf9c29dc5e5ececcf7ce396}{On\+Solo\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em Obsługuje kliknięcie przycisku "{}\+Gra Solo"{}. Ustawia tryb solo, konfiguruje slot zapisu, ukrywa menu i lobby, a następnie uruchamia hosta sieciowego na adresie lokalnym. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_u_i_abc6764a1882c5e5e8781f97242594235}{On\+Multiplayer\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em Obsługuje kliknięcie przycisku "{}\+Multiplayer"{}. Ustawia tryb multiplayer, konfiguruje slot zapisu, ukrywa menu główne i wyświetla interfejs lobby do wyboru serwera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_u_i_ac0ed5dd6e53cdaf52f33a317d75cd204}{On\+Quit\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em Obsługuje kliknięcie przycisku "{}\+Wyjdź"{}. W edytorze Unity zatrzymuje tryb odtwarzania, w buildzie zamyka aplikację. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_u_i_a026060158b71ee4b6f5e3b37164d6153}{On\+Settings\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em Obsługuje kliknięcie przycisku "{}\+Ustawienia"{}. Otwiera panel ustawień gry za pomocą \doxylink{class_settings_menu_u_i}{Settings\+Menu\+UI}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_u_i_ad72affdca38a7c26c6166012f2658e46}{Create\+UI}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy programowo cały interfejs użytkownika menu głównego. Buduje Canvas, tło, panel centralny, tytuł, separator oraz przyciski z odpowiednimi kolorami i zdarzeniami kliknięcia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_u_i_a88ba28e614e581f292532c0e32f72e0b}{Create\+Button}} (Transform parent, string label, Color bg\+Color, Color hover\+Color, float y\+Pos, float width, float height, Unity\+Engine.\+Events.\+Unity\+Action on\+Click, bool is\+Primary)
+\begin{DoxyCompactList}\small\item\em Tworzy pojedynczy przycisk menu z efektem hover i konfigurowanymi kolorami. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_main_menu_u_i_a450406cdf178bdef83e6fa9729dcb747}{Make\+Full\+Rect}} (Transform parent, string name, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy pełnoekranowy prostokąt (Image) pokrywający cały obszar rodzica. Używany do tworzenia tła i nakładek. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_main_menu_u_i_a9d527fec123600ab88b34fa737622a65}{Make\+Anchored\+Panel}} (Transform parent, string name, Vector2 anchor, Vector2 pos, Vector2 size, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy zakotwiczony panel z określoną pozycją, rozmiarem i kolorem. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_main_menu_u_i_a458c68f5551fb134a912dc1241a0e23f}{Make\+Panel}} (Transform parent, string name, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy prosty panel z komponentem Image i podanym kolorem. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_main_menu_u_i_a22c1a59e9ffad9e61b5c531b99d235fc}{Make\+Text}} (Transform parent, string content, int size, Font\+Style style, Color color, Text\+Anchor anchor)
+\begin{DoxyCompactList}\small\item\em Tworzy element tekstowy z określonymi parametrami stylu, rozmiaru i koloru. Dodaje cień dla lepszej czytelności na ciemnym tle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_u_i_a8eb718fa61349bd71b1ba161034f65d1}{Set\+Rect}} (Component c, Vector2 anchor, Vector2 pos, Vector2 size)
+\begin{DoxyCompactList}\small\item\em Ustawia pozycję i rozmiar Rect\+Transform komponentu z domyślnym pivotem (0.\+5, 0.\+5). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_u_i_ae6fb250164cca86a2f84f422b8c55973}{Set\+Rect}} (Component c, Vector2 anchor, Vector2 pos, Vector2 size, Vector2 pivot)
+\begin{DoxyCompactList}\small\item\em Ustawia pozycję, rozmiar i pivot Rect\+Transform komponentu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Canvas \mbox{\hyperlink{class_main_menu_u_i_a099ffe615cb62f12f99bf4c46c63ab8f}{menu\+Canvas}}
+\begin{DoxyCompactList}\small\item\em Canvas menu głównego do wyświetlania elementów interfejsu. Renderowany w trybie Screen Space Overlay z najwyższym priorytetem (200). \end{DoxyCompactList}\item 
+Canvas\+Group \mbox{\hyperlink{class_main_menu_u_i_a209e9d846ee3ae2d087460f2accc9b28}{canvas\+Group}}
+\begin{DoxyCompactList}\small\item\em Grupa Canvas kontrolująca przezroczystość i interaktywność całego menu. Używana do animacji pojawiania się i znikania menu. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_main_menu_u_i_a6372029c5bfd15c7fba261a121601514}{title\+Text}}
+\begin{DoxyCompactList}\small\item\em Komponent tekstu tytułu gry ("{}\+KEBAB CHEF"{}). Wyświetlany w kolorze złotym na górze panelu menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_main_menu_u_i_a5a2754d08de3796c6d38df9884c04a26}{is\+Visible}} = true
+\begin{DoxyCompactList}\small\item\em Flaga określająca, czy menu główne jest aktualnie widoczne. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_main_menu_u_i_a3d53e3372d870f963c2e52d5c8d1e1ce}{animation\+Progress}} = 1f
+\begin{DoxyCompactList}\small\item\em Postęp animacji przejścia menu (0.\+0 = ukryte, 1.\+0 = w pełni widoczne). Animowany płynnie w kierunku wartości docelowej. \end{DoxyCompactList}\item 
+Font \mbox{\hyperlink{class_main_menu_u_i_acad31d6540ce60529526719a90f091f0}{cached\+Font}}
+\begin{DoxyCompactList}\small\item\em Buforowana czcionka używana do renderowania tekstu w elementach menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+const float \mbox{\hyperlink{class_main_menu_u_i_ac56e7e201423a51e482cc9681c1cec5f}{Anim\+Speed}} = 3.\+5f
+\begin{DoxyCompactList}\small\item\em Szybkość animacji przejścia menu (jednostek na sekundę w czasie nieskalowanym). \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_a6b8eda3a7d960b8dcf25535bf4deee0c}{Bg\+Dark}} = new Color(0.\+008f, 0.\+01f, 0.\+014f, 0.\+58f)
+\begin{DoxyCompactList}\small\item\em Kolor ciemnego tła menu głównego (półprzezroczysty). \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_adcb79eee9ce1a0b317dbde2b613d547d}{Panel\+Bg}} = new Color(0.\+014f, 0.\+016f, 0.\+019f, 0.\+82f)
+\begin{DoxyCompactList}\small\item\em Kolor panelu centralnego menu (ciemny, półprzezroczysty). \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_aa3f69fdef87dc051317d7e8bf130784c}{Accent\+Gold}} = new Color(0.\+86f, 0.\+68f, 0.\+28f)
+\begin{DoxyCompactList}\small\item\em Kolor złotego akcentu używany w tytule i elementach dekoracyjnych. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_a8aa5a1662b1f7f7079fc097455542ecd}{Text\+Primary}} = new Color(0.\+91f, 0.\+92f, 0.\+94f)
+\begin{DoxyCompactList}\small\item\em Podstawowy kolor tekstu interfejsu (jasny, niemal biały). \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_a3b21203eb0f6a957e6378cb7140f4065}{Btn\+Play\+Bg}} = new Color(0.\+045f, 0.\+30f, 0.\+14f)
+\begin{DoxyCompactList}\small\item\em Kolor tła przycisku "{}\+Gra Solo"{} (ciemnozielony). \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_af38baf7e09a3fc80e4f768a91b36d323}{Btn\+Play\+Hover}} = new Color(0.\+07f, 0.\+42f, 0.\+19f)
+\begin{DoxyCompactList}\small\item\em Kolor podświetlenia przycisku "{}\+Gra Solo"{} przy najechaniu kursorem. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_a6b07a97954d2dd6c2c6a485069095f92}{Btn\+Multi\+Bg}} = new Color(0.\+055f, 0.\+17f, 0.\+36f)
+\begin{DoxyCompactList}\small\item\em Kolor tła przycisku "{}\+Multiplayer"{} (ciemnoniebieski). \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_a5ecbf41667fad907e74d6842ea4f310a}{Btn\+Multi\+Hover}} = new Color(0.\+08f, 0.\+24f, 0.\+50f)
+\begin{DoxyCompactList}\small\item\em Kolor podświetlenia przycisku "{}\+Multiplayer"{} przy najechaniu kursorem. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_ab1b21b3300658ba351226d81abd54e3c}{Btn\+Settings\+Bg}} = new Color(0.\+075f, 0.\+085f, 0.\+10f)
+\begin{DoxyCompactList}\small\item\em Kolor tła przycisku "{}\+Ustawienia"{} (ciemnoszary). \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_a7ebf403111b04b82aead9a01fc3ed14e}{Btn\+Settings\+Hover}} = new Color(0.\+12f, 0.\+135f, 0.\+16f)
+\begin{DoxyCompactList}\small\item\em Kolor podświetlenia przycisku "{}\+Ustawienia"{} przy najechaniu kursorem. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_a8d2d5c968ebc8e396941f9d73748e025}{Btn\+Quit\+Bg}} = new Color(0.\+15f, 0.\+035f, 0.\+035f)
+\begin{DoxyCompactList}\small\item\em Kolor tła przycisku "{}\+Wyjdź"{} (ciemnoczerwony). \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_a3e4fa9cb4a7c173c8c619022ade105f4}{Btn\+Quit\+Hover}} = new Color(0.\+27f, 0.\+06f, 0.\+055f)
+\begin{DoxyCompactList}\small\item\em Kolor podświetlenia przycisku "{}\+Wyjdź"{} przy najechaniu kursorem. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_main_menu_u_i_aba19ec5ebcef09258585e823ac6069a1}{Divider\+Color}} = new Color(0.\+86f, 0.\+68f, 0.\+28f, 0.\+24f)
+\begin{DoxyCompactList}\small\item\em Kolor poziomej linii dekoracyjnej (separator) w menu głównym. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_main_menu_u_i_a88ba28e614e581f292532c0e32f72e0b}\index{MainMenuUI@{MainMenuUI}!CreateButton@{CreateButton}}
+\index{CreateButton@{CreateButton}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{CreateButton()}{CreateButton()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a88ba28e614e581f292532c0e32f72e0b} 
+void Main\+Menu\+UI.\+Create\+Button (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{label}{, }\item[{Color}]{bg\+Color}{, }\item[{Color}]{hover\+Color}{, }\item[{float}]{y\+Pos}{, }\item[{float}]{width}{, }\item[{float}]{height}{, }\item[{Unity\+Engine.\+Events.\+Unity\+Action}]{on\+Click}{, }\item[{bool}]{is\+Primary}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy pojedynczy przycisk menu z efektem hover i konfigurowanymi kolorami. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica, do którego przycisk zostanie dołączony.\\
+\hline
+{\em label} & Tekst etykiety wyświetlany na przycisku.\\
+\hline
+{\em bg\+Color} & Kolor tła przycisku w stanie normalnym.\\
+\hline
+{\em hover\+Color} & Kolor tła przycisku przy najechaniu kursorem.\\
+\hline
+{\em y\+Pos} & Pozycja Y przycisku względem kotwicy (ujemne = w dół).\\
+\hline
+{\em width} & Szerokość przycisku w pikselach.\\
+\hline
+{\em height} & Wysokość przycisku w pikselach.\\
+\hline
+{\em on\+Click} & Akcja wywoływana po kliknięciu przycisku.\\
+\hline
+{\em is\+Primary} & Czy przycisk jest główny (wpływa na rozmiar czcionki i efekt hover).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_menu_u_i_ad72affdca38a7c26c6166012f2658e46}\index{MainMenuUI@{MainMenuUI}!CreateUI@{CreateUI}}
+\index{CreateUI@{CreateUI}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{CreateUI()}{CreateUI()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_ad72affdca38a7c26c6166012f2658e46} 
+void Main\+Menu\+UI.\+Create\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy programowo cały interfejs użytkownika menu głównego. Buduje Canvas, tło, panel centralny, tytuł, separator oraz przyciski z odpowiednimi kolorami i zdarzeniami kliknięcia. 
+
+\Hypertarget{class_main_menu_u_i_a807f17f64a565eeea9d26ab3f0966721}\index{MainMenuUI@{MainMenuUI}!Hide@{Hide}}
+\index{Hide@{Hide}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{Hide()}{Hide()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a807f17f64a565eeea9d26ab3f0966721} 
+void Main\+Menu\+UI.\+Hide (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ukrywa menu główne, wznawiając czas gry i blokując kursor. 
+
+\Hypertarget{class_main_menu_u_i_a9d527fec123600ab88b34fa737622a65}\index{MainMenuUI@{MainMenuUI}!MakeAnchoredPanel@{MakeAnchoredPanel}}
+\index{MakeAnchoredPanel@{MakeAnchoredPanel}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeAnchoredPanel()}{MakeAnchoredPanel()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a9d527fec123600ab88b34fa737622a65} 
+Game\+Object Main\+Menu\+UI.\+Make\+Anchored\+Panel (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{pos}{, }\item[{Vector2}]{size}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy zakotwiczony panel z określoną pozycją, rozmiarem i kolorem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica.\\
+\hline
+{\em name} & Nazwa tworzonego obiektu.\\
+\hline
+{\em anchor} & Punkt kotwiczenia panelu (np. środek ekranu).\\
+\hline
+{\em pos} & Pozycja panelu względem kotwicy.\\
+\hline
+{\em size} & Rozmiar panelu (szerokość, wysokość).\\
+\hline
+{\em color} & Kolor tła panelu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony obiekt panelu.
+\end{DoxyReturn}
+\Hypertarget{class_main_menu_u_i_a450406cdf178bdef83e6fa9729dcb747}\index{MainMenuUI@{MainMenuUI}!MakeFullRect@{MakeFullRect}}
+\index{MakeFullRect@{MakeFullRect}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeFullRect()}{MakeFullRect()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a450406cdf178bdef83e6fa9729dcb747} 
+Image Main\+Menu\+UI.\+Make\+Full\+Rect (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy pełnoekranowy prostokąt (Image) pokrywający cały obszar rodzica. Używany do tworzenia tła i nakładek. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica.\\
+\hline
+{\em name} & Nazwa tworzonego obiektu.\\
+\hline
+{\em color} & Kolor wypełnienia prostokąta.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony komponent Image.
+\end{DoxyReturn}
+\Hypertarget{class_main_menu_u_i_a458c68f5551fb134a912dc1241a0e23f}\index{MainMenuUI@{MainMenuUI}!MakePanel@{MakePanel}}
+\index{MakePanel@{MakePanel}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakePanel()}{MakePanel()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a458c68f5551fb134a912dc1241a0e23f} 
+Image Main\+Menu\+UI.\+Make\+Panel (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy prosty panel z komponentem Image i podanym kolorem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica.\\
+\hline
+{\em name} & Nazwa tworzonego obiektu.\\
+\hline
+{\em color} & Kolor tła panelu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Komponent Image utworzonego panelu.
+\end{DoxyReturn}
+\Hypertarget{class_main_menu_u_i_a22c1a59e9ffad9e61b5c531b99d235fc}\index{MainMenuUI@{MainMenuUI}!MakeText@{MakeText}}
+\index{MakeText@{MakeText}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeText()}{MakeText()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a22c1a59e9ffad9e61b5c531b99d235fc} 
+Text Main\+Menu\+UI.\+Make\+Text (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{content}{, }\item[{int}]{size}{, }\item[{Font\+Style}]{style}{, }\item[{Color}]{color}{, }\item[{Text\+Anchor}]{anchor}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy element tekstowy z określonymi parametrami stylu, rozmiaru i koloru. Dodaje cień dla lepszej czytelności na ciemnym tle. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica.\\
+\hline
+{\em content} & Treść tekstowa do wyświetlenia.\\
+\hline
+{\em size} & Rozmiar czcionki w pikselach.\\
+\hline
+{\em style} & Styl czcionki (normalny, pogrubiony itp.).\\
+\hline
+{\em color} & Kolor tekstu.\\
+\hline
+{\em anchor} & Wyrównanie tekstu wewnątrz prostokąta.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony komponent Text.
+\end{DoxyReturn}
+\Hypertarget{class_main_menu_u_i_abc6764a1882c5e5e8781f97242594235}\index{MainMenuUI@{MainMenuUI}!OnMultiplayerClicked@{OnMultiplayerClicked}}
+\index{OnMultiplayerClicked@{OnMultiplayerClicked}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{OnMultiplayerClicked()}{OnMultiplayerClicked()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_abc6764a1882c5e5e8781f97242594235} 
+void Main\+Menu\+UI.\+On\+Multiplayer\+Clicked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje kliknięcie przycisku "{}\+Multiplayer"{}. Ustawia tryb multiplayer, konfiguruje slot zapisu, ukrywa menu główne i wyświetla interfejs lobby do wyboru serwera. 
+
+\Hypertarget{class_main_menu_u_i_ac0ed5dd6e53cdaf52f33a317d75cd204}\index{MainMenuUI@{MainMenuUI}!OnQuitClicked@{OnQuitClicked}}
+\index{OnQuitClicked@{OnQuitClicked}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{OnQuitClicked()}{OnQuitClicked()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_ac0ed5dd6e53cdaf52f33a317d75cd204} 
+void Main\+Menu\+UI.\+On\+Quit\+Clicked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje kliknięcie przycisku "{}\+Wyjdź"{}. W edytorze Unity zatrzymuje tryb odtwarzania, w buildzie zamyka aplikację. 
+
+\Hypertarget{class_main_menu_u_i_a026060158b71ee4b6f5e3b37164d6153}\index{MainMenuUI@{MainMenuUI}!OnSettingsClicked@{OnSettingsClicked}}
+\index{OnSettingsClicked@{OnSettingsClicked}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{OnSettingsClicked()}{OnSettingsClicked()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a026060158b71ee4b6f5e3b37164d6153} 
+void Main\+Menu\+UI.\+On\+Settings\+Clicked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje kliknięcie przycisku "{}\+Ustawienia"{}. Otwiera panel ustawień gry za pomocą \doxylink{class_settings_menu_u_i}{Settings\+Menu\+UI}. 
+
+\Hypertarget{class_main_menu_u_i_a21847a5e7cf9c29dc5e5ececcf7ce396}\index{MainMenuUI@{MainMenuUI}!OnSoloClicked@{OnSoloClicked}}
+\index{OnSoloClicked@{OnSoloClicked}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{OnSoloClicked()}{OnSoloClicked()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a21847a5e7cf9c29dc5e5ececcf7ce396} 
+void Main\+Menu\+UI.\+On\+Solo\+Clicked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje kliknięcie przycisku "{}\+Gra Solo"{}. Ustawia tryb solo, konfiguruje slot zapisu, ukrywa menu i lobby, a następnie uruchamia hosta sieciowego na adresie lokalnym. 
+
+\Hypertarget{class_main_menu_u_i_a8eb718fa61349bd71b1ba161034f65d1}\index{MainMenuUI@{MainMenuUI}!SetRect@{SetRect}}
+\index{SetRect@{SetRect}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{SetRect()}{SetRect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a8eb718fa61349bd71b1ba161034f65d1} 
+void Main\+Menu\+UI.\+Set\+Rect (\begin{DoxyParamCaption}\item[{Component}]{c}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{pos}{, }\item[{Vector2}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ustawia pozycję i rozmiar Rect\+Transform komponentu z domyślnym pivotem (0.\+5, 0.\+5). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em c} & Komponent, którego Rect\+Transform ma być skonfigurowany.\\
+\hline
+{\em anchor} & Punkt kotwiczenia.\\
+\hline
+{\em pos} & Pozycja względem kotwicy.\\
+\hline
+{\em size} & Rozmiar elementu (szerokość, wysokość).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_menu_u_i_ae6fb250164cca86a2f84f422b8c55973}\index{MainMenuUI@{MainMenuUI}!SetRect@{SetRect}}
+\index{SetRect@{SetRect}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{SetRect()}{SetRect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_ae6fb250164cca86a2f84f422b8c55973} 
+void Main\+Menu\+UI.\+Set\+Rect (\begin{DoxyParamCaption}\item[{Component}]{c}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{pos}{, }\item[{Vector2}]{size}{, }\item[{Vector2}]{pivot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ustawia pozycję, rozmiar i pivot Rect\+Transform komponentu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em c} & Komponent, którego Rect\+Transform ma być skonfigurowany.\\
+\hline
+{\em anchor} & Punkt kotwiczenia (min i max ustawiane na tę samą wartość).\\
+\hline
+{\em pos} & Pozycja względem kotwicy.\\
+\hline
+{\em size} & Rozmiar elementu (szerokość, wysokość).\\
+\hline
+{\em pivot} & Punkt obrotu elementu.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_menu_u_i_aeeb2386f5887b07c2a86374cddeaa1e0}\index{MainMenuUI@{MainMenuUI}!Show@{Show}}
+\index{Show@{Show}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_aeeb2386f5887b07c2a86374cddeaa1e0} 
+void Main\+Menu\+UI.\+Show (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Wyświetla menu główne, zatrzymując czas gry i odblokowując kursor. 
+
+\Hypertarget{class_main_menu_u_i_a236c86f4748b6c41088f2d36bd64a5da}\index{MainMenuUI@{MainMenuUI}!Start@{Start}}
+\index{Start@{Start}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a236c86f4748b6c41088f2d36bd64a5da} 
+void Main\+Menu\+UI.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje czcionkę, tworzy interfejs użytkownika i wyświetla menu. 
+
+\Hypertarget{class_main_menu_u_i_ac24ae8003cd223a1111143015ed3f60f}\index{MainMenuUI@{MainMenuUI}!Update@{Update}}
+\index{Update@{Update}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_ac24ae8003cd223a1111143015ed3f60f} 
+void Main\+Menu\+UI.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje animację przejścia menu w każdej klatce. Kontroluje przezroczystość, interaktywność oraz stan kursora i czasu gry. Gdy menu jest widoczne, czas gry jest zatrzymany, a kursor odblokowany. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_main_menu_u_i_aa3f69fdef87dc051317d7e8bf130784c}\index{MainMenuUI@{MainMenuUI}!AccentGold@{AccentGold}}
+\index{AccentGold@{AccentGold}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{AccentGold}{AccentGold}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_aa3f69fdef87dc051317d7e8bf130784c} 
+readonly Color Main\+Menu\+UI.\+Accent\+Gold = new Color(0.\+86f, 0.\+68f, 0.\+28f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor złotego akcentu używany w tytule i elementach dekoracyjnych. 
+
+\Hypertarget{class_main_menu_u_i_a3d53e3372d870f963c2e52d5c8d1e1ce}\index{MainMenuUI@{MainMenuUI}!animationProgress@{animationProgress}}
+\index{animationProgress@{animationProgress}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{animationProgress}{animationProgress}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a3d53e3372d870f963c2e52d5c8d1e1ce} 
+float Main\+Menu\+UI.\+animation\+Progress = 1f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Postęp animacji przejścia menu (0.\+0 = ukryte, 1.\+0 = w pełni widoczne). Animowany płynnie w kierunku wartości docelowej. 
+
+\Hypertarget{class_main_menu_u_i_ac56e7e201423a51e482cc9681c1cec5f}\index{MainMenuUI@{MainMenuUI}!AnimSpeed@{AnimSpeed}}
+\index{AnimSpeed@{AnimSpeed}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{AnimSpeed}{AnimSpeed}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_ac56e7e201423a51e482cc9681c1cec5f} 
+const float Main\+Menu\+UI.\+Anim\+Speed = 3.\+5f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Szybkość animacji przejścia menu (jednostek na sekundę w czasie nieskalowanym). 
+
+\Hypertarget{class_main_menu_u_i_a6b8eda3a7d960b8dcf25535bf4deee0c}\index{MainMenuUI@{MainMenuUI}!BgDark@{BgDark}}
+\index{BgDark@{BgDark}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{BgDark}{BgDark}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a6b8eda3a7d960b8dcf25535bf4deee0c} 
+readonly Color Main\+Menu\+UI.\+Bg\+Dark = new Color(0.\+008f, 0.\+01f, 0.\+014f, 0.\+58f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor ciemnego tła menu głównego (półprzezroczysty). 
+
+\Hypertarget{class_main_menu_u_i_a6b07a97954d2dd6c2c6a485069095f92}\index{MainMenuUI@{MainMenuUI}!BtnMultiBg@{BtnMultiBg}}
+\index{BtnMultiBg@{BtnMultiBg}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnMultiBg}{BtnMultiBg}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a6b07a97954d2dd6c2c6a485069095f92} 
+readonly Color Main\+Menu\+UI.\+Btn\+Multi\+Bg = new Color(0.\+055f, 0.\+17f, 0.\+36f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła przycisku "{}\+Multiplayer"{} (ciemnoniebieski). 
+
+\Hypertarget{class_main_menu_u_i_a5ecbf41667fad907e74d6842ea4f310a}\index{MainMenuUI@{MainMenuUI}!BtnMultiHover@{BtnMultiHover}}
+\index{BtnMultiHover@{BtnMultiHover}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnMultiHover}{BtnMultiHover}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a5ecbf41667fad907e74d6842ea4f310a} 
+readonly Color Main\+Menu\+UI.\+Btn\+Multi\+Hover = new Color(0.\+08f, 0.\+24f, 0.\+50f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor podświetlenia przycisku "{}\+Multiplayer"{} przy najechaniu kursorem. 
+
+\Hypertarget{class_main_menu_u_i_a3b21203eb0f6a957e6378cb7140f4065}\index{MainMenuUI@{MainMenuUI}!BtnPlayBg@{BtnPlayBg}}
+\index{BtnPlayBg@{BtnPlayBg}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnPlayBg}{BtnPlayBg}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a3b21203eb0f6a957e6378cb7140f4065} 
+readonly Color Main\+Menu\+UI.\+Btn\+Play\+Bg = new Color(0.\+045f, 0.\+30f, 0.\+14f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła przycisku "{}\+Gra Solo"{} (ciemnozielony). 
+
+\Hypertarget{class_main_menu_u_i_af38baf7e09a3fc80e4f768a91b36d323}\index{MainMenuUI@{MainMenuUI}!BtnPlayHover@{BtnPlayHover}}
+\index{BtnPlayHover@{BtnPlayHover}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnPlayHover}{BtnPlayHover}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_af38baf7e09a3fc80e4f768a91b36d323} 
+readonly Color Main\+Menu\+UI.\+Btn\+Play\+Hover = new Color(0.\+07f, 0.\+42f, 0.\+19f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor podświetlenia przycisku "{}\+Gra Solo"{} przy najechaniu kursorem. 
+
+\Hypertarget{class_main_menu_u_i_a8d2d5c968ebc8e396941f9d73748e025}\index{MainMenuUI@{MainMenuUI}!BtnQuitBg@{BtnQuitBg}}
+\index{BtnQuitBg@{BtnQuitBg}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnQuitBg}{BtnQuitBg}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a8d2d5c968ebc8e396941f9d73748e025} 
+readonly Color Main\+Menu\+UI.\+Btn\+Quit\+Bg = new Color(0.\+15f, 0.\+035f, 0.\+035f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła przycisku "{}\+Wyjdź"{} (ciemnoczerwony). 
+
+\Hypertarget{class_main_menu_u_i_a3e4fa9cb4a7c173c8c619022ade105f4}\index{MainMenuUI@{MainMenuUI}!BtnQuitHover@{BtnQuitHover}}
+\index{BtnQuitHover@{BtnQuitHover}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnQuitHover}{BtnQuitHover}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a3e4fa9cb4a7c173c8c619022ade105f4} 
+readonly Color Main\+Menu\+UI.\+Btn\+Quit\+Hover = new Color(0.\+27f, 0.\+06f, 0.\+055f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor podświetlenia przycisku "{}\+Wyjdź"{} przy najechaniu kursorem. 
+
+\Hypertarget{class_main_menu_u_i_ab1b21b3300658ba351226d81abd54e3c}\index{MainMenuUI@{MainMenuUI}!BtnSettingsBg@{BtnSettingsBg}}
+\index{BtnSettingsBg@{BtnSettingsBg}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnSettingsBg}{BtnSettingsBg}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_ab1b21b3300658ba351226d81abd54e3c} 
+readonly Color Main\+Menu\+UI.\+Btn\+Settings\+Bg = new Color(0.\+075f, 0.\+085f, 0.\+10f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła przycisku "{}\+Ustawienia"{} (ciemnoszary). 
+
+\Hypertarget{class_main_menu_u_i_a7ebf403111b04b82aead9a01fc3ed14e}\index{MainMenuUI@{MainMenuUI}!BtnSettingsHover@{BtnSettingsHover}}
+\index{BtnSettingsHover@{BtnSettingsHover}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{BtnSettingsHover}{BtnSettingsHover}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a7ebf403111b04b82aead9a01fc3ed14e} 
+readonly Color Main\+Menu\+UI.\+Btn\+Settings\+Hover = new Color(0.\+12f, 0.\+135f, 0.\+16f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor podświetlenia przycisku "{}\+Ustawienia"{} przy najechaniu kursorem. 
+
+\Hypertarget{class_main_menu_u_i_acad31d6540ce60529526719a90f091f0}\index{MainMenuUI@{MainMenuUI}!cachedFont@{cachedFont}}
+\index{cachedFont@{cachedFont}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{cachedFont}{cachedFont}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_acad31d6540ce60529526719a90f091f0} 
+Font Main\+Menu\+UI.\+cached\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowana czcionka używana do renderowania tekstu w elementach menu. 
+
+\Hypertarget{class_main_menu_u_i_a209e9d846ee3ae2d087460f2accc9b28}\index{MainMenuUI@{MainMenuUI}!canvasGroup@{canvasGroup}}
+\index{canvasGroup@{canvasGroup}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{canvasGroup}{canvasGroup}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a209e9d846ee3ae2d087460f2accc9b28} 
+Canvas\+Group Main\+Menu\+UI.\+canvas\+Group\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Grupa Canvas kontrolująca przezroczystość i interaktywność całego menu. Używana do animacji pojawiania się i znikania menu. 
+
+\Hypertarget{class_main_menu_u_i_aba19ec5ebcef09258585e823ac6069a1}\index{MainMenuUI@{MainMenuUI}!DividerColor@{DividerColor}}
+\index{DividerColor@{DividerColor}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{DividerColor}{DividerColor}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_aba19ec5ebcef09258585e823ac6069a1} 
+readonly Color Main\+Menu\+UI.\+Divider\+Color = new Color(0.\+86f, 0.\+68f, 0.\+28f, 0.\+24f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor poziomej linii dekoracyjnej (separator) w menu głównym. 
+
+\Hypertarget{class_main_menu_u_i_a5a2754d08de3796c6d38df9884c04a26}\index{MainMenuUI@{MainMenuUI}!isVisible@{isVisible}}
+\index{isVisible@{isVisible}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{isVisible}{isVisible}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a5a2754d08de3796c6d38df9884c04a26} 
+bool Main\+Menu\+UI.\+is\+Visible = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga określająca, czy menu główne jest aktualnie widoczne. 
+
+\Hypertarget{class_main_menu_u_i_a099ffe615cb62f12f99bf4c46c63ab8f}\index{MainMenuUI@{MainMenuUI}!menuCanvas@{menuCanvas}}
+\index{menuCanvas@{menuCanvas}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{menuCanvas}{menuCanvas}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a099ffe615cb62f12f99bf4c46c63ab8f} 
+Canvas Main\+Menu\+UI.\+menu\+Canvas\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Canvas menu głównego do wyświetlania elementów interfejsu. Renderowany w trybie Screen Space Overlay z najwyższym priorytetem (200). 
+
+\Hypertarget{class_main_menu_u_i_adcb79eee9ce1a0b317dbde2b613d547d}\index{MainMenuUI@{MainMenuUI}!PanelBg@{PanelBg}}
+\index{PanelBg@{PanelBg}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{PanelBg}{PanelBg}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_adcb79eee9ce1a0b317dbde2b613d547d} 
+readonly Color Main\+Menu\+UI.\+Panel\+Bg = new Color(0.\+014f, 0.\+016f, 0.\+019f, 0.\+82f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor panelu centralnego menu (ciemny, półprzezroczysty). 
+
+\Hypertarget{class_main_menu_u_i_a8aa5a1662b1f7f7079fc097455542ecd}\index{MainMenuUI@{MainMenuUI}!TextPrimary@{TextPrimary}}
+\index{TextPrimary@{TextPrimary}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{TextPrimary}{TextPrimary}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a8aa5a1662b1f7f7079fc097455542ecd} 
+readonly Color Main\+Menu\+UI.\+Text\+Primary = new Color(0.\+91f, 0.\+92f, 0.\+94f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Podstawowy kolor tekstu interfejsu (jasny, niemal biały). 
+
+\Hypertarget{class_main_menu_u_i_a6372029c5bfd15c7fba261a121601514}\index{MainMenuUI@{MainMenuUI}!titleText@{titleText}}
+\index{titleText@{titleText}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{titleText}{titleText}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a6372029c5bfd15c7fba261a121601514} 
+Text Main\+Menu\+UI.\+title\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Komponent tekstu tytułu gry ("{}\+KEBAB CHEF"{}). Wyświetlany w kolorze złotym na górze panelu menu. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_main_menu_u_i_ab795709482d0b762372a9c58efdf29e7}\index{MainMenuUI@{MainMenuUI}!IsMenuOpen@{IsMenuOpen}}
+\index{IsMenuOpen@{IsMenuOpen}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{IsMenuOpen}{IsMenuOpen}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_ab795709482d0b762372a9c58efdf29e7} 
+bool Main\+Menu\+UI.\+Is\+Menu\+Open\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Zwraca informację, czy menu główne jest aktualnie otwarte i widoczne. 
+
+\Hypertarget{class_main_menu_u_i_a1da249fb27ba968eb8e79f4a17aaee3e}\index{MainMenuUI@{MainMenuUI}!IsSoloMode@{IsSoloMode}}
+\index{IsSoloMode@{IsSoloMode}!MainMenuUI@{MainMenuUI}}
+\doxysubsubsection{\texorpdfstring{IsSoloMode}{IsSoloMode}}
+{\footnotesize\ttfamily \label{class_main_menu_u_i_a1da249fb27ba968eb8e79f4a17aaee3e} 
+bool Main\+Menu\+UI.\+Is\+Solo\+Mode = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Określa, czy gra jest w trybie solo. Ustawiane przy wyborze trybu gry z menu głównego. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+UI/\mbox{\hyperlink{_main_menu_u_i_8cs}{Main\+Menu\+UI.\+cs}}\end{DoxyCompactItemize}

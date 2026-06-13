@@ -1,0 +1,2237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy NetworkPlayer</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-static-methods">Statyczne metody publiczne</a> &#124;
+<a href="#pub-static-attribs">Statyczne atrybuty publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-static-methods">Statyczne metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="#pri-static-attribs">Statyczne atrybuty prywatne</a> &#124;
+<a href="class_network_player-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy NetworkPlayer</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla NetworkPlayer</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_network_player.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:acc80a453fbbcd5e5a192567c304ce1ac" id="r_acc80a453fbbcd5e5a192567c304ce1ac"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc80a453fbbcd5e5a192567c304ce1ac">OnNetworkSpawn</a> ()</td></tr>
+<tr class="memdesc:acc80a453fbbcd5e5a192567c304ce1ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wywoływana po pojawieniu się obiektu sieciowego. Konfiguruje gracza lokalnego lub zdalnego oraz subskrybuje zmiany zmiennych sieciowych.  <br /></td></tr>
+<tr class="separator:acc80a453fbbcd5e5a192567c304ce1ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd93853e0eb9d7f8baac992d280a0938" id="r_acd93853e0eb9d7f8baac992d280a0938"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd93853e0eb9d7f8baac992d280a0938">OnNetworkDespawn</a> ()</td></tr>
+<tr class="memdesc:acd93853e0eb9d7f8baac992d280a0938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wywoływana przy usunięciu obiektu sieciowego ze sceny. Odsubskrybowuje zdarzenia zmiennych sieciowych i niszczy obiekty pomocnicze.  <br /></td></tr>
+<tr class="separator:acd93853e0eb9d7f8baac992d280a0938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55e71f76ead7fe93ac4fa745d1dd124c" id="r_a55e71f76ead7fe93ac4fa745d1dd124c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55e71f76ead7fe93ac4fa745d1dd124c">BroadcastVFX</a> (<a class="el" href="_network_player_8cs.html#a254701325960a5da9b33b8f9acbe09dd">NetworkVFXType</a> type, Vector3 pos, Color color=default)</td></tr>
+<tr class="memdesc:a55e71f76ead7fe93ac4fa745d1dd124c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nadaje efekt wizualny (VFX) do wszystkich klientów.  <br /></td></tr>
+<tr class="separator:a55e71f76ead7fe93ac4fa745d1dd124c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a6d32fdefa1757c4ac124af3d33d1bb" id="r_a3a6d32fdefa1757c4ac124af3d33d1bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a6d32fdefa1757c4ac124af3d33d1bb">PurchaseUpgradeServerRpc</a> (int upgradeTypeInt, ServerRpcParams rpcParams=default)</td></tr>
+<tr class="memdesc:a3a6d32fdefa1757c4ac124af3d33d1bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">RPC serwera obsługujący żądanie zakupu ulepszenia od klienta.  <br /></td></tr>
+<tr class="separator:a3a6d32fdefa1757c4ac124af3d33d1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a208c4411a2fbf559f82a14387a9466d5" id="r_a208c4411a2fbf559f82a14387a9466d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a208c4411a2fbf559f82a14387a9466d5">InteractWithStationServerRpc</a> (int stationIndex, <a class="el" href="struct_network_item_state.html">NetworkItemState</a> heldItem, ServerRpcParams rpcParams=default)</td></tr>
+<tr class="memdesc:a208c4411a2fbf559f82a14387a9466d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">RPC serwera obsługujący żądanie interakcji gracza ze stacją kuchenną.  <br /></td></tr>
+<tr class="separator:a208c4411a2fbf559f82a14387a9466d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a981ce305819912b38b7934ff0b35cb2f" id="r_a981ce305819912b38b7934ff0b35cb2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a981ce305819912b38b7934ff0b35cb2f">SetPlayerNameServerRpc</a> (string requestedName)</td></tr>
+<tr class="memdesc:a981ce305819912b38b7934ff0b35cb2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">RPC serwera ustawiający nazwę (pseudonim) gracza.  <br /></td></tr>
+<tr class="separator:a981ce305819912b38b7934ff0b35cb2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Statyczne metody publiczne</h2></td></tr>
+<tr class="memitem:a045b845bdf9c51d3cb3391966d6e39d4" id="r_a045b845bdf9c51d3cb3391966d6e39d4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_network_player.html">NetworkPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a045b845bdf9c51d3cb3391966d6e39d4">FindLocalPlayer</a> ()</td></tr>
+<tr class="memdesc:a045b845bdf9c51d3cb3391966d6e39d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyszukuje lokalnego gracza sieciowego na scenie.  <br /></td></tr>
+<tr class="separator:a045b845bdf9c51d3cb3391966d6e39d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Statyczne atrybuty publiczne</h2></td></tr>
+<tr class="memitem:a9da055a3ae82ffcd9938ce9c00765da7" id="r_a9da055a3ae82ffcd9938ce9c00765da7"><td class="memItemLeft" align="right" valign="top">static readonly Color[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9da055a3ae82ffcd9938ce9c00765da7">PlayerColors</a></td></tr>
+<tr class="memdesc:a9da055a3ae82ffcd9938ce9c00765da7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tablica kolorów przypisywanych graczom na podstawie ich indeksu.  <br /></td></tr>
+<tr class="separator:a9da055a3ae82ffcd9938ce9c00765da7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:ab774d9d318a5d12c7f2cb79e49be1fcf" id="r_ab774d9d318a5d12c7f2cb79e49be1fcf"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_network_player.html">NetworkPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab774d9d318a5d12c7f2cb79e49be1fcf">LocalInstance</a><code> [get, private set]</code></td></tr>
+<tr class="memdesc:ab774d9d318a5d12c7f2cb79e49be1fcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statyczna referencja do lokalnej instancji gracza sieciowego.  <br /></td></tr>
+<tr class="separator:ab774d9d318a5d12c7f2cb79e49be1fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15881a04dd5b6541ce833cec408394c7" id="r_a15881a04dd5b6541ce833cec408394c7"><td class="memItemLeft" align="right" valign="top">Camera&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15881a04dd5b6541ce833cec408394c7">PlayerCamera</a><code> [get]</code></td></tr>
+<tr class="memdesc:a15881a04dd5b6541ce833cec408394c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Właściwość zwracająca kamerę gracza.  <br /></td></tr>
+<tr class="separator:a15881a04dd5b6541ce833cec408394c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af677ab70df9a26c5aaf7dadea5c8a6c2" id="r_af677ab70df9a26c5aaf7dadea5c8a6c2"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af677ab70df9a26c5aaf7dadea5c8a6c2">PlayerName</a><code> [get]</code></td></tr>
+<tr class="memdesc:af677ab70df9a26c5aaf7dadea5c8a6c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Właściwość zwracająca nazwę gracza jako ciąg znaków.  <br /></td></tr>
+<tr class="separator:af677ab70df9a26c5aaf7dadea5c8a6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ee5dc2c0b7b9f84662b463f9f3eceb2" id="r_a3ee5dc2c0b7b9f84662b463f9f3eceb2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ee5dc2c0b7b9f84662b463f9f3eceb2">PlayerIndex</a><code> [get]</code></td></tr>
+<tr class="memdesc:a3ee5dc2c0b7b9f84662b463f9f3eceb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Właściwość zwracająca indeks gracza.  <br /></td></tr>
+<tr class="separator:a3ee5dc2c0b7b9f84662b463f9f3eceb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:a732510c67bd357868fff62256ce9f4e7" id="r_a732510c67bd357868fff62256ce9f4e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a732510c67bd357868fff62256ce9f4e7">Start</a> ()</td></tr>
+<tr class="memdesc:a732510c67bd357868fff62256ce9f4e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda Start wywoływana przez Unity w pierwszej klatce.  <br /></td></tr>
+<tr class="separator:a732510c67bd357868fff62256ce9f4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdf6da6872b42cf14d4f75be2be7bdc2" id="r_abdf6da6872b42cf14d4f75be2be7bdc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdf6da6872b42cf14d4f75be2be7bdc2">SetupLocalPlayer</a> ()</td></tr>
+<tr class="memdesc:abdf6da6872b42cf14d4f75be2be7bdc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konfiguruje gracza lokalnego: tworzy kamerę, włącza kontroler ruchu i interakcję, inicjalizuje interfejsy HUD i ustawia kursor.  <br /></td></tr>
+<tr class="separator:abdf6da6872b42cf14d4f75be2be7bdc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cdcc1d2b313b1c545735f103d50e4d8" id="r_a3cdcc1d2b313b1c545735f103d50e4d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cdcc1d2b313b1c545735f103d50e4d8">SetupRemotePlayer</a> ()</td></tr>
+<tr class="memdesc:a3cdcc1d2b313b1c545735f103d50e4d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konfiguruje gracza zdalnego: wyłącza kontroler i interakcję, usuwa kamerę i tworzy wizualną reprezentację gracza.  <br /></td></tr>
+<tr class="separator:a3cdcc1d2b313b1c545735f103d50e4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27ccaec7d3bf4364a7250a064ca1a75c" id="r_a27ccaec7d3bf4364a7250a064ca1a75c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27ccaec7d3bf4364a7250a064ca1a75c">CreateRemoteVisual</a> ()</td></tr>
+<tr class="memdesc:a27ccaec7d3bf4364a7250a064ca1a75c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy wizualną reprezentację gracza zdalnego (model 3D, etykietę z nazwą).  <br /></td></tr>
+<tr class="separator:a27ccaec7d3bf4364a7250a064ca1a75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b086ae7ccfa4aa7baaa428dcb602c0f" id="r_a9b086ae7ccfa4aa7baaa428dcb602c0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b086ae7ccfa4aa7baaa428dcb602c0f">DisableCollider</a> (GameObject obj)</td></tr>
+<tr class="memdesc:a9b086ae7ccfa4aa7baaa428dcb602c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyłącza komponent Collider na podanym obiekcie gry.  <br /></td></tr>
+<tr class="separator:a9b086ae7ccfa4aa7baaa428dcb602c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5ccf978d1e1ea30d0e4bdd503027fcb" id="r_ae5ccf978d1e1ea30d0e4bdd503027fcb"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5ccf978d1e1ea30d0e4bdd503027fcb">GetRightHandBone</a> ()</td></tr>
+<tr class="memdesc:ae5ccf978d1e1ea30d0e4bdd503027fcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyszukuje kość prawej dłoni w hierarchii modelu gracza zdalnego.  <br /></td></tr>
+<tr class="separator:ae5ccf978d1e1ea30d0e4bdd503027fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f295ebf5dec227441654eaae2145e83" id="r_a5f295ebf5dec227441654eaae2145e83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f295ebf5dec227441654eaae2145e83">UpdateHeldItemVisual</a> (<a class="el" href="struct_network_item_state.html">NetworkItemState</a> itemState)</td></tr>
+<tr class="memdesc:a5f295ebf5dec227441654eaae2145e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje wizualną reprezentację przedmiotu trzymanego przez gracza.  <br /></td></tr>
+<tr class="separator:a5f295ebf5dec227441654eaae2145e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9729f538e64fba116fc41fb004c52d88" id="r_a9729f538e64fba116fc41fb004c52d88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9729f538e64fba116fc41fb004c52d88">OnHeldItemChanged</a> (<a class="el" href="struct_network_item_state.html">NetworkItemState</a> oldValue, <a class="el" href="struct_network_item_state.html">NetworkItemState</a> newValue)</td></tr>
+<tr class="memdesc:a9729f538e64fba116fc41fb004c52d88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wywoływana przy zmianie wartości zmiennej sieciowej trzymanego przedmiotu. Aktualizuje wizualizację przedmiotu.  <br /></td></tr>
+<tr class="separator:a9729f538e64fba116fc41fb004c52d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1ce0f56bb9ec30eedf30913d7a4c478" id="r_af1ce0f56bb9ec30eedf30913d7a4c478"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1ce0f56bb9ec30eedf30913d7a4c478">Update</a> ()</td></tr>
+<tr class="memdesc:af1ce0f56bb9ec30eedf30913d7a4c478"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda Update wywoływana co klatkę. Synchronizuje trzymany przedmiot, nadaje stany stacji, ekonomii, sklepu i zamówień.  <br /></td></tr>
+<tr class="separator:af1ce0f56bb9ec30eedf30913d7a4c478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68d09a092d6bb49981efed8215bfed5e" id="r_a68d09a092d6bb49981efed8215bfed5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68d09a092d6bb49981efed8215bfed5e">BroadcastStationStates</a> ()</td></tr>
+<tr class="memdesc:a68d09a092d6bb49981efed8215bfed5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nadaje stany wszystkich zmienionych stacji kuchennych do klientów.  <br /></td></tr>
+<tr class="separator:a68d09a092d6bb49981efed8215bfed5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa21d6fab4162e91651affe639c7b2832" id="r_aa21d6fab4162e91651affe639c7b2832"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa21d6fab4162e91651affe639c7b2832">SyncStationStateClientRpc</a> (<a class="el" href="struct_station_state_snapshot.html">StationStateSnapshot</a> snapshot)</td></tr>
+<tr class="memdesc:aa21d6fab4162e91651affe639c7b2832"><td class="mdescLeft">&#160;</td><td class="mdescRight">RPC klienta synchronizujący stan stacji kuchennej odebrany od serwera.  <br /></td></tr>
+<tr class="separator:aa21d6fab4162e91651affe639c7b2832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac371219b56e88373ee4f02b30df0fcaa" id="r_ac371219b56e88373ee4f02b30df0fcaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac371219b56e88373ee4f02b30df0fcaa">BroadcastEconomy</a> ()</td></tr>
+<tr class="memdesc:ac371219b56e88373ee4f02b30df0fcaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nadaje dane ekonomiczne (saldo i łączne zarobki) do wszystkich klientów.  <br /></td></tr>
+<tr class="separator:ac371219b56e88373ee4f02b30df0fcaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2781459a190b21c13b31c9320769c915" id="r_a2781459a190b21c13b31c9320769c915"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2781459a190b21c13b31c9320769c915">SyncEconomyClientRpc</a> (float balance, float totalEarned)</td></tr>
+<tr class="memdesc:a2781459a190b21c13b31c9320769c915"><td class="mdescLeft">&#160;</td><td class="mdescRight">RPC klienta synchronizujący dane ekonomiczne od serwera.  <br /></td></tr>
+<tr class="separator:a2781459a190b21c13b31c9320769c915"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105307287f6fce6436e78c578b069bd3" id="r_a105307287f6fce6436e78c578b069bd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a105307287f6fce6436e78c578b069bd3">BroadcastOrders</a> ()</td></tr>
+<tr class="memdesc:a105307287f6fce6436e78c578b069bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nadaje aktualny stan zamówień do wszystkich klientów.  <br /></td></tr>
+<tr class="separator:a105307287f6fce6436e78c578b069bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c0e44b013b1f8c7190b4e311f271592" id="r_a6c0e44b013b1f8c7190b4e311f271592"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c0e44b013b1f8c7190b4e311f271592">SyncOrdersClientRpc</a> (int templateIndex, string desc, float time, int comp, int fail)</td></tr>
+<tr class="memdesc:a6c0e44b013b1f8c7190b4e311f271592"><td class="mdescLeft">&#160;</td><td class="mdescRight">RPC klienta synchronizujący stan zamówień od serwera.  <br /></td></tr>
+<tr class="separator:a6c0e44b013b1f8c7190b4e311f271592"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17693ce857b1bb525d34820f0640cdab" id="r_a17693ce857b1bb525d34820f0640cdab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17693ce857b1bb525d34820f0640cdab">PlayVFXClientRpc</a> (<a class="el" href="_network_player_8cs.html#a254701325960a5da9b33b8f9acbe09dd">NetworkVFXType</a> type, Vector3 pos, Color color)</td></tr>
+<tr class="memdesc:a17693ce857b1bb525d34820f0640cdab"><td class="mdescLeft">&#160;</td><td class="mdescRight">RPC klienta odtwarzający efekt wizualny na podstawie odebranego typu.  <br /></td></tr>
+<tr class="separator:a17693ce857b1bb525d34820f0640cdab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d7e32871d22c23e02e133712bbe460f" id="r_a4d7e32871d22c23e02e133712bbe460f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d7e32871d22c23e02e133712bbe460f">BroadcastShopUpgrades</a> ()</td></tr>
+<tr class="memdesc:a4d7e32871d22c23e02e133712bbe460f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nadaje poziomy ulepszeń sklepowych do wszystkich klientów.  <br /></td></tr>
+<tr class="separator:a4d7e32871d22c23e02e133712bbe460f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90716a2eb339823bd248f06bbba2cc41" id="r_a90716a2eb339823bd248f06bbba2cc41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90716a2eb339823bd248f06bbba2cc41">SyncShopUpgradesClientRpc</a> (int grillLvl, int cutLvl, int rewardLvl, int timeLvl, int meatLvl)</td></tr>
+<tr class="memdesc:a90716a2eb339823bd248f06bbba2cc41"><td class="mdescLeft">&#160;</td><td class="mdescRight">RPC klienta synchronizujący poziomy ulepszeń sklepowych od serwera.  <br /></td></tr>
+<tr class="separator:a90716a2eb339823bd248f06bbba2cc41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a144d6dcc78db62dc16347be7b04dfdfc" id="r_a144d6dcc78db62dc16347be7b04dfdfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a144d6dcc78db62dc16347be7b04dfdfc">PurchaseResultClientRpc</a> (bool success, int upgradeTypeInt, ClientRpcParams clientRpcParams=default)</td></tr>
+<tr class="memdesc:a144d6dcc78db62dc16347be7b04dfdfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">RPC klienta informujący o wyniku próby zakupu ulepszenia.  <br /></td></tr>
+<tr class="separator:a144d6dcc78db62dc16347be7b04dfdfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accce010c3e47bcc945fdf3fefc3d987d" id="r_accce010c3e47bcc945fdf3fefc3d987d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accce010c3e47bcc945fdf3fefc3d987d">SyncInteractionResultClientRpc</a> (<a class="el" href="struct_network_item_state.html">NetworkItemState</a> itemState, string feedback, ClientRpcParams clientRpcParams=default)</td></tr>
+<tr class="memdesc:accce010c3e47bcc945fdf3fefc3d987d"><td class="mdescLeft">&#160;</td><td class="mdescRight">RPC klienta synchronizujący wynik interakcji ze stacją kuchenną.  <br /></td></tr>
+<tr class="separator:accce010c3e47bcc945fdf3fefc3d987d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2328688d34c7fb6b70d9f49f2389f1a1" id="r_a2328688d34c7fb6b70d9f49f2389f1a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2328688d34c7fb6b70d9f49f2389f1a1">UpdateHeldItemServerRpc</a> (<a class="el" href="struct_network_item_state.html">NetworkItemState</a> newState)</td></tr>
+<tr class="memdesc:a2328688d34c7fb6b70d9f49f2389f1a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">RPC serwera aktualizujący stan trzymanego przedmiotu w zmiennej sieciowej.  <br /></td></tr>
+<tr class="separator:a2328688d34c7fb6b70d9f49f2389f1a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd2bd2d8238523ff054611338fb83839" id="r_acd2bd2d8238523ff054611338fb83839"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd2bd2d8238523ff054611338fb83839">OnPlayerNameChanged</a> (FixedString32Bytes oldValue, FixedString32Bytes newValue)</td></tr>
+<tr class="memdesc:acd2bd2d8238523ff054611338fb83839"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje zmianę nazwy gracza — aktualizuje etykietę tekstową nad głową gracza zdalnego.  <br /></td></tr>
+<tr class="separator:acd2bd2d8238523ff054611338fb83839"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06e07c2df9d51c957efc930b5d335282" id="r_a06e07c2df9d51c957efc930b5d335282"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06e07c2df9d51c957efc930b5d335282">OnPlayerIndexChanged</a> (int oldValue, int newValue)</td></tr>
+<tr class="memdesc:a06e07c2df9d51c957efc930b5d335282"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje zmianę indeksu gracza — aktualizuje kolor modelu gracza zdalnego.  <br /></td></tr>
+<tr class="separator:a06e07c2df9d51c957efc930b5d335282"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Statyczne metody prywatne</h2></td></tr>
+<tr class="memitem:a02f97aceba672f94ec9cc52fb0053b47" id="r_a02f97aceba672f94ec9cc52fb0053b47"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02f97aceba672f94ec9cc52fb0053b47">SanitizePlayerName</a> (string name)</td></tr>
+<tr class="memdesc:a02f97aceba672f94ec9cc52fb0053b47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oczyszcza nazwę gracza z niebezpiecznych znaków i tagów.  <br /></td></tr>
+<tr class="separator:a02f97aceba672f94ec9cc52fb0053b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49a40eea2dc7eec4383d96b4b19257e7" id="r_a49a40eea2dc7eec4383d96b4b19257e7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_network_player.html">NetworkPlayer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49a40eea2dc7eec4383d96b4b19257e7">FindNetworkPlayerByClientId</a> (ulong clientId)</td></tr>
+<tr class="memdesc:a49a40eea2dc7eec4383d96b4b19257e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyszukuje obiekt <a class="el" href="class_network_player.html" title="Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.">NetworkPlayer</a> na podstawie identyfikatora klienta sieciowego.  <br /></td></tr>
+<tr class="separator:a49a40eea2dc7eec4383d96b4b19257e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52d01d7d5bba2efb135ca82d4c4762c2" id="r_a52d01d7d5bba2efb135ca82d4c4762c2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_player_interaction.html">PlayerInteraction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52d01d7d5bba2efb135ca82d4c4762c2">FindLocalPlayerInteraction</a> ()</td></tr>
+<tr class="memdesc:a52d01d7d5bba2efb135ca82d4c4762c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyszukuje komponent <a class="el" href="class_player_interaction.html" title="Klasa zarządzająca interakcją gracza z otoczeniem w grze. Odpowiada za wykrywanie obiektów interaktyw...">PlayerInteraction</a> gracza lokalnego na scenie.  <br /></td></tr>
+<tr class="separator:a52d01d7d5bba2efb135ca82d4c4762c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a603dd48f5471319be02f9e9c35b7b2b5" id="r_a603dd48f5471319be02f9e9c35b7b2b5"><td class="memItemLeft" align="right" valign="top">NetworkVariable&lt; FixedString32Bytes &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a603dd48f5471319be02f9e9c35b7b2b5">playerName</a></td></tr>
+<tr class="memdesc:a603dd48f5471319be02f9e9c35b7b2b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zmienna sieciowa przechowująca nazwę (pseudonim) gracza.  <br /></td></tr>
+<tr class="separator:a603dd48f5471319be02f9e9c35b7b2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c011e8366c3e642549ea60d81f4ec24" id="r_a8c011e8366c3e642549ea60d81f4ec24"><td class="memItemLeft" align="right" valign="top">NetworkVariable&lt; <a class="el" href="struct_network_item_state.html">NetworkItemState</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c011e8366c3e642549ea60d81f4ec24">netHeldItem</a></td></tr>
+<tr class="memdesc:a8c011e8366c3e642549ea60d81f4ec24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zmienna sieciowa przechowująca stan trzymanego przedmiotu kuchennego.  <br /></td></tr>
+<tr class="separator:a8c011e8366c3e642549ea60d81f4ec24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a332d3fb18937c9b1ae730fd3edaf07b6" id="r_a332d3fb18937c9b1ae730fd3edaf07b6"><td class="memItemLeft" align="right" valign="top">NetworkVariable&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a332d3fb18937c9b1ae730fd3edaf07b6">playerIndex</a></td></tr>
+<tr class="memdesc:a332d3fb18937c9b1ae730fd3edaf07b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zmienna sieciowa przechowująca indeks gracza.  <br /></td></tr>
+<tr class="separator:a332d3fb18937c9b1ae730fd3edaf07b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad9cadc6be10eef2d82740aeefabe1ec" id="r_aad9cadc6be10eef2d82740aeefabe1ec"><td class="memItemLeft" align="right" valign="top">Camera&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad9cadc6be10eef2d82740aeefabe1ec">playerCamera</a></td></tr>
+<tr class="memdesc:aad9cadc6be10eef2d82740aeefabe1ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Referencja do kamery gracza lokalnego.  <br /></td></tr>
+<tr class="separator:aad9cadc6be10eef2d82740aeefabe1ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17938aaa10b8d8fa522aef6afda1d40e" id="r_a17938aaa10b8d8fa522aef6afda1d40e"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17938aaa10b8d8fa522aef6afda1d40e">remotePlayerVisual</a></td></tr>
+<tr class="memdesc:a17938aaa10b8d8fa522aef6afda1d40e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obiekt wizualny reprezentujący gracza zdalnego (model 3D).  <br /></td></tr>
+<tr class="separator:a17938aaa10b8d8fa522aef6afda1d40e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac994d82f9058e4f9ad2e61e98c350321" id="r_ac994d82f9058e4f9ad2e61e98c350321"><td class="memItemLeft" align="right" valign="top">TextMesh&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac994d82f9058e4f9ad2e61e98c350321">nameLabel</a></td></tr>
+<tr class="memdesc:ac994d82f9058e4f9ad2e61e98c350321"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etykieta tekstowa wyświetlająca nazwę gracza zdalnego nad jego głową.  <br /></td></tr>
+<tr class="separator:ac994d82f9058e4f9ad2e61e98c350321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a369774bca16f8e46e23e1450c6f4764f" id="r_a369774bca16f8e46e23e1450c6f4764f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_simple_player_controller.html">SimplePlayerController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a369774bca16f8e46e23e1450c6f4764f">cachedController</a></td></tr>
+<tr class="memdesc:a369774bca16f8e46e23e1450c6f4764f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowana referencja do komponentu kontrolera ruchu gracza.  <br /></td></tr>
+<tr class="separator:a369774bca16f8e46e23e1450c6f4764f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad0978188dd5e28592c59306c5c0f07b" id="r_aad0978188dd5e28592c59306c5c0f07b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player_interaction.html">PlayerInteraction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad0978188dd5e28592c59306c5c0f07b">cachedInteraction</a></td></tr>
+<tr class="memdesc:aad0978188dd5e28592c59306c5c0f07b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowana referencja do komponentu interakcji gracza.  <br /></td></tr>
+<tr class="separator:aad0978188dd5e28592c59306c5c0f07b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8841770bda2729cbc6dd7a4ca15f357b" id="r_a8841770bda2729cbc6dd7a4ca15f357b"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8841770bda2729cbc6dd7a4ca15f357b">heldItemVisual</a></td></tr>
+<tr class="memdesc:a8841770bda2729cbc6dd7a4ca15f357b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obiekt wizualny reprezentujący przedmiot trzymany przez gracza.  <br /></td></tr>
+<tr class="separator:a8841770bda2729cbc6dd7a4ca15f357b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4306015f8fd6be9db1fc67e2ad1c68c" id="r_af4306015f8fd6be9db1fc67e2ad1c68c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_network_item_state.html">NetworkItemState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4306015f8fd6be9db1fc67e2ad1c68c">lastVisualState</a></td></tr>
+<tr class="memdesc:af4306015f8fd6be9db1fc67e2ad1c68c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ostatni zsynchronizowany stan wizualny trzymanego przedmiotu. Używany do wykrywania zmian i unikania niepotrzebnego odtwarzania wizualizacji.  <br /></td></tr>
+<tr class="separator:af4306015f8fd6be9db1fc67e2ad1c68c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a17368ab9b9487614db2708a9b2453f" id="r_a1a17368ab9b9487614db2708a9b2453f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_network_kitchen_station.html">NetworkKitchenStation</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a17368ab9b9487614db2708a9b2453f">cachedStations</a></td></tr>
+<tr class="memdesc:a1a17368ab9b9487614db2708a9b2453f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowana tablica wszystkich stacji kuchennych na scenie.  <br /></td></tr>
+<tr class="separator:a1a17368ab9b9487614db2708a9b2453f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a3812674fc752c15d1d2b02f0609235" id="r_a5a3812674fc752c15d1d2b02f0609235"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a3812674fc752c15d1d2b02f0609235">cachedStationsTime</a></td></tr>
+<tr class="memdesc:a5a3812674fc752c15d1d2b02f0609235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas ostatniego odświeżenia buforowanej tablicy stacji kuchennych.  <br /></td></tr>
+<tr class="separator:a5a3812674fc752c15d1d2b02f0609235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2ce072988e3764fe151b4faa26edfe7" id="r_aa2ce072988e3764fe151b4faa26edfe7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2ce072988e3764fe151b4faa26edfe7">nextStationSyncTime</a></td></tr>
+<tr class="memdesc:aa2ce072988e3764fe151b4faa26edfe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas następnej synchronizacji stanów stacji kuchennych.  <br /></td></tr>
+<tr class="separator:aa2ce072988e3764fe151b4faa26edfe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9940061ee675d311659181b76d27f3f9" id="r_a9940061ee675d311659181b76d27f3f9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9940061ee675d311659181b76d27f3f9">nextEconomySyncTime</a></td></tr>
+<tr class="memdesc:a9940061ee675d311659181b76d27f3f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas następnej synchronizacji danych ekonomicznych.  <br /></td></tr>
+<tr class="separator:a9940061ee675d311659181b76d27f3f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54857da92abd961c0f64864a6f8dd32e" id="r_a54857da92abd961c0f64864a6f8dd32e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54857da92abd961c0f64864a6f8dd32e">nextShopSyncTime</a></td></tr>
+<tr class="memdesc:a54857da92abd961c0f64864a6f8dd32e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas następnej synchronizacji ulepszeń sklepowych.  <br /></td></tr>
+<tr class="separator:a54857da92abd961c0f64864a6f8dd32e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ca5984b2882e8e702f7064bf4730ee7" id="r_a6ca5984b2882e8e702f7064bf4730ee7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ca5984b2882e8e702f7064bf4730ee7">nextOrderSyncTime</a></td></tr>
+<tr class="memdesc:a6ca5984b2882e8e702f7064bf4730ee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas następnej synchronizacji zamówień.  <br /></td></tr>
+<tr class="separator:a6ca5984b2882e8e702f7064bf4730ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a797fbcc342613109a943ea1a57d8f8dc" id="r_a797fbcc342613109a943ea1a57d8f8dc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a797fbcc342613109a943ea1a57d8f8dc">isLocalPlayerSetup</a> = false</td></tr>
+<tr class="memdesc:a797fbcc342613109a943ea1a57d8f8dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flaga zapobiegająca wielokrotnej konfiguracji gracza lokalnego.  <br /></td></tr>
+<tr class="separator:a797fbcc342613109a943ea1a57d8f8dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a930de36ea9b995b69a60f8b9fe65992d" id="r_a930de36ea9b995b69a60f8b9fe65992d"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a930de36ea9b995b69a60f8b9fe65992d">pendingNickname</a></td></tr>
+<tr class="memdesc:a930de36ea9b995b69a60f8b9fe65992d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pseudonim oczekujący na wysłanie do serwera (używany, gdy obiekt nie został jeszcze zdespawnowany sieciowo).  <br /></td></tr>
+<tr class="separator:a930de36ea9b995b69a60f8b9fe65992d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca80417066ef06bf7cd98e1d8a390e9d" id="r_aca80417066ef06bf7cd98e1d8a390e9d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca80417066ef06bf7cd98e1d8a390e9d">nextHeldItemSyncTime</a></td></tr>
+<tr class="memdesc:aca80417066ef06bf7cd98e1d8a390e9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas następnej synchronizacji stanu trzymanego przedmiotu.  <br /></td></tr>
+<tr class="separator:aca80417066ef06bf7cd98e1d8a390e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Statyczne atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a8c607f576c727b3071f2d80cab3fdbbc" id="r_a8c607f576c727b3071f2d80cab3fdbbc"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c607f576c727b3071f2d80cab3fdbbc">EyeHeight</a> = 1.75f</td></tr>
+<tr class="memdesc:a8c607f576c727b3071f2d80cab3fdbbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wysokość oczu gracza nad poziomem podłogi (w metrach). Używana do pozycjonowania kamery gracza.  <br /></td></tr>
+<tr class="separator:a8c607f576c727b3071f2d80cab3fdbbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6441ea1ca6950050bd39c43f635bafad" id="r_a6441ea1ca6950050bd39c43f635bafad"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6441ea1ca6950050bd39c43f635bafad">StationSyncInterval</a> = 0.15f</td></tr>
+<tr class="memdesc:a6441ea1ca6950050bd39c43f635bafad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interwał synchronizacji stanów stacji kuchennych (w sekundach).  <br /></td></tr>
+<tr class="separator:a6441ea1ca6950050bd39c43f635bafad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12730a194027166aa750649a7403a732" id="r_a12730a194027166aa750649a7403a732"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12730a194027166aa750649a7403a732">EconomySyncInterval</a> = 0.5f</td></tr>
+<tr class="memdesc:a12730a194027166aa750649a7403a732"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interwał synchronizacji danych ekonomicznych (w sekundach).  <br /></td></tr>
+<tr class="separator:a12730a194027166aa750649a7403a732"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5d32bd0954ab34d59c75afaa94afe74" id="r_ab5d32bd0954ab34d59c75afaa94afe74"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5d32bd0954ab34d59c75afaa94afe74">ShopSyncInterval</a> = 1.0f</td></tr>
+<tr class="memdesc:ab5d32bd0954ab34d59c75afaa94afe74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interwał synchronizacji ulepszeń sklepowych (w sekundach).  <br /></td></tr>
+<tr class="separator:ab5d32bd0954ab34d59c75afaa94afe74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f8c51d7cbbdb70dd35e02491d31d90b" id="r_a9f8c51d7cbbdb70dd35e02491d31d90b"><td class="memItemLeft" align="right" valign="top">static readonly Vector3[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f8c51d7cbbdb70dd35e02491d31d90b">SpawnPoints</a></td></tr>
+<tr class="memdesc:a9f8c51d7cbbdb70dd35e02491d31d90b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tablica predefiniowanych punktów spawnu graczy na mapie.  <br /></td></tr>
+<tr class="separator:a9f8c51d7cbbdb70dd35e02491d31d90b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem. </p>
+<p>Dziedziczy po NetworkBehaviour i obsługuje: </p><ul>
+<li>
+Konfigurację kamery i kontrolera gracza lokalnego </li>
+<li>
+Tworzenie wizualnej reprezentacji graczy zdalnych </li>
+<li>
+Synchronizację trzymanego przedmiotu, nazwy gracza i indeksu </li>
+<li>
+Nadawanie stanów stacji kuchennych, ekonomii, sklepu i zamówień </li>
+<li>
+Obsługę interakcji ze stacjami kuchennymi przez RPC </li>
+<li>
+Nadawanie efektów wizualnych (VFX) do klientów </li>
+</ul>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ac371219b56e88373ee4f02b30df0fcaa" name="ac371219b56e88373ee4f02b30df0fcaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac371219b56e88373ee4f02b30df0fcaa">&#9670;&#160;</a></span>BroadcastEconomy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.BroadcastEconomy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nadaje dane ekonomiczne (saldo i łączne zarobki) do wszystkich klientów. </p>
+<p>Wywoływana cyklicznie co <a class="el" href="#a12730a194027166aa750649a7403a732" title="Interwał synchronizacji danych ekonomicznych (w sekundach).">EconomySyncInterval</a> sekund. Pobiera dane z <a class="el" href="class_economy_manager.html#a651a4fd5c9bad9b0701ceb89f3526597" title="Statyczna instancja Singleton klasy EconomyManager.">EconomyManager.Instance</a>. </p>
+
+</div>
+</div>
+<a id="a105307287f6fce6436e78c578b069bd3" name="a105307287f6fce6436e78c578b069bd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a105307287f6fce6436e78c578b069bd3">&#9670;&#160;</a></span>BroadcastOrders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.BroadcastOrders </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nadaje aktualny stan zamówień do wszystkich klientów. </p>
+<p>Wywoływana co 0.25 sekundy. Przesyła indeks szablonu zamówienia, opis, pozostały czas, liczbę ukończonych i nieudanych zamówień. </p>
+
+</div>
+</div>
+<a id="a4d7e32871d22c23e02e133712bbe460f" name="a4d7e32871d22c23e02e133712bbe460f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d7e32871d22c23e02e133712bbe460f">&#9670;&#160;</a></span>BroadcastShopUpgrades()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.BroadcastShopUpgrades </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nadaje poziomy ulepszeń sklepowych do wszystkich klientów. </p>
+<p>Wywoływana cyklicznie co <a class="el" href="#ab5d32bd0954ab34d59c75afaa94afe74" title="Interwał synchronizacji ulepszeń sklepowych (w sekundach).">ShopSyncInterval</a> sekund. Pobiera poziomy ulepszeń z <a class="el" href="class_shop_manager.html" title="Główna klasa zarządzająca systemem sklepu z ulepszeniami.">ShopManager</a> i wysyła je via ClientRpc. </p>
+
+</div>
+</div>
+<a id="a68d09a092d6bb49981efed8215bfed5e" name="a68d09a092d6bb49981efed8215bfed5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68d09a092d6bb49981efed8215bfed5e">&#9670;&#160;</a></span>BroadcastStationStates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.BroadcastStationStates </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nadaje stany wszystkich zmienionych stacji kuchennych do klientów. </p>
+<p>Wywoływana cyklicznie co <a class="el" href="#a6441ea1ca6950050bd39c43f635bafad" title="Interwał synchronizacji stanów stacji kuchennych (w sekundach).">StationSyncInterval</a> sekund. Buforuje tablicę stacji i odświeża ją co 5 sekund. Wysyła migawkę stanu tylko dla stacji, których stan się zmienił. </p>
+
+</div>
+</div>
+<a id="a55e71f76ead7fe93ac4fa745d1dd124c" name="a55e71f76ead7fe93ac4fa745d1dd124c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55e71f76ead7fe93ac4fa745d1dd124c">&#9670;&#160;</a></span>BroadcastVFX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.BroadcastVFX </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_network_player_8cs.html#a254701325960a5da9b33b8f9acbe09dd">NetworkVFXType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval">default</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nadaje efekt wizualny (VFX) do wszystkich klientów. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ efektu wizualnego do odtworzenia.</td></tr>
+    <tr><td class="paramname">pos</td><td>Pozycja świata, w której efekt ma zostać odtworzony.</td></tr>
+    <tr><td class="paramname">color</td><td>Opcjonalny kolor efektu. Domyślnie <code>default</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Może być wywoływana tylko na serwerze. Wysyła żądanie odtworzenia VFX do klientów. </p>
+
+</div>
+</div>
+<a id="a27ccaec7d3bf4364a7250a064ca1a75c" name="a27ccaec7d3bf4364a7250a064ca1a75c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27ccaec7d3bf4364a7250a064ca1a75c">&#9670;&#160;</a></span>CreateRemoteVisual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.CreateRemoteVisual </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy wizualną reprezentację gracza zdalnego (model 3D, etykietę z nazwą). </p>
+<p>Próbuje załadować model FBX z Resources ("Models/Gracz_Idle"). Jeśli model nie jest dostępny, tworzy prostą geometrię zastępczą (kapsułę). Przypisuje kolor gracza na podstawie indeksu i inicjalizuje animator. Dodaje etykietę tekstową z nazwą gracza jako billboard. </p>
+
+</div>
+</div>
+<a id="a9b086ae7ccfa4aa7baaa428dcb602c0f" name="a9b086ae7ccfa4aa7baaa428dcb602c0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b086ae7ccfa4aa7baaa428dcb602c0f">&#9670;&#160;</a></span>DisableCollider()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.DisableCollider </td>
+          <td>(</td>
+          <td class="paramtype">GameObject</td>          <td class="paramname"><span class="paramname"><em>obj</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyłącza komponent Collider na podanym obiekcie gry. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Obiekt gry, na którym należy wyłączyć zderzacz.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a045b845bdf9c51d3cb3391966d6e39d4" name="a045b845bdf9c51d3cb3391966d6e39d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a045b845bdf9c51d3cb3391966d6e39d4">&#9670;&#160;</a></span>FindLocalPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_network_player.html">NetworkPlayer</a> NetworkPlayer.FindLocalPlayer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyszukuje lokalnego gracza sieciowego na scenie. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Instancja <a class="el" href="class_network_player.html" title="Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.">NetworkPlayer</a> należąca do lokalnego gracza lub <code>null</code> jeśli nie znaleziono. </dd></dl>
+
+</div>
+</div>
+<a id="a52d01d7d5bba2efb135ca82d4c4762c2" name="a52d01d7d5bba2efb135ca82d4c4762c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52d01d7d5bba2efb135ca82d4c4762c2">&#9670;&#160;</a></span>FindLocalPlayerInteraction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_player_interaction.html">PlayerInteraction</a> NetworkPlayer.FindLocalPlayerInteraction </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyszukuje komponent <a class="el" href="class_player_interaction.html" title="Klasa zarządzająca interakcją gracza z otoczeniem w grze. Odpowiada za wykrywanie obiektów interaktyw...">PlayerInteraction</a> gracza lokalnego na scenie. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Komponent <a class="el" href="class_player_interaction.html" title="Klasa zarządzająca interakcją gracza z otoczeniem w grze. Odpowiada za wykrywanie obiektów interaktyw...">PlayerInteraction</a> gracza lokalnego lub <code>null</code> jeśli nie znaleziono. </dd></dl>
+
+</div>
+</div>
+<a id="a49a40eea2dc7eec4383d96b4b19257e7" name="a49a40eea2dc7eec4383d96b4b19257e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49a40eea2dc7eec4383d96b4b19257e7">&#9670;&#160;</a></span>FindNetworkPlayerByClientId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_network_player.html">NetworkPlayer</a> NetworkPlayer.FindNetworkPlayerByClientId </td>
+          <td>(</td>
+          <td class="paramtype">ulong</td>          <td class="paramname"><span class="paramname"><em>clientId</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyszukuje obiekt <a class="el" href="class_network_player.html" title="Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.">NetworkPlayer</a> na podstawie identyfikatora klienta sieciowego. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clientId</td><td>Identyfikator klienta sieciowego.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Instancja <a class="el" href="class_network_player.html" title="Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.">NetworkPlayer</a> przypisana do danego klienta lub <code>null</code> jeśli klient nie został znaleziony. </dd></dl>
+
+</div>
+</div>
+<a id="ae5ccf978d1e1ea30d0e4bdd503027fcb" name="ae5ccf978d1e1ea30d0e4bdd503027fcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5ccf978d1e1ea30d0e4bdd503027fcb">&#9670;&#160;</a></span>GetRightHandBone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform NetworkPlayer.GetRightHandBone </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyszukuje kość prawej dłoni w hierarchii modelu gracza zdalnego. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Transform kości prawej dłoni, jeśli została znaleziona; w przeciwnym razie zwraca transform samego gracza. </dd></dl>
+<p>Pomija kości palców (Thumb, Index, Middle, Ring, Pinky), szukając głównej kości "RightHand". </p>
+
+</div>
+</div>
+<a id="a208c4411a2fbf559f82a14387a9466d5" name="a208c4411a2fbf559f82a14387a9466d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a208c4411a2fbf559f82a14387a9466d5">&#9670;&#160;</a></span>InteractWithStationServerRpc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.InteractWithStationServerRpc </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>stationIndex</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_network_item_state.html">NetworkItemState</a></td>          <td class="paramname"><span class="paramname"><em>heldItem</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ServerRpcParams</td>          <td class="paramname"><span class="paramname"><em>rpcParams</em></span><span class="paramdefsep"> = </span><span class="paramdefval">default</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RPC serwera obsługujący żądanie interakcji gracza ze stacją kuchenną. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stationIndex</td><td>Indeks stacji kuchennej, z którą gracz chce wejść w interakcję.</td></tr>
+    <tr><td class="paramname">heldItem</td><td>Stan przedmiotu trzymanego przez gracza w momencie żądania.</td></tr>
+    <tr><td class="paramname">rpcParams</td><td>Parametry RPC zawierające identyfikator wysyłającego klienta.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Serwer rekonstruuje stan gracza (przedmiot w ręku) na podstawie zmiennej sieciowej, wykonuje interakcję ze stacją, a następnie synchronizuje wynik z powrotem do klienta. Wysyła zaktualizowany stan trzymanego przedmiotu i komunikat zwrotny. </p>
+
+</div>
+</div>
+<a id="a9729f538e64fba116fc41fb004c52d88" name="a9729f538e64fba116fc41fb004c52d88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9729f538e64fba116fc41fb004c52d88">&#9670;&#160;</a></span>OnHeldItemChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.OnHeldItemChanged </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_network_item_state.html">NetworkItemState</a></td>          <td class="paramname"><span class="paramname"><em>oldValue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_network_item_state.html">NetworkItemState</a></td>          <td class="paramname"><span class="paramname"><em>newValue</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wywoływana przy zmianie wartości zmiennej sieciowej trzymanego przedmiotu. Aktualizuje wizualizację przedmiotu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oldValue</td><td>Poprzedni stan przedmiotu.</td></tr>
+    <tr><td class="paramname">newValue</td><td>Nowy stan przedmiotu.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acd93853e0eb9d7f8baac992d280a0938" name="acd93853e0eb9d7f8baac992d280a0938"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd93853e0eb9d7f8baac992d280a0938">&#9670;&#160;</a></span>OnNetworkDespawn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void NetworkPlayer.OnNetworkDespawn </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wywoływana przy usunięciu obiektu sieciowego ze sceny. Odsubskrybowuje zdarzenia zmiennych sieciowych i niszczy obiekty pomocnicze. </p>
+
+</div>
+</div>
+<a id="acc80a453fbbcd5e5a192567c304ce1ac" name="acc80a453fbbcd5e5a192567c304ce1ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc80a453fbbcd5e5a192567c304ce1ac">&#9670;&#160;</a></span>OnNetworkSpawn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void NetworkPlayer.OnNetworkSpawn </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wywoływana po pojawieniu się obiektu sieciowego. Konfiguruje gracza lokalnego lub zdalnego oraz subskrybuje zmiany zmiennych sieciowych. </p>
+<p>Na serwerze przypisuje indeks gracza, punkt spawnu i domyślną nazwę. Dla właściciela wywołuje <a class="el" href="#abdf6da6872b42cf14d4f75be2be7bdc2" title="Konfiguruje gracza lokalnego: tworzy kamerę, włącza kontroler ruchu i interakcję, inicjalizuje interf...">SetupLocalPlayer</a>, w przeciwnym razie <a class="el" href="#a3cdcc1d2b313b1c545735f103d50e4d8" title="Konfiguruje gracza zdalnego: wyłącza kontroler i interakcję, usuwa kamerę i tworzy wizualną reprezent...">SetupRemotePlayer</a>. </p>
+
+</div>
+</div>
+<a id="a06e07c2df9d51c957efc930b5d335282" name="a06e07c2df9d51c957efc930b5d335282"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06e07c2df9d51c957efc930b5d335282">&#9670;&#160;</a></span>OnPlayerIndexChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.OnPlayerIndexChanged </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>oldValue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newValue</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje zmianę indeksu gracza — aktualizuje kolor modelu gracza zdalnego. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oldValue</td><td>Poprzedni indeks gracza.</td></tr>
+    <tr><td class="paramname">newValue</td><td>Nowy indeks gracza.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acd2bd2d8238523ff054611338fb83839" name="acd2bd2d8238523ff054611338fb83839"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd2bd2d8238523ff054611338fb83839">&#9670;&#160;</a></span>OnPlayerNameChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.OnPlayerNameChanged </td>
+          <td>(</td>
+          <td class="paramtype">FixedString32Bytes</td>          <td class="paramname"><span class="paramname"><em>oldValue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FixedString32Bytes</td>          <td class="paramname"><span class="paramname"><em>newValue</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje zmianę nazwy gracza — aktualizuje etykietę tekstową nad głową gracza zdalnego. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oldValue</td><td>Poprzednia nazwa gracza.</td></tr>
+    <tr><td class="paramname">newValue</td><td>Nowa nazwa gracza.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a17693ce857b1bb525d34820f0640cdab" name="a17693ce857b1bb525d34820f0640cdab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17693ce857b1bb525d34820f0640cdab">&#9670;&#160;</a></span>PlayVFXClientRpc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.PlayVFXClientRpc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_network_player_8cs.html#a254701325960a5da9b33b8f9acbe09dd">NetworkVFXType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RPC klienta odtwarzający efekt wizualny na podstawie odebranego typu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ efektu wizualnego.</td></tr>
+    <tr><td class="paramname">pos</td><td>Pozycja odtworzenia efektu.</td></tr>
+    <tr><td class="paramname">color</td><td>Kolor efektu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ignorowana na serwerze (serwer sam odtwarza efekty). Deleguje odtworzenie do odpowiedniej metody <a class="el" href="class_v_f_x_manager.html" title="Centralny menedżer efektów wizualnych (VFX) w symulatorze szefa kuchni kebabowej. Implementuje wzorze...">VFXManager</a>. </p>
+
+</div>
+</div>
+<a id="a144d6dcc78db62dc16347be7b04dfdfc" name="a144d6dcc78db62dc16347be7b04dfdfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a144d6dcc78db62dc16347be7b04dfdfc">&#9670;&#160;</a></span>PurchaseResultClientRpc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.PurchaseResultClientRpc </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>success</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upgradeTypeInt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ClientRpcParams</td>          <td class="paramname"><span class="paramname"><em>clientRpcParams</em></span><span class="paramdefsep"> = </span><span class="paramdefval">default</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RPC klienta informujący o wyniku próby zakupu ulepszenia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">success</td><td>Czy zakup się powiódł.</td></tr>
+    <tr><td class="paramname">upgradeTypeInt</td><td>Typ ulepszenia jako wartość całkowita enum <a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e" title="Typ wyliczeniowy definiujący dostępne rodzaje ulepszeń w sklepie.">UpgradeType</a>.</td></tr>
+    <tr><td class="paramname">clientRpcParams</td><td>Opcjonalne parametry RPC do wysyłki celowanej do konkretnego klienta.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3a6d32fdefa1757c4ac124af3d33d1bb" name="a3a6d32fdefa1757c4ac124af3d33d1bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a6d32fdefa1757c4ac124af3d33d1bb">&#9670;&#160;</a></span>PurchaseUpgradeServerRpc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.PurchaseUpgradeServerRpc </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upgradeTypeInt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ServerRpcParams</td>          <td class="paramname"><span class="paramname"><em>rpcParams</em></span><span class="paramdefsep"> = </span><span class="paramdefval">default</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RPC serwera obsługujący żądanie zakupu ulepszenia od klienta. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">upgradeTypeInt</td><td>Typ ulepszenia jako wartość całkowita enum <a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e" title="Typ wyliczeniowy definiujący dostępne rodzaje ulepszeń w sklepie.">UpgradeType</a>.</td></tr>
+    <tr><td class="paramname">rpcParams</td><td>Parametry RPC zawierające identyfikator wysyłającego klienta.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Próbuje dokonać zakupu przez <a class="el" href="class_shop_manager.html#a2e9ab016ade44d0c3345666690b66a83" title="Próbuje zakupić następny poziom wskazanego ulepszenia.">ShopManager.TryPurchaseUpgrade</a>. W przypadku sukcesu wymusza natychmiastową synchronizację sklepu i ekonomii. Wysyła wynik zakupu do odpowiedniego klienta. </p>
+
+</div>
+</div>
+<a id="a02f97aceba672f94ec9cc52fb0053b47" name="a02f97aceba672f94ec9cc52fb0053b47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02f97aceba672f94ec9cc52fb0053b47">&#9670;&#160;</a></span>SanitizePlayerName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string NetworkPlayer.SanitizePlayerName </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oczyszcza nazwę gracza z niebezpiecznych znaków i tagów. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Surowa nazwa do oczyszczenia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Oczyszczona nazwa gracza, ograniczona do 20 znaków. Domyślnie "Gracz" jeśli pusta.</dd></dl>
+<p>Usuwa tagi HTML/XML, znaki sterujące, białe znaki na początku/końcu oraz ogranicza długość do 20 znaków. </p>
+
+</div>
+</div>
+<a id="a981ce305819912b38b7934ff0b35cb2f" name="a981ce305819912b38b7934ff0b35cb2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a981ce305819912b38b7934ff0b35cb2f">&#9670;&#160;</a></span>SetPlayerNameServerRpc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.SetPlayerNameServerRpc </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>requestedName</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RPC serwera ustawiający nazwę (pseudonim) gracza. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestedName</td><td>Żądana nazwa gracza od klienta.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Nazwa jest sanityzowana przed zapisaniem do zmiennej sieciowej za pomocą <a class="el" href="#a02f97aceba672f94ec9cc52fb0053b47" title="Oczyszcza nazwę gracza z niebezpiecznych znaków i tagów.">SanitizePlayerName</a>. </p>
+
+</div>
+</div>
+<a id="abdf6da6872b42cf14d4f75be2be7bdc2" name="abdf6da6872b42cf14d4f75be2be7bdc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdf6da6872b42cf14d4f75be2be7bdc2">&#9670;&#160;</a></span>SetupLocalPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.SetupLocalPlayer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Konfiguruje gracza lokalnego: tworzy kamerę, włącza kontroler ruchu i interakcję, inicjalizuje interfejsy HUD i ustawia kursor. </p>
+<p>Metoda jest chroniona flagą <a class="el" href="#a797fbcc342613109a943ea1a57d8f8dc" title="Flaga zapobiegająca wielokrotnej konfiguracji gracza lokalnego.">isLocalPlayerSetup</a> przed wielokrotnym wywołaniem. Tworzy kamerę z odpowiednimi ustawieniami URP (post-processing, antyaliasing), konfiguruje <a class="el" href="class_simple_player_controller.html" title="Prosty kontroler ruchu gracza w trybie pierwszoosobowym. Obsługuje poruszanie się postaci za pomocą k...">SimplePlayerController</a>, <a class="el" href="class_player_interaction.html" title="Klasa zarządzająca interakcją gracza z otoczeniem w grze. Odpowiada za wykrywanie obiektów interaktyw...">PlayerInteraction</a>, oraz tworzy niezbędne komponenty HUD (<a class="el" href="class_kitchen_h_u_d.html" title="Klasa zarządzająca interfejsem HUD w scenie kuchni. Odpowiada za tworzenie i aktualizowanie wszystkic...">KitchenHUD</a>, <a class="el" href="class_interaction_highlight.html" title="Dodaje wizualny efekt podświetlenia do interaktywnych obiektów, gdy gracz na nie patrzy....">InteractionHighlight</a>, <a class="el" href="class_shop_u_i.html">ShopUI</a>, <a class="el" href="class_player_list_u_i.html" title="Klasa zarządzająca interfejsem użytkownika listy graczy online. Wyświetla tabelę z maksymalnie 4 grac...">PlayerListUI</a>) jeśli nie istnieją na scenie. Wysyła pseudonim gracza na serwer. </p>
+
+</div>
+</div>
+<a id="a3cdcc1d2b313b1c545735f103d50e4d8" name="a3cdcc1d2b313b1c545735f103d50e4d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cdcc1d2b313b1c545735f103d50e4d8">&#9670;&#160;</a></span>SetupRemotePlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.SetupRemotePlayer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Konfiguruje gracza zdalnego: wyłącza kontroler i interakcję, usuwa kamerę i tworzy wizualną reprezentację gracza. </p>
+
+</div>
+</div>
+<a id="a732510c67bd357868fff62256ce9f4e7" name="a732510c67bd357868fff62256ce9f4e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a732510c67bd357868fff62256ce9f4e7">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda Start wywoływana przez Unity w pierwszej klatce. </p>
+<p>Zapewnia konfigurację gracza lokalnego w trybie hosta, gdy obiekt nie został jeszcze zdespawnowany sieciowo. </p>
+
+</div>
+</div>
+<a id="a2781459a190b21c13b31c9320769c915" name="a2781459a190b21c13b31c9320769c915"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2781459a190b21c13b31c9320769c915">&#9670;&#160;</a></span>SyncEconomyClientRpc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.SyncEconomyClientRpc </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>balance</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>totalEarned</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RPC klienta synchronizujący dane ekonomiczne od serwera. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">balance</td><td>Aktualne saldo gracza.</td></tr>
+    <tr><td class="paramname">totalEarned</td><td>Łączna kwota zarobionych pieniędzy.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="accce010c3e47bcc945fdf3fefc3d987d" name="accce010c3e47bcc945fdf3fefc3d987d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accce010c3e47bcc945fdf3fefc3d987d">&#9670;&#160;</a></span>SyncInteractionResultClientRpc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.SyncInteractionResultClientRpc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_network_item_state.html">NetworkItemState</a></td>          <td class="paramname"><span class="paramname"><em>itemState</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>feedback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ClientRpcParams</td>          <td class="paramname"><span class="paramname"><em>clientRpcParams</em></span><span class="paramdefsep"> = </span><span class="paramdefval">default</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RPC klienta synchronizujący wynik interakcji ze stacją kuchenną. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">itemState</td><td>Zaktualizowany stan trzymanego przedmiotu po interakcji.</td></tr>
+    <tr><td class="paramname">feedback</td><td>Komunikat zwrotny do wyświetlenia graczowi (np. informacja o postępie).</td></tr>
+    <tr><td class="paramname">clientRpcParams</td><td>Parametry RPC do wysyłki celowanej.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Aktualizuje trzymany przedmiot i komunikat zwrotny gracza lokalnego po przetworzeniu interakcji przez serwer. </p>
+
+</div>
+</div>
+<a id="a6c0e44b013b1f8c7190b4e311f271592" name="a6c0e44b013b1f8c7190b4e311f271592"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c0e44b013b1f8c7190b4e311f271592">&#9670;&#160;</a></span>SyncOrdersClientRpc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.SyncOrdersClientRpc </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>templateIndex</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>desc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>time</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>comp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fail</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RPC klienta synchronizujący stan zamówień od serwera. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">templateIndex</td><td>Indeks aktywnego szablonu zamówienia.</td></tr>
+    <tr><td class="paramname">desc</td><td>Opis aktywnego zamówienia.</td></tr>
+    <tr><td class="paramname">time</td><td>Pozostały czas na realizację zamówienia.</td></tr>
+    <tr><td class="paramname">comp</td><td>Liczba ukończonych zamówień.</td></tr>
+    <tr><td class="paramname">fail</td><td>Liczba nieudanych zamówień.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a90716a2eb339823bd248f06bbba2cc41" name="a90716a2eb339823bd248f06bbba2cc41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90716a2eb339823bd248f06bbba2cc41">&#9670;&#160;</a></span>SyncShopUpgradesClientRpc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.SyncShopUpgradesClientRpc </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>grillLvl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cutLvl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rewardLvl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>timeLvl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>meatLvl</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RPC klienta synchronizujący poziomy ulepszeń sklepowych od serwera. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grillLvl</td><td>Poziom ulepszenia szybkości grilla.</td></tr>
+    <tr><td class="paramname">cutLvl</td><td>Poziom ulepszenia szybkości krojenia.</td></tr>
+    <tr><td class="paramname">rewardLvl</td><td>Poziom ulepszenia bonusu nagrody.</td></tr>
+    <tr><td class="paramname">timeLvl</td><td>Poziom ulepszenia czasu zamówienia.</td></tr>
+    <tr><td class="paramname">meatLvl</td><td>Poziom ulepszenia wielkości porcji mięsa.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa21d6fab4162e91651affe639c7b2832" name="aa21d6fab4162e91651affe639c7b2832"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa21d6fab4162e91651affe639c7b2832">&#9670;&#160;</a></span>SyncStationStateClientRpc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.SyncStationStateClientRpc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_station_state_snapshot.html">StationStateSnapshot</a></td>          <td class="paramname"><span class="paramname"><em>snapshot</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RPC klienta synchronizujący stan stacji kuchennej odebrany od serwera. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">snapshot</td><td>Migawka stanu stacji kuchennej do zastosowania.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ignorowana na serwerze (serwer jest źródłem prawdy). Wyszukuje odpowiednią stację po indeksie i stosuje migawkę. </p>
+
+</div>
+</div>
+<a id="af1ce0f56bb9ec30eedf30913d7a4c478" name="af1ce0f56bb9ec30eedf30913d7a4c478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1ce0f56bb9ec30eedf30913d7a4c478">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda Update wywoływana co klatkę. Synchronizuje trzymany przedmiot, nadaje stany stacji, ekonomii, sklepu i zamówień. </p>
+<p>Dla właściciela synchronizuje stan trzymanego przedmiotu z serwerem co 0.15 sekundy. Dla hosta (serwer + właściciel) nadaje stany stacji kuchennych, ekonomii, ulepszeń i zamówień. </p>
+
+</div>
+</div>
+<a id="a2328688d34c7fb6b70d9f49f2389f1a1" name="a2328688d34c7fb6b70d9f49f2389f1a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2328688d34c7fb6b70d9f49f2389f1a1">&#9670;&#160;</a></span>UpdateHeldItemServerRpc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.UpdateHeldItemServerRpc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_network_item_state.html">NetworkItemState</a></td>          <td class="paramname"><span class="paramname"><em>newState</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RPC serwera aktualizujący stan trzymanego przedmiotu w zmiennej sieciowej. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newState</td><td>Nowy stan przedmiotu trzymanego przez gracza.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5f295ebf5dec227441654eaae2145e83" name="a5f295ebf5dec227441654eaae2145e83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f295ebf5dec227441654eaae2145e83">&#9670;&#160;</a></span>UpdateHeldItemVisual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkPlayer.UpdateHeldItemVisual </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_network_item_state.html">NetworkItemState</a></td>          <td class="paramname"><span class="paramname"><em>itemState</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizuje wizualną reprezentację przedmiotu trzymanego przez gracza. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">itemState</td><td>Nowy stan trzymanego przedmiotu sieciowego.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Niszczy starą wizualizację, jeśli stan przedmiotu się zmienił, i tworzy nową za pomocą <a class="el" href="class_kitchen_item_visual_factory.html" title="Statyczna klasa fabryki tworząca wizualne reprezentacje 3D składników i dań kuchennych w grze Kebab C...">KitchenItemVisualFactory</a>. Dla graczy zdalnych przyczepia wizualizację do kości prawej ręki lub do transform gracza jako fallback. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a369774bca16f8e46e23e1450c6f4764f" name="a369774bca16f8e46e23e1450c6f4764f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a369774bca16f8e46e23e1450c6f4764f">&#9670;&#160;</a></span>cachedController</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_simple_player_controller.html">SimplePlayerController</a> NetworkPlayer.cachedController</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowana referencja do komponentu kontrolera ruchu gracza. </p>
+
+</div>
+</div>
+<a id="aad0978188dd5e28592c59306c5c0f07b" name="aad0978188dd5e28592c59306c5c0f07b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad0978188dd5e28592c59306c5c0f07b">&#9670;&#160;</a></span>cachedInteraction</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_player_interaction.html">PlayerInteraction</a> NetworkPlayer.cachedInteraction</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowana referencja do komponentu interakcji gracza. </p>
+
+</div>
+</div>
+<a id="a1a17368ab9b9487614db2708a9b2453f" name="a1a17368ab9b9487614db2708a9b2453f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a17368ab9b9487614db2708a9b2453f">&#9670;&#160;</a></span>cachedStations</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_network_kitchen_station.html">NetworkKitchenStation</a> [] NetworkPlayer.cachedStations</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowana tablica wszystkich stacji kuchennych na scenie. </p>
+
+</div>
+</div>
+<a id="a5a3812674fc752c15d1d2b02f0609235" name="a5a3812674fc752c15d1d2b02f0609235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a3812674fc752c15d1d2b02f0609235">&#9670;&#160;</a></span>cachedStationsTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float NetworkPlayer.cachedStationsTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czas ostatniego odświeżenia buforowanej tablicy stacji kuchennych. </p>
+
+</div>
+</div>
+<a id="a12730a194027166aa750649a7403a732" name="a12730a194027166aa750649a7403a732"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12730a194027166aa750649a7403a732">&#9670;&#160;</a></span>EconomySyncInterval</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float NetworkPlayer.EconomySyncInterval = 0.5f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Interwał synchronizacji danych ekonomicznych (w sekundach). </p>
+
+</div>
+</div>
+<a id="a8c607f576c727b3071f2d80cab3fdbbc" name="a8c607f576c727b3071f2d80cab3fdbbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c607f576c727b3071f2d80cab3fdbbc">&#9670;&#160;</a></span>EyeHeight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float NetworkPlayer.EyeHeight = 1.75f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wysokość oczu gracza nad poziomem podłogi (w metrach). Używana do pozycjonowania kamery gracza. </p>
+
+</div>
+</div>
+<a id="a8841770bda2729cbc6dd7a4ca15f357b" name="a8841770bda2729cbc6dd7a4ca15f357b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8841770bda2729cbc6dd7a4ca15f357b">&#9670;&#160;</a></span>heldItemVisual</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject NetworkPlayer.heldItemVisual</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obiekt wizualny reprezentujący przedmiot trzymany przez gracza. </p>
+
+</div>
+</div>
+<a id="a797fbcc342613109a943ea1a57d8f8dc" name="a797fbcc342613109a943ea1a57d8f8dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a797fbcc342613109a943ea1a57d8f8dc">&#9670;&#160;</a></span>isLocalPlayerSetup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NetworkPlayer.isLocalPlayerSetup = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flaga zapobiegająca wielokrotnej konfiguracji gracza lokalnego. </p>
+
+</div>
+</div>
+<a id="af4306015f8fd6be9db1fc67e2ad1c68c" name="af4306015f8fd6be9db1fc67e2ad1c68c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4306015f8fd6be9db1fc67e2ad1c68c">&#9670;&#160;</a></span>lastVisualState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_network_item_state.html">NetworkItemState</a> NetworkPlayer.lastVisualState</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ostatni zsynchronizowany stan wizualny trzymanego przedmiotu. Używany do wykrywania zmian i unikania niepotrzebnego odtwarzania wizualizacji. </p>
+
+</div>
+</div>
+<a id="ac994d82f9058e4f9ad2e61e98c350321" name="ac994d82f9058e4f9ad2e61e98c350321"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac994d82f9058e4f9ad2e61e98c350321">&#9670;&#160;</a></span>nameLabel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TextMesh NetworkPlayer.nameLabel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Etykieta tekstowa wyświetlająca nazwę gracza zdalnego nad jego głową. </p>
+
+</div>
+</div>
+<a id="a8c011e8366c3e642549ea60d81f4ec24" name="a8c011e8366c3e642549ea60d81f4ec24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c011e8366c3e642549ea60d81f4ec24">&#9670;&#160;</a></span>netHeldItem</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">NetworkVariable&lt;<a class="el" href="struct_network_item_state.html">NetworkItemState</a>&gt; NetworkPlayer.netHeldItem</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Wartość początkowa:</b><div class="fragment"><div class="line">= <span class="keyword">new</span> NetworkVariable&lt;NetworkItemState&gt;(</div>
+<div class="line">        <a class="code hl_struct" href="struct_network_item_state.html">NetworkItemState</a>.<a class="code hl_function" href="struct_network_item_state.html#aea5f824c92f9fb8db633e32e082971d2">Empty</a>(),</div>
+<div class="line">        NetworkVariableReadPermission.Everyone,</div>
+<div class="line">        NetworkVariableWritePermission.Server)</div>
+<div class="ttc" id="astruct_network_item_state_html"><div class="ttname"><a href="struct_network_item_state.html">NetworkItemState</a></div><div class="ttdef"><b>Definicja</b> NetworkItemSerializer.cs:5</div></div>
+<div class="ttc" id="astruct_network_item_state_html_aea5f824c92f9fb8db633e32e082971d2"><div class="ttname"><a href="struct_network_item_state.html#aea5f824c92f9fb8db633e32e082971d2">NetworkItemState.Empty</a></div><div class="ttdeci">static NetworkItemState Empty()</div><div class="ttdef"><b>Definicja</b> NetworkItemSerializer.cs:49</div></div>
+</div><!-- fragment -->
+<p>Zmienna sieciowa przechowująca stan trzymanego przedmiotu kuchennego. </p>
+<p>Używana do synchronizacji wizualnej reprezentacji przedmiotu trzymanego przez gracza pomiędzy wszystkimi klientami. </p>
+
+</div>
+</div>
+<a id="a9940061ee675d311659181b76d27f3f9" name="a9940061ee675d311659181b76d27f3f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9940061ee675d311659181b76d27f3f9">&#9670;&#160;</a></span>nextEconomySyncTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float NetworkPlayer.nextEconomySyncTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czas następnej synchronizacji danych ekonomicznych. </p>
+
+</div>
+</div>
+<a id="aca80417066ef06bf7cd98e1d8a390e9d" name="aca80417066ef06bf7cd98e1d8a390e9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca80417066ef06bf7cd98e1d8a390e9d">&#9670;&#160;</a></span>nextHeldItemSyncTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float NetworkPlayer.nextHeldItemSyncTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czas następnej synchronizacji stanu trzymanego przedmiotu. </p>
+
+</div>
+</div>
+<a id="a6ca5984b2882e8e702f7064bf4730ee7" name="a6ca5984b2882e8e702f7064bf4730ee7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ca5984b2882e8e702f7064bf4730ee7">&#9670;&#160;</a></span>nextOrderSyncTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float NetworkPlayer.nextOrderSyncTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czas następnej synchronizacji zamówień. </p>
+
+</div>
+</div>
+<a id="a54857da92abd961c0f64864a6f8dd32e" name="a54857da92abd961c0f64864a6f8dd32e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54857da92abd961c0f64864a6f8dd32e">&#9670;&#160;</a></span>nextShopSyncTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float NetworkPlayer.nextShopSyncTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czas następnej synchronizacji ulepszeń sklepowych. </p>
+
+</div>
+</div>
+<a id="aa2ce072988e3764fe151b4faa26edfe7" name="aa2ce072988e3764fe151b4faa26edfe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2ce072988e3764fe151b4faa26edfe7">&#9670;&#160;</a></span>nextStationSyncTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float NetworkPlayer.nextStationSyncTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czas następnej synchronizacji stanów stacji kuchennych. </p>
+
+</div>
+</div>
+<a id="a930de36ea9b995b69a60f8b9fe65992d" name="a930de36ea9b995b69a60f8b9fe65992d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a930de36ea9b995b69a60f8b9fe65992d">&#9670;&#160;</a></span>pendingNickname</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string NetworkPlayer.pendingNickname</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pseudonim oczekujący na wysłanie do serwera (używany, gdy obiekt nie został jeszcze zdespawnowany sieciowo). </p>
+
+</div>
+</div>
+<a id="aad9cadc6be10eef2d82740aeefabe1ec" name="aad9cadc6be10eef2d82740aeefabe1ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad9cadc6be10eef2d82740aeefabe1ec">&#9670;&#160;</a></span>playerCamera</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Camera NetworkPlayer.playerCamera</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Referencja do kamery gracza lokalnego. </p>
+
+</div>
+</div>
+<a id="a9da055a3ae82ffcd9938ce9c00765da7" name="a9da055a3ae82ffcd9938ce9c00765da7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9da055a3ae82ffcd9938ce9c00765da7">&#9670;&#160;</a></span>PlayerColors</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color [] NetworkPlayer.PlayerColors</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Wartość początkowa:</b><div class="fragment"><div class="line">= <span class="keyword">new</span> Color[]</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keyword">new</span> Color(0.2f, 0.6f, 0.9f),</div>
+<div class="line">        <span class="keyword">new</span> Color(0.9f, 0.4f, 0.3f),</div>
+<div class="line">        <span class="keyword">new</span> Color(0.3f, 0.8f, 0.4f),</div>
+<div class="line">        <span class="keyword">new</span> Color(0.9f, 0.75f, 0.2f)</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p>Tablica kolorów przypisywanych graczom na podstawie ich indeksu. </p>
+<p>Kolory służą do wizualnego rozróżnienia graczy zdalnych. Kolejno: niebieski, czerwony, zielony, żółty. </p>
+
+</div>
+</div>
+<a id="a332d3fb18937c9b1ae730fd3edaf07b6" name="a332d3fb18937c9b1ae730fd3edaf07b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a332d3fb18937c9b1ae730fd3edaf07b6">&#9670;&#160;</a></span>playerIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">NetworkVariable&lt;int&gt; NetworkPlayer.playerIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Wartość początkowa:</b><div class="fragment"><div class="line">= <span class="keyword">new</span> NetworkVariable&lt;int&gt;(</div>
+<div class="line">        0,</div>
+<div class="line">        NetworkVariableReadPermission.Everyone,</div>
+<div class="line">        NetworkVariableWritePermission.Server)</div>
+</div><!-- fragment -->
+<p>Zmienna sieciowa przechowująca indeks gracza. </p>
+<p>Indeks określa punkt spawnu oraz kolor gracza. Przypisywany na serwerze na podstawie identyfikatora klienta. </p>
+
+</div>
+</div>
+<a id="a603dd48f5471319be02f9e9c35b7b2b5" name="a603dd48f5471319be02f9e9c35b7b2b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a603dd48f5471319be02f9e9c35b7b2b5">&#9670;&#160;</a></span>playerName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">NetworkVariable&lt;FixedString32Bytes&gt; NetworkPlayer.playerName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Wartość początkowa:</b><div class="fragment"><div class="line">= <span class="keyword">new</span> NetworkVariable&lt;FixedString32Bytes&gt;(</div>
+<div class="line">        <span class="stringliteral">&quot;Gracz&quot;</span>,</div>
+<div class="line">        NetworkVariableReadPermission.Everyone,</div>
+<div class="line">        NetworkVariableWritePermission.Server)</div>
+</div><!-- fragment -->
+<p>Zmienna sieciowa przechowująca nazwę (pseudonim) gracza. </p>
+<p>Odczytywalna przez wszystkich klientów, zapisywalna tylko przez serwer. Domyślna wartość to "Gracz". </p>
+
+</div>
+</div>
+<a id="a17938aaa10b8d8fa522aef6afda1d40e" name="a17938aaa10b8d8fa522aef6afda1d40e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17938aaa10b8d8fa522aef6afda1d40e">&#9670;&#160;</a></span>remotePlayerVisual</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject NetworkPlayer.remotePlayerVisual</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obiekt wizualny reprezentujący gracza zdalnego (model 3D). </p>
+
+</div>
+</div>
+<a id="ab5d32bd0954ab34d59c75afaa94afe74" name="ab5d32bd0954ab34d59c75afaa94afe74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5d32bd0954ab34d59c75afaa94afe74">&#9670;&#160;</a></span>ShopSyncInterval</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float NetworkPlayer.ShopSyncInterval = 1.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Interwał synchronizacji ulepszeń sklepowych (w sekundach). </p>
+
+</div>
+</div>
+<a id="a9f8c51d7cbbdb70dd35e02491d31d90b" name="a9f8c51d7cbbdb70dd35e02491d31d90b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f8c51d7cbbdb70dd35e02491d31d90b">&#9670;&#160;</a></span>SpawnPoints</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Vector3 [] NetworkPlayer.SpawnPoints</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Wartość początkowa:</b><div class="fragment"><div class="line">= <span class="keyword">new</span> Vector3[]</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keyword">new</span> Vector3(0f, 0f, -1.9f),</div>
+<div class="line">        <span class="keyword">new</span> Vector3(-2f, 0f, -1.9f),</div>
+<div class="line">        <span class="keyword">new</span> Vector3(2f, 0f, -1.9f),</div>
+<div class="line">        <span class="keyword">new</span> Vector3(0f, 0f, -0.5f)</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p>Tablica predefiniowanych punktów spawnu graczy na mapie. </p>
+<p>Pozycje są przypisywane graczom cyklicznie na podstawie ich identyfikatora klienta. </p>
+
+</div>
+</div>
+<a id="a6441ea1ca6950050bd39c43f635bafad" name="a6441ea1ca6950050bd39c43f635bafad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6441ea1ca6950050bd39c43f635bafad">&#9670;&#160;</a></span>StationSyncInterval</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float NetworkPlayer.StationSyncInterval = 0.15f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Interwał synchronizacji stanów stacji kuchennych (w sekundach). </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="ab774d9d318a5d12c7f2cb79e49be1fcf" name="ab774d9d318a5d12c7f2cb79e49be1fcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab774d9d318a5d12c7f2cb79e49be1fcf">&#9670;&#160;</a></span>LocalInstance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_network_player.html">NetworkPlayer</a> NetworkPlayer.LocalInstance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Statyczna referencja do lokalnej instancji gracza sieciowego. </p>
+<p>Instancja <a class="el" href="class_network_player.html" title="Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.">NetworkPlayer</a> należąca do lokalnego gracza lub <code>null</code>.</p>
+
+</div>
+</div>
+<a id="a15881a04dd5b6541ce833cec408394c7" name="a15881a04dd5b6541ce833cec408394c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15881a04dd5b6541ce833cec408394c7">&#9670;&#160;</a></span>PlayerCamera</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Camera NetworkPlayer.PlayerCamera</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Właściwość zwracająca kamerę gracza. </p>
+<p>Obiekt Camera przypisany do gracza lokalnego lub <code>null</code> dla graczy zdalnych.</p>
+
+</div>
+</div>
+<a id="a3ee5dc2c0b7b9f84662b463f9f3eceb2" name="a3ee5dc2c0b7b9f84662b463f9f3eceb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ee5dc2c0b7b9f84662b463f9f3eceb2">&#9670;&#160;</a></span>PlayerIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NetworkPlayer.PlayerIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Właściwość zwracająca indeks gracza. </p>
+<p>Indeks gracza określający punkt spawnu i kolor.</p>
+
+</div>
+</div>
+<a id="af677ab70df9a26c5aaf7dadea5c8a6c2" name="af677ab70df9a26c5aaf7dadea5c8a6c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af677ab70df9a26c5aaf7dadea5c8a6c2">&#9670;&#160;</a></span>PlayerName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string NetworkPlayer.PlayerName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Właściwość zwracająca nazwę gracza jako ciąg znaków. </p>
+<p>Pseudonim gracza odczytany ze zmiennej sieciowej.</p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_network_player_8cs.html">NetworkPlayer.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

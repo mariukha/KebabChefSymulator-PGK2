@@ -1,0 +1,153 @@
+\doxysection{Dokumentacja klasy Ingredient\+Data}
+\hypertarget{class_ingredient_data}{}\label{class_ingredient_data}\index{IngredientData@{IngredientData}}
+
+
+Klasa Scriptable\+Object reprezentująca dane pojedynczego składnika w grze. Przechowuje informacje o nazwie, cenie, ikonie, modelu 3D oraz parametrach gameplayowych składnika, takich jak typ, stan początkowy i wartość sprzedaży.  
+
+
+Diagram dziedziczenia dla Ingredient\+Data\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ingredient_data}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_ingredient_data_ae5bd8c83cd53f0b66a7177ce770feca8}{nazwa\+Skladnika}}
+\begin{DoxyCompactList}\small\item\em Nazwa składnika wyświetlana w interfejsie użytkownika. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_ingredient_data_a6defbc3bfcb5113adacf67e4e0dcbd0a}{cena\+Zakupu}}
+\begin{DoxyCompactList}\small\item\em Cena zakupu składnika w walucie gry. Określa, ile gracz musi zapłacić za nabycie tego składnika. \end{DoxyCompactList}\item 
+Sprite \mbox{\hyperlink{class_ingredient_data_aa4f0412a37eb42a6d0311bc258451db3}{ikona}}
+\begin{DoxyCompactList}\small\item\em Ikona sprite\textquotesingle{}a składnika używana w interfejsie użytkownika. Wyświetlana m.\+in. w menu zamówień i panelu ekwipunku. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_ingredient_data_af8495b2df6373f03e2a5c76e32531fa2}{model3D}}
+\begin{DoxyCompactList}\small\item\em Prefab modelu 3D składnika używany do wizualizacji w scenie gry. Instancjonowany na stacjach kuchennych i w trakcie przygotowywania potraw. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{class_ingredient_data_a69cd8e7302c773e995cb782059fc7430}{typ\+Skladnika}} = \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5a77bd79b3dca1f49815655b6f2df760ba}{Ingredient\+Kind.\+Tomato}}
+\begin{DoxyCompactList}\small\item\em Typ (rodzaj) składnika określający jego kategorię w systemie kuchni. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{class_ingredient_data_a91865cbf9132d023dcfbc880d03cff71}{stan\+Poczatkowy}} = \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}{Ingredient\+Process\+State.\+Raw}}
+\begin{DoxyCompactList}\small\item\em Początkowy stan przetworzenia składnika po jego pobraniu ze źródła. Określa, w jakim stanie składnik zaczyna swoją „drogę"{} w kuchni. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_ingredient_data_a7e449f99b5b8943a5187c2e2fada1444}{wartosc\+Sprzedazy}} = 5f
+\begin{DoxyCompactList}\small\item\em Wartość sprzedaży składnika w walucie gry. Wpływa na końcową wartość potrawy zawierającej ten składnik. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_ingredient_data_a0fbf37a0e898219d74fefab0736f75a8}{kolor\+Debug}} = Color.\+white
+\begin{DoxyCompactList}\small\item\em Kolor debugowania używany do wizualizacji składnika w trybie deweloperskim. Domyślnie ustawiony na biały. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_ingredient_data_a29a6ac6c4c549ec26e01de65369e13fd}{Display\+Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Zwraca nazwę wyświetlaną składnika. Jeśli pole \doxylink{class_ingredient_data_ae5bd8c83cd53f0b66a7177ce770feca8}{nazwa\+Skladnika} jest puste lub zawiera same białe znaki, zwracana jest nazwa obiektu Scriptable\+Object (właściwość {\ttfamily name}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa Scriptable\+Object reprezentująca dane pojedynczego składnika w grze. Przechowuje informacje o nazwie, cenie, ikonie, modelu 3D oraz parametrach gameplayowych składnika, takich jak typ, stan początkowy i wartość sprzedaży. 
+
+Nowe instancje można tworzyć z poziomu menu Unity\+: {\ttfamily Assets → Create → Kebab\+Game → Skladnik}. Każdy składnik posiada zarówno dane prezentacyjne (ikona, model 3D), jak i dane logiki gry (typ, stan, wartość). 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_ingredient_data_a6defbc3bfcb5113adacf67e4e0dcbd0a}\index{IngredientData@{IngredientData}!cenaZakupu@{cenaZakupu}}
+\index{cenaZakupu@{cenaZakupu}!IngredientData@{IngredientData}}
+\doxysubsubsection{\texorpdfstring{cenaZakupu}{cenaZakupu}}
+{\footnotesize\ttfamily \label{class_ingredient_data_a6defbc3bfcb5113adacf67e4e0dcbd0a} 
+float Ingredient\+Data.\+cena\+Zakupu}
+
+
+
+Cena zakupu składnika w walucie gry. Określa, ile gracz musi zapłacić za nabycie tego składnika. 
+
+\Hypertarget{class_ingredient_data_aa4f0412a37eb42a6d0311bc258451db3}\index{IngredientData@{IngredientData}!ikona@{ikona}}
+\index{ikona@{ikona}!IngredientData@{IngredientData}}
+\doxysubsubsection{\texorpdfstring{ikona}{ikona}}
+{\footnotesize\ttfamily \label{class_ingredient_data_aa4f0412a37eb42a6d0311bc258451db3} 
+Sprite Ingredient\+Data.\+ikona}
+
+
+
+Ikona sprite\textquotesingle{}a składnika używana w interfejsie użytkownika. Wyświetlana m.\+in. w menu zamówień i panelu ekwipunku. 
+
+\Hypertarget{class_ingredient_data_a0fbf37a0e898219d74fefab0736f75a8}\index{IngredientData@{IngredientData}!kolorDebug@{kolorDebug}}
+\index{kolorDebug@{kolorDebug}!IngredientData@{IngredientData}}
+\doxysubsubsection{\texorpdfstring{kolorDebug}{kolorDebug}}
+{\footnotesize\ttfamily \label{class_ingredient_data_a0fbf37a0e898219d74fefab0736f75a8} 
+Color Ingredient\+Data.\+kolor\+Debug = Color.\+white}
+
+
+
+Kolor debugowania używany do wizualizacji składnika w trybie deweloperskim. Domyślnie ustawiony na biały. 
+
+\Hypertarget{class_ingredient_data_af8495b2df6373f03e2a5c76e32531fa2}\index{IngredientData@{IngredientData}!model3D@{model3D}}
+\index{model3D@{model3D}!IngredientData@{IngredientData}}
+\doxysubsubsection{\texorpdfstring{model3D}{model3D}}
+{\footnotesize\ttfamily \label{class_ingredient_data_af8495b2df6373f03e2a5c76e32531fa2} 
+Game\+Object Ingredient\+Data.\+model3D}
+
+
+
+Prefab modelu 3D składnika używany do wizualizacji w scenie gry. Instancjonowany na stacjach kuchennych i w trakcie przygotowywania potraw. 
+
+\Hypertarget{class_ingredient_data_ae5bd8c83cd53f0b66a7177ce770feca8}\index{IngredientData@{IngredientData}!nazwaSkladnika@{nazwaSkladnika}}
+\index{nazwaSkladnika@{nazwaSkladnika}!IngredientData@{IngredientData}}
+\doxysubsubsection{\texorpdfstring{nazwaSkladnika}{nazwaSkladnika}}
+{\footnotesize\ttfamily \label{class_ingredient_data_ae5bd8c83cd53f0b66a7177ce770feca8} 
+string Ingredient\+Data.\+nazwa\+Skladnika}
+
+
+
+Nazwa składnika wyświetlana w interfejsie użytkownika. 
+
+\Hypertarget{class_ingredient_data_a91865cbf9132d023dcfbc880d03cff71}\index{IngredientData@{IngredientData}!stanPoczatkowy@{stanPoczatkowy}}
+\index{stanPoczatkowy@{stanPoczatkowy}!IngredientData@{IngredientData}}
+\doxysubsubsection{\texorpdfstring{stanPoczatkowy}{stanPoczatkowy}}
+{\footnotesize\ttfamily \label{class_ingredient_data_a91865cbf9132d023dcfbc880d03cff71} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Ingredient\+Data.\+stan\+Poczatkowy = \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}{Ingredient\+Process\+State.\+Raw}}}
+
+
+
+Początkowy stan przetworzenia składnika po jego pobraniu ze źródła. Określa, w jakim stanie składnik zaczyna swoją „drogę"{} w kuchni. 
+
+\begin{DoxySeeAlso}{Zobacz również}
+\doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}
+
+
+\end{DoxySeeAlso}
+\Hypertarget{class_ingredient_data_a69cd8e7302c773e995cb782059fc7430}\index{IngredientData@{IngredientData}!typSkladnika@{typSkladnika}}
+\index{typSkladnika@{typSkladnika}!IngredientData@{IngredientData}}
+\doxysubsubsection{\texorpdfstring{typSkladnika}{typSkladnika}}
+{\footnotesize\ttfamily \label{class_ingredient_data_a69cd8e7302c773e995cb782059fc7430} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Ingredient\+Data.\+typ\+Skladnika = \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5a77bd79b3dca1f49815655b6f2df760ba}{Ingredient\+Kind.\+Tomato}}}
+
+
+
+Typ (rodzaj) składnika określający jego kategorię w systemie kuchni. 
+
+\begin{DoxySeeAlso}{Zobacz również}
+\doxylink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}
+
+
+\end{DoxySeeAlso}
+\Hypertarget{class_ingredient_data_a7e449f99b5b8943a5187c2e2fada1444}\index{IngredientData@{IngredientData}!wartoscSprzedazy@{wartoscSprzedazy}}
+\index{wartoscSprzedazy@{wartoscSprzedazy}!IngredientData@{IngredientData}}
+\doxysubsubsection{\texorpdfstring{wartoscSprzedazy}{wartoscSprzedazy}}
+{\footnotesize\ttfamily \label{class_ingredient_data_a7e449f99b5b8943a5187c2e2fada1444} 
+float Ingredient\+Data.\+wartosc\+Sprzedazy = 5f}
+
+
+
+Wartość sprzedaży składnika w walucie gry. Wpływa na końcową wartość potrawy zawierającej ten składnik. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_ingredient_data_a29a6ac6c4c549ec26e01de65369e13fd}\index{IngredientData@{IngredientData}!DisplayName@{DisplayName}}
+\index{DisplayName@{DisplayName}!IngredientData@{IngredientData}}
+\doxysubsubsection{\texorpdfstring{DisplayName}{DisplayName}}
+{\footnotesize\ttfamily \label{class_ingredient_data_a29a6ac6c4c549ec26e01de65369e13fd} 
+string Ingredient\+Data.\+Display\+Name\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Zwraca nazwę wyświetlaną składnika. Jeśli pole \doxylink{class_ingredient_data_ae5bd8c83cd53f0b66a7177ce770feca8}{nazwa\+Skladnika} jest puste lub zawiera same białe znaki, zwracana jest nazwa obiektu Scriptable\+Object (właściwość {\ttfamily name}). 
+
+Nazwa składnika przeznaczona do wyświetlenia w interfejsie użytkownika.
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_ingredient_data_8cs}{Ingredient\+Data.\+cs}}\end{DoxyCompactItemize}

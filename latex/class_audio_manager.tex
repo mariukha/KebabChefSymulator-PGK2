@@ -1,0 +1,824 @@
+\doxysection{Dokumentacja klasy Audio\+Manager}
+\hypertarget{class_audio_manager}{}\label{class_audio_manager}\index{AudioManager@{AudioManager}}
+Diagram dziedziczenia dla Audio\+Manager\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_audio_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_audio_manager_a31eb57e61b446a3df8667c5d337242bf}{Play\+Chop\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dźwiękowy krojenia noża. Używany przy krojeniu składników na desce do krojenia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_acc7777cf8fbb9059b53f8ef7be653cfb}{Play\+Pickup\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dźwiękowy podnoszenia przedmiotu. Używany gdy gracz podnosi składnik lub przedmiot ze stanowiska. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a217a140358c72d5eb1d386a495de5a8b}{Play\+Drop\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dźwiękowy upuszczenia przedmiotu. Używany gdy gracz odkłada składnik na stanowisko. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a6916f374cd9bed2579f78ae083c94284}{Play\+Money\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dźwiękowy otrzymania pieniędzy. Używany przy pomyślnym zrealizowaniu zamówienia klienta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_ac500d99259cf57d7f34a63ceba33261e}{Play\+Fail\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dźwiękowy niepowodzenia. Używany gdy zamówienie wygaśnie lub zostanie źle zrealizowane. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a627947efb9e2f097e713ca40b0a5f981}{Play\+New\+Order\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dźwiękowy nowego zamówienia. Używany gdy pojawia się nowe zamówienie od klienta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_aa44e079bb8d6f2af0c7778146c97975a}{Play\+Button\+Click}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dźwiękowy kliknięcia przycisku interfejsu. Używany we wszystkich interaktywnych elementach UI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a96806da3213b93a3f484c130c7dc8110}{Play\+Ready\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dźwiękowy gotowości potrawy. Używany gdy składnik jest w pełni przetworzony i gotowy do użycia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a8bf7f46a5425180726dddf5a495df12f}{Play\+Wrap\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dźwiękowy zawijania kebaba. Używany gdy gracz zawija składniki w lawasz. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a65009f0f12da1a6a7e3a8d6f69baf5ce}{Play\+Upgrade\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dźwiękowy zakupu ulepszenia. Używany gdy gracz kupuje ulepszenie w sklepie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a32b71dd228ca6d50636936be3681fa59}{Start\+Grill\+Ambient}} ()
+\begin{DoxyCompactList}\small\item\em Rozpoczyna odtwarzanie zapętlonego dźwięku skwierczenia grilla. Dźwięk jest odtwarzany tylko jeśli nie jest już aktywny. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a960ba9f46e809b5cc8980576df570a36}{Stop\+Grill\+Ambient}} ()
+\begin{DoxyCompactList}\small\item\em Zatrzymuje odtwarzanie zapętlonego dźwięku skwierczenia grilla. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_abcf3772aefa4b77a8e4d409ade7b0b3f}{Set\+Master\+Volume}} (float volume)
+\begin{DoxyCompactList}\small\item\em Ustawia główną głośność i aktualizuje wszystkie aktywne źródła dźwięku. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a86119c029ac5638fd4931b465a1970bf}{Set\+SFXVolume}} (float volume)
+\begin{DoxyCompactList}\small\item\em Ustawia głośność efektów dźwiękowych i aktualizuje aktywne źródła dźwięku. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_add05f438dc5539268686059b3515afa2}{Set\+Music\+Volume}} (float volume)
+\begin{DoxyCompactList}\small\item\em Ustawia głośność muzyki w tle i aktualizuje aktywne źródła dźwięku. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_audio_manager}{Audio\+Manager}} \mbox{\hyperlink{class_audio_manager_af96f8bc4f9a0ad3f1a63a028bb31f790}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna instancja Singletona menedżera dźwięku. Umożliwia globalny dostęp do systemu audio z dowolnego miejsca w grze. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_audio_manager_aeef08bbb06786ecd1d560460eebfcbee}{Master\+Volume}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Aktualna wartość głównej głośności (tylko do odczytu). Zakres\+: 0.\+0 -\/ 1.\+0. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_audio_manager_a947594f0071734e74e21535f619cb654}{SFXVolume}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Aktualna wartość głośności efektów dźwiękowych (tylko do odczytu). Zakres\+: 0.\+0 -\/ 1.\+0. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_audio_manager_a312e502a26002f6e36a8da7d881709df}{Music\+Volume}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Aktualna wartość głośności muzyki (tylko do odczytu). Zakres\+: 0.\+0 -\/ 1.\+0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_audio_manager_a631d7d42b921bcbd82bd1baec2ec3ea7}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje Singleton menedżera dźwięku. Jeśli instancja już istnieje, niszczy duplikat obiektu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_ab333270dca5bf5c039de3d70ca111ba9}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Konfiguruje źródła dźwięku, generuje wszystkie klipy audio proceduralnie, stosuje ustawienia audio z menedżera ustawień gry i rozpoczyna odtwarzanie muzyki. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_adbfcef995f476afca3129df1919200cf}{Play\+SFX}} (Audio\+Clip clip, float volume\+Scale)
+\begin{DoxyCompactList}\small\item\em Odtwarza jednorazowy efekt dźwiękowy z domyślnym zakresem pitch (bez zmiany). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a63304c5a49c4b3abf9cbb0517309682b}{Play\+SFX}} (Audio\+Clip clip, float volume\+Scale, float min\+Pitch, float max\+Pitch)
+\begin{DoxyCompactList}\small\item\em Odtwarza jednorazowy efekt dźwiękowy z losową zmianą wysokości tonu. Losowy pitch dodaje naturalne zróżnicowanie przy wielokrotnym odtwarzaniu tego samego efektu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a36917da375b4841228f6ca8a944a72a0}{Play\+Music}} ()
+\begin{DoxyCompactList}\small\item\em Rozpoczyna odtwarzanie zapętlonej muzyki w tle. Głośność jest obliczana jako iloczyn głośności muzyki i głównej głośności. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a3ae00b3c823b2eca3b2b5977bae495ab}{Apply\+Volumes}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje głośność wszystkich aktualnie odtwarzanych źródeł dźwięku (muzyki i dźwięków otoczenia) na podstawie bieżących wartości głośności. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a38fe1e0843ba2cdd08c9bda3c5fca9d4}{Generate\+All\+Clips}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralnie wszystkie klipy audio używane w grze. Próbuje załadować muzykę z zasobów (Resources/\+Audio/music), a w przypadku braku pliku używa proceduralnie wygenerowanego dźwięku otoczenia. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a464702cd6f3fbca96a02ee3715bb6448}{Generate\+Chop}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip dźwiękowy krojenia noża — ostry szum z szybkim wygaszeniem. Łączy biały szum z krótkim kliknięciem sinusoidalnym imitującym uderzenie ostrza. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_ac7444137a6a25bd4b0f95a2c8486c079}{Generate\+Pickup}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip dźwiękowy podnoszenia — jasny, narastający ton. Częstotliwość rośnie od 400 Hz do 900 Hz, tworząc wrażenie podnoszenia. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a3c2689fcac99f314aa1e702627e6d244}{Generate\+Drop}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip dźwiękowy upuszczenia — opadający ton. Częstotliwość spada od 700 Hz do 250 Hz, symulując efekt spadania. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a3c89c04851690fd6e2a5d50ffb68ce58}{Generate\+Money}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip dźwiękowy pieniędzy — jasny podwójny dzwonek w stylu kasy fiskalnej. Składa się z kilku harmonicznych tonów z opóźnionym uderzeniem. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_acce7d53e1a8823fb08c203d0edaf92af}{Generate\+Fail}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip dźwiękowy niepowodzenia — opadający dysonansowy ton. Dwie bliskie częstotliwości tworzą efekt dudnienia, sygnalizujący błąd. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_ac936a552ac870c99fcd09a9f3b5b44b4}{Generate\+New\+Order}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip dźwiękowy nowego zamówienia — jasny dzwonek z alikwotami i lekkim połyskiem, imitujący dzwonek w restauracji. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_ad02f9ad4ff9d61ed27755ca7cb99f187}{Generate\+Click}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip dźwiękowy kliknięcia przycisku — bardzo krótki, suchy dźwięk. Szybkie wygaszenie eksponencjalne tworzy wrażenie mechanicznego kliknięcia. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a7b500a5a286d6810cd818da80dbdec13}{Generate\+Ready}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip dźwiękowy gotowości — miękki metaliczny stuk z ciepłym tonem potwierdzenia. Łączy szum impulsowy z tonami harmonicznymi. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a75e47c0a156ef90382e458c45cda2066}{Generate\+Wrap}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip dźwiękowy zawijania — szelest papieru/lawasza z kontrolowanym uderzeniem. Używa filtrowanego szumu i akcentów niskoczęstotliwościowych. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a0ac4f549193068f069ab2df74c0cef17}{Generate\+Upgrade}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip dźwiękowy ulepszenia — kompaktowe arpeggio premium, nie głośna fanfara arcade\textquotesingle{}owa. Cztery nuty grane kolejno z lekkim połyskiem. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a81293646f638d62d5215e06e5a363df3}{Generate\+Grill\+Loop}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip zapętlonego skwierczenia grilla — filtrowany szum z losowymi trzaskami i powolną modulacją amplitudy. Trwa 4 sekundy. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_ab87b98c9d3099cbccbae9591037126ca}{Generate\+Music\+Loop}} ()
+\begin{DoxyCompactList}\small\item\em Generuje proceduralny klip zapętlonej muzyki w tle — ciepły dron otoczenia z łagodną progresją akordów. Zawiera bas, akord trójdźwiękowy, pad szumowy oraz płynne wejścia i wyjścia (fade in/out). Trwa 16 sekund. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_aa61d70d812143578ab0437f6fa9bb8fc}{Create\+Clip}} (string clip\+Name, float\mbox{[}$\,$\mbox{]} data)
+\begin{DoxyCompactList}\small\item\em Tworzy klip audio Unity z podanej tablicy próbek. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a0cf84c64f2f28215053ebece1818f94e}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Czyści referencję Singletona przy niszczeniu obiektu, zapobiegając odwoływaniu się do zniszczonej instancji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Audio\+Source \mbox{\hyperlink{class_audio_manager_af20e9441762e9b8086842802fd93fd69}{sfx\+Source}}
+\begin{DoxyCompactList}\small\item\em Źródło dźwięku używane do odtwarzania jednorazowych efektów dźwiękowych (SFX). \end{DoxyCompactList}\item 
+Audio\+Source \mbox{\hyperlink{class_audio_manager_a54db9f2d0d9838c238a56cc82b222773}{music\+Source}}
+\begin{DoxyCompactList}\small\item\em Źródło dźwięku używane do odtwarzania zapętlonej muzyki w tle. \end{DoxyCompactList}\item 
+Audio\+Source \mbox{\hyperlink{class_audio_manager_ace1e9a567fcc1f37e95f98b4f83e3f26}{ambient\+Source}}
+\begin{DoxyCompactList}\small\item\em Źródło dźwięku używane do odtwarzania zapętlonych dźwięków otoczenia (np. skwierczenie grilla). \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a7288239a7f5e209fd4fabbdb88a4dfed}{clip\+Chop}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla efektu krojenia noża. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_ae41f570fb251f4825e96524f096f010f}{clip\+Pickup}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla efektu podnoszenia przedmiotu. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_ab758f6dab1fcf4096a9fe876bc115182}{clip\+Drop}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla efektu upuszczenia przedmiotu. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a485592b1fefa5cd51a1f025b39b22032}{clip\+Money}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla efektu otrzymania pieniędzy. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_acd0278d832952a5a49f57a0eaad523ae}{clip\+Fail}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla efektu niepowodzenia (błąd zamówienia). \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_abe38f5b4a78bce5fb6bae39ce211709c}{clip\+New\+Order}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla efektu nowego zamówienia. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a843ac53cd1f3c71b5cb76c4fea7fc831}{clip\+Button\+Click}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla efektu kliknięcia przycisku w interfejsie. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a3d744509d8c2042c71a0a1f4adad39cc}{clip\+Ready}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla efektu gotowości (potrawa gotowa). \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_ac8648d11b4ad08a65f915492c4a5a422}{clip\+Wrap}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla efektu zawijania kebaba w lawasz. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a25772c2b18366b90490ca8386f68b519}{clip\+Upgrade}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla efektu zakupu ulepszenia. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_aad3695931375b07810f0a6308f0ab8cd}{clip\+Grill\+Loop}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla zapętlonego efektu skwierczenia grilla. \end{DoxyCompactList}\item 
+Audio\+Clip \mbox{\hyperlink{class_audio_manager_a6a8291444701588f30c3239dce47c15b}{clip\+Music\+Loop}}
+\begin{DoxyCompactList}\small\item\em Klip audio dla zapętlonej muzyki w tle. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_audio_manager_a1ffa86b870d056dc5e9c039c01820fd6}{master\+Volume}} = 1f
+\begin{DoxyCompactList}\small\item\em Główna głośność, wpływająca na wszystkie źródła dźwięku. Zakres\+: 0.\+0 -\/ 1.\+0. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_audio_manager_a1b6fc07e298f39996023921d7ae1cec5}{sfx\+Volume}} = 0.\+7f
+\begin{DoxyCompactList}\small\item\em Głośność efektów dźwiękowych (SFX). Zakres\+: 0.\+0 -\/ 1.\+0. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_audio_manager_ac773fb615b917c71e32555ca6d5e0833}{music\+Volume}} = 0.\+3f
+\begin{DoxyCompactList}\small\item\em Głośność muzyki w tle. Zakres\+: 0.\+0 -\/ 1.\+0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{class_audio_manager_a7d87d670721005006e2557921459ba76}{Sample\+Rate}} = 44100
+\begin{DoxyCompactList}\small\item\em Częstotliwość próbkowania używana do generowania proceduralnych klipów audio (w Hz). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_audio_manager_a3ae00b3c823b2eca3b2b5977bae495ab}\index{AudioManager@{AudioManager}!ApplyVolumes@{ApplyVolumes}}
+\index{ApplyVolumes@{ApplyVolumes}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{ApplyVolumes()}{ApplyVolumes()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a3ae00b3c823b2eca3b2b5977bae495ab} 
+void Audio\+Manager.\+Apply\+Volumes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje głośność wszystkich aktualnie odtwarzanych źródeł dźwięku (muzyki i dźwięków otoczenia) na podstawie bieżących wartości głośności. 
+
+\Hypertarget{class_audio_manager_a631d7d42b921bcbd82bd1baec2ec3ea7}\index{AudioManager@{AudioManager}!Awake@{Awake}}
+\index{Awake@{Awake}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a631d7d42b921bcbd82bd1baec2ec3ea7} 
+void Audio\+Manager.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje Singleton menedżera dźwięku. Jeśli instancja już istnieje, niszczy duplikat obiektu. 
+
+\Hypertarget{class_audio_manager_aa61d70d812143578ab0437f6fa9bb8fc}\index{AudioManager@{AudioManager}!CreateClip@{CreateClip}}
+\index{CreateClip@{CreateClip}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{CreateClip()}{CreateClip()}}
+{\footnotesize\ttfamily \label{class_audio_manager_aa61d70d812143578ab0437f6fa9bb8fc} 
+Audio\+Clip Audio\+Manager.\+Create\+Clip (\begin{DoxyParamCaption}\item[{string}]{clip\+Name}{, }\item[{float\mbox{[}$\,$\mbox{]}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy klip audio Unity z podanej tablicy próbek. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em clip\+Name} & Nazwa klipu audio do identyfikacji.\\
+\hline
+{\em data} & Tablica próbek audio (wartości float od -\/1.\+0 do 1.\+0).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony klip audio Unity z jednym kanałem i zadaną częstotliwością próbkowania.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_a38fe1e0843ba2cdd08c9bda3c5fca9d4}\index{AudioManager@{AudioManager}!GenerateAllClips@{GenerateAllClips}}
+\index{GenerateAllClips@{GenerateAllClips}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateAllClips()}{GenerateAllClips()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a38fe1e0843ba2cdd08c9bda3c5fca9d4} 
+void Audio\+Manager.\+Generate\+All\+Clips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralnie wszystkie klipy audio używane w grze. Próbuje załadować muzykę z zasobów (Resources/\+Audio/music), a w przypadku braku pliku używa proceduralnie wygenerowanego dźwięku otoczenia. 
+
+\Hypertarget{class_audio_manager_a464702cd6f3fbca96a02ee3715bb6448}\index{AudioManager@{AudioManager}!GenerateChop@{GenerateChop}}
+\index{GenerateChop@{GenerateChop}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateChop()}{GenerateChop()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a464702cd6f3fbca96a02ee3715bb6448} 
+Audio\+Clip Audio\+Manager.\+Generate\+Chop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip dźwiękowy krojenia noża — ostry szum z szybkim wygaszeniem. Łączy biały szum z krótkim kliknięciem sinusoidalnym imitującym uderzenie ostrza. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio efektu krojenia.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_ad02f9ad4ff9d61ed27755ca7cb99f187}\index{AudioManager@{AudioManager}!GenerateClick@{GenerateClick}}
+\index{GenerateClick@{GenerateClick}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateClick()}{GenerateClick()}}
+{\footnotesize\ttfamily \label{class_audio_manager_ad02f9ad4ff9d61ed27755ca7cb99f187} 
+Audio\+Clip Audio\+Manager.\+Generate\+Click (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip dźwiękowy kliknięcia przycisku — bardzo krótki, suchy dźwięk. Szybkie wygaszenie eksponencjalne tworzy wrażenie mechanicznego kliknięcia. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio efektu kliknięcia.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_a3c2689fcac99f314aa1e702627e6d244}\index{AudioManager@{AudioManager}!GenerateDrop@{GenerateDrop}}
+\index{GenerateDrop@{GenerateDrop}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateDrop()}{GenerateDrop()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a3c2689fcac99f314aa1e702627e6d244} 
+Audio\+Clip Audio\+Manager.\+Generate\+Drop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip dźwiękowy upuszczenia — opadający ton. Częstotliwość spada od 700 Hz do 250 Hz, symulując efekt spadania. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio efektu upuszczenia.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_acce7d53e1a8823fb08c203d0edaf92af}\index{AudioManager@{AudioManager}!GenerateFail@{GenerateFail}}
+\index{GenerateFail@{GenerateFail}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateFail()}{GenerateFail()}}
+{\footnotesize\ttfamily \label{class_audio_manager_acce7d53e1a8823fb08c203d0edaf92af} 
+Audio\+Clip Audio\+Manager.\+Generate\+Fail (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip dźwiękowy niepowodzenia — opadający dysonansowy ton. Dwie bliskie częstotliwości tworzą efekt dudnienia, sygnalizujący błąd. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio efektu niepowodzenia.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_a81293646f638d62d5215e06e5a363df3}\index{AudioManager@{AudioManager}!GenerateGrillLoop@{GenerateGrillLoop}}
+\index{GenerateGrillLoop@{GenerateGrillLoop}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateGrillLoop()}{GenerateGrillLoop()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a81293646f638d62d5215e06e5a363df3} 
+Audio\+Clip Audio\+Manager.\+Generate\+Grill\+Loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip zapętlonego skwierczenia grilla — filtrowany szum z losowymi trzaskami i powolną modulacją amplitudy. Trwa 4 sekundy. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio zapętlonego efektu grilla.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_a3c89c04851690fd6e2a5d50ffb68ce58}\index{AudioManager@{AudioManager}!GenerateMoney@{GenerateMoney}}
+\index{GenerateMoney@{GenerateMoney}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateMoney()}{GenerateMoney()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a3c89c04851690fd6e2a5d50ffb68ce58} 
+Audio\+Clip Audio\+Manager.\+Generate\+Money (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip dźwiękowy pieniędzy — jasny podwójny dzwonek w stylu kasy fiskalnej. Składa się z kilku harmonicznych tonów z opóźnionym uderzeniem. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio efektu pieniędzy.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_ab87b98c9d3099cbccbae9591037126ca}\index{AudioManager@{AudioManager}!GenerateMusicLoop@{GenerateMusicLoop}}
+\index{GenerateMusicLoop@{GenerateMusicLoop}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateMusicLoop()}{GenerateMusicLoop()}}
+{\footnotesize\ttfamily \label{class_audio_manager_ab87b98c9d3099cbccbae9591037126ca} 
+Audio\+Clip Audio\+Manager.\+Generate\+Music\+Loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip zapętlonej muzyki w tle — ciepły dron otoczenia z łagodną progresją akordów. Zawiera bas, akord trójdźwiękowy, pad szumowy oraz płynne wejścia i wyjścia (fade in/out). Trwa 16 sekund. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio zapętlonej muzyki otoczenia.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_ac936a552ac870c99fcd09a9f3b5b44b4}\index{AudioManager@{AudioManager}!GenerateNewOrder@{GenerateNewOrder}}
+\index{GenerateNewOrder@{GenerateNewOrder}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateNewOrder()}{GenerateNewOrder()}}
+{\footnotesize\ttfamily \label{class_audio_manager_ac936a552ac870c99fcd09a9f3b5b44b4} 
+Audio\+Clip Audio\+Manager.\+Generate\+New\+Order (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip dźwiękowy nowego zamówienia — jasny dzwonek z alikwotami i lekkim połyskiem, imitujący dzwonek w restauracji. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio efektu nowego zamówienia.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_ac7444137a6a25bd4b0f95a2c8486c079}\index{AudioManager@{AudioManager}!GeneratePickup@{GeneratePickup}}
+\index{GeneratePickup@{GeneratePickup}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GeneratePickup()}{GeneratePickup()}}
+{\footnotesize\ttfamily \label{class_audio_manager_ac7444137a6a25bd4b0f95a2c8486c079} 
+Audio\+Clip Audio\+Manager.\+Generate\+Pickup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip dźwiękowy podnoszenia — jasny, narastający ton. Częstotliwość rośnie od 400 Hz do 900 Hz, tworząc wrażenie podnoszenia. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio efektu podnoszenia.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_a7b500a5a286d6810cd818da80dbdec13}\index{AudioManager@{AudioManager}!GenerateReady@{GenerateReady}}
+\index{GenerateReady@{GenerateReady}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateReady()}{GenerateReady()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a7b500a5a286d6810cd818da80dbdec13} 
+Audio\+Clip Audio\+Manager.\+Generate\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip dźwiękowy gotowości — miękki metaliczny stuk z ciepłym tonem potwierdzenia. Łączy szum impulsowy z tonami harmonicznymi. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio efektu gotowości.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_a0ac4f549193068f069ab2df74c0cef17}\index{AudioManager@{AudioManager}!GenerateUpgrade@{GenerateUpgrade}}
+\index{GenerateUpgrade@{GenerateUpgrade}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateUpgrade()}{GenerateUpgrade()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a0ac4f549193068f069ab2df74c0cef17} 
+Audio\+Clip Audio\+Manager.\+Generate\+Upgrade (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip dźwiękowy ulepszenia — kompaktowe arpeggio premium, nie głośna fanfara arcade\textquotesingle{}owa. Cztery nuty grane kolejno z lekkim połyskiem. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio efektu ulepszenia.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_a75e47c0a156ef90382e458c45cda2066}\index{AudioManager@{AudioManager}!GenerateWrap@{GenerateWrap}}
+\index{GenerateWrap@{GenerateWrap}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{GenerateWrap()}{GenerateWrap()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a75e47c0a156ef90382e458c45cda2066} 
+Audio\+Clip Audio\+Manager.\+Generate\+Wrap (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Generuje proceduralny klip dźwiękowy zawijania — szelest papieru/lawasza z kontrolowanym uderzeniem. Używa filtrowanego szumu i akcentów niskoczęstotliwościowych. 
+
+\begin{DoxyReturn}{Zwraca}
+Wygenerowany klip audio efektu zawijania.
+\end{DoxyReturn}
+\Hypertarget{class_audio_manager_a0cf84c64f2f28215053ebece1818f94e}\index{AudioManager@{AudioManager}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a0cf84c64f2f28215053ebece1818f94e} 
+void Audio\+Manager.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Czyści referencję Singletona przy niszczeniu obiektu, zapobiegając odwoływaniu się do zniszczonej instancji. 
+
+\Hypertarget{class_audio_manager_aa44e079bb8d6f2af0c7778146c97975a}\index{AudioManager@{AudioManager}!PlayButtonClick@{PlayButtonClick}}
+\index{PlayButtonClick@{PlayButtonClick}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayButtonClick()}{PlayButtonClick()}}
+{\footnotesize\ttfamily \label{class_audio_manager_aa44e079bb8d6f2af0c7778146c97975a} 
+void Audio\+Manager.\+Play\+Button\+Click (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dźwiękowy kliknięcia przycisku interfejsu. Używany we wszystkich interaktywnych elementach UI. 
+
+\Hypertarget{class_audio_manager_a31eb57e61b446a3df8667c5d337242bf}\index{AudioManager@{AudioManager}!PlayChopSound@{PlayChopSound}}
+\index{PlayChopSound@{PlayChopSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayChopSound()}{PlayChopSound()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a31eb57e61b446a3df8667c5d337242bf} 
+void Audio\+Manager.\+Play\+Chop\+Sound (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dźwiękowy krojenia noża. Używany przy krojeniu składników na desce do krojenia. 
+
+\Hypertarget{class_audio_manager_a217a140358c72d5eb1d386a495de5a8b}\index{AudioManager@{AudioManager}!PlayDropSound@{PlayDropSound}}
+\index{PlayDropSound@{PlayDropSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayDropSound()}{PlayDropSound()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a217a140358c72d5eb1d386a495de5a8b} 
+void Audio\+Manager.\+Play\+Drop\+Sound (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dźwiękowy upuszczenia przedmiotu. Używany gdy gracz odkłada składnik na stanowisko. 
+
+\Hypertarget{class_audio_manager_ac500d99259cf57d7f34a63ceba33261e}\index{AudioManager@{AudioManager}!PlayFailSound@{PlayFailSound}}
+\index{PlayFailSound@{PlayFailSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayFailSound()}{PlayFailSound()}}
+{\footnotesize\ttfamily \label{class_audio_manager_ac500d99259cf57d7f34a63ceba33261e} 
+void Audio\+Manager.\+Play\+Fail\+Sound (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dźwiękowy niepowodzenia. Używany gdy zamówienie wygaśnie lub zostanie źle zrealizowane. 
+
+\Hypertarget{class_audio_manager_a6916f374cd9bed2579f78ae083c94284}\index{AudioManager@{AudioManager}!PlayMoneySound@{PlayMoneySound}}
+\index{PlayMoneySound@{PlayMoneySound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayMoneySound()}{PlayMoneySound()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a6916f374cd9bed2579f78ae083c94284} 
+void Audio\+Manager.\+Play\+Money\+Sound (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dźwiękowy otrzymania pieniędzy. Używany przy pomyślnym zrealizowaniu zamówienia klienta. 
+
+\Hypertarget{class_audio_manager_a36917da375b4841228f6ca8a944a72a0}\index{AudioManager@{AudioManager}!PlayMusic@{PlayMusic}}
+\index{PlayMusic@{PlayMusic}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayMusic()}{PlayMusic()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a36917da375b4841228f6ca8a944a72a0} 
+void Audio\+Manager.\+Play\+Music (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Rozpoczyna odtwarzanie zapętlonej muzyki w tle. Głośność jest obliczana jako iloczyn głośności muzyki i głównej głośności. 
+
+\Hypertarget{class_audio_manager_a627947efb9e2f097e713ca40b0a5f981}\index{AudioManager@{AudioManager}!PlayNewOrderSound@{PlayNewOrderSound}}
+\index{PlayNewOrderSound@{PlayNewOrderSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayNewOrderSound()}{PlayNewOrderSound()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a627947efb9e2f097e713ca40b0a5f981} 
+void Audio\+Manager.\+Play\+New\+Order\+Sound (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dźwiękowy nowego zamówienia. Używany gdy pojawia się nowe zamówienie od klienta. 
+
+\Hypertarget{class_audio_manager_acc7777cf8fbb9059b53f8ef7be653cfb}\index{AudioManager@{AudioManager}!PlayPickupSound@{PlayPickupSound}}
+\index{PlayPickupSound@{PlayPickupSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayPickupSound()}{PlayPickupSound()}}
+{\footnotesize\ttfamily \label{class_audio_manager_acc7777cf8fbb9059b53f8ef7be653cfb} 
+void Audio\+Manager.\+Play\+Pickup\+Sound (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dźwiękowy podnoszenia przedmiotu. Używany gdy gracz podnosi składnik lub przedmiot ze stanowiska. 
+
+\Hypertarget{class_audio_manager_a96806da3213b93a3f484c130c7dc8110}\index{AudioManager@{AudioManager}!PlayReadySound@{PlayReadySound}}
+\index{PlayReadySound@{PlayReadySound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayReadySound()}{PlayReadySound()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a96806da3213b93a3f484c130c7dc8110} 
+void Audio\+Manager.\+Play\+Ready\+Sound (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dźwiękowy gotowości potrawy. Używany gdy składnik jest w pełni przetworzony i gotowy do użycia. 
+
+\Hypertarget{class_audio_manager_adbfcef995f476afca3129df1919200cf}\index{AudioManager@{AudioManager}!PlaySFX@{PlaySFX}}
+\index{PlaySFX@{PlaySFX}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlaySFX()}{PlaySFX()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_audio_manager_adbfcef995f476afca3129df1919200cf} 
+void Audio\+Manager.\+Play\+SFX (\begin{DoxyParamCaption}\item[{Audio\+Clip}]{clip}{, }\item[{float}]{volume\+Scale}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Odtwarza jednorazowy efekt dźwiękowy z domyślnym zakresem pitch (bez zmiany). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em clip} & Klip audio do odtworzenia.\\
+\hline
+{\em volume\+Scale} & Skala głośności efektu (mnożona przez głośność SFX i główną).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_audio_manager_a63304c5a49c4b3abf9cbb0517309682b}\index{AudioManager@{AudioManager}!PlaySFX@{PlaySFX}}
+\index{PlaySFX@{PlaySFX}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlaySFX()}{PlaySFX()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_audio_manager_a63304c5a49c4b3abf9cbb0517309682b} 
+void Audio\+Manager.\+Play\+SFX (\begin{DoxyParamCaption}\item[{Audio\+Clip}]{clip}{, }\item[{float}]{volume\+Scale}{, }\item[{float}]{min\+Pitch}{, }\item[{float}]{max\+Pitch}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Odtwarza jednorazowy efekt dźwiękowy z losową zmianą wysokości tonu. Losowy pitch dodaje naturalne zróżnicowanie przy wielokrotnym odtwarzaniu tego samego efektu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em clip} & Klip audio do odtworzenia.\\
+\hline
+{\em volume\+Scale} & Skala głośności efektu (mnożona przez głośność SFX i główną).\\
+\hline
+{\em min\+Pitch} & Minimalna wartość losowego pitch (wysokości tonu).\\
+\hline
+{\em max\+Pitch} & Maksymalna wartość losowego pitch (wysokości tonu).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_audio_manager_a65009f0f12da1a6a7e3a8d6f69baf5ce}\index{AudioManager@{AudioManager}!PlayUpgradeSound@{PlayUpgradeSound}}
+\index{PlayUpgradeSound@{PlayUpgradeSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayUpgradeSound()}{PlayUpgradeSound()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a65009f0f12da1a6a7e3a8d6f69baf5ce} 
+void Audio\+Manager.\+Play\+Upgrade\+Sound (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dźwiękowy zakupu ulepszenia. Używany gdy gracz kupuje ulepszenie w sklepie. 
+
+\Hypertarget{class_audio_manager_a8bf7f46a5425180726dddf5a495df12f}\index{AudioManager@{AudioManager}!PlayWrapSound@{PlayWrapSound}}
+\index{PlayWrapSound@{PlayWrapSound}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayWrapSound()}{PlayWrapSound()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a8bf7f46a5425180726dddf5a495df12f} 
+void Audio\+Manager.\+Play\+Wrap\+Sound (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dźwiękowy zawijania kebaba. Używany gdy gracz zawija składniki w lawasz. 
+
+\Hypertarget{class_audio_manager_abcf3772aefa4b77a8e4d409ade7b0b3f}\index{AudioManager@{AudioManager}!SetMasterVolume@{SetMasterVolume}}
+\index{SetMasterVolume@{SetMasterVolume}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{SetMasterVolume()}{SetMasterVolume()}}
+{\footnotesize\ttfamily \label{class_audio_manager_abcf3772aefa4b77a8e4d409ade7b0b3f} 
+void Audio\+Manager.\+Set\+Master\+Volume (\begin{DoxyParamCaption}\item[{float}]{volume}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia główną głośność i aktualizuje wszystkie aktywne źródła dźwięku. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em volume} & Nowa wartość głównej głośności (zostanie ograniczona do zakresu 0.\+0 -\/ 1.\+0).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_audio_manager_add05f438dc5539268686059b3515afa2}\index{AudioManager@{AudioManager}!SetMusicVolume@{SetMusicVolume}}
+\index{SetMusicVolume@{SetMusicVolume}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{SetMusicVolume()}{SetMusicVolume()}}
+{\footnotesize\ttfamily \label{class_audio_manager_add05f438dc5539268686059b3515afa2} 
+void Audio\+Manager.\+Set\+Music\+Volume (\begin{DoxyParamCaption}\item[{float}]{volume}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia głośność muzyki w tle i aktualizuje aktywne źródła dźwięku. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em volume} & Nowa wartość głośności muzyki (zostanie ograniczona do zakresu 0.\+0 -\/ 1.\+0).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_audio_manager_a86119c029ac5638fd4931b465a1970bf}\index{AudioManager@{AudioManager}!SetSFXVolume@{SetSFXVolume}}
+\index{SetSFXVolume@{SetSFXVolume}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{SetSFXVolume()}{SetSFXVolume()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a86119c029ac5638fd4931b465a1970bf} 
+void Audio\+Manager.\+Set\+SFXVolume (\begin{DoxyParamCaption}\item[{float}]{volume}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia głośność efektów dźwiękowych i aktualizuje aktywne źródła dźwięku. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em volume} & Nowa wartość głośności SFX (zostanie ograniczona do zakresu 0.\+0 -\/ 1.\+0).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_audio_manager_ab333270dca5bf5c039de3d70ca111ba9}\index{AudioManager@{AudioManager}!Start@{Start}}
+\index{Start@{Start}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_audio_manager_ab333270dca5bf5c039de3d70ca111ba9} 
+void Audio\+Manager.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Konfiguruje źródła dźwięku, generuje wszystkie klipy audio proceduralnie, stosuje ustawienia audio z menedżera ustawień gry i rozpoczyna odtwarzanie muzyki. 
+
+\Hypertarget{class_audio_manager_a32b71dd228ca6d50636936be3681fa59}\index{AudioManager@{AudioManager}!StartGrillAmbient@{StartGrillAmbient}}
+\index{StartGrillAmbient@{StartGrillAmbient}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{StartGrillAmbient()}{StartGrillAmbient()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a32b71dd228ca6d50636936be3681fa59} 
+void Audio\+Manager.\+Start\+Grill\+Ambient (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Rozpoczyna odtwarzanie zapętlonego dźwięku skwierczenia grilla. Dźwięk jest odtwarzany tylko jeśli nie jest już aktywny. 
+
+\Hypertarget{class_audio_manager_a960ba9f46e809b5cc8980576df570a36}\index{AudioManager@{AudioManager}!StopGrillAmbient@{StopGrillAmbient}}
+\index{StopGrillAmbient@{StopGrillAmbient}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{StopGrillAmbient()}{StopGrillAmbient()}}
+{\footnotesize\ttfamily \label{class_audio_manager_a960ba9f46e809b5cc8980576df570a36} 
+void Audio\+Manager.\+Stop\+Grill\+Ambient (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zatrzymuje odtwarzanie zapętlonego dźwięku skwierczenia grilla. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_audio_manager_ace1e9a567fcc1f37e95f98b4f83e3f26}\index{AudioManager@{AudioManager}!ambientSource@{ambientSource}}
+\index{ambientSource@{ambientSource}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{ambientSource}{ambientSource}}
+{\footnotesize\ttfamily \label{class_audio_manager_ace1e9a567fcc1f37e95f98b4f83e3f26} 
+Audio\+Source Audio\+Manager.\+ambient\+Source\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Źródło dźwięku używane do odtwarzania zapętlonych dźwięków otoczenia (np. skwierczenie grilla). 
+
+\Hypertarget{class_audio_manager_a843ac53cd1f3c71b5cb76c4fea7fc831}\index{AudioManager@{AudioManager}!clipButtonClick@{clipButtonClick}}
+\index{clipButtonClick@{clipButtonClick}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipButtonClick}{clipButtonClick}}
+{\footnotesize\ttfamily \label{class_audio_manager_a843ac53cd1f3c71b5cb76c4fea7fc831} 
+Audio\+Clip Audio\+Manager.\+clip\+Button\+Click\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla efektu kliknięcia przycisku w interfejsie. 
+
+\Hypertarget{class_audio_manager_a7288239a7f5e209fd4fabbdb88a4dfed}\index{AudioManager@{AudioManager}!clipChop@{clipChop}}
+\index{clipChop@{clipChop}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipChop}{clipChop}}
+{\footnotesize\ttfamily \label{class_audio_manager_a7288239a7f5e209fd4fabbdb88a4dfed} 
+Audio\+Clip Audio\+Manager.\+clip\+Chop\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla efektu krojenia noża. 
+
+\Hypertarget{class_audio_manager_ab758f6dab1fcf4096a9fe876bc115182}\index{AudioManager@{AudioManager}!clipDrop@{clipDrop}}
+\index{clipDrop@{clipDrop}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipDrop}{clipDrop}}
+{\footnotesize\ttfamily \label{class_audio_manager_ab758f6dab1fcf4096a9fe876bc115182} 
+Audio\+Clip Audio\+Manager.\+clip\+Drop\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla efektu upuszczenia przedmiotu. 
+
+\Hypertarget{class_audio_manager_acd0278d832952a5a49f57a0eaad523ae}\index{AudioManager@{AudioManager}!clipFail@{clipFail}}
+\index{clipFail@{clipFail}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipFail}{clipFail}}
+{\footnotesize\ttfamily \label{class_audio_manager_acd0278d832952a5a49f57a0eaad523ae} 
+Audio\+Clip Audio\+Manager.\+clip\+Fail\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla efektu niepowodzenia (błąd zamówienia). 
+
+\Hypertarget{class_audio_manager_aad3695931375b07810f0a6308f0ab8cd}\index{AudioManager@{AudioManager}!clipGrillLoop@{clipGrillLoop}}
+\index{clipGrillLoop@{clipGrillLoop}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipGrillLoop}{clipGrillLoop}}
+{\footnotesize\ttfamily \label{class_audio_manager_aad3695931375b07810f0a6308f0ab8cd} 
+Audio\+Clip Audio\+Manager.\+clip\+Grill\+Loop\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla zapętlonego efektu skwierczenia grilla. 
+
+\Hypertarget{class_audio_manager_a485592b1fefa5cd51a1f025b39b22032}\index{AudioManager@{AudioManager}!clipMoney@{clipMoney}}
+\index{clipMoney@{clipMoney}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipMoney}{clipMoney}}
+{\footnotesize\ttfamily \label{class_audio_manager_a485592b1fefa5cd51a1f025b39b22032} 
+Audio\+Clip Audio\+Manager.\+clip\+Money\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla efektu otrzymania pieniędzy. 
+
+\Hypertarget{class_audio_manager_a6a8291444701588f30c3239dce47c15b}\index{AudioManager@{AudioManager}!clipMusicLoop@{clipMusicLoop}}
+\index{clipMusicLoop@{clipMusicLoop}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipMusicLoop}{clipMusicLoop}}
+{\footnotesize\ttfamily \label{class_audio_manager_a6a8291444701588f30c3239dce47c15b} 
+Audio\+Clip Audio\+Manager.\+clip\+Music\+Loop\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla zapętlonej muzyki w tle. 
+
+\Hypertarget{class_audio_manager_abe38f5b4a78bce5fb6bae39ce211709c}\index{AudioManager@{AudioManager}!clipNewOrder@{clipNewOrder}}
+\index{clipNewOrder@{clipNewOrder}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipNewOrder}{clipNewOrder}}
+{\footnotesize\ttfamily \label{class_audio_manager_abe38f5b4a78bce5fb6bae39ce211709c} 
+Audio\+Clip Audio\+Manager.\+clip\+New\+Order\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla efektu nowego zamówienia. 
+
+\Hypertarget{class_audio_manager_ae41f570fb251f4825e96524f096f010f}\index{AudioManager@{AudioManager}!clipPickup@{clipPickup}}
+\index{clipPickup@{clipPickup}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipPickup}{clipPickup}}
+{\footnotesize\ttfamily \label{class_audio_manager_ae41f570fb251f4825e96524f096f010f} 
+Audio\+Clip Audio\+Manager.\+clip\+Pickup\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla efektu podnoszenia przedmiotu. 
+
+\Hypertarget{class_audio_manager_a3d744509d8c2042c71a0a1f4adad39cc}\index{AudioManager@{AudioManager}!clipReady@{clipReady}}
+\index{clipReady@{clipReady}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipReady}{clipReady}}
+{\footnotesize\ttfamily \label{class_audio_manager_a3d744509d8c2042c71a0a1f4adad39cc} 
+Audio\+Clip Audio\+Manager.\+clip\+Ready\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla efektu gotowości (potrawa gotowa). 
+
+\Hypertarget{class_audio_manager_a25772c2b18366b90490ca8386f68b519}\index{AudioManager@{AudioManager}!clipUpgrade@{clipUpgrade}}
+\index{clipUpgrade@{clipUpgrade}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipUpgrade}{clipUpgrade}}
+{\footnotesize\ttfamily \label{class_audio_manager_a25772c2b18366b90490ca8386f68b519} 
+Audio\+Clip Audio\+Manager.\+clip\+Upgrade\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla efektu zakupu ulepszenia. 
+
+\Hypertarget{class_audio_manager_ac8648d11b4ad08a65f915492c4a5a422}\index{AudioManager@{AudioManager}!clipWrap@{clipWrap}}
+\index{clipWrap@{clipWrap}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{clipWrap}{clipWrap}}
+{\footnotesize\ttfamily \label{class_audio_manager_ac8648d11b4ad08a65f915492c4a5a422} 
+Audio\+Clip Audio\+Manager.\+clip\+Wrap\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Klip audio dla efektu zawijania kebaba w lawasz. 
+
+\Hypertarget{class_audio_manager_a1ffa86b870d056dc5e9c039c01820fd6}\index{AudioManager@{AudioManager}!masterVolume@{masterVolume}}
+\index{masterVolume@{masterVolume}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{masterVolume}{masterVolume}}
+{\footnotesize\ttfamily \label{class_audio_manager_a1ffa86b870d056dc5e9c039c01820fd6} 
+float Audio\+Manager.\+master\+Volume = 1f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Główna głośność, wpływająca na wszystkie źródła dźwięku. Zakres\+: 0.\+0 -\/ 1.\+0. 
+
+\Hypertarget{class_audio_manager_a54db9f2d0d9838c238a56cc82b222773}\index{AudioManager@{AudioManager}!musicSource@{musicSource}}
+\index{musicSource@{musicSource}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{musicSource}{musicSource}}
+{\footnotesize\ttfamily \label{class_audio_manager_a54db9f2d0d9838c238a56cc82b222773} 
+Audio\+Source Audio\+Manager.\+music\+Source\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Źródło dźwięku używane do odtwarzania zapętlonej muzyki w tle. 
+
+\Hypertarget{class_audio_manager_ac773fb615b917c71e32555ca6d5e0833}\index{AudioManager@{AudioManager}!musicVolume@{musicVolume}}
+\index{musicVolume@{musicVolume}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{musicVolume}{musicVolume}}
+{\footnotesize\ttfamily \label{class_audio_manager_ac773fb615b917c71e32555ca6d5e0833} 
+float Audio\+Manager.\+music\+Volume = 0.\+3f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Głośność muzyki w tle. Zakres\+: 0.\+0 -\/ 1.\+0. 
+
+\Hypertarget{class_audio_manager_a7d87d670721005006e2557921459ba76}\index{AudioManager@{AudioManager}!SampleRate@{SampleRate}}
+\index{SampleRate@{SampleRate}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{SampleRate}{SampleRate}}
+{\footnotesize\ttfamily \label{class_audio_manager_a7d87d670721005006e2557921459ba76} 
+const int Audio\+Manager.\+Sample\+Rate = 44100\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Częstotliwość próbkowania używana do generowania proceduralnych klipów audio (w Hz). 
+
+\Hypertarget{class_audio_manager_af20e9441762e9b8086842802fd93fd69}\index{AudioManager@{AudioManager}!sfxSource@{sfxSource}}
+\index{sfxSource@{sfxSource}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{sfxSource}{sfxSource}}
+{\footnotesize\ttfamily \label{class_audio_manager_af20e9441762e9b8086842802fd93fd69} 
+Audio\+Source Audio\+Manager.\+sfx\+Source\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Źródło dźwięku używane do odtwarzania jednorazowych efektów dźwiękowych (SFX). 
+
+\Hypertarget{class_audio_manager_a1b6fc07e298f39996023921d7ae1cec5}\index{AudioManager@{AudioManager}!sfxVolume@{sfxVolume}}
+\index{sfxVolume@{sfxVolume}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{sfxVolume}{sfxVolume}}
+{\footnotesize\ttfamily \label{class_audio_manager_a1b6fc07e298f39996023921d7ae1cec5} 
+float Audio\+Manager.\+sfx\+Volume = 0.\+7f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Głośność efektów dźwiękowych (SFX). Zakres\+: 0.\+0 -\/ 1.\+0. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_audio_manager_af96f8bc4f9a0ad3f1a63a028bb31f790}\index{AudioManager@{AudioManager}!Instance@{Instance}}
+\index{Instance@{Instance}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_audio_manager_af96f8bc4f9a0ad3f1a63a028bb31f790} 
+\mbox{\hyperlink{class_audio_manager}{Audio\+Manager}} Audio\+Manager.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna instancja Singletona menedżera dźwięku. Umożliwia globalny dostęp do systemu audio z dowolnego miejsca w grze. 
+
+\Hypertarget{class_audio_manager_aeef08bbb06786ecd1d560460eebfcbee}\index{AudioManager@{AudioManager}!MasterVolume@{MasterVolume}}
+\index{MasterVolume@{MasterVolume}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{MasterVolume}{MasterVolume}}
+{\footnotesize\ttfamily \label{class_audio_manager_aeef08bbb06786ecd1d560460eebfcbee} 
+float Audio\+Manager.\+Master\+Volume\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Aktualna wartość głównej głośności (tylko do odczytu). Zakres\+: 0.\+0 -\/ 1.\+0. 
+
+\Hypertarget{class_audio_manager_a312e502a26002f6e36a8da7d881709df}\index{AudioManager@{AudioManager}!MusicVolume@{MusicVolume}}
+\index{MusicVolume@{MusicVolume}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{MusicVolume}{MusicVolume}}
+{\footnotesize\ttfamily \label{class_audio_manager_a312e502a26002f6e36a8da7d881709df} 
+float Audio\+Manager.\+Music\+Volume\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Aktualna wartość głośności muzyki (tylko do odczytu). Zakres\+: 0.\+0 -\/ 1.\+0. 
+
+\Hypertarget{class_audio_manager_a947594f0071734e74e21535f619cb654}\index{AudioManager@{AudioManager}!SFXVolume@{SFXVolume}}
+\index{SFXVolume@{SFXVolume}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{SFXVolume}{SFXVolume}}
+{\footnotesize\ttfamily \label{class_audio_manager_a947594f0071734e74e21535f619cb654} 
+float Audio\+Manager.\+SFXVolume\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Aktualna wartość głośności efektów dźwiękowych (tylko do odczytu). Zakres\+: 0.\+0 -\/ 1.\+0. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Audio/\mbox{\hyperlink{_audio_manager_8cs}{Audio\+Manager.\+cs}}\end{DoxyCompactItemize}

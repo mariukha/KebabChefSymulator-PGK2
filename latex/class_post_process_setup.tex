@@ -1,0 +1,110 @@
+\doxysection{Dokumentacja klasy Post\+Process\+Setup}
+\hypertarget{class_post_process_setup}{}\label{class_post_process_setup}\index{PostProcessSetup@{PostProcessSetup}}
+
+
+Creates a URP post-\/processing Volume at runtime with Bloom, Vignette, Color Adjustments, Tonemapping, and Film Grain for a warm, cinematic kitchen feel. Attach to any persistent Game\+Object or let \doxylink{class_kitchen_game_bootstrap}{Kitchen\+Game\+Bootstrap} create it.  
+
+
+Diagram dziedziczenia dla Post\+Process\+Setup\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_post_process_setup}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_post_process_setup_a386f6a317c353f73983c414ecb101678}{Pulse\+Bloom}} (float extra\+Intensity=0.\+5f, float duration=0.\+4f)
+\begin{DoxyCompactList}\small\item\em Apply a brief intensity boost (e.\+g. on successful delivery). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_post_process_setup}{Post\+Process\+Setup}} \mbox{\hyperlink{class_post_process_setup_ae18e226b6d2dc7c902956be032acacb0}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_post_process_setup_a62d5e46cc510658c18346c16f1eaf98c}{Awake}} ()
+\item 
+void \mbox{\hyperlink{class_post_process_setup_a465ba1d813178fc96e5b49eb8d145de9}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_post_process_setup_abf5ad2e8363f1157f2a9d165103aa764}{Setup\+Volume}} ()
+\item 
+System.\+Collections.\+IEnumerator \mbox{\hyperlink{class_post_process_setup_a834d72e9d1a7b0eeee5f7dc96e93a753}{Bloom\+Pulse\+Coroutine}} (float extra\+Intensity, float duration)
+\item 
+void \mbox{\hyperlink{class_post_process_setup_a90609ddedc56526f2a3aa45e712f8688}{On\+Destroy}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Volume \mbox{\hyperlink{class_post_process_setup_ae546219083254a5657b654b0bac4e628}{volume}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Creates a URP post-\/processing Volume at runtime with Bloom, Vignette, Color Adjustments, Tonemapping, and Film Grain for a warm, cinematic kitchen feel. Attach to any persistent Game\+Object or let \doxylink{class_kitchen_game_bootstrap}{Kitchen\+Game\+Bootstrap} create it. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_post_process_setup_a62d5e46cc510658c18346c16f1eaf98c}\index{PostProcessSetup@{PostProcessSetup}!Awake@{Awake}}
+\index{Awake@{Awake}!PostProcessSetup@{PostProcessSetup}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_post_process_setup_a62d5e46cc510658c18346c16f1eaf98c} 
+void Post\+Process\+Setup.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_post_process_setup_a834d72e9d1a7b0eeee5f7dc96e93a753}\index{PostProcessSetup@{PostProcessSetup}!BloomPulseCoroutine@{BloomPulseCoroutine}}
+\index{BloomPulseCoroutine@{BloomPulseCoroutine}!PostProcessSetup@{PostProcessSetup}}
+\doxysubsubsection{\texorpdfstring{BloomPulseCoroutine()}{BloomPulseCoroutine()}}
+{\footnotesize\ttfamily \label{class_post_process_setup_a834d72e9d1a7b0eeee5f7dc96e93a753} 
+System.\+Collections.\+IEnumerator Post\+Process\+Setup.\+Bloom\+Pulse\+Coroutine (\begin{DoxyParamCaption}\item[{float}]{extra\+Intensity}{, }\item[{float}]{duration}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_post_process_setup_a90609ddedc56526f2a3aa45e712f8688}\index{PostProcessSetup@{PostProcessSetup}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!PostProcessSetup@{PostProcessSetup}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_post_process_setup_a90609ddedc56526f2a3aa45e712f8688} 
+void Post\+Process\+Setup.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_post_process_setup_a386f6a317c353f73983c414ecb101678}\index{PostProcessSetup@{PostProcessSetup}!PulseBloom@{PulseBloom}}
+\index{PulseBloom@{PulseBloom}!PostProcessSetup@{PostProcessSetup}}
+\doxysubsubsection{\texorpdfstring{PulseBloom()}{PulseBloom()}}
+{\footnotesize\ttfamily \label{class_post_process_setup_a386f6a317c353f73983c414ecb101678} 
+void Post\+Process\+Setup.\+Pulse\+Bloom (\begin{DoxyParamCaption}\item[{float}]{extra\+Intensity}{ = {\ttfamily 0\+:\+:5f}, }\item[{float}]{duration}{ = {\ttfamily 0\+:\+:4f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Apply a brief intensity boost (e.\+g. on successful delivery). 
+
+\Hypertarget{class_post_process_setup_abf5ad2e8363f1157f2a9d165103aa764}\index{PostProcessSetup@{PostProcessSetup}!SetupVolume@{SetupVolume}}
+\index{SetupVolume@{SetupVolume}!PostProcessSetup@{PostProcessSetup}}
+\doxysubsubsection{\texorpdfstring{SetupVolume()}{SetupVolume()}}
+{\footnotesize\ttfamily \label{class_post_process_setup_abf5ad2e8363f1157f2a9d165103aa764} 
+void Post\+Process\+Setup.\+Setup\+Volume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_post_process_setup_a465ba1d813178fc96e5b49eb8d145de9}\index{PostProcessSetup@{PostProcessSetup}!Start@{Start}}
+\index{Start@{Start}!PostProcessSetup@{PostProcessSetup}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_post_process_setup_a465ba1d813178fc96e5b49eb8d145de9} 
+void Post\+Process\+Setup.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_post_process_setup_ae546219083254a5657b654b0bac4e628}\index{PostProcessSetup@{PostProcessSetup}!volume@{volume}}
+\index{volume@{volume}!PostProcessSetup@{PostProcessSetup}}
+\doxysubsubsection{\texorpdfstring{volume}{volume}}
+{\footnotesize\ttfamily \label{class_post_process_setup_ae546219083254a5657b654b0bac4e628} 
+Volume Post\+Process\+Setup.\+volume\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_post_process_setup_ae18e226b6d2dc7c902956be032acacb0}\index{PostProcessSetup@{PostProcessSetup}!Instance@{Instance}}
+\index{Instance@{Instance}!PostProcessSetup@{PostProcessSetup}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_post_process_setup_ae18e226b6d2dc7c902956be032acacb0} 
+\mbox{\hyperlink{class_post_process_setup}{Post\+Process\+Setup}} Post\+Process\+Setup.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Effects/\mbox{\hyperlink{_post_process_setup_8cs}{Post\+Process\+Setup.\+cs}}\end{DoxyCompactItemize}

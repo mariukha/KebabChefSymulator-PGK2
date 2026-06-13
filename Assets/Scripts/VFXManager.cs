@@ -1,13 +1,51 @@
+/// \file VFXManager.cs
+/// \brief Plik zawierający klasę VFXManager — centralny menedżer efektów wizualnych (VFX) w grze.
+/// \details Odpowiada za tworzenie, odtwarzanie i zatrzymywanie wszystkich efektów cząsteczkowych
+/// związanych z mechanikami rozgrywki, takich jak para, dym, krojenie, podnoszenie przedmiotów,
+/// dostarczanie zamówień i ulepszenia. Obsługuje zarówno lokalne, jak i sieciowe rozgłaszanie efektów.
+
 using UnityEngine;
 
+/// <summary>
+/// Centralny menedżer efektów wizualnych (VFX) w symulatorze szefa kuchni kebabowej.
+/// Implementuje wzorzec Singleton, zapewniając jedną globalną instancję dostępną z dowolnego miejsca.
+/// </summary>
+/// <remarks>
+/// Klasa tworzy systemy cząsteczkowe proceduralnie w czasie wykonania (bez prefabrykatów),
+/// generując materiały i tekstury programowo. Każdy efekt publiczny automatycznie
+/// rozgłasza zdarzenie przez sieć (jeśli działa jako serwer), a następnie odtwarza efekt lokalnie.
+/// Metody z sufiksem "Local" służą do bezpośredniego odtwarzania efektu na bieżącym kliencie.
+/// </remarks>
 public class VFXManager : MonoBehaviour
 {
+    /// <summary>
+    /// Statyczna instancja Singletona klasy <see cref="VFXManager"/>.
+    /// Umożliwia globalny dostęp do menedżera efektów wizualnych.
+    /// </summary>
     public static VFXManager Instance { get; private set; }
 
+    /// <summary>
+    /// Buforowany materiał używany przez standardowe efekty cząsteczkowe.
+    /// Tworzony przy pierwszym użyciu i ponownie wykorzystywany w celu oszczędności pamięci.
+    /// </summary>
     private Material cachedParticleMaterial;
+
+    /// <summary>
+    /// Buforowany materiał używany przez efekty dymne (np. dym z donera).
+    /// Wykorzystuje tryb mieszania alfa zamiast addytywnego, co daje bardziej realistyczny dym.
+    /// </summary>
     private Material cachedSmokeMaterial;
+
+    /// <summary>
+    /// Buforowana tekstura proceduralna dla miękkich cząsteczek.
+    /// Generowana raz przy pierwszym użyciu — okrągły gradient z gładkim zanikaniem krawędzi.
+    /// </summary>
     private Texture2D cachedParticleTexture;
 
+    /// <summary>
+    /// Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu.
+    /// Implementuje wzorzec Singleton — ustawia instancję lub niszczy duplikat.
+    /// </summary>
     private void Awake()
     {
         if (Instance == null)
@@ -19,6 +57,11 @@ public class VFXManager : MonoBehaviour
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// Odtwarza efekt pary wodnej w podanej pozycji na świecie.
+    /// Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza efekt do wszystkich klientów.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której ma się pojawić efekt pary.</param>
     public void PlaySteamEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -26,6 +69,11 @@ public class VFXManager : MonoBehaviour
         PlaySteamEffectLocal(worldPosition);
     }
 
+    /// <summary>
+    /// Zatrzymuje efekt pary wodnej w podanej pozycji na świecie.
+    /// Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza zatrzymanie do wszystkich klientów.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której należy zatrzymać efekt pary.</param>
     public void StopSteamEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -33,6 +81,11 @@ public class VFXManager : MonoBehaviour
         StopSteamEffectLocal(worldPosition);
     }
 
+    /// <summary>
+    /// Odtwarza efekt dymu z grilla kebabowego (doner) w podanej pozycji.
+    /// Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza efekt do wszystkich klientów.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której ma się pojawić dym z donera.</param>
     public void PlayDonerSmokeEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -40,6 +93,11 @@ public class VFXManager : MonoBehaviour
         PlayDonerSmokeEffectLocal(worldPosition);
     }
 
+    /// <summary>
+    /// Zatrzymuje efekt dymu z grilla kebabowego (doner) w podanej pozycji.
+    /// Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza zatrzymanie do wszystkich klientów.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której należy zatrzymać dym z donera.</param>
     public void StopDonerSmokeEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -47,6 +105,12 @@ public class VFXManager : MonoBehaviour
         StopDonerSmokeEffectLocal(worldPosition);
     }
 
+    /// <summary>
+    /// Odtwarza efekt krojenia składnika w podanej pozycji z kolorystyką składnika.
+    /// Generuje odłamki i błysk noża. Rozgłasza efekt sieciowo, jeśli jest serwerem.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której ma się pojawić efekt krojenia.</param>
+    /// <param name="ingredientColor">Kolor krojonego składnika, używany do zabarwienia odłamków.</param>
     public void PlayChopEffect(Vector3 worldPosition, Color ingredientColor)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -54,6 +118,12 @@ public class VFXManager : MonoBehaviour
         PlayChopEffectLocal(worldPosition, ingredientColor);
     }
 
+    /// <summary>
+    /// Odtwarza efekt podnoszenia przedmiotu z zabarwieniem odpowiadającym kolorowi przedmiotu.
+    /// Rozgłasza efekt sieciowo, jeśli jest serwerem.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której gracz podnosi przedmiot.</param>
+    /// <param name="tint">Odcień koloru efektu, dopasowany do podnoszonego przedmiotu.</param>
     public void PlayPickupEffect(Vector3 worldPosition, Color tint)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -61,6 +131,11 @@ public class VFXManager : MonoBehaviour
         PlayPickupEffectLocal(worldPosition, tint);
     }
 
+    /// <summary>
+    /// Odtwarza efekt upuszczenia przedmiotu (chmurka kurzu) w podanej pozycji.
+    /// Rozgłasza efekt sieciowo, jeśli jest serwerem.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której gracz upuszcza przedmiot.</param>
     public void PlayDropEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -68,6 +143,12 @@ public class VFXManager : MonoBehaviour
         PlayDropEffectLocal(worldPosition);
     }
 
+    /// <summary>
+    /// Odtwarza efekt gotowości potrawy (iskry i blask) z zabarwieniem koloru.
+    /// Rozgłasza efekt sieciowo, jeśli jest serwerem.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której potrawa jest gotowa.</param>
+    /// <param name="tint">Odcień koloru efektu gotowości, dopasowany do typu potrawy.</param>
     public void PlayReadyEffect(Vector3 worldPosition, Color tint)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -75,6 +156,11 @@ public class VFXManager : MonoBehaviour
         PlayReadyEffectLocal(worldPosition, tint);
     }
 
+    /// <summary>
+    /// Odtwarza efekt zawijania kebaba (wirujące cząsteczki w ciepłych odcieniach).
+    /// Rozgłasza efekt sieciowo, jeśli jest serwerem.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której następuje zawijanie kebaba.</param>
     public void PlayWrapEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -82,6 +168,12 @@ public class VFXManager : MonoBehaviour
         PlayWrapEffectLocal(worldPosition);
     }
 
+    /// <summary>
+    /// Odtwarza efekt ulepszenia stacji roboczej (eksplozja złotych iskier).
+    /// Rozgłasza efekt sieciowo, jeśli jest serwerem.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której następuje ulepszenie.</param>
+    /// <param name="accent">Kolor akcentu ulepszenia, wpływający na odcień cząsteczek.</param>
     public void PlayUpgradeEffect(Vector3 worldPosition, Color accent)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -89,6 +181,11 @@ public class VFXManager : MonoBehaviour
         PlayUpgradeEffectLocal(worldPosition, accent);
     }
 
+    /// <summary>
+    /// Odtwarza efekt zarobienia pieniędzy (złote, unoszące się cząsteczki).
+    /// Rozgłasza efekt sieciowo, jeśli jest serwerem.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której gracz zarabia pieniądze.</param>
     public void PlayMoneyEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -96,6 +193,11 @@ public class VFXManager : MonoBehaviour
         PlayMoneyEffectLocal(worldPosition);
     }
 
+    /// <summary>
+    /// Odtwarza efekt udanego dostarczenia zamówienia (zielone iskry w kształcie sfery).
+    /// Rozgłasza efekt sieciowo, jeśli jest serwerem.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której nastąpiło udane dostarczenie.</param>
     public void PlayDeliverySuccessEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -103,6 +205,11 @@ public class VFXManager : MonoBehaviour
         PlayDeliverySuccessEffectLocal(worldPosition);
     }
 
+    /// <summary>
+    /// Odtwarza efekt nieudanego dostarczenia zamówienia (czerwone cząsteczki opadające).
+    /// Rozgłasza efekt sieciowo, jeśli jest serwerem.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której nastąpiło nieudane dostarczenie.</param>
     public void PlayDeliveryFailEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -110,6 +217,10 @@ public class VFXManager : MonoBehaviour
         PlayDeliveryFailEffectLocal(worldPosition);
     }
 
+    /// <summary>
+    /// Odtwarza efekt upływu czasu (timeout) — efekt nieudanego dostarczenia wyświetlany przed kamerą.
+    /// Rozgłasza efekt sieciowo, jeśli jest serwerem.
+    /// </summary>
     public void PlayTimeoutEffect()
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
@@ -117,7 +228,13 @@ public class VFXManager : MonoBehaviour
         PlayTimeoutEffectLocal();
     }
 
-public void PlaySteamEffectLocal(Vector3 worldPosition)
+    /// <summary>
+    /// Odtwarza efekt pary wodnej lokalnie (bez rozgłaszania sieciowego).
+    /// Tworzy system cząsteczkowy symulujący unoszącą się parę z naczynia — cząsteczki powoli
+    /// wznoszą się do góry, rozrastając się i zanikając.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której ma się pojawić para. Efekt jest przesunięty 1.25 jednostki w górę.</param>
+    public void PlaySteamEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Steam", worldPosition + Vector3.up * 1.25f);
 
@@ -159,11 +276,22 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         ps.Play();
     }
 
+    /// <summary>
+    /// Zatrzymuje efekt pary wodnej lokalnie w pobliżu podanej pozycji.
+    /// Wyszukuje aktywne systemy cząsteczkowe o nazwie "VFX_Steam" w promieniu 2 jednostek.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w pobliżu której należy zatrzymać efekt pary.</param>
     public void StopSteamEffectLocal(Vector3 worldPosition)
     {
         StopEffectNear("VFX_Steam", worldPosition, 2.0f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt dymu z grilla kebabowego (doner) lokalnie.
+    /// Tworzy dwa systemy cząsteczkowe: główny ciemny dym oraz delikatną mgłę tłuszczową,
+    /// które razem symulują realistyczny dym unoszący się z obracającego się mięsa.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata donera. Efekt jest przesunięty 1.08 jednostki w górę.</param>
     public void PlayDonerSmokeEffectLocal(Vector3 worldPosition)
     {
         Vector3 basePosition = worldPosition + Vector3.up * 1.08f;
@@ -250,12 +378,24 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         oilVapor.Play();
     }
 
+    /// <summary>
+    /// Zatrzymuje efekt dymu z donera lokalnie w pobliżu podanej pozycji.
+    /// Wyszukuje i zatrzymuje zarówno główny dym ("VFX_DonerSmoke"), jak i mgłę tłuszczową ("VFX_DonerOilyVapor").
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w pobliżu której należy zatrzymać efekty dymu.</param>
     public void StopDonerSmokeEffectLocal(Vector3 worldPosition)
     {
         StopEffectNear("VFX_DonerSmoke", worldPosition, 2.1f);
         StopEffectNear("VFX_DonerOilyVapor", worldPosition, 2.1f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt krojenia składnika lokalnie.
+    /// Tworzy dwa systemy cząsteczkowe: odłamki krojonego składnika (zabarwione kolorem składnika)
+    /// oraz krótki błysk noża (jasny, szybko zanikający).
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której następuje krojenie.</param>
+    /// <param name="ingredientColor">Kolor krojonego składnika używany do zabarwienia odłamków.</param>
     public void PlayChopEffectLocal(Vector3 worldPosition, Color ingredientColor)
     {
         ParticleSystem bits = CreateParticleSystem("VFX_ChopBits", worldPosition + Vector3.up * 0.92f);
@@ -309,6 +449,13 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         Destroy(slash.gameObject, 0.45f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt podnoszenia przedmiotu lokalnie.
+    /// Tworzy jednorazowy system cząsteczkowy z delikatnymi, unoszącymi się w górę cząsteczkami
+    /// zabarwionymi kolorem podniesionego przedmiotu.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, z której gracz podnosi przedmiot.</param>
+    /// <param name="tint">Odcień koloru efektu, dopasowany do podnoszonego przedmiotu.</param>
     public void PlayPickupEffectLocal(Vector3 worldPosition, Color tint)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Pickup", worldPosition + Vector3.up * 0.66f);
@@ -336,6 +483,11 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         Destroy(ps.gameObject, 0.8f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt upuszczenia przedmiotu lokalnie.
+    /// Tworzy jednorazowy system cząsteczkowy symulujący chmurę kurzu unoszącą się z miejsca upadku.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której przedmiot jest upuszczany.</param>
     public void PlayDropEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_DropDust", worldPosition + Vector3.up * 0.22f);
@@ -369,6 +521,13 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         Destroy(ps.gameObject, 1.0f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt gotowości potrawy lokalnie.
+    /// Tworzy system cząsteczkowy z unoszącymi się iskrami w ciepłych, złoto-zielonych odcieniach,
+    /// sygnalizujący graczowi, że potrawa jest gotowa do wydania.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której potrawa jest gotowa.</param>
+    /// <param name="tint">Odcień koloru efektu, dopasowany do typu gotowej potrawy.</param>
     public void PlayReadyEffectLocal(Vector3 worldPosition, Color tint)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Ready", worldPosition + Vector3.up * 0.95f);
@@ -403,6 +562,12 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         Destroy(ps.gameObject, 1.4f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt zawijania kebaba lokalnie.
+    /// Tworzy system cząsteczkowy z wirującymi cząsteczkami w ciepłych, brązowo-złotych odcieniach,
+    /// unoszącymi się delikatnie w górę — wizualizuje proces zawijania kebaba w tortillę.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której następuje zawijanie kebaba.</param>
     public void PlayWrapEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Wrap", worldPosition + Vector3.up * 0.9f);
@@ -439,6 +604,13 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         Destroy(ps.gameObject, 1.2f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt ulepszenia stacji roboczej lokalnie.
+    /// Tworzy system cząsteczkowy z dużą liczbą złotych iskier eksplodujących ze sfery,
+    /// unoszących się w górę z szumem — efektowna wizualizacja zakupu ulepszenia.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której następuje ulepszenie.</param>
+    /// <param name="accent">Kolor akcentu ulepszenia, mieszany ze złotym odcieniem.</param>
     public void PlayUpgradeEffectLocal(Vector3 worldPosition, Color accent)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Upgrade", worldPosition);
@@ -474,6 +646,12 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         Destroy(ps.gameObject, 1.8f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt zarobienia pieniędzy lokalnie.
+    /// Tworzy system cząsteczkowy z unoszącymi się złotymi iskrami — wizualizacja
+    /// zarobku gracza, np. po dostarczeniu zamówienia.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której gracz zarabia pieniądze.</param>
     public void PlayMoneyEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_Money", worldPosition + Vector3.up * 1.05f);
@@ -509,6 +687,12 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         Destroy(ps.gameObject, 2.0f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt udanego dostarczenia zamówienia lokalnie.
+    /// Tworzy system cząsteczkowy z zielonymi iskrami eksplodującymi ze sfery —
+    /// pozytywna wizualizacja poprawnie zrealizowanego zamówienia klienta.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której nastąpiło udane dostarczenie.</param>
     public void PlayDeliverySuccessEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_DeliveryOK", worldPosition + Vector3.up * 1.28f);
@@ -543,6 +727,12 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         Destroy(ps.gameObject, 1.8f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt nieudanego dostarczenia zamówienia lokalnie.
+    /// Tworzy system cząsteczkowy z czerwonymi cząsteczkami opadającymi w dół —
+    /// negatywna wizualizacja błędnie zrealizowanego zamówienia klienta.
+    /// </summary>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której nastąpiło nieudane dostarczenie.</param>
     public void PlayDeliveryFailEffectLocal(Vector3 worldPosition)
     {
         ParticleSystem ps = CreateParticleSystem("VFX_DeliveryFail", worldPosition + Vector3.up * 1.12f);
@@ -578,12 +768,24 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         Destroy(ps.gameObject, 1.4f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt upływu czasu (timeout) lokalnie.
+    /// Wyświetla efekt nieudanego dostarczenia w pozycji przed kamerą gracza,
+    /// sygnalizując, że czas na realizację zamówienia upłynął.
+    /// </summary>
     public void PlayTimeoutEffectLocal()
     {
         Vector3 position = GetCameraFacingPosition(2.2f, -0.12f);
         PlayDeliveryFailEffect(position);
     }
 
+    /// <summary>
+    /// Oblicza pozycję w przestrzeni świata znajdującą się przed główną kamerą.
+    /// Używana do wyświetlania efektów wizualnych w polu widzenia gracza.
+    /// </summary>
+    /// <param name="distance">Odległość od kamery do pozycji efektu (domyślnie 2.0).</param>
+    /// <param name="verticalOffset">Pionowe przesunięcie pozycji efektu (domyślnie -0.1 — lekko poniżej środka).</param>
+    /// <returns>Pozycja w przestrzeni świata przed kamerą. Jeśli kamera nie istnieje, zwraca Vector3.up.</returns>
     public Vector3 GetCameraFacingPosition(float distance = 2.0f, float verticalOffset = -0.1f)
     {
         Camera camera = Camera.main;
@@ -595,11 +797,25 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         return camera.transform.position + camera.transform.forward * distance + Vector3.up * verticalOffset;
     }
 
+    /// <summary>
+    /// Tworzy nowy obiekt gry z systemem cząsteczkowym używając standardowego materiału cząsteczkowego.
+    /// </summary>
+    /// <param name="effectName">Nazwa obiektu gry dla systemu cząsteczkowego (używana do identyfikacji i wyszukiwania).</param>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której zostanie umieszczony system cząsteczkowy.</param>
+    /// <returns>Skonfigurowany komponent <see cref="ParticleSystem"/> gotowy do dalszej konfiguracji i odtworzenia.</returns>
     private ParticleSystem CreateParticleSystem(string effectName, Vector3 worldPosition)
     {
         return CreateParticleSystem(effectName, worldPosition, false);
     }
 
+    /// <summary>
+    /// Tworzy nowy obiekt gry z systemem cząsteczkowym i przypisuje odpowiedni materiał.
+    /// System jest tworzony w stanie zatrzymanym z wyzerowaną emisją — wymaga dalszej konfiguracji.
+    /// </summary>
+    /// <param name="effectName">Nazwa obiektu gry dla systemu cząsteczkowego (używana do identyfikacji i wyszukiwania).</param>
+    /// <param name="worldPosition">Pozycja w przestrzeni świata, w której zostanie umieszczony system cząsteczkowy.</param>
+    /// <param name="useSmokeMaterial">Jeśli <c>true</c>, używa materiału dymnego (alpha blend); w przeciwnym razie używa standardowego materiału cząsteczkowego (addytywnego).</param>
+    /// <returns>Skonfigurowany komponent <see cref="ParticleSystem"/> gotowy do dalszej konfiguracji i odtworzenia.</returns>
     private ParticleSystem CreateParticleSystem(string effectName, Vector3 worldPosition, bool useSmokeMaterial)
     {
         GameObject effectObject = new GameObject(effectName);
@@ -620,6 +836,13 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         return ps;
     }
 
+    /// <summary>
+    /// Konfiguruje jednorazową emisję cząsteczek (burst) dla podanego systemu cząsteczkowego.
+    /// Wyłącza ciągłą emisję i ustawia pojedynczy burst z losową liczbą cząsteczek w zadanym zakresie.
+    /// </summary>
+    /// <param name="ps">System cząsteczkowy, dla którego konfigurowany jest burst.</param>
+    /// <param name="minCount">Minimalna liczba cząsteczek emitowanych w jednym burście.</param>
+    /// <param name="maxCount">Maksymalna liczba cząsteczek emitowanych w jednym burście.</param>
     private void ConfigureBurst(ParticleSystem ps, short minCount, short maxCount)
     {
         var emission = ps.emission;
@@ -630,6 +853,16 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         });
     }
 
+    /// <summary>
+    /// Stosuje gradient koloru i przezroczystości do systemu cząsteczkowego w trakcie ich życia.
+    /// Tworzy trójpunktowy gradient koloru (początek, środek, koniec) i trójpunktowy gradient przezroczystości.
+    /// </summary>
+    /// <param name="ps">System cząsteczkowy, do którego stosowany jest gradient.</param>
+    /// <param name="start">Kolor początkowy cząsteczki (przy narodzinach).</param>
+    /// <param name="end">Kolor końcowy cząsteczki (przy śmierci).</param>
+    /// <param name="startAlpha">Przezroczystość początkowa (0 = pełna przezroczystość, 1 = pełna nieprzezroczystość).</param>
+    /// <param name="midAlpha">Przezroczystość w połowie czasu życia cząsteczki.</param>
+    /// <param name="endAlpha">Przezroczystość końcowa cząsteczki.</param>
     private void ApplyColorGradient(ParticleSystem ps, Color start, Color end, float startAlpha, float midAlpha, float endAlpha)
     {
         var colorOverLifetime = ps.colorOverLifetime;
@@ -653,6 +886,12 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         colorOverLifetime.color = gradient;
     }
 
+    /// <summary>
+    /// Stosuje krzywą rozmiaru do systemu cząsteczkowego w trakcie ich życia.
+    /// Pozwala na płynną zmianę rozmiaru cząsteczek w czasie — np. powiększanie i zmniejszanie.
+    /// </summary>
+    /// <param name="ps">System cząsteczkowy, do którego stosowana jest krzywa rozmiaru.</param>
+    /// <param name="keys">Tablica klatek kluczowych krzywej animacji rozmiaru (czas 0-1, wartość mnożnika).</param>
     private void ApplySizeCurve(ParticleSystem ps, params Keyframe[] keys)
     {
         var sizeOverLifetime = ps.sizeOverLifetime;
@@ -660,6 +899,12 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         sizeOverLifetime.size = new ParticleSystem.MinMaxCurve(1f, new AnimationCurve(keys));
     }
 
+    /// <summary>
+    /// Stosuje moduł szumu (noise) do systemu cząsteczkowego, dodając organiczny, losowy ruch cząsteczkom.
+    /// </summary>
+    /// <param name="ps">System cząsteczkowy, do którego stosowany jest szum.</param>
+    /// <param name="strength">Siła wpływu szumu na ruch cząsteczek.</param>
+    /// <param name="frequency">Częstotliwość szumu — wyższe wartości tworzą bardziej chaotyczny ruch.</param>
     private void ApplyNoise(ParticleSystem ps, float strength, float frequency)
     {
         var noise = ps.noise;
@@ -669,11 +914,29 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         noise.scrollSpeed = 0.18f;
     }
 
+    /// <summary>
+    /// Tworzy kopię koloru z nową wartością przezroczystości (kanał alfa).
+    /// Metoda pomocnicza używana do ustawiania przezroczystości kolorów cząsteczek.
+    /// </summary>
+    /// <param name="color">Bazowy kolor, którego składowe RGB zostaną zachowane.</param>
+    /// <param name="alpha">Nowa wartość przezroczystości (0 = pełna przezroczystość, 1 = pełna nieprzezroczystość).</param>
+    /// <returns>Nowy kolor z zachowanymi składowymi RGB i nową wartością alfa.</returns>
     private Color WithAlpha(Color color, float alpha)
     {
         return new Color(color.r, color.g, color.b, alpha);
     }
 
+    /// <summary>
+    /// Tworzy lub zwraca buforowany materiał dla standardowych efektów cząsteczkowych.
+    /// Próbuje użyć shadera "Particles/Standard Unlit", a w przypadku jego braku
+    /// wybiera alternatywne shadery (URP, Legacy, Standard).
+    /// </summary>
+    /// <remarks>
+    /// Materiał jest konfigurowany z proceduralną teksturą miękkich cząsteczek,
+    /// trybem powierzchni transparentnej i addytywnym trybem mieszania.
+    /// Kolejka renderowania ustawiona na 3100.
+    /// </remarks>
+    /// <returns>Buforowany materiał cząsteczkowy gotowy do użycia.</returns>
     private Material CreateParticleMaterial()
     {
         if (cachedParticleMaterial != null)
@@ -725,6 +988,16 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         return cachedParticleMaterial;
     }
 
+    /// <summary>
+    /// Tworzy lub zwraca buforowany materiał do efektów dymnych.
+    /// Używa trybu mieszania alfa (alpha blended) zamiast addytywnego,
+    /// co daje bardziej realistyczny wygląd dymu.
+    /// </summary>
+    /// <remarks>
+    /// Kolejka renderowania ustawiona na 3000 (niższa niż standardowy materiał cząsteczkowy),
+    /// dzięki czemu dym renderuje się za innymi efektami cząsteczkowymi.
+    /// </remarks>
+    /// <returns>Buforowany materiał dymny gotowy do użycia.</returns>
     private Material CreateSmokeMaterial()
     {
         if (cachedSmokeMaterial != null)
@@ -781,6 +1054,16 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         return cachedSmokeMaterial;
     }
 
+    /// <summary>
+    /// Tworzy lub zwraca buforowaną proceduralną teksturę miękkich cząsteczek.
+    /// Generuje okrągłą teksturę 64x64 pikseli z gładkim radialnym gradientem alfa —
+    /// jasne białe centrum zanikające do pełnej przezroczystości na krawędziach.
+    /// </summary>
+    /// <remarks>
+    /// Tekstura używa kwadratowego zanikania alfa (alpha*alpha) po zastosowaniu SmoothStep,
+    /// co daje bardzo miękkie, naturalne krawędzie cząsteczek bez ostrych artefaktów.
+    /// </remarks>
+    /// <returns>Buforowana tekstura cząsteczkowa 64x64.</returns>
     private Texture2D CreateSoftParticleTexture()
     {
         if (cachedParticleTexture != null)
@@ -811,6 +1094,14 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         return cachedParticleTexture;
     }
 
+    /// <summary>
+    /// Wyszukuje i zatrzymuje wszystkie aktywne systemy cząsteczkowe o podanej nazwie
+    /// znajdujące się w określonym promieniu od podanej pozycji.
+    /// Zatrzymane systemy są niszczone po 2 sekundach (czas na zanikanie istniejących cząsteczek).
+    /// </summary>
+    /// <param name="effectName">Nazwa obiektu gry systemu cząsteczkowego do wyszukania.</param>
+    /// <param name="position">Pozycja w przestrzeni świata, od której mierzona jest odległość (z przesunięciem 1.25 w górę).</param>
+    /// <param name="maxDistance">Maksymalna odległość, w jakiej efekty zostaną zatrzymane.</param>
     private void StopEffectNear(string effectName, Vector3 position, float maxDistance)
     {
         ParticleSystem[] allSystems = FindObjectsByType<ParticleSystem>(
@@ -837,6 +1128,10 @@ public void PlaySteamEffectLocal(Vector3 worldPosition)
         }
     }
 
+    /// <summary>
+    /// Metoda Unity wywoływana przy niszczeniu obiektu.
+    /// Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników.
+    /// </summary>
     private void OnDestroy()
     {
         if (Instance == this)

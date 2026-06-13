@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy IngredientRequirement</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-attribs">Atrybuty publiczne</a> &#124;
+<a href="class_ingredient_requirement-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy IngredientRequirement</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa reprezentująca wymaganie dotyczące pojedynczego składnika w zamówieniu. Określa, jaki rodzaj składnika jest potrzebny, w jakim stanie przetworzenia oraz w jakiej ilości.  
+ <a href="#details">Więcej...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a2757589bd62e2a30c66e99eace0f2bd9" id="r_a2757589bd62e2a30c66e99eace0f2bd9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2757589bd62e2a30c66e99eace0f2bd9">IngredientRequirement</a> ()</td></tr>
+<tr class="memdesc:a2757589bd62e2a30c66e99eace0f2bd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor domyślny. Tworzy wymaganie z wartościami domyślnymi.  <br /></td></tr>
+<tr class="separator:a2757589bd62e2a30c66e99eace0f2bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c6e3177bf3fbddf5590dcdcd09d3f44" id="r_a8c6e3177bf3fbddf5590dcdcd09d3f44"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c6e3177bf3fbddf5590dcdcd09d3f44">IngredientRequirement</a> (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> <a class="el" href="#a42a731407ca5253b71786065bfdb98ed">ingredientKind</a>, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> <a class="el" href="#a5ae4ab8561f2d2c9fa0c82e0af48af32">requiredState</a>, int <a class="el" href="#aa05716697ad996e6790678660dbd9dec">quantity</a>=1)</td></tr>
+<tr class="memdesc:a8c6e3177bf3fbddf5590dcdcd09d3f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor parametryczny tworzący wymaganie z określonym rodzajem, stanem przetworzenia i opcjonalną ilością składnika.  <br /></td></tr>
+<tr class="separator:a8c6e3177bf3fbddf5590dcdcd09d3f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac104c919ebdaccbf92a7d525632708c1" id="r_ac104c919ebdaccbf92a7d525632708c1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac104c919ebdaccbf92a7d525632708c1">ToDisplayString</a> ()</td></tr>
+<tr class="memdesc:ac104c919ebdaccbf92a7d525632708c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy czytelny dla człowieka opis wymagania składnika. Dla ilości większej niż 1 dodaje prefiks z ilością (np. "2x Pomidor").  <br /></td></tr>
+<tr class="separator:ac104c919ebdaccbf92a7d525632708c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atrybuty publiczne</h2></td></tr>
+<tr class="memitem:a42a731407ca5253b71786065bfdb98ed" id="r_a42a731407ca5253b71786065bfdb98ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42a731407ca5253b71786065bfdb98ed">ingredientKind</a> = <a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f">IngredientKind.Meat</a></td></tr>
+<tr class="memdesc:a42a731407ca5253b71786065bfdb98ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rodzaj wymaganego składnika.  <br /></td></tr>
+<tr class="separator:a42a731407ca5253b71786065bfdb98ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ae4ab8561f2d2c9fa0c82e0af48af32" id="r_a5ae4ab8561f2d2c9fa0c82e0af48af32"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ae4ab8561f2d2c9fa0c82e0af48af32">requiredState</a> = <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00">IngredientProcessState.Raw</a></td></tr>
+<tr class="memdesc:a5ae4ab8561f2d2c9fa0c82e0af48af32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wymagany stan przetworzenia składnika (np. surowy, pokrojony, upieczony).  <br /></td></tr>
+<tr class="separator:a5ae4ab8561f2d2c9fa0c82e0af48af32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa05716697ad996e6790678660dbd9dec" id="r_aa05716697ad996e6790678660dbd9dec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa05716697ad996e6790678660dbd9dec">quantity</a> = 1</td></tr>
+<tr class="memdesc:aa05716697ad996e6790678660dbd9dec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wymagana ilość tego składnika w zamówieniu. Domyślnie 1.  <br /></td></tr>
+<tr class="separator:aa05716697ad996e6790678660dbd9dec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa reprezentująca wymaganie dotyczące pojedynczego składnika w zamówieniu. Określa, jaki rodzaj składnika jest potrzebny, w jakim stanie przetworzenia oraz w jakiej ilości. </p>
+<p>Klasa jest serializowalna, co umożliwia edycję wymagań zamówienia bezpośrednio w Inspektorze Unity. Wymagania składników są porównywane z zawartością gotowej potrawy przez klasę <a class="el" href="class_kitchen_order_validator.html" title="Klasa statyczna odpowiedzialna za walidację zgodności przygotowanej potrawy z zamówieniem klienta....">KitchenOrderValidator</a> w celu weryfikacji poprawności realizacji zamówienia. </p>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_order.html" title="Klasa reprezentująca zamówienie klienta w grze. Zawiera informacje o wymaganych składnikach,...">Order</a>, <a class="el" href="class_kitchen_order_validator.html" title="Klasa statyczna odpowiedzialna za walidację zgodności przygotowanej potrawy z zamówieniem klienta....">KitchenOrderValidator</a></dd></dl>
+</div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a id="a2757589bd62e2a30c66e99eace0f2bd9" name="a2757589bd62e2a30c66e99eace0f2bd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2757589bd62e2a30c66e99eace0f2bd9">&#9670;&#160;</a></span>IngredientRequirement() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">IngredientRequirement.IngredientRequirement </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Konstruktor domyślny. Tworzy wymaganie z wartościami domyślnymi. </p>
+
+</div>
+</div>
+<a id="a8c6e3177bf3fbddf5590dcdcd09d3f44" name="a8c6e3177bf3fbddf5590dcdcd09d3f44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c6e3177bf3fbddf5590dcdcd09d3f44">&#9670;&#160;</a></span>IngredientRequirement() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">IngredientRequirement.IngredientRequirement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>ingredientKind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>requiredState</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>quantity</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Konstruktor parametryczny tworzący wymaganie z określonym rodzajem, stanem przetworzenia i opcjonalną ilością składnika. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ingredientKind</td><td>Rodzaj wymaganego składnika.</td></tr>
+    <tr><td class="paramname">requiredState</td><td>Wymagany stan przetworzenia składnika.</td></tr>
+    <tr><td class="paramname">quantity</td><td>Ilość wymaganego składnika (domyślnie 1).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ac104c919ebdaccbf92a7d525632708c1" name="ac104c919ebdaccbf92a7d525632708c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac104c919ebdaccbf92a7d525632708c1">&#9670;&#160;</a></span>ToDisplayString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string IngredientRequirement.ToDisplayString </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy czytelny dla człowieka opis wymagania składnika. Dla ilości większej niż 1 dodaje prefiks z ilością (np. "2x Pomidor"). </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Sformatowany tekst opisujący wymaganie składnika.</dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a42a731407ca5253b71786065bfdb98ed" name="a42a731407ca5253b71786065bfdb98ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42a731407ca5253b71786065bfdb98ed">&#9670;&#160;</a></span>ingredientKind</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> IngredientRequirement.ingredientKind = <a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f">IngredientKind.Meat</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rodzaj wymaganego składnika. </p>
+
+</div>
+</div>
+<a id="aa05716697ad996e6790678660dbd9dec" name="aa05716697ad996e6790678660dbd9dec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa05716697ad996e6790678660dbd9dec">&#9670;&#160;</a></span>quantity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IngredientRequirement.quantity = 1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wymagana ilość tego składnika w zamówieniu. Domyślnie 1. </p>
+
+</div>
+</div>
+<a id="a5ae4ab8561f2d2c9fa0c82e0af48af32" name="a5ae4ab8561f2d2c9fa0c82e0af48af32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ae4ab8561f2d2c9fa0c82e0af48af32">&#9670;&#160;</a></span>requiredState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> IngredientRequirement.requiredState = <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00">IngredientProcessState.Raw</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wymagany stan przetworzenia składnika (np. surowy, pokrojony, upieczony). </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_kitchen_game_models_8cs.html">KitchenGameModels.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

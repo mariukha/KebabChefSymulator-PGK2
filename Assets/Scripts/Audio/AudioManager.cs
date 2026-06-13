@@ -1,37 +1,120 @@
 using UnityEngine;
 
 /// <summary>
-/// Centralized audio manager for Kebab Chef Simulator.
-/// All sounds are generated procedurally (no external audio assets needed).
-/// Provides SFX one-shots and looping background music/ambient.
+/// \file AudioManager.cs
+/// \brief Centralny menedżer dźwięku dla gry Kebab Chef Simulator.
+/// \details Wszystkie efekty dźwiękowe są generowane proceduralnie (nie wymaga zewnętrznych zasobów audio).
+/// Klasa zapewnia jednorazowe odtwarzanie efektów dźwiękowych (SFX) oraz zapętloną muzykę
+/// w tle i dźwięki otoczenia. Implementuje wzorzec Singleton, dzięki czemu jest
+/// dostępna globalnie z każdego miejsca w kodzie gry.
 /// </summary>
 public class AudioManager : MonoBehaviour
 {
+    /// <summary>
+    /// Statyczna instancja Singletona menedżera dźwięku.
+    /// Umożliwia globalny dostęp do systemu audio z dowolnego miejsca w grze.
+    /// </summary>
     public static AudioManager Instance { get; private set; }
 
+    /// <summary>
+    /// Źródło dźwięku używane do odtwarzania jednorazowych efektów dźwiękowych (SFX).
+    /// </summary>
     private AudioSource sfxSource;
+
+    /// <summary>
+    /// Źródło dźwięku używane do odtwarzania zapętlonej muzyki w tle.
+    /// </summary>
     private AudioSource musicSource;
+
+    /// <summary>
+    /// Źródło dźwięku używane do odtwarzania zapętlonych dźwięków otoczenia (np. skwierczenie grilla).
+    /// </summary>
     private AudioSource ambientSource;
 
+    /// <summary>
+    /// Klip audio dla efektu krojenia noża.
+    /// </summary>
     private AudioClip clipChop;
+
+    /// <summary>
+    /// Klip audio dla efektu podnoszenia przedmiotu.
+    /// </summary>
     private AudioClip clipPickup;
+
+    /// <summary>
+    /// Klip audio dla efektu upuszczenia przedmiotu.
+    /// </summary>
     private AudioClip clipDrop;
+
+    /// <summary>
+    /// Klip audio dla efektu otrzymania pieniędzy.
+    /// </summary>
     private AudioClip clipMoney;
+
+    /// <summary>
+    /// Klip audio dla efektu niepowodzenia (błąd zamówienia).
+    /// </summary>
     private AudioClip clipFail;
+
+    /// <summary>
+    /// Klip audio dla efektu nowego zamówienia.
+    /// </summary>
     private AudioClip clipNewOrder;
+
+    /// <summary>
+    /// Klip audio dla efektu kliknięcia przycisku w interfejsie.
+    /// </summary>
     private AudioClip clipButtonClick;
+
+    /// <summary>
+    /// Klip audio dla efektu gotowości (potrawa gotowa).
+    /// </summary>
     private AudioClip clipReady;
+
+    /// <summary>
+    /// Klip audio dla efektu zawijania kebaba w lawasz.
+    /// </summary>
     private AudioClip clipWrap;
+
+    /// <summary>
+    /// Klip audio dla efektu zakupu ulepszenia.
+    /// </summary>
     private AudioClip clipUpgrade;
+
+    /// <summary>
+    /// Klip audio dla zapętlonego efektu skwierczenia grilla.
+    /// </summary>
     private AudioClip clipGrillLoop;
+
+    /// <summary>
+    /// Klip audio dla zapętlonej muzyki w tle.
+    /// </summary>
     private AudioClip clipMusicLoop;
 
+    /// <summary>
+    /// Główna głośność, wpływająca na wszystkie źródła dźwięku. Zakres: 0.0 - 1.0.
+    /// </summary>
     private float masterVolume = 1f;
+
+    /// <summary>
+    /// Głośność efektów dźwiękowych (SFX). Zakres: 0.0 - 1.0.
+    /// </summary>
     private float sfxVolume = 0.7f;
+
+    /// <summary>
+    /// Głośność muzyki w tle. Zakres: 0.0 - 1.0.
+    /// </summary>
     private float musicVolume = 0.3f;
 
+    /// <summary>
+    /// Częstotliwość próbkowania używana do generowania proceduralnych klipów audio (w Hz).
+    /// </summary>
     private const int SampleRate = 44100;
 
+    /// <summary>
+    /// Inicjalizuje Singleton menedżera dźwięku.
+    /// Jeśli instancja już istnieje, niszczy duplikat obiektu.
+    /// </summary>
     private void Awake()
     {
         if (Instance != null)
@@ -43,6 +126,10 @@ public class AudioManager : MonoBehaviour
         Instance = this;
     }
 
+    /// <summary>
+    /// Konfiguruje źródła dźwięku, generuje wszystkie klipy audio proceduralnie,
+    /// stosuje ustawienia audio z menedżera ustawień gry i rozpoczyna odtwarzanie muzyki.
+    /// </summary>
     private void Start()
     {
 
@@ -68,56 +155,100 @@ public class AudioManager : MonoBehaviour
         PlayMusic();
     }
 
+    /// <summary>
+    /// Odtwarza efekt dźwiękowy krojenia noża.
+    /// Używany przy krojeniu składników na desce do krojenia.
+    /// </summary>
     public void PlayChopSound()
     {
         PlaySFX(clipChop, 0.46f, 0.94f, 1.08f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt dźwiękowy podnoszenia przedmiotu.
+    /// Używany gdy gracz podnosi składnik lub przedmiot ze stanowiska.
+    /// </summary>
     public void PlayPickupSound()
     {
         PlaySFX(clipPickup, 0.34f, 0.96f, 1.08f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt dźwiękowy upuszczenia przedmiotu.
+    /// Używany gdy gracz odkłada składnik na stanowisko.
+    /// </summary>
     public void PlayDropSound()
     {
         PlaySFX(clipDrop, 0.34f, 0.92f, 1.04f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt dźwiękowy otrzymania pieniędzy.
+    /// Używany przy pomyślnym zrealizowaniu zamówienia klienta.
+    /// </summary>
     public void PlayMoneySound()
     {
         PlaySFX(clipMoney, 0.54f, 0.98f, 1.04f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt dźwiękowy niepowodzenia.
+    /// Używany gdy zamówienie wygaśnie lub zostanie źle zrealizowane.
+    /// </summary>
     public void PlayFailSound()
     {
         PlaySFX(clipFail, 0.48f, 0.95f, 1.02f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt dźwiękowy nowego zamówienia.
+    /// Używany gdy pojawia się nowe zamówienie od klienta.
+    /// </summary>
     public void PlayNewOrderSound()
     {
         PlaySFX(clipNewOrder, 0.42f, 0.98f, 1.04f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt dźwiękowy kliknięcia przycisku interfejsu.
+    /// Używany we wszystkich interaktywnych elementach UI.
+    /// </summary>
     public void PlayButtonClick()
     {
         PlaySFX(clipButtonClick, 0.24f, 0.96f, 1.05f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt dźwiękowy gotowości potrawy.
+    /// Używany gdy składnik jest w pełni przetworzony i gotowy do użycia.
+    /// </summary>
     public void PlayReadySound()
     {
         PlaySFX(clipReady, 0.38f, 0.96f, 1.06f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt dźwiękowy zawijania kebaba.
+    /// Używany gdy gracz zawija składniki w lawasz.
+    /// </summary>
     public void PlayWrapSound()
     {
         PlaySFX(clipWrap, 0.42f, 0.94f, 1.04f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt dźwiękowy zakupu ulepszenia.
+    /// Używany gdy gracz kupuje ulepszenie w sklepie.
+    /// </summary>
     public void PlayUpgradeSound()
     {
         PlaySFX(clipUpgrade, 0.52f, 0.98f, 1.02f);
     }
 
+    /// <summary>
+    /// Rozpoczyna odtwarzanie zapętlonego dźwięku skwierczenia grilla.
+    /// Dźwięk jest odtwarzany tylko jeśli nie jest już aktywny.
+    /// </summary>
     public void StartGrillAmbient()
     {
         if (ambientSource != null && !ambientSource.isPlaying)
@@ -128,6 +259,9 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Zatrzymuje odtwarzanie zapętlonego dźwięku skwierczenia grilla.
+    /// </summary>
     public void StopGrillAmbient()
     {
         if (ambientSource != null && ambientSource.isPlaying)
@@ -136,33 +270,69 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ustawia główną głośność i aktualizuje wszystkie aktywne źródła dźwięku.
+    /// </summary>
+    /// <param name="volume">Nowa wartość głównej głośności (zostanie ograniczona do zakresu 0.0 - 1.0).</param>
     public void SetMasterVolume(float volume)
     {
         masterVolume = Mathf.Clamp01(volume);
         ApplyVolumes();
     }
 
+    /// <summary>
+    /// Ustawia głośność efektów dźwiękowych i aktualizuje aktywne źródła dźwięku.
+    /// </summary>
+    /// <param name="volume">Nowa wartość głośności SFX (zostanie ograniczona do zakresu 0.0 - 1.0).</param>
     public void SetSFXVolume(float volume)
     {
         sfxVolume = Mathf.Clamp01(volume);
         ApplyVolumes();
     }
 
+    /// <summary>
+    /// Ustawia głośność muzyki w tle i aktualizuje aktywne źródła dźwięku.
+    /// </summary>
+    /// <param name="volume">Nowa wartość głośności muzyki (zostanie ograniczona do zakresu 0.0 - 1.0).</param>
     public void SetMusicVolume(float volume)
     {
         musicVolume = Mathf.Clamp01(volume);
         ApplyVolumes();
     }
 
+    /// <summary>
+    /// Aktualna wartość głównej głośności (tylko do odczytu). Zakres: 0.0 - 1.0.
+    /// </summary>
     public float MasterVolume => masterVolume;
+
+    /// <summary>
+    /// Aktualna wartość głośności efektów dźwiękowych (tylko do odczytu). Zakres: 0.0 - 1.0.
+    /// </summary>
     public float SFXVolume => sfxVolume;
+
+    /// <summary>
+    /// Aktualna wartość głośności muzyki (tylko do odczytu). Zakres: 0.0 - 1.0.
+    /// </summary>
     public float MusicVolume => musicVolume;
 
+    /// <summary>
+    /// Odtwarza jednorazowy efekt dźwiękowy z domyślnym zakresem pitch (bez zmiany).
+    /// </summary>
+    /// <param name="clip">Klip audio do odtworzenia.</param>
+    /// <param name="volumeScale">Skala głośności efektu (mnożona przez głośność SFX i główną).</param>
     private void PlaySFX(AudioClip clip, float volumeScale)
     {
         PlaySFX(clip, volumeScale, 1f, 1f);
     }
 
+    /// <summary>
+    /// Odtwarza jednorazowy efekt dźwiękowy z losową zmianą wysokości tonu.
+    /// Losowy pitch dodaje naturalne zróżnicowanie przy wielokrotnym odtwarzaniu tego samego efektu.
+    /// </summary>
+    /// <param name="clip">Klip audio do odtworzenia.</param>
+    /// <param name="volumeScale">Skala głośności efektu (mnożona przez głośność SFX i główną).</param>
+    /// <param name="minPitch">Minimalna wartość losowego pitch (wysokości tonu).</param>
+    /// <param name="maxPitch">Maksymalna wartość losowego pitch (wysokości tonu).</param>
     private void PlaySFX(AudioClip clip, float volumeScale, float minPitch, float maxPitch)
     {
         if (sfxSource == null || clip == null)
@@ -176,6 +346,10 @@ public class AudioManager : MonoBehaviour
         sfxSource.pitch = previousPitch;
     }
 
+    /// <summary>
+    /// Rozpoczyna odtwarzanie zapętlonej muzyki w tle.
+    /// Głośność jest obliczana jako iloczyn głośności muzyki i głównej głośności.
+    /// </summary>
     private void PlayMusic()
     {
         if (musicSource == null || clipMusicLoop == null)
@@ -188,6 +362,10 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+    /// <summary>
+    /// Aktualizuje głośność wszystkich aktualnie odtwarzanych źródeł dźwięku
+    /// (muzyki i dźwięków otoczenia) na podstawie bieżących wartości głośności.
+    /// </summary>
     private void ApplyVolumes()
     {
         if (musicSource != null && musicSource.isPlaying)
@@ -201,6 +379,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Generuje proceduralnie wszystkie klipy audio używane w grze.
+    /// Próbuje załadować muzykę z zasobów (Resources/Audio/music), a w przypadku
+    /// braku pliku używa proceduralnie wygenerowanego dźwięku otoczenia.
+    /// </summary>
     private void GenerateAllClips()
     {
         clipChop = GenerateChop();
@@ -223,7 +406,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    /// <summary>Knife chop — sharp noise burst with fast decay</summary>
+    /// <summary>
+    /// Generuje proceduralny klip dźwiękowy krojenia noża — ostry szum z szybkim wygaszeniem.
+    /// Łączy biały szum z krótkim kliknięciem sinusoidalnym imitującym uderzenie ostrza.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio efektu krojenia.</returns>
     private AudioClip GenerateChop()
     {
         int samples = (int)(SampleRate * 0.12f);
@@ -240,7 +427,11 @@ public class AudioManager : MonoBehaviour
         return CreateClip("SFX_Chop", data);
     }
 
-    /// <summary>Pickup — bright rising tone</summary>
+    /// <summary>
+    /// Generuje proceduralny klip dźwiękowy podnoszenia — jasny, narastający ton.
+    /// Częstotliwość rośnie od 400 Hz do 900 Hz, tworząc wrażenie podnoszenia.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio efektu podnoszenia.</returns>
     private AudioClip GeneratePickup()
     {
         int samples = (int)(SampleRate * 0.15f);
@@ -256,7 +447,11 @@ public class AudioManager : MonoBehaviour
         return CreateClip("SFX_Pickup", data);
     }
 
-    /// <summary>Drop — falling tone</summary>
+    /// <summary>
+    /// Generuje proceduralny klip dźwiękowy upuszczenia — opadający ton.
+    /// Częstotliwość spada od 700 Hz do 250 Hz, symulując efekt spadania.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio efektu upuszczenia.</returns>
     private AudioClip GenerateDrop()
     {
         int samples = (int)(SampleRate * 0.18f);
@@ -272,7 +467,11 @@ public class AudioManager : MonoBehaviour
         return CreateClip("SFX_Drop", data);
     }
 
-    /// <summary>Money — bright double ding (cash register feel)</summary>
+    /// <summary>
+    /// Generuje proceduralny klip dźwiękowy pieniędzy — jasny podwójny dzwonek
+    /// w stylu kasy fiskalnej. Składa się z kilku harmonicznych tonów z opóźnionym uderzeniem.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio efektu pieniędzy.</returns>
     private AudioClip GenerateMoney()
     {
         int samples = (int)(SampleRate * 0.4f);
@@ -292,7 +491,11 @@ public class AudioManager : MonoBehaviour
         return CreateClip("SFX_Money", data);
     }
 
-    /// <summary>Fail — descending dissonant tone</summary>
+    /// <summary>
+    /// Generuje proceduralny klip dźwiękowy niepowodzenia — opadający dysonansowy ton.
+    /// Dwie bliskie częstotliwości tworzą efekt dudnienia, sygnalizujący błąd.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio efektu niepowodzenia.</returns>
     private AudioClip GenerateFail()
     {
         int samples = (int)(SampleRate * 0.5f);
@@ -311,7 +514,11 @@ public class AudioManager : MonoBehaviour
         return CreateClip("SFX_Fail", data);
     }
 
-    /// <summary>New order bell — bright single ding</summary>
+    /// <summary>
+    /// Generuje proceduralny klip dźwiękowy nowego zamówienia — jasny dzwonek
+    /// z alikwotami i lekkim połyskiem, imitujący dzwonek w restauracji.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio efektu nowego zamówienia.</returns>
     private AudioClip GenerateNewOrder()
     {
         int samples = (int)(SampleRate * 0.35f);
@@ -329,7 +536,11 @@ public class AudioManager : MonoBehaviour
         return CreateClip("SFX_NewOrder", data);
     }
 
-    /// <summary>Button click — very short tick</summary>
+    /// <summary>
+    /// Generuje proceduralny klip dźwiękowy kliknięcia przycisku — bardzo krótki, suchy dźwięk.
+    /// Szybkie wygaszenie eksponencjalne tworzy wrażenie mechanicznego kliknięcia.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio efektu kliknięcia.</returns>
     private AudioClip GenerateClick()
     {
         int samples = (int)(SampleRate * 0.04f);
@@ -344,7 +555,11 @@ public class AudioManager : MonoBehaviour
         return CreateClip("SFX_Click", data);
     }
 
-    /// <summary>Ready cue - soft metal tap with warm confirmation tone.</summary>
+    /// <summary>
+    /// Generuje proceduralny klip dźwiękowy gotowości — miękki metaliczny stuk
+    /// z ciepłym tonem potwierdzenia. Łączy szum impulsowy z tonami harmonicznymi.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio efektu gotowości.</returns>
     private AudioClip GenerateReady()
     {
         int samples = (int)(SampleRate * 0.28f);
@@ -364,7 +579,11 @@ public class AudioManager : MonoBehaviour
         return CreateClip("SFX_Ready", data);
     }
 
-    /// <summary>Wrap cue - paper/lavash rustle with a controlled handoff thump.</summary>
+    /// <summary>
+    /// Generuje proceduralny klip dźwiękowy zawijania — szelest papieru/lawasza
+    /// z kontrolowanym uderzeniem. Używa filtrowanego szumu i akcentów niskoczęstotliwościowych.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio efektu zawijania.</returns>
     private AudioClip GenerateWrap()
     {
         int samples = (int)(SampleRate * 0.36f);
@@ -386,7 +605,11 @@ public class AudioManager : MonoBehaviour
         return CreateClip("SFX_Wrap", data);
     }
 
-    /// <summary>Upgrade cue - compact premium arpeggio, not a loud arcade fanfare.</summary>
+    /// <summary>
+    /// Generuje proceduralny klip dźwiękowy ulepszenia — kompaktowe arpeggio premium,
+    /// nie głośna fanfara arcade'owa. Cztery nuty grane kolejno z lekkim połyskiem.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio efektu ulepszenia.</returns>
     private AudioClip GenerateUpgrade()
     {
         int samples = (int)(SampleRate * 0.52f);
@@ -419,7 +642,11 @@ public class AudioManager : MonoBehaviour
         return CreateClip("SFX_Upgrade", data);
     }
 
-    /// <summary>Grill sizzle — filtered noise loop</summary>
+    /// <summary>
+    /// Generuje proceduralny klip zapętlonego skwierczenia grilla — filtrowany szum
+    /// z losowymi trzaskami i powolną modulacją amplitudy. Trwa 4 sekundy.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio zapętlonego efektu grilla.</returns>
     private AudioClip GenerateGrillLoop()
     {
         int samples = SampleRate * 4;
@@ -441,7 +668,12 @@ public class AudioManager : MonoBehaviour
         return CreateClip("SFX_GrillLoop", data);
     }
 
-    /// <summary>Background music — warm ambient drone with gentle chord progression</summary>
+    /// <summary>
+    /// Generuje proceduralny klip zapętlonej muzyki w tle — ciepły dron otoczenia
+    /// z łagodną progresją akordów. Zawiera bas, akord trójdźwiękowy, pad szumowy
+    /// oraz płynne wejścia i wyjścia (fade in/out). Trwa 16 sekund.
+    /// </summary>
+    /// <returns>Wygenerowany klip audio zapętlonej muzyki otoczenia.</returns>
     private AudioClip GenerateMusicLoop()
     {
         int samples = SampleRate * 16;
@@ -483,6 +715,12 @@ public class AudioManager : MonoBehaviour
         return CreateClip("Music_Ambient", data);
     }
 
+    /// <summary>
+    /// Tworzy klip audio Unity z podanej tablicy próbek.
+    /// </summary>
+    /// <param name="clipName">Nazwa klipu audio do identyfikacji.</param>
+    /// <param name="data">Tablica próbek audio (wartości float od -1.0 do 1.0).</param>
+    /// <returns>Utworzony klip audio Unity z jednym kanałem i zadaną częstotliwością próbkowania.</returns>
     private AudioClip CreateClip(string clipName, float[] data)
     {
         AudioClip clip = AudioClip.Create(clipName, data.Length, 1, SampleRate, false);
@@ -490,6 +728,10 @@ public class AudioManager : MonoBehaviour
         return clip;
     }
 
+    /// <summary>
+    /// Czyści referencję Singletona przy niszczeniu obiektu,
+    /// zapobiegając odwoływaniu się do zniszczonej instancji.
+    /// </summary>
     private void OnDestroy()
     {
         if (Instance == this)

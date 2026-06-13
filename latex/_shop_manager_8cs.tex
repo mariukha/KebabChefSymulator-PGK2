@@ -1,0 +1,70 @@
+\doxysection{Dokumentacja pliku Assets/\+Scripts/\+Shop\+Manager.cs}
+\hypertarget{_shop_manager_8cs}{}\label{_shop_manager_8cs}\index{Assets/Scripts/ShopManager.cs@{Assets/Scripts/ShopManager.cs}}
+
+
+Plik zawierający system sklepu z ulepszeniami w grze Kebab Chef Symulator.  
+
+
+\doxysubsubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}}
+\begin{DoxyCompactList}\small\item\em Klasa definiująca pojedyncze ulepszenie dostępne w sklepie. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_shop_save_data}{Shop\+Save\+Data}}
+\begin{DoxyCompactList}\small\item\em Klasa danych zapisu stanu sklepu z ulepszeniami. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_upgrade_level_entry}{Upgrade\+Level\+Entry}}
+\begin{DoxyCompactList}\small\item\em Klasa reprezentująca pojedynczy wpis poziomu ulepszenia w danych zapisu. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_shop_manager}{Shop\+Manager}}
+\begin{DoxyCompactList}\small\item\em Główna klasa zarządzająca systemem sklepu z ulepszeniami. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Wyliczenia}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} \{ \newline
+\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10eac17698d594b271788233db7de4ae3e16}{Grill\+Speed}}
+, \mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10ea8e1b8a8a5321d50b419e85da861cd9ea}{Cutting\+Speed}}
+, \mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10eab4d743f02c5c8695626e0cd75293fae0}{Reward\+Bonus}}
+, \mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10ea01079068f596d5160ec77efa43e3a7f2}{Order\+Time}}
+, \newline
+\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10ea20f58473d0ac239dc2051b36b40095c5}{Meat\+Batch\+Size}}
+ \}
+\begin{DoxyCompactList}\small\item\em Typ wyliczeniowy definiujący dostępne rodzaje ulepszeń w sklepie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Plik zawierający system sklepu z ulepszeniami w grze Kebab Chef Symulator. 
+
+Definiuje typ wyliczeniowy Upgrade\+Type, klasy danych ulepszeń (\doxylink{class_upgrade_definition}{Upgrade\+Definition}, \doxylink{class_shop_save_data}{Shop\+Save\+Data}, \doxylink{class_upgrade_level_entry}{Upgrade\+Level\+Entry}) oraz główną klasę \doxylink{class_shop_manager}{Shop\+Manager} odpowiedzialną za zarządzanie systemem ulepszeń, ich zakupem, śledzeniem postępu oraz serializacją stanu. 
+
+\doxysubsection{Dokumentacja typów wyliczanych}
+\Hypertarget{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}\index{ShopManager.cs@{ShopManager.cs}!UpgradeType@{UpgradeType}}
+\index{UpgradeType@{UpgradeType}!ShopManager.cs@{ShopManager.cs}}
+\doxysubsubsection{\texorpdfstring{UpgradeType}{UpgradeType}}
+{\footnotesize\ttfamily \label{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e} 
+enum \mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}
+
+
+
+Typ wyliczeniowy definiujący dostępne rodzaje ulepszeń w sklepie. 
+
+Każdy typ ulepszenia odpowiada innemu aspektowi rozgrywki, który gracz może usprawnić za pomocą zakupionych ulepszeń. \begin{DoxyEnumFields}{Wartości wyliczeń}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GrillSpeed@{GrillSpeed}!ShopManager.cs@{ShopManager.cs}}\index{ShopManager.cs@{ShopManager.cs}!GrillSpeed@{GrillSpeed}}}\Hypertarget{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10eac17698d594b271788233db7de4ae3e16}\label{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e} 
+Grill\+Speed&Ulepszenie szybkości grillowania mięsa na donerze. Zmniejsza czas potrzebny na ściągnięcie mięsa z rożna. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CuttingSpeed@{CuttingSpeed}!ShopManager.cs@{ShopManager.cs}}\index{ShopManager.cs@{ShopManager.cs}!CuttingSpeed@{CuttingSpeed}}}\Hypertarget{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10ea8e1b8a8a5321d50b419e85da861cd9ea}\label{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e} 
+Cutting\+Speed&Ulepszenie szybkości krojenia warzyw na desce do krojenia. Zmniejsza czas potrzebny na pokrojenie składników. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RewardBonus@{RewardBonus}!ShopManager.cs@{ShopManager.cs}}\index{ShopManager.cs@{ShopManager.cs}!RewardBonus@{RewardBonus}}}\Hypertarget{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10eab4d743f02c5c8695626e0cd75293fae0}\label{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e} 
+Reward\+Bonus&Ulepszenie bonusu do nagrody za zamówienia. Zwiększa procentowo kwotę otrzymywaną za każde ukończone zamówienie. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OrderTime@{OrderTime}!ShopManager.cs@{ShopManager.cs}}\index{ShopManager.cs@{ShopManager.cs}!OrderTime@{OrderTime}}}\Hypertarget{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10ea01079068f596d5160ec77efa43e3a7f2}\label{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e} 
+Order\+Time&Ulepszenie czasu na realizację zamówień. Dodaje dodatkowe sekundy na wykonanie każdego zamówienia. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MeatBatchSize@{MeatBatchSize}!ShopManager.cs@{ShopManager.cs}}\index{ShopManager.cs@{ShopManager.cs}!MeatBatchSize@{MeatBatchSize}}}\Hypertarget{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10ea20f58473d0ac239dc2051b36b40095c5}\label{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e} 
+Meat\+Batch\+Size&Ulepszenie wielkości porcji mięsa. Zwiększa liczbę porcji mięsa uzyskiwanych z jednego ścięcia. \\
+\hline
+
+\end{DoxyEnumFields}

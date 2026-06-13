@@ -1,0 +1,18 @@
+\doxysection{Dokumentacja pliku Assets/\+Scripts/\+Client\+Network\+Transform.cs}
+\hypertarget{_client_network_transform_8cs}{}\label{_client_network_transform_8cs}\index{Assets/Scripts/ClientNetworkTransform.cs@{Assets/Scripts/ClientNetworkTransform.cs}}
+
+
+Plik zawierający implementację sieciowej transformacji sterowanej przez klienta.  
+
+
+\doxysubsubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_client_network_transform}{Client\+Network\+Transform}}
+\begin{DoxyCompactList}\small\item\em Komponent sieciowej transformacji sterowanej po stronie klienta. Nadpisuje domyślne zachowanie Network\+Transform, wyłączając autorytatywność serwera, dzięki czemu każdy klient samodzielnie kontroluje i synchronizuje swoją transformację w sieci. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Plik zawierający implementację sieciowej transformacji sterowanej przez klienta. 
+
+Rozszerza klasę Network\+Transform z Unity Netcode, umożliwiając klientowi bezpośrednie sterowanie własną pozycją, rotacją i skalą bez autoryzacji serwera. 

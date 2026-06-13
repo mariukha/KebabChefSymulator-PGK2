@@ -1,0 +1,560 @@
+\doxysection{Dokumentacja klasy Settings\+Menu\+UI}
+\hypertarget{class_settings_menu_u_i}{}\label{class_settings_menu_u_i}\index{SettingsMenuUI@{SettingsMenuUI}}
+Diagram dziedziczenia dla Settings\+Menu\+UI\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_settings_menu_u_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_a9c7a8457b21a8a34bbf2258920a11e87}{Show}} ()
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_a2b73abfeeeb0b280583d8d1fef4398b2}{Hide}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_settings_menu_u_i}{Settings\+Menu\+UI}} \mbox{\hyperlink{class_settings_menu_u_i_a181ae03f43122e4f6f09334b9235f146}{Ensure\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_settings_menu_u_i}{Settings\+Menu\+UI}} \mbox{\hyperlink{class_settings_menu_u_i_a301ab545ce71d70c3577516304964f1d}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_settings_menu_u_i_a221863621737c07032972ff71a5e54d2}{Is\+Open}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_ac2e30cf75e62a96c9dff5b0a38b5a098}{Awake}} ()
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_aaa9f68dc18d834071fbae3cb18ad5e89}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_ade8518db988c05c36c1bc7423db745cd}{Hide\+Immediate}} ()
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_a518c87bba8ddb00aff51340e8cf3d75e}{Create\+UI}} ()
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_a66fca89d6a50222452236dc928a8e7d0}{Refresh\+Values}} ()
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_ab99a08572f38414a14552abcaf95f921}{Change\+Resolution}} (int direction)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_a0dc3860abfbae95e34cc5e71e193a356}{Change\+Window\+Mode}} (int direction)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_ae55159f62584cb01ec92290c95018ee0}{Toggle\+VSync}} ()
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_aa4499fcbe263b3737ed3edfb330e55f4}{Change\+Fps\+Limit}} (int direction)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_a7830f73f495e3efbf3570f0be5d25db0}{Change\+Quality}} (int direction)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_a660bd57e8df39520805e6a30ffb55f71}{On\+Master\+Changed}} (float value)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_ad84f6d5c6e123f4374ec2e612d44d917}{On\+Music\+Changed}} (float value)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_af7d0baab193c694507f82ee4991d9610}{On\+Sfx\+Changed}} (float value)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_af262bffd7bd67e45bf23c2482a7b7fe9}{On\+Sensitivity\+Changed}} (float slider\+Value)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_a4d9250fda292eaed5d7f920362c356ef}{Set\+Slider\+Value}} (Slider slider, float value)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_af0574ada67a475aa6b709619630d2371}{Make\+Section\+Label}} (Transform parent, string label, float y)
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_ab991d9f4d8cbf20d4b6f24642bc4151d}{Make\+Option\+Row}} (Transform parent, string label, float y, Unity\+Engine.\+Events.\+Unity\+Action previous, Unity\+Engine.\+Events.\+Unity\+Action next)
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_aa98040c126f4a7ad61b9dab8f0415c4a}{Make\+Toggle\+Row}} (Transform parent, string label, float y, Unity\+Engine.\+Events.\+Unity\+Action toggle)
+\item 
+Slider \mbox{\hyperlink{class_settings_menu_u_i_a09988b72f616d40982e1b5ab4ac509e0}{Make\+Slider\+Row}} (Transform parent, string label, float y, Unity\+Engine.\+Events.\+Unity\+Action$<$ float $>$ callback, out Text value\+Text)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_a1bc82dc3dd41934208b2483b4f7b4a92}{Make\+Row\+Label}} (Transform parent, string label, float y)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_acabdf5c8110513e2f49db411caa71c5d}{Make\+Button}} (Transform parent, string label, Color color, Color hover\+Color, Vector2 anchor, Vector2 position, Vector2 size, Unity\+Engine.\+Events.\+Unity\+Action action)
+\item 
+Image \mbox{\hyperlink{class_settings_menu_u_i_a53c6318e82cf3748a294f6bb46a000aa}{Make\+Full\+Rect}} (Transform parent, string name, Color color)
+\item 
+Game\+Object \mbox{\hyperlink{class_settings_menu_u_i_a69f0beb01ee3c55c44300835fbd03cd5}{Make\+Panel}} (Transform parent, string name, Vector2 anchor, Vector2 position, Vector2 size, Color color)
+\item 
+Image \mbox{\hyperlink{class_settings_menu_u_i_af3b48f6b74127a11fabfd64c8a86b942}{Make\+Rect}} (Transform parent, string name, Color color)
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_a36729f89c66676ef7a27c4a15b05ab5d}{Make\+Text}} (Transform parent, string content, int size, Font\+Style style, Color color, Text\+Anchor anchor)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_aa0bee9b1dee5b8bde02e5b341da938ee}{Set\+Rect}} (Component component, Vector2 anchor, Vector2 position, Vector2 size, Vector2 pivot)
+\item 
+void \mbox{\hyperlink{class_settings_menu_u_i_a721b7c512403a4d2b4d9d345e3e90606}{On\+Destroy}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Canvas \mbox{\hyperlink{class_settings_menu_u_i_ac6b51161043d306c7de7d8ccccabf3a6}{settings\+Canvas}}
+\item 
+Canvas\+Group \mbox{\hyperlink{class_settings_menu_u_i_ac1afd788187863d09e1b865bf1703206}{canvas\+Group}}
+\item 
+Game\+Object \mbox{\hyperlink{class_settings_menu_u_i_a18d80bfc8d4662b273256df4d668d882}{panel}}
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_ac04c012f4b4393cc3259cc73a8700a70}{resolution\+Value\+Text}}
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_a7235ff3f611484aaf3f3d5c28e9d4262}{window\+Mode\+Value\+Text}}
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_aaf6151773fc897b2fa7c6405462cda71}{v\+Sync\+Value\+Text}}
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_ac2f3017e17b9906a76e13b77b9d38905}{fps\+Value\+Text}}
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_a1c5615abb4ff92e18483efbdc85a7d61}{quality\+Value\+Text}}
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_af5b11a830047a0a84ce165bd738663c0}{master\+Value\+Text}}
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_a2a91c5037118cf4cf3c0bfbe8f04f1c6}{music\+Value\+Text}}
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_a95beda49dac633aa7a6b8af7b2fd70bd}{sfx\+Value\+Text}}
+\item 
+Text \mbox{\hyperlink{class_settings_menu_u_i_ae8bec0e933d36e635c431093223daaeb}{sensitivity\+Value\+Text}}
+\item 
+Slider \mbox{\hyperlink{class_settings_menu_u_i_a48358fee530fed593729c9830598cf8c}{master\+Slider}}
+\item 
+Slider \mbox{\hyperlink{class_settings_menu_u_i_a45bc942ab83dc78f76d3c1870f2cdaa7}{music\+Slider}}
+\item 
+Slider \mbox{\hyperlink{class_settings_menu_u_i_ae96ae8ac0d8c1cbba60b04de54a10763}{sfx\+Slider}}
+\item 
+Slider \mbox{\hyperlink{class_settings_menu_u_i_a90e0cb7276fdeaae66b23d8e4b5baf51}{sensitivity\+Slider}}
+\item 
+Font \mbox{\hyperlink{class_settings_menu_u_i_a1d9c2263532a502b83f5938adedf7faf}{cached\+Font}}
+\item 
+bool \mbox{\hyperlink{class_settings_menu_u_i_a8bcd333f8b29c418d5d506642a1930a5}{is\+Open}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_a789a90329f27ba47bcb41cc5ace6b7f2}{Overlay\+Color}} = new Color(0.\+006f, 0.\+008f, 0.\+012f, 0.\+82f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_aaeda238523c23e17b6f7b2ecbd973eb1}{Panel\+Color}} = new Color(0.\+018f, 0.\+022f, 0.\+028f, 0.\+98f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_a4c6ca79732bc652e67e3f524f5fed3d0}{Header\+Color}} = new Color(0.\+028f, 0.\+034f, 0.\+044f, 0.\+96f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_acad230ade3ecfc06d9bea3a2784b7993}{Border\+Color}} = new Color(0.\+15f, 0.\+16f, 0.\+17f, 0.\+95f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_a39af73e9f7f3553694b4c3c2a7fe101d}{Accent\+Gold}} = new Color(0.\+86f, 0.\+68f, 0.\+28f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_a5b6f3197b89f2a5aa0f1862742939d43}{Text\+Primary}} = new Color(0.\+91f, 0.\+92f, 0.\+94f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_a7dfb14afe78fa8b22763a259998fc21c}{Text\+Secondary}} = new Color(0.\+58f, 0.\+62f, 0.\+69f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_ac99984a1c1ed14b7aae64f2e837758f8}{Value\+Color}} = new Color(0.\+88f, 0.\+78f, 0.\+52f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_aee877b57ed455636e3fc9849c3bfcb6f}{Button\+Color}} = new Color(0.\+055f, 0.\+12f, 0.\+22f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_a20a59beaac4b9fdf8ae51b4b13fd04a9}{Button\+Hover\+Color}} = new Color(0.\+08f, 0.\+18f, 0.\+32f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_a3755155df3f4ff3ac9e4ac5392caa785}{Close\+Button\+Color}} = new Color(0.\+30f, 0.\+065f, 0.\+06f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_ab5d5fb31ebaec968b4564f2e8a8158cf}{Close\+Button\+Hover\+Color}} = new Color(0.\+46f, 0.\+10f, 0.\+085f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_a34be6dc1fa306be34967bf144a0431d6}{Slider\+Bg}} = new Color(0.\+06f, 0.\+07f, 0.\+08f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_ab2bed26898b031404a426b45088131e7}{Slider\+Fill}} = new Color(0.\+08f, 0.\+38f, 0.\+18f)
+\item 
+static readonly Color \mbox{\hyperlink{class_settings_menu_u_i_ab5d58aa110447fcdaf9b8cc46edf87e6}{Slider\+Handle}} = new Color(0.\+92f, 0.\+92f, 0.\+86f)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_settings_menu_u_i_ac2e30cf75e62a96c9dff5b0a38b5a098}\index{SettingsMenuUI@{SettingsMenuUI}!Awake@{Awake}}
+\index{Awake@{Awake}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ac2e30cf75e62a96c9dff5b0a38b5a098} 
+void Settings\+Menu\+UI.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_aa4499fcbe263b3737ed3edfb330e55f4}\index{SettingsMenuUI@{SettingsMenuUI}!ChangeFpsLimit@{ChangeFpsLimit}}
+\index{ChangeFpsLimit@{ChangeFpsLimit}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{ChangeFpsLimit()}{ChangeFpsLimit()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_aa4499fcbe263b3737ed3edfb330e55f4} 
+void Settings\+Menu\+UI.\+Change\+Fps\+Limit (\begin{DoxyParamCaption}\item[{int}]{direction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a7830f73f495e3efbf3570f0be5d25db0}\index{SettingsMenuUI@{SettingsMenuUI}!ChangeQuality@{ChangeQuality}}
+\index{ChangeQuality@{ChangeQuality}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{ChangeQuality()}{ChangeQuality()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a7830f73f495e3efbf3570f0be5d25db0} 
+void Settings\+Menu\+UI.\+Change\+Quality (\begin{DoxyParamCaption}\item[{int}]{direction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ab99a08572f38414a14552abcaf95f921}\index{SettingsMenuUI@{SettingsMenuUI}!ChangeResolution@{ChangeResolution}}
+\index{ChangeResolution@{ChangeResolution}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{ChangeResolution()}{ChangeResolution()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ab99a08572f38414a14552abcaf95f921} 
+void Settings\+Menu\+UI.\+Change\+Resolution (\begin{DoxyParamCaption}\item[{int}]{direction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a0dc3860abfbae95e34cc5e71e193a356}\index{SettingsMenuUI@{SettingsMenuUI}!ChangeWindowMode@{ChangeWindowMode}}
+\index{ChangeWindowMode@{ChangeWindowMode}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{ChangeWindowMode()}{ChangeWindowMode()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a0dc3860abfbae95e34cc5e71e193a356} 
+void Settings\+Menu\+UI.\+Change\+Window\+Mode (\begin{DoxyParamCaption}\item[{int}]{direction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a518c87bba8ddb00aff51340e8cf3d75e}\index{SettingsMenuUI@{SettingsMenuUI}!CreateUI@{CreateUI}}
+\index{CreateUI@{CreateUI}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{CreateUI()}{CreateUI()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a518c87bba8ddb00aff51340e8cf3d75e} 
+void Settings\+Menu\+UI.\+Create\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a181ae03f43122e4f6f09334b9235f146}\index{SettingsMenuUI@{SettingsMenuUI}!EnsureInstance@{EnsureInstance}}
+\index{EnsureInstance@{EnsureInstance}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{EnsureInstance()}{EnsureInstance()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a181ae03f43122e4f6f09334b9235f146} 
+static \mbox{\hyperlink{class_settings_menu_u_i}{Settings\+Menu\+UI}} Settings\+Menu\+UI.\+Ensure\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{class_settings_menu_u_i_a2b73abfeeeb0b280583d8d1fef4398b2}\index{SettingsMenuUI@{SettingsMenuUI}!Hide@{Hide}}
+\index{Hide@{Hide}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{Hide()}{Hide()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a2b73abfeeeb0b280583d8d1fef4398b2} 
+void Settings\+Menu\+UI.\+Hide (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_settings_menu_u_i_ade8518db988c05c36c1bc7423db745cd}\index{SettingsMenuUI@{SettingsMenuUI}!HideImmediate@{HideImmediate}}
+\index{HideImmediate@{HideImmediate}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{HideImmediate()}{HideImmediate()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ade8518db988c05c36c1bc7423db745cd} 
+void Settings\+Menu\+UI.\+Hide\+Immediate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_acabdf5c8110513e2f49db411caa71c5d}\index{SettingsMenuUI@{SettingsMenuUI}!MakeButton@{MakeButton}}
+\index{MakeButton@{MakeButton}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeButton()}{MakeButton()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_acabdf5c8110513e2f49db411caa71c5d} 
+void Settings\+Menu\+UI.\+Make\+Button (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{label}{, }\item[{Color}]{color}{, }\item[{Color}]{hover\+Color}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{position}{, }\item[{Vector2}]{size}{, }\item[{Unity\+Engine.\+Events.\+Unity\+Action}]{action}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a53c6318e82cf3748a294f6bb46a000aa}\index{SettingsMenuUI@{SettingsMenuUI}!MakeFullRect@{MakeFullRect}}
+\index{MakeFullRect@{MakeFullRect}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeFullRect()}{MakeFullRect()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a53c6318e82cf3748a294f6bb46a000aa} 
+Image Settings\+Menu\+UI.\+Make\+Full\+Rect (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ab991d9f4d8cbf20d4b6f24642bc4151d}\index{SettingsMenuUI@{SettingsMenuUI}!MakeOptionRow@{MakeOptionRow}}
+\index{MakeOptionRow@{MakeOptionRow}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeOptionRow()}{MakeOptionRow()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ab991d9f4d8cbf20d4b6f24642bc4151d} 
+Text Settings\+Menu\+UI.\+Make\+Option\+Row (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{label}{, }\item[{float}]{y}{, }\item[{Unity\+Engine.\+Events.\+Unity\+Action}]{previous}{, }\item[{Unity\+Engine.\+Events.\+Unity\+Action}]{next}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a69f0beb01ee3c55c44300835fbd03cd5}\index{SettingsMenuUI@{SettingsMenuUI}!MakePanel@{MakePanel}}
+\index{MakePanel@{MakePanel}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakePanel()}{MakePanel()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a69f0beb01ee3c55c44300835fbd03cd5} 
+Game\+Object Settings\+Menu\+UI.\+Make\+Panel (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{position}{, }\item[{Vector2}]{size}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_af3b48f6b74127a11fabfd64c8a86b942}\index{SettingsMenuUI@{SettingsMenuUI}!MakeRect@{MakeRect}}
+\index{MakeRect@{MakeRect}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeRect()}{MakeRect()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_af3b48f6b74127a11fabfd64c8a86b942} 
+Image Settings\+Menu\+UI.\+Make\+Rect (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a1bc82dc3dd41934208b2483b4f7b4a92}\index{SettingsMenuUI@{SettingsMenuUI}!MakeRowLabel@{MakeRowLabel}}
+\index{MakeRowLabel@{MakeRowLabel}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeRowLabel()}{MakeRowLabel()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a1bc82dc3dd41934208b2483b4f7b4a92} 
+void Settings\+Menu\+UI.\+Make\+Row\+Label (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{label}{, }\item[{float}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_af0574ada67a475aa6b709619630d2371}\index{SettingsMenuUI@{SettingsMenuUI}!MakeSectionLabel@{MakeSectionLabel}}
+\index{MakeSectionLabel@{MakeSectionLabel}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeSectionLabel()}{MakeSectionLabel()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_af0574ada67a475aa6b709619630d2371} 
+void Settings\+Menu\+UI.\+Make\+Section\+Label (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{label}{, }\item[{float}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a09988b72f616d40982e1b5ab4ac509e0}\index{SettingsMenuUI@{SettingsMenuUI}!MakeSliderRow@{MakeSliderRow}}
+\index{MakeSliderRow@{MakeSliderRow}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeSliderRow()}{MakeSliderRow()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a09988b72f616d40982e1b5ab4ac509e0} 
+Slider Settings\+Menu\+UI.\+Make\+Slider\+Row (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{label}{, }\item[{float}]{y}{, }\item[{Unity\+Engine.\+Events.\+Unity\+Action$<$ float $>$}]{callback}{, }\item[{out Text}]{value\+Text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a36729f89c66676ef7a27c4a15b05ab5d}\index{SettingsMenuUI@{SettingsMenuUI}!MakeText@{MakeText}}
+\index{MakeText@{MakeText}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeText()}{MakeText()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a36729f89c66676ef7a27c4a15b05ab5d} 
+Text Settings\+Menu\+UI.\+Make\+Text (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{content}{, }\item[{int}]{size}{, }\item[{Font\+Style}]{style}{, }\item[{Color}]{color}{, }\item[{Text\+Anchor}]{anchor}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_aa98040c126f4a7ad61b9dab8f0415c4a}\index{SettingsMenuUI@{SettingsMenuUI}!MakeToggleRow@{MakeToggleRow}}
+\index{MakeToggleRow@{MakeToggleRow}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{MakeToggleRow()}{MakeToggleRow()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_aa98040c126f4a7ad61b9dab8f0415c4a} 
+Text Settings\+Menu\+UI.\+Make\+Toggle\+Row (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{label}{, }\item[{float}]{y}{, }\item[{Unity\+Engine.\+Events.\+Unity\+Action}]{toggle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a721b7c512403a4d2b4d9d345e3e90606}\index{SettingsMenuUI@{SettingsMenuUI}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a721b7c512403a4d2b4d9d345e3e90606} 
+void Settings\+Menu\+UI.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a660bd57e8df39520805e6a30ffb55f71}\index{SettingsMenuUI@{SettingsMenuUI}!OnMasterChanged@{OnMasterChanged}}
+\index{OnMasterChanged@{OnMasterChanged}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{OnMasterChanged()}{OnMasterChanged()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a660bd57e8df39520805e6a30ffb55f71} 
+void Settings\+Menu\+UI.\+On\+Master\+Changed (\begin{DoxyParamCaption}\item[{float}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ad84f6d5c6e123f4374ec2e612d44d917}\index{SettingsMenuUI@{SettingsMenuUI}!OnMusicChanged@{OnMusicChanged}}
+\index{OnMusicChanged@{OnMusicChanged}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{OnMusicChanged()}{OnMusicChanged()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ad84f6d5c6e123f4374ec2e612d44d917} 
+void Settings\+Menu\+UI.\+On\+Music\+Changed (\begin{DoxyParamCaption}\item[{float}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_af262bffd7bd67e45bf23c2482a7b7fe9}\index{SettingsMenuUI@{SettingsMenuUI}!OnSensitivityChanged@{OnSensitivityChanged}}
+\index{OnSensitivityChanged@{OnSensitivityChanged}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{OnSensitivityChanged()}{OnSensitivityChanged()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_af262bffd7bd67e45bf23c2482a7b7fe9} 
+void Settings\+Menu\+UI.\+On\+Sensitivity\+Changed (\begin{DoxyParamCaption}\item[{float}]{slider\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_af7d0baab193c694507f82ee4991d9610}\index{SettingsMenuUI@{SettingsMenuUI}!OnSfxChanged@{OnSfxChanged}}
+\index{OnSfxChanged@{OnSfxChanged}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{OnSfxChanged()}{OnSfxChanged()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_af7d0baab193c694507f82ee4991d9610} 
+void Settings\+Menu\+UI.\+On\+Sfx\+Changed (\begin{DoxyParamCaption}\item[{float}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a66fca89d6a50222452236dc928a8e7d0}\index{SettingsMenuUI@{SettingsMenuUI}!RefreshValues@{RefreshValues}}
+\index{RefreshValues@{RefreshValues}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{RefreshValues()}{RefreshValues()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a66fca89d6a50222452236dc928a8e7d0} 
+void Settings\+Menu\+UI.\+Refresh\+Values (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_aa0bee9b1dee5b8bde02e5b341da938ee}\index{SettingsMenuUI@{SettingsMenuUI}!SetRect@{SetRect}}
+\index{SetRect@{SetRect}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{SetRect()}{SetRect()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_aa0bee9b1dee5b8bde02e5b341da938ee} 
+void Settings\+Menu\+UI.\+Set\+Rect (\begin{DoxyParamCaption}\item[{Component}]{component}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{position}{, }\item[{Vector2}]{size}{, }\item[{Vector2}]{pivot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a4d9250fda292eaed5d7f920362c356ef}\index{SettingsMenuUI@{SettingsMenuUI}!SetSliderValue@{SetSliderValue}}
+\index{SetSliderValue@{SetSliderValue}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{SetSliderValue()}{SetSliderValue()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a4d9250fda292eaed5d7f920362c356ef} 
+void Settings\+Menu\+UI.\+Set\+Slider\+Value (\begin{DoxyParamCaption}\item[{Slider}]{slider}{, }\item[{float}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a9c7a8457b21a8a34bbf2258920a11e87}\index{SettingsMenuUI@{SettingsMenuUI}!Show@{Show}}
+\index{Show@{Show}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a9c7a8457b21a8a34bbf2258920a11e87} 
+void Settings\+Menu\+UI.\+Show (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_settings_menu_u_i_ae55159f62584cb01ec92290c95018ee0}\index{SettingsMenuUI@{SettingsMenuUI}!ToggleVSync@{ToggleVSync}}
+\index{ToggleVSync@{ToggleVSync}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{ToggleVSync()}{ToggleVSync()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ae55159f62584cb01ec92290c95018ee0} 
+void Settings\+Menu\+UI.\+Toggle\+VSync (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_aaa9f68dc18d834071fbae3cb18ad5e89}\index{SettingsMenuUI@{SettingsMenuUI}!Update@{Update}}
+\index{Update@{Update}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_aaa9f68dc18d834071fbae3cb18ad5e89} 
+void Settings\+Menu\+UI.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_settings_menu_u_i_a39af73e9f7f3553694b4c3c2a7fe101d}\index{SettingsMenuUI@{SettingsMenuUI}!AccentGold@{AccentGold}}
+\index{AccentGold@{AccentGold}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{AccentGold}{AccentGold}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a39af73e9f7f3553694b4c3c2a7fe101d} 
+readonly Color Settings\+Menu\+UI.\+Accent\+Gold = new Color(0.\+86f, 0.\+68f, 0.\+28f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_acad230ade3ecfc06d9bea3a2784b7993}\index{SettingsMenuUI@{SettingsMenuUI}!BorderColor@{BorderColor}}
+\index{BorderColor@{BorderColor}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{BorderColor}{BorderColor}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_acad230ade3ecfc06d9bea3a2784b7993} 
+readonly Color Settings\+Menu\+UI.\+Border\+Color = new Color(0.\+15f, 0.\+16f, 0.\+17f, 0.\+95f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_aee877b57ed455636e3fc9849c3bfcb6f}\index{SettingsMenuUI@{SettingsMenuUI}!ButtonColor@{ButtonColor}}
+\index{ButtonColor@{ButtonColor}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{ButtonColor}{ButtonColor}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_aee877b57ed455636e3fc9849c3bfcb6f} 
+readonly Color Settings\+Menu\+UI.\+Button\+Color = new Color(0.\+055f, 0.\+12f, 0.\+22f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a20a59beaac4b9fdf8ae51b4b13fd04a9}\index{SettingsMenuUI@{SettingsMenuUI}!ButtonHoverColor@{ButtonHoverColor}}
+\index{ButtonHoverColor@{ButtonHoverColor}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{ButtonHoverColor}{ButtonHoverColor}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a20a59beaac4b9fdf8ae51b4b13fd04a9} 
+readonly Color Settings\+Menu\+UI.\+Button\+Hover\+Color = new Color(0.\+08f, 0.\+18f, 0.\+32f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a1d9c2263532a502b83f5938adedf7faf}\index{SettingsMenuUI@{SettingsMenuUI}!cachedFont@{cachedFont}}
+\index{cachedFont@{cachedFont}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{cachedFont}{cachedFont}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a1d9c2263532a502b83f5938adedf7faf} 
+Font Settings\+Menu\+UI.\+cached\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ac1afd788187863d09e1b865bf1703206}\index{SettingsMenuUI@{SettingsMenuUI}!canvasGroup@{canvasGroup}}
+\index{canvasGroup@{canvasGroup}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{canvasGroup}{canvasGroup}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ac1afd788187863d09e1b865bf1703206} 
+Canvas\+Group Settings\+Menu\+UI.\+canvas\+Group\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a3755155df3f4ff3ac9e4ac5392caa785}\index{SettingsMenuUI@{SettingsMenuUI}!CloseButtonColor@{CloseButtonColor}}
+\index{CloseButtonColor@{CloseButtonColor}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{CloseButtonColor}{CloseButtonColor}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a3755155df3f4ff3ac9e4ac5392caa785} 
+readonly Color Settings\+Menu\+UI.\+Close\+Button\+Color = new Color(0.\+30f, 0.\+065f, 0.\+06f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ab5d5fb31ebaec968b4564f2e8a8158cf}\index{SettingsMenuUI@{SettingsMenuUI}!CloseButtonHoverColor@{CloseButtonHoverColor}}
+\index{CloseButtonHoverColor@{CloseButtonHoverColor}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{CloseButtonHoverColor}{CloseButtonHoverColor}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ab5d5fb31ebaec968b4564f2e8a8158cf} 
+readonly Color Settings\+Menu\+UI.\+Close\+Button\+Hover\+Color = new Color(0.\+46f, 0.\+10f, 0.\+085f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ac2f3017e17b9906a76e13b77b9d38905}\index{SettingsMenuUI@{SettingsMenuUI}!fpsValueText@{fpsValueText}}
+\index{fpsValueText@{fpsValueText}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{fpsValueText}{fpsValueText}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ac2f3017e17b9906a76e13b77b9d38905} 
+Text Settings\+Menu\+UI.\+fps\+Value\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a4c6ca79732bc652e67e3f524f5fed3d0}\index{SettingsMenuUI@{SettingsMenuUI}!HeaderColor@{HeaderColor}}
+\index{HeaderColor@{HeaderColor}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{HeaderColor}{HeaderColor}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a4c6ca79732bc652e67e3f524f5fed3d0} 
+readonly Color Settings\+Menu\+UI.\+Header\+Color = new Color(0.\+028f, 0.\+034f, 0.\+044f, 0.\+96f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a8bcd333f8b29c418d5d506642a1930a5}\index{SettingsMenuUI@{SettingsMenuUI}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{isOpen}{isOpen}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a8bcd333f8b29c418d5d506642a1930a5} 
+bool Settings\+Menu\+UI.\+is\+Open\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a48358fee530fed593729c9830598cf8c}\index{SettingsMenuUI@{SettingsMenuUI}!masterSlider@{masterSlider}}
+\index{masterSlider@{masterSlider}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{masterSlider}{masterSlider}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a48358fee530fed593729c9830598cf8c} 
+Slider Settings\+Menu\+UI.\+master\+Slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_af5b11a830047a0a84ce165bd738663c0}\index{SettingsMenuUI@{SettingsMenuUI}!masterValueText@{masterValueText}}
+\index{masterValueText@{masterValueText}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{masterValueText}{masterValueText}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_af5b11a830047a0a84ce165bd738663c0} 
+Text Settings\+Menu\+UI.\+master\+Value\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a45bc942ab83dc78f76d3c1870f2cdaa7}\index{SettingsMenuUI@{SettingsMenuUI}!musicSlider@{musicSlider}}
+\index{musicSlider@{musicSlider}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{musicSlider}{musicSlider}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a45bc942ab83dc78f76d3c1870f2cdaa7} 
+Slider Settings\+Menu\+UI.\+music\+Slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a2a91c5037118cf4cf3c0bfbe8f04f1c6}\index{SettingsMenuUI@{SettingsMenuUI}!musicValueText@{musicValueText}}
+\index{musicValueText@{musicValueText}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{musicValueText}{musicValueText}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a2a91c5037118cf4cf3c0bfbe8f04f1c6} 
+Text Settings\+Menu\+UI.\+music\+Value\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a789a90329f27ba47bcb41cc5ace6b7f2}\index{SettingsMenuUI@{SettingsMenuUI}!OverlayColor@{OverlayColor}}
+\index{OverlayColor@{OverlayColor}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{OverlayColor}{OverlayColor}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a789a90329f27ba47bcb41cc5ace6b7f2} 
+readonly Color Settings\+Menu\+UI.\+Overlay\+Color = new Color(0.\+006f, 0.\+008f, 0.\+012f, 0.\+82f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a18d80bfc8d4662b273256df4d668d882}\index{SettingsMenuUI@{SettingsMenuUI}!panel@{panel}}
+\index{panel@{panel}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{panel}{panel}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a18d80bfc8d4662b273256df4d668d882} 
+Game\+Object Settings\+Menu\+UI.\+panel\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_aaeda238523c23e17b6f7b2ecbd973eb1}\index{SettingsMenuUI@{SettingsMenuUI}!PanelColor@{PanelColor}}
+\index{PanelColor@{PanelColor}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{PanelColor}{PanelColor}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_aaeda238523c23e17b6f7b2ecbd973eb1} 
+readonly Color Settings\+Menu\+UI.\+Panel\+Color = new Color(0.\+018f, 0.\+022f, 0.\+028f, 0.\+98f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a1c5615abb4ff92e18483efbdc85a7d61}\index{SettingsMenuUI@{SettingsMenuUI}!qualityValueText@{qualityValueText}}
+\index{qualityValueText@{qualityValueText}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{qualityValueText}{qualityValueText}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a1c5615abb4ff92e18483efbdc85a7d61} 
+Text Settings\+Menu\+UI.\+quality\+Value\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ac04c012f4b4393cc3259cc73a8700a70}\index{SettingsMenuUI@{SettingsMenuUI}!resolutionValueText@{resolutionValueText}}
+\index{resolutionValueText@{resolutionValueText}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{resolutionValueText}{resolutionValueText}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ac04c012f4b4393cc3259cc73a8700a70} 
+Text Settings\+Menu\+UI.\+resolution\+Value\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a90e0cb7276fdeaae66b23d8e4b5baf51}\index{SettingsMenuUI@{SettingsMenuUI}!sensitivitySlider@{sensitivitySlider}}
+\index{sensitivitySlider@{sensitivitySlider}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{sensitivitySlider}{sensitivitySlider}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a90e0cb7276fdeaae66b23d8e4b5baf51} 
+Slider Settings\+Menu\+UI.\+sensitivity\+Slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ae8bec0e933d36e635c431093223daaeb}\index{SettingsMenuUI@{SettingsMenuUI}!sensitivityValueText@{sensitivityValueText}}
+\index{sensitivityValueText@{sensitivityValueText}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{sensitivityValueText}{sensitivityValueText}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ae8bec0e933d36e635c431093223daaeb} 
+Text Settings\+Menu\+UI.\+sensitivity\+Value\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ac6b51161043d306c7de7d8ccccabf3a6}\index{SettingsMenuUI@{SettingsMenuUI}!settingsCanvas@{settingsCanvas}}
+\index{settingsCanvas@{settingsCanvas}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{settingsCanvas}{settingsCanvas}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ac6b51161043d306c7de7d8ccccabf3a6} 
+Canvas Settings\+Menu\+UI.\+settings\+Canvas\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ae96ae8ac0d8c1cbba60b04de54a10763}\index{SettingsMenuUI@{SettingsMenuUI}!sfxSlider@{sfxSlider}}
+\index{sfxSlider@{sfxSlider}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{sfxSlider}{sfxSlider}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ae96ae8ac0d8c1cbba60b04de54a10763} 
+Slider Settings\+Menu\+UI.\+sfx\+Slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a95beda49dac633aa7a6b8af7b2fd70bd}\index{SettingsMenuUI@{SettingsMenuUI}!sfxValueText@{sfxValueText}}
+\index{sfxValueText@{sfxValueText}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{sfxValueText}{sfxValueText}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a95beda49dac633aa7a6b8af7b2fd70bd} 
+Text Settings\+Menu\+UI.\+sfx\+Value\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a34be6dc1fa306be34967bf144a0431d6}\index{SettingsMenuUI@{SettingsMenuUI}!SliderBg@{SliderBg}}
+\index{SliderBg@{SliderBg}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{SliderBg}{SliderBg}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a34be6dc1fa306be34967bf144a0431d6} 
+readonly Color Settings\+Menu\+UI.\+Slider\+Bg = new Color(0.\+06f, 0.\+07f, 0.\+08f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ab2bed26898b031404a426b45088131e7}\index{SettingsMenuUI@{SettingsMenuUI}!SliderFill@{SliderFill}}
+\index{SliderFill@{SliderFill}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{SliderFill}{SliderFill}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ab2bed26898b031404a426b45088131e7} 
+readonly Color Settings\+Menu\+UI.\+Slider\+Fill = new Color(0.\+08f, 0.\+38f, 0.\+18f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ab5d58aa110447fcdaf9b8cc46edf87e6}\index{SettingsMenuUI@{SettingsMenuUI}!SliderHandle@{SliderHandle}}
+\index{SliderHandle@{SliderHandle}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{SliderHandle}{SliderHandle}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ab5d58aa110447fcdaf9b8cc46edf87e6} 
+readonly Color Settings\+Menu\+UI.\+Slider\+Handle = new Color(0.\+92f, 0.\+92f, 0.\+86f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a5b6f3197b89f2a5aa0f1862742939d43}\index{SettingsMenuUI@{SettingsMenuUI}!TextPrimary@{TextPrimary}}
+\index{TextPrimary@{TextPrimary}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{TextPrimary}{TextPrimary}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a5b6f3197b89f2a5aa0f1862742939d43} 
+readonly Color Settings\+Menu\+UI.\+Text\+Primary = new Color(0.\+91f, 0.\+92f, 0.\+94f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a7dfb14afe78fa8b22763a259998fc21c}\index{SettingsMenuUI@{SettingsMenuUI}!TextSecondary@{TextSecondary}}
+\index{TextSecondary@{TextSecondary}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{TextSecondary}{TextSecondary}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a7dfb14afe78fa8b22763a259998fc21c} 
+readonly Color Settings\+Menu\+UI.\+Text\+Secondary = new Color(0.\+58f, 0.\+62f, 0.\+69f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_ac99984a1c1ed14b7aae64f2e837758f8}\index{SettingsMenuUI@{SettingsMenuUI}!ValueColor@{ValueColor}}
+\index{ValueColor@{ValueColor}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{ValueColor}{ValueColor}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_ac99984a1c1ed14b7aae64f2e837758f8} 
+readonly Color Settings\+Menu\+UI.\+Value\+Color = new Color(0.\+88f, 0.\+78f, 0.\+52f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_aaf6151773fc897b2fa7c6405462cda71}\index{SettingsMenuUI@{SettingsMenuUI}!vSyncValueText@{vSyncValueText}}
+\index{vSyncValueText@{vSyncValueText}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{vSyncValueText}{vSyncValueText}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_aaf6151773fc897b2fa7c6405462cda71} 
+Text Settings\+Menu\+UI.\+v\+Sync\+Value\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_settings_menu_u_i_a7235ff3f611484aaf3f3d5c28e9d4262}\index{SettingsMenuUI@{SettingsMenuUI}!windowModeValueText@{windowModeValueText}}
+\index{windowModeValueText@{windowModeValueText}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{windowModeValueText}{windowModeValueText}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a7235ff3f611484aaf3f3d5c28e9d4262} 
+Text Settings\+Menu\+UI.\+window\+Mode\+Value\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_settings_menu_u_i_a301ab545ce71d70c3577516304964f1d}\index{SettingsMenuUI@{SettingsMenuUI}!Instance@{Instance}}
+\index{Instance@{Instance}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a301ab545ce71d70c3577516304964f1d} 
+\mbox{\hyperlink{class_settings_menu_u_i}{Settings\+Menu\+UI}} Settings\+Menu\+UI.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+\Hypertarget{class_settings_menu_u_i_a221863621737c07032972ff71a5e54d2}\index{SettingsMenuUI@{SettingsMenuUI}!IsOpen@{IsOpen}}
+\index{IsOpen@{IsOpen}!SettingsMenuUI@{SettingsMenuUI}}
+\doxysubsubsection{\texorpdfstring{IsOpen}{IsOpen}}
+{\footnotesize\ttfamily \label{class_settings_menu_u_i_a221863621737c07032972ff71a5e54d2} 
+bool Settings\+Menu\+UI.\+Is\+Open\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+UI/\mbox{\hyperlink{_settings_menu_u_i_8cs}{Settings\+Menu\+UI.\+cs}}\end{DoxyCompactItemize}

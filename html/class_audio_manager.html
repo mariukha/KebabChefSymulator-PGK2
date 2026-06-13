@@ -1,0 +1,1909 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy AudioManager</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="#pri-static-attribs">Statyczne atrybuty prywatne</a> &#124;
+<a href="class_audio_manager-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy AudioManager</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Diagram dziedziczenia dla AudioManager</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_audio_manager.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a31eb57e61b446a3df8667c5d337242bf" id="r_a31eb57e61b446a3df8667c5d337242bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31eb57e61b446a3df8667c5d337242bf">PlayChopSound</a> ()</td></tr>
+<tr class="memdesc:a31eb57e61b446a3df8667c5d337242bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dźwiękowy krojenia noża. Używany przy krojeniu składników na desce do krojenia.  <br /></td></tr>
+<tr class="separator:a31eb57e61b446a3df8667c5d337242bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc7777cf8fbb9059b53f8ef7be653cfb" id="r_acc7777cf8fbb9059b53f8ef7be653cfb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc7777cf8fbb9059b53f8ef7be653cfb">PlayPickupSound</a> ()</td></tr>
+<tr class="memdesc:acc7777cf8fbb9059b53f8ef7be653cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dźwiękowy podnoszenia przedmiotu. Używany gdy gracz podnosi składnik lub przedmiot ze stanowiska.  <br /></td></tr>
+<tr class="separator:acc7777cf8fbb9059b53f8ef7be653cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a217a140358c72d5eb1d386a495de5a8b" id="r_a217a140358c72d5eb1d386a495de5a8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a217a140358c72d5eb1d386a495de5a8b">PlayDropSound</a> ()</td></tr>
+<tr class="memdesc:a217a140358c72d5eb1d386a495de5a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dźwiękowy upuszczenia przedmiotu. Używany gdy gracz odkłada składnik na stanowisko.  <br /></td></tr>
+<tr class="separator:a217a140358c72d5eb1d386a495de5a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6916f374cd9bed2579f78ae083c94284" id="r_a6916f374cd9bed2579f78ae083c94284"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6916f374cd9bed2579f78ae083c94284">PlayMoneySound</a> ()</td></tr>
+<tr class="memdesc:a6916f374cd9bed2579f78ae083c94284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dźwiękowy otrzymania pieniędzy. Używany przy pomyślnym zrealizowaniu zamówienia klienta.  <br /></td></tr>
+<tr class="separator:a6916f374cd9bed2579f78ae083c94284"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac500d99259cf57d7f34a63ceba33261e" id="r_ac500d99259cf57d7f34a63ceba33261e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac500d99259cf57d7f34a63ceba33261e">PlayFailSound</a> ()</td></tr>
+<tr class="memdesc:ac500d99259cf57d7f34a63ceba33261e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dźwiękowy niepowodzenia. Używany gdy zamówienie wygaśnie lub zostanie źle zrealizowane.  <br /></td></tr>
+<tr class="separator:ac500d99259cf57d7f34a63ceba33261e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a627947efb9e2f097e713ca40b0a5f981" id="r_a627947efb9e2f097e713ca40b0a5f981"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a627947efb9e2f097e713ca40b0a5f981">PlayNewOrderSound</a> ()</td></tr>
+<tr class="memdesc:a627947efb9e2f097e713ca40b0a5f981"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dźwiękowy nowego zamówienia. Używany gdy pojawia się nowe zamówienie od klienta.  <br /></td></tr>
+<tr class="separator:a627947efb9e2f097e713ca40b0a5f981"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa44e079bb8d6f2af0c7778146c97975a" id="r_aa44e079bb8d6f2af0c7778146c97975a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa44e079bb8d6f2af0c7778146c97975a">PlayButtonClick</a> ()</td></tr>
+<tr class="memdesc:aa44e079bb8d6f2af0c7778146c97975a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dźwiękowy kliknięcia przycisku interfejsu. Używany we wszystkich interaktywnych elementach UI.  <br /></td></tr>
+<tr class="separator:aa44e079bb8d6f2af0c7778146c97975a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96806da3213b93a3f484c130c7dc8110" id="r_a96806da3213b93a3f484c130c7dc8110"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96806da3213b93a3f484c130c7dc8110">PlayReadySound</a> ()</td></tr>
+<tr class="memdesc:a96806da3213b93a3f484c130c7dc8110"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dźwiękowy gotowości potrawy. Używany gdy składnik jest w pełni przetworzony i gotowy do użycia.  <br /></td></tr>
+<tr class="separator:a96806da3213b93a3f484c130c7dc8110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bf7f46a5425180726dddf5a495df12f" id="r_a8bf7f46a5425180726dddf5a495df12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bf7f46a5425180726dddf5a495df12f">PlayWrapSound</a> ()</td></tr>
+<tr class="memdesc:a8bf7f46a5425180726dddf5a495df12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dźwiękowy zawijania kebaba. Używany gdy gracz zawija składniki w lawasz.  <br /></td></tr>
+<tr class="separator:a8bf7f46a5425180726dddf5a495df12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65009f0f12da1a6a7e3a8d6f69baf5ce" id="r_a65009f0f12da1a6a7e3a8d6f69baf5ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65009f0f12da1a6a7e3a8d6f69baf5ce">PlayUpgradeSound</a> ()</td></tr>
+<tr class="memdesc:a65009f0f12da1a6a7e3a8d6f69baf5ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt dźwiękowy zakupu ulepszenia. Używany gdy gracz kupuje ulepszenie w sklepie.  <br /></td></tr>
+<tr class="separator:a65009f0f12da1a6a7e3a8d6f69baf5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32b71dd228ca6d50636936be3681fa59" id="r_a32b71dd228ca6d50636936be3681fa59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32b71dd228ca6d50636936be3681fa59">StartGrillAmbient</a> ()</td></tr>
+<tr class="memdesc:a32b71dd228ca6d50636936be3681fa59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rozpoczyna odtwarzanie zapętlonego dźwięku skwierczenia grilla. Dźwięk jest odtwarzany tylko jeśli nie jest już aktywny.  <br /></td></tr>
+<tr class="separator:a32b71dd228ca6d50636936be3681fa59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a960ba9f46e809b5cc8980576df570a36" id="r_a960ba9f46e809b5cc8980576df570a36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a960ba9f46e809b5cc8980576df570a36">StopGrillAmbient</a> ()</td></tr>
+<tr class="memdesc:a960ba9f46e809b5cc8980576df570a36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zatrzymuje odtwarzanie zapętlonego dźwięku skwierczenia grilla.  <br /></td></tr>
+<tr class="separator:a960ba9f46e809b5cc8980576df570a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcf3772aefa4b77a8e4d409ade7b0b3f" id="r_abcf3772aefa4b77a8e4d409ade7b0b3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcf3772aefa4b77a8e4d409ade7b0b3f">SetMasterVolume</a> (float volume)</td></tr>
+<tr class="memdesc:abcf3772aefa4b77a8e4d409ade7b0b3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia główną głośność i aktualizuje wszystkie aktywne źródła dźwięku.  <br /></td></tr>
+<tr class="separator:abcf3772aefa4b77a8e4d409ade7b0b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86119c029ac5638fd4931b465a1970bf" id="r_a86119c029ac5638fd4931b465a1970bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86119c029ac5638fd4931b465a1970bf">SetSFXVolume</a> (float volume)</td></tr>
+<tr class="memdesc:a86119c029ac5638fd4931b465a1970bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia głośność efektów dźwiękowych i aktualizuje aktywne źródła dźwięku.  <br /></td></tr>
+<tr class="separator:a86119c029ac5638fd4931b465a1970bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add05f438dc5539268686059b3515afa2" id="r_add05f438dc5539268686059b3515afa2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add05f438dc5539268686059b3515afa2">SetMusicVolume</a> (float volume)</td></tr>
+<tr class="memdesc:add05f438dc5539268686059b3515afa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia głośność muzyki w tle i aktualizuje aktywne źródła dźwięku.  <br /></td></tr>
+<tr class="separator:add05f438dc5539268686059b3515afa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:af96f8bc4f9a0ad3f1a63a028bb31f790" id="r_af96f8bc4f9a0ad3f1a63a028bb31f790"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_audio_manager.html">AudioManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af96f8bc4f9a0ad3f1a63a028bb31f790">Instance</a><code> [get, private set]</code></td></tr>
+<tr class="memdesc:af96f8bc4f9a0ad3f1a63a028bb31f790"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statyczna instancja Singletona menedżera dźwięku. Umożliwia globalny dostęp do systemu audio z dowolnego miejsca w grze.  <br /></td></tr>
+<tr class="separator:af96f8bc4f9a0ad3f1a63a028bb31f790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeef08bbb06786ecd1d560460eebfcbee" id="r_aeef08bbb06786ecd1d560460eebfcbee"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeef08bbb06786ecd1d560460eebfcbee">MasterVolume</a><code> [get]</code></td></tr>
+<tr class="memdesc:aeef08bbb06786ecd1d560460eebfcbee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualna wartość głównej głośności (tylko do odczytu). Zakres: 0.0 - 1.0.  <br /></td></tr>
+<tr class="separator:aeef08bbb06786ecd1d560460eebfcbee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a947594f0071734e74e21535f619cb654" id="r_a947594f0071734e74e21535f619cb654"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a947594f0071734e74e21535f619cb654">SFXVolume</a><code> [get]</code></td></tr>
+<tr class="memdesc:a947594f0071734e74e21535f619cb654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualna wartość głośności efektów dźwiękowych (tylko do odczytu). Zakres: 0.0 - 1.0.  <br /></td></tr>
+<tr class="separator:a947594f0071734e74e21535f619cb654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a312e502a26002f6e36a8da7d881709df" id="r_a312e502a26002f6e36a8da7d881709df"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a312e502a26002f6e36a8da7d881709df">MusicVolume</a><code> [get]</code></td></tr>
+<tr class="memdesc:a312e502a26002f6e36a8da7d881709df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualna wartość głośności muzyki (tylko do odczytu). Zakres: 0.0 - 1.0.  <br /></td></tr>
+<tr class="separator:a312e502a26002f6e36a8da7d881709df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:a631d7d42b921bcbd82bd1baec2ec3ea7" id="r_a631d7d42b921bcbd82bd1baec2ec3ea7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a631d7d42b921bcbd82bd1baec2ec3ea7">Awake</a> ()</td></tr>
+<tr class="memdesc:a631d7d42b921bcbd82bd1baec2ec3ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizuje Singleton menedżera dźwięku. Jeśli instancja już istnieje, niszczy duplikat obiektu.  <br /></td></tr>
+<tr class="separator:a631d7d42b921bcbd82bd1baec2ec3ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab333270dca5bf5c039de3d70ca111ba9" id="r_ab333270dca5bf5c039de3d70ca111ba9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab333270dca5bf5c039de3d70ca111ba9">Start</a> ()</td></tr>
+<tr class="memdesc:ab333270dca5bf5c039de3d70ca111ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konfiguruje źródła dźwięku, generuje wszystkie klipy audio proceduralnie, stosuje ustawienia audio z menedżera ustawień gry i rozpoczyna odtwarzanie muzyki.  <br /></td></tr>
+<tr class="separator:ab333270dca5bf5c039de3d70ca111ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbfcef995f476afca3129df1919200cf" id="r_adbfcef995f476afca3129df1919200cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbfcef995f476afca3129df1919200cf">PlaySFX</a> (AudioClip clip, float volumeScale)</td></tr>
+<tr class="memdesc:adbfcef995f476afca3129df1919200cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza jednorazowy efekt dźwiękowy z domyślnym zakresem pitch (bez zmiany).  <br /></td></tr>
+<tr class="separator:adbfcef995f476afca3129df1919200cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63304c5a49c4b3abf9cbb0517309682b" id="r_a63304c5a49c4b3abf9cbb0517309682b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63304c5a49c4b3abf9cbb0517309682b">PlaySFX</a> (AudioClip clip, float volumeScale, float minPitch, float maxPitch)</td></tr>
+<tr class="memdesc:a63304c5a49c4b3abf9cbb0517309682b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza jednorazowy efekt dźwiękowy z losową zmianą wysokości tonu. Losowy pitch dodaje naturalne zróżnicowanie przy wielokrotnym odtwarzaniu tego samego efektu.  <br /></td></tr>
+<tr class="separator:a63304c5a49c4b3abf9cbb0517309682b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36917da375b4841228f6ca8a944a72a0" id="r_a36917da375b4841228f6ca8a944a72a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36917da375b4841228f6ca8a944a72a0">PlayMusic</a> ()</td></tr>
+<tr class="memdesc:a36917da375b4841228f6ca8a944a72a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rozpoczyna odtwarzanie zapętlonej muzyki w tle. Głośność jest obliczana jako iloczyn głośności muzyki i głównej głośności.  <br /></td></tr>
+<tr class="separator:a36917da375b4841228f6ca8a944a72a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ae00b3c823b2eca3b2b5977bae495ab" id="r_a3ae00b3c823b2eca3b2b5977bae495ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ae00b3c823b2eca3b2b5977bae495ab">ApplyVolumes</a> ()</td></tr>
+<tr class="memdesc:a3ae00b3c823b2eca3b2b5977bae495ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje głośność wszystkich aktualnie odtwarzanych źródeł dźwięku (muzyki i dźwięków otoczenia) na podstawie bieżących wartości głośności.  <br /></td></tr>
+<tr class="separator:a3ae00b3c823b2eca3b2b5977bae495ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38fe1e0843ba2cdd08c9bda3c5fca9d4" id="r_a38fe1e0843ba2cdd08c9bda3c5fca9d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38fe1e0843ba2cdd08c9bda3c5fca9d4">GenerateAllClips</a> ()</td></tr>
+<tr class="memdesc:a38fe1e0843ba2cdd08c9bda3c5fca9d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralnie wszystkie klipy audio używane w grze. Próbuje załadować muzykę z zasobów (Resources/Audio/music), a w przypadku braku pliku używa proceduralnie wygenerowanego dźwięku otoczenia.  <br /></td></tr>
+<tr class="separator:a38fe1e0843ba2cdd08c9bda3c5fca9d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a464702cd6f3fbca96a02ee3715bb6448" id="r_a464702cd6f3fbca96a02ee3715bb6448"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a464702cd6f3fbca96a02ee3715bb6448">GenerateChop</a> ()</td></tr>
+<tr class="memdesc:a464702cd6f3fbca96a02ee3715bb6448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip dźwiękowy krojenia noża — ostry szum z szybkim wygaszeniem. Łączy biały szum z krótkim kliknięciem sinusoidalnym imitującym uderzenie ostrza.  <br /></td></tr>
+<tr class="separator:a464702cd6f3fbca96a02ee3715bb6448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7444137a6a25bd4b0f95a2c8486c079" id="r_ac7444137a6a25bd4b0f95a2c8486c079"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7444137a6a25bd4b0f95a2c8486c079">GeneratePickup</a> ()</td></tr>
+<tr class="memdesc:ac7444137a6a25bd4b0f95a2c8486c079"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip dźwiękowy podnoszenia — jasny, narastający ton. Częstotliwość rośnie od 400 Hz do 900 Hz, tworząc wrażenie podnoszenia.  <br /></td></tr>
+<tr class="separator:ac7444137a6a25bd4b0f95a2c8486c079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c2689fcac99f314aa1e702627e6d244" id="r_a3c2689fcac99f314aa1e702627e6d244"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c2689fcac99f314aa1e702627e6d244">GenerateDrop</a> ()</td></tr>
+<tr class="memdesc:a3c2689fcac99f314aa1e702627e6d244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip dźwiękowy upuszczenia — opadający ton. Częstotliwość spada od 700 Hz do 250 Hz, symulując efekt spadania.  <br /></td></tr>
+<tr class="separator:a3c2689fcac99f314aa1e702627e6d244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c89c04851690fd6e2a5d50ffb68ce58" id="r_a3c89c04851690fd6e2a5d50ffb68ce58"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c89c04851690fd6e2a5d50ffb68ce58">GenerateMoney</a> ()</td></tr>
+<tr class="memdesc:a3c89c04851690fd6e2a5d50ffb68ce58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip dźwiękowy pieniędzy — jasny podwójny dzwonek w stylu kasy fiskalnej. Składa się z kilku harmonicznych tonów z opóźnionym uderzeniem.  <br /></td></tr>
+<tr class="separator:a3c89c04851690fd6e2a5d50ffb68ce58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acce7d53e1a8823fb08c203d0edaf92af" id="r_acce7d53e1a8823fb08c203d0edaf92af"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acce7d53e1a8823fb08c203d0edaf92af">GenerateFail</a> ()</td></tr>
+<tr class="memdesc:acce7d53e1a8823fb08c203d0edaf92af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip dźwiękowy niepowodzenia — opadający dysonansowy ton. Dwie bliskie częstotliwości tworzą efekt dudnienia, sygnalizujący błąd.  <br /></td></tr>
+<tr class="separator:acce7d53e1a8823fb08c203d0edaf92af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac936a552ac870c99fcd09a9f3b5b44b4" id="r_ac936a552ac870c99fcd09a9f3b5b44b4"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac936a552ac870c99fcd09a9f3b5b44b4">GenerateNewOrder</a> ()</td></tr>
+<tr class="memdesc:ac936a552ac870c99fcd09a9f3b5b44b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip dźwiękowy nowego zamówienia — jasny dzwonek z alikwotami i lekkim połyskiem, imitujący dzwonek w restauracji.  <br /></td></tr>
+<tr class="separator:ac936a552ac870c99fcd09a9f3b5b44b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad02f9ad4ff9d61ed27755ca7cb99f187" id="r_ad02f9ad4ff9d61ed27755ca7cb99f187"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad02f9ad4ff9d61ed27755ca7cb99f187">GenerateClick</a> ()</td></tr>
+<tr class="memdesc:ad02f9ad4ff9d61ed27755ca7cb99f187"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip dźwiękowy kliknięcia przycisku — bardzo krótki, suchy dźwięk. Szybkie wygaszenie eksponencjalne tworzy wrażenie mechanicznego kliknięcia.  <br /></td></tr>
+<tr class="separator:ad02f9ad4ff9d61ed27755ca7cb99f187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b500a5a286d6810cd818da80dbdec13" id="r_a7b500a5a286d6810cd818da80dbdec13"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b500a5a286d6810cd818da80dbdec13">GenerateReady</a> ()</td></tr>
+<tr class="memdesc:a7b500a5a286d6810cd818da80dbdec13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip dźwiękowy gotowości — miękki metaliczny stuk z ciepłym tonem potwierdzenia. Łączy szum impulsowy z tonami harmonicznymi.  <br /></td></tr>
+<tr class="separator:a7b500a5a286d6810cd818da80dbdec13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75e47c0a156ef90382e458c45cda2066" id="r_a75e47c0a156ef90382e458c45cda2066"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75e47c0a156ef90382e458c45cda2066">GenerateWrap</a> ()</td></tr>
+<tr class="memdesc:a75e47c0a156ef90382e458c45cda2066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip dźwiękowy zawijania — szelest papieru/lawasza z kontrolowanym uderzeniem. Używa filtrowanego szumu i akcentów niskoczęstotliwościowych.  <br /></td></tr>
+<tr class="separator:a75e47c0a156ef90382e458c45cda2066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ac4f549193068f069ab2df74c0cef17" id="r_a0ac4f549193068f069ab2df74c0cef17"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ac4f549193068f069ab2df74c0cef17">GenerateUpgrade</a> ()</td></tr>
+<tr class="memdesc:a0ac4f549193068f069ab2df74c0cef17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip dźwiękowy ulepszenia — kompaktowe arpeggio premium, nie głośna fanfara arcade'owa. Cztery nuty grane kolejno z lekkim połyskiem.  <br /></td></tr>
+<tr class="separator:a0ac4f549193068f069ab2df74c0cef17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81293646f638d62d5215e06e5a363df3" id="r_a81293646f638d62d5215e06e5a363df3"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81293646f638d62d5215e06e5a363df3">GenerateGrillLoop</a> ()</td></tr>
+<tr class="memdesc:a81293646f638d62d5215e06e5a363df3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip zapętlonego skwierczenia grilla — filtrowany szum z losowymi trzaskami i powolną modulacją amplitudy. Trwa 4 sekundy.  <br /></td></tr>
+<tr class="separator:a81293646f638d62d5215e06e5a363df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab87b98c9d3099cbccbae9591037126ca" id="r_ab87b98c9d3099cbccbae9591037126ca"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab87b98c9d3099cbccbae9591037126ca">GenerateMusicLoop</a> ()</td></tr>
+<tr class="memdesc:ab87b98c9d3099cbccbae9591037126ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje proceduralny klip zapętlonej muzyki w tle — ciepły dron otoczenia z łagodną progresją akordów. Zawiera bas, akord trójdźwiękowy, pad szumowy oraz płynne wejścia i wyjścia (fade in/out). Trwa 16 sekund.  <br /></td></tr>
+<tr class="separator:ab87b98c9d3099cbccbae9591037126ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa61d70d812143578ab0437f6fa9bb8fc" id="r_aa61d70d812143578ab0437f6fa9bb8fc"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa61d70d812143578ab0437f6fa9bb8fc">CreateClip</a> (string clipName, float[] data)</td></tr>
+<tr class="memdesc:aa61d70d812143578ab0437f6fa9bb8fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy klip audio Unity z podanej tablicy próbek.  <br /></td></tr>
+<tr class="separator:aa61d70d812143578ab0437f6fa9bb8fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cf84c64f2f28215053ebece1818f94e" id="r_a0cf84c64f2f28215053ebece1818f94e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cf84c64f2f28215053ebece1818f94e">OnDestroy</a> ()</td></tr>
+<tr class="memdesc:a0cf84c64f2f28215053ebece1818f94e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czyści referencję Singletona przy niszczeniu obiektu, zapobiegając odwoływaniu się do zniszczonej instancji.  <br /></td></tr>
+<tr class="separator:a0cf84c64f2f28215053ebece1818f94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:af20e9441762e9b8086842802fd93fd69" id="r_af20e9441762e9b8086842802fd93fd69"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af20e9441762e9b8086842802fd93fd69">sfxSource</a></td></tr>
+<tr class="memdesc:af20e9441762e9b8086842802fd93fd69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Źródło dźwięku używane do odtwarzania jednorazowych efektów dźwiękowych (SFX).  <br /></td></tr>
+<tr class="separator:af20e9441762e9b8086842802fd93fd69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54db9f2d0d9838c238a56cc82b222773" id="r_a54db9f2d0d9838c238a56cc82b222773"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54db9f2d0d9838c238a56cc82b222773">musicSource</a></td></tr>
+<tr class="memdesc:a54db9f2d0d9838c238a56cc82b222773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Źródło dźwięku używane do odtwarzania zapętlonej muzyki w tle.  <br /></td></tr>
+<tr class="separator:a54db9f2d0d9838c238a56cc82b222773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace1e9a567fcc1f37e95f98b4f83e3f26" id="r_ace1e9a567fcc1f37e95f98b4f83e3f26"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace1e9a567fcc1f37e95f98b4f83e3f26">ambientSource</a></td></tr>
+<tr class="memdesc:ace1e9a567fcc1f37e95f98b4f83e3f26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Źródło dźwięku używane do odtwarzania zapętlonych dźwięków otoczenia (np. skwierczenie grilla).  <br /></td></tr>
+<tr class="separator:ace1e9a567fcc1f37e95f98b4f83e3f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7288239a7f5e209fd4fabbdb88a4dfed" id="r_a7288239a7f5e209fd4fabbdb88a4dfed"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7288239a7f5e209fd4fabbdb88a4dfed">clipChop</a></td></tr>
+<tr class="memdesc:a7288239a7f5e209fd4fabbdb88a4dfed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla efektu krojenia noża.  <br /></td></tr>
+<tr class="separator:a7288239a7f5e209fd4fabbdb88a4dfed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae41f570fb251f4825e96524f096f010f" id="r_ae41f570fb251f4825e96524f096f010f"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae41f570fb251f4825e96524f096f010f">clipPickup</a></td></tr>
+<tr class="memdesc:ae41f570fb251f4825e96524f096f010f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla efektu podnoszenia przedmiotu.  <br /></td></tr>
+<tr class="separator:ae41f570fb251f4825e96524f096f010f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab758f6dab1fcf4096a9fe876bc115182" id="r_ab758f6dab1fcf4096a9fe876bc115182"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab758f6dab1fcf4096a9fe876bc115182">clipDrop</a></td></tr>
+<tr class="memdesc:ab758f6dab1fcf4096a9fe876bc115182"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla efektu upuszczenia przedmiotu.  <br /></td></tr>
+<tr class="separator:ab758f6dab1fcf4096a9fe876bc115182"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a485592b1fefa5cd51a1f025b39b22032" id="r_a485592b1fefa5cd51a1f025b39b22032"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a485592b1fefa5cd51a1f025b39b22032">clipMoney</a></td></tr>
+<tr class="memdesc:a485592b1fefa5cd51a1f025b39b22032"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla efektu otrzymania pieniędzy.  <br /></td></tr>
+<tr class="separator:a485592b1fefa5cd51a1f025b39b22032"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd0278d832952a5a49f57a0eaad523ae" id="r_acd0278d832952a5a49f57a0eaad523ae"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd0278d832952a5a49f57a0eaad523ae">clipFail</a></td></tr>
+<tr class="memdesc:acd0278d832952a5a49f57a0eaad523ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla efektu niepowodzenia (błąd zamówienia).  <br /></td></tr>
+<tr class="separator:acd0278d832952a5a49f57a0eaad523ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe38f5b4a78bce5fb6bae39ce211709c" id="r_abe38f5b4a78bce5fb6bae39ce211709c"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe38f5b4a78bce5fb6bae39ce211709c">clipNewOrder</a></td></tr>
+<tr class="memdesc:abe38f5b4a78bce5fb6bae39ce211709c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla efektu nowego zamówienia.  <br /></td></tr>
+<tr class="separator:abe38f5b4a78bce5fb6bae39ce211709c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a843ac53cd1f3c71b5cb76c4fea7fc831" id="r_a843ac53cd1f3c71b5cb76c4fea7fc831"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a843ac53cd1f3c71b5cb76c4fea7fc831">clipButtonClick</a></td></tr>
+<tr class="memdesc:a843ac53cd1f3c71b5cb76c4fea7fc831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla efektu kliknięcia przycisku w interfejsie.  <br /></td></tr>
+<tr class="separator:a843ac53cd1f3c71b5cb76c4fea7fc831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d744509d8c2042c71a0a1f4adad39cc" id="r_a3d744509d8c2042c71a0a1f4adad39cc"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d744509d8c2042c71a0a1f4adad39cc">clipReady</a></td></tr>
+<tr class="memdesc:a3d744509d8c2042c71a0a1f4adad39cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla efektu gotowości (potrawa gotowa).  <br /></td></tr>
+<tr class="separator:a3d744509d8c2042c71a0a1f4adad39cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8648d11b4ad08a65f915492c4a5a422" id="r_ac8648d11b4ad08a65f915492c4a5a422"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8648d11b4ad08a65f915492c4a5a422">clipWrap</a></td></tr>
+<tr class="memdesc:ac8648d11b4ad08a65f915492c4a5a422"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla efektu zawijania kebaba w lawasz.  <br /></td></tr>
+<tr class="separator:ac8648d11b4ad08a65f915492c4a5a422"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25772c2b18366b90490ca8386f68b519" id="r_a25772c2b18366b90490ca8386f68b519"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25772c2b18366b90490ca8386f68b519">clipUpgrade</a></td></tr>
+<tr class="memdesc:a25772c2b18366b90490ca8386f68b519"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla efektu zakupu ulepszenia.  <br /></td></tr>
+<tr class="separator:a25772c2b18366b90490ca8386f68b519"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad3695931375b07810f0a6308f0ab8cd" id="r_aad3695931375b07810f0a6308f0ab8cd"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad3695931375b07810f0a6308f0ab8cd">clipGrillLoop</a></td></tr>
+<tr class="memdesc:aad3695931375b07810f0a6308f0ab8cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla zapętlonego efektu skwierczenia grilla.  <br /></td></tr>
+<tr class="separator:aad3695931375b07810f0a6308f0ab8cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a8291444701588f30c3239dce47c15b" id="r_a6a8291444701588f30c3239dce47c15b"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a8291444701588f30c3239dce47c15b">clipMusicLoop</a></td></tr>
+<tr class="memdesc:a6a8291444701588f30c3239dce47c15b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klip audio dla zapętlonej muzyki w tle.  <br /></td></tr>
+<tr class="separator:a6a8291444701588f30c3239dce47c15b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ffa86b870d056dc5e9c039c01820fd6" id="r_a1ffa86b870d056dc5e9c039c01820fd6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ffa86b870d056dc5e9c039c01820fd6">masterVolume</a> = 1f</td></tr>
+<tr class="memdesc:a1ffa86b870d056dc5e9c039c01820fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Główna głośność, wpływająca na wszystkie źródła dźwięku. Zakres: 0.0 - 1.0.  <br /></td></tr>
+<tr class="separator:a1ffa86b870d056dc5e9c039c01820fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b6fc07e298f39996023921d7ae1cec5" id="r_a1b6fc07e298f39996023921d7ae1cec5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b6fc07e298f39996023921d7ae1cec5">sfxVolume</a> = 0.7f</td></tr>
+<tr class="memdesc:a1b6fc07e298f39996023921d7ae1cec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Głośność efektów dźwiękowych (SFX). Zakres: 0.0 - 1.0.  <br /></td></tr>
+<tr class="separator:a1b6fc07e298f39996023921d7ae1cec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac773fb615b917c71e32555ca6d5e0833" id="r_ac773fb615b917c71e32555ca6d5e0833"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac773fb615b917c71e32555ca6d5e0833">musicVolume</a> = 0.3f</td></tr>
+<tr class="memdesc:ac773fb615b917c71e32555ca6d5e0833"><td class="mdescLeft">&#160;</td><td class="mdescRight">Głośność muzyki w tle. Zakres: 0.0 - 1.0.  <br /></td></tr>
+<tr class="separator:ac773fb615b917c71e32555ca6d5e0833"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Statyczne atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a7d87d670721005006e2557921459ba76" id="r_a7d87d670721005006e2557921459ba76"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d87d670721005006e2557921459ba76">SampleRate</a> = 44100</td></tr>
+<tr class="memdesc:a7d87d670721005006e2557921459ba76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Częstotliwość próbkowania używana do generowania proceduralnych klipów audio (w Hz).  <br /></td></tr>
+<tr class="separator:a7d87d670721005006e2557921459ba76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a3ae00b3c823b2eca3b2b5977bae495ab" name="a3ae00b3c823b2eca3b2b5977bae495ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ae00b3c823b2eca3b2b5977bae495ab">&#9670;&#160;</a></span>ApplyVolumes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.ApplyVolumes </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizuje głośność wszystkich aktualnie odtwarzanych źródeł dźwięku (muzyki i dźwięków otoczenia) na podstawie bieżących wartości głośności. </p>
+
+</div>
+</div>
+<a id="a631d7d42b921bcbd82bd1baec2ec3ea7" name="a631d7d42b921bcbd82bd1baec2ec3ea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a631d7d42b921bcbd82bd1baec2ec3ea7">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicjalizuje Singleton menedżera dźwięku. Jeśli instancja już istnieje, niszczy duplikat obiektu. </p>
+
+</div>
+</div>
+<a id="aa61d70d812143578ab0437f6fa9bb8fc" name="aa61d70d812143578ab0437f6fa9bb8fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa61d70d812143578ab0437f6fa9bb8fc">&#9670;&#160;</a></span>CreateClip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.CreateClip </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>clipName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float[]</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy klip audio Unity z podanej tablicy próbek. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clipName</td><td>Nazwa klipu audio do identyfikacji.</td></tr>
+    <tr><td class="paramname">data</td><td>Tablica próbek audio (wartości float od -1.0 do 1.0).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Utworzony klip audio Unity z jednym kanałem i zadaną częstotliwością próbkowania.</dd></dl>
+
+</div>
+</div>
+<a id="a38fe1e0843ba2cdd08c9bda3c5fca9d4" name="a38fe1e0843ba2cdd08c9bda3c5fca9d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38fe1e0843ba2cdd08c9bda3c5fca9d4">&#9670;&#160;</a></span>GenerateAllClips()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.GenerateAllClips </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralnie wszystkie klipy audio używane w grze. Próbuje załadować muzykę z zasobów (Resources/Audio/music), a w przypadku braku pliku używa proceduralnie wygenerowanego dźwięku otoczenia. </p>
+
+</div>
+</div>
+<a id="a464702cd6f3fbca96a02ee3715bb6448" name="a464702cd6f3fbca96a02ee3715bb6448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a464702cd6f3fbca96a02ee3715bb6448">&#9670;&#160;</a></span>GenerateChop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GenerateChop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip dźwiękowy krojenia noża — ostry szum z szybkim wygaszeniem. Łączy biały szum z krótkim kliknięciem sinusoidalnym imitującym uderzenie ostrza. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio efektu krojenia.</dd></dl>
+
+</div>
+</div>
+<a id="ad02f9ad4ff9d61ed27755ca7cb99f187" name="ad02f9ad4ff9d61ed27755ca7cb99f187"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad02f9ad4ff9d61ed27755ca7cb99f187">&#9670;&#160;</a></span>GenerateClick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GenerateClick </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip dźwiękowy kliknięcia przycisku — bardzo krótki, suchy dźwięk. Szybkie wygaszenie eksponencjalne tworzy wrażenie mechanicznego kliknięcia. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio efektu kliknięcia.</dd></dl>
+
+</div>
+</div>
+<a id="a3c2689fcac99f314aa1e702627e6d244" name="a3c2689fcac99f314aa1e702627e6d244"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c2689fcac99f314aa1e702627e6d244">&#9670;&#160;</a></span>GenerateDrop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GenerateDrop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip dźwiękowy upuszczenia — opadający ton. Częstotliwość spada od 700 Hz do 250 Hz, symulując efekt spadania. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio efektu upuszczenia.</dd></dl>
+
+</div>
+</div>
+<a id="acce7d53e1a8823fb08c203d0edaf92af" name="acce7d53e1a8823fb08c203d0edaf92af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acce7d53e1a8823fb08c203d0edaf92af">&#9670;&#160;</a></span>GenerateFail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GenerateFail </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip dźwiękowy niepowodzenia — opadający dysonansowy ton. Dwie bliskie częstotliwości tworzą efekt dudnienia, sygnalizujący błąd. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio efektu niepowodzenia.</dd></dl>
+
+</div>
+</div>
+<a id="a81293646f638d62d5215e06e5a363df3" name="a81293646f638d62d5215e06e5a363df3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81293646f638d62d5215e06e5a363df3">&#9670;&#160;</a></span>GenerateGrillLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GenerateGrillLoop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip zapętlonego skwierczenia grilla — filtrowany szum z losowymi trzaskami i powolną modulacją amplitudy. Trwa 4 sekundy. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio zapętlonego efektu grilla.</dd></dl>
+
+</div>
+</div>
+<a id="a3c89c04851690fd6e2a5d50ffb68ce58" name="a3c89c04851690fd6e2a5d50ffb68ce58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c89c04851690fd6e2a5d50ffb68ce58">&#9670;&#160;</a></span>GenerateMoney()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GenerateMoney </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip dźwiękowy pieniędzy — jasny podwójny dzwonek w stylu kasy fiskalnej. Składa się z kilku harmonicznych tonów z opóźnionym uderzeniem. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio efektu pieniędzy.</dd></dl>
+
+</div>
+</div>
+<a id="ab87b98c9d3099cbccbae9591037126ca" name="ab87b98c9d3099cbccbae9591037126ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab87b98c9d3099cbccbae9591037126ca">&#9670;&#160;</a></span>GenerateMusicLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GenerateMusicLoop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip zapętlonej muzyki w tle — ciepły dron otoczenia z łagodną progresją akordów. Zawiera bas, akord trójdźwiękowy, pad szumowy oraz płynne wejścia i wyjścia (fade in/out). Trwa 16 sekund. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio zapętlonej muzyki otoczenia.</dd></dl>
+
+</div>
+</div>
+<a id="ac936a552ac870c99fcd09a9f3b5b44b4" name="ac936a552ac870c99fcd09a9f3b5b44b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac936a552ac870c99fcd09a9f3b5b44b4">&#9670;&#160;</a></span>GenerateNewOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GenerateNewOrder </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip dźwiękowy nowego zamówienia — jasny dzwonek z alikwotami i lekkim połyskiem, imitujący dzwonek w restauracji. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio efektu nowego zamówienia.</dd></dl>
+
+</div>
+</div>
+<a id="ac7444137a6a25bd4b0f95a2c8486c079" name="ac7444137a6a25bd4b0f95a2c8486c079"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7444137a6a25bd4b0f95a2c8486c079">&#9670;&#160;</a></span>GeneratePickup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GeneratePickup </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip dźwiękowy podnoszenia — jasny, narastający ton. Częstotliwość rośnie od 400 Hz do 900 Hz, tworząc wrażenie podnoszenia. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio efektu podnoszenia.</dd></dl>
+
+</div>
+</div>
+<a id="a7b500a5a286d6810cd818da80dbdec13" name="a7b500a5a286d6810cd818da80dbdec13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b500a5a286d6810cd818da80dbdec13">&#9670;&#160;</a></span>GenerateReady()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GenerateReady </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip dźwiękowy gotowości — miękki metaliczny stuk z ciepłym tonem potwierdzenia. Łączy szum impulsowy z tonami harmonicznymi. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio efektu gotowości.</dd></dl>
+
+</div>
+</div>
+<a id="a0ac4f549193068f069ab2df74c0cef17" name="a0ac4f549193068f069ab2df74c0cef17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ac4f549193068f069ab2df74c0cef17">&#9670;&#160;</a></span>GenerateUpgrade()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GenerateUpgrade </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip dźwiękowy ulepszenia — kompaktowe arpeggio premium, nie głośna fanfara arcade'owa. Cztery nuty grane kolejno z lekkim połyskiem. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio efektu ulepszenia.</dd></dl>
+
+</div>
+</div>
+<a id="a75e47c0a156ef90382e458c45cda2066" name="a75e47c0a156ef90382e458c45cda2066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75e47c0a156ef90382e458c45cda2066">&#9670;&#160;</a></span>GenerateWrap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.GenerateWrap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje proceduralny klip dźwiękowy zawijania — szelest papieru/lawasza z kontrolowanym uderzeniem. Używa filtrowanego szumu i akcentów niskoczęstotliwościowych. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wygenerowany klip audio efektu zawijania.</dd></dl>
+
+</div>
+</div>
+<a id="a0cf84c64f2f28215053ebece1818f94e" name="a0cf84c64f2f28215053ebece1818f94e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cf84c64f2f28215053ebece1818f94e">&#9670;&#160;</a></span>OnDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.OnDestroy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czyści referencję Singletona przy niszczeniu obiektu, zapobiegając odwoływaniu się do zniszczonej instancji. </p>
+
+</div>
+</div>
+<a id="aa44e079bb8d6f2af0c7778146c97975a" name="aa44e079bb8d6f2af0c7778146c97975a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa44e079bb8d6f2af0c7778146c97975a">&#9670;&#160;</a></span>PlayButtonClick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlayButtonClick </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dźwiękowy kliknięcia przycisku interfejsu. Używany we wszystkich interaktywnych elementach UI. </p>
+
+</div>
+</div>
+<a id="a31eb57e61b446a3df8667c5d337242bf" name="a31eb57e61b446a3df8667c5d337242bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31eb57e61b446a3df8667c5d337242bf">&#9670;&#160;</a></span>PlayChopSound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlayChopSound </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dźwiękowy krojenia noża. Używany przy krojeniu składników na desce do krojenia. </p>
+
+</div>
+</div>
+<a id="a217a140358c72d5eb1d386a495de5a8b" name="a217a140358c72d5eb1d386a495de5a8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a217a140358c72d5eb1d386a495de5a8b">&#9670;&#160;</a></span>PlayDropSound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlayDropSound </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dźwiękowy upuszczenia przedmiotu. Używany gdy gracz odkłada składnik na stanowisko. </p>
+
+</div>
+</div>
+<a id="ac500d99259cf57d7f34a63ceba33261e" name="ac500d99259cf57d7f34a63ceba33261e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac500d99259cf57d7f34a63ceba33261e">&#9670;&#160;</a></span>PlayFailSound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlayFailSound </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dźwiękowy niepowodzenia. Używany gdy zamówienie wygaśnie lub zostanie źle zrealizowane. </p>
+
+</div>
+</div>
+<a id="a6916f374cd9bed2579f78ae083c94284" name="a6916f374cd9bed2579f78ae083c94284"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6916f374cd9bed2579f78ae083c94284">&#9670;&#160;</a></span>PlayMoneySound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlayMoneySound </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dźwiękowy otrzymania pieniędzy. Używany przy pomyślnym zrealizowaniu zamówienia klienta. </p>
+
+</div>
+</div>
+<a id="a36917da375b4841228f6ca8a944a72a0" name="a36917da375b4841228f6ca8a944a72a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36917da375b4841228f6ca8a944a72a0">&#9670;&#160;</a></span>PlayMusic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlayMusic </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rozpoczyna odtwarzanie zapętlonej muzyki w tle. Głośność jest obliczana jako iloczyn głośności muzyki i głównej głośności. </p>
+
+</div>
+</div>
+<a id="a627947efb9e2f097e713ca40b0a5f981" name="a627947efb9e2f097e713ca40b0a5f981"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a627947efb9e2f097e713ca40b0a5f981">&#9670;&#160;</a></span>PlayNewOrderSound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlayNewOrderSound </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dźwiękowy nowego zamówienia. Używany gdy pojawia się nowe zamówienie od klienta. </p>
+
+</div>
+</div>
+<a id="acc7777cf8fbb9059b53f8ef7be653cfb" name="acc7777cf8fbb9059b53f8ef7be653cfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7777cf8fbb9059b53f8ef7be653cfb">&#9670;&#160;</a></span>PlayPickupSound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlayPickupSound </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dźwiękowy podnoszenia przedmiotu. Używany gdy gracz podnosi składnik lub przedmiot ze stanowiska. </p>
+
+</div>
+</div>
+<a id="a96806da3213b93a3f484c130c7dc8110" name="a96806da3213b93a3f484c130c7dc8110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96806da3213b93a3f484c130c7dc8110">&#9670;&#160;</a></span>PlayReadySound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlayReadySound </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dźwiękowy gotowości potrawy. Używany gdy składnik jest w pełni przetworzony i gotowy do użycia. </p>
+
+</div>
+</div>
+<a id="adbfcef995f476afca3129df1919200cf" name="adbfcef995f476afca3129df1919200cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbfcef995f476afca3129df1919200cf">&#9670;&#160;</a></span>PlaySFX() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlaySFX </td>
+          <td>(</td>
+          <td class="paramtype">AudioClip</td>          <td class="paramname"><span class="paramname"><em>clip</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volumeScale</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza jednorazowy efekt dźwiękowy z domyślnym zakresem pitch (bez zmiany). </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clip</td><td>Klip audio do odtworzenia.</td></tr>
+    <tr><td class="paramname">volumeScale</td><td>Skala głośności efektu (mnożona przez głośność SFX i główną).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a63304c5a49c4b3abf9cbb0517309682b" name="a63304c5a49c4b3abf9cbb0517309682b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63304c5a49c4b3abf9cbb0517309682b">&#9670;&#160;</a></span>PlaySFX() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlaySFX </td>
+          <td>(</td>
+          <td class="paramtype">AudioClip</td>          <td class="paramname"><span class="paramname"><em>clip</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volumeScale</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>minPitch</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxPitch</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza jednorazowy efekt dźwiękowy z losową zmianą wysokości tonu. Losowy pitch dodaje naturalne zróżnicowanie przy wielokrotnym odtwarzaniu tego samego efektu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clip</td><td>Klip audio do odtworzenia.</td></tr>
+    <tr><td class="paramname">volumeScale</td><td>Skala głośności efektu (mnożona przez głośność SFX i główną).</td></tr>
+    <tr><td class="paramname">minPitch</td><td>Minimalna wartość losowego pitch (wysokości tonu).</td></tr>
+    <tr><td class="paramname">maxPitch</td><td>Maksymalna wartość losowego pitch (wysokości tonu).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a65009f0f12da1a6a7e3a8d6f69baf5ce" name="a65009f0f12da1a6a7e3a8d6f69baf5ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65009f0f12da1a6a7e3a8d6f69baf5ce">&#9670;&#160;</a></span>PlayUpgradeSound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlayUpgradeSound </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dźwiękowy zakupu ulepszenia. Używany gdy gracz kupuje ulepszenie w sklepie. </p>
+
+</div>
+</div>
+<a id="a8bf7f46a5425180726dddf5a495df12f" name="a8bf7f46a5425180726dddf5a495df12f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bf7f46a5425180726dddf5a495df12f">&#9670;&#160;</a></span>PlayWrapSound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.PlayWrapSound </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt dźwiękowy zawijania kebaba. Używany gdy gracz zawija składniki w lawasz. </p>
+
+</div>
+</div>
+<a id="abcf3772aefa4b77a8e4d409ade7b0b3f" name="abcf3772aefa4b77a8e4d409ade7b0b3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcf3772aefa4b77a8e4d409ade7b0b3f">&#9670;&#160;</a></span>SetMasterVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.SetMasterVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volume</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia główną głośność i aktualizuje wszystkie aktywne źródła dźwięku. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>Nowa wartość głównej głośności (zostanie ograniczona do zakresu 0.0 - 1.0).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="add05f438dc5539268686059b3515afa2" name="add05f438dc5539268686059b3515afa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add05f438dc5539268686059b3515afa2">&#9670;&#160;</a></span>SetMusicVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.SetMusicVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volume</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia głośność muzyki w tle i aktualizuje aktywne źródła dźwięku. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>Nowa wartość głośności muzyki (zostanie ograniczona do zakresu 0.0 - 1.0).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a86119c029ac5638fd4931b465a1970bf" name="a86119c029ac5638fd4931b465a1970bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86119c029ac5638fd4931b465a1970bf">&#9670;&#160;</a></span>SetSFXVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.SetSFXVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volume</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia głośność efektów dźwiękowych i aktualizuje aktywne źródła dźwięku. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>Nowa wartość głośności SFX (zostanie ograniczona do zakresu 0.0 - 1.0).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab333270dca5bf5c039de3d70ca111ba9" name="ab333270dca5bf5c039de3d70ca111ba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab333270dca5bf5c039de3d70ca111ba9">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Konfiguruje źródła dźwięku, generuje wszystkie klipy audio proceduralnie, stosuje ustawienia audio z menedżera ustawień gry i rozpoczyna odtwarzanie muzyki. </p>
+
+</div>
+</div>
+<a id="a32b71dd228ca6d50636936be3681fa59" name="a32b71dd228ca6d50636936be3681fa59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32b71dd228ca6d50636936be3681fa59">&#9670;&#160;</a></span>StartGrillAmbient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.StartGrillAmbient </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rozpoczyna odtwarzanie zapętlonego dźwięku skwierczenia grilla. Dźwięk jest odtwarzany tylko jeśli nie jest już aktywny. </p>
+
+</div>
+</div>
+<a id="a960ba9f46e809b5cc8980576df570a36" name="a960ba9f46e809b5cc8980576df570a36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a960ba9f46e809b5cc8980576df570a36">&#9670;&#160;</a></span>StopGrillAmbient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AudioManager.StopGrillAmbient </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zatrzymuje odtwarzanie zapętlonego dźwięku skwierczenia grilla. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="ace1e9a567fcc1f37e95f98b4f83e3f26" name="ace1e9a567fcc1f37e95f98b4f83e3f26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace1e9a567fcc1f37e95f98b4f83e3f26">&#9670;&#160;</a></span>ambientSource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioSource AudioManager.ambientSource</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Źródło dźwięku używane do odtwarzania zapętlonych dźwięków otoczenia (np. skwierczenie grilla). </p>
+
+</div>
+</div>
+<a id="a843ac53cd1f3c71b5cb76c4fea7fc831" name="a843ac53cd1f3c71b5cb76c4fea7fc831"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a843ac53cd1f3c71b5cb76c4fea7fc831">&#9670;&#160;</a></span>clipButtonClick</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipButtonClick</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla efektu kliknięcia przycisku w interfejsie. </p>
+
+</div>
+</div>
+<a id="a7288239a7f5e209fd4fabbdb88a4dfed" name="a7288239a7f5e209fd4fabbdb88a4dfed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7288239a7f5e209fd4fabbdb88a4dfed">&#9670;&#160;</a></span>clipChop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipChop</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla efektu krojenia noża. </p>
+
+</div>
+</div>
+<a id="ab758f6dab1fcf4096a9fe876bc115182" name="ab758f6dab1fcf4096a9fe876bc115182"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab758f6dab1fcf4096a9fe876bc115182">&#9670;&#160;</a></span>clipDrop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipDrop</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla efektu upuszczenia przedmiotu. </p>
+
+</div>
+</div>
+<a id="acd0278d832952a5a49f57a0eaad523ae" name="acd0278d832952a5a49f57a0eaad523ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd0278d832952a5a49f57a0eaad523ae">&#9670;&#160;</a></span>clipFail</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipFail</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla efektu niepowodzenia (błąd zamówienia). </p>
+
+</div>
+</div>
+<a id="aad3695931375b07810f0a6308f0ab8cd" name="aad3695931375b07810f0a6308f0ab8cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad3695931375b07810f0a6308f0ab8cd">&#9670;&#160;</a></span>clipGrillLoop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipGrillLoop</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla zapętlonego efektu skwierczenia grilla. </p>
+
+</div>
+</div>
+<a id="a485592b1fefa5cd51a1f025b39b22032" name="a485592b1fefa5cd51a1f025b39b22032"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a485592b1fefa5cd51a1f025b39b22032">&#9670;&#160;</a></span>clipMoney</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipMoney</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla efektu otrzymania pieniędzy. </p>
+
+</div>
+</div>
+<a id="a6a8291444701588f30c3239dce47c15b" name="a6a8291444701588f30c3239dce47c15b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a8291444701588f30c3239dce47c15b">&#9670;&#160;</a></span>clipMusicLoop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipMusicLoop</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla zapętlonej muzyki w tle. </p>
+
+</div>
+</div>
+<a id="abe38f5b4a78bce5fb6bae39ce211709c" name="abe38f5b4a78bce5fb6bae39ce211709c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe38f5b4a78bce5fb6bae39ce211709c">&#9670;&#160;</a></span>clipNewOrder</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipNewOrder</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla efektu nowego zamówienia. </p>
+
+</div>
+</div>
+<a id="ae41f570fb251f4825e96524f096f010f" name="ae41f570fb251f4825e96524f096f010f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae41f570fb251f4825e96524f096f010f">&#9670;&#160;</a></span>clipPickup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipPickup</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla efektu podnoszenia przedmiotu. </p>
+
+</div>
+</div>
+<a id="a3d744509d8c2042c71a0a1f4adad39cc" name="a3d744509d8c2042c71a0a1f4adad39cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d744509d8c2042c71a0a1f4adad39cc">&#9670;&#160;</a></span>clipReady</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipReady</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla efektu gotowości (potrawa gotowa). </p>
+
+</div>
+</div>
+<a id="a25772c2b18366b90490ca8386f68b519" name="a25772c2b18366b90490ca8386f68b519"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25772c2b18366b90490ca8386f68b519">&#9670;&#160;</a></span>clipUpgrade</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipUpgrade</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla efektu zakupu ulepszenia. </p>
+
+</div>
+</div>
+<a id="ac8648d11b4ad08a65f915492c4a5a422" name="ac8648d11b4ad08a65f915492c4a5a422"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8648d11b4ad08a65f915492c4a5a422">&#9670;&#160;</a></span>clipWrap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.clipWrap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klip audio dla efektu zawijania kebaba w lawasz. </p>
+
+</div>
+</div>
+<a id="a1ffa86b870d056dc5e9c039c01820fd6" name="a1ffa86b870d056dc5e9c039c01820fd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ffa86b870d056dc5e9c039c01820fd6">&#9670;&#160;</a></span>masterVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AudioManager.masterVolume = 1f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Główna głośność, wpływająca na wszystkie źródła dźwięku. Zakres: 0.0 - 1.0. </p>
+
+</div>
+</div>
+<a id="a54db9f2d0d9838c238a56cc82b222773" name="a54db9f2d0d9838c238a56cc82b222773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54db9f2d0d9838c238a56cc82b222773">&#9670;&#160;</a></span>musicSource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioSource AudioManager.musicSource</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Źródło dźwięku używane do odtwarzania zapętlonej muzyki w tle. </p>
+
+</div>
+</div>
+<a id="ac773fb615b917c71e32555ca6d5e0833" name="ac773fb615b917c71e32555ca6d5e0833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac773fb615b917c71e32555ca6d5e0833">&#9670;&#160;</a></span>musicVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AudioManager.musicVolume = 0.3f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Głośność muzyki w tle. Zakres: 0.0 - 1.0. </p>
+
+</div>
+</div>
+<a id="a7d87d670721005006e2557921459ba76" name="a7d87d670721005006e2557921459ba76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d87d670721005006e2557921459ba76">&#9670;&#160;</a></span>SampleRate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int AudioManager.SampleRate = 44100</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Częstotliwość próbkowania używana do generowania proceduralnych klipów audio (w Hz). </p>
+
+</div>
+</div>
+<a id="af20e9441762e9b8086842802fd93fd69" name="af20e9441762e9b8086842802fd93fd69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af20e9441762e9b8086842802fd93fd69">&#9670;&#160;</a></span>sfxSource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioSource AudioManager.sfxSource</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Źródło dźwięku używane do odtwarzania jednorazowych efektów dźwiękowych (SFX). </p>
+
+</div>
+</div>
+<a id="a1b6fc07e298f39996023921d7ae1cec5" name="a1b6fc07e298f39996023921d7ae1cec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b6fc07e298f39996023921d7ae1cec5">&#9670;&#160;</a></span>sfxVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AudioManager.sfxVolume = 0.7f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Głośność efektów dźwiękowych (SFX). Zakres: 0.0 - 1.0. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="af96f8bc4f9a0ad3f1a63a028bb31f790" name="af96f8bc4f9a0ad3f1a63a028bb31f790"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af96f8bc4f9a0ad3f1a63a028bb31f790">&#9670;&#160;</a></span>Instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_audio_manager.html">AudioManager</a> AudioManager.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Statyczna instancja Singletona menedżera dźwięku. Umożliwia globalny dostęp do systemu audio z dowolnego miejsca w grze. </p>
+
+</div>
+</div>
+<a id="aeef08bbb06786ecd1d560460eebfcbee" name="aeef08bbb06786ecd1d560460eebfcbee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeef08bbb06786ecd1d560460eebfcbee">&#9670;&#160;</a></span>MasterVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AudioManager.MasterVolume</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualna wartość głównej głośności (tylko do odczytu). Zakres: 0.0 - 1.0. </p>
+
+</div>
+</div>
+<a id="a312e502a26002f6e36a8da7d881709df" name="a312e502a26002f6e36a8da7d881709df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a312e502a26002f6e36a8da7d881709df">&#9670;&#160;</a></span>MusicVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AudioManager.MusicVolume</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualna wartość głośności muzyki (tylko do odczytu). Zakres: 0.0 - 1.0. </p>
+
+</div>
+</div>
+<a id="a947594f0071734e74e21535f619cb654" name="a947594f0071734e74e21535f619cb654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a947594f0071734e74e21535f619cb654">&#9670;&#160;</a></span>SFXVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AudioManager.SFXVolume</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualna wartość głośności efektów dźwiękowych (tylko do odczytu). Zakres: 0.0 - 1.0. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/Audio/<a class="el" href="_audio_manager_8cs.html">AudioManager.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

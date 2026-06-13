@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja pliku Assets/Scripts/NetworkPlayer.cs</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Komponenty</a> &#124;
+<a href="#enum-members">Wyliczenia</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja pliku NetworkPlayer.cs</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Plik zawierający klasę <a class="el" href="class_network_player.html" title="Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.">NetworkPlayer</a> oraz klasy pomocnicze <a class="el" href="class_held_item_bob.html" title="Komponent dodający efekt delikatnego kołysania (bob) do trzymanego przedmiotu.">HeldItemBob</a> i <a class="el" href="class_remote_player_animator.html" title="Komponent animacji gracza zdalnego wykorzystujący system PlayableGraph.">RemotePlayerAnimator</a>.  
+<a href="#details">Więcej...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Komponenty</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_player.html">NetworkPlayer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.  <a href="class_network_player.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_held_item_bob.html">HeldItemBob</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Komponent dodający efekt delikatnego kołysania (bob) do trzymanego przedmiotu.  <a href="class_held_item_bob.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_remote_player_animator.html">RemotePlayerAnimator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Komponent animacji gracza zdalnego wykorzystujący system PlayableGraph.  <a href="class_remote_player_animator.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Wyliczenia</h2></td></tr>
+<tr class="memitem:a254701325960a5da9b33b8f9acbe09dd" id="r_a254701325960a5da9b33b8f9acbe09dd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a254701325960a5da9b33b8f9acbe09dd">NetworkVFXType</a> { <br />
+&#160;&#160;<a class="el" href="#a254701325960a5da9b33b8f9acbe09dda4db4563826bad0eb2f60ee6e42d0ea4b">Steam</a>
+, <a class="el" href="#a254701325960a5da9b33b8f9acbe09ddad55bcccf4bb36aa49e00d35de12eeb6c">StopSteam</a>
+, <a class="el" href="#a254701325960a5da9b33b8f9acbe09dda7d22da1fbe12dae4e009241cd5fedad9">DonerSmoke</a>
+, <a class="el" href="#a254701325960a5da9b33b8f9acbe09dda6664709c271f36b2a46c12b967127ca1">StopDonerSmoke</a>
+, <br />
+&#160;&#160;<a class="el" href="#a254701325960a5da9b33b8f9acbe09dda3329944ab04ab8cf2bbf658931d5a1b5">Chop</a>
+, <a class="el" href="#a254701325960a5da9b33b8f9acbe09dda96fd07f8244c1d8b9a38930ea4bdec97">Pickup</a>
+, <a class="el" href="#a254701325960a5da9b33b8f9acbe09dda3e679cff5b3a6f6f8f32aead541a0a12">Drop</a>
+, <a class="el" href="#a254701325960a5da9b33b8f9acbe09ddae7d31fc0602fb2ede144d18cdffd816b">Ready</a>
+, <br />
+&#160;&#160;<a class="el" href="#a254701325960a5da9b33b8f9acbe09ddaa212b19ef5f2fb30acf92e6cbccc1f2d">Wrap</a>
+, <a class="el" href="#a254701325960a5da9b33b8f9acbe09ddaf683581d3e75f05f9d9215f9b4696cef">Upgrade</a>
+, <a class="el" href="#a254701325960a5da9b33b8f9acbe09ddaa93312829ec4c71aac461cec296faa0e">Money</a>
+, <a class="el" href="#a254701325960a5da9b33b8f9acbe09dda3f5cf7b5e3cbd6351292043e4c3b7a1a">DeliverySuccess</a>
+, <br />
+&#160;&#160;<a class="el" href="#a254701325960a5da9b33b8f9acbe09ddab36fe7a384ea7f10e1739e780387049a">DeliveryFail</a>
+, <a class="el" href="#a254701325960a5da9b33b8f9acbe09ddac85a251cc457840f1e032f1b733e9398">Timeout</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a254701325960a5da9b33b8f9acbe09dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typ efektu wizualnego (VFX) przesyłanego przez sieć.  <a href="#a254701325960a5da9b33b8f9acbe09dd">Więcej...</a><br /></td></tr>
+<tr class="separator:a254701325960a5da9b33b8f9acbe09dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Plik zawierający klasę <a class="el" href="class_network_player.html" title="Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.">NetworkPlayer</a> oraz klasy pomocnicze <a class="el" href="class_held_item_bob.html" title="Komponent dodający efekt delikatnego kołysania (bob) do trzymanego przedmiotu.">HeldItemBob</a> i <a class="el" href="class_remote_player_animator.html" title="Komponent animacji gracza zdalnego wykorzystujący system PlayableGraph.">RemotePlayerAnimator</a>. </p>
+<p>Definiuje logikę gracza sieciowego, w tym konfigurację kamery, synchronizację stanu trzymanego przedmiotu, nadawanie stanów stacji kuchennych, ekonomii, zamówień, ulepszeń sklepowych oraz efektów wizualnych (VFX) pomiędzy serwerem a klientami w grze wieloosobowej. </p>
+</div><h2 class="groupheader">Dokumentacja typów wyliczanych</h2>
+<a id="a254701325960a5da9b33b8f9acbe09dd" name="a254701325960a5da9b33b8f9acbe09dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a254701325960a5da9b33b8f9acbe09dd">&#9670;&#160;</a></span>NetworkVFXType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a254701325960a5da9b33b8f9acbe09dd">NetworkVFXType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Typ efektu wizualnego (VFX) przesyłanego przez sieć. </p>
+<p>Używany do identyfikacji rodzaju efektu, który ma zostać odtworzony na klientach po wywołaniu przez serwer. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Wartości wyliczeń</th></tr><tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09dda4db4563826bad0eb2f60ee6e42d0ea4b" name="a254701325960a5da9b33b8f9acbe09dda4db4563826bad0eb2f60ee6e42d0ea4b"></a>Steam&#160;</td><td class="fielddoc"><p>Efekt pary wodnej (np. z garnka). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09ddad55bcccf4bb36aa49e00d35de12eeb6c" name="a254701325960a5da9b33b8f9acbe09ddad55bcccf4bb36aa49e00d35de12eeb6c"></a>StopSteam&#160;</td><td class="fielddoc"><p>Zatrzymanie efektu pary wodnej. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09dda7d22da1fbe12dae4e009241cd5fedad9" name="a254701325960a5da9b33b8f9acbe09dda7d22da1fbe12dae4e009241cd5fedad9"></a>DonerSmoke&#160;</td><td class="fielddoc"><p>Efekt dymu z pieca do kebaba (doner). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09dda6664709c271f36b2a46c12b967127ca1" name="a254701325960a5da9b33b8f9acbe09dda6664709c271f36b2a46c12b967127ca1"></a>StopDonerSmoke&#160;</td><td class="fielddoc"><p>Zatrzymanie efektu dymu z pieca do kebaba. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09dda3329944ab04ab8cf2bbf658931d5a1b5" name="a254701325960a5da9b33b8f9acbe09dda3329944ab04ab8cf2bbf658931d5a1b5"></a>Chop&#160;</td><td class="fielddoc"><p>Efekt krojenia składnika. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09dda96fd07f8244c1d8b9a38930ea4bdec97" name="a254701325960a5da9b33b8f9acbe09dda96fd07f8244c1d8b9a38930ea4bdec97"></a>Pickup&#160;</td><td class="fielddoc"><p>Efekt podnoszenia przedmiotu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09dda3e679cff5b3a6f6f8f32aead541a0a12" name="a254701325960a5da9b33b8f9acbe09dda3e679cff5b3a6f6f8f32aead541a0a12"></a>Drop&#160;</td><td class="fielddoc"><p>Efekt odkładania przedmiotu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09ddae7d31fc0602fb2ede144d18cdffd816b" name="a254701325960a5da9b33b8f9acbe09ddae7d31fc0602fb2ede144d18cdffd816b"></a>Ready&#160;</td><td class="fielddoc"><p>Efekt gotowości składnika. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09ddaa212b19ef5f2fb30acf92e6cbccc1f2d" name="a254701325960a5da9b33b8f9acbe09ddaa212b19ef5f2fb30acf92e6cbccc1f2d"></a>Wrap&#160;</td><td class="fielddoc"><p>Efekt zawijania kebaba. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09ddaf683581d3e75f05f9d9215f9b4696cef" name="a254701325960a5da9b33b8f9acbe09ddaf683581d3e75f05f9d9215f9b4696cef"></a>Upgrade&#160;</td><td class="fielddoc"><p>Efekt ulepszenia zakupionego w sklepie. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09ddaa93312829ec4c71aac461cec296faa0e" name="a254701325960a5da9b33b8f9acbe09ddaa93312829ec4c71aac461cec296faa0e"></a>Money&#160;</td><td class="fielddoc"><p>Efekt pieniędzy (np. przy transakcji). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09dda3f5cf7b5e3cbd6351292043e4c3b7a1a" name="a254701325960a5da9b33b8f9acbe09dda3f5cf7b5e3cbd6351292043e4c3b7a1a"></a>DeliverySuccess&#160;</td><td class="fielddoc"><p>Efekt udanej dostawy zamówienia. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09ddab36fe7a384ea7f10e1739e780387049a" name="a254701325960a5da9b33b8f9acbe09ddab36fe7a384ea7f10e1739e780387049a"></a>DeliveryFail&#160;</td><td class="fielddoc"><p>Efekt nieudanej dostawy zamówienia. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a254701325960a5da9b33b8f9acbe09ddac85a251cc457840f1e032f1b733e9398" name="a254701325960a5da9b33b8f9acbe09ddac85a251cc457840f1e032f1b733e9398"></a>Timeout&#160;</td><td class="fielddoc"><p>Efekt przekroczenia limitu czasu zamówienia. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

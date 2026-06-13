@@ -1,0 +1,397 @@
+\doxysection{Dokumentacja klasy Network\+Setup}
+\hypertarget{class_network_setup}{}\label{class_network_setup}\index{NetworkSetup@{NetworkSetup}}
+
+
+Klasa singleton odpowiedzialna za konfigurację sieci w grze wieloosobowej.  
+
+
+Diagram dziedziczenia dla Network\+Setup\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_network_setup}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_network_setup_1_1_player_prefab_handler}{Player\+Prefab\+Handler}}
+\begin{DoxyCompactList}\small\item\em Wewnętrzna klasa obsługująca instancjonowanie i niszczenie prefabów graczy sieciowych. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_network_setup_a5fde4e8d569ac1c8b42ffa04127f5d55}{Register\+Prefab\+Handler}} ()
+\begin{DoxyCompactList}\small\item\em Rejestruje niestandardowy handler prefabu gracza w systemie prefabów Netcode. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_network_setup_a657d32eb394209fbb7ffa1ef58c91325}{Start\+Host}} (string address="{}0.\+0.\+0.\+0"{})
+\begin{DoxyCompactList}\small\item\em Uruchamia tryb hosta (serwer + klient) na podanym adresie. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_network_setup_a2493d79d80d6a8facd2f9b6761392714}{Start\+Client}} (string ip\+Address)
+\begin{DoxyCompactList}\small\item\em Uruchamia tryb klienta i łączy się z serwerem pod podanym adresem IP. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_setup_a7b4b1d6c2a6b38360c17b6cec2b3a066}{Disconnect}} ()
+\begin{DoxyCompactList}\small\item\em Rozłącza bieżącą sesję sieciową. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_network_setup_af54cf8ae23aea8bcbdb81276f45a1fa1}{Set\+Global\+Object\+Id\+Hash}} (Network\+Object network\+Object, uint hash)
+\begin{DoxyCompactList}\small\item\em Ustawia hash identyfikacyjny (Global\+Object\+Id\+Hash) obiektu sieciowego za pomocą refleksji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_network_setup}{Network\+Setup}} \mbox{\hyperlink{class_network_setup_a781962d28fc313f110a7c80a26978b92}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna instancja singletona klasy \doxylink{class_network_setup}{Network\+Setup}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_network_setup_a44a69c4bed8c1752b18766b307f09113}{Is\+Network\+Active}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość sprawdzająca, czy sieć jest aktywna (Network\+Manager nasłuchuje). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_network_setup_a6fbcb699bc0be345e1ef48261d0d9bd7}{Is\+Host}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość sprawdzająca, czy lokalna instancja jest hostem (serwerem i klientem jednocześnie). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_network_setup_a98c602ee18609411665d5058ba771f3a}{Is\+Client}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość sprawdzająca, czy lokalna instancja jest klientem. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_network_setup_ae38f764ce3e4cbaff19647d4273afafe}{Is\+Server}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość sprawdzająca, czy lokalna instancja jest serwerem. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_network_setup_a873b1b2a1ee9f94f7c1fd67dbef954d5}{Connected\+Player\+Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość zwracająca liczbę aktualnie połączonych graczy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_network_setup_aacd7a64fdd954ea685ef879b6f91494e}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Awake wywoływana przy tworzeniu obiektu. Implementuje wzorzec singleton — niszczy duplikaty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_setup_aadaa2bd92d14da51d4fa19bb646252e7}{Initialize}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje konfigurację sieci, jeśli nie została jeszcze zainicjalizowana. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_setup_ab57e7b6a70c42a836af647a2d81a5388}{Ensure\+Network\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Upewnia się, że istnieje instancja Network\+Manager i konfiguruje ją. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_network_setup_a8515e9dd062f9c5eb9af31cab4226537}{Create\+Player\+Prefab}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy dynamicznie prefab gracza sieciowego z wymaganymi komponentami. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_setup_a61b72911402ff66a23bb379e07691298}{On\+Client\+Connected}} (ulong client\+Id)
+\begin{DoxyCompactList}\small\item\em Obsługuje zdarzenie połączenia nowego klienta. Na serwerze tworzy i spawnuje obiekt gracza dla podłączonego klienta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_setup_ac5fe021794ebfdbbbfa03a534e357edd}{On\+Client\+Disconnected}} (ulong client\+Id)
+\begin{DoxyCompactList}\small\item\em Obsługuje zdarzenie rozłączenia klienta. Jeśli rozłączony jest klient lokalny, próbuje wrócić do ekranu lobby. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_setup_a624b45ee06d42becae8193e3b437eb5b}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Metoda wywoływana przy niszczeniu obiektu. Czyści referencję singletona i odsubskrybowuje zdarzenia Network\+Manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_network_setup_a664833d458a964686ca07fa73c775062}{player\+Prefab\+Instance}}
+\begin{DoxyCompactList}\small\item\em Instancja dynamicznie utworzonego prefabu gracza. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_network_setup_a8d7823c61faaa492e3c35c32bb3ea352}{is\+Initialized}}
+\begin{DoxyCompactList}\small\item\em Flaga określająca, czy konfiguracja sieci została już zainicjalizowana. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+const ushort \mbox{\hyperlink{class_network_setup_a4f3fa55cc34446c48575bb1621b048fb}{Default\+Port}} = 7777
+\begin{DoxyCompactList}\small\item\em Domyślny port sieciowy do nasłuchiwania i łączenia. \end{DoxyCompactList}\item 
+const int \mbox{\hyperlink{class_network_setup_a3cf31e7152d8477a8c239c282db6f0d4}{Max\+Players}} = 4
+\begin{DoxyCompactList}\small\item\em Maksymalna liczba graczy w sesji. \end{DoxyCompactList}\item 
+const uint \mbox{\hyperlink{class_network_setup_a1f53def37c97b224b9d54548c56b2959}{Player\+Prefab\+Hash}} = 1234567890u
+\begin{DoxyCompactList}\small\item\em Stały hash identyfikacyjny prefabu gracza sieciowego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa singleton odpowiedzialna za konfigurację sieci w grze wieloosobowej. 
+
+Zarządza cyklem życia Network\+Manager\+: 
+\begin{DoxyItemize}
+\item Tworzenie i konfiguracja Network\+Manager oraz Unity\+Transport 
+\item Dynamiczne tworzenie prefabu gracza z wymaganymi komponentami 
+\item Uruchamianie trybu hosta lub klienta 
+\item Obsługa zdarzeń połączenia i rozłączenia graczy 
+\item Spawnowanie obiektów graczy na serwerze 
+\end{DoxyItemize}Używa wzorca singleton z \doxylink{class_network_setup_a781962d28fc313f110a7c80a26978b92}{Instance}. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_network_setup_aacd7a64fdd954ea685ef879b6f91494e}\index{NetworkSetup@{NetworkSetup}!Awake@{Awake}}
+\index{Awake@{Awake}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_network_setup_aacd7a64fdd954ea685ef879b6f91494e} 
+void Network\+Setup.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Awake wywoływana przy tworzeniu obiektu. Implementuje wzorzec singleton — niszczy duplikaty. 
+
+\Hypertarget{class_network_setup_a8515e9dd062f9c5eb9af31cab4226537}\index{NetworkSetup@{NetworkSetup}!CreatePlayerPrefab@{CreatePlayerPrefab}}
+\index{CreatePlayerPrefab@{CreatePlayerPrefab}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{CreatePlayerPrefab()}{CreatePlayerPrefab()}}
+{\footnotesize\ttfamily \label{class_network_setup_a8515e9dd062f9c5eb9af31cab4226537} 
+Game\+Object Network\+Setup.\+Create\+Player\+Prefab (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy dynamicznie prefab gracza sieciowego z wymaganymi komponentami. 
+
+\begin{DoxyReturn}{Zwraca}
+Utworzony obiekt prefabu gracza (nieaktywny, chroniony przed zniszczeniem przy zmianie sceny).
+\end{DoxyReturn}
+
+
+Dodaje następujące komponenty\+: 
+\begin{DoxyItemize}
+\item Network\+Object — identyfikacja obiektu sieciowego 
+\item \doxylink{class_network_player}{Network\+Player} — logika gracza sieciowego 
+\item Character\+Controller — fizyka ruchu postaci 
+\item \doxylink{class_simple_player_controller}{Simple\+Player\+Controller} — kontroler ruchu 
+\item \doxylink{class_player_interaction}{Player\+Interaction} — obsługa interakcji 
+\item \doxylink{class_client_network_transform}{Client\+Network\+Transform} — synchronizacja transformacji po stronie klienta 
+\end{DoxyItemize}\Hypertarget{class_network_setup_a7b4b1d6c2a6b38360c17b6cec2b3a066}\index{NetworkSetup@{NetworkSetup}!Disconnect@{Disconnect}}
+\index{Disconnect@{Disconnect}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{Disconnect()}{Disconnect()}}
+{\footnotesize\ttfamily \label{class_network_setup_a7b4b1d6c2a6b38360c17b6cec2b3a066} 
+void Network\+Setup.\+Disconnect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Rozłącza bieżącą sesję sieciową. 
+
+Wywołuje Network\+Manager.\+Shutdown jeśli sieć jest aktualnie aktywna. \Hypertarget{class_network_setup_ab57e7b6a70c42a836af647a2d81a5388}\index{NetworkSetup@{NetworkSetup}!EnsureNetworkManager@{EnsureNetworkManager}}
+\index{EnsureNetworkManager@{EnsureNetworkManager}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{EnsureNetworkManager()}{EnsureNetworkManager()}}
+{\footnotesize\ttfamily \label{class_network_setup_ab57e7b6a70c42a836af647a2d81a5388} 
+void Network\+Setup.\+Ensure\+Network\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Upewnia się, że istnieje instancja Network\+Manager i konfiguruje ją. 
+
+Tworzy Network\+Manager i Unity\+Transport jako komponenty na tym samym obiekcie gry. Konfiguruje parametry transportu (adres, port, timeouty), tworzy prefab gracza i subskrybuje zdarzenia połączenia/rozłączenia. \Hypertarget{class_network_setup_aadaa2bd92d14da51d4fa19bb646252e7}\index{NetworkSetup@{NetworkSetup}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily \label{class_network_setup_aadaa2bd92d14da51d4fa19bb646252e7} 
+void Network\+Setup.\+Initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje konfigurację sieci, jeśli nie została jeszcze zainicjalizowana. 
+
+\Hypertarget{class_network_setup_a61b72911402ff66a23bb379e07691298}\index{NetworkSetup@{NetworkSetup}!OnClientConnected@{OnClientConnected}}
+\index{OnClientConnected@{OnClientConnected}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{OnClientConnected()}{OnClientConnected()}}
+{\footnotesize\ttfamily \label{class_network_setup_a61b72911402ff66a23bb379e07691298} 
+void Network\+Setup.\+On\+Client\+Connected (\begin{DoxyParamCaption}\item[{ulong}]{client\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje zdarzenie połączenia nowego klienta. Na serwerze tworzy i spawnuje obiekt gracza dla podłączonego klienta. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em client\+Id} & Identyfikator połączonego klienta.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_network_setup_ac5fe021794ebfdbbbfa03a534e357edd}\index{NetworkSetup@{NetworkSetup}!OnClientDisconnected@{OnClientDisconnected}}
+\index{OnClientDisconnected@{OnClientDisconnected}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{OnClientDisconnected()}{OnClientDisconnected()}}
+{\footnotesize\ttfamily \label{class_network_setup_ac5fe021794ebfdbbbfa03a534e357edd} 
+void Network\+Setup.\+On\+Client\+Disconnected (\begin{DoxyParamCaption}\item[{ulong}]{client\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje zdarzenie rozłączenia klienta. Jeśli rozłączony jest klient lokalny, próbuje wrócić do ekranu lobby. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em client\+Id} & Identyfikator rozłączonego klienta.\\
+\hline
+\end{DoxyParams}
+
+
+Nie wykonuje żadnej akcji w trybie solo ani gdy menu główne jest otwarte. \Hypertarget{class_network_setup_a624b45ee06d42becae8193e3b437eb5b}\index{NetworkSetup@{NetworkSetup}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_network_setup_a624b45ee06d42becae8193e3b437eb5b} 
+void Network\+Setup.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda wywoływana przy niszczeniu obiektu. Czyści referencję singletona i odsubskrybowuje zdarzenia Network\+Manager. 
+
+\Hypertarget{class_network_setup_a5fde4e8d569ac1c8b42ffa04127f5d55}\index{NetworkSetup@{NetworkSetup}!RegisterPrefabHandler@{RegisterPrefabHandler}}
+\index{RegisterPrefabHandler@{RegisterPrefabHandler}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{RegisterPrefabHandler()}{RegisterPrefabHandler()}}
+{\footnotesize\ttfamily \label{class_network_setup_a5fde4e8d569ac1c8b42ffa04127f5d55} 
+void Network\+Setup.\+Register\+Prefab\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Rejestruje niestandardowy handler prefabu gracza w systemie prefabów Netcode. 
+
+Najpierw próbuje usunąć istniejący handler (ignorując błędy), a następnie dodaje nowy \doxylink{class_network_setup_1_1_player_prefab_handler}{Player\+Prefab\+Handler}. Powinno być wywoływane przed uruchomieniem hosta lub klienta. \Hypertarget{class_network_setup_af54cf8ae23aea8bcbdb81276f45a1fa1}\index{NetworkSetup@{NetworkSetup}!SetGlobalObjectIdHash@{SetGlobalObjectIdHash}}
+\index{SetGlobalObjectIdHash@{SetGlobalObjectIdHash}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{SetGlobalObjectIdHash()}{SetGlobalObjectIdHash()}}
+{\footnotesize\ttfamily \label{class_network_setup_af54cf8ae23aea8bcbdb81276f45a1fa1} 
+static void Network\+Setup.\+Set\+Global\+Object\+Id\+Hash (\begin{DoxyParamCaption}\item[{Network\+Object}]{network\+Object}{, }\item[{uint}]{hash}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Ustawia hash identyfikacyjny (Global\+Object\+Id\+Hash) obiektu sieciowego za pomocą refleksji. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em network\+Object} & Obiekt sieciowy, którego hash ma zostać ustawiony.\\
+\hline
+{\em hash} & Wartość hasha do ustawienia.\\
+\hline
+\end{DoxyParams}
+
+
+Próbuje ustawić hash przez\+: 
+\begin{DoxyEnumerate}
+\item Znane nazwy pól ("{}\+Global\+Object\+Id\+Hash"{}, "{}m\+\_\+\+Global\+Object\+Id\+Hash"{}, "{}m\+\_\+\+Prefab\+Hash"{}) 
+\item Znane nazwy właściwości ("{}\+Global\+Object\+Id\+Hash"{}, "{}\+Prefab\+Hash"{}) 
+\item Brute-\/force — wyszukiwanie pól typu {\ttfamily uint} zawierających "{}hash"{} w nazwie 
+\end{DoxyEnumerate}Jest to obejście braku publicznego API do ustawiania hasha w różnych wersjach Netcode. \Hypertarget{class_network_setup_a2493d79d80d6a8facd2f9b6761392714}\index{NetworkSetup@{NetworkSetup}!StartClient@{StartClient}}
+\index{StartClient@{StartClient}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{StartClient()}{StartClient()}}
+{\footnotesize\ttfamily \label{class_network_setup_a2493d79d80d6a8facd2f9b6761392714} 
+bool Network\+Setup.\+Start\+Client (\begin{DoxyParamCaption}\item[{string}]{ip\+Address}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Uruchamia tryb klienta i łączy się z serwerem pod podanym adresem IP. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ip\+Address} & Adres IP serwera, z którym klient ma się połączyć.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli rozpoczęcie połączenia klienta powiodło się; w przeciwnym razie {\ttfamily false}.
+\end{DoxyReturn}
+
+
+Konfiguruje transport z podanym adresem i domyślnym portem, rejestruje handler prefabu i uruchamia klienta. \Hypertarget{class_network_setup_a657d32eb394209fbb7ffa1ef58c91325}\index{NetworkSetup@{NetworkSetup}!StartHost@{StartHost}}
+\index{StartHost@{StartHost}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{StartHost()}{StartHost()}}
+{\footnotesize\ttfamily \label{class_network_setup_a657d32eb394209fbb7ffa1ef58c91325} 
+bool Network\+Setup.\+Start\+Host (\begin{DoxyParamCaption}\item[{string}]{address}{ = {\ttfamily "{}0.0.0.0"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Uruchamia tryb hosta (serwer + klient) na podanym adresie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em address} & Adres nasłuchiwania serwera. Domyślnie "{}0.\+0.\+0.\+0"{} (wszystkie interfejsy).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli uruchomienie hosta powiodło się; w przeciwnym razie {\ttfamily false}.
+\end{DoxyReturn}
+
+
+Konfiguruje transport z adresem localhost i podanym adresem nasłuchiwania, rejestruje handler prefabu i uruchamia hosta przez Network\+Manager.\+Start\+Host. 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_network_setup_a4f3fa55cc34446c48575bb1621b048fb}\index{NetworkSetup@{NetworkSetup}!DefaultPort@{DefaultPort}}
+\index{DefaultPort@{DefaultPort}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{DefaultPort}{DefaultPort}}
+{\footnotesize\ttfamily \label{class_network_setup_a4f3fa55cc34446c48575bb1621b048fb} 
+const ushort Network\+Setup.\+Default\+Port = 7777\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Domyślny port sieciowy do nasłuchiwania i łączenia. 
+
+\Hypertarget{class_network_setup_a8d7823c61faaa492e3c35c32bb3ea352}\index{NetworkSetup@{NetworkSetup}!isInitialized@{isInitialized}}
+\index{isInitialized@{isInitialized}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{isInitialized}{isInitialized}}
+{\footnotesize\ttfamily \label{class_network_setup_a8d7823c61faaa492e3c35c32bb3ea352} 
+bool Network\+Setup.\+is\+Initialized\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga określająca, czy konfiguracja sieci została już zainicjalizowana. 
+
+\Hypertarget{class_network_setup_a3cf31e7152d8477a8c239c282db6f0d4}\index{NetworkSetup@{NetworkSetup}!MaxPlayers@{MaxPlayers}}
+\index{MaxPlayers@{MaxPlayers}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{MaxPlayers}{MaxPlayers}}
+{\footnotesize\ttfamily \label{class_network_setup_a3cf31e7152d8477a8c239c282db6f0d4} 
+const int Network\+Setup.\+Max\+Players = 4\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Maksymalna liczba graczy w sesji. 
+
+\Hypertarget{class_network_setup_a1f53def37c97b224b9d54548c56b2959}\index{NetworkSetup@{NetworkSetup}!PlayerPrefabHash@{PlayerPrefabHash}}
+\index{PlayerPrefabHash@{PlayerPrefabHash}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{PlayerPrefabHash}{PlayerPrefabHash}}
+{\footnotesize\ttfamily \label{class_network_setup_a1f53def37c97b224b9d54548c56b2959} 
+const uint Network\+Setup.\+Player\+Prefab\+Hash = 1234567890u\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Stały hash identyfikacyjny prefabu gracza sieciowego. 
+
+Używany do rejestracji i rozpoznawania prefabu gracza przez system prefabów sieciowych Netcode. \Hypertarget{class_network_setup_a664833d458a964686ca07fa73c775062}\index{NetworkSetup@{NetworkSetup}!playerPrefabInstance@{playerPrefabInstance}}
+\index{playerPrefabInstance@{playerPrefabInstance}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{playerPrefabInstance}{playerPrefabInstance}}
+{\footnotesize\ttfamily \label{class_network_setup_a664833d458a964686ca07fa73c775062} 
+Game\+Object Network\+Setup.\+player\+Prefab\+Instance\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Instancja dynamicznie utworzonego prefabu gracza. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_network_setup_a873b1b2a1ee9f94f7c1fd67dbef954d5}\index{NetworkSetup@{NetworkSetup}!ConnectedPlayerCount@{ConnectedPlayerCount}}
+\index{ConnectedPlayerCount@{ConnectedPlayerCount}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{ConnectedPlayerCount}{ConnectedPlayerCount}}
+{\footnotesize\ttfamily \label{class_network_setup_a873b1b2a1ee9f94f7c1fd67dbef954d5} 
+int Network\+Setup.\+Connected\+Player\+Count\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Właściwość zwracająca liczbę aktualnie połączonych graczy. 
+
+Liczba połączonych klientów lub 0 jeśli Network\+Manager nie istnieje.\Hypertarget{class_network_setup_a781962d28fc313f110a7c80a26978b92}\index{NetworkSetup@{NetworkSetup}!Instance@{Instance}}
+\index{Instance@{Instance}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_network_setup_a781962d28fc313f110a7c80a26978b92} 
+\mbox{\hyperlink{class_network_setup}{Network\+Setup}} Network\+Setup.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna instancja singletona klasy \doxylink{class_network_setup}{Network\+Setup}. 
+
+Jedyna aktywna instancja \doxylink{class_network_setup}{Network\+Setup} lub {\ttfamily null}.\Hypertarget{class_network_setup_a98c602ee18609411665d5058ba771f3a}\index{NetworkSetup@{NetworkSetup}!IsClient@{IsClient}}
+\index{IsClient@{IsClient}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{IsClient}{IsClient}}
+{\footnotesize\ttfamily \label{class_network_setup_a98c602ee18609411665d5058ba771f3a} 
+bool Network\+Setup.\+Is\+Client\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Właściwość sprawdzająca, czy lokalna instancja jest klientem. 
+
+{\ttfamily true} jeśli jest klientem; w przeciwnym razie {\ttfamily false}.\Hypertarget{class_network_setup_a6fbcb699bc0be345e1ef48261d0d9bd7}\index{NetworkSetup@{NetworkSetup}!IsHost@{IsHost}}
+\index{IsHost@{IsHost}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{IsHost}{IsHost}}
+{\footnotesize\ttfamily \label{class_network_setup_a6fbcb699bc0be345e1ef48261d0d9bd7} 
+bool Network\+Setup.\+Is\+Host\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Właściwość sprawdzająca, czy lokalna instancja jest hostem (serwerem i klientem jednocześnie). 
+
+{\ttfamily true} jeśli jest hostem; w przeciwnym razie {\ttfamily false}.\Hypertarget{class_network_setup_a44a69c4bed8c1752b18766b307f09113}\index{NetworkSetup@{NetworkSetup}!IsNetworkActive@{IsNetworkActive}}
+\index{IsNetworkActive@{IsNetworkActive}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{IsNetworkActive}{IsNetworkActive}}
+{\footnotesize\ttfamily \label{class_network_setup_a44a69c4bed8c1752b18766b307f09113} 
+bool Network\+Setup.\+Is\+Network\+Active\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Właściwość sprawdzająca, czy sieć jest aktywna (Network\+Manager nasłuchuje). 
+
+{\ttfamily true} jeśli sieć jest aktywna; w przeciwnym razie {\ttfamily false}.\Hypertarget{class_network_setup_ae38f764ce3e4cbaff19647d4273afafe}\index{NetworkSetup@{NetworkSetup}!IsServer@{IsServer}}
+\index{IsServer@{IsServer}!NetworkSetup@{NetworkSetup}}
+\doxysubsubsection{\texorpdfstring{IsServer}{IsServer}}
+{\footnotesize\ttfamily \label{class_network_setup_ae38f764ce3e4cbaff19647d4273afafe} 
+bool Network\+Setup.\+Is\+Server\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Właściwość sprawdzająca, czy lokalna instancja jest serwerem. 
+
+{\ttfamily true} jeśli jest serwerem; w przeciwnym razie {\ttfamily false}.
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_network_setup_8cs}{Network\+Setup.\+cs}}\end{DoxyCompactItemize}

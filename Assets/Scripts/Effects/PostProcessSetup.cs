@@ -1,18 +1,43 @@
+/// \file PostProcessSetup.cs
+/// \brief Plik zawierający klasę PostProcessSetup — konfiguracja post-processingu URP w czasie wykonania.
+/// \details Tworzy globalny Volume URP z efektami Bloom, Vignette, Color Adjustments, Tonemapping,
+/// Film Grain i Chromatic Aberration dla ciepłej, kinowej atmosfery kuchni kebabowej.
+
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 /// <summary>
-/// Creates a URP post-processing Volume at runtime with Bloom, Vignette,
-/// Color Adjustments, Tonemapping, and Film Grain for a warm, cinematic kitchen feel.
-/// Attach to any persistent GameObject or let KitchenGameBootstrap create it.
+/// Tworzy Volume post-processingu URP w czasie wykonania z efektami Bloom, Vignette,
+/// Color Adjustments, Tonemapping i Film Grain dla ciepłej, kinowej atmosfery kuchni.
+/// Dołączyć do dowolnego trwałego obiektu gry lub pozwolić KitchenGameBootstrap go stworzyć.
 /// </summary>
+/// <remarks>
+/// Klasa implementuje wzorzec Singleton. Volume jest tworzony jako globalny (isGlobal = true)
+/// z priorytetem 10, nadpisując domyślne ustawienia renderowania. Profil Volume
+/// tworzony jest proceduralnie (ScriptableObject.CreateInstance), bez potrzeby
+/// przygotowywania zasobów w edytorze.
+/// Dostępna jest metoda <see cref="PulseBloom"/> do chwilowego wzmocnienia efektu Bloom
+/// (np. przy udanym dostarczeniu zamówienia).
+/// </remarks>
 public class PostProcessSetup : MonoBehaviour
 {
+    /// <summary>
+    /// Statyczna instancja Singletona klasy <see cref="PostProcessSetup"/>.
+    /// Umożliwia globalny dostęp do konfiguracji post-processingu.
+    /// </summary>
     public static PostProcessSetup Instance { get; private set; }
 
+    /// <summary>
+    /// Referencja do komponentu Volume post-processingu URP.
+    /// Tworzony proceduralnie w metodzie <see cref="SetupVolume"/>.
+    /// </summary>
     private Volume volume;
 
+    /// <summary>
+    /// Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu.
+    /// Implementuje wzorzec Singleton — ustawia instancję lub niszczy duplikat.
+    /// </summary>
     private void Awake()
     {
         if (Instance != null)
@@ -24,11 +49,30 @@ public class PostProcessSetup : MonoBehaviour
         Instance = this;
     }
 
+    /// <summary>
+    /// Metoda startowa Unity wywoływana przy pierwszej klatce.
+    /// Inicjalizuje Volume post-processingu z pełną konfiguracją efektów.
+    /// </summary>
     private void Start()
     {
         SetupVolume();
     }
 
+    /// <summary>
+    /// Tworzy i konfiguruje globalny Volume post-processingu URP z następującymi efektami:
+    /// <list type="bullet">
+    /// <item><description>Bloom — delikatna poświata z ciepłym odcieniem (próg 0.92, intensywność 0.32)</description></item>
+    /// <item><description>Vignette — przyciemnienie krawędzi ekranu (intensywność 0.15)</description></item>
+    /// <item><description>Color Adjustments — korekcja kolorów z lekkim ociepleniem i zwiększeniem kontrastu</description></item>
+    /// <item><description>Tonemapping — mapowanie tonalne ACES dla kinowego wyglądu</description></item>
+    /// <item><description>Film Grain — subtelne ziarno filmowe dla tekstury obrazu</description></item>
+    /// <item><description>Chromatic Aberration — delikatna aberracja chromatyczna na krawędziach</description></item>
+    /// </list>
+    /// </summary>
+    /// <remarks>
+    /// Metoda nie wykonuje nic, jeśli Volume został już wcześniej utworzony.
+    /// Po utworzeniu loguje informację diagnostyczną do konsoli Unity.
+    /// </remarks>
     private void SetupVolume()
     {
         if (volume != null)
@@ -75,13 +119,25 @@ public class PostProcessSetup : MonoBehaviour
     }
 
     /// <summary>
-    /// Apply a brief intensity boost (e.g. on successful delivery).
+    /// Wyzwala chwilowe wzmocnienie intensywności efektu Bloom (pulsacja).
+    /// Intensywność Bloom rośnie do wartości szczytowej, a następnie płynnie wraca do wartości bazowej.
+    /// Przydatne np. przy udanym dostarczeniu zamówienia, aby wzmocnić wrażenie nagrody.
     /// </summary>
+    /// <param name="extraIntensity">Dodatkowa intensywność Bloom ponad wartość bazową (domyślnie 0.5).</param>
+    /// <param name="duration">Czas trwania pulsacji w sekundach (domyślnie 0.4s).</param>
     public void PulseBloom(float extraIntensity = 0.5f, float duration = 0.4f)
     {
         StartCoroutine(BloomPulseCoroutine(extraIntensity, duration));
     }
 
+    /// <summary>
+    /// Korutyna obsługująca pulsację efektu Bloom.
+    /// Intensywność zmienia się od wartości szczytowej (bazowa + extra) z powrotem do bazowej
+    /// z krzywą wygaszania kwadratowego (ease-out), tworząc naturalne zanikanie efektu.
+    /// </summary>
+    /// <param name="extraIntensity">Dodatkowa intensywność Bloom ponad wartość bazową.</param>
+    /// <param name="duration">Czas trwania pulsacji w sekundach.</param>
+    /// <returns>Enumerator korutyny.</returns>
     private System.Collections.IEnumerator BloomPulseCoroutine(float extraIntensity, float duration)
     {
         if (volume == null || volume.profile == null)
@@ -110,6 +166,10 @@ public class PostProcessSetup : MonoBehaviour
         bloom.intensity.Override(baseIntensity);
     }
 
+    /// <summary>
+    /// Metoda Unity wywoływana przy niszczeniu obiektu.
+    /// Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników.
+    /// </summary>
     private void OnDestroy()
     {
         if (Instance == this)

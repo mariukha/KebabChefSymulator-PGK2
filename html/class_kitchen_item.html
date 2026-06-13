@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy KitchenItem</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-static-methods">Statyczne metody publiczne</a> &#124;
+<a href="#pub-attribs">Atrybuty publiczne</a> &#124;
+<a href="class_kitchen_item-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy KitchenItem</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać listę zawartych składników w przypadku potrawy złożonej (np. kebab). Jest centralnym obiektem danych przechodzącym przez stacje kuchenne.  
+ <a href="#details">Więcej...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a4a937722904247ec88289f23d748004f" id="r_a4a937722904247ec88289f23d748004f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_kitchen_item.html">KitchenItem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a937722904247ec88289f23d748004f">Clone</a> ()</td></tr>
+<tr class="memdesc:a4a937722904247ec88289f23d748004f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy głęboką kopię przedmiotu kuchennego, włącznie z listą zawartych składników. Nowy obiekt jest całkowicie niezależny od oryginału.  <br /></td></tr>
+<tr class="separator:a4a937722904247ec88289f23d748004f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a148c2b2ee1bdbd623341d3b3da5cf7" id="r_a5a148c2b2ee1bdbd623341d3b3da5cf7"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a148c2b2ee1bdbd623341d3b3da5cf7">BuildSummary</a> ()</td></tr>
+<tr class="memdesc:a5a148c2b2ee1bdbd623341d3b3da5cf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buduje tekstowe podsumowanie przedmiotu kuchennego. Dla pojedynczego składnika zwraca jego sformatowaną nazwę z uwzględnieniem stanu. Dla potrawy złożonej zwraca nazwę przedmiotu wraz z listą wszystkich składników.  <br /></td></tr>
+<tr class="separator:a5a148c2b2ee1bdbd623341d3b3da5cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Statyczne metody publiczne</h2></td></tr>
+<tr class="memitem:aac748ff8356cf60147db8b6159e4e235" id="r_aac748ff8356cf60147db8b6159e4e235"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_kitchen_item.html">KitchenItem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac748ff8356cf60147db8b6159e4e235">FromIngredient</a> (<a class="el" href="class_ingredient_data.html">IngredientData</a> data)</td></tr>
+<tr class="memdesc:aac748ff8356cf60147db8b6159e4e235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy nowy przedmiot kuchenny na podstawie danych składnika z assetu <a class="el" href="class_ingredient_data.html" title="Klasa ScriptableObject reprezentująca dane pojedynczego składnika w grze. Przechowuje informacje o na...">IngredientData</a>. Metoda fabryczna konwertująca dane ScriptableObject na obiekt runtime.  <br /></td></tr>
+<tr class="separator:aac748ff8356cf60147db8b6159e4e235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atrybuty publiczne</h2></td></tr>
+<tr class="memitem:a53b09433d71fa6eeaeaabcc2efd6a263" id="r_a53b09433d71fa6eeaeaabcc2efd6a263"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53b09433d71fa6eeaeaabcc2efd6a263">itemName</a></td></tr>
+<tr class="memdesc:a53b09433d71fa6eeaeaabcc2efd6a263"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nazwa przedmiotu kuchennego wyświetlana w interfejsie użytkownika.  <br /></td></tr>
+<tr class="separator:a53b09433d71fa6eeaeaabcc2efd6a263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab452df6ceb91c7521ff1f8c3f9071944" id="r_ab452df6ceb91c7521ff1f8c3f9071944"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab452df6ceb91c7521ff1f8c3f9071944">ingredientKind</a> = <a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f">IngredientKind.Meat</a></td></tr>
+<tr class="memdesc:ab452df6ceb91c7521ff1f8c3f9071944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rodzaj składnika, z którego wywodzi się ten przedmiot. Dla potraw złożonych określa główny typ (np. Kebab).  <br /></td></tr>
+<tr class="separator:ab452df6ceb91c7521ff1f8c3f9071944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf09e3c805bb0e05e94ba24e69fd316e" id="r_adf09e3c805bb0e05e94ba24e69fd316e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf09e3c805bb0e05e94ba24e69fd316e">state</a> = <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00">IngredientProcessState.Raw</a></td></tr>
+<tr class="memdesc:adf09e3c805bb0e05e94ba24e69fd316e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualny stan przetworzenia przedmiotu kuchennego.  <br /></td></tr>
+<tr class="separator:adf09e3c805bb0e05e94ba24e69fd316e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fddae2de79351f32bcbb10be16386b8" id="r_a7fddae2de79351f32bcbb10be16386b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7fddae2de79351f32bcbb10be16386b8">isDish</a></td></tr>
+<tr class="memdesc:a7fddae2de79351f32bcbb10be16386b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flaga określająca, czy przedmiot jest gotową potrawą (daniem). Wartość <code>true</code> oznacza potrawę złożoną z wielu składników, <code>false</code> — pojedynczy składnik.  <br /></td></tr>
+<tr class="separator:a7fddae2de79351f32bcbb10be16386b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54efb70bd7493c23931cd6339dcb78ae" id="r_a54efb70bd7493c23931cd6339dcb78ae"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54efb70bd7493c23931cd6339dcb78ae">estimatedValue</a></td></tr>
+<tr class="memdesc:a54efb70bd7493c23931cd6339dcb78ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Szacowana wartość przedmiotu w walucie gry. Dla gotowych potraw może być sumą wartości poszczególnych składników.  <br /></td></tr>
+<tr class="separator:a54efb70bd7493c23931cd6339dcb78ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17f90ea6bae8d28c174304498d81bf93" id="r_a17f90ea6bae8d28c174304498d81bf93"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17f90ea6bae8d28c174304498d81bf93">contents</a> = new List&lt;<a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a>&gt;()</td></tr>
+<tr class="memdesc:a17f90ea6bae8d28c174304498d81bf93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista przygotowanych składników wchodzących w skład potrawy. Wypełniana tylko dla potraw (<a class="el" href="#a7fddae2de79351f32bcbb10be16386b8" title="Flaga określająca, czy przedmiot jest gotową potrawą (daniem). Wartość true oznacza potrawę złożoną z...">isDish</a> = <code>true</code>).  <br /></td></tr>
+<tr class="separator:a17f90ea6bae8d28c174304498d81bf93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać listę zawartych składników w przypadku potrawy złożonej (np. kebab). Jest centralnym obiektem danych przechodzącym przez stacje kuchenne. </p>
+<p>Pole <a class="el" href="#a7fddae2de79351f32bcbb10be16386b8" title="Flaga określająca, czy przedmiot jest gotową potrawą (daniem). Wartość true oznacza potrawę złożoną z...">isDish</a> rozróżnia między pojedynczym składnikiem a gotową potrawą. Gotowa potrawa zawiera listę <a class="el" href="#a17f90ea6bae8d28c174304498d81bf93" title="Lista przygotowanych składników wchodzących w skład potrawy. Wypełniana tylko dla potraw (isDish = tr...">contents</a> z przygotowanymi składnikami, która jest porównywana z wymaganiami zamówienia przez <a class="el" href="class_kitchen_order_validator.html" title="Klasa statyczna odpowiedzialna za walidację zgodności przygotowanej potrawy z zamówieniem klienta....">KitchenOrderValidator</a>. </p>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_prepared_ingredient_data.html" title="Klasa reprezentująca dane przygotowanego składnika. Przechowuje informację o rodzaju składnika oraz j...">PreparedIngredientData</a>, <a class="el" href="class_ingredient_data.html" title="Klasa ScriptableObject reprezentująca dane pojedynczego składnika w grze. Przechowuje informacje o na...">IngredientData</a></dd></dl>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a5a148c2b2ee1bdbd623341d3b3da5cf7" name="a5a148c2b2ee1bdbd623341d3b3da5cf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a148c2b2ee1bdbd623341d3b3da5cf7">&#9670;&#160;</a></span>BuildSummary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string KitchenItem.BuildSummary </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buduje tekstowe podsumowanie przedmiotu kuchennego. Dla pojedynczego składnika zwraca jego sformatowaną nazwę z uwzględnieniem stanu. Dla potrawy złożonej zwraca nazwę przedmiotu wraz z listą wszystkich składników. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Czytelny dla człowieka opis przedmiotu, np. "Kebab: Mieso (upieczony), Pomidor, Cebula (pokrojony)". </dd></dl>
+
+</div>
+</div>
+<a id="a4a937722904247ec88289f23d748004f" name="a4a937722904247ec88289f23d748004f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a937722904247ec88289f23d748004f">&#9670;&#160;</a></span>Clone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_kitchen_item.html">KitchenItem</a> KitchenItem.Clone </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy głęboką kopię przedmiotu kuchennego, włącznie z listą zawartych składników. Nowy obiekt jest całkowicie niezależny od oryginału. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Nowa instancja <a class="el" href="class_kitchen_item.html" title="Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać l...">KitchenItem</a> będąca pełną kopią bieżącego przedmiotu.</dd></dl>
+
+</div>
+</div>
+<a id="aac748ff8356cf60147db8b6159e4e235" name="aac748ff8356cf60147db8b6159e4e235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac748ff8356cf60147db8b6159e4e235">&#9670;&#160;</a></span>FromIngredient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_kitchen_item.html">KitchenItem</a> KitchenItem.FromIngredient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_ingredient_data.html">IngredientData</a></td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy nowy przedmiot kuchenny na podstawie danych składnika z assetu <a class="el" href="class_ingredient_data.html" title="Klasa ScriptableObject reprezentująca dane pojedynczego składnika w grze. Przechowuje informacje o na...">IngredientData</a>. Metoda fabryczna konwertująca dane ScriptableObject na obiekt runtime. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Dane składnika (asset ScriptableObject). Jeśli <code>null</code>, tworzony jest przedmiot z wartościami domyślnymi. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Nowa instancja <a class="el" href="class_kitchen_item.html" title="Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać l...">KitchenItem</a> zainicjalizowana danymi ze składnika.</dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a17f90ea6bae8d28c174304498d81bf93" name="a17f90ea6bae8d28c174304498d81bf93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17f90ea6bae8d28c174304498d81bf93">&#9670;&#160;</a></span>contents</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a>&gt; KitchenItem.contents = new List&lt;<a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a>&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lista przygotowanych składników wchodzących w skład potrawy. Wypełniana tylko dla potraw (<a class="el" href="#a7fddae2de79351f32bcbb10be16386b8" title="Flaga określająca, czy przedmiot jest gotową potrawą (daniem). Wartość true oznacza potrawę złożoną z...">isDish</a> = <code>true</code>). </p>
+
+</div>
+</div>
+<a id="a54efb70bd7493c23931cd6339dcb78ae" name="a54efb70bd7493c23931cd6339dcb78ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54efb70bd7493c23931cd6339dcb78ae">&#9670;&#160;</a></span>estimatedValue</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenItem.estimatedValue</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Szacowana wartość przedmiotu w walucie gry. Dla gotowych potraw może być sumą wartości poszczególnych składników. </p>
+
+</div>
+</div>
+<a id="ab452df6ceb91c7521ff1f8c3f9071944" name="ab452df6ceb91c7521ff1f8c3f9071944"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab452df6ceb91c7521ff1f8c3f9071944">&#9670;&#160;</a></span>ingredientKind</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> KitchenItem.ingredientKind = <a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f">IngredientKind.Meat</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rodzaj składnika, z którego wywodzi się ten przedmiot. Dla potraw złożonych określa główny typ (np. Kebab). </p>
+
+</div>
+</div>
+<a id="a7fddae2de79351f32bcbb10be16386b8" name="a7fddae2de79351f32bcbb10be16386b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fddae2de79351f32bcbb10be16386b8">&#9670;&#160;</a></span>isDish</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KitchenItem.isDish</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flaga określająca, czy przedmiot jest gotową potrawą (daniem). Wartość <code>true</code> oznacza potrawę złożoną z wielu składników, <code>false</code> — pojedynczy składnik. </p>
+
+</div>
+</div>
+<a id="a53b09433d71fa6eeaeaabcc2efd6a263" name="a53b09433d71fa6eeaeaabcc2efd6a263"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53b09433d71fa6eeaeaabcc2efd6a263">&#9670;&#160;</a></span>itemName</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string KitchenItem.itemName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nazwa przedmiotu kuchennego wyświetlana w interfejsie użytkownika. </p>
+
+</div>
+</div>
+<a id="adf09e3c805bb0e05e94ba24e69fd316e" name="adf09e3c805bb0e05e94ba24e69fd316e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf09e3c805bb0e05e94ba24e69fd316e">&#9670;&#160;</a></span>state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> KitchenItem.state = <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00">IngredientProcessState.Raw</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aktualny stan przetworzenia przedmiotu kuchennego. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_kitchen_game_models_8cs.html">KitchenGameModels.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

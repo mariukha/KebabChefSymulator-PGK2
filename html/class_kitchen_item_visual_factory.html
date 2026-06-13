@@ -1,0 +1,699 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy KitchenItemVisualFactory</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">Statyczne metody publiczne</a> &#124;
+<a href="#pri-static-methods">Statyczne metody prywatne</a> &#124;
+<a href="#pri-static-attribs">Statyczne atrybuty prywatne</a> &#124;
+<a href="class_kitchen_item_visual_factory-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy KitchenItemVisualFactory</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Statyczna klasa fabryki tworząca wizualne reprezentacje 3D składników i dań kuchennych w grze Kebab Chef Symulator.  
+ <a href="#details">Więcej...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Statyczne metody publiczne</h2></td></tr>
+<tr class="memitem:aa506fe52de7c8d68dd6db936ea7e79a6" id="r_aa506fe52de7c8d68dd6db936ea7e79a6"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa506fe52de7c8d68dd6db936ea7e79a6">GetModelName</a> (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> state, bool isDish)</td></tr>
+<tr class="memdesc:aa506fe52de7c8d68dd6db936ea7e79a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca nazwę pliku modelu 3D odpowiadającego danemu rodzajowi składnika i jego stanowi przetworzenia.  <br /></td></tr>
+<tr class="separator:aa506fe52de7c8d68dd6db936ea7e79a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af226998972f4673bbae0e84a1073bff7" id="r_af226998972f4673bbae0e84a1073bff7"><td class="memItemLeft" align="right" valign="top">static GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af226998972f4673bbae0e84a1073bff7">CreateItemVisual</a> (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> state, bool isDish, Transform parent, Vector3 localPosition, Vector3 localRotation, float targetSize)</td></tr>
+<tr class="memdesc:af226998972f4673bbae0e84a1073bff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy wizualną reprezentację 3D składnika lub dania jako obiekt potomny podanego rodzica.  <br /></td></tr>
+<tr class="separator:af226998972f4673bbae0e84a1073bff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43f85b1a2e9394d21e4e83f34d9e33b4" id="r_a43f85b1a2e9394d21e4e83f34d9e33b4"><td class="memItemLeft" align="right" valign="top">static Material&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43f85b1a2e9394d21e4e83f34d9e33b4">GetCachedMaterial</a> (Color color)</td></tr>
+<tr class="memdesc:a43f85b1a2e9394d21e4e83f34d9e33b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera lub tworzy buforowany materiał o podanym kolorze. Jeśli materiał o danym kolorze już istnieje w cache, zwraca go; w przeciwnym razie tworzy nowy.  <br /></td></tr>
+<tr class="separator:a43f85b1a2e9394d21e4e83f34d9e33b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacc8ef5e5e20605742c3f13be9a55f0e" id="r_aacc8ef5e5e20605742c3f13be9a55f0e"><td class="memItemLeft" align="right" valign="top">static GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacc8ef5e5e20605742c3f13be9a55f0e">CreateScatteredVisual</a> (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> state, Transform parent, Vector3 localPosition, int count, float spread, float pieceSize)</td></tr>
+<tr class="memdesc:aacc8ef5e5e20605742c3f13be9a55f0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy wizualizację rozproszonych kawałków składnika (np. posiekane warzywa lub krople sosu), losowo rozmieszczonych w obrębie kontenera.  <br /></td></tr>
+<tr class="separator:aacc8ef5e5e20605742c3f13be9a55f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9efe00d954a109ea6543a20ebb7e8264" id="r_a9efe00d954a109ea6543a20ebb7e8264"><td class="memItemLeft" align="right" valign="top">static Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9efe00d954a109ea6543a20ebb7e8264">GetIngredientColor</a> (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> state)</td></tr>
+<tr class="memdesc:a9efe00d954a109ea6543a20ebb7e8264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca kolor reprezentujący dany rodzaj składnika i jego stan przetworzenia. Używany do kolorowania prymitywów zastępczych i rozproszonych wizualizacji.  <br /></td></tr>
+<tr class="separator:a9efe00d954a109ea6543a20ebb7e8264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Statyczne metody prywatne</h2></td></tr>
+<tr class="memitem:a4c17c6fe9812e106a91803dae3d69ffe" id="r_a4c17c6fe9812e106a91803dae3d69ffe"><td class="memItemLeft" align="right" valign="top">static Shader&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c17c6fe9812e106a91803dae3d69ffe">GetCachedShader</a> ()</td></tr>
+<tr class="memdesc:a4c17c6fe9812e106a91803dae3d69ffe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera buforowany shader do tworzenia materiałów. Próbuje kolejno: URP Lit, Standard, Diffuse.  <br /></td></tr>
+<tr class="separator:a4c17c6fe9812e106a91803dae3d69ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fd0de424128aa70577716e72e6f7e90" id="r_a6fd0de424128aa70577716e72e6f7e90"><td class="memItemLeft" align="right" valign="top">static GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fd0de424128aa70577716e72e6f7e90">LoadCachedModel</a> (string path)</td></tr>
+<tr class="memdesc:a6fd0de424128aa70577716e72e6f7e90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ładuje model 3D z Resources i buforuje go w słowniku. Przy kolejnych wywołaniach z tą samą ścieżką zwraca buforowany wynik.  <br /></td></tr>
+<tr class="separator:a6fd0de424128aa70577716e72e6f7e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08010b0a16718ac082b65cf4f0591000" id="r_a08010b0a16718ac082b65cf4f0591000"><td class="memItemLeft" align="right" valign="top">static GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08010b0a16718ac082b65cf4f0591000">CreateFallbackVisual</a> (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> state, bool isDish, Transform parent, Vector3 localPosition, float targetSize)</td></tr>
+<tr class="memdesc:a08010b0a16718ac082b65cf4f0591000"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy zastępczą wizualizację składnika używając prymitywów geometrycznych (kula lub cylinder), gdy model 3D nie jest dostępny w zasobach.  <br /></td></tr>
+<tr class="separator:a08010b0a16718ac082b65cf4f0591000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef23eaecaac3bfddce6ca67353f990b1" id="r_aef23eaecaac3bfddce6ca67353f990b1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef23eaecaac3bfddce6ca67353f990b1">ScaleToSize</a> (Transform modelRoot, float targetSize)</td></tr>
+<tr class="memdesc:aef23eaecaac3bfddce6ca67353f990b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skaluje model 3D tak, aby jego największy wymiar odpowiadał podanemu rozmiarowi docelowemu.  <br /></td></tr>
+<tr class="separator:aef23eaecaac3bfddce6ca67353f990b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Statyczne atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a20db6278db1d0991db9744b30607ec53" id="r_a20db6278db1d0991db9744b30607ec53"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20db6278db1d0991db9744b30607ec53">ModelPath</a> = &quot;Models/&quot;</td></tr>
+<tr class="memdesc:a20db6278db1d0991db9744b30607ec53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ścieżka bazowa do katalogu modeli w zasobach Unity (Resources).  <br /></td></tr>
+<tr class="separator:a20db6278db1d0991db9744b30607ec53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcf98d25368204c9abbc80957fb6e0ed" id="r_adcf98d25368204c9abbc80957fb6e0ed"><td class="memItemLeft" align="right" valign="top">static Shader&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcf98d25368204c9abbc80957fb6e0ed">cachedShader</a></td></tr>
+<tr class="memdesc:adcf98d25368204c9abbc80957fb6e0ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowany shader używany do tworzenia materiałów. Preferuje URP Lit, awaryjnie Standard, ostatecznie Diffuse.  <br /></td></tr>
+<tr class="separator:adcf98d25368204c9abbc80957fb6e0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c7dadc2e6a725cfa9ddbe82ac9766b3" id="r_a9c7dadc2e6a725cfa9ddbe82ac9766b3"><td class="memItemLeft" align="right" valign="top">static readonly Dictionary&lt; Color, Material &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c7dadc2e6a725cfa9ddbe82ac9766b3">materialCache</a> = new Dictionary&lt;Color, Material&gt;()</td></tr>
+<tr class="memdesc:a9c7dadc2e6a725cfa9ddbe82ac9766b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Słownik buforujący materiały po kolorze, aby uniknąć tworzenia duplikatów materiałów o tym samym kolorze.  <br /></td></tr>
+<tr class="separator:a9c7dadc2e6a725cfa9ddbe82ac9766b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab35765a24094b6a8c211d26c35f06792" id="r_ab35765a24094b6a8c211d26c35f06792"><td class="memItemLeft" align="right" valign="top">static readonly Dictionary&lt; string, GameObject &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab35765a24094b6a8c211d26c35f06792">modelCache</a> = new Dictionary&lt;string, GameObject&gt;()</td></tr>
+<tr class="memdesc:ab35765a24094b6a8c211d26c35f06792"><td class="mdescLeft">&#160;</td><td class="mdescRight">Słownik buforujący załadowane modele 3D (prefaby) po ścieżce zasobu, aby uniknąć wielokrotnego ładowania tego samego modelu z Resources.  <br /></td></tr>
+<tr class="separator:ab35765a24094b6a8c211d26c35f06792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Statyczna klasa fabryki tworząca wizualne reprezentacje 3D składników i dań kuchennych w grze Kebab Chef Symulator. </p>
+<p>Klasa pełni rolę centralnej fabryki do tworzenia obiektów wizualnych dla systemu kuchni. Obsługuje:</p><ul>
+<li>Ładowanie modeli 3D z katalogu Resources/Models/ z buforowaniem,</li>
+<li>Tworzenie prymitywów zastępczych (kula, cylinder) gdy model nie jest dostępny,</li>
+<li>Generowanie rozproszonych wizualizacji składników (posiekane warzywa, sos),</li>
+<li>Buforowanie materiałów i shaderów dla optymalizacji wydajności,</li>
+<li>Automatyczne skalowanie modeli do pożądanego rozmiaru,</li>
+<li>Integrację z systemem animacji pojawiania się (<a class="el" href="class_item_animator.html" title="Animates item visuals: spawn bounce, pickup fly-to-hand, drop shrink, and assembly arc....">ItemAnimator</a>). </li>
+</ul>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a08010b0a16718ac082b65cf4f0591000" name="a08010b0a16718ac082b65cf4f0591000"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08010b0a16718ac082b65cf4f0591000">&#9670;&#160;</a></span>CreateFallbackVisual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static GameObject KitchenItemVisualFactory.CreateFallbackVisual </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isDish</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>localPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>targetSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy zastępczą wizualizację składnika używając prymitywów geometrycznych (kula lub cylinder), gdy model 3D nie jest dostępny w zasobach. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kind</td><td>Rodzaj składnika.</td></tr>
+    <tr><td class="paramname">state</td><td>Stan przetworzenia składnika.</td></tr>
+    <tr><td class="paramname">isDish</td><td>Czy obiekt jest gotowym daniem (kebabem) — jeśli tak, używany jest cylinder.</td></tr>
+    <tr><td class="paramname">parent</td><td>Transformata rodzica.</td></tr>
+    <tr><td class="paramname">localPosition</td><td>Lokalna pozycja obiektu względem rodzica.</td></tr>
+    <tr><td class="paramname">targetSize</td><td>Docelowy rozmiar obiektu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Utworzony obiekt zastępczy z odpowiednim materiałem i kolorem.</dd></dl>
+<p>Dania i kebaby reprezentowane są jako cylindry (0.4 × 0.7 × 0.4 targetSize), pozostałe składniki jako kule. Kolider jest wyłączany. Kolor jest automatycznie dobierany na podstawie rodzaju składnika za pomocą <a class="el" href="#a9efe00d954a109ea6543a20ebb7e8264" title="Zwraca kolor reprezentujący dany rodzaj składnika i jego stan przetworzenia. Używany do kolorowania p...">GetIngredientColor</a>. </p>
+
+</div>
+</div>
+<a id="af226998972f4673bbae0e84a1073bff7" name="af226998972f4673bbae0e84a1073bff7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af226998972f4673bbae0e84a1073bff7">&#9670;&#160;</a></span>CreateItemVisual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static GameObject KitchenItemVisualFactory.CreateItemVisual </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isDish</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>localPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>localRotation</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>targetSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy wizualną reprezentację 3D składnika lub dania jako obiekt potomny podanego rodzica. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kind</td><td>Rodzaj składnika do zwizualizowania.</td></tr>
+    <tr><td class="paramname">state</td><td>Stan przetworzenia składnika.</td></tr>
+    <tr><td class="paramname">isDish</td><td>Czy obiekt jest gotowym daniem.</td></tr>
+    <tr><td class="paramname">parent</td><td>Transformata rodzica, do którego zostanie dołączony model.</td></tr>
+    <tr><td class="paramname">localPosition</td><td>Lokalna pozycja modelu względem rodzica.</td></tr>
+    <tr><td class="paramname">localRotation</td><td>Lokalna rotacja modelu w stopniach (Euler).</td></tr>
+    <tr><td class="paramname">targetSize</td><td>Docelowy rozmiar obiektu (największy wymiar zostanie dopasowany).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Utworzony obiekt wizualny, lub <code>null</code> jeśli nie można określić modelu. Jeśli prefab nie zostanie znaleziony, tworzona jest zastępcza wizualizacja za pomocą <a class="el" href="#a08010b0a16718ac082b65cf4f0591000" title="Tworzy zastępczą wizualizację składnika używając prymitywów geometrycznych (kula lub cylinder),...">CreateFallbackVisual</a>. </dd></dl>
+<p>Model jest skalowany za pomocą <a class="el" href="#aef23eaecaac3bfddce6ca67353f990b1" title="Skaluje model 3D tak, aby jego największy wymiar odpowiadał podanemu rozmiarowi docelowemu.">ScaleToSize</a> do podanego rozmiaru. Wszystkie kollidery w modelu i jego dzieciach są wyłączane. Jeśli dostępny jest <a class="el" href="class_item_animator.html" title="Animates item visuals: spawn bounce, pickup fly-to-hand, drop shrink, and assembly arc....">ItemAnimator</a>, uruchamiana jest animacja pojawiania. </p>
+
+</div>
+</div>
+<a id="aacc8ef5e5e20605742c3f13be9a55f0e" name="aacc8ef5e5e20605742c3f13be9a55f0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacc8ef5e5e20605742c3f13be9a55f0e">&#9670;&#160;</a></span>CreateScatteredVisual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static GameObject KitchenItemVisualFactory.CreateScatteredVisual </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>localPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>count</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>spread</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>pieceSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy wizualizację rozproszonych kawałków składnika (np. posiekane warzywa lub krople sosu), losowo rozmieszczonych w obrębie kontenera. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kind</td><td>Rodzaj składnika do zwizualizowania.</td></tr>
+    <tr><td class="paramname">state</td><td>Stan przetworzenia składnika.</td></tr>
+    <tr><td class="paramname">parent</td><td>Transformata rodzica.</td></tr>
+    <tr><td class="paramname">localPosition</td><td>Lokalna pozycja kontenera względem rodzica.</td></tr>
+    <tr><td class="paramname">count</td><td>Liczba kawałków do wygenerowania.</td></tr>
+    <tr><td class="paramname">spread</td><td>Maksymalny zasięg rozproszenia kawałków na osiach X i Z.</td></tr>
+    <tr><td class="paramname">pieceSize</td><td>Bazowy rozmiar pojedynczego kawałka.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Kontener GameObject zawierający wszystkie wygenerowane kawałki.</dd></dl>
+<p>Sos czosnkowy (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5ab118c95a50b8859592f94b8d8c9dd7a3" title="Sos czosnkowy — sos dodawany jako przyprawienie.">IngredientKind.GarlicSauce</a>) jest reprezentowany jako spłaszczone kule, pozostałe składniki jako spłaszczone kostki. Każdy kawałek ma losową pozycję, rotację i lekki offset na osi Y. Kollidery kawałków są usuwane. Używany jest współdzielony materiał z cache dla optymalizacji. </p>
+
+</div>
+</div>
+<a id="a43f85b1a2e9394d21e4e83f34d9e33b4" name="a43f85b1a2e9394d21e4e83f34d9e33b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43f85b1a2e9394d21e4e83f34d9e33b4">&#9670;&#160;</a></span>GetCachedMaterial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Material KitchenItemVisualFactory.GetCachedMaterial </td>
+          <td>(</td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera lub tworzy buforowany materiał o podanym kolorze. Jeśli materiał o danym kolorze już istnieje w cache, zwraca go; w przeciwnym razie tworzy nowy. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">color</td><td>Kolor materiału do pobrania lub utworzenia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Materiał o podanym kolorze z odpowiednim shaderem.</dd></dl>
+
+</div>
+</div>
+<a id="a4c17c6fe9812e106a91803dae3d69ffe" name="a4c17c6fe9812e106a91803dae3d69ffe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c17c6fe9812e106a91803dae3d69ffe">&#9670;&#160;</a></span>GetCachedShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Shader KitchenItemVisualFactory.GetCachedShader </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera buforowany shader do tworzenia materiałów. Próbuje kolejno: URP Lit, Standard, Diffuse. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Znaleziony shader, lub <code>null</code> jeśli żaden nie jest dostępny.</dd></dl>
+
+</div>
+</div>
+<a id="a9efe00d954a109ea6543a20ebb7e8264" name="a9efe00d954a109ea6543a20ebb7e8264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9efe00d954a109ea6543a20ebb7e8264">&#9670;&#160;</a></span>GetIngredientColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Color KitchenItemVisualFactory.GetIngredientColor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zwraca kolor reprezentujący dany rodzaj składnika i jego stan przetworzenia. Używany do kolorowania prymitywów zastępczych i rozproszonych wizualizacji. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kind</td><td>Rodzaj składnika.</td></tr>
+    <tr><td class="paramname">state</td><td>Stan przetworzenia składnika.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Kolor charakterystyczny dla danego składnika:<ul>
+<li>Mięso: brązowy (ugotowane) lub czerwonawy (surowe),</li>
+<li>Pomidor: czerwony,</li>
+<li>Cebula: kremowy,</li>
+<li>Sałata: zielony,</li>
+<li>Sos czosnkowy: jasny beżowy,</li>
+<li>Lawasz: ciepły beżowy,</li>
+<li>Kebab: brązowo-złoty,</li>
+<li>Domyślny: szary. </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="aa506fe52de7c8d68dd6db936ea7e79a6" name="aa506fe52de7c8d68dd6db936ea7e79a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa506fe52de7c8d68dd6db936ea7e79a6">&#9670;&#160;</a></span>GetModelName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string KitchenItemVisualFactory.GetModelName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isDish</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zwraca nazwę pliku modelu 3D odpowiadającego danemu rodzajowi składnika i jego stanowi przetworzenia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kind</td><td>Rodzaj składnika (mięso, pomidor, cebula itp.).</td></tr>
+    <tr><td class="paramname">state</td><td>Stan przetworzenia składnika (surowy, posiekany, ugotowany).</td></tr>
+    <tr><td class="paramname">isDish</td><td>Czy obiekt jest gotowym daniem (kebabem).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Nazwa pliku modelu (bez ścieżki i rozszerzenia), lub <code>null</code> jeśli nie istnieje odpowiedni model dla danego rodzaju składnika. </dd></dl>
+<p>Dla gotowych dań i kebabów zawsze zwraca "kebab_wrap". Pomidory i cebule mają warianty w zależności od stanu przetworzenia (cały vs posiekany). Pozostałe składniki mają stały model. </p>
+
+</div>
+</div>
+<a id="a6fd0de424128aa70577716e72e6f7e90" name="a6fd0de424128aa70577716e72e6f7e90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fd0de424128aa70577716e72e6f7e90">&#9670;&#160;</a></span>LoadCachedModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static GameObject KitchenItemVisualFactory.LoadCachedModel </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ładuje model 3D z Resources i buforuje go w słowniku. Przy kolejnych wywołaniach z tą samą ścieżką zwraca buforowany wynik. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Ścieżka zasobu modelu (względem katalogu Resources).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Załadowany prefab modelu, lub <code>null</code> jeśli zasób nie istnieje.</dd></dl>
+
+</div>
+</div>
+<a id="aef23eaecaac3bfddce6ca67353f990b1" name="aef23eaecaac3bfddce6ca67353f990b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef23eaecaac3bfddce6ca67353f990b1">&#9670;&#160;</a></span>ScaleToSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void KitchenItemVisualFactory.ScaleToSize </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>modelRoot</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>targetSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Skaluje model 3D tak, aby jego największy wymiar odpowiadał podanemu rozmiarowi docelowemu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelRoot</td><td>Transformata korzenia modelu do przeskalowania.</td></tr>
+    <tr><td class="paramname">targetSize</td><td>Docelowy rozmiar największego wymiaru modelu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Oblicza otoczkę (bounding box) ze wszystkich rendererów w modelu i jego dzieciach, wyznacza największy wymiar, a następnie skaluje cały model jednorodnie. Pomija modele o wymiarze mniejszym niż 0.001, aby uniknąć dzielenia przez zero. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="adcf98d25368204c9abbc80957fb6e0ed" name="adcf98d25368204c9abbc80957fb6e0ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcf98d25368204c9abbc80957fb6e0ed">&#9670;&#160;</a></span>cachedShader</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Shader KitchenItemVisualFactory.cachedShader</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowany shader używany do tworzenia materiałów. Preferuje URP Lit, awaryjnie Standard, ostatecznie Diffuse. </p>
+
+</div>
+</div>
+<a id="a9c7dadc2e6a725cfa9ddbe82ac9766b3" name="a9c7dadc2e6a725cfa9ddbe82ac9766b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c7dadc2e6a725cfa9ddbe82ac9766b3">&#9670;&#160;</a></span>materialCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Dictionary&lt;Color, Material&gt; KitchenItemVisualFactory.materialCache = new Dictionary&lt;Color, Material&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Słownik buforujący materiały po kolorze, aby uniknąć tworzenia duplikatów materiałów o tym samym kolorze. </p>
+
+</div>
+</div>
+<a id="ab35765a24094b6a8c211d26c35f06792" name="ab35765a24094b6a8c211d26c35f06792"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab35765a24094b6a8c211d26c35f06792">&#9670;&#160;</a></span>modelCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Dictionary&lt;string, GameObject&gt; KitchenItemVisualFactory.modelCache = new Dictionary&lt;string, GameObject&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Słownik buforujący załadowane modele 3D (prefaby) po ścieżce zasobu, aby uniknąć wielokrotnego ładowania tego samego modelu z Resources. </p>
+
+</div>
+</div>
+<a id="a20db6278db1d0991db9744b30607ec53" name="a20db6278db1d0991db9744b30607ec53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20db6278db1d0991db9744b30607ec53">&#9670;&#160;</a></span>ModelPath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string KitchenItemVisualFactory.ModelPath = &quot;Models/&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ścieżka bazowa do katalogu modeli w zasobach Unity (Resources). </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_kitchen_item_visual_factory_8cs.html">KitchenItemVisualFactory.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

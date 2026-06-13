@@ -1,0 +1,176 @@
+\doxysection{Dokumentacja klasy Delivery\+Tray\+Display}
+\hypertarget{class_delivery_tray_display}{}\label{class_delivery_tray_display}\index{DeliveryTrayDisplay@{DeliveryTrayDisplay}}
+
+
+Zarządza wyświetlaniem serwowanego kebaba na tacy przy okienku wydawania. Kebab jest pokazywany na określony czas po każdym wydaniu zamówienia, a następnie automatycznie ukrywany.  
+
+
+Diagram dziedziczenia dla Delivery\+Tray\+Display\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_delivery_tray_display}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_delivery_tray_display_a4e261a11fd84819d4e67f8f142cc4bd8}{Configure}} (Game\+Object \mbox{\hyperlink{class_delivery_tray_display_ae3a527fb35c3e9a43df910726e7b24b2}{served\+Kebab}}, float \mbox{\hyperlink{class_delivery_tray_display_a7756e03102d1b697d3161c9287e8c5de}{visible\+Duration}})
+\begin{DoxyCompactList}\small\item\em Konfiguruje wyświetlacz tacy z referencją do obiektu kebaba i czasem widoczności. Ustawia bieżącą instancję jako aktywną i ukrywa kebab na starcie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_delivery_tray_display_a4b58a8fa4fd721bd6fbc58630b2821bb}{Show\+Served\+Kebab}} ()
+\begin{DoxyCompactList}\small\item\em Statyczna metoda wywoływana po wydaniu zamówienia — pokazuje kebab na tacy przy okienku przez czas określony w \doxylink{class_delivery_tray_display_a7756e03102d1b697d3161c9287e8c5de}{visible\+Duration}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_delivery_tray_display_ae6142c096be760fc59a31bd0fdc6adc1}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Sprawdza w każdej klatce, czy czas widoczności kebaba upłynął, i jeśli tak — ukrywa go. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_delivery_tray_display_a72cff3c7956627b7b53d846255e65190}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Czyści referencję singletona przy niszczeniu obiektu, aby uniknąć odwołań do zniszczonego komponentu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_delivery_tray_display_af39d2d78ff51d69aa6509c5272c7be8b}{Show}} ()
+\begin{DoxyCompactList}\small\item\em Pokazuje kebab na tacy i ustawia timer automatycznego ukrycia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_delivery_tray_display_aedc7b98d1633740ab55159993c40d801}{Set\+Kebab\+Visible}} (bool visible)
+\begin{DoxyCompactList}\small\item\em Ustawia widoczność obiektu wizualnego kebaba. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_delivery_tray_display_ae3a527fb35c3e9a43df910726e7b24b2}{served\+Kebab}}
+\begin{DoxyCompactList}\small\item\em Referencja do obiektu wizualnego kebaba na tacy. Jego aktywność (Set\+Active) jest przełączana przy pokazywaniu/ukrywaniu. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_delivery_tray_display_a7756e03102d1b697d3161c9287e8c5de}{visible\+Duration}} = 5f
+\begin{DoxyCompactList}\small\item\em Czas trwania widoczności kebaba w sekundach po wywołaniu Show. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_delivery_tray_display_a00fd4d58b08946d4125c2a45f8ce6247}{hide\+At\+Time}}
+\begin{DoxyCompactList}\small\item\em Znacznik czasu (Time.\+time), po przekroczeniu którego kebab zostanie ukryty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_delivery_tray_display}{Delivery\+Tray\+Display}} \mbox{\hyperlink{class_delivery_tray_display_a1cfb6da6d6126432291d6375ffc28494}{active\+Display}}
+\begin{DoxyCompactList}\small\item\em Aktywna instancja wyświetlacza tacy — wzorzec singletona. Umożliwia globalne wywoływanie \doxylink{class_delivery_tray_display_a4b58a8fa4fd721bd6fbc58630b2821bb}{Show\+Served\+Kebab} bez referencji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Zarządza wyświetlaniem serwowanego kebaba na tacy przy okienku wydawania. Kebab jest pokazywany na określony czas po każdym wydaniu zamówienia, a następnie automatycznie ukrywany. 
+
+Klasa implementuje wzorzec singletona poprzez statyczne pole \doxylink{class_delivery_tray_display_a1cfb6da6d6126432291d6375ffc28494}{active\+Display}, umożliwiając łatwe wywoływanie z dowolnego miejsca kodu za pomocą metody statycznej \doxylink{class_delivery_tray_display_a4b58a8fa4fd721bd6fbc58630b2821bb}{Show\+Served\+Kebab}. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_delivery_tray_display_a4e261a11fd84819d4e67f8f142cc4bd8}\index{DeliveryTrayDisplay@{DeliveryTrayDisplay}!Configure@{Configure}}
+\index{Configure@{Configure}!DeliveryTrayDisplay@{DeliveryTrayDisplay}}
+\doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
+{\footnotesize\ttfamily \label{class_delivery_tray_display_a4e261a11fd84819d4e67f8f142cc4bd8} 
+void Delivery\+Tray\+Display.\+Configure (\begin{DoxyParamCaption}\item[{Game\+Object}]{served\+Kebab}{, }\item[{float}]{visible\+Duration}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konfiguruje wyświetlacz tacy z referencją do obiektu kebaba i czasem widoczności. Ustawia bieżącą instancję jako aktywną i ukrywa kebab na starcie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em served\+Kebab} & Obiekt wizualny kebaba do pokazywania/ukrywania.\\
+\hline
+{\em visible\+Duration} & Czas widoczności kebaba w sekundach.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_delivery_tray_display_a72cff3c7956627b7b53d846255e65190}\index{DeliveryTrayDisplay@{DeliveryTrayDisplay}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!DeliveryTrayDisplay@{DeliveryTrayDisplay}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_delivery_tray_display_a72cff3c7956627b7b53d846255e65190} 
+void Delivery\+Tray\+Display.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Czyści referencję singletona przy niszczeniu obiektu, aby uniknąć odwołań do zniszczonego komponentu. 
+
+\Hypertarget{class_delivery_tray_display_aedc7b98d1633740ab55159993c40d801}\index{DeliveryTrayDisplay@{DeliveryTrayDisplay}!SetKebabVisible@{SetKebabVisible}}
+\index{SetKebabVisible@{SetKebabVisible}!DeliveryTrayDisplay@{DeliveryTrayDisplay}}
+\doxysubsubsection{\texorpdfstring{SetKebabVisible()}{SetKebabVisible()}}
+{\footnotesize\ttfamily \label{class_delivery_tray_display_aedc7b98d1633740ab55159993c40d801} 
+void Delivery\+Tray\+Display.\+Set\+Kebab\+Visible (\begin{DoxyParamCaption}\item[{bool}]{visible}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ustawia widoczność obiektu wizualnego kebaba. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em visible} & True aby pokazać kebab, false aby go ukryć.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_delivery_tray_display_af39d2d78ff51d69aa6509c5272c7be8b}\index{DeliveryTrayDisplay@{DeliveryTrayDisplay}!Show@{Show}}
+\index{Show@{Show}!DeliveryTrayDisplay@{DeliveryTrayDisplay}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily \label{class_delivery_tray_display_af39d2d78ff51d69aa6509c5272c7be8b} 
+void Delivery\+Tray\+Display.\+Show (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Pokazuje kebab na tacy i ustawia timer automatycznego ukrycia. 
+
+\Hypertarget{class_delivery_tray_display_a4b58a8fa4fd721bd6fbc58630b2821bb}\index{DeliveryTrayDisplay@{DeliveryTrayDisplay}!ShowServedKebab@{ShowServedKebab}}
+\index{ShowServedKebab@{ShowServedKebab}!DeliveryTrayDisplay@{DeliveryTrayDisplay}}
+\doxysubsubsection{\texorpdfstring{ShowServedKebab()}{ShowServedKebab()}}
+{\footnotesize\ttfamily \label{class_delivery_tray_display_a4b58a8fa4fd721bd6fbc58630b2821bb} 
+static void Delivery\+Tray\+Display.\+Show\+Served\+Kebab (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Statyczna metoda wywoływana po wydaniu zamówienia — pokazuje kebab na tacy przy okienku przez czas określony w \doxylink{class_delivery_tray_display_a7756e03102d1b697d3161c9287e8c5de}{visible\+Duration}. 
+
+\Hypertarget{class_delivery_tray_display_ae6142c096be760fc59a31bd0fdc6adc1}\index{DeliveryTrayDisplay@{DeliveryTrayDisplay}!Update@{Update}}
+\index{Update@{Update}!DeliveryTrayDisplay@{DeliveryTrayDisplay}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_delivery_tray_display_ae6142c096be760fc59a31bd0fdc6adc1} 
+void Delivery\+Tray\+Display.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sprawdza w każdej klatce, czy czas widoczności kebaba upłynął, i jeśli tak — ukrywa go. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_delivery_tray_display_a1cfb6da6d6126432291d6375ffc28494}\index{DeliveryTrayDisplay@{DeliveryTrayDisplay}!activeDisplay@{activeDisplay}}
+\index{activeDisplay@{activeDisplay}!DeliveryTrayDisplay@{DeliveryTrayDisplay}}
+\doxysubsubsection{\texorpdfstring{activeDisplay}{activeDisplay}}
+{\footnotesize\ttfamily \label{class_delivery_tray_display_a1cfb6da6d6126432291d6375ffc28494} 
+\mbox{\hyperlink{class_delivery_tray_display}{Delivery\+Tray\+Display}} Delivery\+Tray\+Display.\+active\+Display\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Aktywna instancja wyświetlacza tacy — wzorzec singletona. Umożliwia globalne wywoływanie \doxylink{class_delivery_tray_display_a4b58a8fa4fd721bd6fbc58630b2821bb}{Show\+Served\+Kebab} bez referencji. 
+
+\Hypertarget{class_delivery_tray_display_a00fd4d58b08946d4125c2a45f8ce6247}\index{DeliveryTrayDisplay@{DeliveryTrayDisplay}!hideAtTime@{hideAtTime}}
+\index{hideAtTime@{hideAtTime}!DeliveryTrayDisplay@{DeliveryTrayDisplay}}
+\doxysubsubsection{\texorpdfstring{hideAtTime}{hideAtTime}}
+{\footnotesize\ttfamily \label{class_delivery_tray_display_a00fd4d58b08946d4125c2a45f8ce6247} 
+float Delivery\+Tray\+Display.\+hide\+At\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Znacznik czasu (Time.\+time), po przekroczeniu którego kebab zostanie ukryty. 
+
+\Hypertarget{class_delivery_tray_display_ae3a527fb35c3e9a43df910726e7b24b2}\index{DeliveryTrayDisplay@{DeliveryTrayDisplay}!servedKebab@{servedKebab}}
+\index{servedKebab@{servedKebab}!DeliveryTrayDisplay@{DeliveryTrayDisplay}}
+\doxysubsubsection{\texorpdfstring{servedKebab}{servedKebab}}
+{\footnotesize\ttfamily \label{class_delivery_tray_display_ae3a527fb35c3e9a43df910726e7b24b2} 
+Game\+Object Delivery\+Tray\+Display.\+served\+Kebab\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referencja do obiektu wizualnego kebaba na tacy. Jego aktywność (Set\+Active) jest przełączana przy pokazywaniu/ukrywaniu. 
+
+\Hypertarget{class_delivery_tray_display_a7756e03102d1b697d3161c9287e8c5de}\index{DeliveryTrayDisplay@{DeliveryTrayDisplay}!visibleDuration@{visibleDuration}}
+\index{visibleDuration@{visibleDuration}!DeliveryTrayDisplay@{DeliveryTrayDisplay}}
+\doxysubsubsection{\texorpdfstring{visibleDuration}{visibleDuration}}
+{\footnotesize\ttfamily \label{class_delivery_tray_display_a7756e03102d1b697d3161c9287e8c5de} 
+float Delivery\+Tray\+Display.\+visible\+Duration = 5f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czas trwania widoczności kebaba w sekundach po wywołaniu Show. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_game_bootstrap_8cs}{Kitchen\+Game\+Bootstrap.\+cs}}\end{DoxyCompactItemize}

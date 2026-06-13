@@ -1,0 +1,115 @@
+\doxysection{Dokumentacja pliku Assets/\+Scripts/\+Network\+Player.cs}
+\hypertarget{_network_player_8cs}{}\label{_network_player_8cs}\index{Assets/Scripts/NetworkPlayer.cs@{Assets/Scripts/NetworkPlayer.cs}}
+
+
+Plik zawierający klasę \doxylink{class_network_player}{Network\+Player} oraz klasy pomocnicze \doxylink{class_held_item_bob}{Held\+Item\+Bob} i \doxylink{class_remote_player_animator}{Remote\+Player\+Animator}.  
+
+
+\doxysubsubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_network_player}{Network\+Player}}
+\begin{DoxyCompactList}\small\item\em Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_held_item_bob}{Held\+Item\+Bob}}
+\begin{DoxyCompactList}\small\item\em Komponent dodający efekt delikatnego kołysania (bob) do trzymanego przedmiotu. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_remote_player_animator}{Remote\+Player\+Animator}}
+\begin{DoxyCompactList}\small\item\em Komponent animacji gracza zdalnego wykorzystujący system Playable\+Graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Wyliczenia}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd}{Network\+VFXType}} \{ \newline
+\mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda4db4563826bad0eb2f60ee6e42d0ea4b}{Steam}}
+, \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddad55bcccf4bb36aa49e00d35de12eeb6c}{Stop\+Steam}}
+, \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda7d22da1fbe12dae4e009241cd5fedad9}{Doner\+Smoke}}
+, \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda6664709c271f36b2a46c12b967127ca1}{Stop\+Doner\+Smoke}}
+, \newline
+\mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda3329944ab04ab8cf2bbf658931d5a1b5}{Chop}}
+, \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda96fd07f8244c1d8b9a38930ea4bdec97}{Pickup}}
+, \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda3e679cff5b3a6f6f8f32aead541a0a12}{Drop}}
+, \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddae7d31fc0602fb2ede144d18cdffd816b}{Ready}}
+, \newline
+\mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddaa212b19ef5f2fb30acf92e6cbccc1f2d}{Wrap}}
+, \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddaf683581d3e75f05f9d9215f9b4696cef}{Upgrade}}
+, \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddaa93312829ec4c71aac461cec296faa0e}{Money}}
+, \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda3f5cf7b5e3cbd6351292043e4c3b7a1a}{Delivery\+Success}}
+, \newline
+\mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddab36fe7a384ea7f10e1739e780387049a}{Delivery\+Fail}}
+, \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddac85a251cc457840f1e032f1b733e9398}{Timeout}}
+ \}
+\begin{DoxyCompactList}\small\item\em Typ efektu wizualnego (VFX) przesyłanego przez sieć. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Plik zawierający klasę \doxylink{class_network_player}{Network\+Player} oraz klasy pomocnicze \doxylink{class_held_item_bob}{Held\+Item\+Bob} i \doxylink{class_remote_player_animator}{Remote\+Player\+Animator}. 
+
+Definiuje logikę gracza sieciowego, w tym konfigurację kamery, synchronizację stanu trzymanego przedmiotu, nadawanie stanów stacji kuchennych, ekonomii, zamówień, ulepszeń sklepowych oraz efektów wizualnych (VFX) pomiędzy serwerem a klientami w grze wieloosobowej. 
+
+\doxysubsection{Dokumentacja typów wyliczanych}
+\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!NetworkVFXType@{NetworkVFXType}}
+\index{NetworkVFXType@{NetworkVFXType}!NetworkPlayer.cs@{NetworkPlayer.cs}}
+\doxysubsubsection{\texorpdfstring{NetworkVFXType}{NetworkVFXType}}
+{\footnotesize\ttfamily \label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+enum \mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd}{Network\+VFXType}}}
+
+
+
+Typ efektu wizualnego (VFX) przesyłanego przez sieć. 
+
+Używany do identyfikacji rodzaju efektu, który ma zostać odtworzony na klientach po wywołaniu przez serwer. \begin{DoxyEnumFields}{Wartości wyliczeń}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Steam@{Steam}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!Steam@{Steam}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda4db4563826bad0eb2f60ee6e42d0ea4b}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Steam&Efekt pary wodnej (np. z garnka). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{StopSteam@{StopSteam}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!StopSteam@{StopSteam}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddad55bcccf4bb36aa49e00d35de12eeb6c}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Stop\+Steam&Zatrzymanie efektu pary wodnej. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DonerSmoke@{DonerSmoke}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!DonerSmoke@{DonerSmoke}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda7d22da1fbe12dae4e009241cd5fedad9}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Doner\+Smoke&Efekt dymu z pieca do kebaba (doner). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{StopDonerSmoke@{StopDonerSmoke}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!StopDonerSmoke@{StopDonerSmoke}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda6664709c271f36b2a46c12b967127ca1}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Stop\+Doner\+Smoke&Zatrzymanie efektu dymu z pieca do kebaba. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Chop@{Chop}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!Chop@{Chop}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda3329944ab04ab8cf2bbf658931d5a1b5}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Chop&Efekt krojenia składnika. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Pickup@{Pickup}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!Pickup@{Pickup}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda96fd07f8244c1d8b9a38930ea4bdec97}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Pickup&Efekt podnoszenia przedmiotu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Drop@{Drop}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!Drop@{Drop}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda3e679cff5b3a6f6f8f32aead541a0a12}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Drop&Efekt odkładania przedmiotu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Ready@{Ready}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!Ready@{Ready}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddae7d31fc0602fb2ede144d18cdffd816b}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Ready&Efekt gotowości składnika. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Wrap@{Wrap}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!Wrap@{Wrap}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddaa212b19ef5f2fb30acf92e6cbccc1f2d}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Wrap&Efekt zawijania kebaba. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Upgrade@{Upgrade}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!Upgrade@{Upgrade}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddaf683581d3e75f05f9d9215f9b4696cef}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Upgrade&Efekt ulepszenia zakupionego w sklepie. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Money@{Money}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!Money@{Money}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddaa93312829ec4c71aac461cec296faa0e}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Money&Efekt pieniędzy (np. przy transakcji). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DeliverySuccess@{DeliverySuccess}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!DeliverySuccess@{DeliverySuccess}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dda3f5cf7b5e3cbd6351292043e4c3b7a1a}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Delivery\+Success&Efekt udanej dostawy zamówienia. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DeliveryFail@{DeliveryFail}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!DeliveryFail@{DeliveryFail}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddab36fe7a384ea7f10e1739e780387049a}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Delivery\+Fail&Efekt nieudanej dostawy zamówienia. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Timeout@{Timeout}!NetworkPlayer.cs@{NetworkPlayer.cs}}\index{NetworkPlayer.cs@{NetworkPlayer.cs}!Timeout@{Timeout}}}\Hypertarget{_network_player_8cs_a254701325960a5da9b33b8f9acbe09ddac85a251cc457840f1e032f1b733e9398}\label{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd} 
+Timeout&Efekt przekroczenia limitu czasu zamówienia. \\
+\hline
+
+\end{DoxyEnumFields}

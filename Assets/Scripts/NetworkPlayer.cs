@@ -1,3 +1,9 @@
+/// \file NetworkPlayer.cs
+/// \brief Plik zawierający klasę NetworkPlayer oraz klasy pomocnicze HeldItemBob i RemotePlayerAnimator.
+/// \details Definiuje logikę gracza sieciowego, w tym konfigurację kamery, synchronizację stanu
+/// trzymanego przedmiotu, nadawanie stanów stacji kuchennych, ekonomii, zamówień, ulepszeń sklepowych
+/// oraz efektów wizualnych (VFX) pomiędzy serwerem a klientami w grze wieloosobowej.
+
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
@@ -5,20 +11,94 @@ using UnityEngine.Playables;
 using UnityEngine.Animations;
 using System.Linq;
 
+/// <summary>
+/// Typ efektu wizualnego (VFX) przesyłanego przez sieć.
+/// </summary>
+/// <remarks>
+/// Używany do identyfikacji rodzaju efektu, który ma zostać odtworzony
+/// na klientach po wywołaniu przez serwer.
+/// </remarks>
 public enum NetworkVFXType
 {
-    Steam, StopSteam, DonerSmoke, StopDonerSmoke, Chop, Pickup, Drop, Ready, Wrap, Upgrade, Money, DeliverySuccess, DeliveryFail, Timeout
+    /// <summary>Efekt pary wodnej (np. z garnka).</summary>
+    Steam,
+    /// <summary>Zatrzymanie efektu pary wodnej.</summary>
+    StopSteam,
+    /// <summary>Efekt dymu z pieca do kebaba (doner).</summary>
+    DonerSmoke,
+    /// <summary>Zatrzymanie efektu dymu z pieca do kebaba.</summary>
+    StopDonerSmoke,
+    /// <summary>Efekt krojenia składnika.</summary>
+    Chop,
+    /// <summary>Efekt podnoszenia przedmiotu.</summary>
+    Pickup,
+    /// <summary>Efekt odkładania przedmiotu.</summary>
+    Drop,
+    /// <summary>Efekt gotowości składnika.</summary>
+    Ready,
+    /// <summary>Efekt zawijania kebaba.</summary>
+    Wrap,
+    /// <summary>Efekt ulepszenia zakupionego w sklepie.</summary>
+    Upgrade,
+    /// <summary>Efekt pieniędzy (np. przy transakcji).</summary>
+    Money,
+    /// <summary>Efekt udanej dostawy zamówienia.</summary>
+    DeliverySuccess,
+    /// <summary>Efekt nieudanej dostawy zamówienia.</summary>
+    DeliveryFail,
+    /// <summary>Efekt przekroczenia limitu czasu zamówienia.</summary>
+    Timeout
 }
 
+/// <summary>
+/// Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.
+/// </summary>
+/// <remarks>
+/// Dziedziczy po <see cref="NetworkBehaviour"/> i obsługuje:
+/// <list type="bullet">
+///   <item>Konfigurację kamery i kontrolera gracza lokalnego</item>
+///   <item>Tworzenie wizualnej reprezentacji graczy zdalnych</item>
+///   <item>Synchronizację trzymanego przedmiotu, nazwy gracza i indeksu</item>
+///   <item>Nadawanie stanów stacji kuchennych, ekonomii, sklepu i zamówień</item>
+///   <item>Obsługę interakcji ze stacjami kuchennymi przez RPC</item>
+///   <item>Nadawanie efektów wizualnych (VFX) do klientów</item>
+/// </list>
+/// </remarks>
 public class NetworkPlayer : NetworkBehaviour
 {
+    /// <summary>
+    /// Statyczna referencja do lokalnej instancji gracza sieciowego.
+    /// </summary>
+    /// <value>Instancja <see cref="NetworkPlayer"/> należąca do lokalnego gracza lub <c>null</c>.</value>
     public static NetworkPlayer LocalInstance { get; private set; }
 
+    /// <summary>
+    /// Wysokość oczu gracza nad poziomem podłogi (w metrach).
+    /// Używana do pozycjonowania kamery gracza.
+    /// </summary>
     private const float EyeHeight = 1.75f;
+
+    /// <summary>
+    /// Interwał synchronizacji stanów stacji kuchennych (w sekundach).
+    /// </summary>
     private const float StationSyncInterval = 0.15f;
+
+    /// <summary>
+    /// Interwał synchronizacji danych ekonomicznych (w sekundach).
+    /// </summary>
     private const float EconomySyncInterval = 0.5f;
+
+    /// <summary>
+    /// Interwał synchronizacji ulepszeń sklepowych (w sekundach).
+    /// </summary>
     private const float ShopSyncInterval = 1.0f;
 
+    /// <summary>
+    /// Tablica predefiniowanych punktów spawnu graczy na mapie.
+    /// </summary>
+    /// <remarks>
+    /// Pozycje są przypisywane graczom cyklicznie na podstawie ich identyfikatora klienta.
+    /// </remarks>
     private static readonly Vector3[] SpawnPoints = new Vector3[]
     {
         new Vector3(0f, 0f, -1.9f),
@@ -27,6 +107,13 @@ public class NetworkPlayer : NetworkBehaviour
         new Vector3(0f, 0f, -0.5f)
     };
 
+    /// <summary>
+    /// Tablica kolorów przypisywanych graczom na podstawie ich indeksu.
+    /// </summary>
+    /// <remarks>
+    /// Kolory służą do wizualnego rozróżnienia graczy zdalnych.
+    /// Kolejno: niebieski, czerwony, zielony, żółty.
+    /// </remarks>
     public static readonly Color[] PlayerColors = new Color[]
     {
         new Color(0.2f, 0.6f, 0.9f),
@@ -35,39 +122,122 @@ public class NetworkPlayer : NetworkBehaviour
         new Color(0.9f, 0.75f, 0.2f)
     };
 
+    /// <summary>
+    /// Zmienna sieciowa przechowująca nazwę (pseudonim) gracza.
+    /// </summary>
+    /// <remarks>
+    /// Odczytywalna przez wszystkich klientów, zapisywalna tylko przez serwer.
+    /// Domyślna wartość to "Gracz".
+    /// </remarks>
     private NetworkVariable<FixedString32Bytes> playerName = new NetworkVariable<FixedString32Bytes>(
         "Gracz",
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Server);
 
+    /// <summary>
+    /// Zmienna sieciowa przechowująca stan trzymanego przedmiotu kuchennego.
+    /// </summary>
+    /// <remarks>
+    /// Używana do synchronizacji wizualnej reprezentacji przedmiotu trzymanego przez gracza
+    /// pomiędzy wszystkimi klientami.
+    /// </remarks>
     private NetworkVariable<NetworkItemState> netHeldItem = new NetworkVariable<NetworkItemState>(
         NetworkItemState.Empty(),
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Server);
 
+    /// <summary>
+    /// Zmienna sieciowa przechowująca indeks gracza.
+    /// </summary>
+    /// <remarks>
+    /// Indeks określa punkt spawnu oraz kolor gracza.
+    /// Przypisywany na serwerze na podstawie identyfikatora klienta.
+    /// </remarks>
     private NetworkVariable<int> playerIndex = new NetworkVariable<int>(
         0,
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Server);
 
+    /// <summary>
+    /// Referencja do kamery gracza lokalnego.
+    /// </summary>
     private Camera playerCamera;
+
+    /// <summary>
+    /// Obiekt wizualny reprezentujący gracza zdalnego (model 3D).
+    /// </summary>
     private GameObject remotePlayerVisual;
+
+    /// <summary>
+    /// Etykieta tekstowa wyświetlająca nazwę gracza zdalnego nad jego głową.
+    /// </summary>
     private TextMesh nameLabel;
+
+    /// <summary>
+    /// Buforowana referencja do komponentu kontrolera ruchu gracza.
+    /// </summary>
     private SimplePlayerController cachedController;
+
+    /// <summary>
+    /// Buforowana referencja do komponentu interakcji gracza.
+    /// </summary>
     private PlayerInteraction cachedInteraction;
 
+    /// <summary>
+    /// Obiekt wizualny reprezentujący przedmiot trzymany przez gracza.
+    /// </summary>
     private GameObject heldItemVisual;
+
+    /// <summary>
+    /// Ostatni zsynchronizowany stan wizualny trzymanego przedmiotu.
+    /// Używany do wykrywania zmian i unikania niepotrzebnego odtwarzania wizualizacji.
+    /// </summary>
     private NetworkItemState lastVisualState;
 
+    /// <summary>
+    /// Buforowana tablica wszystkich stacji kuchennych na scenie.
+    /// </summary>
     private NetworkKitchenStation[] cachedStations;
+
+    /// <summary>
+    /// Czas ostatniego odświeżenia buforowanej tablicy stacji kuchennych.
+    /// </summary>
     private float cachedStationsTime;
+
+    /// <summary>
+    /// Czas następnej synchronizacji stanów stacji kuchennych.
+    /// </summary>
     private float nextStationSyncTime;
+
+    /// <summary>
+    /// Czas następnej synchronizacji danych ekonomicznych.
+    /// </summary>
     private float nextEconomySyncTime;
+
+    /// <summary>
+    /// Czas następnej synchronizacji ulepszeń sklepowych.
+    /// </summary>
     private float nextShopSyncTime;
+
+    /// <summary>
+    /// Czas następnej synchronizacji zamówień.
+    /// </summary>
     private float nextOrderSyncTime;
 
+    /// <summary>
+    /// Właściwość zwracająca kamerę gracza.
+    /// </summary>
+    /// <value>Obiekt <see cref="Camera"/> przypisany do gracza lokalnego lub <c>null</c> dla graczy zdalnych.</value>
     public Camera PlayerCamera => playerCamera;
 
+    /// <summary>
+    /// Wywoływana po pojawieniu się obiektu sieciowego.
+    /// Konfiguruje gracza lokalnego lub zdalnego oraz subskrybuje zmiany zmiennych sieciowych.
+    /// </summary>
+    /// <remarks>
+    /// Na serwerze przypisuje indeks gracza, punkt spawnu i domyślną nazwę.
+    /// Dla właściciela wywołuje <see cref="SetupLocalPlayer"/>, w przeciwnym razie <see cref="SetupRemotePlayer"/>.
+    /// </remarks>
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -98,6 +268,13 @@ public class NetworkPlayer : NetworkBehaviour
         netHeldItem.OnValueChanged += OnHeldItemChanged;
     }
 
+    /// <summary>
+    /// Metoda Start wywoływana przez Unity w pierwszej klatce.
+    /// </summary>
+    /// <remarks>
+    /// Zapewnia konfigurację gracza lokalnego w trybie hosta,
+    /// gdy obiekt nie został jeszcze zdespawnowany sieciowo.
+    /// </remarks>
     private void Start()
     {
 
@@ -110,6 +287,10 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Wywoływana przy usunięciu obiektu sieciowego ze sceny.
+    /// Odsubskrybowuje zdarzenia zmiennych sieciowych i niszczy obiekty pomocnicze.
+    /// </summary>
     public override void OnNetworkDespawn()
     {
         base.OnNetworkDespawn();
@@ -128,8 +309,23 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Flaga zapobiegająca wielokrotnej konfiguracji gracza lokalnego.
+    /// </summary>
     private bool isLocalPlayerSetup = false;
 
+    /// <summary>
+    /// Konfiguruje gracza lokalnego: tworzy kamerę, włącza kontroler ruchu i interakcję,
+    /// inicjalizuje interfejsy HUD i ustawia kursor.
+    /// </summary>
+    /// <remarks>
+    /// Metoda jest chroniona flagą <see cref="isLocalPlayerSetup"/> przed wielokrotnym wywołaniem.
+    /// Tworzy kamerę z odpowiednimi ustawieniami URP (post-processing, antyaliasing),
+    /// konfiguruje <see cref="SimplePlayerController"/>, <see cref="PlayerInteraction"/>,
+    /// oraz tworzy niezbędne komponenty HUD (<see cref="KitchenHUD"/>, <see cref="InteractionHighlight"/>,
+    /// <see cref="ShopUI"/>, <see cref="PlayerListUI"/>) jeśli nie istnieją na scenie.
+    /// Wysyła pseudonim gracza na serwer.
+    /// </remarks>
     private void SetupLocalPlayer()
     {
         if (isLocalPlayerSetup) return;
@@ -233,6 +429,10 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("[NetworkPlayer] Lokalny gracz skonfigurowany. Nick: " + nickname);
     }
 
+    /// <summary>
+    /// Konfiguruje gracza zdalnego: wyłącza kontroler i interakcję,
+    /// usuwa kamerę i tworzy wizualną reprezentację gracza.
+    /// </summary>
     private void SetupRemotePlayer()
     {
         gameObject.name = "Player_Remote_" + OwnerClientId;
@@ -250,6 +450,15 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("[NetworkPlayer] Zdalny gracz skonfigurowany: " + OwnerClientId);
     }
 
+    /// <summary>
+    /// Tworzy wizualną reprezentację gracza zdalnego (model 3D, etykietę z nazwą).
+    /// </summary>
+    /// <remarks>
+    /// Próbuje załadować model FBX z Resources ("Models/Gracz_Idle").
+    /// Jeśli model nie jest dostępny, tworzy prostą geometrię zastępczą (kapsułę).
+    /// Przypisuje kolor gracza na podstawie indeksu i inicjalizuje animator.
+    /// Dodaje etykietę tekstową z nazwą gracza jako billboard.
+    /// </remarks>
     private void CreateRemoteVisual()
     {
         if (remotePlayerVisual != null) return;
@@ -319,12 +528,26 @@ public class NetworkPlayer : NetworkBehaviour
         remotePlayerVisual = root;
     }
 
+    /// <summary>
+    /// Wyłącza komponent Collider na podanym obiekcie gry.
+    /// </summary>
+    /// <param name="obj">Obiekt gry, na którym należy wyłączyć zderzacz.</param>
     private void DisableCollider(GameObject obj)
     {
         Collider col = obj.GetComponent<Collider>();
         if (col != null) col.enabled = false;
     }
 
+    /// <summary>
+    /// Wyszukuje kość prawej dłoni w hierarchii modelu gracza zdalnego.
+    /// </summary>
+    /// <returns>
+    /// <see cref="Transform"/> kości prawej dłoni, jeśli została znaleziona;
+    /// w przeciwnym razie zwraca transform samego gracza.
+    /// </returns>
+    /// <remarks>
+    /// Pomija kości palców (Thumb, Index, Middle, Ring, Pinky), szukając głównej kości "RightHand".
+    /// </remarks>
     private Transform GetRightHandBone()
     {
         if (remotePlayerVisual != null)
@@ -342,6 +565,16 @@ public class NetworkPlayer : NetworkBehaviour
         return transform;
     }
 
+    /// <summary>
+    /// Aktualizuje wizualną reprezentację przedmiotu trzymanego przez gracza.
+    /// </summary>
+    /// <param name="itemState">Nowy stan trzymanego przedmiotu sieciowego.</param>
+    /// <remarks>
+    /// Niszczy starą wizualizację, jeśli stan przedmiotu się zmienił,
+    /// i tworzy nową za pomocą <see cref="KitchenItemVisualFactory"/>.
+    /// Dla graczy zdalnych przyczepia wizualizację do kości prawej ręki lub
+    /// do transform gracza jako fallback.
+    /// </remarks>
     private void UpdateHeldItemVisual(NetworkItemState itemState)
     {
 
@@ -389,14 +622,35 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Wywoływana przy zmianie wartości zmiennej sieciowej trzymanego przedmiotu.
+    /// Aktualizuje wizualizację przedmiotu.
+    /// </summary>
+    /// <param name="oldValue">Poprzedni stan przedmiotu.</param>
+    /// <param name="newValue">Nowy stan przedmiotu.</param>
     private void OnHeldItemChanged(NetworkItemState oldValue, NetworkItemState newValue)
     {
         UpdateHeldItemVisual(newValue);
     }
 
+    /// <summary>
+    /// Pseudonim oczekujący na wysłanie do serwera (używany, gdy obiekt nie został jeszcze zdespawnowany sieciowo).
+    /// </summary>
     private string pendingNickname;
+
+    /// <summary>
+    /// Czas następnej synchronizacji stanu trzymanego przedmiotu.
+    /// </summary>
     private float nextHeldItemSyncTime;
 
+    /// <summary>
+    /// Metoda Update wywoływana co klatkę.
+    /// Synchronizuje trzymany przedmiot, nadaje stany stacji, ekonomii, sklepu i zamówień.
+    /// </summary>
+    /// <remarks>
+    /// Dla właściciela synchronizuje stan trzymanego przedmiotu z serwerem co 0.15 sekundy.
+    /// Dla hosta (serwer + właściciel) nadaje stany stacji kuchennych, ekonomii, ulepszeń i zamówień.
+    /// </remarks>
     private void Update()
     {
         if (!IsSpawned) return;
@@ -429,6 +683,14 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Nadaje stany wszystkich zmienionych stacji kuchennych do klientów.
+    /// </summary>
+    /// <remarks>
+    /// Wywoływana cyklicznie co <see cref="StationSyncInterval"/> sekund.
+    /// Buforuje tablicę stacji i odświeża ją co 5 sekund.
+    /// Wysyła migawkę stanu tylko dla stacji, których stan się zmienił.
+    /// </remarks>
     private void BroadcastStationStates()
     {
         if (Time.time < nextStationSyncTime) return;
@@ -451,6 +713,14 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// RPC klienta synchronizujący stan stacji kuchennej odebrany od serwera.
+    /// </summary>
+    /// <param name="snapshot">Migawka stanu stacji kuchennej do zastosowania.</param>
+    /// <remarks>
+    /// Ignorowana na serwerze (serwer jest źródłem prawdy).
+    /// Wyszukuje odpowiednią stację po indeksie i stosuje migawkę.
+    /// </remarks>
     [ClientRpc]
     private void SyncStationStateClientRpc(StationStateSnapshot snapshot)
     {
@@ -474,6 +744,13 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Nadaje dane ekonomiczne (saldo i łączne zarobki) do wszystkich klientów.
+    /// </summary>
+    /// <remarks>
+    /// Wywoływana cyklicznie co <see cref="EconomySyncInterval"/> sekund.
+    /// Pobiera dane z <see cref="EconomyManager.Instance"/>.
+    /// </remarks>
     private void BroadcastEconomy()
     {
         if (Time.time < nextEconomySyncTime) return;
@@ -485,6 +762,11 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// RPC klienta synchronizujący dane ekonomiczne od serwera.
+    /// </summary>
+    /// <param name="balance">Aktualne saldo gracza.</param>
+    /// <param name="totalEarned">Łączna kwota zarobionych pieniędzy.</param>
     [ClientRpc]
     private void SyncEconomyClientRpc(float balance, float totalEarned)
     {
@@ -495,6 +777,13 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Nadaje aktualny stan zamówień do wszystkich klientów.
+    /// </summary>
+    /// <remarks>
+    /// Wywoływana co 0.25 sekundy. Przesyła indeks szablonu zamówienia, opis,
+    /// pozostały czas, liczbę ukończonych i nieudanych zamówień.
+    /// </remarks>
     private void BroadcastOrders()
     {
         if (Time.time < nextOrderSyncTime) return;
@@ -512,6 +801,14 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// RPC klienta synchronizujący stan zamówień od serwera.
+    /// </summary>
+    /// <param name="templateIndex">Indeks aktywnego szablonu zamówienia.</param>
+    /// <param name="desc">Opis aktywnego zamówienia.</param>
+    /// <param name="time">Pozostały czas na realizację zamówienia.</param>
+    /// <param name="comp">Liczba ukończonych zamówień.</param>
+    /// <param name="fail">Liczba nieudanych zamówień.</param>
     [ClientRpc]
     private void SyncOrdersClientRpc(int templateIndex, string desc, float time, int comp, int fail)
     {
@@ -522,12 +819,31 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Nadaje efekt wizualny (VFX) do wszystkich klientów.
+    /// </summary>
+    /// <param name="type">Typ efektu wizualnego do odtworzenia.</param>
+    /// <param name="pos">Pozycja świata, w której efekt ma zostać odtworzony.</param>
+    /// <param name="color">Opcjonalny kolor efektu. Domyślnie <c>default</c>.</param>
+    /// <remarks>
+    /// Może być wywoływana tylko na serwerze. Wysyła żądanie odtworzenia VFX do klientów.
+    /// </remarks>
     public void BroadcastVFX(NetworkVFXType type, Vector3 pos, Color color = default)
     {
         if (!IsServer) return;
         PlayVFXClientRpc(type, pos, color);
     }
 
+    /// <summary>
+    /// RPC klienta odtwarzający efekt wizualny na podstawie odebranego typu.
+    /// </summary>
+    /// <param name="type">Typ efektu wizualnego.</param>
+    /// <param name="pos">Pozycja odtworzenia efektu.</param>
+    /// <param name="color">Kolor efektu.</param>
+    /// <remarks>
+    /// Ignorowana na serwerze (serwer sam odtwarza efekty).
+    /// Deleguje odtworzenie do odpowiedniej metody <see cref="VFXManager"/>.
+    /// </remarks>
     [ClientRpc]
     private void PlayVFXClientRpc(NetworkVFXType type, Vector3 pos, Color color)
     {
@@ -553,6 +869,13 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Nadaje poziomy ulepszeń sklepowych do wszystkich klientów.
+    /// </summary>
+    /// <remarks>
+    /// Wywoływana cyklicznie co <see cref="ShopSyncInterval"/> sekund.
+    /// Pobiera poziomy ulepszeń z <see cref="ShopManager"/> i wysyła je via ClientRpc.
+    /// </remarks>
     private void BroadcastShopUpgrades()
     {
         if (Time.time < nextShopSyncTime) return;
@@ -569,6 +892,14 @@ public class NetworkPlayer : NetworkBehaviour
         SyncShopUpgradesClientRpc(grillLvl, cutLvl, rewardLvl, timeLvl, meatLvl);
     }
 
+    /// <summary>
+    /// RPC klienta synchronizujący poziomy ulepszeń sklepowych od serwera.
+    /// </summary>
+    /// <param name="grillLvl">Poziom ulepszenia szybkości grilla.</param>
+    /// <param name="cutLvl">Poziom ulepszenia szybkości krojenia.</param>
+    /// <param name="rewardLvl">Poziom ulepszenia bonusu nagrody.</param>
+    /// <param name="timeLvl">Poziom ulepszenia czasu zamówienia.</param>
+    /// <param name="meatLvl">Poziom ulepszenia wielkości porcji mięsa.</param>
     [ClientRpc]
     private void SyncShopUpgradesClientRpc(int grillLvl, int cutLvl, int rewardLvl, int timeLvl, int meatLvl)
     {
@@ -582,6 +913,16 @@ public class NetworkPlayer : NetworkBehaviour
         ShopManager.Instance.SetUpgradeLevel(UpgradeType.MeatBatchSize, meatLvl);
     }
 
+    /// <summary>
+    /// RPC serwera obsługujący żądanie zakupu ulepszenia od klienta.
+    /// </summary>
+    /// <param name="upgradeTypeInt">Typ ulepszenia jako wartość całkowita enum <see cref="UpgradeType"/>.</param>
+    /// <param name="rpcParams">Parametry RPC zawierające identyfikator wysyłającego klienta.</param>
+    /// <remarks>
+    /// Próbuje dokonać zakupu przez <see cref="ShopManager.TryPurchaseUpgrade"/>.
+    /// W przypadku sukcesu wymusza natychmiastową synchronizację sklepu i ekonomii.
+    /// Wysyła wynik zakupu do odpowiedniego klienta.
+    /// </remarks>
     [ServerRpc(RequireOwnership = false)]
     public void PurchaseUpgradeServerRpc(int upgradeTypeInt, ServerRpcParams rpcParams = default)
     {
@@ -610,6 +951,12 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// RPC klienta informujący o wyniku próby zakupu ulepszenia.
+    /// </summary>
+    /// <param name="success">Czy zakup się powiódł.</param>
+    /// <param name="upgradeTypeInt">Typ ulepszenia jako wartość całkowita enum <see cref="UpgradeType"/>.</param>
+    /// <param name="clientRpcParams">Opcjonalne parametry RPC do wysyłki celowanej do konkretnego klienta.</param>
     [ClientRpc]
     private void PurchaseResultClientRpc(bool success, int upgradeTypeInt, ClientRpcParams clientRpcParams = default)
     {
@@ -620,6 +967,17 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// RPC serwera obsługujący żądanie interakcji gracza ze stacją kuchenną.
+    /// </summary>
+    /// <param name="stationIndex">Indeks stacji kuchennej, z którą gracz chce wejść w interakcję.</param>
+    /// <param name="heldItem">Stan przedmiotu trzymanego przez gracza w momencie żądania.</param>
+    /// <param name="rpcParams">Parametry RPC zawierające identyfikator wysyłającego klienta.</param>
+    /// <remarks>
+    /// Serwer rekonstruuje stan gracza (przedmiot w ręku) na podstawie zmiennej sieciowej,
+    /// wykonuje interakcję ze stacją, a następnie synchronizuje wynik z powrotem do klienta.
+    /// Wysyła zaktualizowany stan trzymanego przedmiotu i komunikat zwrotny.
+    /// </remarks>
     [ServerRpc(RequireOwnership = false)]
     public void InteractWithStationServerRpc(int stationIndex, NetworkItemState heldItem, ServerRpcParams rpcParams = default)
     {
@@ -676,6 +1034,16 @@ public class NetworkPlayer : NetworkBehaviour
         SyncInteractionResultClientRpc(updatedHeld, feedback, targetClient);
     }
 
+    /// <summary>
+    /// RPC klienta synchronizujący wynik interakcji ze stacją kuchenną.
+    /// </summary>
+    /// <param name="itemState">Zaktualizowany stan trzymanego przedmiotu po interakcji.</param>
+    /// <param name="feedback">Komunikat zwrotny do wyświetlenia graczowi (np. informacja o postępie).</param>
+    /// <param name="clientRpcParams">Parametry RPC do wysyłki celowanej.</param>
+    /// <remarks>
+    /// Aktualizuje trzymany przedmiot i komunikat zwrotny gracza lokalnego
+    /// po przetworzeniu interakcji przez serwer.
+    /// </remarks>
     [ClientRpc]
     private void SyncInteractionResultClientRpc(NetworkItemState itemState, string feedback, ClientRpcParams clientRpcParams = default)
     {
@@ -695,12 +1063,24 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// RPC serwera aktualizujący stan trzymanego przedmiotu w zmiennej sieciowej.
+    /// </summary>
+    /// <param name="newState">Nowy stan przedmiotu trzymanego przez gracza.</param>
     [ServerRpc]
     private void UpdateHeldItemServerRpc(NetworkItemState newState)
     {
         netHeldItem.Value = newState;
     }
 
+    /// <summary>
+    /// RPC serwera ustawiający nazwę (pseudonim) gracza.
+    /// </summary>
+    /// <param name="requestedName">Żądana nazwa gracza od klienta.</param>
+    /// <remarks>
+    /// Nazwa jest sanityzowana przed zapisaniem do zmiennej sieciowej
+    /// za pomocą <see cref="SanitizePlayerName"/>.
+    /// </remarks>
     [ServerRpc]
     public void SetPlayerNameServerRpc(string requestedName)
     {
@@ -708,6 +1088,15 @@ public class NetworkPlayer : NetworkBehaviour
         playerName.Value = new FixedString32Bytes(requestedName);
     }
 
+    /// <summary>
+    /// Oczyszcza nazwę gracza z niebezpiecznych znaków i tagów.
+    /// </summary>
+    /// <param name="name">Surowa nazwa do oczyszczenia.</param>
+    /// <returns>Oczyszczona nazwa gracza, ograniczona do 20 znaków. Domyślnie "Gracz" jeśli pusta.</returns>
+    /// <remarks>
+    /// Usuwa tagi HTML/XML, znaki sterujące, białe znaki na początku/końcu
+    /// oraz ogranicza długość do 20 znaków.
+    /// </remarks>
     private static string SanitizePlayerName(string name)
     {
         if (string.IsNullOrWhiteSpace(name)) return "Gracz";
@@ -726,11 +1115,21 @@ public class NetworkPlayer : NetworkBehaviour
         return name;
     }
 
+    /// <summary>
+    /// Obsługuje zmianę nazwy gracza — aktualizuje etykietę tekstową nad głową gracza zdalnego.
+    /// </summary>
+    /// <param name="oldValue">Poprzednia nazwa gracza.</param>
+    /// <param name="newValue">Nowa nazwa gracza.</param>
     private void OnPlayerNameChanged(FixedString32Bytes oldValue, FixedString32Bytes newValue)
     {
         if (nameLabel != null) nameLabel.text = newValue.ToString();
     }
 
+    /// <summary>
+    /// Obsługuje zmianę indeksu gracza — aktualizuje kolor modelu gracza zdalnego.
+    /// </summary>
+    /// <param name="oldValue">Poprzedni indeks gracza.</param>
+    /// <param name="newValue">Nowy indeks gracza.</param>
     private void OnPlayerIndexChanged(int oldValue, int newValue)
     {
         if (!IsOwner && remotePlayerVisual != null)
@@ -744,9 +1143,26 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Właściwość zwracająca nazwę gracza jako ciąg znaków.
+    /// </summary>
+    /// <value>Pseudonim gracza odczytany ze zmiennej sieciowej.</value>
     public string PlayerName => playerName.Value.ToString();
+
+    /// <summary>
+    /// Właściwość zwracająca indeks gracza.
+    /// </summary>
+    /// <value>Indeks gracza określający punkt spawnu i kolor.</value>
     public int PlayerIndex => playerIndex.Value;
 
+    /// <summary>
+    /// Wyszukuje obiekt <see cref="NetworkPlayer"/> na podstawie identyfikatora klienta sieciowego.
+    /// </summary>
+    /// <param name="clientId">Identyfikator klienta sieciowego.</param>
+    /// <returns>
+    /// Instancja <see cref="NetworkPlayer"/> przypisana do danego klienta
+    /// lub <c>null</c> jeśli klient nie został znaleziony.
+    /// </returns>
     private static NetworkPlayer FindNetworkPlayerByClientId(ulong clientId)
     {
         if (NetworkManager.Singleton == null) return null;
@@ -758,6 +1174,13 @@ public class NetworkPlayer : NetworkBehaviour
         return client.PlayerObject.GetComponent<NetworkPlayer>();
     }
 
+    /// <summary>
+    /// Wyszukuje komponent <see cref="PlayerInteraction"/> gracza lokalnego na scenie.
+    /// </summary>
+    /// <returns>
+    /// Komponent <see cref="PlayerInteraction"/> gracza lokalnego
+    /// lub <c>null</c> jeśli nie znaleziono.
+    /// </returns>
     private static PlayerInteraction FindLocalPlayerInteraction()
     {
         NetworkPlayer[] players = FindObjectsByType<NetworkPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
@@ -771,6 +1194,13 @@ public class NetworkPlayer : NetworkBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Wyszukuje lokalnego gracza sieciowego na scenie.
+    /// </summary>
+    /// <returns>
+    /// Instancja <see cref="NetworkPlayer"/> należąca do lokalnego gracza
+    /// lub <c>null</c> jeśli nie znaleziono.
+    /// </returns>
     public static NetworkPlayer FindLocalPlayer()
     {
         NetworkPlayer[] players = FindObjectsByType<NetworkPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
@@ -785,17 +1215,41 @@ public class NetworkPlayer : NetworkBehaviour
     }
 }
 
+/// <summary>
+/// Komponent dodający efekt delikatnego kołysania (bob) do trzymanego przedmiotu.
+/// </summary>
+/// <remarks>
+/// Animuje pozycję lokalną obiektu sinusoidalnie w osi Y,
+/// symulując naturalne kołysanie przedmiotu w ręku gracza.
+/// </remarks>
 public class HeldItemBob : MonoBehaviour
 {
+    /// <summary>
+    /// Amplituda kołysania (w jednostkach świata). Określa maksymalne odchylenie od pozycji bazowej.
+    /// </summary>
     public float amplitude = 0.01f;
+
+    /// <summary>
+    /// Prędkość kołysania. Określa częstotliwość oscylacji sinusoidalnej.
+    /// </summary>
     public float speed = 2.5f;
+
+    /// <summary>
+    /// Bazowa pozycja lokalna obiektu, wokół której odbywa się kołysanie.
+    /// </summary>
     private Vector3 basePosition;
 
+    /// <summary>
+    /// Inicjalizuje pozycję bazową na podstawie aktualnej pozycji lokalnej obiektu.
+    /// </summary>
     private void Start()
     {
         basePosition = transform.localPosition;
     }
 
+    /// <summary>
+    /// Aktualizuje pozycję obiektu co klatkę, dodając sinusoidalne przesunięcie w osi Y.
+    /// </summary>
     private void Update()
     {
         float offset = Mathf.Sin(Time.time * speed) * amplitude;
@@ -804,24 +1258,74 @@ public class HeldItemBob : MonoBehaviour
 }
 
 /// <summary>
-/// Remote player animation using PlayableGraph.
+/// Komponent animacji gracza zdalnego wykorzystujący system PlayableGraph.
 /// </summary>
+/// <remarks>
+/// Miksuje animacje bezczynności (idle) i chodzenia (walk) na podstawie
+/// prędkości przemieszczania się obiektu gracza. Używa <see cref="PlayableGraph"/>
+/// do płynnego przejścia między animacjami bez konieczności używania Animator Controller.
+/// </remarks>
 public class RemotePlayerAnimator : MonoBehaviour
 {
+    /// <summary>
+    /// Klip animacji bezczynności (idle) gracza.
+    /// </summary>
     public AnimationClip idleClip;
+
+    /// <summary>
+    /// Klip animacji chodzenia (walk) gracza.
+    /// </summary>
     public AnimationClip walkClip;
 
+    /// <summary>
+    /// Graf odtwarzania animacji (PlayableGraph) zarządzający miksowaniem klipów.
+    /// </summary>
     private PlayableGraph graph;
+
+    /// <summary>
+    /// Mikser animacji łączący animację idle i walk z odpowiednimi wagami.
+    /// </summary>
     private AnimationMixerPlayable mixer;
+
+    /// <summary>
+    /// Odtwarzalny klip animacji bezczynności.
+    /// </summary>
     private AnimationClipPlayable idlePlayable;
+
+    /// <summary>
+    /// Odtwarzalny klip animacji chodzenia.
+    /// </summary>
     private AnimationClipPlayable walkPlayable;
 
+    /// <summary>
+    /// Długość klipu animacji bezczynności (w sekundach).
+    /// </summary>
     private float idleLength;
+
+    /// <summary>
+    /// Długość klipu animacji chodzenia (w sekundach).
+    /// </summary>
     private float walkLength;
 
+    /// <summary>
+    /// Ostatnia zapamiętana pozycja gracza, używana do obliczania prędkości.
+    /// </summary>
     private Vector3 lastPosition;
+
+    /// <summary>
+    /// Wygładzona wartość prędkości używana do interpolacji wag miksera animacji.
+    /// </summary>
     private float speedSmoothed;
 
+    /// <summary>
+    /// Inicjalizuje system animacji: tworzy PlayableGraph, konfiguruje mikser
+    /// i podłącza klipy animacji.
+    /// </summary>
+    /// <remarks>
+    /// Wymaga, aby <see cref="idleClip"/> i <see cref="walkClip"/> były ustawione przed wywołaniem.
+    /// Automatycznie dodaje komponent <see cref="Animator"/> jeśli nie istnieje.
+    /// Początkowo ustawia pełną wagę na animację bezczynności.
+    /// </remarks>
     public void Initialize()
     {
         lastPosition = transform.position;
@@ -854,6 +1358,14 @@ public class RemotePlayerAnimator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Aktualizuje wagi miksera animacji na podstawie prędkości przemieszczania się gracza.
+    /// </summary>
+    /// <remarks>
+    /// Oblicza prędkość na podstawie zmiany pozycji między klatkami.
+    /// Waga animacji chodzenia jest proporcjonalna do prędkości (znormalizowana do 2.5 jednostek/s).
+    /// Zapewnia zapętlanie klipów animacji po osiągnięciu ich końca.
+    /// </remarks>
     private void Update()
     {
         float delta = (transform.position - lastPosition).magnitude;
@@ -886,6 +1398,9 @@ public class RemotePlayerAnimator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Niszczy graf odtwarzania animacji przy usunięciu komponentu z obiektu gry.
+    /// </summary>
     private void OnDestroy()
     {
         if (graph.IsValid()) graph.Destroy();

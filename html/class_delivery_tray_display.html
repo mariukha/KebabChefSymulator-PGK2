@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy DeliveryTrayDisplay</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-static-methods">Statyczne metody publiczne</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="#pri-static-attribs">Statyczne atrybuty prywatne</a> &#124;
+<a href="class_delivery_tray_display-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy DeliveryTrayDisplay</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Zarządza wyświetlaniem serwowanego kebaba na tacy przy okienku wydawania. Kebab jest pokazywany na określony czas po każdym wydaniu zamówienia, a następnie automatycznie ukrywany.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla DeliveryTrayDisplay</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_delivery_tray_display.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a4e261a11fd84819d4e67f8f142cc4bd8" id="r_a4e261a11fd84819d4e67f8f142cc4bd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e261a11fd84819d4e67f8f142cc4bd8">Configure</a> (GameObject <a class="el" href="#ae3a527fb35c3e9a43df910726e7b24b2">servedKebab</a>, float <a class="el" href="#a7756e03102d1b697d3161c9287e8c5de">visibleDuration</a>)</td></tr>
+<tr class="memdesc:a4e261a11fd84819d4e67f8f142cc4bd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konfiguruje wyświetlacz tacy z referencją do obiektu kebaba i czasem widoczności. Ustawia bieżącą instancję jako aktywną i ukrywa kebab na starcie.  <br /></td></tr>
+<tr class="separator:a4e261a11fd84819d4e67f8f142cc4bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Statyczne metody publiczne</h2></td></tr>
+<tr class="memitem:a4b58a8fa4fd721bd6fbc58630b2821bb" id="r_a4b58a8fa4fd721bd6fbc58630b2821bb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b58a8fa4fd721bd6fbc58630b2821bb">ShowServedKebab</a> ()</td></tr>
+<tr class="memdesc:a4b58a8fa4fd721bd6fbc58630b2821bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statyczna metoda wywoływana po wydaniu zamówienia — pokazuje kebab na tacy przy okienku przez czas określony w <a class="el" href="#a7756e03102d1b697d3161c9287e8c5de" title="Czas trwania widoczności kebaba w sekundach po wywołaniu Show.">visibleDuration</a>.  <br /></td></tr>
+<tr class="separator:a4b58a8fa4fd721bd6fbc58630b2821bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:ae6142c096be760fc59a31bd0fdc6adc1" id="r_ae6142c096be760fc59a31bd0fdc6adc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6142c096be760fc59a31bd0fdc6adc1">Update</a> ()</td></tr>
+<tr class="memdesc:ae6142c096be760fc59a31bd0fdc6adc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza w każdej klatce, czy czas widoczności kebaba upłynął, i jeśli tak — ukrywa go.  <br /></td></tr>
+<tr class="separator:ae6142c096be760fc59a31bd0fdc6adc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72cff3c7956627b7b53d846255e65190" id="r_a72cff3c7956627b7b53d846255e65190"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72cff3c7956627b7b53d846255e65190">OnDestroy</a> ()</td></tr>
+<tr class="memdesc:a72cff3c7956627b7b53d846255e65190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czyści referencję singletona przy niszczeniu obiektu, aby uniknąć odwołań do zniszczonego komponentu.  <br /></td></tr>
+<tr class="separator:a72cff3c7956627b7b53d846255e65190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af39d2d78ff51d69aa6509c5272c7be8b" id="r_af39d2d78ff51d69aa6509c5272c7be8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af39d2d78ff51d69aa6509c5272c7be8b">Show</a> ()</td></tr>
+<tr class="memdesc:af39d2d78ff51d69aa6509c5272c7be8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pokazuje kebab na tacy i ustawia timer automatycznego ukrycia.  <br /></td></tr>
+<tr class="separator:af39d2d78ff51d69aa6509c5272c7be8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedc7b98d1633740ab55159993c40d801" id="r_aedc7b98d1633740ab55159993c40d801"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedc7b98d1633740ab55159993c40d801">SetKebabVisible</a> (bool visible)</td></tr>
+<tr class="memdesc:aedc7b98d1633740ab55159993c40d801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia widoczność obiektu wizualnego kebaba.  <br /></td></tr>
+<tr class="separator:aedc7b98d1633740ab55159993c40d801"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:ae3a527fb35c3e9a43df910726e7b24b2" id="r_ae3a527fb35c3e9a43df910726e7b24b2"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3a527fb35c3e9a43df910726e7b24b2">servedKebab</a></td></tr>
+<tr class="memdesc:ae3a527fb35c3e9a43df910726e7b24b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Referencja do obiektu wizualnego kebaba na tacy. Jego aktywność (SetActive) jest przełączana przy pokazywaniu/ukrywaniu.  <br /></td></tr>
+<tr class="separator:ae3a527fb35c3e9a43df910726e7b24b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7756e03102d1b697d3161c9287e8c5de" id="r_a7756e03102d1b697d3161c9287e8c5de"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7756e03102d1b697d3161c9287e8c5de">visibleDuration</a> = 5f</td></tr>
+<tr class="memdesc:a7756e03102d1b697d3161c9287e8c5de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas trwania widoczności kebaba w sekundach po wywołaniu Show.  <br /></td></tr>
+<tr class="separator:a7756e03102d1b697d3161c9287e8c5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00fd4d58b08946d4125c2a45f8ce6247" id="r_a00fd4d58b08946d4125c2a45f8ce6247"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00fd4d58b08946d4125c2a45f8ce6247">hideAtTime</a></td></tr>
+<tr class="memdesc:a00fd4d58b08946d4125c2a45f8ce6247"><td class="mdescLeft">&#160;</td><td class="mdescRight">Znacznik czasu (Time.time), po przekroczeniu którego kebab zostanie ukryty.  <br /></td></tr>
+<tr class="separator:a00fd4d58b08946d4125c2a45f8ce6247"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Statyczne atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a1cfb6da6d6126432291d6375ffc28494" id="r_a1cfb6da6d6126432291d6375ffc28494"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_delivery_tray_display.html">DeliveryTrayDisplay</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1cfb6da6d6126432291d6375ffc28494">activeDisplay</a></td></tr>
+<tr class="memdesc:a1cfb6da6d6126432291d6375ffc28494"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktywna instancja wyświetlacza tacy — wzorzec singletona. Umożliwia globalne wywoływanie <a class="el" href="#a4b58a8fa4fd721bd6fbc58630b2821bb" title="Statyczna metoda wywoływana po wydaniu zamówienia — pokazuje kebab na tacy przy okienku przez czas ok...">ShowServedKebab</a> bez referencji.  <br /></td></tr>
+<tr class="separator:a1cfb6da6d6126432291d6375ffc28494"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Zarządza wyświetlaniem serwowanego kebaba na tacy przy okienku wydawania. Kebab jest pokazywany na określony czas po każdym wydaniu zamówienia, a następnie automatycznie ukrywany. </p>
+<p>Klasa implementuje wzorzec singletona poprzez statyczne pole <a class="el" href="#a1cfb6da6d6126432291d6375ffc28494" title="Aktywna instancja wyświetlacza tacy — wzorzec singletona. Umożliwia globalne wywoływanie ShowServedKe...">activeDisplay</a>, umożliwiając łatwe wywoływanie z dowolnego miejsca kodu za pomocą metody statycznej <a class="el" href="#a4b58a8fa4fd721bd6fbc58630b2821bb" title="Statyczna metoda wywoływana po wydaniu zamówienia — pokazuje kebab na tacy przy okienku przez czas ok...">ShowServedKebab</a>. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a4e261a11fd84819d4e67f8f142cc4bd8" name="a4e261a11fd84819d4e67f8f142cc4bd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e261a11fd84819d4e67f8f142cc4bd8">&#9670;&#160;</a></span>Configure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeliveryTrayDisplay.Configure </td>
+          <td>(</td>
+          <td class="paramtype">GameObject</td>          <td class="paramname"><span class="paramname"><em>servedKebab</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>visibleDuration</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Konfiguruje wyświetlacz tacy z referencją do obiektu kebaba i czasem widoczności. Ustawia bieżącą instancję jako aktywną i ukrywa kebab na starcie. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">servedKebab</td><td>Obiekt wizualny kebaba do pokazywania/ukrywania.</td></tr>
+    <tr><td class="paramname">visibleDuration</td><td>Czas widoczności kebaba w sekundach.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a72cff3c7956627b7b53d846255e65190" name="a72cff3c7956627b7b53d846255e65190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72cff3c7956627b7b53d846255e65190">&#9670;&#160;</a></span>OnDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeliveryTrayDisplay.OnDestroy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czyści referencję singletona przy niszczeniu obiektu, aby uniknąć odwołań do zniszczonego komponentu. </p>
+
+</div>
+</div>
+<a id="aedc7b98d1633740ab55159993c40d801" name="aedc7b98d1633740ab55159993c40d801"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedc7b98d1633740ab55159993c40d801">&#9670;&#160;</a></span>SetKebabVisible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeliveryTrayDisplay.SetKebabVisible </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>visible</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia widoczność obiektu wizualnego kebaba. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">visible</td><td>True aby pokazać kebab, false aby go ukryć.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af39d2d78ff51d69aa6509c5272c7be8b" name="af39d2d78ff51d69aa6509c5272c7be8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af39d2d78ff51d69aa6509c5272c7be8b">&#9670;&#160;</a></span>Show()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeliveryTrayDisplay.Show </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pokazuje kebab na tacy i ustawia timer automatycznego ukrycia. </p>
+
+</div>
+</div>
+<a id="a4b58a8fa4fd721bd6fbc58630b2821bb" name="a4b58a8fa4fd721bd6fbc58630b2821bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b58a8fa4fd721bd6fbc58630b2821bb">&#9670;&#160;</a></span>ShowServedKebab()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void DeliveryTrayDisplay.ShowServedKebab </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Statyczna metoda wywoływana po wydaniu zamówienia — pokazuje kebab na tacy przy okienku przez czas określony w <a class="el" href="#a7756e03102d1b697d3161c9287e8c5de" title="Czas trwania widoczności kebaba w sekundach po wywołaniu Show.">visibleDuration</a>. </p>
+
+</div>
+</div>
+<a id="ae6142c096be760fc59a31bd0fdc6adc1" name="ae6142c096be760fc59a31bd0fdc6adc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6142c096be760fc59a31bd0fdc6adc1">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeliveryTrayDisplay.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprawdza w każdej klatce, czy czas widoczności kebaba upłynął, i jeśli tak — ukrywa go. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a1cfb6da6d6126432291d6375ffc28494" name="a1cfb6da6d6126432291d6375ffc28494"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cfb6da6d6126432291d6375ffc28494">&#9670;&#160;</a></span>activeDisplay</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_delivery_tray_display.html">DeliveryTrayDisplay</a> DeliveryTrayDisplay.activeDisplay</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktywna instancja wyświetlacza tacy — wzorzec singletona. Umożliwia globalne wywoływanie <a class="el" href="#a4b58a8fa4fd721bd6fbc58630b2821bb" title="Statyczna metoda wywoływana po wydaniu zamówienia — pokazuje kebab na tacy przy okienku przez czas ok...">ShowServedKebab</a> bez referencji. </p>
+
+</div>
+</div>
+<a id="a00fd4d58b08946d4125c2a45f8ce6247" name="a00fd4d58b08946d4125c2a45f8ce6247"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00fd4d58b08946d4125c2a45f8ce6247">&#9670;&#160;</a></span>hideAtTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DeliveryTrayDisplay.hideAtTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Znacznik czasu (Time.time), po przekroczeniu którego kebab zostanie ukryty. </p>
+
+</div>
+</div>
+<a id="ae3a527fb35c3e9a43df910726e7b24b2" name="ae3a527fb35c3e9a43df910726e7b24b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3a527fb35c3e9a43df910726e7b24b2">&#9670;&#160;</a></span>servedKebab</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject DeliveryTrayDisplay.servedKebab</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Referencja do obiektu wizualnego kebaba na tacy. Jego aktywność (SetActive) jest przełączana przy pokazywaniu/ukrywaniu. </p>
+
+</div>
+</div>
+<a id="a7756e03102d1b697d3161c9287e8c5de" name="a7756e03102d1b697d3161c9287e8c5de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7756e03102d1b697d3161c9287e8c5de">&#9670;&#160;</a></span>visibleDuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DeliveryTrayDisplay.visibleDuration = 5f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czas trwania widoczności kebaba w sekundach po wywołaniu Show. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_kitchen_game_bootstrap_8cs.html">KitchenGameBootstrap.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

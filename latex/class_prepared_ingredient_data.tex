@@ -1,0 +1,102 @@
+\doxysection{Dokumentacja klasy Prepared\+Ingredient\+Data}
+\hypertarget{class_prepared_ingredient_data}{}\label{class_prepared_ingredient_data}\index{PreparedIngredientData@{PreparedIngredientData}}
+
+
+Klasa reprezentująca dane przygotowanego składnika. Przechowuje informację o rodzaju składnika oraz jego aktualnym stanie przetworzenia. Używana jako element listy zawartości gotowej potrawy (\doxylink{class_kitchen_item_a17f90ea6bae8d28c174304498d81bf93}{Kitchen\+Item.\+contents}).  
+
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_prepared_ingredient_data_a390ccbf4f9779f8896bfd65bfa6dd513}{Prepared\+Ingredient\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor domyślny. Tworzy dane składnika z wartościami domyślnymi. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_prepared_ingredient_data_a3ee447a3e96755b093c45f27e5bf2db6}{Prepared\+Ingredient\+Data}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{class_prepared_ingredient_data_a0176003d8ba33ae65ab1abcb7f89e47e}{ingredient\+Kind}}, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{class_prepared_ingredient_data_a8a6f5bdc6f52a821806e1225f8edcc81}{state}})
+\begin{DoxyCompactList}\small\item\em Konstruktor parametryczny tworzący dane przygotowanego składnika z określonym rodzajem i stanem przetworzenia. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_prepared_ingredient_data_a95407477b661c60f301e46e2c311c307}{To\+Display\+String}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy czytelny dla człowieka opis przygotowanego składnika. Wykorzystuje klasę \doxylink{class_kitchen_naming}{Kitchen\+Naming} do formatowania nazwy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{class_prepared_ingredient_data_a0176003d8ba33ae65ab1abcb7f89e47e}{ingredient\+Kind}} = \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f}{Ingredient\+Kind.\+Meat}}
+\begin{DoxyCompactList}\small\item\em Rodzaj przygotowanego składnika. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{class_prepared_ingredient_data_a8a6f5bdc6f52a821806e1225f8edcc81}{state}} = \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}{Ingredient\+Process\+State.\+Raw}}
+\begin{DoxyCompactList}\small\item\em Aktualny stan przetworzenia składnika (np. surowy, pokrojony, upieczony). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa reprezentująca dane przygotowanego składnika. Przechowuje informację o rodzaju składnika oraz jego aktualnym stanie przetworzenia. Używana jako element listy zawartości gotowej potrawy (\doxylink{class_kitchen_item_a17f90ea6bae8d28c174304498d81bf93}{Kitchen\+Item.\+contents}). 
+
+Klasa jest serializowalna, co umożliwia jej zapis i przesyłanie przez sieć. W przeciwieństwie do \doxylink{class_ingredient_requirement}{Ingredient\+Requirement}, ta klasa nie przechowuje ilości — każda instancja reprezentuje dokładnie jeden egzemplarz składnika. 
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_prepared_ingredient_data_a390ccbf4f9779f8896bfd65bfa6dd513}\index{PreparedIngredientData@{PreparedIngredientData}!PreparedIngredientData@{PreparedIngredientData}}
+\index{PreparedIngredientData@{PreparedIngredientData}!PreparedIngredientData@{PreparedIngredientData}}
+\doxysubsubsection{\texorpdfstring{PreparedIngredientData()}{PreparedIngredientData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_prepared_ingredient_data_a390ccbf4f9779f8896bfd65bfa6dd513} 
+Prepared\+Ingredient\+Data.\+Prepared\+Ingredient\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor domyślny. Tworzy dane składnika z wartościami domyślnymi. 
+
+\Hypertarget{class_prepared_ingredient_data_a3ee447a3e96755b093c45f27e5bf2db6}\index{PreparedIngredientData@{PreparedIngredientData}!PreparedIngredientData@{PreparedIngredientData}}
+\index{PreparedIngredientData@{PreparedIngredientData}!PreparedIngredientData@{PreparedIngredientData}}
+\doxysubsubsection{\texorpdfstring{PreparedIngredientData()}{PreparedIngredientData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_prepared_ingredient_data_a3ee447a3e96755b093c45f27e5bf2db6} 
+Prepared\+Ingredient\+Data.\+Prepared\+Ingredient\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{ingredient\+Kind}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor parametryczny tworzący dane przygotowanego składnika z określonym rodzajem i stanem przetworzenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ingredient\+Kind} & Rodzaj składnika.\\
+\hline
+{\em state} & Stan przetworzenia składnika.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_prepared_ingredient_data_a95407477b661c60f301e46e2c311c307}\index{PreparedIngredientData@{PreparedIngredientData}!ToDisplayString@{ToDisplayString}}
+\index{ToDisplayString@{ToDisplayString}!PreparedIngredientData@{PreparedIngredientData}}
+\doxysubsubsection{\texorpdfstring{ToDisplayString()}{ToDisplayString()}}
+{\footnotesize\ttfamily \label{class_prepared_ingredient_data_a95407477b661c60f301e46e2c311c307} 
+string Prepared\+Ingredient\+Data.\+To\+Display\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Tworzy czytelny dla człowieka opis przygotowanego składnika. Wykorzystuje klasę \doxylink{class_kitchen_naming}{Kitchen\+Naming} do formatowania nazwy. 
+
+\begin{DoxyReturn}{Zwraca}
+Sformatowany tekst z nazwą składnika i jego stanem przetworzenia.
+\end{DoxyReturn}
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_prepared_ingredient_data_a0176003d8ba33ae65ab1abcb7f89e47e}\index{PreparedIngredientData@{PreparedIngredientData}!ingredientKind@{ingredientKind}}
+\index{ingredientKind@{ingredientKind}!PreparedIngredientData@{PreparedIngredientData}}
+\doxysubsubsection{\texorpdfstring{ingredientKind}{ingredientKind}}
+{\footnotesize\ttfamily \label{class_prepared_ingredient_data_a0176003d8ba33ae65ab1abcb7f89e47e} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Prepared\+Ingredient\+Data.\+ingredient\+Kind = \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f}{Ingredient\+Kind.\+Meat}}}
+
+
+
+Rodzaj przygotowanego składnika. 
+
+\Hypertarget{class_prepared_ingredient_data_a8a6f5bdc6f52a821806e1225f8edcc81}\index{PreparedIngredientData@{PreparedIngredientData}!state@{state}}
+\index{state@{state}!PreparedIngredientData@{PreparedIngredientData}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{class_prepared_ingredient_data_a8a6f5bdc6f52a821806e1225f8edcc81} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Prepared\+Ingredient\+Data.\+state = \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}{Ingredient\+Process\+State.\+Raw}}}
+
+
+
+Aktualny stan przetworzenia składnika (np. surowy, pokrojony, upieczony). 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_game_models_8cs}{Kitchen\+Game\+Models.\+cs}}\end{DoxyCompactItemize}

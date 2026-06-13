@@ -1,0 +1,123 @@
+\doxysection{Dokumentacja klasy Ingredient\+Requirement}
+\hypertarget{class_ingredient_requirement}{}\label{class_ingredient_requirement}\index{IngredientRequirement@{IngredientRequirement}}
+
+
+Klasa reprezentująca wymaganie dotyczące pojedynczego składnika w zamówieniu. Określa, jaki rodzaj składnika jest potrzebny, w jakim stanie przetworzenia oraz w jakiej ilości.  
+
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ingredient_requirement_a2757589bd62e2a30c66e99eace0f2bd9}{Ingredient\+Requirement}} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor domyślny. Tworzy wymaganie z wartościami domyślnymi. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ingredient_requirement_a8c6e3177bf3fbddf5590dcdcd09d3f44}{Ingredient\+Requirement}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{class_ingredient_requirement_a42a731407ca5253b71786065bfdb98ed}{ingredient\+Kind}}, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{class_ingredient_requirement_a5ae4ab8561f2d2c9fa0c82e0af48af32}{required\+State}}, int \mbox{\hyperlink{class_ingredient_requirement_aa05716697ad996e6790678660dbd9dec}{quantity}}=1)
+\begin{DoxyCompactList}\small\item\em Konstruktor parametryczny tworzący wymaganie z określonym rodzajem, stanem przetworzenia i opcjonalną ilością składnika. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ingredient_requirement_ac104c919ebdaccbf92a7d525632708c1}{To\+Display\+String}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy czytelny dla człowieka opis wymagania składnika. Dla ilości większej niż 1 dodaje prefiks z ilością (np. "{}2x Pomidor"{}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{class_ingredient_requirement_a42a731407ca5253b71786065bfdb98ed}{ingredient\+Kind}} = \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f}{Ingredient\+Kind.\+Meat}}
+\begin{DoxyCompactList}\small\item\em Rodzaj wymaganego składnika. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{class_ingredient_requirement_a5ae4ab8561f2d2c9fa0c82e0af48af32}{required\+State}} = \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}{Ingredient\+Process\+State.\+Raw}}
+\begin{DoxyCompactList}\small\item\em Wymagany stan przetworzenia składnika (np. surowy, pokrojony, upieczony). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_ingredient_requirement_aa05716697ad996e6790678660dbd9dec}{quantity}} = 1
+\begin{DoxyCompactList}\small\item\em Wymagana ilość tego składnika w zamówieniu. Domyślnie 1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa reprezentująca wymaganie dotyczące pojedynczego składnika w zamówieniu. Określa, jaki rodzaj składnika jest potrzebny, w jakim stanie przetworzenia oraz w jakiej ilości. 
+
+Klasa jest serializowalna, co umożliwia edycję wymagań zamówienia bezpośrednio w Inspektorze Unity. Wymagania składników są porównywane z zawartością gotowej potrawy przez klasę \doxylink{class_kitchen_order_validator}{Kitchen\+Order\+Validator} w celu weryfikacji poprawności realizacji zamówienia. 
+
+\begin{DoxySeeAlso}{Zobacz również}
+\doxylink{class_order}{Order}, \doxylink{class_kitchen_order_validator}{Kitchen\+Order\+Validator}
+
+
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_ingredient_requirement_a2757589bd62e2a30c66e99eace0f2bd9}\index{IngredientRequirement@{IngredientRequirement}!IngredientRequirement@{IngredientRequirement}}
+\index{IngredientRequirement@{IngredientRequirement}!IngredientRequirement@{IngredientRequirement}}
+\doxysubsubsection{\texorpdfstring{IngredientRequirement()}{IngredientRequirement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_ingredient_requirement_a2757589bd62e2a30c66e99eace0f2bd9} 
+Ingredient\+Requirement.\+Ingredient\+Requirement (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor domyślny. Tworzy wymaganie z wartościami domyślnymi. 
+
+\Hypertarget{class_ingredient_requirement_a8c6e3177bf3fbddf5590dcdcd09d3f44}\index{IngredientRequirement@{IngredientRequirement}!IngredientRequirement@{IngredientRequirement}}
+\index{IngredientRequirement@{IngredientRequirement}!IngredientRequirement@{IngredientRequirement}}
+\doxysubsubsection{\texorpdfstring{IngredientRequirement()}{IngredientRequirement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_ingredient_requirement_a8c6e3177bf3fbddf5590dcdcd09d3f44} 
+Ingredient\+Requirement.\+Ingredient\+Requirement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{ingredient\+Kind}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{required\+State}{, }\item[{int}]{quantity}{ = {\ttfamily 1}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor parametryczny tworzący wymaganie z określonym rodzajem, stanem przetworzenia i opcjonalną ilością składnika. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ingredient\+Kind} & Rodzaj wymaganego składnika.\\
+\hline
+{\em required\+State} & Wymagany stan przetworzenia składnika.\\
+\hline
+{\em quantity} & Ilość wymaganego składnika (domyślnie 1).\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_ingredient_requirement_ac104c919ebdaccbf92a7d525632708c1}\index{IngredientRequirement@{IngredientRequirement}!ToDisplayString@{ToDisplayString}}
+\index{ToDisplayString@{ToDisplayString}!IngredientRequirement@{IngredientRequirement}}
+\doxysubsubsection{\texorpdfstring{ToDisplayString()}{ToDisplayString()}}
+{\footnotesize\ttfamily \label{class_ingredient_requirement_ac104c919ebdaccbf92a7d525632708c1} 
+string Ingredient\+Requirement.\+To\+Display\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Tworzy czytelny dla człowieka opis wymagania składnika. Dla ilości większej niż 1 dodaje prefiks z ilością (np. "{}2x Pomidor"{}). 
+
+\begin{DoxyReturn}{Zwraca}
+Sformatowany tekst opisujący wymaganie składnika.
+\end{DoxyReturn}
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_ingredient_requirement_a42a731407ca5253b71786065bfdb98ed}\index{IngredientRequirement@{IngredientRequirement}!ingredientKind@{ingredientKind}}
+\index{ingredientKind@{ingredientKind}!IngredientRequirement@{IngredientRequirement}}
+\doxysubsubsection{\texorpdfstring{ingredientKind}{ingredientKind}}
+{\footnotesize\ttfamily \label{class_ingredient_requirement_a42a731407ca5253b71786065bfdb98ed} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Ingredient\+Requirement.\+ingredient\+Kind = \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f}{Ingredient\+Kind.\+Meat}}}
+
+
+
+Rodzaj wymaganego składnika. 
+
+\Hypertarget{class_ingredient_requirement_aa05716697ad996e6790678660dbd9dec}\index{IngredientRequirement@{IngredientRequirement}!quantity@{quantity}}
+\index{quantity@{quantity}!IngredientRequirement@{IngredientRequirement}}
+\doxysubsubsection{\texorpdfstring{quantity}{quantity}}
+{\footnotesize\ttfamily \label{class_ingredient_requirement_aa05716697ad996e6790678660dbd9dec} 
+int Ingredient\+Requirement.\+quantity = 1}
+
+
+
+Wymagana ilość tego składnika w zamówieniu. Domyślnie 1. 
+
+\Hypertarget{class_ingredient_requirement_a5ae4ab8561f2d2c9fa0c82e0af48af32}\index{IngredientRequirement@{IngredientRequirement}!requiredState@{requiredState}}
+\index{requiredState@{requiredState}!IngredientRequirement@{IngredientRequirement}}
+\doxysubsubsection{\texorpdfstring{requiredState}{requiredState}}
+{\footnotesize\ttfamily \label{class_ingredient_requirement_a5ae4ab8561f2d2c9fa0c82e0af48af32} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Ingredient\+Requirement.\+required\+State = \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}{Ingredient\+Process\+State.\+Raw}}}
+
+
+
+Wymagany stan przetworzenia składnika (np. surowy, pokrojony, upieczony). 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_game_models_8cs}{Kitchen\+Game\+Models.\+cs}}\end{DoxyCompactItemize}

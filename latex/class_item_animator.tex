@@ -1,0 +1,120 @@
+\doxysection{Dokumentacja klasy Item\+Animator}
+\hypertarget{class_item_animator}{}\label{class_item_animator}\index{ItemAnimator@{ItemAnimator}}
+
+
+Animates item visuals\+: spawn bounce, pickup fly-\/to-\/hand, drop shrink, and assembly arc. Uses coroutines for smooth, non-\/blocking animations.  
+
+
+Diagram dziedziczenia dla Item\+Animator\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_item_animator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_item_animator_a478d8bc3443a3e1484b11faacf8eaa0d}{Animate\+Spawn}} (Game\+Object target)
+\begin{DoxyCompactList}\small\item\em Scale from 0 to 1 with overshoot bounce. Call when a new visual appears. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_animator_a626fe62ff4714d80b8701ac16a1318fa}{Animate\+Despawn}} (Game\+Object target)
+\begin{DoxyCompactList}\small\item\em Scale from 1 to 0 quickly. Call when item is removed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_item_animator_a005d1463680fddb0ec56a0fad8336b1f}{Animate\+Pop}} (Game\+Object target, float intensity=1.\+2f)
+\begin{DoxyCompactList}\small\item\em Quick pop effect (scale up briefly then back). Call on state change. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_item_animator}{Item\+Animator}} \mbox{\hyperlink{class_item_animator_a87cf2a3dbb25076d5da1ef971dcda7bf}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_item_animator_a1895d424f283561a138572afe400bbc6}{Awake}} ()
+\item 
+System.\+Collections.\+IEnumerator \mbox{\hyperlink{class_item_animator_aba7747809c802f1c24a6d3cea133dc63}{Spawn\+Coroutine}} (Game\+Object target)
+\item 
+System.\+Collections.\+IEnumerator \mbox{\hyperlink{class_item_animator_af8ba31a37197172a5596e531814e1f09}{Despawn\+Coroutine}} (Game\+Object target)
+\item 
+System.\+Collections.\+IEnumerator \mbox{\hyperlink{class_item_animator_a7426ff207230d98c6ddef90250f50c1c}{Pop\+Coroutine}} (Game\+Object target, float intensity)
+\item 
+void \mbox{\hyperlink{class_item_animator_a85d073d72a991ff405043adb3d60b84a}{On\+Destroy}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Animates item visuals\+: spawn bounce, pickup fly-\/to-\/hand, drop shrink, and assembly arc. Uses coroutines for smooth, non-\/blocking animations. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_item_animator_a626fe62ff4714d80b8701ac16a1318fa}\index{ItemAnimator@{ItemAnimator}!AnimateDespawn@{AnimateDespawn}}
+\index{AnimateDespawn@{AnimateDespawn}!ItemAnimator@{ItemAnimator}}
+\doxysubsubsection{\texorpdfstring{AnimateDespawn()}{AnimateDespawn()}}
+{\footnotesize\ttfamily \label{class_item_animator_a626fe62ff4714d80b8701ac16a1318fa} 
+void Item\+Animator.\+Animate\+Despawn (\begin{DoxyParamCaption}\item[{Game\+Object}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Scale from 1 to 0 quickly. Call when item is removed. 
+
+\Hypertarget{class_item_animator_a005d1463680fddb0ec56a0fad8336b1f}\index{ItemAnimator@{ItemAnimator}!AnimatePop@{AnimatePop}}
+\index{AnimatePop@{AnimatePop}!ItemAnimator@{ItemAnimator}}
+\doxysubsubsection{\texorpdfstring{AnimatePop()}{AnimatePop()}}
+{\footnotesize\ttfamily \label{class_item_animator_a005d1463680fddb0ec56a0fad8336b1f} 
+void Item\+Animator.\+Animate\+Pop (\begin{DoxyParamCaption}\item[{Game\+Object}]{target}{, }\item[{float}]{intensity}{ = {\ttfamily 1\+:\+:2f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Quick pop effect (scale up briefly then back). Call on state change. 
+
+\Hypertarget{class_item_animator_a478d8bc3443a3e1484b11faacf8eaa0d}\index{ItemAnimator@{ItemAnimator}!AnimateSpawn@{AnimateSpawn}}
+\index{AnimateSpawn@{AnimateSpawn}!ItemAnimator@{ItemAnimator}}
+\doxysubsubsection{\texorpdfstring{AnimateSpawn()}{AnimateSpawn()}}
+{\footnotesize\ttfamily \label{class_item_animator_a478d8bc3443a3e1484b11faacf8eaa0d} 
+void Item\+Animator.\+Animate\+Spawn (\begin{DoxyParamCaption}\item[{Game\+Object}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Scale from 0 to 1 with overshoot bounce. Call when a new visual appears. 
+
+\Hypertarget{class_item_animator_a1895d424f283561a138572afe400bbc6}\index{ItemAnimator@{ItemAnimator}!Awake@{Awake}}
+\index{Awake@{Awake}!ItemAnimator@{ItemAnimator}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_item_animator_a1895d424f283561a138572afe400bbc6} 
+void Item\+Animator.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_item_animator_af8ba31a37197172a5596e531814e1f09}\index{ItemAnimator@{ItemAnimator}!DespawnCoroutine@{DespawnCoroutine}}
+\index{DespawnCoroutine@{DespawnCoroutine}!ItemAnimator@{ItemAnimator}}
+\doxysubsubsection{\texorpdfstring{DespawnCoroutine()}{DespawnCoroutine()}}
+{\footnotesize\ttfamily \label{class_item_animator_af8ba31a37197172a5596e531814e1f09} 
+System.\+Collections.\+IEnumerator Item\+Animator.\+Despawn\+Coroutine (\begin{DoxyParamCaption}\item[{Game\+Object}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_item_animator_a85d073d72a991ff405043adb3d60b84a}\index{ItemAnimator@{ItemAnimator}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!ItemAnimator@{ItemAnimator}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_item_animator_a85d073d72a991ff405043adb3d60b84a} 
+void Item\+Animator.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_item_animator_a7426ff207230d98c6ddef90250f50c1c}\index{ItemAnimator@{ItemAnimator}!PopCoroutine@{PopCoroutine}}
+\index{PopCoroutine@{PopCoroutine}!ItemAnimator@{ItemAnimator}}
+\doxysubsubsection{\texorpdfstring{PopCoroutine()}{PopCoroutine()}}
+{\footnotesize\ttfamily \label{class_item_animator_a7426ff207230d98c6ddef90250f50c1c} 
+System.\+Collections.\+IEnumerator Item\+Animator.\+Pop\+Coroutine (\begin{DoxyParamCaption}\item[{Game\+Object}]{target}{, }\item[{float}]{intensity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_item_animator_aba7747809c802f1c24a6d3cea133dc63}\index{ItemAnimator@{ItemAnimator}!SpawnCoroutine@{SpawnCoroutine}}
+\index{SpawnCoroutine@{SpawnCoroutine}!ItemAnimator@{ItemAnimator}}
+\doxysubsubsection{\texorpdfstring{SpawnCoroutine()}{SpawnCoroutine()}}
+{\footnotesize\ttfamily \label{class_item_animator_aba7747809c802f1c24a6d3cea133dc63} 
+System.\+Collections.\+IEnumerator Item\+Animator.\+Spawn\+Coroutine (\begin{DoxyParamCaption}\item[{Game\+Object}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_item_animator_a87cf2a3dbb25076d5da1ef971dcda7bf}\index{ItemAnimator@{ItemAnimator}!Instance@{Instance}}
+\index{Instance@{Instance}!ItemAnimator@{ItemAnimator}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_item_animator_a87cf2a3dbb25076d5da1ef971dcda7bf} 
+\mbox{\hyperlink{class_item_animator}{Item\+Animator}} Item\+Animator.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Effects/\mbox{\hyperlink{_item_animator_8cs}{Item\+Animator.\+cs}}\end{DoxyCompactItemize}

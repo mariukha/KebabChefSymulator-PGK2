@@ -1,0 +1,411 @@
+\doxysection{Dokumentacja klasy Camera\+Effects}
+\hypertarget{class_camera_effects}{}\label{class_camera_effects}\index{CameraEffects@{CameraEffects}}
+
+
+Zestaw efektów kamery\+: kołysanie głowy podczas chodzenia, trzęsienie ekranu przy zdarzeniach, kolorowa nakładka błyskowa na ekranie oraz efekt lądowania po skoku. Dołączyć do obiektu kamery gracza.  
+
+
+Diagram dziedziczenia dla Camera\+Effects\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_camera_effects}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_camera_effects_a74143abbcb5faf73e5fd1dcd098c79c5}{Set\+Tracked\+Controller}} (Character\+Controller controller)
+\begin{DoxyCompactList}\small\item\em Ustawia śledzony kontroler postaci, z którego odczytywane są dane ruchu. Wywoływać z klasy \doxylink{class_simple_player_controller}{Simple\+Player\+Controller}, aby dostarczyć dane o prędkości i stanie gracza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_effects_afc6d0a34f64bc93fc461796067cabd10}{Shake\+Camera}} (float intensity, float duration)
+\begin{DoxyCompactList}\small\item\em Wyzwala efekt trzęsienia ekranu o podanej intensywności i czasie trwania. Przydatne przy zdarzeniach takich jak dostarczenie zamówienia lub krojenie składnika. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_effects_a30856863e61ad34ac84a0ea3402d6f31}{Flash\+Screen}} (Color color, float duration=0.\+3f)
+\begin{DoxyCompactList}\small\item\em Wyzwala błysk ekranu z podanym kolorem nakładki. Zielony = sukces dostarczenia, czerwony = porażka. Nakładka stopniowo zanika od przezroczystości 25\% do pełnej przezroczystości. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_camera_effects_a9ee043e4205746452adffec88fec799e}{bob\+Frequency}} = 8f
+\begin{DoxyCompactList}\small\item\em Częstotliwość kołysania głowy podczas chodzenia (w Hz). Wyższe wartości powodują szybsze kołysanie. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_camera_effects_a68696409901f0d0315c5e4fcb14c4211}{bob\+AmplitudeY}} = 0.\+035f
+\begin{DoxyCompactList}\small\item\em Amplituda pionowego kołysania głowy (w jednostkach świata). Kontroluje wysokość ruchu kamery w górę i w dół podczas chodzenia. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_camera_effects_aac73ed3e4439632a6aaabf7fccec7d86}{bob\+AmplitudeX}} = 0.\+015f
+\begin{DoxyCompactList}\small\item\em Amplituda poziomego kołysania głowy (w jednostkach świata). Kontroluje ruch kamery w lewo i w prawo podczas chodzenia (połowa częstotliwości pionowej). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_camera_effects}{Camera\+Effects}} \mbox{\hyperlink{class_camera_effects_a982415977695c702be44755e588a9165}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna instancja Singletona klasy \doxylink{class_camera_effects}{Camera\+Effects}. Umożliwia globalny dostęp do efektów kamery z dowolnego miejsca w kodzie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_camera_effects_a142081fd5af0eb82ce59bd1d809709c6}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton i zapamiętuje bazową pozycję lokalną kamery. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_effects_ad208ecfcf6a7a0a5edfd3af3b999e174}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Metoda startowa Unity wywoływana przy pierwszej klatce. Tworzy nakładkę błyskową (flash overlay) na istniejącym Canvas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_effects_a5dff8d4620ec3292b2ab69dbc8e84ee0}{Late\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Unity wywoływana po wszystkich metodach Update. Oblicza sumaryczny offset kamery z trzech źródeł (kołysanie, trzęsienie, lądowanie) i stosuje go do pozycji lokalnej. Aktualizuje także nakładkę błyskową. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_camera_effects_aab26105eeb82fba20dc9017f894bb88b}{Calculate\+Head\+Bob}} ()
+\begin{DoxyCompactList}\small\item\em Oblicza przesunięcie kamery wynikające z kołysania głowy podczas chodzenia. Kołysanie aktywuje się tylko gdy prędkość pozioma postaci przekracza 0.\+5 jednostki/s. Używa sinusoidy z różnymi częstotliwościami dla osi X (połowa) i Y. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_camera_effects_aaf67dd8036bfe9f1a47e8f87b7bea4e7}{Calculate\+Shake}} ()
+\begin{DoxyCompactList}\small\item\em Oblicza przesunięcie kamery wynikające z trzęsienia ekranu. Intensywność trzęsienia maleje liniowo w czasie. Losowe przesunięcia generowane są w osiach X i Y. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_camera_effects_a2983723f89c526010bf8ffed0c53219c}{Calculate\+Landing\+Bob}} ()
+\begin{DoxyCompactList}\small\item\em Oblicza przesunięcie kamery wynikające z efektu lądowania po skoku. Wykrywa moment przejścia z stanu "{}w powietrzu"{} do "{}na ziemi"{} i wyzwala krótki ruch kamery w dół (dip), symulujący wstrząs przy lądowaniu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_effects_a2b05524a05123fa6b9b70ab678a4c433}{Create\+Flash\+Overlay}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy pełnoekranową nakładkę obrazu (Image) do efektu błysku ekranowego. Wyszukuje istniejący Canvas typu Screen\+Space\+Overlay i dodaje do niego rozciągnięty na cały ekran obiekt Image z wyłączonym raycastem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_effects_af9fcc91bd0023975eca0f68ad00f193f}{Update\+Flash\+Overlay}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje przezroczystość nakładki błyskowej ekranowej. Przezroczystość maleje od 25\% do 0\% w trakcie trwania błysku. Po zakończeniu błysku nakładka staje się w pełni przezroczysta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_effects_a2d177c60dac898628ba7e21e0c892b0d}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Unity wywoływana przy niszczeniu obiektu. Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_camera_effects_a138d7754de09bf591016cc45beb57cee}{shake\+Intensity}}
+\begin{DoxyCompactList}\small\item\em Aktualna intensywność trzęsienia ekranu. Wartość maleje w czasie, aż trzęsienie się zakończy. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_camera_effects_ae81e9db0f68d75fe2486b010448d1205}{shake\+Duration}}
+\begin{DoxyCompactList}\small\item\em Całkowity czas trwania bieżącego trzęsienia ekranu (w sekundach). Używany do obliczania postępu zanikania trzęsienia. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_camera_effects_a97cf8791e6e26e416af52a71f2eb31c0}{shake\+Timer}}
+\begin{DoxyCompactList}\small\item\em Pozostały czas bieżącego trzęsienia ekranu (w sekundach). Odliczany w każdej klatce — gdy osiągnie 0, trzęsienie się kończy. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_camera_effects_a7e82c8c3bd7599f32ffa4902a14339c1}{flash\+Overlay}}
+\begin{DoxyCompactList}\small\item\em Referencja do komponentu Image używanego jako pełnoekranowa nakładka błyskowa. Tworzona dynamicznie w metodzie \doxylink{class_camera_effects_a2b05524a05123fa6b9b70ab678a4c433}{Create\+Flash\+Overlay}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_camera_effects_ad09d32a8a1b6d71d9f518ad74cf030bb}{flash\+Timer}}
+\begin{DoxyCompactList}\small\item\em Pozostały czas wyświetlania bieżącego błysku ekranowego (w sekundach). \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_camera_effects_ac9e205c2d1781dd384e292fb803a6516}{flash\+Duration}}
+\begin{DoxyCompactList}\small\item\em Całkowity czas trwania bieżącego błysku ekranowego (w sekundach). \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_camera_effects_a0284d39fdbe2d48b71506adef5b8e586}{flash\+Color}}
+\begin{DoxyCompactList}\small\item\em Kolor bieżącego błysku ekranowego (np. zielony = sukces, czerwony = porażka). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_camera_effects_ad3d78343b596c7985663d47ffaf1fdc5}{was\+Grounded}} = true
+\begin{DoxyCompactList}\small\item\em Flaga określająca, czy gracz stał na ziemi w poprzedniej klatce. Używana do wykrywania momentu lądowania po skoku. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_camera_effects_a3451ee0829222f60f1232c23b9bd9294}{landing\+Bob\+Timer}}
+\begin{DoxyCompactList}\small\item\em Pozostały czas animacji efektu lądowania (w sekundach). Ustawiany na 0.\+2s po wykryciu lądowania. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_camera_effects_af998fbeda73b8595145233df470240f5}{base\+Local\+Position}}
+\begin{DoxyCompactList}\small\item\em Bazowa pozycja lokalna kamery zapamiętana przy inicjalizacji. Wszystkie efekty kamery są stosowane jako offset od tej pozycji. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_camera_effects_a5490b7f4c9a7060a119d4e6de1ebba52}{bob\+Timer}}
+\begin{DoxyCompactList}\small\item\em Akumulator czasu kołysania głowy (fazy sinusoidy). Rośnie proporcjonalnie do czasu i częstotliwości kołysania. \end{DoxyCompactList}\item 
+Character\+Controller \mbox{\hyperlink{class_camera_effects_add0e9b75f6dceb1a4eb605c7eafb337c}{tracked\+Controller}}
+\begin{DoxyCompactList}\small\item\em Referencja do śledzionego kontrolera postaci gracza. Używana do odczytu prędkości ruchu i stanu przyziemienia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Zestaw efektów kamery\+: kołysanie głowy podczas chodzenia, trzęsienie ekranu przy zdarzeniach, kolorowa nakładka błyskowa na ekranie oraz efekt lądowania po skoku. Dołączyć do obiektu kamery gracza. 
+
+Klasa implementuje wzorzec Singleton. Efekty obliczane są w Late\+Update, aby nadpisać ewentualne wcześniejsze zmiany pozycji kamery. Wszystkie przesunięcia (bob, shake, landing) są sumowane i stosowane jako offset od bazowej pozycji lokalnej kamery. Nakładka błyskowa (flash overlay) tworzona jest dynamicznie na istniejącym Canvas Screen\+Space\+Overlay. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_camera_effects_a142081fd5af0eb82ce59bd1d809709c6}\index{CameraEffects@{CameraEffects}!Awake@{Awake}}
+\index{Awake@{Awake}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_camera_effects_a142081fd5af0eb82ce59bd1d809709c6} 
+void Camera\+Effects.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton i zapamiętuje bazową pozycję lokalną kamery. 
+
+\Hypertarget{class_camera_effects_aab26105eeb82fba20dc9017f894bb88b}\index{CameraEffects@{CameraEffects}!CalculateHeadBob@{CalculateHeadBob}}
+\index{CalculateHeadBob@{CalculateHeadBob}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{CalculateHeadBob()}{CalculateHeadBob()}}
+{\footnotesize\ttfamily \label{class_camera_effects_aab26105eeb82fba20dc9017f894bb88b} 
+Vector3 Camera\+Effects.\+Calculate\+Head\+Bob (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Oblicza przesunięcie kamery wynikające z kołysania głowy podczas chodzenia. Kołysanie aktywuje się tylko gdy prędkość pozioma postaci przekracza 0.\+5 jednostki/s. Używa sinusoidy z różnymi częstotliwościami dla osi X (połowa) i Y. 
+
+\begin{DoxyReturn}{Zwraca}
+Wektor przesunięcia kamery w osiach X i Y (Z zawsze 0).
+\end{DoxyReturn}
+\Hypertarget{class_camera_effects_a2983723f89c526010bf8ffed0c53219c}\index{CameraEffects@{CameraEffects}!CalculateLandingBob@{CalculateLandingBob}}
+\index{CalculateLandingBob@{CalculateLandingBob}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{CalculateLandingBob()}{CalculateLandingBob()}}
+{\footnotesize\ttfamily \label{class_camera_effects_a2983723f89c526010bf8ffed0c53219c} 
+Vector3 Camera\+Effects.\+Calculate\+Landing\+Bob (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Oblicza przesunięcie kamery wynikające z efektu lądowania po skoku. Wykrywa moment przejścia z stanu "{}w powietrzu"{} do "{}na ziemi"{} i wyzwala krótki ruch kamery w dół (dip), symulujący wstrząs przy lądowaniu. 
+
+\begin{DoxyReturn}{Zwraca}
+Wektor przesunięcia kamery w dół (oś Y), zanikający sinusoidalnie w ciągu 0.\+2s.
+\end{DoxyReturn}
+\Hypertarget{class_camera_effects_aaf67dd8036bfe9f1a47e8f87b7bea4e7}\index{CameraEffects@{CameraEffects}!CalculateShake@{CalculateShake}}
+\index{CalculateShake@{CalculateShake}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{CalculateShake()}{CalculateShake()}}
+{\footnotesize\ttfamily \label{class_camera_effects_aaf67dd8036bfe9f1a47e8f87b7bea4e7} 
+Vector3 Camera\+Effects.\+Calculate\+Shake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Oblicza przesunięcie kamery wynikające z trzęsienia ekranu. Intensywność trzęsienia maleje liniowo w czasie. Losowe przesunięcia generowane są w osiach X i Y. 
+
+\begin{DoxyReturn}{Zwraca}
+Wektor losowego przesunięcia kamery z zanikającą intensywnością.
+\end{DoxyReturn}
+\Hypertarget{class_camera_effects_a2b05524a05123fa6b9b70ab678a4c433}\index{CameraEffects@{CameraEffects}!CreateFlashOverlay@{CreateFlashOverlay}}
+\index{CreateFlashOverlay@{CreateFlashOverlay}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{CreateFlashOverlay()}{CreateFlashOverlay()}}
+{\footnotesize\ttfamily \label{class_camera_effects_a2b05524a05123fa6b9b70ab678a4c433} 
+void Camera\+Effects.\+Create\+Flash\+Overlay (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy pełnoekranową nakładkę obrazu (Image) do efektu błysku ekranowego. Wyszukuje istniejący Canvas typu Screen\+Space\+Overlay i dodaje do niego rozciągnięty na cały ekran obiekt Image z wyłączonym raycastem. 
+
+Jeśli nie zostanie znaleziony odpowiedni Canvas, metoda kończy się bez tworzenia nakładki i efekty błysku ekranowego nie będą działać. \Hypertarget{class_camera_effects_a30856863e61ad34ac84a0ea3402d6f31}\index{CameraEffects@{CameraEffects}!FlashScreen@{FlashScreen}}
+\index{FlashScreen@{FlashScreen}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{FlashScreen()}{FlashScreen()}}
+{\footnotesize\ttfamily \label{class_camera_effects_a30856863e61ad34ac84a0ea3402d6f31} 
+void Camera\+Effects.\+Flash\+Screen (\begin{DoxyParamCaption}\item[{Color}]{color}{, }\item[{float}]{duration}{ = {\ttfamily 0\+:\+:3f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Wyzwala błysk ekranu z podanym kolorem nakładki. Zielony = sukces dostarczenia, czerwony = porażka. Nakładka stopniowo zanika od przezroczystości 25\% do pełnej przezroczystości. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em color} & Kolor błysku ekranowego.\\
+\hline
+{\em duration} & Czas trwania błysku w sekundach (domyślnie 0.\+3s).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_effects_a5dff8d4620ec3292b2ab69dbc8e84ee0}\index{CameraEffects@{CameraEffects}!LateUpdate@{LateUpdate}}
+\index{LateUpdate@{LateUpdate}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{LateUpdate()}{LateUpdate()}}
+{\footnotesize\ttfamily \label{class_camera_effects_a5dff8d4620ec3292b2ab69dbc8e84ee0} 
+void Camera\+Effects.\+Late\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Unity wywoływana po wszystkich metodach Update. Oblicza sumaryczny offset kamery z trzech źródeł (kołysanie, trzęsienie, lądowanie) i stosuje go do pozycji lokalnej. Aktualizuje także nakładkę błyskową. 
+
+\Hypertarget{class_camera_effects_a2d177c60dac898628ba7e21e0c892b0d}\index{CameraEffects@{CameraEffects}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_camera_effects_a2d177c60dac898628ba7e21e0c892b0d} 
+void Camera\+Effects.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Unity wywoływana przy niszczeniu obiektu. Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników. 
+
+\Hypertarget{class_camera_effects_a74143abbcb5faf73e5fd1dcd098c79c5}\index{CameraEffects@{CameraEffects}!SetTrackedController@{SetTrackedController}}
+\index{SetTrackedController@{SetTrackedController}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{SetTrackedController()}{SetTrackedController()}}
+{\footnotesize\ttfamily \label{class_camera_effects_a74143abbcb5faf73e5fd1dcd098c79c5} 
+void Camera\+Effects.\+Set\+Tracked\+Controller (\begin{DoxyParamCaption}\item[{Character\+Controller}]{controller}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia śledzony kontroler postaci, z którego odczytywane są dane ruchu. Wywoływać z klasy \doxylink{class_simple_player_controller}{Simple\+Player\+Controller}, aby dostarczyć dane o prędkości i stanie gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em controller} & Kontroler postaci gracza do śledzenia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_effects_afc6d0a34f64bc93fc461796067cabd10}\index{CameraEffects@{CameraEffects}!ShakeCamera@{ShakeCamera}}
+\index{ShakeCamera@{ShakeCamera}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{ShakeCamera()}{ShakeCamera()}}
+{\footnotesize\ttfamily \label{class_camera_effects_afc6d0a34f64bc93fc461796067cabd10} 
+void Camera\+Effects.\+Shake\+Camera (\begin{DoxyParamCaption}\item[{float}]{intensity}{, }\item[{float}]{duration}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Wyzwala efekt trzęsienia ekranu o podanej intensywności i czasie trwania. Przydatne przy zdarzeniach takich jak dostarczenie zamówienia lub krojenie składnika. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em intensity} & Maksymalna intensywność trzęsienia (amplituda losowego przesunięcia).\\
+\hline
+{\em duration} & Czas trwania trzęsienia w sekundach (intensywność zanika liniowo).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_effects_ad208ecfcf6a7a0a5edfd3af3b999e174}\index{CameraEffects@{CameraEffects}!Start@{Start}}
+\index{Start@{Start}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_camera_effects_ad208ecfcf6a7a0a5edfd3af3b999e174} 
+void Camera\+Effects.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda startowa Unity wywoływana przy pierwszej klatce. Tworzy nakładkę błyskową (flash overlay) na istniejącym Canvas. 
+
+\Hypertarget{class_camera_effects_af9fcc91bd0023975eca0f68ad00f193f}\index{CameraEffects@{CameraEffects}!UpdateFlashOverlay@{UpdateFlashOverlay}}
+\index{UpdateFlashOverlay@{UpdateFlashOverlay}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{UpdateFlashOverlay()}{UpdateFlashOverlay()}}
+{\footnotesize\ttfamily \label{class_camera_effects_af9fcc91bd0023975eca0f68ad00f193f} 
+void Camera\+Effects.\+Update\+Flash\+Overlay (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje przezroczystość nakładki błyskowej ekranowej. Przezroczystość maleje od 25\% do 0\% w trakcie trwania błysku. Po zakończeniu błysku nakładka staje się w pełni przezroczysta. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_camera_effects_af998fbeda73b8595145233df470240f5}\index{CameraEffects@{CameraEffects}!baseLocalPosition@{baseLocalPosition}}
+\index{baseLocalPosition@{baseLocalPosition}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{baseLocalPosition}{baseLocalPosition}}
+{\footnotesize\ttfamily \label{class_camera_effects_af998fbeda73b8595145233df470240f5} 
+Vector3 Camera\+Effects.\+base\+Local\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bazowa pozycja lokalna kamery zapamiętana przy inicjalizacji. Wszystkie efekty kamery są stosowane jako offset od tej pozycji. 
+
+\Hypertarget{class_camera_effects_aac73ed3e4439632a6aaabf7fccec7d86}\index{CameraEffects@{CameraEffects}!bobAmplitudeX@{bobAmplitudeX}}
+\index{bobAmplitudeX@{bobAmplitudeX}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{bobAmplitudeX}{bobAmplitudeX}}
+{\footnotesize\ttfamily \label{class_camera_effects_aac73ed3e4439632a6aaabf7fccec7d86} 
+float Camera\+Effects.\+bob\+AmplitudeX = 0.\+015f}
+
+
+
+Amplituda poziomego kołysania głowy (w jednostkach świata). Kontroluje ruch kamery w lewo i w prawo podczas chodzenia (połowa częstotliwości pionowej). 
+
+\Hypertarget{class_camera_effects_a68696409901f0d0315c5e4fcb14c4211}\index{CameraEffects@{CameraEffects}!bobAmplitudeY@{bobAmplitudeY}}
+\index{bobAmplitudeY@{bobAmplitudeY}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{bobAmplitudeY}{bobAmplitudeY}}
+{\footnotesize\ttfamily \label{class_camera_effects_a68696409901f0d0315c5e4fcb14c4211} 
+float Camera\+Effects.\+bob\+AmplitudeY = 0.\+035f}
+
+
+
+Amplituda pionowego kołysania głowy (w jednostkach świata). Kontroluje wysokość ruchu kamery w górę i w dół podczas chodzenia. 
+
+\Hypertarget{class_camera_effects_a9ee043e4205746452adffec88fec799e}\index{CameraEffects@{CameraEffects}!bobFrequency@{bobFrequency}}
+\index{bobFrequency@{bobFrequency}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{bobFrequency}{bobFrequency}}
+{\footnotesize\ttfamily \label{class_camera_effects_a9ee043e4205746452adffec88fec799e} 
+float Camera\+Effects.\+bob\+Frequency = 8f}
+
+
+
+Częstotliwość kołysania głowy podczas chodzenia (w Hz). Wyższe wartości powodują szybsze kołysanie. 
+
+\Hypertarget{class_camera_effects_a5490b7f4c9a7060a119d4e6de1ebba52}\index{CameraEffects@{CameraEffects}!bobTimer@{bobTimer}}
+\index{bobTimer@{bobTimer}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{bobTimer}{bobTimer}}
+{\footnotesize\ttfamily \label{class_camera_effects_a5490b7f4c9a7060a119d4e6de1ebba52} 
+float Camera\+Effects.\+bob\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Akumulator czasu kołysania głowy (fazy sinusoidy). Rośnie proporcjonalnie do czasu i częstotliwości kołysania. 
+
+\Hypertarget{class_camera_effects_a0284d39fdbe2d48b71506adef5b8e586}\index{CameraEffects@{CameraEffects}!flashColor@{flashColor}}
+\index{flashColor@{flashColor}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{flashColor}{flashColor}}
+{\footnotesize\ttfamily \label{class_camera_effects_a0284d39fdbe2d48b71506adef5b8e586} 
+Color Camera\+Effects.\+flash\+Color\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Kolor bieżącego błysku ekranowego (np. zielony = sukces, czerwony = porażka). 
+
+\Hypertarget{class_camera_effects_ac9e205c2d1781dd384e292fb803a6516}\index{CameraEffects@{CameraEffects}!flashDuration@{flashDuration}}
+\index{flashDuration@{flashDuration}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{flashDuration}{flashDuration}}
+{\footnotesize\ttfamily \label{class_camera_effects_ac9e205c2d1781dd384e292fb803a6516} 
+float Camera\+Effects.\+flash\+Duration\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Całkowity czas trwania bieżącego błysku ekranowego (w sekundach). 
+
+\Hypertarget{class_camera_effects_a7e82c8c3bd7599f32ffa4902a14339c1}\index{CameraEffects@{CameraEffects}!flashOverlay@{flashOverlay}}
+\index{flashOverlay@{flashOverlay}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{flashOverlay}{flashOverlay}}
+{\footnotesize\ttfamily \label{class_camera_effects_a7e82c8c3bd7599f32ffa4902a14339c1} 
+Image Camera\+Effects.\+flash\+Overlay\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referencja do komponentu Image używanego jako pełnoekranowa nakładka błyskowa. Tworzona dynamicznie w metodzie \doxylink{class_camera_effects_a2b05524a05123fa6b9b70ab678a4c433}{Create\+Flash\+Overlay}. 
+
+\Hypertarget{class_camera_effects_ad09d32a8a1b6d71d9f518ad74cf030bb}\index{CameraEffects@{CameraEffects}!flashTimer@{flashTimer}}
+\index{flashTimer@{flashTimer}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{flashTimer}{flashTimer}}
+{\footnotesize\ttfamily \label{class_camera_effects_ad09d32a8a1b6d71d9f518ad74cf030bb} 
+float Camera\+Effects.\+flash\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pozostały czas wyświetlania bieżącego błysku ekranowego (w sekundach). 
+
+\Hypertarget{class_camera_effects_a3451ee0829222f60f1232c23b9bd9294}\index{CameraEffects@{CameraEffects}!landingBobTimer@{landingBobTimer}}
+\index{landingBobTimer@{landingBobTimer}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{landingBobTimer}{landingBobTimer}}
+{\footnotesize\ttfamily \label{class_camera_effects_a3451ee0829222f60f1232c23b9bd9294} 
+float Camera\+Effects.\+landing\+Bob\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pozostały czas animacji efektu lądowania (w sekundach). Ustawiany na 0.\+2s po wykryciu lądowania. 
+
+\Hypertarget{class_camera_effects_ae81e9db0f68d75fe2486b010448d1205}\index{CameraEffects@{CameraEffects}!shakeDuration@{shakeDuration}}
+\index{shakeDuration@{shakeDuration}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{shakeDuration}{shakeDuration}}
+{\footnotesize\ttfamily \label{class_camera_effects_ae81e9db0f68d75fe2486b010448d1205} 
+float Camera\+Effects.\+shake\+Duration\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Całkowity czas trwania bieżącego trzęsienia ekranu (w sekundach). Używany do obliczania postępu zanikania trzęsienia. 
+
+\Hypertarget{class_camera_effects_a138d7754de09bf591016cc45beb57cee}\index{CameraEffects@{CameraEffects}!shakeIntensity@{shakeIntensity}}
+\index{shakeIntensity@{shakeIntensity}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{shakeIntensity}{shakeIntensity}}
+{\footnotesize\ttfamily \label{class_camera_effects_a138d7754de09bf591016cc45beb57cee} 
+float Camera\+Effects.\+shake\+Intensity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualna intensywność trzęsienia ekranu. Wartość maleje w czasie, aż trzęsienie się zakończy. 
+
+\Hypertarget{class_camera_effects_a97cf8791e6e26e416af52a71f2eb31c0}\index{CameraEffects@{CameraEffects}!shakeTimer@{shakeTimer}}
+\index{shakeTimer@{shakeTimer}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{shakeTimer}{shakeTimer}}
+{\footnotesize\ttfamily \label{class_camera_effects_a97cf8791e6e26e416af52a71f2eb31c0} 
+float Camera\+Effects.\+shake\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pozostały czas bieżącego trzęsienia ekranu (w sekundach). Odliczany w każdej klatce — gdy osiągnie 0, trzęsienie się kończy. 
+
+\Hypertarget{class_camera_effects_add0e9b75f6dceb1a4eb605c7eafb337c}\index{CameraEffects@{CameraEffects}!trackedController@{trackedController}}
+\index{trackedController@{trackedController}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{trackedController}{trackedController}}
+{\footnotesize\ttfamily \label{class_camera_effects_add0e9b75f6dceb1a4eb605c7eafb337c} 
+Character\+Controller Camera\+Effects.\+tracked\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referencja do śledzionego kontrolera postaci gracza. Używana do odczytu prędkości ruchu i stanu przyziemienia. 
+
+\Hypertarget{class_camera_effects_ad3d78343b596c7985663d47ffaf1fdc5}\index{CameraEffects@{CameraEffects}!wasGrounded@{wasGrounded}}
+\index{wasGrounded@{wasGrounded}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{wasGrounded}{wasGrounded}}
+{\footnotesize\ttfamily \label{class_camera_effects_ad3d78343b596c7985663d47ffaf1fdc5} 
+bool Camera\+Effects.\+was\+Grounded = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga określająca, czy gracz stał na ziemi w poprzedniej klatce. Używana do wykrywania momentu lądowania po skoku. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_camera_effects_a982415977695c702be44755e588a9165}\index{CameraEffects@{CameraEffects}!Instance@{Instance}}
+\index{Instance@{Instance}!CameraEffects@{CameraEffects}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_camera_effects_a982415977695c702be44755e588a9165} 
+\mbox{\hyperlink{class_camera_effects}{Camera\+Effects}} Camera\+Effects.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna instancja Singletona klasy \doxylink{class_camera_effects}{Camera\+Effects}. Umożliwia globalny dostęp do efektów kamery z dowolnego miejsca w kodzie. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Effects/\mbox{\hyperlink{_camera_effects_8cs}{Camera\+Effects.\+cs}}\end{DoxyCompactItemize}

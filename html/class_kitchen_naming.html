@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy KitchenNaming</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">Statyczne metody publiczne</a> &#124;
+<a href="class_kitchen_naming-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy KitchenNaming</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa statyczna zapewniająca polskie nazwy dla składników i ich stanów przetworzenia. Używana w całym systemie kuchni do generowania czytelnych dla gracza opisów składników w interfejsie użytkownika.  
+ <a href="#details">Więcej...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Statyczne metody publiczne</h2></td></tr>
+<tr class="memitem:a8f2f55bb410939066fb4395fb9b19870" id="r_a8f2f55bb410939066fb4395fb9b19870"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f2f55bb410939066fb4395fb9b19870">GetIngredientLabel</a> (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind)</td></tr>
+<tr class="memdesc:a8f2f55bb410939066fb4395fb9b19870"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca polską etykietę nazwy składnika na podstawie jego rodzaju.  <br /></td></tr>
+<tr class="separator:a8f2f55bb410939066fb4395fb9b19870"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f6f257655bfa1215decd9cc486b07ee" id="r_a0f6f257655bfa1215decd9cc486b07ee"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f6f257655bfa1215decd9cc486b07ee">FormatIngredient</a> (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> state)</td></tr>
+<tr class="memdesc:a0f6f257655bfa1215decd9cc486b07ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formatuje pełną nazwę składnika z uwzględnieniem jego stanu przetworzenia. Dla składników surowych (z wyjątkiem mięsa) zwraca samą nazwę bez stanu. Dla pozostałych przypadków dodaje stan w nawiasie, np. "Mieso (upieczony)".  <br /></td></tr>
+<tr class="separator:a0f6f257655bfa1215decd9cc486b07ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29efbd8a0dd1570f41503b7feddc5e43" id="r_a29efbd8a0dd1570f41503b7feddc5e43"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29efbd8a0dd1570f41503b7feddc5e43">GetProcessLabel</a> (<a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> state)</td></tr>
+<tr class="memdesc:a29efbd8a0dd1570f41503b7feddc5e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca polską etykietę stanu przetworzenia składnika.  <br /></td></tr>
+<tr class="separator:a29efbd8a0dd1570f41503b7feddc5e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa statyczna zapewniająca polskie nazwy dla składników i ich stanów przetworzenia. Używana w całym systemie kuchni do generowania czytelnych dla gracza opisów składników w interfejsie użytkownika. </p>
+<p>Wszystkie etykiety są zakodowane na stałe w języku polskim, co jest zgodne z polskojęzyczną wersją gry. Klasa jest wykorzystywana przez <a class="el" href="class_ingredient_requirement.html#ac104c919ebdaccbf92a7d525632708c1" title="Tworzy czytelny dla człowieka opis wymagania składnika. Dla ilości większej niż 1 dodaje prefiks z il...">IngredientRequirement.ToDisplayString</a>, <a class="el" href="class_prepared_ingredient_data.html#a95407477b661c60f301e46e2c311c307" title="Tworzy czytelny dla człowieka opis przygotowanego składnika. Wykorzystuje klasę KitchenNaming do form...">PreparedIngredientData.ToDisplayString</a> oraz <a class="el" href="class_kitchen_item.html#a5a148c2b2ee1bdbd623341d3b3da5cf7" title="Buduje tekstowe podsumowanie przedmiotu kuchennego. Dla pojedynczego składnika zwraca jego sformatowa...">KitchenItem.BuildSummary</a>. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a0f6f257655bfa1215decd9cc486b07ee" name="a0f6f257655bfa1215decd9cc486b07ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f6f257655bfa1215decd9cc486b07ee">&#9670;&#160;</a></span>FormatIngredient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string KitchenNaming.FormatIngredient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Formatuje pełną nazwę składnika z uwzględnieniem jego stanu przetworzenia. Dla składników surowych (z wyjątkiem mięsa) zwraca samą nazwę bez stanu. Dla pozostałych przypadków dodaje stan w nawiasie, np. "Mieso (upieczony)". </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kind</td><td>Rodzaj składnika.</td></tr>
+    <tr><td class="paramname">state</td><td>Stan przetworzenia składnika.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Sformatowana nazwa składnika, opcjonalnie z informacją o stanie przetworzenia w nawiasie. </dd></dl>
+<p>Mięso surowe zawsze wyświetla stan ("surowy"), ponieważ stan mięsa jest istotną informacją — w przeciwieństwie do warzyw, które domyślnie są surowe i nie wymagają takiego oznaczenia. </p>
+
+</div>
+</div>
+<a id="a8f2f55bb410939066fb4395fb9b19870" name="a8f2f55bb410939066fb4395fb9b19870"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f2f55bb410939066fb4395fb9b19870">&#9670;&#160;</a></span>GetIngredientLabel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string KitchenNaming.GetIngredientLabel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zwraca polską etykietę nazwy składnika na podstawie jego rodzaju. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kind</td><td>Rodzaj składnika do przetłumaczenia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Polska nazwa składnika (np. "Mieso", "Pomidor", "Cebula").</dd></dl>
+
+</div>
+</div>
+<a id="a29efbd8a0dd1570f41503b7feddc5e43" name="a29efbd8a0dd1570f41503b7feddc5e43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29efbd8a0dd1570f41503b7feddc5e43">&#9670;&#160;</a></span>GetProcessLabel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string KitchenNaming.GetProcessLabel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zwraca polską etykietę stanu przetworzenia składnika. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>Stan przetworzenia do przetłumaczenia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Polska nazwa stanu przetworzenia (np. "surowy", "pokrojony", "upieczony", "zlozony").</dd></dl>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_kitchen_game_models_8cs.html">KitchenGameModels.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

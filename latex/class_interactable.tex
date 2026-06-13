@@ -1,0 +1,134 @@
+\doxysection{Dokumentacja klasy Interactable}
+\hypertarget{class_interactable}{}\label{class_interactable}\index{Interactable@{Interactable}}
+
+
+Bazowa klasa dla wszystkich obiektów interaktywnych w grze. Zapewnia mechanizm wyświetlania komunikatu podpowiedzi gracza oraz wywoływania akcji po interakcji. Klasy pochodne mogą nadpisywać metody wirtualne, aby dostarczyć niestandardowe zachowanie.  
+
+
+Diagram dziedziczenia dla Interactable\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_interactable}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+virtual string \mbox{\hyperlink{class_interactable_a323fd56ebb72a471e459f57bfe68a186}{Get\+Prompt}} (\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} player)
+\begin{DoxyCompactList}\small\item\em Zwraca komunikat podpowiedzi dla danego gracza. Metoda wirtualna — klasy pochodne mogą ją nadpisać, aby dostarczyć kontekstowy komunikat zależny od stanu gry lub gracza. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_interactable_af5864e220ef0a89b8bf1aecb7c5d1070}{Interact}} (\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} player)
+\begin{DoxyCompactList}\small\item\em Wykonuje akcję interakcji z obiektem. Domyślna implementacja wywołuje zdarzenie \doxylink{class_interactable_a881bccce80cbf2e419c96e95bfde68d5}{on\+Interact}. Metoda wirtualna — klasy pochodne mogą ją nadpisać, aby dodać własną logikę interakcji (np. podnoszenie składników, obsługa stacji). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_interactable_ac2f8057416ebac677551e512cd517f27}{Base\+Interact}} ()
+\begin{DoxyCompactList}\small\item\em Metoda pomocnicza wywołująca interakcję bez podania referencji do gracza. Przydatna do wywoływania interakcji z poziomu zdarzeń Unity lub skryptów, które nie posiadają referencji do obiektu gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_interactable_a11e13c039acf943e83108cb9bea3186e}{Prompt\+Message}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość dostępowa do komunikatu podpowiedzi interakcji. Pozwala na odczyt i zapis tekstu wyświetlanego graczowi w momencie, gdy obiekt jest w zasięgu interakcji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_interactable_ac3fabdda1fc338d0bf6131faa04074f0}{prompt\+Message}} = "{}Interact"{}
+\begin{DoxyCompactList}\small\item\em Komunikat podpowiedzi wyświetlany graczowi, gdy jest w zasięgu interakcji. Domyślna wartość to "{}\+Interact"{}. \end{DoxyCompactList}\item 
+Unity\+Event \mbox{\hyperlink{class_interactable_a881bccce80cbf2e419c96e95bfde68d5}{on\+Interact}}
+\begin{DoxyCompactList}\small\item\em Zdarzenie Unity wywoływane podczas interakcji gracza z obiektem. Umożliwia podpięcie dowolnych akcji z poziomu Inspektora Unity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Bazowa klasa dla wszystkich obiektów interaktywnych w grze. Zapewnia mechanizm wyświetlania komunikatu podpowiedzi gracza oraz wywoływania akcji po interakcji. Klasy pochodne mogą nadpisywać metody wirtualne, aby dostarczyć niestandardowe zachowanie. 
+
+Klasa korzysta z systemu Unity\+Event, co pozwala na konfigurację reakcji na interakcję bezpośrednio z poziomu Inspektora Unity bez konieczności pisania dodatkowego kodu. Metody \doxylink{class_interactable_a323fd56ebb72a471e459f57bfe68a186}{Get\+Prompt} i \doxylink{class_interactable_af5864e220ef0a89b8bf1aecb7c5d1070}{Interact} są wirtualne, umożliwiając specjalizację w klasach pochodnych (np. stacje kuchenne, źródła składników). 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_interactable_ac2f8057416ebac677551e512cd517f27}\index{Interactable@{Interactable}!BaseInteract@{BaseInteract}}
+\index{BaseInteract@{BaseInteract}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{BaseInteract()}{BaseInteract()}}
+{\footnotesize\ttfamily \label{class_interactable_ac2f8057416ebac677551e512cd517f27} 
+void Interactable.\+Base\+Interact (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metoda pomocnicza wywołująca interakcję bez podania referencji do gracza. Przydatna do wywoływania interakcji z poziomu zdarzeń Unity lub skryptów, które nie posiadają referencji do obiektu gracza. 
+
+Wywołuje metodę \doxylink{class_interactable_af5864e220ef0a89b8bf1aecb7c5d1070}{Interact} z parametrem {\ttfamily null} zamiast konkretnego obiektu gracza. \Hypertarget{class_interactable_a323fd56ebb72a471e459f57bfe68a186}\index{Interactable@{Interactable}!GetPrompt@{GetPrompt}}
+\index{GetPrompt@{GetPrompt}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{GetPrompt()}{GetPrompt()}}
+{\footnotesize\ttfamily \label{class_interactable_a323fd56ebb72a471e459f57bfe68a186} 
+virtual string Interactable.\+Get\+Prompt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}}}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Zwraca komunikat podpowiedzi dla danego gracza. Metoda wirtualna — klasy pochodne mogą ją nadpisać, aby dostarczyć kontekstowy komunikat zależny od stanu gry lub gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em player} & Referencja do komponentu interakcji gracza, który żąda podpowiedzi.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Tekst komunikatu podpowiedzi do wyświetlenia w interfejsie użytkownika.
+\end{DoxyReturn}
+
+
+Reimplementowana w \mbox{\hyperlink{class_kitchen_station_a5a006d053d065eaf3a02da8394712b7c}{Kitchen\+Station}}.
+
+\Hypertarget{class_interactable_af5864e220ef0a89b8bf1aecb7c5d1070}\index{Interactable@{Interactable}!Interact@{Interact}}
+\index{Interact@{Interact}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{Interact()}{Interact()}}
+{\footnotesize\ttfamily \label{class_interactable_af5864e220ef0a89b8bf1aecb7c5d1070} 
+virtual void Interactable.\+Interact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}}}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Wykonuje akcję interakcji z obiektem. Domyślna implementacja wywołuje zdarzenie \doxylink{class_interactable_a881bccce80cbf2e419c96e95bfde68d5}{on\+Interact}. Metoda wirtualna — klasy pochodne mogą ją nadpisać, aby dodać własną logikę interakcji (np. podnoszenie składników, obsługa stacji). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em player} & Referencja do komponentu interakcji gracza wykonującego akcję. Może być {\ttfamily null}.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplementowana w \mbox{\hyperlink{class_kitchen_station_a913ee51c7b0f2d26adcc6ce6e70fb71c}{Kitchen\+Station}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_interactable_a881bccce80cbf2e419c96e95bfde68d5}\index{Interactable@{Interactable}!onInteract@{onInteract}}
+\index{onInteract@{onInteract}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{onInteract}{onInteract}}
+{\footnotesize\ttfamily \label{class_interactable_a881bccce80cbf2e419c96e95bfde68d5} 
+Unity\+Event Interactable.\+on\+Interact\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Zdarzenie Unity wywoływane podczas interakcji gracza z obiektem. Umożliwia podpięcie dowolnych akcji z poziomu Inspektora Unity. 
+
+\Hypertarget{class_interactable_ac3fabdda1fc338d0bf6131faa04074f0}\index{Interactable@{Interactable}!promptMessage@{promptMessage}}
+\index{promptMessage@{promptMessage}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{promptMessage}{promptMessage}}
+{\footnotesize\ttfamily \label{class_interactable_ac3fabdda1fc338d0bf6131faa04074f0} 
+string Interactable.\+prompt\+Message = "{}Interact"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Komunikat podpowiedzi wyświetlany graczowi, gdy jest w zasięgu interakcji. Domyślna wartość to "{}\+Interact"{}. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_interactable_a11e13c039acf943e83108cb9bea3186e}\index{Interactable@{Interactable}!PromptMessage@{PromptMessage}}
+\index{PromptMessage@{PromptMessage}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{PromptMessage}{PromptMessage}}
+{\footnotesize\ttfamily \label{class_interactable_a11e13c039acf943e83108cb9bea3186e} 
+string Interactable.\+Prompt\+Message\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Właściwość dostępowa do komunikatu podpowiedzi interakcji. Pozwala na odczyt i zapis tekstu wyświetlanego graczowi w momencie, gdy obiekt jest w zasięgu interakcji. 
+
+Tekst komunikatu podpowiedzi interakcji.
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_interactable_8cs}{Interactable.\+cs}}\end{DoxyCompactItemize}

@@ -1,15 +1,39 @@
+/// \file AmbientParticles.cs
+/// \brief Plik zawierający klasę AmbientParticles — generator cząsteczek atmosferycznych kurzu w kuchni.
+/// \details Tworzy delikatne, unoszące się cząsteczki kurzu w przestrzeni kuchni,
+/// nadając scenie ciepłą, przytulną atmosferę żywego wnętrza.
+
 using UnityEngine;
 
 /// <summary>
-/// Spawns subtle floating dust particles in the kitchen for ambient atmosphere.
-/// Particles drift slowly through the air, catching light for a warm, lived-in feel.
+/// Tworzy subtelne, unoszące się cząsteczki kurzu w kuchni dla atmosfery otoczenia.
+/// Cząsteczki powoli dryfują w powietrzu, odbijając światło i tworząc ciepły, przytulny klimat.
 /// </summary>
+/// <remarks>
+/// Klasa implementuje wzorzec Singleton, zapewniając jedną globalną instancję generatora
+/// cząsteczek atmosferycznych. System cząsteczkowy jest tworzony proceduralnie w metodzie Start
+/// bez potrzeby użycia prefabrykatów — materiał i konfiguracja generowane są programowo.
+/// Cząsteczki emitowane są z dużego pudełkowego kształtu (10x4x10), co zapewnia
+/// równomierne pokrycie przestrzeni kuchni.
+/// </remarks>
 public class AmbientParticles : MonoBehaviour
 {
+    /// <summary>
+    /// Statyczna instancja Singletona klasy <see cref="AmbientParticles"/>.
+    /// Umożliwia globalny dostęp do generatora cząsteczek atmosferycznych.
+    /// </summary>
     public static AmbientParticles Instance { get; private set; }
 
+    /// <summary>
+    /// Referencja do systemu cząsteczkowego kurzu atmosferycznego.
+    /// Tworzony proceduralnie w metodzie <see cref="CreateDustParticles"/>.
+    /// </summary>
     private ParticleSystem dustSystem;
 
+    /// <summary>
+    /// Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu.
+    /// Implementuje wzorzec Singleton — ustawia instancję lub niszczy duplikat.
+    /// </summary>
     private void Awake()
     {
         if (Instance != null)
@@ -21,11 +45,28 @@ public class AmbientParticles : MonoBehaviour
         Instance = this;
     }
 
+    /// <summary>
+    /// Metoda startowa Unity wywoływana przy pierwszej klatce.
+    /// Inicjalizuje system cząsteczkowy kurzu atmosferycznego.
+    /// </summary>
     private void Start()
     {
         CreateDustParticles();
     }
 
+    /// <summary>
+    /// Tworzy i konfiguruje system cząsteczkowy kurzu atmosferycznego.
+    /// System emituje drobne, ciepłe cząsteczki z długim czasem życia (6-14s),
+    /// powoli dryfujące w losowych kierunkach z delikatną rotacją.
+    /// </summary>
+    /// <remarks>
+    /// Konfiguracja obejmuje:
+    /// - Kształt emisji: pudełko 10x4x10 jednostek (pokrywa całą kuchnię)
+    /// - Prędkość losowa w zakresie X/Z z lekkim unoszeniem się w górę
+    /// - Gradient koloru: ciepły, kremowy odcień zanikający na krawędziach życia cząsteczki
+    /// - Krzywa rozmiaru: powiększanie do połowy życia, następnie zmniejszanie
+    /// - Delikatna rotacja cząsteczek dla naturalnego wyglądu
+    /// </remarks>
     private void CreateDustParticles()
     {
         GameObject dustObject = new GameObject("AmbientDust");
@@ -98,6 +139,16 @@ public class AmbientParticles : MonoBehaviour
         dustSystem.Play();
     }
 
+    /// <summary>
+    /// Tworzy materiał dla cząsteczek kurzu atmosferycznego.
+    /// Próbuje użyć shadera "Particles/Standard Unlit", a w przypadku jego braku
+    /// wybiera alternatywne shadery (URP, Legacy, Standard).
+    /// </summary>
+    /// <remarks>
+    /// Materiał jest konfigurowany z ciepłym, kremowym kolorem o niskiej przezroczystości (0.25).
+    /// Ustawiony w trybie transparentnym z addytywnym mieszaniem i kolejką renderowania 3050.
+    /// </remarks>
+    /// <returns>Nowy materiał skonfigurowany dla cząsteczek kurzu.</returns>
     private Material CreateDustMaterial()
     {
         Shader shader = Shader.Find("Particles/Standard Unlit");
@@ -122,6 +173,10 @@ public class AmbientParticles : MonoBehaviour
         return material;
     }
 
+    /// <summary>
+    /// Metoda Unity wywoływana przy niszczeniu obiektu.
+    /// Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników.
+    /// </summary>
     private void OnDestroy()
     {
         if (Instance == this)

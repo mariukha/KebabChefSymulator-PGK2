@@ -1,0 +1,59 @@
+\doxysection{Dokumentacja klasy Billboard\+Label}
+\hypertarget{class_billboard_label}{}\label{class_billboard_label}\index{BillboardLabel@{BillboardLabel}}
+
+
+Komponent billboard — obraca obiekt tak, aby zawsze był zwrócony przodem do głównej kamery. Używany głównie do etykiet tekstowych 3D nad stacjami kuchennymi.  
+
+
+Diagram dziedziczenia dla Billboard\+Label\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_billboard_label}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_billboard_label_a2b89f84c9ee92ddc9068a16f830c2001}{Late\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje orientację obiektu w każdej klatce (po Update), ustawiając jego wektor forward na wektor forward kamery. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Camera \mbox{\hyperlink{class_billboard_label_a8be33fb0fa0ec5c37169e088ef9a25b7}{target\+Camera}}
+\begin{DoxyCompactList}\small\item\em Referencja do kamery, w kierunku której obiekt jest obracany. Automatycznie ustawiana na Camera.\+main, gdy jest null. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Komponent billboard — obraca obiekt tak, aby zawsze był zwrócony przodem do głównej kamery. Używany głównie do etykiet tekstowych 3D nad stacjami kuchennymi. 
+
+Aktualizacja następuje w Late\+Update, aby zapewnić poprawną orientację po ruchu kamery w danej klatce. Automatycznie wyszukuje główną kamerę przy pierwszym użyciu lub gdy referencja zostanie utracona. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_billboard_label_a2b89f84c9ee92ddc9068a16f830c2001}\index{BillboardLabel@{BillboardLabel}!LateUpdate@{LateUpdate}}
+\index{LateUpdate@{LateUpdate}!BillboardLabel@{BillboardLabel}}
+\doxysubsubsection{\texorpdfstring{LateUpdate()}{LateUpdate()}}
+{\footnotesize\ttfamily \label{class_billboard_label_a2b89f84c9ee92ddc9068a16f830c2001} 
+void Billboard\+Label.\+Late\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje orientację obiektu w każdej klatce (po Update), ustawiając jego wektor forward na wektor forward kamery. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_billboard_label_a8be33fb0fa0ec5c37169e088ef9a25b7}\index{BillboardLabel@{BillboardLabel}!targetCamera@{targetCamera}}
+\index{targetCamera@{targetCamera}!BillboardLabel@{BillboardLabel}}
+\doxysubsubsection{\texorpdfstring{targetCamera}{targetCamera}}
+{\footnotesize\ttfamily \label{class_billboard_label_a8be33fb0fa0ec5c37169e088ef9a25b7} 
+Camera Billboard\+Label.\+target\+Camera\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referencja do kamery, w kierunku której obiekt jest obracany. Automatycznie ustawiana na Camera.\+main, gdy jest null. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_game_bootstrap_8cs}{Kitchen\+Game\+Bootstrap.\+cs}}\end{DoxyCompactItemize}

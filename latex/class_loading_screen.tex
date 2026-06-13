@@ -1,0 +1,151 @@
+\doxysection{Dokumentacja klasy Loading\+Screen}
+\hypertarget{class_loading_screen}{}\label{class_loading_screen}\index{LoadingScreen@{LoadingScreen}}
+Diagram dziedziczenia dla Loading\+Screen\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_loading_screen}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_loading_screen_ae2491f4ac49a067bb8ed9701aa82c32a}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy nakładkę ekranu ładowania i inicjalizuje licznik zanikania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_screen_aa6f3d44c23e3a3717ef10b0b5b171590}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje animację zanikania w każdej klatce. Zmniejsza przezroczystość nakładki proporcjonalnie do upływającego czasu. Po zakończeniu zanikania dezaktywuje obiekt nakładki. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_screen_a5b56aa26a8a544726906c6795b2af2ad}{Create\+Overlay}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy pełnoekranową nakładkę z tekstem wskazówki. Szuka istniejącego Canvas w trybie Screen Space Overlay lub tworzy nowy. Nakładka ma ciemny kolor tła i wyświetla losowo wybraną wskazówkę na dole ekranu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Image \mbox{\hyperlink{class_loading_screen_a097a907738cf9a063d5458de6dd45f23}{fade\+Overlay}}
+\begin{DoxyCompactList}\small\item\em Komponent Image służący jako nakładka zanikania (fade overlay). Pokrywa cały ekran ciemnym kolorem, który stopniowo staje się przezroczysty. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_loading_screen_a7f32d46ba3e54b53549fff745accfcca}{loading\+Text}}
+\begin{DoxyCompactList}\small\item\em Komponent Text wyświetlający losową wskazówkę dla gracza podczas ładowania. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_loading_screen_a2186eff41a030d72f5cce41be3144ebc}{fade\+Timer}}
+\begin{DoxyCompactList}\small\item\em Licznik czasu pozostałego do zakończenia animacji zanikania (w sekundach). \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_loading_screen_ad06253c16ffa27ee07288961c7a82c9f}{fade\+Duration}} = 1.\+8f
+\begin{DoxyCompactList}\small\item\em Całkowity czas trwania animacji zanikania (w sekundach). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_loading_screen_ad82b31f1a8794047384cbed08b73638d}{is\+Fading}} = true
+\begin{DoxyCompactList}\small\item\em Flaga określająca, czy animacja zanikania jest aktualnie w trakcie. Po zakończeniu zanikania ustawiana na false, a nakładka jest dezaktywowana. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static readonly string\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_loading_screen_a297cad0f3448f45a0638508728161645}{Tips}}
+\begin{DoxyCompactList}\small\item\em Tablica losowych wskazówek wyświetlanych na ekranie ładowania. Przy każdym uruchomieniu gry losowo wybierana jest jedna wskazówka. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_loading_screen_a5b56aa26a8a544726906c6795b2af2ad}\index{LoadingScreen@{LoadingScreen}!CreateOverlay@{CreateOverlay}}
+\index{CreateOverlay@{CreateOverlay}!LoadingScreen@{LoadingScreen}}
+\doxysubsubsection{\texorpdfstring{CreateOverlay()}{CreateOverlay()}}
+{\footnotesize\ttfamily \label{class_loading_screen_a5b56aa26a8a544726906c6795b2af2ad} 
+void Loading\+Screen.\+Create\+Overlay (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy pełnoekranową nakładkę z tekstem wskazówki. Szuka istniejącego Canvas w trybie Screen Space Overlay lub tworzy nowy. Nakładka ma ciemny kolor tła i wyświetla losowo wybraną wskazówkę na dole ekranu. 
+
+\Hypertarget{class_loading_screen_ae2491f4ac49a067bb8ed9701aa82c32a}\index{LoadingScreen@{LoadingScreen}!Start@{Start}}
+\index{Start@{Start}!LoadingScreen@{LoadingScreen}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_loading_screen_ae2491f4ac49a067bb8ed9701aa82c32a} 
+void Loading\+Screen.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy nakładkę ekranu ładowania i inicjalizuje licznik zanikania. 
+
+\Hypertarget{class_loading_screen_aa6f3d44c23e3a3717ef10b0b5b171590}\index{LoadingScreen@{LoadingScreen}!Update@{Update}}
+\index{Update@{Update}!LoadingScreen@{LoadingScreen}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_loading_screen_aa6f3d44c23e3a3717ef10b0b5b171590} 
+void Loading\+Screen.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje animację zanikania w każdej klatce. Zmniejsza przezroczystość nakładki proporcjonalnie do upływającego czasu. Po zakończeniu zanikania dezaktywuje obiekt nakładki. 
+
+Używa Time.\+unscaled\+Delta\+Time zamiast Time.\+delta\+Time, aby animacja działała poprawnie nawet gdy gra jest wstrzymana (Time.\+time\+Scale = 0). 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_loading_screen_ad06253c16ffa27ee07288961c7a82c9f}\index{LoadingScreen@{LoadingScreen}!fadeDuration@{fadeDuration}}
+\index{fadeDuration@{fadeDuration}!LoadingScreen@{LoadingScreen}}
+\doxysubsubsection{\texorpdfstring{fadeDuration}{fadeDuration}}
+{\footnotesize\ttfamily \label{class_loading_screen_ad06253c16ffa27ee07288961c7a82c9f} 
+float Loading\+Screen.\+fade\+Duration = 1.\+8f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Całkowity czas trwania animacji zanikania (w sekundach). 
+
+\Hypertarget{class_loading_screen_a097a907738cf9a063d5458de6dd45f23}\index{LoadingScreen@{LoadingScreen}!fadeOverlay@{fadeOverlay}}
+\index{fadeOverlay@{fadeOverlay}!LoadingScreen@{LoadingScreen}}
+\doxysubsubsection{\texorpdfstring{fadeOverlay}{fadeOverlay}}
+{\footnotesize\ttfamily \label{class_loading_screen_a097a907738cf9a063d5458de6dd45f23} 
+Image Loading\+Screen.\+fade\+Overlay\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Komponent Image służący jako nakładka zanikania (fade overlay). Pokrywa cały ekran ciemnym kolorem, który stopniowo staje się przezroczysty. 
+
+\Hypertarget{class_loading_screen_a2186eff41a030d72f5cce41be3144ebc}\index{LoadingScreen@{LoadingScreen}!fadeTimer@{fadeTimer}}
+\index{fadeTimer@{fadeTimer}!LoadingScreen@{LoadingScreen}}
+\doxysubsubsection{\texorpdfstring{fadeTimer}{fadeTimer}}
+{\footnotesize\ttfamily \label{class_loading_screen_a2186eff41a030d72f5cce41be3144ebc} 
+float Loading\+Screen.\+fade\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Licznik czasu pozostałego do zakończenia animacji zanikania (w sekundach). 
+
+\Hypertarget{class_loading_screen_ad82b31f1a8794047384cbed08b73638d}\index{LoadingScreen@{LoadingScreen}!isFading@{isFading}}
+\index{isFading@{isFading}!LoadingScreen@{LoadingScreen}}
+\doxysubsubsection{\texorpdfstring{isFading}{isFading}}
+{\footnotesize\ttfamily \label{class_loading_screen_ad82b31f1a8794047384cbed08b73638d} 
+bool Loading\+Screen.\+is\+Fading = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga określająca, czy animacja zanikania jest aktualnie w trakcie. Po zakończeniu zanikania ustawiana na false, a nakładka jest dezaktywowana. 
+
+\Hypertarget{class_loading_screen_a7f32d46ba3e54b53549fff745accfcca}\index{LoadingScreen@{LoadingScreen}!loadingText@{loadingText}}
+\index{loadingText@{loadingText}!LoadingScreen@{LoadingScreen}}
+\doxysubsubsection{\texorpdfstring{loadingText}{loadingText}}
+{\footnotesize\ttfamily \label{class_loading_screen_a7f32d46ba3e54b53549fff745accfcca} 
+Text Loading\+Screen.\+loading\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Komponent Text wyświetlający losową wskazówkę dla gracza podczas ładowania. 
+
+\Hypertarget{class_loading_screen_a297cad0f3448f45a0638508728161645}\index{LoadingScreen@{LoadingScreen}!Tips@{Tips}}
+\index{Tips@{Tips}!LoadingScreen@{LoadingScreen}}
+\doxysubsubsection{\texorpdfstring{Tips}{Tips}}
+{\footnotesize\ttfamily \label{class_loading_screen_a297cad0f3448f45a0638508728161645} 
+readonly string \mbox{[}$\,$\mbox{]} Loading\+Screen.\+Tips\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Wartość początkowa\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Nacisnij\ E\ aby\ pobrac\ skladnik\ ze\ stanowiska"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Kebab\ potrzebuje\ lawasza\ jako\ bazy!"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Nacisnij\ B\ aby\ otworzyc\ sklep\ z\ ulepszeniami"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Zrealizuj\ zamowienia\ szybciej\ zeby\ zarobic\ wiecej"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Nie\ zapomnij\ pokroic\ skladnikow\ na\ desce!"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Kazdy\ skladnik\ musi\ byc\ najpierw\ przetworzony"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Nacisnij\ Q\ aby\ wyrzucic\ trzymany\ przedmiot"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Nacisnij\ TAB\ aby\ zobaczyc\ liste\ graczy"{}}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Tablica losowych wskazówek wyświetlanych na ekranie ładowania. Przy każdym uruchomieniu gry losowo wybierana jest jedna wskazówka. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+UI/\mbox{\hyperlink{_loading_screen_8cs}{Loading\+Screen.\+cs}}\end{DoxyCompactItemize}

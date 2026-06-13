@@ -1,0 +1,504 @@
+\doxysection{Dokumentacja klasy Player\+Interaction}
+\hypertarget{class_player_interaction}{}\label{class_player_interaction}\index{PlayerInteraction@{PlayerInteraction}}
+
+
+Klasa zarządzająca interakcją gracza z otoczeniem w grze. Odpowiada za wykrywanie obiektów interaktywnych za pomocą raycastu z kamery, obsługę trzymanego przedmiotu kuchennego, wyświetlanie podpowiedzi i komunikatów zwrotnych, a także tworzenie i aktualizację modelu pierwszoosobowego (ręce gracza) wraz z wizualizacją trzymanego przedmiotu.  
+
+
+Diagram dziedziczenia dla Player\+Interaction\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_player_interaction}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_player_interaction_aa68fdaf5c3fa440bbaac3985a23e0f24}{Try\+Receive\+Item}} (\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} item)
+\begin{DoxyCompactList}\small\item\em Próbuje przekazać graczowi przedmiot kuchenny. Operacja kończy się niepowodzeniem, gdy gracz już trzyma przedmiot lub przekazywany przedmiot jest null. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} \mbox{\hyperlink{class_player_interaction_a942e8e784a9f06b4831f1377ef61e7f3}{Remove\+Held\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Zabiera trzymany przedmiot z rąk gracza i zwraca go. Po wywołaniu gracz ma puste ręce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_interaction_a8264cd79bcca1f6d5806b68bc4ef38d9}{Clear\+Held\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Czyści referencję do trzymanego przedmiotu bez jego zwracania. Używane, gdy przedmiot został zużyty lub zniszczony. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_interaction_af7145a1e3568d8953ca4aaaa356ba307}{Set\+Feedback}} (string message, float duration=2.\+5f)
+\begin{DoxyCompactList}\small\item\em Ustawia komunikat zwrotny wyświetlany graczowi przez określony czas. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_player_interaction_addc956949f437cab143fb542ad721f3b}{Get\+Held\+Item\+Summary}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca tekstowy opis aktualnie trzymanego przedmiotu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+Camera \mbox{\hyperlink{class_player_interaction_a55a8df6123112f290e3024ef5eb26fc8}{player\+Camera}}
+\begin{DoxyCompactList}\small\item\em Kamera gracza używana do rzucania promieni w celu wykrywania interaktywnych obiektów. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_player_interaction_a95fb436d3cc8d8d76b56b30e8576fba0}{interaction\+Distance}} = 3f
+\begin{DoxyCompactList}\small\item\em Maksymalna odległość interakcji gracza z obiektami (w jednostkach Unity). \end{DoxyCompactList}\item 
+Layer\+Mask \mbox{\hyperlink{class_player_interaction_aad6779afa291a9ccf4b9ff960d83b7cc}{interactable\+Layer}} = \texorpdfstring{$\sim$}{\string~}0
+\begin{DoxyCompactList}\small\item\em Maska warstw określająca, które obiekty mogą być celem interakcji. Domyślnie ustawiona na wszystkie warstwy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_player_interaction_ab7cf5cf353bd483cb075aaba5fc96794}{Current\+Prompt}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Aktualny komunikat podpowiedzi wyświetlany graczowi. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_player_interaction_a2cb28391408d571dbd8a307c9e86c75d}{Feedback\+Message}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Komunikat zwrotny wyświetlany graczowi przez określony czas po wykonaniu akcji. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_interaction_a0357b5a19287c1ab7826cfc31680ece2}{Has\+Item\+In\+Hand}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Określa, czy gracz trzyma aktualnie jakiś przedmiot kuchenny. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} \mbox{\hyperlink{class_player_interaction_a533a615c18bd008f73ad38350d018313}{Held\+Item}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Referencja do aktualnie trzymanego przedmiotu kuchennego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_interaction_a538171ffb06bff6b0c75f70e78a43c19}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje komponent interakcji gracza. W trybie wieloosobowym sprawdza, czy ten gracz jest właścicielem obiektu sieciowego. Tworzy model pierwszoosobowy tylko dla lokalnego gracza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_interaction_a185b97804ec20cd2a3def1fac35c09a0}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizacja wywoływana co klatkę. Sprawdza zmiany wizualizacji trzymanego przedmiotu, zapętla animację FPV, upewnia się o dostępności kamery oraz obsługuje raycast i wejście gracza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_interaction_a4d25f16ea0d5a8d2ba5749b87ecf5b6c}{Create\+View\+Model}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy model pierwszoosobowy (ręce gracza) jako dziecko kamery. Ładuje prefab z zasobów, konfiguruje pozycję, ukrywa głowę i szyję, wyłącza kolizje i cienie, a następnie konfiguruje animację Playable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_interaction_a2b5dd59aacaa9a934a118c0d09e29c11}{Update\+Item\+Visual}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje wizualizację trzymanego przedmiotu w prawej ręce modelu FPV. Niszczy poprzednią wizualizację i tworzy nową na podstawie aktualnego przedmiotu kuchennego. Pozycjonuje przedmiot w centrum dłoni, uwzględniając kości palców (środkowy i kciuk). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_interaction_a83ffc5bf984f04e4ee94ce7e037a2698}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływana przy niszczeniu obiektu. Zwalnia zasoby grafu Playable animacji modelu FPV. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_interaction_a094a1288f015c6a9c1922eead4d808f4}{Ensure\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Upewnia się, że referencja do kamery gracza jest prawidłowa. Szuka kamery w obiektach podrzędnych, a następnie jako fallback używa kamery głównej. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_interaction_a5aa8c827b6e7d9341ebd957887fe9986}{Handle\+Raycast}} ()
+\begin{DoxyCompactList}\small\item\em Wykonuje raycast z kamery gracza w celu wykrycia obiektów interaktywnych. Aktualizuje podpowiedź, aktualny obiekt interaktywny oraz podświetlenie celu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_interaction_ab5053cdf059ced6a11afa9be592ce851}{Handle\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Obsługuje wejście gracza dotyczące interakcji. Blokuje interakcje, gdy otwarte jest menu, sklep, lobby, ustawienia lub pauza. Klawisz Q wyrzuca trzymany przedmiot, klawisz E aktywuje interakcję z namierzonym obiektem. W trybie wieloosobowym interakcja ze stacjami kuchennymi jest przekazywana przez sieć (Server\+Rpc). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_network_player}{Network\+Player}} \mbox{\hyperlink{class_player_interaction_ab9f65f20f0cfc976349fefec9dde0f57}{Find\+Local\+Network\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Wyszukuje lokalnego gracza sieciowego (\doxylink{class_network_player}{Network\+Player}) wśród wszystkich aktywnych graczy na scenie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_player_interaction_acf07fed280b5d39c955ae6a7f00a7783}{current\+Prompt}} = string.\+Empty
+\begin{DoxyCompactList}\small\item\em Aktualny komunikat podpowiedzi wyświetlany graczowi, gdy patrzy na obiekt interaktywny. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_player_interaction_a338062dcbeb6b56993e5b7d2b0949a68}{feedback\+Message}} = string.\+Empty
+\begin{DoxyCompactList}\small\item\em Komunikat zwrotny informujący gracza o wyniku ostatniej akcji (np. wyrzucenie przedmiotu). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} \mbox{\hyperlink{class_player_interaction_a58c9b8711d190cbb7cca95696e229efc}{held\+Item}}
+\begin{DoxyCompactList}\small\item\em Aktualnie trzymany przez gracza przedmiot kuchenny. Wartość null oznacza puste ręce. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_player_interaction_aea29f50ddffcc42d8c25218dd6da9e7c}{feedback\+Until\+Time}}
+\begin{DoxyCompactList}\small\item\em Czas (w sekundach gry), do którego komunikat zwrotny jest aktywny. Po przekroczeniu tego czasu komunikat nie jest już wyświetlany. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interactable}{Interactable}} \mbox{\hyperlink{class_player_interaction_abaed6e147c9d7204eaeb859ee624351e}{current\+Interactable}}
+\begin{DoxyCompactList}\small\item\em Referencja do aktualnie namierzonego obiektu interaktywnego. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_shop_u_i}{Shop\+UI}} \mbox{\hyperlink{class_player_interaction_afeaf63101b4700d98e9932547311c8b8}{cached\+Shop\+UI}}
+\begin{DoxyCompactList}\small\item\em Zbuforowana referencja do interfejsu sklepu, aby uniknąć wielokrotnego wyszukiwania. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_lobby_u_i}{Lobby\+UI}} \mbox{\hyperlink{class_player_interaction_a401a5e2b5ecb4a0f9f89c2171d72cb15}{cached\+Lobby\+UI}}
+\begin{DoxyCompactList}\small\item\em Zbuforowana referencja do interfejsu lobby, aby uniknąć wielokrotnego wyszukiwania. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_player_interaction_ae6a6646e83ed25797e483578082b0181}{view\+Model}}
+\begin{DoxyCompactList}\small\item\em Obiekt modelu pierwszoosobowego (ręce gracza) widoczny w widoku FPV. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{class_player_interaction_a12bd0f91aa1494d0ff713edf5cd81693}{right\+Hand}}
+\begin{DoxyCompactList}\small\item\em Transform kości prawej ręki w modelu pierwszoosobowym, służący do pozycjonowania trzymanych przedmiotów. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_player_interaction_adde5ff75a9b8f7eddfa8f88584c3b189}{current\+Item\+Visual}}
+\begin{DoxyCompactList}\small\item\em Aktualny obiekt wizualizacji trzymanego przedmiotu w ręce gracza. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} \mbox{\hyperlink{class_player_interaction_ac6d0164deb25b1a77bee7e3415126b15}{last\+Visualized\+Item}}
+\begin{DoxyCompactList}\small\item\em Ostatni zwizualizowany przedmiot kuchenny, używany do wykrywania zmian i unikania niepotrzebnych aktualizacji. \end{DoxyCompactList}\item 
+Unity\+Engine.\+Playables.\+Playable\+Graph \mbox{\hyperlink{class_player_interaction_ad82a95f4898994e08313b261c12bf808}{view\+Model\+Graph}}
+\begin{DoxyCompactList}\small\item\em Graf Playable używany do odtwarzania animacji modelu pierwszoosobowego. \end{DoxyCompactList}\item 
+Unity\+Engine.\+Animations.\+Animation\+Clip\+Playable \mbox{\hyperlink{class_player_interaction_a57675e472da0b224f6b6ef2e317893e1}{fpv\+Playable}}
+\begin{DoxyCompactList}\small\item\em Obiekt Playable klipu animacji pierwszoosobowej. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_player_interaction_a8e19ece89128502c988c2f7c75dd4a28}{fpv\+Clip\+Length}}
+\begin{DoxyCompactList}\small\item\em Długość klipu animacji pierwszoosobowej w sekundach. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_interaction_a7910aa9f17529e9a50ea3e9e17af6a1f}{is\+Local\+View\+Model}} = false
+\begin{DoxyCompactList}\small\item\em Flaga określająca, czy ten obiekt jest lokalnym modelem widoku (tj. należy do lokalnego gracza). W trybie wieloosobowym tylko właściciel ma aktywny view model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa zarządzająca interakcją gracza z otoczeniem w grze. Odpowiada za wykrywanie obiektów interaktywnych za pomocą raycastu z kamery, obsługę trzymanego przedmiotu kuchennego, wyświetlanie podpowiedzi i komunikatów zwrotnych, a także tworzenie i aktualizację modelu pierwszoosobowego (ręce gracza) wraz z wizualizacją trzymanego przedmiotu. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_player_interaction_a8264cd79bcca1f6d5806b68bc4ef38d9}\index{PlayerInteraction@{PlayerInteraction}!ClearHeldItem@{ClearHeldItem}}
+\index{ClearHeldItem@{ClearHeldItem}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{ClearHeldItem()}{ClearHeldItem()}}
+{\footnotesize\ttfamily \label{class_player_interaction_a8264cd79bcca1f6d5806b68bc4ef38d9} 
+void Player\+Interaction.\+Clear\+Held\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Czyści referencję do trzymanego przedmiotu bez jego zwracania. Używane, gdy przedmiot został zużyty lub zniszczony. 
+
+\Hypertarget{class_player_interaction_a4d25f16ea0d5a8d2ba5749b87ecf5b6c}\index{PlayerInteraction@{PlayerInteraction}!CreateViewModel@{CreateViewModel}}
+\index{CreateViewModel@{CreateViewModel}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{CreateViewModel()}{CreateViewModel()}}
+{\footnotesize\ttfamily \label{class_player_interaction_a4d25f16ea0d5a8d2ba5749b87ecf5b6c} 
+void Player\+Interaction.\+Create\+View\+Model (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy model pierwszoosobowy (ręce gracza) jako dziecko kamery. Ładuje prefab z zasobów, konfiguruje pozycję, ukrywa głowę i szyję, wyłącza kolizje i cienie, a następnie konfiguruje animację Playable. 
+
+\Hypertarget{class_player_interaction_a094a1288f015c6a9c1922eead4d808f4}\index{PlayerInteraction@{PlayerInteraction}!EnsureCamera@{EnsureCamera}}
+\index{EnsureCamera@{EnsureCamera}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{EnsureCamera()}{EnsureCamera()}}
+{\footnotesize\ttfamily \label{class_player_interaction_a094a1288f015c6a9c1922eead4d808f4} 
+void Player\+Interaction.\+Ensure\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Upewnia się, że referencja do kamery gracza jest prawidłowa. Szuka kamery w obiektach podrzędnych, a następnie jako fallback używa kamery głównej. 
+
+\Hypertarget{class_player_interaction_ab9f65f20f0cfc976349fefec9dde0f57}\index{PlayerInteraction@{PlayerInteraction}!FindLocalNetworkPlayer@{FindLocalNetworkPlayer}}
+\index{FindLocalNetworkPlayer@{FindLocalNetworkPlayer}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{FindLocalNetworkPlayer()}{FindLocalNetworkPlayer()}}
+{\footnotesize\ttfamily \label{class_player_interaction_ab9f65f20f0cfc976349fefec9dde0f57} 
+static \mbox{\hyperlink{class_network_player}{Network\+Player}} Player\+Interaction.\+Find\+Local\+Network\+Player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Wyszukuje lokalnego gracza sieciowego (\doxylink{class_network_player}{Network\+Player}) wśród wszystkich aktywnych graczy na scenie. 
+
+\begin{DoxyReturn}{Zwraca}
+Obiekt \doxylink{class_network_player}{Network\+Player} będący własnością lokalnego klienta lub {\ttfamily null}, jeśli nie znaleziono.
+\end{DoxyReturn}
+\Hypertarget{class_player_interaction_addc956949f437cab143fb542ad721f3b}\index{PlayerInteraction@{PlayerInteraction}!GetHeldItemSummary@{GetHeldItemSummary}}
+\index{GetHeldItemSummary@{GetHeldItemSummary}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{GetHeldItemSummary()}{GetHeldItemSummary()}}
+{\footnotesize\ttfamily \label{class_player_interaction_addc956949f437cab143fb542ad721f3b} 
+string Player\+Interaction.\+Get\+Held\+Item\+Summary (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zwraca tekstowy opis aktualnie trzymanego przedmiotu. 
+
+\begin{DoxyReturn}{Zwraca}
+Opis trzymanego przedmiotu lub "{}\+Puste rece"{}, gdy gracz nic nie trzyma.
+\end{DoxyReturn}
+\Hypertarget{class_player_interaction_ab5053cdf059ced6a11afa9be592ce851}\index{PlayerInteraction@{PlayerInteraction}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily \label{class_player_interaction_ab5053cdf059ced6a11afa9be592ce851} 
+void Player\+Interaction.\+Handle\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje wejście gracza dotyczące interakcji. Blokuje interakcje, gdy otwarte jest menu, sklep, lobby, ustawienia lub pauza. Klawisz Q wyrzuca trzymany przedmiot, klawisz E aktywuje interakcję z namierzonym obiektem. W trybie wieloosobowym interakcja ze stacjami kuchennymi jest przekazywana przez sieć (Server\+Rpc). 
+
+\Hypertarget{class_player_interaction_a5aa8c827b6e7d9341ebd957887fe9986}\index{PlayerInteraction@{PlayerInteraction}!HandleRaycast@{HandleRaycast}}
+\index{HandleRaycast@{HandleRaycast}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{HandleRaycast()}{HandleRaycast()}}
+{\footnotesize\ttfamily \label{class_player_interaction_a5aa8c827b6e7d9341ebd957887fe9986} 
+void Player\+Interaction.\+Handle\+Raycast (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wykonuje raycast z kamery gracza w celu wykrycia obiektów interaktywnych. Aktualizuje podpowiedź, aktualny obiekt interaktywny oraz podświetlenie celu. 
+
+\Hypertarget{class_player_interaction_a83ffc5bf984f04e4ee94ce7e037a2698}\index{PlayerInteraction@{PlayerInteraction}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_player_interaction_a83ffc5bf984f04e4ee94ce7e037a2698} 
+void Player\+Interaction.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wywoływana przy niszczeniu obiektu. Zwalnia zasoby grafu Playable animacji modelu FPV. 
+
+\Hypertarget{class_player_interaction_a942e8e784a9f06b4831f1377ef61e7f3}\index{PlayerInteraction@{PlayerInteraction}!RemoveHeldItem@{RemoveHeldItem}}
+\index{RemoveHeldItem@{RemoveHeldItem}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{RemoveHeldItem()}{RemoveHeldItem()}}
+{\footnotesize\ttfamily \label{class_player_interaction_a942e8e784a9f06b4831f1377ef61e7f3} 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} Player\+Interaction.\+Remove\+Held\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zabiera trzymany przedmiot z rąk gracza i zwraca go. Po wywołaniu gracz ma puste ręce. 
+
+\begin{DoxyReturn}{Zwraca}
+Przedmiot kuchenny, który był trzymany, lub {\ttfamily null} jeśli ręce były puste.
+\end{DoxyReturn}
+\Hypertarget{class_player_interaction_af7145a1e3568d8953ca4aaaa356ba307}\index{PlayerInteraction@{PlayerInteraction}!SetFeedback@{SetFeedback}}
+\index{SetFeedback@{SetFeedback}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{SetFeedback()}{SetFeedback()}}
+{\footnotesize\ttfamily \label{class_player_interaction_af7145a1e3568d8953ca4aaaa356ba307} 
+void Player\+Interaction.\+Set\+Feedback (\begin{DoxyParamCaption}\item[{string}]{message}{, }\item[{float}]{duration}{ = {\ttfamily 2\+:\+:5f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia komunikat zwrotny wyświetlany graczowi przez określony czas. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em message} & Treść komunikatu do wyświetlenia.\\
+\hline
+{\em duration} & Czas wyświetlania komunikatu w sekundach (domyślnie 2.\+5s).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_interaction_a538171ffb06bff6b0c75f70e78a43c19}\index{PlayerInteraction@{PlayerInteraction}!Start@{Start}}
+\index{Start@{Start}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_player_interaction_a538171ffb06bff6b0c75f70e78a43c19} 
+void Player\+Interaction.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje komponent interakcji gracza. W trybie wieloosobowym sprawdza, czy ten gracz jest właścicielem obiektu sieciowego. Tworzy model pierwszoosobowy tylko dla lokalnego gracza. 
+
+\Hypertarget{class_player_interaction_aa68fdaf5c3fa440bbaac3985a23e0f24}\index{PlayerInteraction@{PlayerInteraction}!TryReceiveItem@{TryReceiveItem}}
+\index{TryReceiveItem@{TryReceiveItem}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{TryReceiveItem()}{TryReceiveItem()}}
+{\footnotesize\ttfamily \label{class_player_interaction_aa68fdaf5c3fa440bbaac3985a23e0f24} 
+bool Player\+Interaction.\+Try\+Receive\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}}}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Próbuje przekazać graczowi przedmiot kuchenny. Operacja kończy się niepowodzeniem, gdy gracz już trzyma przedmiot lub przekazywany przedmiot jest null. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em item} & Przedmiot kuchenny do przekazania graczowi.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli przedmiot został pomyślnie przyjęty; {\ttfamily false} w przeciwnym razie.
+\end{DoxyReturn}
+\Hypertarget{class_player_interaction_a185b97804ec20cd2a3def1fac35c09a0}\index{PlayerInteraction@{PlayerInteraction}!Update@{Update}}
+\index{Update@{Update}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_player_interaction_a185b97804ec20cd2a3def1fac35c09a0} 
+void Player\+Interaction.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizacja wywoływana co klatkę. Sprawdza zmiany wizualizacji trzymanego przedmiotu, zapętla animację FPV, upewnia się o dostępności kamery oraz obsługuje raycast i wejście gracza. 
+
+\Hypertarget{class_player_interaction_a2b5dd59aacaa9a934a118c0d09e29c11}\index{PlayerInteraction@{PlayerInteraction}!UpdateItemVisual@{UpdateItemVisual}}
+\index{UpdateItemVisual@{UpdateItemVisual}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{UpdateItemVisual()}{UpdateItemVisual()}}
+{\footnotesize\ttfamily \label{class_player_interaction_a2b5dd59aacaa9a934a118c0d09e29c11} 
+void Player\+Interaction.\+Update\+Item\+Visual (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje wizualizację trzymanego przedmiotu w prawej ręce modelu FPV. Niszczy poprzednią wizualizację i tworzy nową na podstawie aktualnego przedmiotu kuchennego. Pozycjonuje przedmiot w centrum dłoni, uwzględniając kości palców (środkowy i kciuk). 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_player_interaction_a401a5e2b5ecb4a0f9f89c2171d72cb15}\index{PlayerInteraction@{PlayerInteraction}!cachedLobbyUI@{cachedLobbyUI}}
+\index{cachedLobbyUI@{cachedLobbyUI}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{cachedLobbyUI}{cachedLobbyUI}}
+{\footnotesize\ttfamily \label{class_player_interaction_a401a5e2b5ecb4a0f9f89c2171d72cb15} 
+\mbox{\hyperlink{class_lobby_u_i}{Lobby\+UI}} Player\+Interaction.\+cached\+Lobby\+UI\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Zbuforowana referencja do interfejsu lobby, aby uniknąć wielokrotnego wyszukiwania. 
+
+\Hypertarget{class_player_interaction_afeaf63101b4700d98e9932547311c8b8}\index{PlayerInteraction@{PlayerInteraction}!cachedShopUI@{cachedShopUI}}
+\index{cachedShopUI@{cachedShopUI}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{cachedShopUI}{cachedShopUI}}
+{\footnotesize\ttfamily \label{class_player_interaction_afeaf63101b4700d98e9932547311c8b8} 
+\mbox{\hyperlink{class_shop_u_i}{Shop\+UI}} Player\+Interaction.\+cached\+Shop\+UI\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Zbuforowana referencja do interfejsu sklepu, aby uniknąć wielokrotnego wyszukiwania. 
+
+\Hypertarget{class_player_interaction_abaed6e147c9d7204eaeb859ee624351e}\index{PlayerInteraction@{PlayerInteraction}!currentInteractable@{currentInteractable}}
+\index{currentInteractable@{currentInteractable}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{currentInteractable}{currentInteractable}}
+{\footnotesize\ttfamily \label{class_player_interaction_abaed6e147c9d7204eaeb859ee624351e} 
+\mbox{\hyperlink{class_interactable}{Interactable}} Player\+Interaction.\+current\+Interactable\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referencja do aktualnie namierzonego obiektu interaktywnego. 
+
+\Hypertarget{class_player_interaction_adde5ff75a9b8f7eddfa8f88584c3b189}\index{PlayerInteraction@{PlayerInteraction}!currentItemVisual@{currentItemVisual}}
+\index{currentItemVisual@{currentItemVisual}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{currentItemVisual}{currentItemVisual}}
+{\footnotesize\ttfamily \label{class_player_interaction_adde5ff75a9b8f7eddfa8f88584c3b189} 
+Game\+Object Player\+Interaction.\+current\+Item\+Visual\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualny obiekt wizualizacji trzymanego przedmiotu w ręce gracza. 
+
+\Hypertarget{class_player_interaction_acf07fed280b5d39c955ae6a7f00a7783}\index{PlayerInteraction@{PlayerInteraction}!currentPrompt@{currentPrompt}}
+\index{currentPrompt@{currentPrompt}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{currentPrompt}{currentPrompt}}
+{\footnotesize\ttfamily \label{class_player_interaction_acf07fed280b5d39c955ae6a7f00a7783} 
+string Player\+Interaction.\+current\+Prompt = string.\+Empty\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualny komunikat podpowiedzi wyświetlany graczowi, gdy patrzy na obiekt interaktywny. 
+
+\Hypertarget{class_player_interaction_a338062dcbeb6b56993e5b7d2b0949a68}\index{PlayerInteraction@{PlayerInteraction}!feedbackMessage@{feedbackMessage}}
+\index{feedbackMessage@{feedbackMessage}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{feedbackMessage}{feedbackMessage}}
+{\footnotesize\ttfamily \label{class_player_interaction_a338062dcbeb6b56993e5b7d2b0949a68} 
+string Player\+Interaction.\+feedback\+Message = string.\+Empty\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Komunikat zwrotny informujący gracza o wyniku ostatniej akcji (np. wyrzucenie przedmiotu). 
+
+\Hypertarget{class_player_interaction_aea29f50ddffcc42d8c25218dd6da9e7c}\index{PlayerInteraction@{PlayerInteraction}!feedbackUntilTime@{feedbackUntilTime}}
+\index{feedbackUntilTime@{feedbackUntilTime}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{feedbackUntilTime}{feedbackUntilTime}}
+{\footnotesize\ttfamily \label{class_player_interaction_aea29f50ddffcc42d8c25218dd6da9e7c} 
+float Player\+Interaction.\+feedback\+Until\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czas (w sekundach gry), do którego komunikat zwrotny jest aktywny. Po przekroczeniu tego czasu komunikat nie jest już wyświetlany. 
+
+\Hypertarget{class_player_interaction_a8e19ece89128502c988c2f7c75dd4a28}\index{PlayerInteraction@{PlayerInteraction}!fpvClipLength@{fpvClipLength}}
+\index{fpvClipLength@{fpvClipLength}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{fpvClipLength}{fpvClipLength}}
+{\footnotesize\ttfamily \label{class_player_interaction_a8e19ece89128502c988c2f7c75dd4a28} 
+float Player\+Interaction.\+fpv\+Clip\+Length\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Długość klipu animacji pierwszoosobowej w sekundach. 
+
+\Hypertarget{class_player_interaction_a57675e472da0b224f6b6ef2e317893e1}\index{PlayerInteraction@{PlayerInteraction}!fpvPlayable@{fpvPlayable}}
+\index{fpvPlayable@{fpvPlayable}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{fpvPlayable}{fpvPlayable}}
+{\footnotesize\ttfamily \label{class_player_interaction_a57675e472da0b224f6b6ef2e317893e1} 
+Unity\+Engine.\+Animations.\+Animation\+Clip\+Playable Player\+Interaction.\+fpv\+Playable\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obiekt Playable klipu animacji pierwszoosobowej. 
+
+\Hypertarget{class_player_interaction_a58c9b8711d190cbb7cca95696e229efc}\index{PlayerInteraction@{PlayerInteraction}!heldItem@{heldItem}}
+\index{heldItem@{heldItem}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{heldItem}{heldItem}}
+{\footnotesize\ttfamily \label{class_player_interaction_a58c9b8711d190cbb7cca95696e229efc} 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} Player\+Interaction.\+held\+Item\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualnie trzymany przez gracza przedmiot kuchenny. Wartość null oznacza puste ręce. 
+
+\Hypertarget{class_player_interaction_aad6779afa291a9ccf4b9ff960d83b7cc}\index{PlayerInteraction@{PlayerInteraction}!interactableLayer@{interactableLayer}}
+\index{interactableLayer@{interactableLayer}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{interactableLayer}{interactableLayer}}
+{\footnotesize\ttfamily \label{class_player_interaction_aad6779afa291a9ccf4b9ff960d83b7cc} 
+Layer\+Mask Player\+Interaction.\+interactable\+Layer = \texorpdfstring{$\sim$}{\string~}0}
+
+
+
+Maska warstw określająca, które obiekty mogą być celem interakcji. Domyślnie ustawiona na wszystkie warstwy. 
+
+\Hypertarget{class_player_interaction_a95fb436d3cc8d8d76b56b30e8576fba0}\index{PlayerInteraction@{PlayerInteraction}!interactionDistance@{interactionDistance}}
+\index{interactionDistance@{interactionDistance}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{interactionDistance}{interactionDistance}}
+{\footnotesize\ttfamily \label{class_player_interaction_a95fb436d3cc8d8d76b56b30e8576fba0} 
+float Player\+Interaction.\+interaction\+Distance = 3f}
+
+
+
+Maksymalna odległość interakcji gracza z obiektami (w jednostkach Unity). 
+
+\Hypertarget{class_player_interaction_a7910aa9f17529e9a50ea3e9e17af6a1f}\index{PlayerInteraction@{PlayerInteraction}!isLocalViewModel@{isLocalViewModel}}
+\index{isLocalViewModel@{isLocalViewModel}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{isLocalViewModel}{isLocalViewModel}}
+{\footnotesize\ttfamily \label{class_player_interaction_a7910aa9f17529e9a50ea3e9e17af6a1f} 
+bool Player\+Interaction.\+is\+Local\+View\+Model = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga określająca, czy ten obiekt jest lokalnym modelem widoku (tj. należy do lokalnego gracza). W trybie wieloosobowym tylko właściciel ma aktywny view model. 
+
+\Hypertarget{class_player_interaction_ac6d0164deb25b1a77bee7e3415126b15}\index{PlayerInteraction@{PlayerInteraction}!lastVisualizedItem@{lastVisualizedItem}}
+\index{lastVisualizedItem@{lastVisualizedItem}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{lastVisualizedItem}{lastVisualizedItem}}
+{\footnotesize\ttfamily \label{class_player_interaction_ac6d0164deb25b1a77bee7e3415126b15} 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} Player\+Interaction.\+last\+Visualized\+Item\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatni zwizualizowany przedmiot kuchenny, używany do wykrywania zmian i unikania niepotrzebnych aktualizacji. 
+
+\Hypertarget{class_player_interaction_a55a8df6123112f290e3024ef5eb26fc8}\index{PlayerInteraction@{PlayerInteraction}!playerCamera@{playerCamera}}
+\index{playerCamera@{playerCamera}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{playerCamera}{playerCamera}}
+{\footnotesize\ttfamily \label{class_player_interaction_a55a8df6123112f290e3024ef5eb26fc8} 
+Camera Player\+Interaction.\+player\+Camera}
+
+
+
+Kamera gracza używana do rzucania promieni w celu wykrywania interaktywnych obiektów. 
+
+\Hypertarget{class_player_interaction_a12bd0f91aa1494d0ff713edf5cd81693}\index{PlayerInteraction@{PlayerInteraction}!rightHand@{rightHand}}
+\index{rightHand@{rightHand}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{rightHand}{rightHand}}
+{\footnotesize\ttfamily \label{class_player_interaction_a12bd0f91aa1494d0ff713edf5cd81693} 
+Transform Player\+Interaction.\+right\+Hand\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Transform kości prawej ręki w modelu pierwszoosobowym, służący do pozycjonowania trzymanych przedmiotów. 
+
+\Hypertarget{class_player_interaction_ae6a6646e83ed25797e483578082b0181}\index{PlayerInteraction@{PlayerInteraction}!viewModel@{viewModel}}
+\index{viewModel@{viewModel}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{viewModel}{viewModel}}
+{\footnotesize\ttfamily \label{class_player_interaction_ae6a6646e83ed25797e483578082b0181} 
+Game\+Object Player\+Interaction.\+view\+Model\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obiekt modelu pierwszoosobowego (ręce gracza) widoczny w widoku FPV. 
+
+\Hypertarget{class_player_interaction_ad82a95f4898994e08313b261c12bf808}\index{PlayerInteraction@{PlayerInteraction}!viewModelGraph@{viewModelGraph}}
+\index{viewModelGraph@{viewModelGraph}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{viewModelGraph}{viewModelGraph}}
+{\footnotesize\ttfamily \label{class_player_interaction_ad82a95f4898994e08313b261c12bf808} 
+Unity\+Engine.\+Playables.\+Playable\+Graph Player\+Interaction.\+view\+Model\+Graph\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Graf Playable używany do odtwarzania animacji modelu pierwszoosobowego. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_player_interaction_ab7cf5cf353bd483cb075aaba5fc96794}\index{PlayerInteraction@{PlayerInteraction}!CurrentPrompt@{CurrentPrompt}}
+\index{CurrentPrompt@{CurrentPrompt}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{CurrentPrompt}{CurrentPrompt}}
+{\footnotesize\ttfamily \label{class_player_interaction_ab7cf5cf353bd483cb075aaba5fc96794} 
+string Player\+Interaction.\+Current\+Prompt\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Aktualny komunikat podpowiedzi wyświetlany graczowi. 
+
+Tekst podpowiedzi lub pusty ciąg znaków, gdy brak obiektu interaktywnego w zasięgu.\Hypertarget{class_player_interaction_a2cb28391408d571dbd8a307c9e86c75d}\index{PlayerInteraction@{PlayerInteraction}!FeedbackMessage@{FeedbackMessage}}
+\index{FeedbackMessage@{FeedbackMessage}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{FeedbackMessage}{FeedbackMessage}}
+{\footnotesize\ttfamily \label{class_player_interaction_a2cb28391408d571dbd8a307c9e86c75d} 
+string Player\+Interaction.\+Feedback\+Message\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Komunikat zwrotny wyświetlany graczowi przez określony czas po wykonaniu akcji. 
+
+Tekst komunikatu zwrotnego lub pusty ciąg, jeśli czas wyświetlania minął.\Hypertarget{class_player_interaction_a0357b5a19287c1ab7826cfc31680ece2}\index{PlayerInteraction@{PlayerInteraction}!HasItemInHand@{HasItemInHand}}
+\index{HasItemInHand@{HasItemInHand}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{HasItemInHand}{HasItemInHand}}
+{\footnotesize\ttfamily \label{class_player_interaction_a0357b5a19287c1ab7826cfc31680ece2} 
+bool Player\+Interaction.\+Has\+Item\+In\+Hand\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Określa, czy gracz trzyma aktualnie jakiś przedmiot kuchenny. 
+
+{\ttfamily true} jeśli gracz trzyma przedmiot; w przeciwnym razie {\ttfamily false}.\Hypertarget{class_player_interaction_a533a615c18bd008f73ad38350d018313}\index{PlayerInteraction@{PlayerInteraction}!HeldItem@{HeldItem}}
+\index{HeldItem@{HeldItem}!PlayerInteraction@{PlayerInteraction}}
+\doxysubsubsection{\texorpdfstring{HeldItem}{HeldItem}}
+{\footnotesize\ttfamily \label{class_player_interaction_a533a615c18bd008f73ad38350d018313} 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} Player\+Interaction.\+Held\+Item\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Referencja do aktualnie trzymanego przedmiotu kuchennego. 
+
+Obiekt \doxylink{class_kitchen_item}{Kitchen\+Item} lub {\ttfamily null}, gdy ręce są puste.
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_player_interaction_8cs}{Player\+Interaction.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,1808 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy GameSettingsManager</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Komponenty</a> &#124;
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-static-methods">Statyczne metody publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="#pri-static-attribs">Statyczne atrybuty prywatne</a> &#124;
+<a href="class_game_settings_manager-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy GameSettingsManager</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Menedżer ustawień gry implementujący wzorzec Singleton. Zarządza wszystkimi konfigurowalnymi ustawieniami gry: grafiką, dźwiękiem i sterowaniem. Ustawienia są automatycznie ładowane z PlayerPrefs przy inicjalizacji i zapisywane po każdej zmianie.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla GameSettingsManager</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_game_settings_manager.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Komponenty</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_game_settings_manager_1_1_resolution_preset.html">ResolutionPreset</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struktura przechowująca predefiniowany preset rozdzielczości ekranu.  <a href="struct_game_settings_manager_1_1_resolution_preset.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:aae1fe0734a5dee1e71e105c62c4223b2" id="r_aae1fe0734a5dee1e71e105c62c4223b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae1fe0734a5dee1e71e105c62c4223b2">Load</a> ()</td></tr>
+<tr class="memdesc:aae1fe0734a5dee1e71e105c62c4223b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ładuje wszystkie ustawienia z PlayerPrefs. Dla każdego ustawienia stosuje wartości domyślne, jeśli zapis nie istnieje, i ogranicza wartości do prawidłowych zakresów.  <br /></td></tr>
+<tr class="separator:aae1fe0734a5dee1e71e105c62c4223b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79c11f11eaca3ed21d5657d6feff5887" id="r_a79c11f11eaca3ed21d5657d6feff5887"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79c11f11eaca3ed21d5657d6feff5887">Save</a> ()</td></tr>
+<tr class="memdesc:a79c11f11eaca3ed21d5657d6feff5887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zapisuje wszystkie bieżące ustawienia do PlayerPrefs i wymusza ich trwały zapis na dysk.  <br /></td></tr>
+<tr class="separator:a79c11f11eaca3ed21d5657d6feff5887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ade3f105e3d25bee496328baedf9a79" id="r_a4ade3f105e3d25bee496328baedf9a79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ade3f105e3d25bee496328baedf9a79">ApplyAll</a> ()</td></tr>
+<tr class="memdesc:a4ade3f105e3d25bee496328baedf9a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stosuje wszystkie kategorie ustawień: wyświetlanie, dźwięk i sterowanie.  <br /></td></tr>
+<tr class="separator:a4ade3f105e3d25bee496328baedf9a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e0acd3f355b9b354cf7abfe0bcf40cb" id="r_a9e0acd3f355b9b354cf7abfe0bcf40cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e0acd3f355b9b354cf7abfe0bcf40cb">ApplyDisplaySettings</a> ()</td></tr>
+<tr class="memdesc:a9e0acd3f355b9b354cf7abfe0bcf40cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stosuje ustawienia wyświetlania: jakość grafiki, VSync, limit FPS, rozdzielczość i tryb okna. Gdy VSync jest włączony, limit FPS jest ignorowany (ustawiony na -1).  <br /></td></tr>
+<tr class="separator:a9e0acd3f355b9b354cf7abfe0bcf40cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f4624aa4eaed78382075d585ffc2060" id="r_a2f4624aa4eaed78382075d585ffc2060"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f4624aa4eaed78382075d585ffc2060">ApplyAudioSettings</a> ()</td></tr>
+<tr class="memdesc:a2f4624aa4eaed78382075d585ffc2060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stosuje ustawienia dźwięku, przekazując wartości głośności do <a class="el" href="class_audio_manager.html">AudioManager</a>. Metoda nie wykonuje niczego, jeśli <a class="el" href="class_audio_manager.html">AudioManager</a> nie jest dostępny.  <br /></td></tr>
+<tr class="separator:a2f4624aa4eaed78382075d585ffc2060"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89899b5d15ecbe3fa81df10e86572103" id="r_a89899b5d15ecbe3fa81df10e86572103"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89899b5d15ecbe3fa81df10e86572103">ApplyControlSettings</a> ()</td></tr>
+<tr class="memdesc:a89899b5d15ecbe3fa81df10e86572103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stosuje ustawienia sterowania, aktualizując czułość myszy we wszystkich aktywnych kontrolerach gracza. Wyszukuje wszystkie instancje <a class="el" href="class_simple_player_controller.html" title="Prosty kontroler ruchu gracza w trybie pierwszoosobowym. Obsługuje poruszanie się postaci za pomocą k...">SimplePlayerController</a> na scenie.  <br /></td></tr>
+<tr class="separator:a89899b5d15ecbe3fa81df10e86572103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb050c6e956302ea03f3d27e874e58f0" id="r_acb050c6e956302ea03f3d27e874e58f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb050c6e956302ea03f3d27e874e58f0">CycleResolution</a> (int direction)</td></tr>
+<tr class="memdesc:acb050c6e956302ea03f3d27e874e58f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cyklicznie przełącza rozdzielczość ekranu w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je.  <br /></td></tr>
+<tr class="separator:acb050c6e956302ea03f3d27e874e58f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5ab8d7154ea8a1af938e753a574324c" id="r_aa5ab8d7154ea8a1af938e753a574324c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5ab8d7154ea8a1af938e753a574324c">CycleWindowMode</a> (int direction)</td></tr>
+<tr class="memdesc:aa5ab8d7154ea8a1af938e753a574324c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cyklicznie przełącza tryb okna (pełny ekran / okno) w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je.  <br /></td></tr>
+<tr class="separator:aa5ab8d7154ea8a1af938e753a574324c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a582a77904b153b51e7deecd1cbafa121" id="r_a582a77904b153b51e7deecd1cbafa121"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a582a77904b153b51e7deecd1cbafa121">ToggleWindowModeShortcut</a> ()</td></tr>
+<tr class="memdesc:a582a77904b153b51e7deecd1cbafa121"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przełącza tryb okna jako skrót klawiszowy (toggle). Zmienia pełny ekran na okno i odwrotnie, po czym zapisuje i stosuje ustawienia.  <br /></td></tr>
+<tr class="separator:a582a77904b153b51e7deecd1cbafa121"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4739b44a45960bee715367096d8222ac" id="r_a4739b44a45960bee715367096d8222ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4739b44a45960bee715367096d8222ac">ToggleVSync</a> ()</td></tr>
+<tr class="memdesc:a4739b44a45960bee715367096d8222ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przełącza stan synchronizacji pionowej (VSync). Po zmianie automatycznie zapisuje ustawienia i stosuje je.  <br /></td></tr>
+<tr class="separator:a4739b44a45960bee715367096d8222ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e0f942d0fcbec2c3ed01f164b8c1c5e" id="r_a3e0f942d0fcbec2c3ed01f164b8c1c5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e0f942d0fcbec2c3ed01f164b8c1c5e">CycleFpsLimit</a> (int direction)</td></tr>
+<tr class="memdesc:a3e0f942d0fcbec2c3ed01f164b8c1c5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cyklicznie przełącza limit FPS w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je.  <br /></td></tr>
+<tr class="separator:a3e0f942d0fcbec2c3ed01f164b8c1c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a030a4e54cf96bbdfcddda275a240c3dd" id="r_a030a4e54cf96bbdfcddda275a240c3dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a030a4e54cf96bbdfcddda275a240c3dd">CycleQuality</a> (int direction)</td></tr>
+<tr class="memdesc:a030a4e54cf96bbdfcddda275a240c3dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cyklicznie przełącza poziom jakości grafiki w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je.  <br /></td></tr>
+<tr class="separator:a030a4e54cf96bbdfcddda275a240c3dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ef1128737e0f9b8151aaec1806a3f61" id="r_a1ef1128737e0f9b8151aaec1806a3f61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ef1128737e0f9b8151aaec1806a3f61">SetMasterVolume</a> (float value)</td></tr>
+<tr class="memdesc:a1ef1128737e0f9b8151aaec1806a3f61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia poziom głośności głównej. Wartość jest ograniczana do zakresu [0, 1]. Po zmianie automatycznie zapisuje ustawienia i stosuje je.  <br /></td></tr>
+<tr class="separator:a1ef1128737e0f9b8151aaec1806a3f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a734fbaab89467602e0bb94907cc9a6f3" id="r_a734fbaab89467602e0bb94907cc9a6f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a734fbaab89467602e0bb94907cc9a6f3">SetMusicVolume</a> (float value)</td></tr>
+<tr class="memdesc:a734fbaab89467602e0bb94907cc9a6f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia poziom głośności muzyki. Wartość jest ograniczana do zakresu [0, 1]. Po zmianie automatycznie zapisuje ustawienia i stosuje je.  <br /></td></tr>
+<tr class="separator:a734fbaab89467602e0bb94907cc9a6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62ae006b72afb4e56aabaa5eba759007" id="r_a62ae006b72afb4e56aabaa5eba759007"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62ae006b72afb4e56aabaa5eba759007">SetSFXVolume</a> (float value)</td></tr>
+<tr class="memdesc:a62ae006b72afb4e56aabaa5eba759007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia poziom głośności efektów dźwiękowych. Wartość jest ograniczana do zakresu [0, 1]. Po zmianie automatycznie zapisuje ustawienia i stosuje je.  <br /></td></tr>
+<tr class="separator:a62ae006b72afb4e56aabaa5eba759007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7bc11f06da26069aca40a4d67d32e29" id="r_af7bc11f06da26069aca40a4d67d32e29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7bc11f06da26069aca40a4d67d32e29">SetMouseSensitivity</a> (float value)</td></tr>
+<tr class="memdesc:af7bc11f06da26069aca40a4d67d32e29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia czułość myszy. Wartość jest ograniczana do zakresu [0.5, 5.0]. Po zmianie automatycznie zapisuje ustawienia i stosuje je do wszystkich kontrolerów gracza.  <br /></td></tr>
+<tr class="separator:af7bc11f06da26069aca40a4d67d32e29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Statyczne metody publiczne</h2></td></tr>
+<tr class="memitem:a1df146395f67877b0745fcc6d8becc60" id="r_a1df146395f67877b0745fcc6d8becc60"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_game_settings_manager.html">GameSettingsManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1df146395f67877b0745fcc6d8becc60">EnsureInstance</a> ()</td></tr>
+<tr class="memdesc:a1df146395f67877b0745fcc6d8becc60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zapewnia istnienie instancji menedżera ustawień. Jeśli instancja nie istnieje, wyszukuje obiekt "GameManager" na scenie lub tworzy nowy i dodaje do niego komponent <a class="el" href="class_game_settings_manager.html" title="Menedżer ustawień gry implementujący wzorzec Singleton. Zarządza wszystkimi konfigurowalnymi ustawien...">GameSettingsManager</a>.  <br /></td></tr>
+<tr class="separator:a1df146395f67877b0745fcc6d8becc60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:a4456fa5e75bfcac9e71c8fdc2286fda5" id="r_a4456fa5e75bfcac9e71c8fdc2286fda5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_game_settings_manager.html">GameSettingsManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4456fa5e75bfcac9e71c8fdc2286fda5">Instance</a><code> [get, private set]</code></td></tr>
+<tr class="memdesc:a4456fa5e75bfcac9e71c8fdc2286fda5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statyczna instancja Singletona menedżera ustawień, dostępna globalnie.  <br /></td></tr>
+<tr class="separator:a4456fa5e75bfcac9e71c8fdc2286fda5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aced9036cfafa2bf7bb1236fb9d3e57d5" id="r_aced9036cfafa2bf7bb1236fb9d3e57d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aced9036cfafa2bf7bb1236fb9d3e57d5">ResolutionCount</a><code> [get]</code></td></tr>
+<tr class="memdesc:aced9036cfafa2bf7bb1236fb9d3e57d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba dostępnych presetów rozdzielczości.  <br /></td></tr>
+<tr class="separator:aced9036cfafa2bf7bb1236fb9d3e57d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a518da1073d50c96e53ac106386b5d183" id="r_a518da1073d50c96e53ac106386b5d183"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a518da1073d50c96e53ac106386b5d183">FpsLimitCount</a><code> [get]</code></td></tr>
+<tr class="memdesc:a518da1073d50c96e53ac106386b5d183"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba dostępnych opcji limitu FPS.  <br /></td></tr>
+<tr class="separator:a518da1073d50c96e53ac106386b5d183"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cb0661ae48a5c6e0e0bdf222d6259f7" id="r_a2cb0661ae48a5c6e0e0bdf222d6259f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cb0661ae48a5c6e0e0bdf222d6259f7">QualityCount</a><code> [get]</code></td></tr>
+<tr class="memdesc:a2cb0661ae48a5c6e0e0bdf222d6259f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba dostępnych poziomów jakości grafiki.  <br /></td></tr>
+<tr class="separator:a2cb0661ae48a5c6e0e0bdf222d6259f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef69d1aed54a62f412e39b9af1fa3884" id="r_aef69d1aed54a62f412e39b9af1fa3884"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef69d1aed54a62f412e39b9af1fa3884">WindowModeCount</a><code> [get]</code></td></tr>
+<tr class="memdesc:aef69d1aed54a62f412e39b9af1fa3884"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba dostępnych trybów okna (pełny ekran i okno).  <br /></td></tr>
+<tr class="separator:aef69d1aed54a62f412e39b9af1fa3884"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f970c416fb1e5c4fa89cf53f7cc4a0" id="r_ab0f970c416fb1e5c4fa89cf53f7cc4a0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0f970c416fb1e5c4fa89cf53f7cc4a0">MasterVolume</a><code> [get]</code></td></tr>
+<tr class="memdesc:ab0f970c416fb1e5c4fa89cf53f7cc4a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bieżący poziom głośności głównej.  <br /></td></tr>
+<tr class="separator:ab0f970c416fb1e5c4fa89cf53f7cc4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01b6f119970b021a1795176a9cb70c32" id="r_a01b6f119970b021a1795176a9cb70c32"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01b6f119970b021a1795176a9cb70c32">MusicVolume</a><code> [get]</code></td></tr>
+<tr class="memdesc:a01b6f119970b021a1795176a9cb70c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bieżący poziom głośności muzyki.  <br /></td></tr>
+<tr class="separator:a01b6f119970b021a1795176a9cb70c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63b39682c81c0aba7b86bcb3926598b8" id="r_a63b39682c81c0aba7b86bcb3926598b8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63b39682c81c0aba7b86bcb3926598b8">SFXVolume</a><code> [get]</code></td></tr>
+<tr class="memdesc:a63b39682c81c0aba7b86bcb3926598b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bieżący poziom głośności efektów dźwiękowych.  <br /></td></tr>
+<tr class="separator:a63b39682c81c0aba7b86bcb3926598b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a5a439ca93fefd5b4c11d0fcfd48adb" id="r_a4a5a439ca93fefd5b4c11d0fcfd48adb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a5a439ca93fefd5b4c11d0fcfd48adb">MouseSensitivity</a><code> [get]</code></td></tr>
+<tr class="memdesc:a4a5a439ca93fefd5b4c11d0fcfd48adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bieżąca czułość myszy.  <br /></td></tr>
+<tr class="separator:a4a5a439ca93fefd5b4c11d0fcfd48adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dc9d86d5e85eeb6e479bcc2a2a3315c" id="r_a2dc9d86d5e85eeb6e479bcc2a2a3315c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dc9d86d5e85eeb6e479bcc2a2a3315c">VSyncEnabled</a><code> [get]</code></td></tr>
+<tr class="memdesc:a2dc9d86d5e85eeb6e479bcc2a2a3315c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Określa, czy synchronizacja pionowa (VSync) jest włączona.  <br /></td></tr>
+<tr class="separator:a2dc9d86d5e85eeb6e479bcc2a2a3315c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc36b7154a71a17ef9fb392cf9ba5c9c" id="r_abc36b7154a71a17ef9fb392cf9ba5c9c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc36b7154a71a17ef9fb392cf9ba5c9c">ResolutionLabel</a><code> [get]</code></td></tr>
+<tr class="memdesc:abc36b7154a71a17ef9fb392cf9ba5c9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etykieta tekstowa aktualnej rozdzielczości do wyświetlenia w interfejsie (np. "1920 x 1080").  <br /></td></tr>
+<tr class="separator:abc36b7154a71a17ef9fb392cf9ba5c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a403002a258ac01976f8acfaddcd273dd" id="r_a403002a258ac01976f8acfaddcd273dd"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a403002a258ac01976f8acfaddcd273dd">WindowModeLabel</a><code> [get]</code></td></tr>
+<tr class="memdesc:a403002a258ac01976f8acfaddcd273dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etykieta tekstowa aktualnego trybu okna do wyświetlenia w interfejsie.  <br /></td></tr>
+<tr class="separator:a403002a258ac01976f8acfaddcd273dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae990cea519c7160ecb9625f07a07290c" id="r_ae990cea519c7160ecb9625f07a07290c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae990cea519c7160ecb9625f07a07290c">VSyncLabel</a><code> [get]</code></td></tr>
+<tr class="memdesc:ae990cea519c7160ecb9625f07a07290c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etykieta tekstowa stanu VSync do wyświetlenia w interfejsie.  <br /></td></tr>
+<tr class="separator:ae990cea519c7160ecb9625f07a07290c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4708c4961701b026ae8593a86adf14cd" id="r_a4708c4961701b026ae8593a86adf14cd"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4708c4961701b026ae8593a86adf14cd">FpsLimitLabel</a><code> [get]</code></td></tr>
+<tr class="memdesc:a4708c4961701b026ae8593a86adf14cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etykieta tekstowa aktualnego limitu FPS do wyświetlenia w interfejsie.  <br /></td></tr>
+<tr class="separator:a4708c4961701b026ae8593a86adf14cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ed5c9e7b0007f894ae655903eaa1779" id="r_a8ed5c9e7b0007f894ae655903eaa1779"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ed5c9e7b0007f894ae655903eaa1779">QualityLabel</a><code> [get]</code></td></tr>
+<tr class="memdesc:a8ed5c9e7b0007f894ae655903eaa1779"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etykieta tekstowa aktualnego poziomu jakości grafiki do wyświetlenia w interfejsie.  <br /></td></tr>
+<tr class="separator:a8ed5c9e7b0007f894ae655903eaa1779"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:a43aa4aa79a15c5c7e0b81dea1161351a" id="r_a43aa4aa79a15c5c7e0b81dea1161351a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43aa4aa79a15c5c7e0b81dea1161351a">Awake</a> ()</td></tr>
+<tr class="memdesc:a43aa4aa79a15c5c7e0b81dea1161351a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizacja Singletona w metodzie Awake. Jeśli instancja już istnieje, niszczy duplikat. W przeciwnym razie ładuje ustawienia z PlayerPrefs i stosuje je.  <br /></td></tr>
+<tr class="separator:a43aa4aa79a15c5c7e0b81dea1161351a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a67c08adf2127de2f629b20154386c5" id="r_a3a67c08adf2127de2f629b20154386c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a67c08adf2127de2f629b20154386c5">CycleIndex</a> (int value, int count, int direction)</td></tr>
+<tr class="memdesc:a3a67c08adf2127de2f629b20154386c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cyklicznie przełącza indeks w podanym zakresie z zawijaniem (wrap-around). Umożliwia nawigację w obu kierunkach, np. po osiągnięciu ostatniej opcji wraca do pierwszej.  <br /></td></tr>
+<tr class="separator:a3a67c08adf2127de2f629b20154386c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec0d5c08f84ced7d8a3bdbd863fc2b26" id="r_aec0d5c08f84ced7d8a3bdbd863fc2b26"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec0d5c08f84ced7d8a3bdbd863fc2b26">GetDefaultResolutionIndex</a> ()</td></tr>
+<tr class="memdesc:aec0d5c08f84ced7d8a3bdbd863fc2b26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyznacza domyślny indeks rozdzielczości najlepiej dopasowany do aktualnej rozdzielczości monitora. Porównuje dostępne presety z rozdzielczością ekranu i wybiera najbliższą (minimalna odległość Manhattan). Domyślnie zwraca indeks 2 (1920x1080), jeśli nie udało się ustalić rozdzielczości monitora.  <br /></td></tr>
+<tr class="separator:aec0d5c08f84ced7d8a3bdbd863fc2b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8e1fca679b077d1904fc11233aafb1a" id="r_af8e1fca679b077d1904fc11233aafb1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8e1fca679b077d1904fc11233aafb1a">OnDestroy</a> ()</td></tr>
+<tr class="memdesc:af8e1fca679b077d1904fc11233aafb1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wywoływana przy niszczeniu obiektu. Czyści referencję Singletona, jeśli niszczony obiekt jest aktualną instancją.  <br /></td></tr>
+<tr class="separator:af8e1fca679b077d1904fc11233aafb1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a378369c7e4cf35917655b04693124436" id="r_a378369c7e4cf35917655b04693124436"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a378369c7e4cf35917655b04693124436">resolutionIndex</a></td></tr>
+<tr class="memdesc:a378369c7e4cf35917655b04693124436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bieżący indeks wybranej rozdzielczości w tablicy <a class="el" href="#a8c37b8546d66198ea124ae0324fe4013" title="Tablica predefiniowanych presetów rozdzielczości dostępnych w ustawieniach gry. Obejmuje rozdzielczoś...">ResolutionPresets</a>.  <br /></td></tr>
+<tr class="separator:a378369c7e4cf35917655b04693124436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8233780cad2e4ca0789583117765c1d5" id="r_a8233780cad2e4ca0789583117765c1d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8233780cad2e4ca0789583117765c1d5">windowModeIndex</a></td></tr>
+<tr class="memdesc:a8233780cad2e4ca0789583117765c1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bieżący indeks trybu okna (0 = pełny ekran, 1 = okno).  <br /></td></tr>
+<tr class="separator:a8233780cad2e4ca0789583117765c1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a87a03282a756e88d176c9d437272c6" id="r_a8a87a03282a756e88d176c9d437272c6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a87a03282a756e88d176c9d437272c6">vSyncEnabled</a></td></tr>
+<tr class="memdesc:a8a87a03282a756e88d176c9d437272c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flaga określająca, czy synchronizacja pionowa (VSync) jest włączona.  <br /></td></tr>
+<tr class="separator:a8a87a03282a756e88d176c9d437272c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a075e6e0c4e3bd4e06b307522b9eb7eba" id="r_a075e6e0c4e3bd4e06b307522b9eb7eba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a075e6e0c4e3bd4e06b307522b9eb7eba">fpsLimitIndex</a></td></tr>
+<tr class="memdesc:a075e6e0c4e3bd4e06b307522b9eb7eba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bieżący indeks limitu FPS w tablicy <a class="el" href="#a0a7ffc477633b17924d4e2f32771243b" title="Tablica dostępnych limitów klatek na sekundę (FPS). Wartość 0 oznacza brak limitu....">FpsLimits</a>.  <br /></td></tr>
+<tr class="separator:a075e6e0c4e3bd4e06b307522b9eb7eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaad931fc7a14666053594755db76cb69" id="r_aaad931fc7a14666053594755db76cb69"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaad931fc7a14666053594755db76cb69">qualityIndex</a></td></tr>
+<tr class="memdesc:aaad931fc7a14666053594755db76cb69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bieżący indeks poziomu jakości grafiki w ustawieniach Unity Quality.  <br /></td></tr>
+<tr class="separator:aaad931fc7a14666053594755db76cb69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38de57fcac48fd3cb328edd8379a8f5b" id="r_a38de57fcac48fd3cb328edd8379a8f5b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38de57fcac48fd3cb328edd8379a8f5b">masterVolume</a></td></tr>
+<tr class="memdesc:a38de57fcac48fd3cb328edd8379a8f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poziom głośności głównej w zakresie [0, 1].  <br /></td></tr>
+<tr class="separator:a38de57fcac48fd3cb328edd8379a8f5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a2c9ef438e6db95dda207e025b246e9" id="r_a6a2c9ef438e6db95dda207e025b246e9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a2c9ef438e6db95dda207e025b246e9">musicVolume</a></td></tr>
+<tr class="memdesc:a6a2c9ef438e6db95dda207e025b246e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poziom głośności muzyki w zakresie [0, 1].  <br /></td></tr>
+<tr class="separator:a6a2c9ef438e6db95dda207e025b246e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf542ae20da3937ec4955db4f8feac4f" id="r_adf542ae20da3937ec4955db4f8feac4f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf542ae20da3937ec4955db4f8feac4f">sfxVolume</a></td></tr>
+<tr class="memdesc:adf542ae20da3937ec4955db4f8feac4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poziom głośności efektów dźwiękowych w zakresie [0, 1].  <br /></td></tr>
+<tr class="separator:adf542ae20da3937ec4955db4f8feac4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a579c2c4a879abe33a0945231f47e7f6a" id="r_a579c2c4a879abe33a0945231f47e7f6a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a579c2c4a879abe33a0945231f47e7f6a">mouseSensitivity</a></td></tr>
+<tr class="memdesc:a579c2c4a879abe33a0945231f47e7f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wartość czułości myszy w zakresie [0.5, 5.0].  <br /></td></tr>
+<tr class="separator:a579c2c4a879abe33a0945231f47e7f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Statyczne atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a8c37b8546d66198ea124ae0324fe4013" id="r_a8c37b8546d66198ea124ae0324fe4013"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="struct_game_settings_manager_1_1_resolution_preset.html">ResolutionPreset</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c37b8546d66198ea124ae0324fe4013">ResolutionPresets</a></td></tr>
+<tr class="memdesc:a8c37b8546d66198ea124ae0324fe4013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tablica predefiniowanych presetów rozdzielczości dostępnych w ustawieniach gry. Obejmuje rozdzielczości: 1280x720 (HD), 1600x900 (HD+), 1920x1080 (Full HD), 2560x1440 (QHD).  <br /></td></tr>
+<tr class="separator:a8c37b8546d66198ea124ae0324fe4013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a7ffc477633b17924d4e2f32771243b" id="r_a0a7ffc477633b17924d4e2f32771243b"><td class="memItemLeft" align="right" valign="top">static readonly int[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a7ffc477633b17924d4e2f32771243b">FpsLimits</a> = { 0, 30, 60, 120, 144 }</td></tr>
+<tr class="memdesc:a0a7ffc477633b17924d4e2f32771243b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tablica dostępnych limitów klatek na sekundę (FPS). Wartość 0 oznacza brak limitu. Dostępne opcje: brak limitu, 30, 60, 120, 144 FPS.  <br /></td></tr>
+<tr class="separator:a0a7ffc477633b17924d4e2f32771243b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16e44a4c5534415cc1ff05c953fee498" id="r_a16e44a4c5534415cc1ff05c953fee498"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16e44a4c5534415cc1ff05c953fee498">ResolutionKey</a> = &quot;Settings.ResolutionIndex&quot;</td></tr>
+<tr class="memdesc:a16e44a4c5534415cc1ff05c953fee498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klucz PlayerPrefs do zapisu indeksu wybranej rozdzielczości.  <br /></td></tr>
+<tr class="separator:a16e44a4c5534415cc1ff05c953fee498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aa678b7ac3313058a19d958ede252d9" id="r_a6aa678b7ac3313058a19d958ede252d9"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6aa678b7ac3313058a19d958ede252d9">WindowModeKey</a> = &quot;Settings.WindowModeIndex&quot;</td></tr>
+<tr class="memdesc:a6aa678b7ac3313058a19d958ede252d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klucz PlayerPrefs do zapisu indeksu trybu okna (pełny ekran / okno).  <br /></td></tr>
+<tr class="separator:a6aa678b7ac3313058a19d958ede252d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05063cac25c55e470912184b6f01ee96" id="r_a05063cac25c55e470912184b6f01ee96"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05063cac25c55e470912184b6f01ee96">VSyncKey</a> = &quot;Settings.VSync&quot;</td></tr>
+<tr class="memdesc:a05063cac25c55e470912184b6f01ee96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klucz PlayerPrefs do zapisu stanu synchronizacji pionowej (VSync).  <br /></td></tr>
+<tr class="separator:a05063cac25c55e470912184b6f01ee96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a881af81f501cb1ce196ab0fdd1715029" id="r_a881af81f501cb1ce196ab0fdd1715029"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a881af81f501cb1ce196ab0fdd1715029">FpsLimitKey</a> = &quot;Settings.FpsLimitIndex&quot;</td></tr>
+<tr class="memdesc:a881af81f501cb1ce196ab0fdd1715029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klucz PlayerPrefs do zapisu indeksu limitu FPS.  <br /></td></tr>
+<tr class="separator:a881af81f501cb1ce196ab0fdd1715029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcaa6de895644357f9cd3c83519a6a21" id="r_adcaa6de895644357f9cd3c83519a6a21"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcaa6de895644357f9cd3c83519a6a21">QualityKey</a> = &quot;Settings.QualityIndex&quot;</td></tr>
+<tr class="memdesc:adcaa6de895644357f9cd3c83519a6a21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klucz PlayerPrefs do zapisu indeksu poziomu jakości grafiki.  <br /></td></tr>
+<tr class="separator:adcaa6de895644357f9cd3c83519a6a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab184a882a69a505012001f62a20aabba" id="r_ab184a882a69a505012001f62a20aabba"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab184a882a69a505012001f62a20aabba">MasterVolumeKey</a> = &quot;MasterVolume&quot;</td></tr>
+<tr class="memdesc:ab184a882a69a505012001f62a20aabba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klucz PlayerPrefs do zapisu poziomu głośności głównej.  <br /></td></tr>
+<tr class="separator:ab184a882a69a505012001f62a20aabba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7ccc75452edc42e5a2866d0910cb407" id="r_aa7ccc75452edc42e5a2866d0910cb407"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7ccc75452edc42e5a2866d0910cb407">MusicVolumeKey</a> = &quot;MusicVolume&quot;</td></tr>
+<tr class="memdesc:aa7ccc75452edc42e5a2866d0910cb407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klucz PlayerPrefs do zapisu poziomu głośności muzyki.  <br /></td></tr>
+<tr class="separator:aa7ccc75452edc42e5a2866d0910cb407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79e9a795ea999de5d4a037f1cd9d4b15" id="r_a79e9a795ea999de5d4a037f1cd9d4b15"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79e9a795ea999de5d4a037f1cd9d4b15">SfxVolumeKey</a> = &quot;SFXVolume&quot;</td></tr>
+<tr class="memdesc:a79e9a795ea999de5d4a037f1cd9d4b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klucz PlayerPrefs do zapisu poziomu głośności efektów dźwiękowych.  <br /></td></tr>
+<tr class="separator:a79e9a795ea999de5d4a037f1cd9d4b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e186f71dcaf5a0107752b8e23065003" id="r_a8e186f71dcaf5a0107752b8e23065003"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e186f71dcaf5a0107752b8e23065003">MouseSensitivityKey</a> = &quot;MouseSensitivity&quot;</td></tr>
+<tr class="memdesc:a8e186f71dcaf5a0107752b8e23065003"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klucz PlayerPrefs do zapisu wartości czułości myszy.  <br /></td></tr>
+<tr class="separator:a8e186f71dcaf5a0107752b8e23065003"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Menedżer ustawień gry implementujący wzorzec Singleton. Zarządza wszystkimi konfigurowalnymi ustawieniami gry: grafiką, dźwiękiem i sterowaniem. Ustawienia są automatycznie ładowane z PlayerPrefs przy inicjalizacji i zapisywane po każdej zmianie. </p>
+<p>Klasa zapewnia zestaw predefiniowanych rozdzielczości i limitów FPS. Obsługuje przełączanie między trybem pełnoekranowym a okienkowym, cykliczne przełączanie ustawień oraz bezpośrednie ustawianie wartości suwakowych. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a4ade3f105e3d25bee496328baedf9a79" name="a4ade3f105e3d25bee496328baedf9a79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ade3f105e3d25bee496328baedf9a79">&#9670;&#160;</a></span>ApplyAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.ApplyAll </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stosuje wszystkie kategorie ustawień: wyświetlanie, dźwięk i sterowanie. </p>
+
+</div>
+</div>
+<a id="a2f4624aa4eaed78382075d585ffc2060" name="a2f4624aa4eaed78382075d585ffc2060"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f4624aa4eaed78382075d585ffc2060">&#9670;&#160;</a></span>ApplyAudioSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.ApplyAudioSettings </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stosuje ustawienia dźwięku, przekazując wartości głośności do <a class="el" href="class_audio_manager.html">AudioManager</a>. Metoda nie wykonuje niczego, jeśli <a class="el" href="class_audio_manager.html">AudioManager</a> nie jest dostępny. </p>
+
+</div>
+</div>
+<a id="a89899b5d15ecbe3fa81df10e86572103" name="a89899b5d15ecbe3fa81df10e86572103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89899b5d15ecbe3fa81df10e86572103">&#9670;&#160;</a></span>ApplyControlSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.ApplyControlSettings </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stosuje ustawienia sterowania, aktualizując czułość myszy we wszystkich aktywnych kontrolerach gracza. Wyszukuje wszystkie instancje <a class="el" href="class_simple_player_controller.html" title="Prosty kontroler ruchu gracza w trybie pierwszoosobowym. Obsługuje poruszanie się postaci za pomocą k...">SimplePlayerController</a> na scenie. </p>
+
+</div>
+</div>
+<a id="a9e0acd3f355b9b354cf7abfe0bcf40cb" name="a9e0acd3f355b9b354cf7abfe0bcf40cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e0acd3f355b9b354cf7abfe0bcf40cb">&#9670;&#160;</a></span>ApplyDisplaySettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.ApplyDisplaySettings </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stosuje ustawienia wyświetlania: jakość grafiki, VSync, limit FPS, rozdzielczość i tryb okna. Gdy VSync jest włączony, limit FPS jest ignorowany (ustawiony na -1). </p>
+
+</div>
+</div>
+<a id="a43aa4aa79a15c5c7e0b81dea1161351a" name="a43aa4aa79a15c5c7e0b81dea1161351a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43aa4aa79a15c5c7e0b81dea1161351a">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicjalizacja Singletona w metodzie Awake. Jeśli instancja już istnieje, niszczy duplikat. W przeciwnym razie ładuje ustawienia z PlayerPrefs i stosuje je. </p>
+
+</div>
+</div>
+<a id="a3e0f942d0fcbec2c3ed01f164b8c1c5e" name="a3e0f942d0fcbec2c3ed01f164b8c1c5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e0f942d0fcbec2c3ed01f164b8c1c5e">&#9670;&#160;</a></span>CycleFpsLimit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.CycleFpsLimit </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>direction</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cyklicznie przełącza limit FPS w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>Kierunek przełączania: 1 — następny, -1 — poprzedni.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3a67c08adf2127de2f629b20154386c5" name="a3a67c08adf2127de2f629b20154386c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a67c08adf2127de2f629b20154386c5">&#9670;&#160;</a></span>CycleIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameSettingsManager.CycleIndex </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>count</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>direction</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cyklicznie przełącza indeks w podanym zakresie z zawijaniem (wrap-around). Umożliwia nawigację w obu kierunkach, np. po osiągnięciu ostatniej opcji wraca do pierwszej. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Bieżący indeks.</td></tr>
+    <tr><td class="paramname">count</td><td>Łączna liczba dostępnych opcji.</td></tr>
+    <tr><td class="paramname">direction</td><td>Kierunek przesunięcia (1 = następny, -1 = poprzedni).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Nowy indeks po przesunięciu z zawijaniem.</dd></dl>
+
+</div>
+</div>
+<a id="a030a4e54cf96bbdfcddda275a240c3dd" name="a030a4e54cf96bbdfcddda275a240c3dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a030a4e54cf96bbdfcddda275a240c3dd">&#9670;&#160;</a></span>CycleQuality()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.CycleQuality </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>direction</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cyklicznie przełącza poziom jakości grafiki w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>Kierunek przełączania: 1 — następny, -1 — poprzedni.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acb050c6e956302ea03f3d27e874e58f0" name="acb050c6e956302ea03f3d27e874e58f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb050c6e956302ea03f3d27e874e58f0">&#9670;&#160;</a></span>CycleResolution()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.CycleResolution </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>direction</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cyklicznie przełącza rozdzielczość ekranu w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>Kierunek przełączania: 1 — następna, -1 — poprzednia.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa5ab8d7154ea8a1af938e753a574324c" name="aa5ab8d7154ea8a1af938e753a574324c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5ab8d7154ea8a1af938e753a574324c">&#9670;&#160;</a></span>CycleWindowMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.CycleWindowMode </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>direction</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cyklicznie przełącza tryb okna (pełny ekran / okno) w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>Kierunek przełączania: 1 — następny, -1 — poprzedni.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1df146395f67877b0745fcc6d8becc60" name="a1df146395f67877b0745fcc6d8becc60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1df146395f67877b0745fcc6d8becc60">&#9670;&#160;</a></span>EnsureInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_game_settings_manager.html">GameSettingsManager</a> GameSettingsManager.EnsureInstance </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zapewnia istnienie instancji menedżera ustawień. Jeśli instancja nie istnieje, wyszukuje obiekt "GameManager" na scenie lub tworzy nowy i dodaje do niego komponent <a class="el" href="class_game_settings_manager.html" title="Menedżer ustawień gry implementujący wzorzec Singleton. Zarządza wszystkimi konfigurowalnymi ustawien...">GameSettingsManager</a>. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Istniejąca lub nowo utworzona instancja <a class="el" href="class_game_settings_manager.html" title="Menedżer ustawień gry implementujący wzorzec Singleton. Zarządza wszystkimi konfigurowalnymi ustawien...">GameSettingsManager</a>.</dd></dl>
+
+</div>
+</div>
+<a id="aec0d5c08f84ced7d8a3bdbd863fc2b26" name="aec0d5c08f84ced7d8a3bdbd863fc2b26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec0d5c08f84ced7d8a3bdbd863fc2b26">&#9670;&#160;</a></span>GetDefaultResolutionIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameSettingsManager.GetDefaultResolutionIndex </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyznacza domyślny indeks rozdzielczości najlepiej dopasowany do aktualnej rozdzielczości monitora. Porównuje dostępne presety z rozdzielczością ekranu i wybiera najbliższą (minimalna odległość Manhattan). Domyślnie zwraca indeks 2 (1920x1080), jeśli nie udało się ustalić rozdzielczości monitora. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Indeks najlepiej dopasowanego presetu rozdzielczości.</dd></dl>
+
+</div>
+</div>
+<a id="aae1fe0734a5dee1e71e105c62c4223b2" name="aae1fe0734a5dee1e71e105c62c4223b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae1fe0734a5dee1e71e105c62c4223b2">&#9670;&#160;</a></span>Load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.Load </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ładuje wszystkie ustawienia z PlayerPrefs. Dla każdego ustawienia stosuje wartości domyślne, jeśli zapis nie istnieje, i ogranicza wartości do prawidłowych zakresów. </p>
+
+</div>
+</div>
+<a id="af8e1fca679b077d1904fc11233aafb1a" name="af8e1fca679b077d1904fc11233aafb1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8e1fca679b077d1904fc11233aafb1a">&#9670;&#160;</a></span>OnDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.OnDestroy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wywoływana przy niszczeniu obiektu. Czyści referencję Singletona, jeśli niszczony obiekt jest aktualną instancją. </p>
+
+</div>
+</div>
+<a id="a79c11f11eaca3ed21d5657d6feff5887" name="a79c11f11eaca3ed21d5657d6feff5887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79c11f11eaca3ed21d5657d6feff5887">&#9670;&#160;</a></span>Save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.Save </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zapisuje wszystkie bieżące ustawienia do PlayerPrefs i wymusza ich trwały zapis na dysk. </p>
+
+</div>
+</div>
+<a id="a1ef1128737e0f9b8151aaec1806a3f61" name="a1ef1128737e0f9b8151aaec1806a3f61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ef1128737e0f9b8151aaec1806a3f61">&#9670;&#160;</a></span>SetMasterVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.SetMasterVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia poziom głośności głównej. Wartość jest ograniczana do zakresu [0, 1]. Po zmianie automatycznie zapisuje ustawienia i stosuje je. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowy poziom głośności głównej.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af7bc11f06da26069aca40a4d67d32e29" name="af7bc11f06da26069aca40a4d67d32e29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7bc11f06da26069aca40a4d67d32e29">&#9670;&#160;</a></span>SetMouseSensitivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.SetMouseSensitivity </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia czułość myszy. Wartość jest ograniczana do zakresu [0.5, 5.0]. Po zmianie automatycznie zapisuje ustawienia i stosuje je do wszystkich kontrolerów gracza. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowa wartość czułości myszy.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a734fbaab89467602e0bb94907cc9a6f3" name="a734fbaab89467602e0bb94907cc9a6f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a734fbaab89467602e0bb94907cc9a6f3">&#9670;&#160;</a></span>SetMusicVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.SetMusicVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia poziom głośności muzyki. Wartość jest ograniczana do zakresu [0, 1]. Po zmianie automatycznie zapisuje ustawienia i stosuje je. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowy poziom głośności muzyki.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a62ae006b72afb4e56aabaa5eba759007" name="a62ae006b72afb4e56aabaa5eba759007"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62ae006b72afb4e56aabaa5eba759007">&#9670;&#160;</a></span>SetSFXVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.SetSFXVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia poziom głośności efektów dźwiękowych. Wartość jest ograniczana do zakresu [0, 1]. Po zmianie automatycznie zapisuje ustawienia i stosuje je. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowy poziom głośności efektów dźwiękowych.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4739b44a45960bee715367096d8222ac" name="a4739b44a45960bee715367096d8222ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4739b44a45960bee715367096d8222ac">&#9670;&#160;</a></span>ToggleVSync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.ToggleVSync </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przełącza stan synchronizacji pionowej (VSync). Po zmianie automatycznie zapisuje ustawienia i stosuje je. </p>
+
+</div>
+</div>
+<a id="a582a77904b153b51e7deecd1cbafa121" name="a582a77904b153b51e7deecd1cbafa121"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a582a77904b153b51e7deecd1cbafa121">&#9670;&#160;</a></span>ToggleWindowModeShortcut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameSettingsManager.ToggleWindowModeShortcut </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przełącza tryb okna jako skrót klawiszowy (toggle). Zmienia pełny ekran na okno i odwrotnie, po czym zapisuje i stosuje ustawienia. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a075e6e0c4e3bd4e06b307522b9eb7eba" name="a075e6e0c4e3bd4e06b307522b9eb7eba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a075e6e0c4e3bd4e06b307522b9eb7eba">&#9670;&#160;</a></span>fpsLimitIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameSettingsManager.fpsLimitIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bieżący indeks limitu FPS w tablicy <a class="el" href="#a0a7ffc477633b17924d4e2f32771243b" title="Tablica dostępnych limitów klatek na sekundę (FPS). Wartość 0 oznacza brak limitu....">FpsLimits</a>. </p>
+
+</div>
+</div>
+<a id="a881af81f501cb1ce196ab0fdd1715029" name="a881af81f501cb1ce196ab0fdd1715029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a881af81f501cb1ce196ab0fdd1715029">&#9670;&#160;</a></span>FpsLimitKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string GameSettingsManager.FpsLimitKey = &quot;Settings.FpsLimitIndex&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klucz PlayerPrefs do zapisu indeksu limitu FPS. </p>
+
+</div>
+</div>
+<a id="a0a7ffc477633b17924d4e2f32771243b" name="a0a7ffc477633b17924d4e2f32771243b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a7ffc477633b17924d4e2f32771243b">&#9670;&#160;</a></span>FpsLimits</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly int [] GameSettingsManager.FpsLimits = { 0, 30, 60, 120, 144 }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tablica dostępnych limitów klatek na sekundę (FPS). Wartość 0 oznacza brak limitu. Dostępne opcje: brak limitu, 30, 60, 120, 144 FPS. </p>
+
+</div>
+</div>
+<a id="a38de57fcac48fd3cb328edd8379a8f5b" name="a38de57fcac48fd3cb328edd8379a8f5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38de57fcac48fd3cb328edd8379a8f5b">&#9670;&#160;</a></span>masterVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float GameSettingsManager.masterVolume</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Poziom głośności głównej w zakresie [0, 1]. </p>
+
+</div>
+</div>
+<a id="ab184a882a69a505012001f62a20aabba" name="ab184a882a69a505012001f62a20aabba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab184a882a69a505012001f62a20aabba">&#9670;&#160;</a></span>MasterVolumeKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string GameSettingsManager.MasterVolumeKey = &quot;MasterVolume&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klucz PlayerPrefs do zapisu poziomu głośności głównej. </p>
+
+</div>
+</div>
+<a id="a579c2c4a879abe33a0945231f47e7f6a" name="a579c2c4a879abe33a0945231f47e7f6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a579c2c4a879abe33a0945231f47e7f6a">&#9670;&#160;</a></span>mouseSensitivity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float GameSettingsManager.mouseSensitivity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wartość czułości myszy w zakresie [0.5, 5.0]. </p>
+
+</div>
+</div>
+<a id="a8e186f71dcaf5a0107752b8e23065003" name="a8e186f71dcaf5a0107752b8e23065003"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e186f71dcaf5a0107752b8e23065003">&#9670;&#160;</a></span>MouseSensitivityKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string GameSettingsManager.MouseSensitivityKey = &quot;MouseSensitivity&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klucz PlayerPrefs do zapisu wartości czułości myszy. </p>
+
+</div>
+</div>
+<a id="a6a2c9ef438e6db95dda207e025b246e9" name="a6a2c9ef438e6db95dda207e025b246e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a2c9ef438e6db95dda207e025b246e9">&#9670;&#160;</a></span>musicVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float GameSettingsManager.musicVolume</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Poziom głośności muzyki w zakresie [0, 1]. </p>
+
+</div>
+</div>
+<a id="aa7ccc75452edc42e5a2866d0910cb407" name="aa7ccc75452edc42e5a2866d0910cb407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7ccc75452edc42e5a2866d0910cb407">&#9670;&#160;</a></span>MusicVolumeKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string GameSettingsManager.MusicVolumeKey = &quot;MusicVolume&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klucz PlayerPrefs do zapisu poziomu głośności muzyki. </p>
+
+</div>
+</div>
+<a id="aaad931fc7a14666053594755db76cb69" name="aaad931fc7a14666053594755db76cb69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaad931fc7a14666053594755db76cb69">&#9670;&#160;</a></span>qualityIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameSettingsManager.qualityIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bieżący indeks poziomu jakości grafiki w ustawieniach Unity Quality. </p>
+
+</div>
+</div>
+<a id="adcaa6de895644357f9cd3c83519a6a21" name="adcaa6de895644357f9cd3c83519a6a21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcaa6de895644357f9cd3c83519a6a21">&#9670;&#160;</a></span>QualityKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string GameSettingsManager.QualityKey = &quot;Settings.QualityIndex&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klucz PlayerPrefs do zapisu indeksu poziomu jakości grafiki. </p>
+
+</div>
+</div>
+<a id="a378369c7e4cf35917655b04693124436" name="a378369c7e4cf35917655b04693124436"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a378369c7e4cf35917655b04693124436">&#9670;&#160;</a></span>resolutionIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameSettingsManager.resolutionIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bieżący indeks wybranej rozdzielczości w tablicy <a class="el" href="#a8c37b8546d66198ea124ae0324fe4013" title="Tablica predefiniowanych presetów rozdzielczości dostępnych w ustawieniach gry. Obejmuje rozdzielczoś...">ResolutionPresets</a>. </p>
+
+</div>
+</div>
+<a id="a16e44a4c5534415cc1ff05c953fee498" name="a16e44a4c5534415cc1ff05c953fee498"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16e44a4c5534415cc1ff05c953fee498">&#9670;&#160;</a></span>ResolutionKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string GameSettingsManager.ResolutionKey = &quot;Settings.ResolutionIndex&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klucz PlayerPrefs do zapisu indeksu wybranej rozdzielczości. </p>
+
+</div>
+</div>
+<a id="a8c37b8546d66198ea124ae0324fe4013" name="a8c37b8546d66198ea124ae0324fe4013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c37b8546d66198ea124ae0324fe4013">&#9670;&#160;</a></span>ResolutionPresets</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="struct_game_settings_manager_1_1_resolution_preset.html">ResolutionPreset</a> [] GameSettingsManager.ResolutionPresets</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Wartość początkowa:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keyword">new</span> ResolutionPreset(1280, 720),</div>
+<div class="line">        <span class="keyword">new</span> ResolutionPreset(1600, 900),</div>
+<div class="line">        <span class="keyword">new</span> ResolutionPreset(1920, 1080),</div>
+<div class="line">        <span class="keyword">new</span> ResolutionPreset(2560, 1440)</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p>Tablica predefiniowanych presetów rozdzielczości dostępnych w ustawieniach gry. Obejmuje rozdzielczości: 1280x720 (HD), 1600x900 (HD+), 1920x1080 (Full HD), 2560x1440 (QHD). </p>
+
+</div>
+</div>
+<a id="adf542ae20da3937ec4955db4f8feac4f" name="adf542ae20da3937ec4955db4f8feac4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf542ae20da3937ec4955db4f8feac4f">&#9670;&#160;</a></span>sfxVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float GameSettingsManager.sfxVolume</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Poziom głośności efektów dźwiękowych w zakresie [0, 1]. </p>
+
+</div>
+</div>
+<a id="a79e9a795ea999de5d4a037f1cd9d4b15" name="a79e9a795ea999de5d4a037f1cd9d4b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79e9a795ea999de5d4a037f1cd9d4b15">&#9670;&#160;</a></span>SfxVolumeKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string GameSettingsManager.SfxVolumeKey = &quot;SFXVolume&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klucz PlayerPrefs do zapisu poziomu głośności efektów dźwiękowych. </p>
+
+</div>
+</div>
+<a id="a8a87a03282a756e88d176c9d437272c6" name="a8a87a03282a756e88d176c9d437272c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a87a03282a756e88d176c9d437272c6">&#9670;&#160;</a></span>vSyncEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameSettingsManager.vSyncEnabled</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flaga określająca, czy synchronizacja pionowa (VSync) jest włączona. </p>
+
+</div>
+</div>
+<a id="a05063cac25c55e470912184b6f01ee96" name="a05063cac25c55e470912184b6f01ee96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05063cac25c55e470912184b6f01ee96">&#9670;&#160;</a></span>VSyncKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string GameSettingsManager.VSyncKey = &quot;Settings.VSync&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klucz PlayerPrefs do zapisu stanu synchronizacji pionowej (VSync). </p>
+
+</div>
+</div>
+<a id="a8233780cad2e4ca0789583117765c1d5" name="a8233780cad2e4ca0789583117765c1d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8233780cad2e4ca0789583117765c1d5">&#9670;&#160;</a></span>windowModeIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameSettingsManager.windowModeIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bieżący indeks trybu okna (0 = pełny ekran, 1 = okno). </p>
+
+</div>
+</div>
+<a id="a6aa678b7ac3313058a19d958ede252d9" name="a6aa678b7ac3313058a19d958ede252d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aa678b7ac3313058a19d958ede252d9">&#9670;&#160;</a></span>WindowModeKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string GameSettingsManager.WindowModeKey = &quot;Settings.WindowModeIndex&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Klucz PlayerPrefs do zapisu indeksu trybu okna (pełny ekran / okno). </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="a518da1073d50c96e53ac106386b5d183" name="a518da1073d50c96e53ac106386b5d183"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a518da1073d50c96e53ac106386b5d183">&#9670;&#160;</a></span>FpsLimitCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameSettingsManager.FpsLimitCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liczba dostępnych opcji limitu FPS. </p>
+
+</div>
+</div>
+<a id="a4708c4961701b026ae8593a86adf14cd" name="a4708c4961701b026ae8593a86adf14cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4708c4961701b026ae8593a86adf14cd">&#9670;&#160;</a></span>FpsLimitLabel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string GameSettingsManager.FpsLimitLabel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Etykieta tekstowa aktualnego limitu FPS do wyświetlenia w interfejsie. </p>
+<p>"Bez limitu" lub liczba FPS (np. "60 FPS").</p>
+
+</div>
+</div>
+<a id="a4456fa5e75bfcac9e71c8fdc2286fda5" name="a4456fa5e75bfcac9e71c8fdc2286fda5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4456fa5e75bfcac9e71c8fdc2286fda5">&#9670;&#160;</a></span>Instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_game_settings_manager.html">GameSettingsManager</a> GameSettingsManager.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Statyczna instancja Singletona menedżera ustawień, dostępna globalnie. </p>
+
+</div>
+</div>
+<a id="ab0f970c416fb1e5c4fa89cf53f7cc4a0" name="ab0f970c416fb1e5c4fa89cf53f7cc4a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0f970c416fb1e5c4fa89cf53f7cc4a0">&#9670;&#160;</a></span>MasterVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float GameSettingsManager.MasterVolume</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bieżący poziom głośności głównej. </p>
+<p>Wartość w zakresie [0, 1].</p>
+
+</div>
+</div>
+<a id="a4a5a439ca93fefd5b4c11d0fcfd48adb" name="a4a5a439ca93fefd5b4c11d0fcfd48adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a5a439ca93fefd5b4c11d0fcfd48adb">&#9670;&#160;</a></span>MouseSensitivity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float GameSettingsManager.MouseSensitivity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bieżąca czułość myszy. </p>
+<p>Wartość w zakresie [0.5, 5.0].</p>
+
+</div>
+</div>
+<a id="a01b6f119970b021a1795176a9cb70c32" name="a01b6f119970b021a1795176a9cb70c32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01b6f119970b021a1795176a9cb70c32">&#9670;&#160;</a></span>MusicVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float GameSettingsManager.MusicVolume</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bieżący poziom głośności muzyki. </p>
+<p>Wartość w zakresie [0, 1].</p>
+
+</div>
+</div>
+<a id="a2cb0661ae48a5c6e0e0bdf222d6259f7" name="a2cb0661ae48a5c6e0e0bdf222d6259f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cb0661ae48a5c6e0e0bdf222d6259f7">&#9670;&#160;</a></span>QualityCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameSettingsManager.QualityCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liczba dostępnych poziomów jakości grafiki. </p>
+
+</div>
+</div>
+<a id="a8ed5c9e7b0007f894ae655903eaa1779" name="a8ed5c9e7b0007f894ae655903eaa1779"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ed5c9e7b0007f894ae655903eaa1779">&#9670;&#160;</a></span>QualityLabel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string GameSettingsManager.QualityLabel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Etykieta tekstowa aktualnego poziomu jakości grafiki do wyświetlenia w interfejsie. </p>
+<p>Nazwa poziomu jakości z ustawień Unity lub "Domyslna" jako wartość domyślna.</p>
+
+</div>
+</div>
+<a id="aced9036cfafa2bf7bb1236fb9d3e57d5" name="aced9036cfafa2bf7bb1236fb9d3e57d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aced9036cfafa2bf7bb1236fb9d3e57d5">&#9670;&#160;</a></span>ResolutionCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameSettingsManager.ResolutionCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liczba dostępnych presetów rozdzielczości. </p>
+
+</div>
+</div>
+<a id="abc36b7154a71a17ef9fb392cf9ba5c9c" name="abc36b7154a71a17ef9fb392cf9ba5c9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc36b7154a71a17ef9fb392cf9ba5c9c">&#9670;&#160;</a></span>ResolutionLabel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string GameSettingsManager.ResolutionLabel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Etykieta tekstowa aktualnej rozdzielczości do wyświetlenia w interfejsie (np. "1920 x 1080"). </p>
+
+</div>
+</div>
+<a id="a63b39682c81c0aba7b86bcb3926598b8" name="a63b39682c81c0aba7b86bcb3926598b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63b39682c81c0aba7b86bcb3926598b8">&#9670;&#160;</a></span>SFXVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float GameSettingsManager.SFXVolume</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bieżący poziom głośności efektów dźwiękowych. </p>
+<p>Wartość w zakresie [0, 1].</p>
+
+</div>
+</div>
+<a id="a2dc9d86d5e85eeb6e479bcc2a2a3315c" name="a2dc9d86d5e85eeb6e479bcc2a2a3315c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dc9d86d5e85eeb6e479bcc2a2a3315c">&#9670;&#160;</a></span>VSyncEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameSettingsManager.VSyncEnabled</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Określa, czy synchronizacja pionowa (VSync) jest włączona. </p>
+<p><code>true</code> jeśli VSync jest włączony; w przeciwnym razie <code>false</code>.</p>
+
+</div>
+</div>
+<a id="ae990cea519c7160ecb9625f07a07290c" name="ae990cea519c7160ecb9625f07a07290c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae990cea519c7160ecb9625f07a07290c">&#9670;&#160;</a></span>VSyncLabel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string GameSettingsManager.VSyncLabel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Etykieta tekstowa stanu VSync do wyświetlenia w interfejsie. </p>
+<p>"Wlaczone" lub "Wylaczone".</p>
+
+</div>
+</div>
+<a id="aef69d1aed54a62f412e39b9af1fa3884" name="aef69d1aed54a62f412e39b9af1fa3884"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef69d1aed54a62f412e39b9af1fa3884">&#9670;&#160;</a></span>WindowModeCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameSettingsManager.WindowModeCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liczba dostępnych trybów okna (pełny ekran i okno). </p>
+
+</div>
+</div>
+<a id="a403002a258ac01976f8acfaddcd273dd" name="a403002a258ac01976f8acfaddcd273dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a403002a258ac01976f8acfaddcd273dd">&#9670;&#160;</a></span>WindowModeLabel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string GameSettingsManager.WindowModeLabel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Etykieta tekstowa aktualnego trybu okna do wyświetlenia w interfejsie. </p>
+<p>"Pelny ekran" lub "Okno".</p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_game_settings_manager_8cs.html">GameSettingsManager.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

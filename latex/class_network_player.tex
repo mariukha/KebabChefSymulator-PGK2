@@ -1,0 +1,1030 @@
+\doxysection{Dokumentacja klasy Network\+Player}
+\hypertarget{class_network_player}{}\label{class_network_player}\index{NetworkPlayer@{NetworkPlayer}}
+
+
+Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem.  
+
+
+Diagram dziedziczenia dla Network\+Player\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_network_player}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_network_player_acc80a453fbbcd5e5a192567c304ce1ac}{On\+Network\+Spawn}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływana po pojawieniu się obiektu sieciowego. Konfiguruje gracza lokalnego lub zdalnego oraz subskrybuje zmiany zmiennych sieciowych. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_network_player_acd93853e0eb9d7f8baac992d280a0938}{On\+Network\+Despawn}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływana przy usunięciu obiektu sieciowego ze sceny. Odsubskrybowuje zdarzenia zmiennych sieciowych i niszczy obiekty pomocnicze. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a55e71f76ead7fe93ac4fa745d1dd124c}{Broadcast\+VFX}} (\mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd}{Network\+VFXType}} type, Vector3 pos, Color color=default)
+\begin{DoxyCompactList}\small\item\em Nadaje efekt wizualny (VFX) do wszystkich klientów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a3a6d32fdefa1757c4ac124af3d33d1bb}{Purchase\+Upgrade\+Server\+Rpc}} (int upgrade\+Type\+Int, Server\+Rpc\+Params rpc\+Params=default)
+\begin{DoxyCompactList}\small\item\em RPC serwera obsługujący żądanie zakupu ulepszenia od klienta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a208c4411a2fbf559f82a14387a9466d5}{Interact\+With\+Station\+Server\+Rpc}} (int station\+Index, \mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} held\+Item, Server\+Rpc\+Params rpc\+Params=default)
+\begin{DoxyCompactList}\small\item\em RPC serwera obsługujący żądanie interakcji gracza ze stacją kuchenną. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a981ce305819912b38b7934ff0b35cb2f}{Set\+Player\+Name\+Server\+Rpc}} (string requested\+Name)
+\begin{DoxyCompactList}\small\item\em RPC serwera ustawiający nazwę (pseudonim) gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_network_player}{Network\+Player}} \mbox{\hyperlink{class_network_player_a045b845bdf9c51d3cb3391966d6e39d4}{Find\+Local\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Wyszukuje lokalnego gracza sieciowego na scenie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static readonly Color\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_network_player_a9da055a3ae82ffcd9938ce9c00765da7}{Player\+Colors}}
+\begin{DoxyCompactList}\small\item\em Tablica kolorów przypisywanych graczom na podstawie ich indeksu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_network_player}{Network\+Player}} \mbox{\hyperlink{class_network_player_ab774d9d318a5d12c7f2cb79e49be1fcf}{Local\+Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna referencja do lokalnej instancji gracza sieciowego. \end{DoxyCompactList}\item 
+Camera \mbox{\hyperlink{class_network_player_a15881a04dd5b6541ce833cec408394c7}{Player\+Camera}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość zwracająca kamerę gracza. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_network_player_af677ab70df9a26c5aaf7dadea5c8a6c2}{Player\+Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość zwracająca nazwę gracza jako ciąg znaków. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_network_player_a3ee5dc2c0b7b9f84662b463f9f3eceb2}{Player\+Index}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość zwracająca indeks gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_network_player_a732510c67bd357868fff62256ce9f4e7}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Start wywoływana przez Unity w pierwszej klatce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_abdf6da6872b42cf14d4f75be2be7bdc2}{Setup\+Local\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Konfiguruje gracza lokalnego\+: tworzy kamerę, włącza kontroler ruchu i interakcję, inicjalizuje interfejsy HUD i ustawia kursor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a3cdcc1d2b313b1c545735f103d50e4d8}{Setup\+Remote\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Konfiguruje gracza zdalnego\+: wyłącza kontroler i interakcję, usuwa kamerę i tworzy wizualną reprezentację gracza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a27ccaec7d3bf4364a7250a064ca1a75c}{Create\+Remote\+Visual}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy wizualną reprezentację gracza zdalnego (model 3D, etykietę z nazwą). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a9b086ae7ccfa4aa7baaa428dcb602c0f}{Disable\+Collider}} (Game\+Object obj)
+\begin{DoxyCompactList}\small\item\em Wyłącza komponent Collider na podanym obiekcie gry. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{class_network_player_ae5ccf978d1e1ea30d0e4bdd503027fcb}{Get\+Right\+Hand\+Bone}} ()
+\begin{DoxyCompactList}\small\item\em Wyszukuje kość prawej dłoni w hierarchii modelu gracza zdalnego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a5f295ebf5dec227441654eaae2145e83}{Update\+Held\+Item\+Visual}} (\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} item\+State)
+\begin{DoxyCompactList}\small\item\em Aktualizuje wizualną reprezentację przedmiotu trzymanego przez gracza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a9729f538e64fba116fc41fb004c52d88}{On\+Held\+Item\+Changed}} (\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} old\+Value, \mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} new\+Value)
+\begin{DoxyCompactList}\small\item\em Wywoływana przy zmianie wartości zmiennej sieciowej trzymanego przedmiotu. Aktualizuje wizualizację przedmiotu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_af1ce0f56bb9ec30eedf30913d7a4c478}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Update wywoływana co klatkę. Synchronizuje trzymany przedmiot, nadaje stany stacji, ekonomii, sklepu i zamówień. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a68d09a092d6bb49981efed8215bfed5e}{Broadcast\+Station\+States}} ()
+\begin{DoxyCompactList}\small\item\em Nadaje stany wszystkich zmienionych stacji kuchennych do klientów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_aa21d6fab4162e91651affe639c7b2832}{Sync\+Station\+State\+Client\+Rpc}} (\mbox{\hyperlink{struct_station_state_snapshot}{Station\+State\+Snapshot}} snapshot)
+\begin{DoxyCompactList}\small\item\em RPC klienta synchronizujący stan stacji kuchennej odebrany od serwera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_ac371219b56e88373ee4f02b30df0fcaa}{Broadcast\+Economy}} ()
+\begin{DoxyCompactList}\small\item\em Nadaje dane ekonomiczne (saldo i łączne zarobki) do wszystkich klientów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a2781459a190b21c13b31c9320769c915}{Sync\+Economy\+Client\+Rpc}} (float balance, float total\+Earned)
+\begin{DoxyCompactList}\small\item\em RPC klienta synchronizujący dane ekonomiczne od serwera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a105307287f6fce6436e78c578b069bd3}{Broadcast\+Orders}} ()
+\begin{DoxyCompactList}\small\item\em Nadaje aktualny stan zamówień do wszystkich klientów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a6c0e44b013b1f8c7190b4e311f271592}{Sync\+Orders\+Client\+Rpc}} (int template\+Index, string desc, float time, int comp, int fail)
+\begin{DoxyCompactList}\small\item\em RPC klienta synchronizujący stan zamówień od serwera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a17693ce857b1bb525d34820f0640cdab}{Play\+VFXClient\+Rpc}} (\mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd}{Network\+VFXType}} type, Vector3 pos, Color color)
+\begin{DoxyCompactList}\small\item\em RPC klienta odtwarzający efekt wizualny na podstawie odebranego typu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a4d7e32871d22c23e02e133712bbe460f}{Broadcast\+Shop\+Upgrades}} ()
+\begin{DoxyCompactList}\small\item\em Nadaje poziomy ulepszeń sklepowych do wszystkich klientów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a90716a2eb339823bd248f06bbba2cc41}{Sync\+Shop\+Upgrades\+Client\+Rpc}} (int grill\+Lvl, int cut\+Lvl, int reward\+Lvl, int time\+Lvl, int meat\+Lvl)
+\begin{DoxyCompactList}\small\item\em RPC klienta synchronizujący poziomy ulepszeń sklepowych od serwera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a144d6dcc78db62dc16347be7b04dfdfc}{Purchase\+Result\+Client\+Rpc}} (bool success, int upgrade\+Type\+Int, Client\+Rpc\+Params client\+Rpc\+Params=default)
+\begin{DoxyCompactList}\small\item\em RPC klienta informujący o wyniku próby zakupu ulepszenia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_accce010c3e47bcc945fdf3fefc3d987d}{Sync\+Interaction\+Result\+Client\+Rpc}} (\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} item\+State, string feedback, Client\+Rpc\+Params client\+Rpc\+Params=default)
+\begin{DoxyCompactList}\small\item\em RPC klienta synchronizujący wynik interakcji ze stacją kuchenną. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a2328688d34c7fb6b70d9f49f2389f1a1}{Update\+Held\+Item\+Server\+Rpc}} (\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} new\+State)
+\begin{DoxyCompactList}\small\item\em RPC serwera aktualizujący stan trzymanego przedmiotu w zmiennej sieciowej. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_acd2bd2d8238523ff054611338fb83839}{On\+Player\+Name\+Changed}} (Fixed\+String32\+Bytes old\+Value, Fixed\+String32\+Bytes new\+Value)
+\begin{DoxyCompactList}\small\item\em Obsługuje zmianę nazwy gracza — aktualizuje etykietę tekstową nad głową gracza zdalnego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_player_a06e07c2df9d51c957efc930b5d335282}{On\+Player\+Index\+Changed}} (int old\+Value, int new\+Value)
+\begin{DoxyCompactList}\small\item\em Obsługuje zmianę indeksu gracza — aktualizuje kolor modelu gracza zdalnego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_network_player_a02f97aceba672f94ec9cc52fb0053b47}{Sanitize\+Player\+Name}} (string name)
+\begin{DoxyCompactList}\small\item\em Oczyszcza nazwę gracza z niebezpiecznych znaków i tagów. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_network_player}{Network\+Player}} \mbox{\hyperlink{class_network_player_a49a40eea2dc7eec4383d96b4b19257e7}{Find\+Network\+Player\+By\+Client\+Id}} (ulong client\+Id)
+\begin{DoxyCompactList}\small\item\em Wyszukuje obiekt \doxylink{class_network_player}{Network\+Player} na podstawie identyfikatora klienta sieciowego. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} \mbox{\hyperlink{class_network_player_a52d01d7d5bba2efb135ca82d4c4762c2}{Find\+Local\+Player\+Interaction}} ()
+\begin{DoxyCompactList}\small\item\em Wyszukuje komponent \doxylink{class_player_interaction}{Player\+Interaction} gracza lokalnego na scenie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Network\+Variable$<$ Fixed\+String32\+Bytes $>$ \mbox{\hyperlink{class_network_player_a603dd48f5471319be02f9e9c35b7b2b5}{player\+Name}}
+\begin{DoxyCompactList}\small\item\em Zmienna sieciowa przechowująca nazwę (pseudonim) gracza. \end{DoxyCompactList}\item 
+Network\+Variable$<$ \mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} $>$ \mbox{\hyperlink{class_network_player_a8c011e8366c3e642549ea60d81f4ec24}{net\+Held\+Item}}
+\begin{DoxyCompactList}\small\item\em Zmienna sieciowa przechowująca stan trzymanego przedmiotu kuchennego. \end{DoxyCompactList}\item 
+Network\+Variable$<$ int $>$ \mbox{\hyperlink{class_network_player_a332d3fb18937c9b1ae730fd3edaf07b6}{player\+Index}}
+\begin{DoxyCompactList}\small\item\em Zmienna sieciowa przechowująca indeks gracza. \end{DoxyCompactList}\item 
+Camera \mbox{\hyperlink{class_network_player_aad9cadc6be10eef2d82740aeefabe1ec}{player\+Camera}}
+\begin{DoxyCompactList}\small\item\em Referencja do kamery gracza lokalnego. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_network_player_a17938aaa10b8d8fa522aef6afda1d40e}{remote\+Player\+Visual}}
+\begin{DoxyCompactList}\small\item\em Obiekt wizualny reprezentujący gracza zdalnego (model 3D). \end{DoxyCompactList}\item 
+Text\+Mesh \mbox{\hyperlink{class_network_player_ac994d82f9058e4f9ad2e61e98c350321}{name\+Label}}
+\begin{DoxyCompactList}\small\item\em Etykieta tekstowa wyświetlająca nazwę gracza zdalnego nad jego głową. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_simple_player_controller}{Simple\+Player\+Controller}} \mbox{\hyperlink{class_network_player_a369774bca16f8e46e23e1450c6f4764f}{cached\+Controller}}
+\begin{DoxyCompactList}\small\item\em Buforowana referencja do komponentu kontrolera ruchu gracza. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} \mbox{\hyperlink{class_network_player_aad0978188dd5e28592c59306c5c0f07b}{cached\+Interaction}}
+\begin{DoxyCompactList}\small\item\em Buforowana referencja do komponentu interakcji gracza. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_network_player_a8841770bda2729cbc6dd7a4ca15f357b}{held\+Item\+Visual}}
+\begin{DoxyCompactList}\small\item\em Obiekt wizualny reprezentujący przedmiot trzymany przez gracza. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} \mbox{\hyperlink{class_network_player_af4306015f8fd6be9db1fc67e2ad1c68c}{last\+Visual\+State}}
+\begin{DoxyCompactList}\small\item\em Ostatni zsynchronizowany stan wizualny trzymanego przedmiotu. Używany do wykrywania zmian i unikania niepotrzebnego odtwarzania wizualizacji. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_network_kitchen_station}{Network\+Kitchen\+Station}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_network_player_a1a17368ab9b9487614db2708a9b2453f}{cached\+Stations}}
+\begin{DoxyCompactList}\small\item\em Buforowana tablica wszystkich stacji kuchennych na scenie. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_network_player_a5a3812674fc752c15d1d2b02f0609235}{cached\+Stations\+Time}}
+\begin{DoxyCompactList}\small\item\em Czas ostatniego odświeżenia buforowanej tablicy stacji kuchennych. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_network_player_aa2ce072988e3764fe151b4faa26edfe7}{next\+Station\+Sync\+Time}}
+\begin{DoxyCompactList}\small\item\em Czas następnej synchronizacji stanów stacji kuchennych. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_network_player_a9940061ee675d311659181b76d27f3f9}{next\+Economy\+Sync\+Time}}
+\begin{DoxyCompactList}\small\item\em Czas następnej synchronizacji danych ekonomicznych. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_network_player_a54857da92abd961c0f64864a6f8dd32e}{next\+Shop\+Sync\+Time}}
+\begin{DoxyCompactList}\small\item\em Czas następnej synchronizacji ulepszeń sklepowych. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_network_player_a6ca5984b2882e8e702f7064bf4730ee7}{next\+Order\+Sync\+Time}}
+\begin{DoxyCompactList}\small\item\em Czas następnej synchronizacji zamówień. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_network_player_a797fbcc342613109a943ea1a57d8f8dc}{is\+Local\+Player\+Setup}} = false
+\begin{DoxyCompactList}\small\item\em Flaga zapobiegająca wielokrotnej konfiguracji gracza lokalnego. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_network_player_a930de36ea9b995b69a60f8b9fe65992d}{pending\+Nickname}}
+\begin{DoxyCompactList}\small\item\em Pseudonim oczekujący na wysłanie do serwera (używany, gdy obiekt nie został jeszcze zdespawnowany sieciowo). \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_network_player_aca80417066ef06bf7cd98e1d8a390e9d}{next\+Held\+Item\+Sync\+Time}}
+\begin{DoxyCompactList}\small\item\em Czas następnej synchronizacji stanu trzymanego przedmiotu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+const float \mbox{\hyperlink{class_network_player_a8c607f576c727b3071f2d80cab3fdbbc}{Eye\+Height}} = 1.\+75f
+\begin{DoxyCompactList}\small\item\em Wysokość oczu gracza nad poziomem podłogi (w metrach). Używana do pozycjonowania kamery gracza. \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_network_player_a6441ea1ca6950050bd39c43f635bafad}{Station\+Sync\+Interval}} = 0.\+15f
+\begin{DoxyCompactList}\small\item\em Interwał synchronizacji stanów stacji kuchennych (w sekundach). \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_network_player_a12730a194027166aa750649a7403a732}{Economy\+Sync\+Interval}} = 0.\+5f
+\begin{DoxyCompactList}\small\item\em Interwał synchronizacji danych ekonomicznych (w sekundach). \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_network_player_ab5d32bd0954ab34d59c75afaa94afe74}{Shop\+Sync\+Interval}} = 1.\+0f
+\begin{DoxyCompactList}\small\item\em Interwał synchronizacji ulepszeń sklepowych (w sekundach). \end{DoxyCompactList}\item 
+static readonly Vector3\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_network_player_a9f8c51d7cbbdb70dd35e02491d31d90b}{Spawn\+Points}}
+\begin{DoxyCompactList}\small\item\em Tablica predefiniowanych punktów spawnu graczy na mapie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Główna klasa gracza sieciowego odpowiedzialna za zarządzanie lokalnym i zdalnym graczem. 
+
+Dziedziczy po Network\+Behaviour i obsługuje\+: 
+\begin{DoxyItemize}
+\item Konfigurację kamery i kontrolera gracza lokalnego 
+\item Tworzenie wizualnej reprezentacji graczy zdalnych 
+\item Synchronizację trzymanego przedmiotu, nazwy gracza i indeksu 
+\item Nadawanie stanów stacji kuchennych, ekonomii, sklepu i zamówień 
+\item Obsługę interakcji ze stacjami kuchennymi przez RPC 
+\item Nadawanie efektów wizualnych (VFX) do klientów 
+\end{DoxyItemize}
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_network_player_ac371219b56e88373ee4f02b30df0fcaa}\index{NetworkPlayer@{NetworkPlayer}!BroadcastEconomy@{BroadcastEconomy}}
+\index{BroadcastEconomy@{BroadcastEconomy}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{BroadcastEconomy()}{BroadcastEconomy()}}
+{\footnotesize\ttfamily \label{class_network_player_ac371219b56e88373ee4f02b30df0fcaa} 
+void Network\+Player.\+Broadcast\+Economy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Nadaje dane ekonomiczne (saldo i łączne zarobki) do wszystkich klientów. 
+
+Wywoływana cyklicznie co \doxylink{class_network_player_a12730a194027166aa750649a7403a732}{Economy\+Sync\+Interval} sekund. Pobiera dane z \doxylink{class_economy_manager_a651a4fd5c9bad9b0701ceb89f3526597}{Economy\+Manager.\+Instance}. \Hypertarget{class_network_player_a105307287f6fce6436e78c578b069bd3}\index{NetworkPlayer@{NetworkPlayer}!BroadcastOrders@{BroadcastOrders}}
+\index{BroadcastOrders@{BroadcastOrders}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{BroadcastOrders()}{BroadcastOrders()}}
+{\footnotesize\ttfamily \label{class_network_player_a105307287f6fce6436e78c578b069bd3} 
+void Network\+Player.\+Broadcast\+Orders (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Nadaje aktualny stan zamówień do wszystkich klientów. 
+
+Wywoływana co 0.\+25 sekundy. Przesyła indeks szablonu zamówienia, opis, pozostały czas, liczbę ukończonych i nieudanych zamówień. \Hypertarget{class_network_player_a4d7e32871d22c23e02e133712bbe460f}\index{NetworkPlayer@{NetworkPlayer}!BroadcastShopUpgrades@{BroadcastShopUpgrades}}
+\index{BroadcastShopUpgrades@{BroadcastShopUpgrades}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{BroadcastShopUpgrades()}{BroadcastShopUpgrades()}}
+{\footnotesize\ttfamily \label{class_network_player_a4d7e32871d22c23e02e133712bbe460f} 
+void Network\+Player.\+Broadcast\+Shop\+Upgrades (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Nadaje poziomy ulepszeń sklepowych do wszystkich klientów. 
+
+Wywoływana cyklicznie co \doxylink{class_network_player_ab5d32bd0954ab34d59c75afaa94afe74}{Shop\+Sync\+Interval} sekund. Pobiera poziomy ulepszeń z \doxylink{class_shop_manager}{Shop\+Manager} i wysyła je via Client\+Rpc. \Hypertarget{class_network_player_a68d09a092d6bb49981efed8215bfed5e}\index{NetworkPlayer@{NetworkPlayer}!BroadcastStationStates@{BroadcastStationStates}}
+\index{BroadcastStationStates@{BroadcastStationStates}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{BroadcastStationStates()}{BroadcastStationStates()}}
+{\footnotesize\ttfamily \label{class_network_player_a68d09a092d6bb49981efed8215bfed5e} 
+void Network\+Player.\+Broadcast\+Station\+States (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Nadaje stany wszystkich zmienionych stacji kuchennych do klientów. 
+
+Wywoływana cyklicznie co \doxylink{class_network_player_a6441ea1ca6950050bd39c43f635bafad}{Station\+Sync\+Interval} sekund. Buforuje tablicę stacji i odświeża ją co 5 sekund. Wysyła migawkę stanu tylko dla stacji, których stan się zmienił. \Hypertarget{class_network_player_a55e71f76ead7fe93ac4fa745d1dd124c}\index{NetworkPlayer@{NetworkPlayer}!BroadcastVFX@{BroadcastVFX}}
+\index{BroadcastVFX@{BroadcastVFX}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{BroadcastVFX()}{BroadcastVFX()}}
+{\footnotesize\ttfamily \label{class_network_player_a55e71f76ead7fe93ac4fa745d1dd124c} 
+void Network\+Player.\+Broadcast\+VFX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd}{Network\+VFXType}}}]{type}{, }\item[{Vector3}]{pos}{, }\item[{Color}]{color}{ = {\ttfamily default}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Nadaje efekt wizualny (VFX) do wszystkich klientów. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type} & Typ efektu wizualnego do odtworzenia.\\
+\hline
+{\em pos} & Pozycja świata, w której efekt ma zostać odtworzony.\\
+\hline
+{\em color} & Opcjonalny kolor efektu. Domyślnie {\ttfamily default}.\\
+\hline
+\end{DoxyParams}
+
+
+Może być wywoływana tylko na serwerze. Wysyła żądanie odtworzenia VFX do klientów. \Hypertarget{class_network_player_a27ccaec7d3bf4364a7250a064ca1a75c}\index{NetworkPlayer@{NetworkPlayer}!CreateRemoteVisual@{CreateRemoteVisual}}
+\index{CreateRemoteVisual@{CreateRemoteVisual}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{CreateRemoteVisual()}{CreateRemoteVisual()}}
+{\footnotesize\ttfamily \label{class_network_player_a27ccaec7d3bf4364a7250a064ca1a75c} 
+void Network\+Player.\+Create\+Remote\+Visual (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy wizualną reprezentację gracza zdalnego (model 3D, etykietę z nazwą). 
+
+Próbuje załadować model FBX z Resources ("{}\+Models/\+Gracz\+\_\+\+Idle"{}). Jeśli model nie jest dostępny, tworzy prostą geometrię zastępczą (kapsułę). Przypisuje kolor gracza na podstawie indeksu i inicjalizuje animator. Dodaje etykietę tekstową z nazwą gracza jako billboard. \Hypertarget{class_network_player_a9b086ae7ccfa4aa7baaa428dcb602c0f}\index{NetworkPlayer@{NetworkPlayer}!DisableCollider@{DisableCollider}}
+\index{DisableCollider@{DisableCollider}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{DisableCollider()}{DisableCollider()}}
+{\footnotesize\ttfamily \label{class_network_player_a9b086ae7ccfa4aa7baaa428dcb602c0f} 
+void Network\+Player.\+Disable\+Collider (\begin{DoxyParamCaption}\item[{Game\+Object}]{obj}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wyłącza komponent Collider na podanym obiekcie gry. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em obj} & Obiekt gry, na którym należy wyłączyć zderzacz.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_network_player_a045b845bdf9c51d3cb3391966d6e39d4}\index{NetworkPlayer@{NetworkPlayer}!FindLocalPlayer@{FindLocalPlayer}}
+\index{FindLocalPlayer@{FindLocalPlayer}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{FindLocalPlayer()}{FindLocalPlayer()}}
+{\footnotesize\ttfamily \label{class_network_player_a045b845bdf9c51d3cb3391966d6e39d4} 
+static \mbox{\hyperlink{class_network_player}{Network\+Player}} Network\+Player.\+Find\+Local\+Player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Wyszukuje lokalnego gracza sieciowego na scenie. 
+
+\begin{DoxyReturn}{Zwraca}
+Instancja \doxylink{class_network_player}{Network\+Player} należąca do lokalnego gracza lub {\ttfamily null} jeśli nie znaleziono. 
+\end{DoxyReturn}
+\Hypertarget{class_network_player_a52d01d7d5bba2efb135ca82d4c4762c2}\index{NetworkPlayer@{NetworkPlayer}!FindLocalPlayerInteraction@{FindLocalPlayerInteraction}}
+\index{FindLocalPlayerInteraction@{FindLocalPlayerInteraction}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{FindLocalPlayerInteraction()}{FindLocalPlayerInteraction()}}
+{\footnotesize\ttfamily \label{class_network_player_a52d01d7d5bba2efb135ca82d4c4762c2} 
+static \mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} Network\+Player.\+Find\+Local\+Player\+Interaction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Wyszukuje komponent \doxylink{class_player_interaction}{Player\+Interaction} gracza lokalnego na scenie. 
+
+\begin{DoxyReturn}{Zwraca}
+Komponent \doxylink{class_player_interaction}{Player\+Interaction} gracza lokalnego lub {\ttfamily null} jeśli nie znaleziono. 
+\end{DoxyReturn}
+\Hypertarget{class_network_player_a49a40eea2dc7eec4383d96b4b19257e7}\index{NetworkPlayer@{NetworkPlayer}!FindNetworkPlayerByClientId@{FindNetworkPlayerByClientId}}
+\index{FindNetworkPlayerByClientId@{FindNetworkPlayerByClientId}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{FindNetworkPlayerByClientId()}{FindNetworkPlayerByClientId()}}
+{\footnotesize\ttfamily \label{class_network_player_a49a40eea2dc7eec4383d96b4b19257e7} 
+static \mbox{\hyperlink{class_network_player}{Network\+Player}} Network\+Player.\+Find\+Network\+Player\+By\+Client\+Id (\begin{DoxyParamCaption}\item[{ulong}]{client\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Wyszukuje obiekt \doxylink{class_network_player}{Network\+Player} na podstawie identyfikatora klienta sieciowego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em client\+Id} & Identyfikator klienta sieciowego.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Instancja \doxylink{class_network_player}{Network\+Player} przypisana do danego klienta lub {\ttfamily null} jeśli klient nie został znaleziony. 
+\end{DoxyReturn}
+\Hypertarget{class_network_player_ae5ccf978d1e1ea30d0e4bdd503027fcb}\index{NetworkPlayer@{NetworkPlayer}!GetRightHandBone@{GetRightHandBone}}
+\index{GetRightHandBone@{GetRightHandBone}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{GetRightHandBone()}{GetRightHandBone()}}
+{\footnotesize\ttfamily \label{class_network_player_ae5ccf978d1e1ea30d0e4bdd503027fcb} 
+Transform Network\+Player.\+Get\+Right\+Hand\+Bone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wyszukuje kość prawej dłoni w hierarchii modelu gracza zdalnego. 
+
+\begin{DoxyReturn}{Zwraca}
+Transform kości prawej dłoni, jeśli została znaleziona; w przeciwnym razie zwraca transform samego gracza. 
+\end{DoxyReturn}
+
+
+Pomija kości palców (Thumb, Index, Middle, Ring, Pinky), szukając głównej kości "{}\+Right\+Hand"{}. \Hypertarget{class_network_player_a208c4411a2fbf559f82a14387a9466d5}\index{NetworkPlayer@{NetworkPlayer}!InteractWithStationServerRpc@{InteractWithStationServerRpc}}
+\index{InteractWithStationServerRpc@{InteractWithStationServerRpc}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{InteractWithStationServerRpc()}{InteractWithStationServerRpc()}}
+{\footnotesize\ttfamily \label{class_network_player_a208c4411a2fbf559f82a14387a9466d5} 
+void Network\+Player.\+Interact\+With\+Station\+Server\+Rpc (\begin{DoxyParamCaption}\item[{int}]{station\+Index}{, }\item[{\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}}}]{held\+Item}{, }\item[{Server\+Rpc\+Params}]{rpc\+Params}{ = {\ttfamily default}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+RPC serwera obsługujący żądanie interakcji gracza ze stacją kuchenną. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em station\+Index} & Indeks stacji kuchennej, z którą gracz chce wejść w interakcję.\\
+\hline
+{\em held\+Item} & Stan przedmiotu trzymanego przez gracza w momencie żądania.\\
+\hline
+{\em rpc\+Params} & Parametry RPC zawierające identyfikator wysyłającego klienta.\\
+\hline
+\end{DoxyParams}
+
+
+Serwer rekonstruuje stan gracza (przedmiot w ręku) na podstawie zmiennej sieciowej, wykonuje interakcję ze stacją, a następnie synchronizuje wynik z powrotem do klienta. Wysyła zaktualizowany stan trzymanego przedmiotu i komunikat zwrotny. \Hypertarget{class_network_player_a9729f538e64fba116fc41fb004c52d88}\index{NetworkPlayer@{NetworkPlayer}!OnHeldItemChanged@{OnHeldItemChanged}}
+\index{OnHeldItemChanged@{OnHeldItemChanged}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{OnHeldItemChanged()}{OnHeldItemChanged()}}
+{\footnotesize\ttfamily \label{class_network_player_a9729f538e64fba116fc41fb004c52d88} 
+void Network\+Player.\+On\+Held\+Item\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}}}]{old\+Value}{, }\item[{\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}}}]{new\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wywoływana przy zmianie wartości zmiennej sieciowej trzymanego przedmiotu. Aktualizuje wizualizację przedmiotu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em old\+Value} & Poprzedni stan przedmiotu.\\
+\hline
+{\em new\+Value} & Nowy stan przedmiotu.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_network_player_acd93853e0eb9d7f8baac992d280a0938}\index{NetworkPlayer@{NetworkPlayer}!OnNetworkDespawn@{OnNetworkDespawn}}
+\index{OnNetworkDespawn@{OnNetworkDespawn}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{OnNetworkDespawn()}{OnNetworkDespawn()}}
+{\footnotesize\ttfamily \label{class_network_player_acd93853e0eb9d7f8baac992d280a0938} 
+override void Network\+Player.\+On\+Network\+Despawn (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Wywoływana przy usunięciu obiektu sieciowego ze sceny. Odsubskrybowuje zdarzenia zmiennych sieciowych i niszczy obiekty pomocnicze. 
+
+\Hypertarget{class_network_player_acc80a453fbbcd5e5a192567c304ce1ac}\index{NetworkPlayer@{NetworkPlayer}!OnNetworkSpawn@{OnNetworkSpawn}}
+\index{OnNetworkSpawn@{OnNetworkSpawn}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{OnNetworkSpawn()}{OnNetworkSpawn()}}
+{\footnotesize\ttfamily \label{class_network_player_acc80a453fbbcd5e5a192567c304ce1ac} 
+override void Network\+Player.\+On\+Network\+Spawn (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Wywoływana po pojawieniu się obiektu sieciowego. Konfiguruje gracza lokalnego lub zdalnego oraz subskrybuje zmiany zmiennych sieciowych. 
+
+Na serwerze przypisuje indeks gracza, punkt spawnu i domyślną nazwę. Dla właściciela wywołuje \doxylink{class_network_player_abdf6da6872b42cf14d4f75be2be7bdc2}{Setup\+Local\+Player}, w przeciwnym razie \doxylink{class_network_player_a3cdcc1d2b313b1c545735f103d50e4d8}{Setup\+Remote\+Player}. \Hypertarget{class_network_player_a06e07c2df9d51c957efc930b5d335282}\index{NetworkPlayer@{NetworkPlayer}!OnPlayerIndexChanged@{OnPlayerIndexChanged}}
+\index{OnPlayerIndexChanged@{OnPlayerIndexChanged}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{OnPlayerIndexChanged()}{OnPlayerIndexChanged()}}
+{\footnotesize\ttfamily \label{class_network_player_a06e07c2df9d51c957efc930b5d335282} 
+void Network\+Player.\+On\+Player\+Index\+Changed (\begin{DoxyParamCaption}\item[{int}]{old\+Value}{, }\item[{int}]{new\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje zmianę indeksu gracza — aktualizuje kolor modelu gracza zdalnego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em old\+Value} & Poprzedni indeks gracza.\\
+\hline
+{\em new\+Value} & Nowy indeks gracza.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_network_player_acd2bd2d8238523ff054611338fb83839}\index{NetworkPlayer@{NetworkPlayer}!OnPlayerNameChanged@{OnPlayerNameChanged}}
+\index{OnPlayerNameChanged@{OnPlayerNameChanged}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{OnPlayerNameChanged()}{OnPlayerNameChanged()}}
+{\footnotesize\ttfamily \label{class_network_player_acd2bd2d8238523ff054611338fb83839} 
+void Network\+Player.\+On\+Player\+Name\+Changed (\begin{DoxyParamCaption}\item[{Fixed\+String32\+Bytes}]{old\+Value}{, }\item[{Fixed\+String32\+Bytes}]{new\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje zmianę nazwy gracza — aktualizuje etykietę tekstową nad głową gracza zdalnego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em old\+Value} & Poprzednia nazwa gracza.\\
+\hline
+{\em new\+Value} & Nowa nazwa gracza.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_network_player_a17693ce857b1bb525d34820f0640cdab}\index{NetworkPlayer@{NetworkPlayer}!PlayVFXClientRpc@{PlayVFXClientRpc}}
+\index{PlayVFXClientRpc@{PlayVFXClientRpc}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{PlayVFXClientRpc()}{PlayVFXClientRpc()}}
+{\footnotesize\ttfamily \label{class_network_player_a17693ce857b1bb525d34820f0640cdab} 
+void Network\+Player.\+Play\+VFXClient\+Rpc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_network_player_8cs_a254701325960a5da9b33b8f9acbe09dd}{Network\+VFXType}}}]{type}{, }\item[{Vector3}]{pos}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+RPC klienta odtwarzający efekt wizualny na podstawie odebranego typu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type} & Typ efektu wizualnego.\\
+\hline
+{\em pos} & Pozycja odtworzenia efektu.\\
+\hline
+{\em color} & Kolor efektu.\\
+\hline
+\end{DoxyParams}
+
+
+Ignorowana na serwerze (serwer sam odtwarza efekty). Deleguje odtworzenie do odpowiedniej metody \doxylink{class_v_f_x_manager}{VFXManager}. \Hypertarget{class_network_player_a144d6dcc78db62dc16347be7b04dfdfc}\index{NetworkPlayer@{NetworkPlayer}!PurchaseResultClientRpc@{PurchaseResultClientRpc}}
+\index{PurchaseResultClientRpc@{PurchaseResultClientRpc}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{PurchaseResultClientRpc()}{PurchaseResultClientRpc()}}
+{\footnotesize\ttfamily \label{class_network_player_a144d6dcc78db62dc16347be7b04dfdfc} 
+void Network\+Player.\+Purchase\+Result\+Client\+Rpc (\begin{DoxyParamCaption}\item[{bool}]{success}{, }\item[{int}]{upgrade\+Type\+Int}{, }\item[{Client\+Rpc\+Params}]{client\+Rpc\+Params}{ = {\ttfamily default}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+RPC klienta informujący o wyniku próby zakupu ulepszenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em success} & Czy zakup się powiódł.\\
+\hline
+{\em upgrade\+Type\+Int} & Typ ulepszenia jako wartość całkowita enum \doxylink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}.\\
+\hline
+{\em client\+Rpc\+Params} & Opcjonalne parametry RPC do wysyłki celowanej do konkretnego klienta.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_network_player_a3a6d32fdefa1757c4ac124af3d33d1bb}\index{NetworkPlayer@{NetworkPlayer}!PurchaseUpgradeServerRpc@{PurchaseUpgradeServerRpc}}
+\index{PurchaseUpgradeServerRpc@{PurchaseUpgradeServerRpc}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{PurchaseUpgradeServerRpc()}{PurchaseUpgradeServerRpc()}}
+{\footnotesize\ttfamily \label{class_network_player_a3a6d32fdefa1757c4ac124af3d33d1bb} 
+void Network\+Player.\+Purchase\+Upgrade\+Server\+Rpc (\begin{DoxyParamCaption}\item[{int}]{upgrade\+Type\+Int}{, }\item[{Server\+Rpc\+Params}]{rpc\+Params}{ = {\ttfamily default}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+RPC serwera obsługujący żądanie zakupu ulepszenia od klienta. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em upgrade\+Type\+Int} & Typ ulepszenia jako wartość całkowita enum \doxylink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}.\\
+\hline
+{\em rpc\+Params} & Parametry RPC zawierające identyfikator wysyłającego klienta.\\
+\hline
+\end{DoxyParams}
+
+
+Próbuje dokonać zakupu przez \doxylink{class_shop_manager_a2e9ab016ade44d0c3345666690b66a83}{Shop\+Manager.\+Try\+Purchase\+Upgrade}. W przypadku sukcesu wymusza natychmiastową synchronizację sklepu i ekonomii. Wysyła wynik zakupu do odpowiedniego klienta. \Hypertarget{class_network_player_a02f97aceba672f94ec9cc52fb0053b47}\index{NetworkPlayer@{NetworkPlayer}!SanitizePlayerName@{SanitizePlayerName}}
+\index{SanitizePlayerName@{SanitizePlayerName}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{SanitizePlayerName()}{SanitizePlayerName()}}
+{\footnotesize\ttfamily \label{class_network_player_a02f97aceba672f94ec9cc52fb0053b47} 
+static string Network\+Player.\+Sanitize\+Player\+Name (\begin{DoxyParamCaption}\item[{string}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Oczyszcza nazwę gracza z niebezpiecznych znaków i tagów. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em name} & Surowa nazwa do oczyszczenia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Oczyszczona nazwa gracza, ograniczona do 20 znaków. Domyślnie "{}\+Gracz"{} jeśli pusta.
+\end{DoxyReturn}
+
+
+Usuwa tagi HTML/\+XML, znaki sterujące, białe znaki na początku/końcu oraz ogranicza długość do 20 znaków. \Hypertarget{class_network_player_a981ce305819912b38b7934ff0b35cb2f}\index{NetworkPlayer@{NetworkPlayer}!SetPlayerNameServerRpc@{SetPlayerNameServerRpc}}
+\index{SetPlayerNameServerRpc@{SetPlayerNameServerRpc}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{SetPlayerNameServerRpc()}{SetPlayerNameServerRpc()}}
+{\footnotesize\ttfamily \label{class_network_player_a981ce305819912b38b7934ff0b35cb2f} 
+void Network\+Player.\+Set\+Player\+Name\+Server\+Rpc (\begin{DoxyParamCaption}\item[{string}]{requested\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+RPC serwera ustawiający nazwę (pseudonim) gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em requested\+Name} & Żądana nazwa gracza od klienta.\\
+\hline
+\end{DoxyParams}
+
+
+Nazwa jest sanityzowana przed zapisaniem do zmiennej sieciowej za pomocą \doxylink{class_network_player_a02f97aceba672f94ec9cc52fb0053b47}{Sanitize\+Player\+Name}. \Hypertarget{class_network_player_abdf6da6872b42cf14d4f75be2be7bdc2}\index{NetworkPlayer@{NetworkPlayer}!SetupLocalPlayer@{SetupLocalPlayer}}
+\index{SetupLocalPlayer@{SetupLocalPlayer}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{SetupLocalPlayer()}{SetupLocalPlayer()}}
+{\footnotesize\ttfamily \label{class_network_player_abdf6da6872b42cf14d4f75be2be7bdc2} 
+void Network\+Player.\+Setup\+Local\+Player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Konfiguruje gracza lokalnego\+: tworzy kamerę, włącza kontroler ruchu i interakcję, inicjalizuje interfejsy HUD i ustawia kursor. 
+
+Metoda jest chroniona flagą \doxylink{class_network_player_a797fbcc342613109a943ea1a57d8f8dc}{is\+Local\+Player\+Setup} przed wielokrotnym wywołaniem. Tworzy kamerę z odpowiednimi ustawieniami URP (post-\/processing, antyaliasing), konfiguruje \doxylink{class_simple_player_controller}{Simple\+Player\+Controller}, \doxylink{class_player_interaction}{Player\+Interaction}, oraz tworzy niezbędne komponenty HUD (\doxylink{class_kitchen_h_u_d}{Kitchen\+HUD}, \doxylink{class_interaction_highlight}{Interaction\+Highlight}, \doxylink{class_shop_u_i}{Shop\+UI}, \doxylink{class_player_list_u_i}{Player\+List\+UI}) jeśli nie istnieją na scenie. Wysyła pseudonim gracza na serwer. \Hypertarget{class_network_player_a3cdcc1d2b313b1c545735f103d50e4d8}\index{NetworkPlayer@{NetworkPlayer}!SetupRemotePlayer@{SetupRemotePlayer}}
+\index{SetupRemotePlayer@{SetupRemotePlayer}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{SetupRemotePlayer()}{SetupRemotePlayer()}}
+{\footnotesize\ttfamily \label{class_network_player_a3cdcc1d2b313b1c545735f103d50e4d8} 
+void Network\+Player.\+Setup\+Remote\+Player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Konfiguruje gracza zdalnego\+: wyłącza kontroler i interakcję, usuwa kamerę i tworzy wizualną reprezentację gracza. 
+
+\Hypertarget{class_network_player_a732510c67bd357868fff62256ce9f4e7}\index{NetworkPlayer@{NetworkPlayer}!Start@{Start}}
+\index{Start@{Start}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_network_player_a732510c67bd357868fff62256ce9f4e7} 
+void Network\+Player.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Start wywoływana przez Unity w pierwszej klatce. 
+
+Zapewnia konfigurację gracza lokalnego w trybie hosta, gdy obiekt nie został jeszcze zdespawnowany sieciowo. \Hypertarget{class_network_player_a2781459a190b21c13b31c9320769c915}\index{NetworkPlayer@{NetworkPlayer}!SyncEconomyClientRpc@{SyncEconomyClientRpc}}
+\index{SyncEconomyClientRpc@{SyncEconomyClientRpc}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{SyncEconomyClientRpc()}{SyncEconomyClientRpc()}}
+{\footnotesize\ttfamily \label{class_network_player_a2781459a190b21c13b31c9320769c915} 
+void Network\+Player.\+Sync\+Economy\+Client\+Rpc (\begin{DoxyParamCaption}\item[{float}]{balance}{, }\item[{float}]{total\+Earned}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+RPC klienta synchronizujący dane ekonomiczne od serwera. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em balance} & Aktualne saldo gracza.\\
+\hline
+{\em total\+Earned} & Łączna kwota zarobionych pieniędzy.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_network_player_accce010c3e47bcc945fdf3fefc3d987d}\index{NetworkPlayer@{NetworkPlayer}!SyncInteractionResultClientRpc@{SyncInteractionResultClientRpc}}
+\index{SyncInteractionResultClientRpc@{SyncInteractionResultClientRpc}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{SyncInteractionResultClientRpc()}{SyncInteractionResultClientRpc()}}
+{\footnotesize\ttfamily \label{class_network_player_accce010c3e47bcc945fdf3fefc3d987d} 
+void Network\+Player.\+Sync\+Interaction\+Result\+Client\+Rpc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}}}]{item\+State}{, }\item[{string}]{feedback}{, }\item[{Client\+Rpc\+Params}]{client\+Rpc\+Params}{ = {\ttfamily default}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+RPC klienta synchronizujący wynik interakcji ze stacją kuchenną. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em item\+State} & Zaktualizowany stan trzymanego przedmiotu po interakcji.\\
+\hline
+{\em feedback} & Komunikat zwrotny do wyświetlenia graczowi (np. informacja o postępie).\\
+\hline
+{\em client\+Rpc\+Params} & Parametry RPC do wysyłki celowanej.\\
+\hline
+\end{DoxyParams}
+
+
+Aktualizuje trzymany przedmiot i komunikat zwrotny gracza lokalnego po przetworzeniu interakcji przez serwer. \Hypertarget{class_network_player_a6c0e44b013b1f8c7190b4e311f271592}\index{NetworkPlayer@{NetworkPlayer}!SyncOrdersClientRpc@{SyncOrdersClientRpc}}
+\index{SyncOrdersClientRpc@{SyncOrdersClientRpc}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{SyncOrdersClientRpc()}{SyncOrdersClientRpc()}}
+{\footnotesize\ttfamily \label{class_network_player_a6c0e44b013b1f8c7190b4e311f271592} 
+void Network\+Player.\+Sync\+Orders\+Client\+Rpc (\begin{DoxyParamCaption}\item[{int}]{template\+Index}{, }\item[{string}]{desc}{, }\item[{float}]{time}{, }\item[{int}]{comp}{, }\item[{int}]{fail}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+RPC klienta synchronizujący stan zamówień od serwera. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em template\+Index} & Indeks aktywnego szablonu zamówienia.\\
+\hline
+{\em desc} & Opis aktywnego zamówienia.\\
+\hline
+{\em time} & Pozostały czas na realizację zamówienia.\\
+\hline
+{\em comp} & Liczba ukończonych zamówień.\\
+\hline
+{\em fail} & Liczba nieudanych zamówień.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_network_player_a90716a2eb339823bd248f06bbba2cc41}\index{NetworkPlayer@{NetworkPlayer}!SyncShopUpgradesClientRpc@{SyncShopUpgradesClientRpc}}
+\index{SyncShopUpgradesClientRpc@{SyncShopUpgradesClientRpc}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{SyncShopUpgradesClientRpc()}{SyncShopUpgradesClientRpc()}}
+{\footnotesize\ttfamily \label{class_network_player_a90716a2eb339823bd248f06bbba2cc41} 
+void Network\+Player.\+Sync\+Shop\+Upgrades\+Client\+Rpc (\begin{DoxyParamCaption}\item[{int}]{grill\+Lvl}{, }\item[{int}]{cut\+Lvl}{, }\item[{int}]{reward\+Lvl}{, }\item[{int}]{time\+Lvl}{, }\item[{int}]{meat\+Lvl}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+RPC klienta synchronizujący poziomy ulepszeń sklepowych od serwera. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em grill\+Lvl} & Poziom ulepszenia szybkości grilla.\\
+\hline
+{\em cut\+Lvl} & Poziom ulepszenia szybkości krojenia.\\
+\hline
+{\em reward\+Lvl} & Poziom ulepszenia bonusu nagrody.\\
+\hline
+{\em time\+Lvl} & Poziom ulepszenia czasu zamówienia.\\
+\hline
+{\em meat\+Lvl} & Poziom ulepszenia wielkości porcji mięsa.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_network_player_aa21d6fab4162e91651affe639c7b2832}\index{NetworkPlayer@{NetworkPlayer}!SyncStationStateClientRpc@{SyncStationStateClientRpc}}
+\index{SyncStationStateClientRpc@{SyncStationStateClientRpc}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{SyncStationStateClientRpc()}{SyncStationStateClientRpc()}}
+{\footnotesize\ttfamily \label{class_network_player_aa21d6fab4162e91651affe639c7b2832} 
+void Network\+Player.\+Sync\+Station\+State\+Client\+Rpc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_station_state_snapshot}{Station\+State\+Snapshot}}}]{snapshot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+RPC klienta synchronizujący stan stacji kuchennej odebrany od serwera. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em snapshot} & Migawka stanu stacji kuchennej do zastosowania.\\
+\hline
+\end{DoxyParams}
+
+
+Ignorowana na serwerze (serwer jest źródłem prawdy). Wyszukuje odpowiednią stację po indeksie i stosuje migawkę. \Hypertarget{class_network_player_af1ce0f56bb9ec30eedf30913d7a4c478}\index{NetworkPlayer@{NetworkPlayer}!Update@{Update}}
+\index{Update@{Update}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_network_player_af1ce0f56bb9ec30eedf30913d7a4c478} 
+void Network\+Player.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Update wywoływana co klatkę. Synchronizuje trzymany przedmiot, nadaje stany stacji, ekonomii, sklepu i zamówień. 
+
+Dla właściciela synchronizuje stan trzymanego przedmiotu z serwerem co 0.\+15 sekundy. Dla hosta (serwer + właściciel) nadaje stany stacji kuchennych, ekonomii, ulepszeń i zamówień. \Hypertarget{class_network_player_a2328688d34c7fb6b70d9f49f2389f1a1}\index{NetworkPlayer@{NetworkPlayer}!UpdateHeldItemServerRpc@{UpdateHeldItemServerRpc}}
+\index{UpdateHeldItemServerRpc@{UpdateHeldItemServerRpc}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{UpdateHeldItemServerRpc()}{UpdateHeldItemServerRpc()}}
+{\footnotesize\ttfamily \label{class_network_player_a2328688d34c7fb6b70d9f49f2389f1a1} 
+void Network\+Player.\+Update\+Held\+Item\+Server\+Rpc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}}}]{new\+State}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+RPC serwera aktualizujący stan trzymanego przedmiotu w zmiennej sieciowej. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em new\+State} & Nowy stan przedmiotu trzymanego przez gracza.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_network_player_a5f295ebf5dec227441654eaae2145e83}\index{NetworkPlayer@{NetworkPlayer}!UpdateHeldItemVisual@{UpdateHeldItemVisual}}
+\index{UpdateHeldItemVisual@{UpdateHeldItemVisual}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{UpdateHeldItemVisual()}{UpdateHeldItemVisual()}}
+{\footnotesize\ttfamily \label{class_network_player_a5f295ebf5dec227441654eaae2145e83} 
+void Network\+Player.\+Update\+Held\+Item\+Visual (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}}}]{item\+State}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje wizualną reprezentację przedmiotu trzymanego przez gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em item\+State} & Nowy stan trzymanego przedmiotu sieciowego.\\
+\hline
+\end{DoxyParams}
+
+
+Niszczy starą wizualizację, jeśli stan przedmiotu się zmienił, i tworzy nową za pomocą \doxylink{class_kitchen_item_visual_factory}{Kitchen\+Item\+Visual\+Factory}. Dla graczy zdalnych przyczepia wizualizację do kości prawej ręki lub do transform gracza jako fallback. 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_network_player_a369774bca16f8e46e23e1450c6f4764f}\index{NetworkPlayer@{NetworkPlayer}!cachedController@{cachedController}}
+\index{cachedController@{cachedController}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{cachedController}{cachedController}}
+{\footnotesize\ttfamily \label{class_network_player_a369774bca16f8e46e23e1450c6f4764f} 
+\mbox{\hyperlink{class_simple_player_controller}{Simple\+Player\+Controller}} Network\+Player.\+cached\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowana referencja do komponentu kontrolera ruchu gracza. 
+
+\Hypertarget{class_network_player_aad0978188dd5e28592c59306c5c0f07b}\index{NetworkPlayer@{NetworkPlayer}!cachedInteraction@{cachedInteraction}}
+\index{cachedInteraction@{cachedInteraction}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{cachedInteraction}{cachedInteraction}}
+{\footnotesize\ttfamily \label{class_network_player_aad0978188dd5e28592c59306c5c0f07b} 
+\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} Network\+Player.\+cached\+Interaction\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowana referencja do komponentu interakcji gracza. 
+
+\Hypertarget{class_network_player_a1a17368ab9b9487614db2708a9b2453f}\index{NetworkPlayer@{NetworkPlayer}!cachedStations@{cachedStations}}
+\index{cachedStations@{cachedStations}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{cachedStations}{cachedStations}}
+{\footnotesize\ttfamily \label{class_network_player_a1a17368ab9b9487614db2708a9b2453f} 
+\mbox{\hyperlink{class_network_kitchen_station}{Network\+Kitchen\+Station}} \mbox{[}$\,$\mbox{]} Network\+Player.\+cached\+Stations\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowana tablica wszystkich stacji kuchennych na scenie. 
+
+\Hypertarget{class_network_player_a5a3812674fc752c15d1d2b02f0609235}\index{NetworkPlayer@{NetworkPlayer}!cachedStationsTime@{cachedStationsTime}}
+\index{cachedStationsTime@{cachedStationsTime}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{cachedStationsTime}{cachedStationsTime}}
+{\footnotesize\ttfamily \label{class_network_player_a5a3812674fc752c15d1d2b02f0609235} 
+float Network\+Player.\+cached\+Stations\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czas ostatniego odświeżenia buforowanej tablicy stacji kuchennych. 
+
+\Hypertarget{class_network_player_a12730a194027166aa750649a7403a732}\index{NetworkPlayer@{NetworkPlayer}!EconomySyncInterval@{EconomySyncInterval}}
+\index{EconomySyncInterval@{EconomySyncInterval}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{EconomySyncInterval}{EconomySyncInterval}}
+{\footnotesize\ttfamily \label{class_network_player_a12730a194027166aa750649a7403a732} 
+const float Network\+Player.\+Economy\+Sync\+Interval = 0.\+5f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Interwał synchronizacji danych ekonomicznych (w sekundach). 
+
+\Hypertarget{class_network_player_a8c607f576c727b3071f2d80cab3fdbbc}\index{NetworkPlayer@{NetworkPlayer}!EyeHeight@{EyeHeight}}
+\index{EyeHeight@{EyeHeight}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{EyeHeight}{EyeHeight}}
+{\footnotesize\ttfamily \label{class_network_player_a8c607f576c727b3071f2d80cab3fdbbc} 
+const float Network\+Player.\+Eye\+Height = 1.\+75f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Wysokość oczu gracza nad poziomem podłogi (w metrach). Używana do pozycjonowania kamery gracza. 
+
+\Hypertarget{class_network_player_a8841770bda2729cbc6dd7a4ca15f357b}\index{NetworkPlayer@{NetworkPlayer}!heldItemVisual@{heldItemVisual}}
+\index{heldItemVisual@{heldItemVisual}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{heldItemVisual}{heldItemVisual}}
+{\footnotesize\ttfamily \label{class_network_player_a8841770bda2729cbc6dd7a4ca15f357b} 
+Game\+Object Network\+Player.\+held\+Item\+Visual\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obiekt wizualny reprezentujący przedmiot trzymany przez gracza. 
+
+\Hypertarget{class_network_player_a797fbcc342613109a943ea1a57d8f8dc}\index{NetworkPlayer@{NetworkPlayer}!isLocalPlayerSetup@{isLocalPlayerSetup}}
+\index{isLocalPlayerSetup@{isLocalPlayerSetup}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{isLocalPlayerSetup}{isLocalPlayerSetup}}
+{\footnotesize\ttfamily \label{class_network_player_a797fbcc342613109a943ea1a57d8f8dc} 
+bool Network\+Player.\+is\+Local\+Player\+Setup = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga zapobiegająca wielokrotnej konfiguracji gracza lokalnego. 
+
+\Hypertarget{class_network_player_af4306015f8fd6be9db1fc67e2ad1c68c}\index{NetworkPlayer@{NetworkPlayer}!lastVisualState@{lastVisualState}}
+\index{lastVisualState@{lastVisualState}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{lastVisualState}{lastVisualState}}
+{\footnotesize\ttfamily \label{class_network_player_af4306015f8fd6be9db1fc67e2ad1c68c} 
+\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} Network\+Player.\+last\+Visual\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatni zsynchronizowany stan wizualny trzymanego przedmiotu. Używany do wykrywania zmian i unikania niepotrzebnego odtwarzania wizualizacji. 
+
+\Hypertarget{class_network_player_ac994d82f9058e4f9ad2e61e98c350321}\index{NetworkPlayer@{NetworkPlayer}!nameLabel@{nameLabel}}
+\index{nameLabel@{nameLabel}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{nameLabel}{nameLabel}}
+{\footnotesize\ttfamily \label{class_network_player_ac994d82f9058e4f9ad2e61e98c350321} 
+Text\+Mesh Network\+Player.\+name\+Label\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Etykieta tekstowa wyświetlająca nazwę gracza zdalnego nad jego głową. 
+
+\Hypertarget{class_network_player_a8c011e8366c3e642549ea60d81f4ec24}\index{NetworkPlayer@{NetworkPlayer}!netHeldItem@{netHeldItem}}
+\index{netHeldItem@{netHeldItem}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{netHeldItem}{netHeldItem}}
+{\footnotesize\ttfamily \label{class_network_player_a8c011e8366c3e642549ea60d81f4ec24} 
+Network\+Variable$<$\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}}$>$ Network\+Player.\+net\+Held\+Item\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Wartość początkowa\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{keyword}{new}\ NetworkVariable<NetworkItemState>(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_network_item_state}{NetworkItemState}}.\mbox{\hyperlink{struct_network_item_state_aea5f824c92f9fb8db633e32e082971d2}{Empty}}(),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ NetworkVariableReadPermission.Everyone,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ NetworkVariableWritePermission.Server)}
+
+\end{DoxyCode}
+
+
+Zmienna sieciowa przechowująca stan trzymanego przedmiotu kuchennego. 
+
+Używana do synchronizacji wizualnej reprezentacji przedmiotu trzymanego przez gracza pomiędzy wszystkimi klientami. \Hypertarget{class_network_player_a9940061ee675d311659181b76d27f3f9}\index{NetworkPlayer@{NetworkPlayer}!nextEconomySyncTime@{nextEconomySyncTime}}
+\index{nextEconomySyncTime@{nextEconomySyncTime}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{nextEconomySyncTime}{nextEconomySyncTime}}
+{\footnotesize\ttfamily \label{class_network_player_a9940061ee675d311659181b76d27f3f9} 
+float Network\+Player.\+next\+Economy\+Sync\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czas następnej synchronizacji danych ekonomicznych. 
+
+\Hypertarget{class_network_player_aca80417066ef06bf7cd98e1d8a390e9d}\index{NetworkPlayer@{NetworkPlayer}!nextHeldItemSyncTime@{nextHeldItemSyncTime}}
+\index{nextHeldItemSyncTime@{nextHeldItemSyncTime}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{nextHeldItemSyncTime}{nextHeldItemSyncTime}}
+{\footnotesize\ttfamily \label{class_network_player_aca80417066ef06bf7cd98e1d8a390e9d} 
+float Network\+Player.\+next\+Held\+Item\+Sync\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czas następnej synchronizacji stanu trzymanego przedmiotu. 
+
+\Hypertarget{class_network_player_a6ca5984b2882e8e702f7064bf4730ee7}\index{NetworkPlayer@{NetworkPlayer}!nextOrderSyncTime@{nextOrderSyncTime}}
+\index{nextOrderSyncTime@{nextOrderSyncTime}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{nextOrderSyncTime}{nextOrderSyncTime}}
+{\footnotesize\ttfamily \label{class_network_player_a6ca5984b2882e8e702f7064bf4730ee7} 
+float Network\+Player.\+next\+Order\+Sync\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czas następnej synchronizacji zamówień. 
+
+\Hypertarget{class_network_player_a54857da92abd961c0f64864a6f8dd32e}\index{NetworkPlayer@{NetworkPlayer}!nextShopSyncTime@{nextShopSyncTime}}
+\index{nextShopSyncTime@{nextShopSyncTime}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{nextShopSyncTime}{nextShopSyncTime}}
+{\footnotesize\ttfamily \label{class_network_player_a54857da92abd961c0f64864a6f8dd32e} 
+float Network\+Player.\+next\+Shop\+Sync\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czas następnej synchronizacji ulepszeń sklepowych. 
+
+\Hypertarget{class_network_player_aa2ce072988e3764fe151b4faa26edfe7}\index{NetworkPlayer@{NetworkPlayer}!nextStationSyncTime@{nextStationSyncTime}}
+\index{nextStationSyncTime@{nextStationSyncTime}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{nextStationSyncTime}{nextStationSyncTime}}
+{\footnotesize\ttfamily \label{class_network_player_aa2ce072988e3764fe151b4faa26edfe7} 
+float Network\+Player.\+next\+Station\+Sync\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czas następnej synchronizacji stanów stacji kuchennych. 
+
+\Hypertarget{class_network_player_a930de36ea9b995b69a60f8b9fe65992d}\index{NetworkPlayer@{NetworkPlayer}!pendingNickname@{pendingNickname}}
+\index{pendingNickname@{pendingNickname}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{pendingNickname}{pendingNickname}}
+{\footnotesize\ttfamily \label{class_network_player_a930de36ea9b995b69a60f8b9fe65992d} 
+string Network\+Player.\+pending\+Nickname\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pseudonim oczekujący na wysłanie do serwera (używany, gdy obiekt nie został jeszcze zdespawnowany sieciowo). 
+
+\Hypertarget{class_network_player_aad9cadc6be10eef2d82740aeefabe1ec}\index{NetworkPlayer@{NetworkPlayer}!playerCamera@{playerCamera}}
+\index{playerCamera@{playerCamera}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{playerCamera}{playerCamera}}
+{\footnotesize\ttfamily \label{class_network_player_aad9cadc6be10eef2d82740aeefabe1ec} 
+Camera Network\+Player.\+player\+Camera\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referencja do kamery gracza lokalnego. 
+
+\Hypertarget{class_network_player_a9da055a3ae82ffcd9938ce9c00765da7}\index{NetworkPlayer@{NetworkPlayer}!PlayerColors@{PlayerColors}}
+\index{PlayerColors@{PlayerColors}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{PlayerColors}{PlayerColors}}
+{\footnotesize\ttfamily \label{class_network_player_a9da055a3ae82ffcd9938ce9c00765da7} 
+readonly Color \mbox{[}$\,$\mbox{]} Network\+Player.\+Player\+Colors\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Wartość początkowa\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{keyword}{new}\ Color[]}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Color(0.2f,\ 0.6f,\ 0.9f),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Color(0.9f,\ 0.4f,\ 0.3f),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Color(0.3f,\ 0.8f,\ 0.4f),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Color(0.9f,\ 0.75f,\ 0.2f)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Tablica kolorów przypisywanych graczom na podstawie ich indeksu. 
+
+Kolory służą do wizualnego rozróżnienia graczy zdalnych. Kolejno\+: niebieski, czerwony, zielony, żółty. \Hypertarget{class_network_player_a332d3fb18937c9b1ae730fd3edaf07b6}\index{NetworkPlayer@{NetworkPlayer}!playerIndex@{playerIndex}}
+\index{playerIndex@{playerIndex}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{playerIndex}{playerIndex}}
+{\footnotesize\ttfamily \label{class_network_player_a332d3fb18937c9b1ae730fd3edaf07b6} 
+Network\+Variable$<$int$>$ Network\+Player.\+player\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Wartość początkowa\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{keyword}{new}\ NetworkVariable<int>(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ NetworkVariableReadPermission.Everyone,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ NetworkVariableWritePermission.Server)}
+
+\end{DoxyCode}
+
+
+Zmienna sieciowa przechowująca indeks gracza. 
+
+Indeks określa punkt spawnu oraz kolor gracza. Przypisywany na serwerze na podstawie identyfikatora klienta. \Hypertarget{class_network_player_a603dd48f5471319be02f9e9c35b7b2b5}\index{NetworkPlayer@{NetworkPlayer}!playerName@{playerName}}
+\index{playerName@{playerName}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{playerName}{playerName}}
+{\footnotesize\ttfamily \label{class_network_player_a603dd48f5471319be02f9e9c35b7b2b5} 
+Network\+Variable$<$Fixed\+String32\+Bytes$>$ Network\+Player.\+player\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Wartość początkowa\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{keyword}{new}\ NetworkVariable<FixedString32Bytes>(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Gracz"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ NetworkVariableReadPermission.Everyone,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ NetworkVariableWritePermission.Server)}
+
+\end{DoxyCode}
+
+
+Zmienna sieciowa przechowująca nazwę (pseudonim) gracza. 
+
+Odczytywalna przez wszystkich klientów, zapisywalna tylko przez serwer. Domyślna wartość to "{}\+Gracz"{}. \Hypertarget{class_network_player_a17938aaa10b8d8fa522aef6afda1d40e}\index{NetworkPlayer@{NetworkPlayer}!remotePlayerVisual@{remotePlayerVisual}}
+\index{remotePlayerVisual@{remotePlayerVisual}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{remotePlayerVisual}{remotePlayerVisual}}
+{\footnotesize\ttfamily \label{class_network_player_a17938aaa10b8d8fa522aef6afda1d40e} 
+Game\+Object Network\+Player.\+remote\+Player\+Visual\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obiekt wizualny reprezentujący gracza zdalnego (model 3D). 
+
+\Hypertarget{class_network_player_ab5d32bd0954ab34d59c75afaa94afe74}\index{NetworkPlayer@{NetworkPlayer}!ShopSyncInterval@{ShopSyncInterval}}
+\index{ShopSyncInterval@{ShopSyncInterval}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{ShopSyncInterval}{ShopSyncInterval}}
+{\footnotesize\ttfamily \label{class_network_player_ab5d32bd0954ab34d59c75afaa94afe74} 
+const float Network\+Player.\+Shop\+Sync\+Interval = 1.\+0f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Interwał synchronizacji ulepszeń sklepowych (w sekundach). 
+
+\Hypertarget{class_network_player_a9f8c51d7cbbdb70dd35e02491d31d90b}\index{NetworkPlayer@{NetworkPlayer}!SpawnPoints@{SpawnPoints}}
+\index{SpawnPoints@{SpawnPoints}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{SpawnPoints}{SpawnPoints}}
+{\footnotesize\ttfamily \label{class_network_player_a9f8c51d7cbbdb70dd35e02491d31d90b} 
+readonly Vector3 \mbox{[}$\,$\mbox{]} Network\+Player.\+Spawn\+Points\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Wartość początkowa\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{keyword}{new}\ Vector3[]}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(0f,\ 0f,\ -\/1.9f),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(-\/2f,\ 0f,\ -\/1.9f),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(2f,\ 0f,\ -\/1.9f),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(0f,\ 0f,\ -\/0.5f)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Tablica predefiniowanych punktów spawnu graczy na mapie. 
+
+Pozycje są przypisywane graczom cyklicznie na podstawie ich identyfikatora klienta. \Hypertarget{class_network_player_a6441ea1ca6950050bd39c43f635bafad}\index{NetworkPlayer@{NetworkPlayer}!StationSyncInterval@{StationSyncInterval}}
+\index{StationSyncInterval@{StationSyncInterval}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{StationSyncInterval}{StationSyncInterval}}
+{\footnotesize\ttfamily \label{class_network_player_a6441ea1ca6950050bd39c43f635bafad} 
+const float Network\+Player.\+Station\+Sync\+Interval = 0.\+15f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Interwał synchronizacji stanów stacji kuchennych (w sekundach). 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_network_player_ab774d9d318a5d12c7f2cb79e49be1fcf}\index{NetworkPlayer@{NetworkPlayer}!LocalInstance@{LocalInstance}}
+\index{LocalInstance@{LocalInstance}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{LocalInstance}{LocalInstance}}
+{\footnotesize\ttfamily \label{class_network_player_ab774d9d318a5d12c7f2cb79e49be1fcf} 
+\mbox{\hyperlink{class_network_player}{Network\+Player}} Network\+Player.\+Local\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna referencja do lokalnej instancji gracza sieciowego. 
+
+Instancja \doxylink{class_network_player}{Network\+Player} należąca do lokalnego gracza lub {\ttfamily null}.\Hypertarget{class_network_player_a15881a04dd5b6541ce833cec408394c7}\index{NetworkPlayer@{NetworkPlayer}!PlayerCamera@{PlayerCamera}}
+\index{PlayerCamera@{PlayerCamera}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{PlayerCamera}{PlayerCamera}}
+{\footnotesize\ttfamily \label{class_network_player_a15881a04dd5b6541ce833cec408394c7} 
+Camera Network\+Player.\+Player\+Camera\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Właściwość zwracająca kamerę gracza. 
+
+Obiekt Camera przypisany do gracza lokalnego lub {\ttfamily null} dla graczy zdalnych.\Hypertarget{class_network_player_a3ee5dc2c0b7b9f84662b463f9f3eceb2}\index{NetworkPlayer@{NetworkPlayer}!PlayerIndex@{PlayerIndex}}
+\index{PlayerIndex@{PlayerIndex}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{PlayerIndex}{PlayerIndex}}
+{\footnotesize\ttfamily \label{class_network_player_a3ee5dc2c0b7b9f84662b463f9f3eceb2} 
+int Network\+Player.\+Player\+Index\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Właściwość zwracająca indeks gracza. 
+
+Indeks gracza określający punkt spawnu i kolor.\Hypertarget{class_network_player_af677ab70df9a26c5aaf7dadea5c8a6c2}\index{NetworkPlayer@{NetworkPlayer}!PlayerName@{PlayerName}}
+\index{PlayerName@{PlayerName}!NetworkPlayer@{NetworkPlayer}}
+\doxysubsubsection{\texorpdfstring{PlayerName}{PlayerName}}
+{\footnotesize\ttfamily \label{class_network_player_af677ab70df9a26c5aaf7dadea5c8a6c2} 
+string Network\+Player.\+Player\+Name\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Właściwość zwracająca nazwę gracza jako ciąg znaków. 
+
+Pseudonim gracza odczytany ze zmiennej sieciowej.
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_network_player_8cs}{Network\+Player.\+cs}}\end{DoxyCompactItemize}

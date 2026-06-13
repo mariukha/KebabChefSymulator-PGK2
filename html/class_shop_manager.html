@@ -1,0 +1,1144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy ShopManager</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="#events">Zdarzenia</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="class_shop_manager-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy ShopManager</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Główna klasa zarządzająca systemem sklepu z ulepszeniami.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla ShopManager</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_shop_manager.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a1fedf0ec1d779b5a82c96d5d5985693f" id="r_a1fedf0ec1d779b5a82c96d5d5985693f"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_upgrade_definition.html">UpgradeDefinition</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fedf0ec1d779b5a82c96d5d5985693f">GetAllDefinitions</a> ()</td></tr>
+<tr class="memdesc:a1fedf0ec1d779b5a82c96d5d5985693f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera listę wszystkich definicji ulepszeń w ustalonej kolejności.  <br /></td></tr>
+<tr class="separator:a1fedf0ec1d779b5a82c96d5d5985693f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e59fece8413b83dfaf8203dc3059e95" id="r_a2e59fece8413b83dfaf8203dc3059e95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_upgrade_definition.html">UpgradeDefinition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e59fece8413b83dfaf8203dc3059e95">GetDefinition</a> (<a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a> type)</td></tr>
+<tr class="memdesc:a2e59fece8413b83dfaf8203dc3059e95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera definicję ulepszenia na podstawie jego typu.  <br /></td></tr>
+<tr class="separator:a2e59fece8413b83dfaf8203dc3059e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43d9ab613fe9fb37783a2ce0410a9e95" id="r_a43d9ab613fe9fb37783a2ce0410a9e95"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43d9ab613fe9fb37783a2ce0410a9e95">GetUpgradeLevel</a> (<a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a> type)</td></tr>
+<tr class="memdesc:a43d9ab613fe9fb37783a2ce0410a9e95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera aktualny poziom wskazanego ulepszenia.  <br /></td></tr>
+<tr class="separator:a43d9ab613fe9fb37783a2ce0410a9e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6261aa45afd64082aca823632af95f4d" id="r_a6261aa45afd64082aca823632af95f4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6261aa45afd64082aca823632af95f4d">SetUpgradeLevel</a> (<a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a> type, int level)</td></tr>
+<tr class="memdesc:a6261aa45afd64082aca823632af95f4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia poziom wskazanego ulepszenia na podaną wartość.  <br /></td></tr>
+<tr class="separator:a6261aa45afd64082aca823632af95f4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae34be287f0cb9f3424ee7549a026c092" id="r_ae34be287f0cb9f3424ee7549a026c092"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae34be287f0cb9f3424ee7549a026c092">IsMaxLevel</a> (<a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a> type)</td></tr>
+<tr class="memdesc:ae34be287f0cb9f3424ee7549a026c092"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza, czy wskazane ulepszenie osiągnęło maksymalny poziom.  <br /></td></tr>
+<tr class="separator:ae34be287f0cb9f3424ee7549a026c092"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d4244eca86b20d278299db9e5433b9c" id="r_a1d4244eca86b20d278299db9e5433b9c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d4244eca86b20d278299db9e5433b9c">GetNextUpgradeCost</a> (<a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a> type)</td></tr>
+<tr class="memdesc:a1d4244eca86b20d278299db9e5433b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oblicza koszt następnego poziomu wskazanego ulepszenia.  <br /></td></tr>
+<tr class="separator:a1d4244eca86b20d278299db9e5433b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ecc4f8b82ab0bb63a1a730a2bfd92f4" id="r_a9ecc4f8b82ab0bb63a1a730a2bfd92f4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ecc4f8b82ab0bb63a1a730a2bfd92f4">CanAffordUpgrade</a> (<a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a> type)</td></tr>
+<tr class="memdesc:a9ecc4f8b82ab0bb63a1a730a2bfd92f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza, czy gracz może sobie pozwolić na zakup następnego poziomu ulepszenia.  <br /></td></tr>
+<tr class="separator:a9ecc4f8b82ab0bb63a1a730a2bfd92f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e9ab016ade44d0c3345666690b66a83" id="r_a2e9ab016ade44d0c3345666690b66a83"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e9ab016ade44d0c3345666690b66a83">TryPurchaseUpgrade</a> (<a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a> type)</td></tr>
+<tr class="memdesc:a2e9ab016ade44d0c3345666690b66a83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Próbuje zakupić następny poziom wskazanego ulepszenia.  <br /></td></tr>
+<tr class="separator:a2e9ab016ade44d0c3345666690b66a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd60441c85a8bd4dccdf5540695fd99f" id="r_abd60441c85a8bd4dccdf5540695fd99f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd60441c85a8bd4dccdf5540695fd99f">GetProcessingSpeedMultiplier</a> (<a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1">KitchenStationType</a> stationType)</td></tr>
+<tr class="memdesc:abd60441c85a8bd4dccdf5540695fd99f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera mnożnik szybkości przetwarzania dla wskazanego typu stacji kuchennej.  <br /></td></tr>
+<tr class="separator:abd60441c85a8bd4dccdf5540695fd99f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e82c031b6a60379b2e2d3a9b13f248b" id="r_a7e82c031b6a60379b2e2d3a9b13f248b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e82c031b6a60379b2e2d3a9b13f248b">GetRewardMultiplier</a> ()</td></tr>
+<tr class="memdesc:a7e82c031b6a60379b2e2d3a9b13f248b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera mnożnik nagrody za zamówienia uwzględniający ulepszenie reputacji.  <br /></td></tr>
+<tr class="separator:a7e82c031b6a60379b2e2d3a9b13f248b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47c6de02bf1c866dc1876eb222f61735" id="r_a47c6de02bf1c866dc1876eb222f61735"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47c6de02bf1c866dc1876eb222f61735">GetOrderTimeBonus</a> ()</td></tr>
+<tr class="memdesc:a47c6de02bf1c866dc1876eb222f61735"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera bonus czasu dodawanego do limitu zamówień.  <br /></td></tr>
+<tr class="separator:a47c6de02bf1c866dc1876eb222f61735"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2b4ac5f56bd15445888a64759da472e" id="r_af2b4ac5f56bd15445888a64759da472e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2b4ac5f56bd15445888a64759da472e">GetMeatBatchSize</a> ()</td></tr>
+<tr class="memdesc:af2b4ac5f56bd15445888a64759da472e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera aktualną wielkość porcji mięsa uzyskiwanej z jednego ścięcia.  <br /></td></tr>
+<tr class="separator:af2b4ac5f56bd15445888a64759da472e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae20c9acbacc4dc714671f22bfb89567" id="r_aae20c9acbacc4dc714671f22bfb89567"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_shop_save_data.html">ShopSaveData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae20c9acbacc4dc714671f22bfb89567">CaptureState</a> ()</td></tr>
+<tr class="memdesc:aae20c9acbacc4dc714671f22bfb89567"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przechwytuje bieżący stan sklepu do struktury danych zapisu.  <br /></td></tr>
+<tr class="separator:aae20c9acbacc4dc714671f22bfb89567"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a887f8bd4ab75242af3075319212f4483" id="r_a887f8bd4ab75242af3075319212f4483"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a887f8bd4ab75242af3075319212f4483">RestoreState</a> (<a class="el" href="class_shop_save_data.html">ShopSaveData</a> data)</td></tr>
+<tr class="memdesc:a887f8bd4ab75242af3075319212f4483"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przywraca stan sklepu z wcześniej zapisanych danych.  <br /></td></tr>
+<tr class="separator:a887f8bd4ab75242af3075319212f4483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:a258a9c9041205d3e5b2617791aaf5029" id="r_a258a9c9041205d3e5b2617791aaf5029"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_shop_manager.html">ShopManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a258a9c9041205d3e5b2617791aaf5029">Instance</a><code> [get, private set]</code></td></tr>
+<tr class="memdesc:a258a9c9041205d3e5b2617791aaf5029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statyczna instancja Singleton klasy <a class="el" href="class_shop_manager.html" title="Główna klasa zarządzająca systemem sklepu z ulepszeniami.">ShopManager</a>.  <br /></td></tr>
+<tr class="separator:a258a9c9041205d3e5b2617791aaf5029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbad8ac58beb95f5b22b2b9ab5b3f652" id="r_acbad8ac58beb95f5b22b2b9ab5b3f652"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbad8ac58beb95f5b22b2b9ab5b3f652">TotalUpgradesPurchased</a><code> [get]</code></td></tr>
+<tr class="memdesc:acbad8ac58beb95f5b22b2b9ab5b3f652"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera łączną liczbę zakupionych ulepszeń.  <br /></td></tr>
+<tr class="separator:acbad8ac58beb95f5b22b2b9ab5b3f652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="events" name="events"></a>
+Zdarzenia</h2></td></tr>
+<tr class="memitem:a638a39851dc34d8ad1a8a162f3bc69aa" id="r_a638a39851dc34d8ad1a8a162f3bc69aa"><td class="memItemLeft" align="right" valign="top">Action&lt; <a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a>, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a638a39851dc34d8ad1a8a162f3bc69aa">OnUpgradePurchased</a></td></tr>
+<tr class="memdesc:a638a39851dc34d8ad1a8a162f3bc69aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zdarzenie wywoływane po pomyślnym zakupie ulepszenia.  <br /></td></tr>
+<tr class="separator:a638a39851dc34d8ad1a8a162f3bc69aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:ae67795c3e802751bc4dfe0f13044c874" id="r_ae67795c3e802751bc4dfe0f13044c874"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae67795c3e802751bc4dfe0f13044c874">Awake</a> ()</td></tr>
+<tr class="memdesc:ae67795c3e802751bc4dfe0f13044c874"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizuje instancję Singleton oraz definicje ulepszeń.  <br /></td></tr>
+<tr class="separator:ae67795c3e802751bc4dfe0f13044c874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a854bba6eeafed6d14701565e68cdf3fe" id="r_a854bba6eeafed6d14701565e68cdf3fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a854bba6eeafed6d14701565e68cdf3fe">HandleLevelChanged</a> (<a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a> type, int newLevel)</td></tr>
+<tr class="memdesc:a854bba6eeafed6d14701565e68cdf3fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje zmianę poziomu ulepszenia, wywołując zdarzenie <a class="el" href="#a638a39851dc34d8ad1a8a162f3bc69aa" title="Zdarzenie wywoływane po pomyślnym zakupie ulepszenia.">OnUpgradePurchased</a>.  <br /></td></tr>
+<tr class="separator:a854bba6eeafed6d14701565e68cdf3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e384fa4c0a9edca585ef1564255c0c6" id="r_a9e384fa4c0a9edca585ef1564255c0c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e384fa4c0a9edca585ef1564255c0c6">InitializeDefinitions</a> ()</td></tr>
+<tr class="memdesc:a9e384fa4c0a9edca585ef1564255c0c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizuje wszystkie definicje ulepszeń dostępnych w sklepie.  <br /></td></tr>
+<tr class="separator:a9e384fa4c0a9edca585ef1564255c0c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c292a756501092fd092c4681f79769b" id="r_a6c292a756501092fd092c4681f79769b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c292a756501092fd092c4681f79769b">RegisterDefinition</a> (<a class="el" href="class_upgrade_definition.html">UpgradeDefinition</a> definition)</td></tr>
+<tr class="memdesc:a6c292a756501092fd092c4681f79769b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rejestruje definicję ulepszenia w słowniku definicji.  <br /></td></tr>
+<tr class="separator:a6c292a756501092fd092c4681f79769b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94f7233b9f89e5b4abce5ff202cf8c9b" id="r_a94f7233b9f89e5b4abce5ff202cf8c9b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94f7233b9f89e5b4abce5ff202cf8c9b">GetEffectValue</a> (<a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a> type, float defaultValue)</td></tr>
+<tr class="memdesc:a94f7233b9f89e5b4abce5ff202cf8c9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera wartość efektu ulepszenia na aktualnym poziomie.  <br /></td></tr>
+<tr class="separator:a94f7233b9f89e5b4abce5ff202cf8c9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2804b2fc020655950e3e3144ef29ecb7" id="r_a2804b2fc020655950e3e3144ef29ecb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2804b2fc020655950e3e3144ef29ecb7">OnDestroy</a> ()</td></tr>
+<tr class="memdesc:a2804b2fc020655950e3e3144ef29ecb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czyści referencję Singletona przy niszczeniu obiektu.  <br /></td></tr>
+<tr class="separator:a2804b2fc020655950e3e3144ef29ecb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a7644719556a48ed739ddd0f76a22dffb" id="r_a7644719556a48ed739ddd0f76a22dffb"><td class="memItemLeft" align="right" valign="top">readonly Dictionary&lt; <a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a>, <a class="el" href="class_upgrade_definition.html">UpgradeDefinition</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7644719556a48ed739ddd0f76a22dffb">definitions</a></td></tr>
+<tr class="memdesc:a7644719556a48ed739ddd0f76a22dffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Słownik przechowujący definicje ulepszeń indeksowane typem ulepszenia.  <br /></td></tr>
+<tr class="separator:a7644719556a48ed739ddd0f76a22dffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d667d788a01bfb29a094e031f01f369" id="r_a4d667d788a01bfb29a094e031f01f369"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d667d788a01bfb29a094e031f01f369">grillSpeedLevel</a></td></tr>
+<tr class="memdesc:a4d667d788a01bfb29a094e031f01f369"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualny poziom ulepszenia szybkości grillowania.  <br /></td></tr>
+<tr class="separator:a4d667d788a01bfb29a094e031f01f369"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad22f0fcb75c4ffbb9047eaf81eca12e1" id="r_ad22f0fcb75c4ffbb9047eaf81eca12e1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad22f0fcb75c4ffbb9047eaf81eca12e1">cuttingSpeedLevel</a></td></tr>
+<tr class="memdesc:ad22f0fcb75c4ffbb9047eaf81eca12e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualny poziom ulepszenia szybkości krojenia.  <br /></td></tr>
+<tr class="separator:ad22f0fcb75c4ffbb9047eaf81eca12e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70fa29c6109e948d943ec1d22cf2c5e5" id="r_a70fa29c6109e948d943ec1d22cf2c5e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70fa29c6109e948d943ec1d22cf2c5e5">rewardBonusLevel</a></td></tr>
+<tr class="memdesc:a70fa29c6109e948d943ec1d22cf2c5e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualny poziom ulepszenia bonusu do nagrody.  <br /></td></tr>
+<tr class="separator:a70fa29c6109e948d943ec1d22cf2c5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0322e6408fd8bb126a28bce283ec454a" id="r_a0322e6408fd8bb126a28bce283ec454a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0322e6408fd8bb126a28bce283ec454a">orderTimeLevel</a></td></tr>
+<tr class="memdesc:a0322e6408fd8bb126a28bce283ec454a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualny poziom ulepszenia czasu na zamówienie.  <br /></td></tr>
+<tr class="separator:a0322e6408fd8bb126a28bce283ec454a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade5d302d9ce92b33d745e5652eff7c4a" id="r_ade5d302d9ce92b33d745e5652eff7c4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade5d302d9ce92b33d745e5652eff7c4a">meatBatchSizeLevel</a></td></tr>
+<tr class="memdesc:ade5d302d9ce92b33d745e5652eff7c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualny poziom ulepszenia wielkości porcji mięsa.  <br /></td></tr>
+<tr class="separator:ade5d302d9ce92b33d745e5652eff7c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a145f6941ff8a171b6e898f2b90771c26" id="r_a145f6941ff8a171b6e898f2b90771c26"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a145f6941ff8a171b6e898f2b90771c26">totalUpgradesPurchased</a></td></tr>
+<tr class="memdesc:a145f6941ff8a171b6e898f2b90771c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Łączna liczba ulepszeń zakupionych przez gracza.  <br /></td></tr>
+<tr class="separator:a145f6941ff8a171b6e898f2b90771c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Główna klasa zarządzająca systemem sklepu z ulepszeniami. </p>
+<p>Implementuje wzorzec Singleton. Odpowiada za:</p><ul>
+<li>Rejestrację i przechowywanie definicji dostępnych ulepszeń</li>
+<li>Śledzenie aktualnych poziomów każdego ulepszenia</li>
+<li>Obsługę zakupu ulepszeń z weryfikacją salda gracza</li>
+<li>Dostarczanie wartości efektów ulepszeń innym systemom gry (grillowanie, krojenie, nagrody, czas zamówień, wielkość porcji)</li>
+<li>Serializację i deserializację stanu sklepu dla systemu zapisu gry</li>
+</ul>
+<p>Współpracuje z <a class="el" href="class_economy_manager.html" title="Klasa zarządzająca systemem ekonomii w grze.">EconomyManager</a> (system finansów) oraz <a class="el" href="class_save_manager.html">SaveManager</a> (system zapisu). </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ae67795c3e802751bc4dfe0f13044c874" name="ae67795c3e802751bc4dfe0f13044c874"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae67795c3e802751bc4dfe0f13044c874">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShopManager.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicjalizuje instancję Singleton oraz definicje ulepszeń. </p>
+<p>Jeśli instancja nie istnieje, ustawia ją i wywołuje <a class="el" href="#a9e384fa4c0a9edca585ef1564255c0c6" title="Inicjalizuje wszystkie definicje ulepszeń dostępnych w sklepie.">InitializeDefinitions</a>. Jeśli instancja już istnieje, niszczy duplikat obiektu. </p>
+
+</div>
+</div>
+<a id="a9ecc4f8b82ab0bb63a1a730a2bfd92f4" name="a9ecc4f8b82ab0bb63a1a730a2bfd92f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ecc4f8b82ab0bb63a1a730a2bfd92f4">&#9670;&#160;</a></span>CanAffordUpgrade()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ShopManager.CanAffordUpgrade </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprawdza, czy gracz może sobie pozwolić na zakup następnego poziomu ulepszenia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ ulepszenia do sprawdzenia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd><code>true</code> jeśli ulepszenie nie jest na maksymalnym poziomie i gracz posiada wystarczające środki; <code>false</code> w przeciwnym razie. </dd></dl>
+<p>Wymaga dostępności instancji <a class="el" href="class_economy_manager.html" title="Klasa zarządzająca systemem ekonomii w grze.">EconomyManager</a>. Zwraca <code>false</code> jeśli menedżer ekonomii nie jest dostępny. </p>
+
+</div>
+</div>
+<a id="aae20c9acbacc4dc714671f22bfb89567" name="aae20c9acbacc4dc714671f22bfb89567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae20c9acbacc4dc714671f22bfb89567">&#9670;&#160;</a></span>CaptureState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_shop_save_data.html">ShopSaveData</a> ShopManager.CaptureState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przechwytuje bieżący stan sklepu do struktury danych zapisu. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Obiekt <a class="el" href="class_shop_save_data.html" title="Klasa danych zapisu stanu sklepu z ulepszeniami.">ShopSaveData</a> zawierający poziomy wszystkich ulepszeń oraz łączną liczbę zakupionych ulepszeń. </dd></dl>
+<p>Zapisuje tylko ulepszenia o poziomie większym od 0, pomijając niezakupione. Używana przez <a class="el" href="class_save_manager.html">SaveManager</a> podczas zapisywania stanu gry. </p>
+
+</div>
+</div>
+<a id="a1fedf0ec1d779b5a82c96d5d5985693f" name="a1fedf0ec1d779b5a82c96d5d5985693f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fedf0ec1d779b5a82c96d5d5985693f">&#9670;&#160;</a></span>GetAllDefinitions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; <a class="el" href="class_upgrade_definition.html">UpgradeDefinition</a> &gt; ShopManager.GetAllDefinitions </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera listę wszystkich definicji ulepszeń w ustalonej kolejności. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Lista obiektów <a class="el" href="class_upgrade_definition.html" title="Klasa definiująca pojedyncze ulepszenie dostępne w sklepie.">UpgradeDefinition</a> zawierająca wszystkie dostępne ulepszenia w kolejności: GrillSpeed, CuttingSpeed, RewardBonus, OrderTime, MeatBatchSize. </dd></dl>
+<p>Kolejność elementów na liście determinuje kolejność wyświetlania w interfejsie sklepu. </p>
+
+</div>
+</div>
+<a id="a2e59fece8413b83dfaf8203dc3059e95" name="a2e59fece8413b83dfaf8203dc3059e95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e59fece8413b83dfaf8203dc3059e95">&#9670;&#160;</a></span>GetDefinition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_upgrade_definition.html">UpgradeDefinition</a> ShopManager.GetDefinition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera definicję ulepszenia na podstawie jego typu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ ulepszenia do wyszukania.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Obiekt <a class="el" href="class_upgrade_definition.html" title="Klasa definiująca pojedyncze ulepszenie dostępne w sklepie.">UpgradeDefinition</a> odpowiadający podanemu typowi lub <code>null</code> jeśli definicja nie została znaleziona. </dd></dl>
+
+</div>
+</div>
+<a id="a94f7233b9f89e5b4abce5ff202cf8c9b" name="a94f7233b9f89e5b4abce5ff202cf8c9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94f7233b9f89e5b4abce5ff202cf8c9b">&#9670;&#160;</a></span>GetEffectValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ShopManager.GetEffectValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>defaultValue</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera wartość efektu ulepszenia na aktualnym poziomie. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ ulepszenia, którego wartość efektu ma zostać pobrana.</td></tr>
+    <tr><td class="paramname">defaultValue</td><td>Wartość domyślna zwracana w przypadku braku definicji lub nieprawidłowego poziomu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Wartość efektu na aktualnym poziomie ulepszenia lub <em>defaultValue</em>  jeśli definicja nie istnieje, tablica wartości jest pusta, lub poziom jest poza zakresem. </dd></dl>
+
+</div>
+</div>
+<a id="af2b4ac5f56bd15445888a64759da472e" name="af2b4ac5f56bd15445888a64759da472e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2b4ac5f56bd15445888a64759da472e">&#9670;&#160;</a></span>GetMeatBatchSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ShopManager.GetMeatBatchSize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera aktualną wielkość porcji mięsa uzyskiwanej z jednego ścięcia. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Liczba porcji mięsa jako liczba całkowita. Domyślnie 3 porcje bez ulepszeń. </dd></dl>
+
+</div>
+</div>
+<a id="a1d4244eca86b20d278299db9e5433b9c" name="a1d4244eca86b20d278299db9e5433b9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d4244eca86b20d278299db9e5433b9c">&#9670;&#160;</a></span>GetNextUpgradeCost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ShopManager.GetNextUpgradeCost </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oblicza koszt następnego poziomu wskazanego ulepszenia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ ulepszenia, dla którego obliczany jest koszt.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Koszt kolejnego poziomu ulepszenia. Zwraca float.MaxValue jeśli definicja nie istnieje, lub 0 jeśli ulepszenie osiągnęło już maksymalny poziom. </dd></dl>
+
+</div>
+</div>
+<a id="a47c6de02bf1c866dc1876eb222f61735" name="a47c6de02bf1c866dc1876eb222f61735"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47c6de02bf1c866dc1876eb222f61735">&#9670;&#160;</a></span>GetOrderTimeBonus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ShopManager.GetOrderTimeBonus </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera bonus czasu dodawanego do limitu zamówień. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Dodatkowy czas w sekundach przyznawany na realizację zamówień. Zwraca 0 jeśli ulepszenie nie zostało zakupione. </dd></dl>
+
+</div>
+</div>
+<a id="abd60441c85a8bd4dccdf5540695fd99f" name="abd60441c85a8bd4dccdf5540695fd99f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd60441c85a8bd4dccdf5540695fd99f">&#9670;&#160;</a></span>GetProcessingSpeedMultiplier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ShopManager.GetProcessingSpeedMultiplier </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1">KitchenStationType</a></td>          <td class="paramname"><span class="paramname"><em>stationType</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera mnożnik szybkości przetwarzania dla wskazanego typu stacji kuchennej. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stationType</td><td>Typ stacji kuchennej (Grill lub CuttingBoard).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Mnożnik szybkości przetwarzania (wartość &lt; 1.0 oznacza szybsze przetwarzanie). Zwraca 1.0 dla nieobsługiwanych typów stacji (brak modyfikacji szybkości). </dd></dl>
+<p>Mapuje typ stacji kuchennej na odpowiedni typ ulepszenia:</p><ul>
+<li><code>Grill</code> → <a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10eac17698d594b271788233db7de4ae3e16" title="Ulepszenie szybkości grillowania mięsa na donerze. Zmniejsza czas potrzebny na ściągnięcie mięsa z ro...">UpgradeType.GrillSpeed</a></li>
+<li><code>CuttingBoard</code> → <a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10ea8e1b8a8a5321d50b419e85da861cd9ea" title="Ulepszenie szybkości krojenia warzyw na desce do krojenia. Zmniejsza czas potrzebny na pokrojenie skł...">UpgradeType.CuttingSpeed</a> </li>
+</ul>
+
+</div>
+</div>
+<a id="a7e82c031b6a60379b2e2d3a9b13f248b" name="a7e82c031b6a60379b2e2d3a9b13f248b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e82c031b6a60379b2e2d3a9b13f248b">&#9670;&#160;</a></span>GetRewardMultiplier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ShopManager.GetRewardMultiplier </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera mnożnik nagrody za zamówienia uwzględniający ulepszenie reputacji. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Mnożnik nagrody (1.0 = brak bonusu, 1.5 = +50% nagrody itd.). Wartość bazowa 1.0 jest powiększana o wartość efektu ulepszenia RewardBonus. </dd></dl>
+
+</div>
+</div>
+<a id="a43d9ab613fe9fb37783a2ce0410a9e95" name="a43d9ab613fe9fb37783a2ce0410a9e95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43d9ab613fe9fb37783a2ce0410a9e95">&#9670;&#160;</a></span>GetUpgradeLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ShopManager.GetUpgradeLevel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera aktualny poziom wskazanego ulepszenia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ ulepszenia, którego poziom ma zostać zwrócony.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Aktualny poziom ulepszenia jako liczba całkowita. Zwraca 0 dla nieznanych typów ulepszeń. </dd></dl>
+
+</div>
+</div>
+<a id="a854bba6eeafed6d14701565e68cdf3fe" name="a854bba6eeafed6d14701565e68cdf3fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a854bba6eeafed6d14701565e68cdf3fe">&#9670;&#160;</a></span>HandleLevelChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShopManager.HandleLevelChanged </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newLevel</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje zmianę poziomu ulepszenia, wywołując zdarzenie <a class="el" href="#a638a39851dc34d8ad1a8a162f3bc69aa" title="Zdarzenie wywoływane po pomyślnym zakupie ulepszenia.">OnUpgradePurchased</a>. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ ulepszenia, którego poziom został zmieniony.</td></tr>
+    <tr><td class="paramname">newLevel</td><td>Nowy poziom ulepszenia po zmianie.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9e384fa4c0a9edca585ef1564255c0c6" name="a9e384fa4c0a9edca585ef1564255c0c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e384fa4c0a9edca585ef1564255c0c6">&#9670;&#160;</a></span>InitializeDefinitions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShopManager.InitializeDefinitions </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicjalizuje wszystkie definicje ulepszeń dostępnych w sklepie. </p>
+<p>Rejestruje pięć typów ulepszeń z predefiniowanymi parametrami:</p><ul>
+<li>Szybszy Doner (GrillSpeed): 4 poziomy, redukcja czasu grillowania</li>
+<li>Szybsze Krojenie (CuttingSpeed): 4 poziomy, redukcja czasu krojenia</li>
+<li>Lepsza Reputacja (RewardBonus): 5 poziomów, bonus do nagrody</li>
+<li>Więcej Czasu (OrderTime): 4 poziomy, dodatkowy czas na zamówienia</li>
+<li>Większa Porcja (MeatBatchSize): 3 poziomy, więcej porcji mięsa </li>
+</ul>
+
+</div>
+</div>
+<a id="ae34be287f0cb9f3424ee7549a026c092" name="ae34be287f0cb9f3424ee7549a026c092"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae34be287f0cb9f3424ee7549a026c092">&#9670;&#160;</a></span>IsMaxLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ShopManager.IsMaxLevel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprawdza, czy wskazane ulepszenie osiągnęło maksymalny poziom. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ ulepszenia do sprawdzenia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd><code>true</code> jeśli ulepszenie jest na maksymalnym poziomie lub definicja nie istnieje; <code>false</code> w przeciwnym razie. </dd></dl>
+
+</div>
+</div>
+<a id="a2804b2fc020655950e3e3144ef29ecb7" name="a2804b2fc020655950e3e3144ef29ecb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2804b2fc020655950e3e3144ef29ecb7">&#9670;&#160;</a></span>OnDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShopManager.OnDestroy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czyści referencję Singletona przy niszczeniu obiektu. </p>
+<p>Zapobiega pozostawaniu nieaktualnych referencji po zniszczeniu obiektu menedżera. </p>
+
+</div>
+</div>
+<a id="a6c292a756501092fd092c4681f79769b" name="a6c292a756501092fd092c4681f79769b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c292a756501092fd092c4681f79769b">&#9670;&#160;</a></span>RegisterDefinition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShopManager.RegisterDefinition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_upgrade_definition.html">UpgradeDefinition</a></td>          <td class="paramname"><span class="paramname"><em>definition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rejestruje definicję ulepszenia w słowniku definicji. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">definition</td><td>Obiekt <a class="el" href="class_upgrade_definition.html" title="Klasa definiująca pojedyncze ulepszenie dostępne w sklepie.">UpgradeDefinition</a> do zarejestrowania.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Jeśli definicja o tym samym typie już istnieje, zostanie nadpisana. </p>
+
+</div>
+</div>
+<a id="a887f8bd4ab75242af3075319212f4483" name="a887f8bd4ab75242af3075319212f4483"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a887f8bd4ab75242af3075319212f4483">&#9670;&#160;</a></span>RestoreState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShopManager.RestoreState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_shop_save_data.html">ShopSaveData</a></td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przywraca stan sklepu z wcześniej zapisanych danych. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Obiekt <a class="el" href="class_shop_save_data.html" title="Klasa danych zapisu stanu sklepu z ulepszeniami.">ShopSaveData</a> zawierający zapisany stan sklepu. Jeśli <code>null</code>, metoda nie wykonuje żadnej operacji. </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Parsuje nazwy typów ulepszeń z formatu tekstowego z powrotem na wartości enum. Nieznane typy ulepszeń są pomijane (obsługa kompatybilności wstecznej). Poziomy ulepszeń są ograniczane do zakresu [0, maxLevel] odpowiedniej definicji. Używana przez <a class="el" href="class_save_manager.html">SaveManager</a> podczas wczytywania stanu gry. </p>
+
+</div>
+</div>
+<a id="a6261aa45afd64082aca823632af95f4d" name="a6261aa45afd64082aca823632af95f4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6261aa45afd64082aca823632af95f4d">&#9670;&#160;</a></span>SetUpgradeLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShopManager.SetUpgradeLevel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>level</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia poziom wskazanego ulepszenia na podaną wartość. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ ulepszenia, którego poziom ma zostać zmieniony.</td></tr>
+    <tr><td class="paramname">level</td><td>Nowa wartość poziomu do ustawienia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Metoda nie weryfikuje, czy podany poziom mieści się w dozwolonym zakresie. Walidacja powinna być przeprowadzona przez kod wywołujący. </p>
+
+</div>
+</div>
+<a id="a2e9ab016ade44d0c3345666690b66a83" name="a2e9ab016ade44d0c3345666690b66a83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e9ab016ade44d0c3345666690b66a83">&#9670;&#160;</a></span>TryPurchaseUpgrade()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ShopManager.TryPurchaseUpgrade </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Próbuje zakupić następny poziom wskazanego ulepszenia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ ulepszenia do zakupienia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd><code>true</code> jeśli zakup się powiódł; <code>false</code> jeśli ulepszenie jest na maksymalnym poziomie, brak menedżera ekonomii lub niewystarczające saldo. </dd></dl>
+<p>Metoda wykonuje pełny proces zakupu:</p><ol type="1">
+<li>Sprawdza czy ulepszenie nie osiągnęło maksymalnego poziomu</li>
+<li>Weryfikuje dostępność <a class="el" href="class_economy_manager.html" title="Klasa zarządzająca systemem ekonomii w grze.">EconomyManager</a></li>
+<li>Próbuje pobrać koszt z salda gracza</li>
+<li>Zwiększa poziom ulepszenia</li>
+<li>Inkrementuje licznik zakupionych ulepszeń</li>
+<li>Loguje informację o zakupie</li>
+<li>Wywołuje zdarzenie zmiany poziomu</li>
+<li>Zapisuje stan gry przez <a class="el" href="class_save_manager.html">SaveManager</a> </li>
+</ol>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="ad22f0fcb75c4ffbb9047eaf81eca12e1" name="ad22f0fcb75c4ffbb9047eaf81eca12e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad22f0fcb75c4ffbb9047eaf81eca12e1">&#9670;&#160;</a></span>cuttingSpeedLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ShopManager.cuttingSpeedLevel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualny poziom ulepszenia szybkości krojenia. </p>
+
+</div>
+</div>
+<a id="a7644719556a48ed739ddd0f76a22dffb" name="a7644719556a48ed739ddd0f76a22dffb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7644719556a48ed739ddd0f76a22dffb">&#9670;&#160;</a></span>definitions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Dictionary&lt;<a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a>, <a class="el" href="class_upgrade_definition.html">UpgradeDefinition</a>&gt; ShopManager.definitions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Wartość początkowa:</b><div class="fragment"><div class="line">=</div>
+<div class="line">        <span class="keyword">new</span> Dictionary&lt;UpgradeType, UpgradeDefinition&gt;()</div>
+</div><!-- fragment -->
+<p>Słownik przechowujący definicje ulepszeń indeksowane typem ulepszenia. </p>
+<p>Inicjalizowany w metodzie <a class="el" href="#a9e384fa4c0a9edca585ef1564255c0c6" title="Inicjalizuje wszystkie definicje ulepszeń dostępnych w sklepie.">InitializeDefinitions</a> podczas startu aplikacji. Umożliwia szybki dostęp do definicji ulepszenia po jego typie. </p>
+
+</div>
+</div>
+<a id="a4d667d788a01bfb29a094e031f01f369" name="a4d667d788a01bfb29a094e031f01f369"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d667d788a01bfb29a094e031f01f369">&#9670;&#160;</a></span>grillSpeedLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ShopManager.grillSpeedLevel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualny poziom ulepszenia szybkości grillowania. </p>
+
+</div>
+</div>
+<a id="ade5d302d9ce92b33d745e5652eff7c4a" name="ade5d302d9ce92b33d745e5652eff7c4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade5d302d9ce92b33d745e5652eff7c4a">&#9670;&#160;</a></span>meatBatchSizeLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ShopManager.meatBatchSizeLevel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualny poziom ulepszenia wielkości porcji mięsa. </p>
+
+</div>
+</div>
+<a id="a0322e6408fd8bb126a28bce283ec454a" name="a0322e6408fd8bb126a28bce283ec454a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0322e6408fd8bb126a28bce283ec454a">&#9670;&#160;</a></span>orderTimeLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ShopManager.orderTimeLevel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualny poziom ulepszenia czasu na zamówienie. </p>
+
+</div>
+</div>
+<a id="a70fa29c6109e948d943ec1d22cf2c5e5" name="a70fa29c6109e948d943ec1d22cf2c5e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70fa29c6109e948d943ec1d22cf2c5e5">&#9670;&#160;</a></span>rewardBonusLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ShopManager.rewardBonusLevel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualny poziom ulepszenia bonusu do nagrody. </p>
+
+</div>
+</div>
+<a id="a145f6941ff8a171b6e898f2b90771c26" name="a145f6941ff8a171b6e898f2b90771c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a145f6941ff8a171b6e898f2b90771c26">&#9670;&#160;</a></span>totalUpgradesPurchased</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ShopManager.totalUpgradesPurchased</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Łączna liczba ulepszeń zakupionych przez gracza. </p>
+<p>Wartość widoczna w inspektorze Unity w celach debugowania. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="a258a9c9041205d3e5b2617791aaf5029" name="a258a9c9041205d3e5b2617791aaf5029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a258a9c9041205d3e5b2617791aaf5029">&#9670;&#160;</a></span>Instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_shop_manager.html">ShopManager</a> ShopManager.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Statyczna instancja Singleton klasy <a class="el" href="class_shop_manager.html" title="Główna klasa zarządzająca systemem sklepu z ulepszeniami.">ShopManager</a>. </p>
+<p>Jedyna instancja menedżera sklepu dostępna globalnie.</p>
+
+</div>
+</div>
+<a id="acbad8ac58beb95f5b22b2b9ab5b3f652" name="acbad8ac58beb95f5b22b2b9ab5b3f652"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbad8ac58beb95f5b22b2b9ab5b3f652">&#9670;&#160;</a></span>TotalUpgradesPurchased</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ShopManager.TotalUpgradesPurchased</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera łączną liczbę zakupionych ulepszeń. </p>
+<p>Całkowita liczba transakcji zakupu ulepszeń od początku gry.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja zdarzeń</h2>
+<a id="a638a39851dc34d8ad1a8a162f3bc69aa" name="a638a39851dc34d8ad1a8a162f3bc69aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a638a39851dc34d8ad1a8a162f3bc69aa">&#9670;&#160;</a></span>OnUpgradePurchased</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action&lt;<a class="el" href="_shop_manager_8cs.html#aed791e8d3de5c0066e62b3790b3bb10e">UpgradeType</a>, int&gt; ShopManager.OnUpgradePurchased</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zdarzenie wywoływane po pomyślnym zakupie ulepszenia. </p>
+<p>Przekazuje typ zakupionego ulepszenia oraz nowy poziom. Subskrybenci mogą wykorzystać to zdarzenie do aktualizacji interfejsu lub zastosowania efektów ulepszenia w rozgrywce. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_shop_manager_8cs.html">ShopManager.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

@@ -1,0 +1,280 @@
+\doxysection{Dokumentacja klasy Economy\+Manager}
+\hypertarget{class_economy_manager}{}\label{class_economy_manager}\index{EconomyManager@{EconomyManager}}
+
+
+Klasa zarządzająca systemem ekonomii w grze.  
+
+
+Diagram dziedziczenia dla Economy\+Manager\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_economy_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_economy_manager_a7d5a5f13d5ee870495e0524a335c64e1}{Add\+Money}} (float amount)
+\begin{DoxyCompactList}\small\item\em Dodaje określoną kwotę pieniędzy do salda gracza. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_economy_manager_a47bd2c61fa4cad6dc07bc359a3035452}{Spend\+Money}} (float amount)
+\begin{DoxyCompactList}\small\item\em Próbuje wydać określoną kwotę pieniędzy z salda gracza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_economy_manager_af8f1350a128d9afc9ded8dd565aa4365}{Set\+Balance\+From\+Network}} (float new\+Balance, float new\+Total\+Earned)
+\begin{DoxyCompactList}\small\item\em Ustawia saldo i łączne zarobki na podstawie danych z sieci. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_economy_save_data}{Economy\+Save\+Data}} \mbox{\hyperlink{class_economy_manager_a591076c7e0263c0852854093ec8036fb}{Capture\+State}} ()
+\begin{DoxyCompactList}\small\item\em Przechwytuje bieżący stan ekonomii do struktury danych zapisu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_economy_manager_aa59bb320f78c8d14769d752b5effb4c0}{Restore\+State}} (\mbox{\hyperlink{class_economy_save_data}{Economy\+Save\+Data}} save\+Data)
+\begin{DoxyCompactList}\small\item\em Przywraca stan ekonomii z wcześniej zapisanych danych. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_economy_manager}{Economy\+Manager}} \mbox{\hyperlink{class_economy_manager_a651a4fd5c9bad9b0701ceb89f3526597}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna instancja Singleton klasy \doxylink{class_economy_manager}{Economy\+Manager}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_economy_manager_ac8982f5c1e081ecaff79fca862537809}{Current\+Balance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera aktualne saldo gracza. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_economy_manager_a9fd60b1e5d8ce4a6a0868cf707ed8c08}{Total\+Earned}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera łączną kwotę zarobionych pieniędzy. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_economy_manager_a33ce94e96247a575ee91845dc1686950}{Total\+Spent}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera łączną kwotę wydanych pieniędzy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Zdarzenia}
+\begin{DoxyCompactItemize}
+\item 
+System.\+Action$<$ float $>$ \mbox{\hyperlink{class_economy_manager_a32fb9c6c32487f1a0e267ce6720081dc}{On\+Balance\+Changed}}
+\begin{DoxyCompactList}\small\item\em Zdarzenie wywoływane przy każdej zmianie salda gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_economy_manager_ac9df78f2ffa1e4bee24f7d155eed2323}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje instancję Singleton przy starcie obiektu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_economy_manager_a87c8a2fd977128cc06cf64187f8ba77b}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Czyści referencję Singletona przy niszczeniu obiektu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_economy_manager_a74ca2ca04eb68f96f2419245bd3df69e}{starting\+Money}} = 100f
+\begin{DoxyCompactList}\small\item\em Początkowa kwota pieniędzy, z jaką gracz rozpoczyna grę. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_economy_manager_a0785af2148cef8509d3816f8897725d9}{balance}}
+\begin{DoxyCompactList}\small\item\em Aktualne saldo gracza w grze. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_economy_manager_a523fcb1309d6aebec0def0e2573a1c0f}{total\+Earned}}
+\begin{DoxyCompactList}\small\item\em Łączna kwota pieniędzy zarobionych przez gracza od początku gry. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_economy_manager_acbb6da1f3ec779ae1b76ba81aa3ab7f3}{total\+Spent}}
+\begin{DoxyCompactList}\small\item\em Łączna kwota pieniędzy wydanych przez gracza od początku gry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa zarządzająca systemem ekonomii w grze. 
+
+Implementuje wzorzec Singleton, zapewniając jedną globalną instancję menedżera ekonomii. Odpowiada za śledzenie aktualnego salda gracza, łącznych zarobków i wydatków. Powiadamia inne systemy o zmianach salda za pomocą zdarzenia \doxylink{class_economy_manager_a32fb9c6c32487f1a0e267ce6720081dc}{On\+Balance\+Changed}. Współpracuje z \doxylink{class_save_manager}{Save\+Manager} w celu oznaczania stanu gry jako wymagającego zapisu po każdej transakcji finansowej. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_economy_manager_a7d5a5f13d5ee870495e0524a335c64e1}\index{EconomyManager@{EconomyManager}!AddMoney@{AddMoney}}
+\index{AddMoney@{AddMoney}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{AddMoney()}{AddMoney()}}
+{\footnotesize\ttfamily \label{class_economy_manager_a7d5a5f13d5ee870495e0524a335c64e1} 
+void Economy\+Manager.\+Add\+Money (\begin{DoxyParamCaption}\item[{float}]{amount}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Dodaje określoną kwotę pieniędzy do salda gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em amount} & Kwota do dodania. Musi być wartością dodatnią, w przeciwnym razie operacja jest ignorowana.\\
+\hline
+\end{DoxyParams}
+
+
+Po dodaniu kwoty aktualizuje łączne zarobki, wywołuje zdarzenie \doxylink{class_economy_manager_a32fb9c6c32487f1a0e267ce6720081dc}{On\+Balance\+Changed} i oznacza stan gry jako wymagający zapisu w \doxylink{class_save_manager}{Save\+Manager}. \Hypertarget{class_economy_manager_ac9df78f2ffa1e4bee24f7d155eed2323}\index{EconomyManager@{EconomyManager}!Awake@{Awake}}
+\index{Awake@{Awake}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_economy_manager_ac9df78f2ffa1e4bee24f7d155eed2323} 
+void Economy\+Manager.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje instancję Singleton przy starcie obiektu. 
+
+Jeśli instancja nie istnieje, ustawia ją na bieżący obiekt i inicjalizuje saldo wartością \doxylink{class_economy_manager_a74ca2ca04eb68f96f2419245bd3df69e}{starting\+Money}. Jeśli instancja już istnieje, niszczy duplikat obiektu, zapewniając unikalność Singletona. \Hypertarget{class_economy_manager_a591076c7e0263c0852854093ec8036fb}\index{EconomyManager@{EconomyManager}!CaptureState@{CaptureState}}
+\index{CaptureState@{CaptureState}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{CaptureState()}{CaptureState()}}
+{\footnotesize\ttfamily \label{class_economy_manager_a591076c7e0263c0852854093ec8036fb} 
+\mbox{\hyperlink{class_economy_save_data}{Economy\+Save\+Data}} Economy\+Manager.\+Capture\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Przechwytuje bieżący stan ekonomii do struktury danych zapisu. 
+
+\begin{DoxyReturn}{Zwraca}
+Obiekt \doxylink{class_economy_save_data}{Economy\+Save\+Data} zawierający aktualne saldo, łączne zarobki oraz łączne wydatki. 
+\end{DoxyReturn}
+
+
+Używana przez \doxylink{class_save_manager}{Save\+Manager} podczas zapisywania stanu gry do pliku. \Hypertarget{class_economy_manager_a87c8a2fd977128cc06cf64187f8ba77b}\index{EconomyManager@{EconomyManager}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_economy_manager_a87c8a2fd977128cc06cf64187f8ba77b} 
+void Economy\+Manager.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Czyści referencję Singletona przy niszczeniu obiektu. 
+
+Zapobiega pozostawaniu nieaktualnych referencji po zniszczeniu obiektu menedżera. \Hypertarget{class_economy_manager_aa59bb320f78c8d14769d752b5effb4c0}\index{EconomyManager@{EconomyManager}!RestoreState@{RestoreState}}
+\index{RestoreState@{RestoreState}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{RestoreState()}{RestoreState()}}
+{\footnotesize\ttfamily \label{class_economy_manager_aa59bb320f78c8d14769d752b5effb4c0} 
+void Economy\+Manager.\+Restore\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_economy_save_data}{Economy\+Save\+Data}}}]{save\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Przywraca stan ekonomii z wcześniej zapisanych danych. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em save\+Data} & Obiekt \doxylink{class_economy_save_data}{Economy\+Save\+Data} zawierający zapisany stan ekonomii. Jeśli {\ttfamily null}, metoda nie wykonuje żadnej operacji. \\
+\hline
+\end{DoxyParams}
+
+
+Używana przez \doxylink{class_save_manager}{Save\+Manager} podczas wczytywania stanu gry z pliku. Wszystkie wartości są zabezpieczone przed wartościami ujemnymi za pomocą Mathf.\+Max. Po przywróceniu stanu wywołuje zdarzenie \doxylink{class_economy_manager_a32fb9c6c32487f1a0e267ce6720081dc}{On\+Balance\+Changed}. \Hypertarget{class_economy_manager_af8f1350a128d9afc9ded8dd565aa4365}\index{EconomyManager@{EconomyManager}!SetBalanceFromNetwork@{SetBalanceFromNetwork}}
+\index{SetBalanceFromNetwork@{SetBalanceFromNetwork}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{SetBalanceFromNetwork()}{SetBalanceFromNetwork()}}
+{\footnotesize\ttfamily \label{class_economy_manager_af8f1350a128d9afc9ded8dd565aa4365} 
+void Economy\+Manager.\+Set\+Balance\+From\+Network (\begin{DoxyParamCaption}\item[{float}]{new\+Balance}{, }\item[{float}]{new\+Total\+Earned}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia saldo i łączne zarobki na podstawie danych z sieci. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em new\+Balance} & Nowa wartość salda otrzymana z serwera.\\
+\hline
+{\em new\+Total\+Earned} & Nowa wartość łącznych zarobków otrzymana z serwera.\\
+\hline
+\end{DoxyParams}
+
+
+Metoda wykorzystywana w trybie wieloosobowym do synchronizacji stanu ekonomii pomiędzy serwerem a klientami. Po aktualizacji wywołuje zdarzenie \doxylink{class_economy_manager_a32fb9c6c32487f1a0e267ce6720081dc}{On\+Balance\+Changed}. \Hypertarget{class_economy_manager_a47bd2c61fa4cad6dc07bc359a3035452}\index{EconomyManager@{EconomyManager}!SpendMoney@{SpendMoney}}
+\index{SpendMoney@{SpendMoney}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{SpendMoney()}{SpendMoney()}}
+{\footnotesize\ttfamily \label{class_economy_manager_a47bd2c61fa4cad6dc07bc359a3035452} 
+bool Economy\+Manager.\+Spend\+Money (\begin{DoxyParamCaption}\item[{float}]{amount}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Próbuje wydać określoną kwotę pieniędzy z salda gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em amount} & Kwota do wydania. Musi być wartością dodatnią.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli transakcja się powiodła (wystarczające saldo); {\ttfamily false} jeśli kwota jest niedodatnia lub saldo jest niewystarczające. 
+\end{DoxyReturn}
+
+
+Weryfikuje, czy gracz posiada wystarczające środki przed dokonaniem transakcji. W przypadku powodzenia aktualizuje łączne wydatki, wywołuje zdarzenie \doxylink{class_economy_manager_a32fb9c6c32487f1a0e267ce6720081dc}{On\+Balance\+Changed} i oznacza stan gry jako wymagający zapisu. 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_economy_manager_a0785af2148cef8509d3816f8897725d9}\index{EconomyManager@{EconomyManager}!balance@{balance}}
+\index{balance@{balance}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{balance}{balance}}
+{\footnotesize\ttfamily \label{class_economy_manager_a0785af2148cef8509d3816f8897725d9} 
+float Economy\+Manager.\+balance\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualne saldo gracza w grze. 
+
+\Hypertarget{class_economy_manager_a74ca2ca04eb68f96f2419245bd3df69e}\index{EconomyManager@{EconomyManager}!startingMoney@{startingMoney}}
+\index{startingMoney@{startingMoney}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{startingMoney}{startingMoney}}
+{\footnotesize\ttfamily \label{class_economy_manager_a74ca2ca04eb68f96f2419245bd3df69e} 
+float Economy\+Manager.\+starting\+Money = 100f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Początkowa kwota pieniędzy, z jaką gracz rozpoczyna grę. 
+
+Wartość konfigurowana z poziomu inspektora Unity. Domyślnie ustawiona na 100 jednostek walutowych. \Hypertarget{class_economy_manager_a523fcb1309d6aebec0def0e2573a1c0f}\index{EconomyManager@{EconomyManager}!totalEarned@{totalEarned}}
+\index{totalEarned@{totalEarned}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{totalEarned}{totalEarned}}
+{\footnotesize\ttfamily \label{class_economy_manager_a523fcb1309d6aebec0def0e2573a1c0f} 
+float Economy\+Manager.\+total\+Earned\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Łączna kwota pieniędzy zarobionych przez gracza od początku gry. 
+
+\Hypertarget{class_economy_manager_acbb6da1f3ec779ae1b76ba81aa3ab7f3}\index{EconomyManager@{EconomyManager}!totalSpent@{totalSpent}}
+\index{totalSpent@{totalSpent}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{totalSpent}{totalSpent}}
+{\footnotesize\ttfamily \label{class_economy_manager_acbb6da1f3ec779ae1b76ba81aa3ab7f3} 
+float Economy\+Manager.\+total\+Spent\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Łączna kwota pieniędzy wydanych przez gracza od początku gry. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_economy_manager_ac8982f5c1e081ecaff79fca862537809}\index{EconomyManager@{EconomyManager}!CurrentBalance@{CurrentBalance}}
+\index{CurrentBalance@{CurrentBalance}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{CurrentBalance}{CurrentBalance}}
+{\footnotesize\ttfamily \label{class_economy_manager_ac8982f5c1e081ecaff79fca862537809} 
+float Economy\+Manager.\+Current\+Balance\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Pobiera aktualne saldo gracza. 
+
+Bieżąca wartość salda jako liczba zmiennoprzecinkowa.\Hypertarget{class_economy_manager_a651a4fd5c9bad9b0701ceb89f3526597}\index{EconomyManager@{EconomyManager}!Instance@{Instance}}
+\index{Instance@{Instance}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_economy_manager_a651a4fd5c9bad9b0701ceb89f3526597} 
+\mbox{\hyperlink{class_economy_manager}{Economy\+Manager}} Economy\+Manager.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna instancja Singleton klasy \doxylink{class_economy_manager}{Economy\+Manager}. 
+
+Jedyna instancja menedżera ekonomii dostępna globalnie.\Hypertarget{class_economy_manager_a9fd60b1e5d8ce4a6a0868cf707ed8c08}\index{EconomyManager@{EconomyManager}!TotalEarned@{TotalEarned}}
+\index{TotalEarned@{TotalEarned}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{TotalEarned}{TotalEarned}}
+{\footnotesize\ttfamily \label{class_economy_manager_a9fd60b1e5d8ce4a6a0868cf707ed8c08} 
+float Economy\+Manager.\+Total\+Earned\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Pobiera łączną kwotę zarobionych pieniędzy. 
+
+Suma wszystkich zarobków gracza od początku gry.\Hypertarget{class_economy_manager_a33ce94e96247a575ee91845dc1686950}\index{EconomyManager@{EconomyManager}!TotalSpent@{TotalSpent}}
+\index{TotalSpent@{TotalSpent}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{TotalSpent}{TotalSpent}}
+{\footnotesize\ttfamily \label{class_economy_manager_a33ce94e96247a575ee91845dc1686950} 
+float Economy\+Manager.\+Total\+Spent\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Pobiera łączną kwotę wydanych pieniędzy. 
+
+Suma wszystkich wydatków gracza od początku gry.
+
+\doxysubsection{Dokumentacja zdarzeń}
+\Hypertarget{class_economy_manager_a32fb9c6c32487f1a0e267ce6720081dc}\index{EconomyManager@{EconomyManager}!OnBalanceChanged@{OnBalanceChanged}}
+\index{OnBalanceChanged@{OnBalanceChanged}!EconomyManager@{EconomyManager}}
+\doxysubsubsection{\texorpdfstring{OnBalanceChanged}{OnBalanceChanged}}
+{\footnotesize\ttfamily \label{class_economy_manager_a32fb9c6c32487f1a0e267ce6720081dc} 
+System.\+Action$<$float$>$ Economy\+Manager.\+On\+Balance\+Changed}
+
+
+
+Zdarzenie wywoływane przy każdej zmianie salda gracza. 
+
+Przekazuje nową wartość salda jako parametr typu float. Subskrybenci mogą wykorzystać to zdarzenie do aktualizacji interfejsu użytkownika lub innych systemów zależnych od stanu finansowego gracza. 
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_economy_manager_8cs}{Economy\+Manager.\+cs}}\end{DoxyCompactItemize}

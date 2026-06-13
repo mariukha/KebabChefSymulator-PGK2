@@ -1,26 +1,101 @@
+/// \file KitchenOrderBoard.cs
+/// \brief Plik zawierający klasę KitchenOrderBoard odpowiedzialną za
+/// wyświetlanie tablicy zamówień w kuchni na monitorze 3D.
+/// \details Klasa tworzy programowo model monitora 3D (z ramą, ekranem i
+/// diodą statusu) oraz interfejs Canvas w przestrzeni świata (World Space),
+/// na którym wyświetlane są szczegóły aktualnego zamówienia, lista składników,
+/// statystyki sesji oraz pasek pilności.
+
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Klasa odpowiedzialna za tworzenie i aktualizowanie tablicy zamówień
+/// wyświetlanej na monitorze 3D w scenie kuchni.
+/// </summary>
+/// <remarks>
+/// Monitor składa się z fizycznych bloków 3D (rama, ekran, dioda statusu)
+/// oraz Canvas w trybie World Space wyświetlającego informacje o zamówieniu.
+/// Tablica jest aktualizowana co klatkę i wyświetla: nagłówek "LIVE ORDERS",
+/// dane klienta i zamówienia, listę wymaganych składników, statystyki sesji
+/// oraz animowany pasek pilności zmieniający kolor w zależności od pozostałego czasu.
+/// Inicjalizacja odbywa się przez wywołanie metody <see cref="Initialize"/>.
+/// </remarks>
 public class KitchenOrderBoard : MonoBehaviour
 {
+    /// <summary>
+    /// Tekst nagłówka tablicy zamówień (wyświetla "LIVE ORDERS").
+    /// </summary>
     private Text headerText;
+
+    /// <summary>
+    /// Tekst metadanych zamówienia zawierający nazwę klienta, nazwę dania,
+    /// pozostały czas i kwotę nagrody.
+    /// </summary>
     private Text metaText;
+
+    /// <summary>
+    /// Tekst listy wymaganych składników z oznaczeniami wypunktowanymi.
+    /// </summary>
     private Text ingredientsText;
+
+    /// <summary>
+    /// Tekst stopki wyświetlający statystyki sesji
+    /// (liczba ukończonych i nieudanych zamówień).
+    /// </summary>
     private Text footerText;
+
+    /// <summary>
+    /// Obraz paska pilności zamówienia, którego kolor zmienia się
+    /// w zależności od proporcji pozostałego czasu do całkowitego.
+    /// </summary>
     private Image urgencyBar;
+
+    /// <summary>
+    /// RectTransform paska pilności, używany do dynamicznej zmiany
+    /// szerokości w zależności od postępu czasu zamówienia.
+    /// </summary>
     private RectTransform urgencyBarRect;
+
+    /// <summary>
+    /// Buforowany shader używany do tworzenia materiałów bloków 3D monitora.
+    /// Preferuje URP Lit, awaryjnie Standard.
+    /// </summary>
     private Shader cachedLitShader;
 
+    /// <summary>
+    /// Inicjalizuje tablicę zamówień, tworząc wizualne elementy monitora
+    /// (bloki 3D i Canvas z tekstami).
+    /// </summary>
     public void Initialize()
     {
         CreateMonitorVisuals();
     }
 
+    /// <summary>
+    /// Metoda Unity wywoływana co klatkę.
+    /// Odświeża zawartość tablicy zamówień aktualnymi danymi.
+    /// </summary>
     private void Update()
     {
         RefreshBoard();
     }
 
+    /// <summary>
+    /// Tworzy kompletną wizualizację monitora: bloki 3D (obudowa, rama, ekran,
+    /// krawędź, dioda) oraz Canvas World Space z elementami tekstowymi i paskiem pilności.
+    /// </summary>
+    /// <remarks>
+    /// Monitor ma wymiary około 3.5 x 2.05 jednostek i składa się z wielu warstw:
+    /// - MonitorBack: główna obudowa w ciemnym kolorze,
+    /// - MonitorFrame: rama w nieco jaśniejszym odcieniu,
+    /// - ScreenGlow: powierzchnia ekranu z ciemnym odcieniem niebieskiego,
+    /// - MonitorShadowLip: dolna krawędź cienia,
+    /// - StatusLight: zielona dioda statusu w prawym dolnym rogu.
+    ///
+    /// Canvas jest skalowany do 0.00245 i obrócony o 180° wokół osi Y,
+    /// aby tekst był widoczny od przodu monitora.
+    /// </remarks>
     private void CreateMonitorVisuals()
     {
         CreateBlock("MonitorBack", new Vector3(0f, 0f, 0f), new Vector3(3.5f, 2.05f, 0.16f), new Color(0.06f, 0.06f, 0.07f));
@@ -109,6 +184,17 @@ public class KitchenOrderBoard : MonoBehaviour
         RefreshBoard();
     }
 
+    /// <summary>
+    /// Odświeża zawartość tablicy zamówień danymi z <see cref="OrderManager"/>.
+    /// Aktualizuje nagłówek, metadane zamówienia, listę składników,
+    /// stopkę ze statystykami oraz pasek pilności.
+    /// </summary>
+    /// <remarks>
+    /// Gdy nie ma aktywnego zamówienia, wyświetla komunikat "No active order"
+    /// i ustawia pasek pilności na pełny (zielony).
+    /// Gdy zamówienie jest aktywne, wyświetla szczegółowe informacje
+    /// o kliencie, daniu, nagrodzie i wymaganych składnikach.
+    /// </remarks>
     private void RefreshBoard()
     {
         if (headerText == null)
@@ -177,6 +263,10 @@ public class KitchenOrderBoard : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ustawia postęp paska pilności poprzez zmianę jego szerokości.
+    /// </summary>
+    /// <param name="ratio">Proporcja postępu w zakresie 0-1, gdzie 1 oznacza pełny pasek.</param>
     private void SetUrgencyProgress(float ratio)
     {
         if (urgencyBarRect == null)
@@ -187,6 +277,17 @@ public class KitchenOrderBoard : MonoBehaviour
         urgencyBarRect.sizeDelta = new Vector2(1280f * Mathf.Clamp01(ratio), 26f);
     }
 
+    /// <summary>
+    /// Oblicza kolor paska pilności na podstawie pozostałego czasu zamówienia.
+    /// </summary>
+    /// <param name="remainingTime">Pozostały czas zamówienia w sekundach.</param>
+    /// <param name="fullTime">Całkowity czas przeznaczony na zamówienie w sekundach.</param>
+    /// <returns>
+    /// Kolor paska pilności:
+    /// - Zielony gdy pozostało ponad 50% czasu,
+    /// - Żółty gdy pozostało 25-50% czasu,
+    /// - Czerwony gdy pozostało mniej niż 25% czasu.
+    /// </returns>
     private Color GetUrgencyColor(float remainingTime, float fullTime)
     {
         float ratio = fullTime <= 0.01f ? 1f : Mathf.Clamp01(remainingTime / fullTime);
@@ -203,6 +304,17 @@ public class KitchenOrderBoard : MonoBehaviour
         return new Color(0.92f, 0.24f, 0.2f, 1f);
     }
 
+    /// <summary>
+    /// Tworzy blok 3D (sześcian) jako element fizyczny monitora.
+    /// </summary>
+    /// <param name="objectName">Nazwa obiektu bloku.</param>
+    /// <param name="localPosition">Lokalna pozycja bloku względem rodzica.</param>
+    /// <param name="localScale">Lokalna skala bloku (wymiary).</param>
+    /// <param name="color">Kolor materiału bloku.</param>
+    /// <remarks>
+    /// Używa buforowanego shadera URP Lit (lub Standard jako awaryjnego).
+    /// Tworzony jest nowy materiał z podanym kolorem.
+    /// </remarks>
     private void CreateBlock(string objectName, Vector3 localPosition, Vector3 localScale, Color color)
     {
         GameObject block = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -222,6 +334,15 @@ public class KitchenOrderBoard : MonoBehaviour
         renderer.material.color = color;
     }
 
+    /// <summary>
+    /// Tworzy panel UI z obrazem tła na podanej pozycji i o podanym rozmiarze.
+    /// Element jest zakotwiczony centralnie.
+    /// </summary>
+    /// <param name="parent">Transformata rodzica.</param>
+    /// <param name="objectName">Nazwa obiektu panelu.</param>
+    /// <param name="anchoredPosition">Pozycja zakotwiczona panelu.</param>
+    /// <param name="size">Rozmiar panelu w pikselach.</param>
+    /// <param name="color">Kolor tła panelu.</param>
     private void CreatePanel(Transform parent, string objectName, Vector2 anchoredPosition, Vector2 size, Color color)
     {
         GameObject panelObject = new GameObject(objectName);
@@ -238,6 +359,16 @@ public class KitchenOrderBoard : MonoBehaviour
         rect.sizeDelta = size;
     }
 
+    /// <summary>
+    /// Tworzy element obrazu UI i zwraca jego komponent <see cref="Image"/>.
+    /// Podobna do <see cref="CreatePanel"/>, ale zwraca referencję do komponentu Image.
+    /// </summary>
+    /// <param name="parent">Transformata rodzica.</param>
+    /// <param name="objectName">Nazwa obiektu obrazu.</param>
+    /// <param name="anchoredPosition">Pozycja zakotwiczona obrazu.</param>
+    /// <param name="size">Rozmiar obrazu w pikselach.</param>
+    /// <param name="color">Kolor obrazu.</param>
+    /// <returns>Komponent Image utworzonego elementu.</returns>
     private Image CreateImage(Transform parent, string objectName, Vector2 anchoredPosition, Vector2 size, Color color)
     {
         GameObject imageObject = new GameObject(objectName);
@@ -256,6 +387,24 @@ public class KitchenOrderBoard : MonoBehaviour
         return image;
     }
 
+    /// <summary>
+    /// Tworzy element tekstowy UI z określoną czcionką, rozmiarem, stylem,
+    /// wyrównaniem, pozycją i kolorem. Zakotwiczony w lewym górnym rogu.
+    /// </summary>
+    /// <param name="parent">Transformata rodzica.</param>
+    /// <param name="objectName">Nazwa obiektu tekstowego.</param>
+    /// <param name="font">Czcionka do użycia.</param>
+    /// <param name="fontSize">Rozmiar czcionki w pikselach.</param>
+    /// <param name="fontStyle">Styl czcionki (normalny, pogrubiony itp.).</param>
+    /// <param name="alignment">Wyrównanie tekstu.</param>
+    /// <param name="anchoredPosition">Pozycja zakotwiczona elementu.</param>
+    /// <param name="size">Rozmiar elementu tekstowego.</param>
+    /// <param name="color">Kolor tekstu.</param>
+    /// <returns>Komponent Text utworzonego elementu tekstowego.</returns>
+    /// <remarks>
+    /// Tekst jest konfigurowany z zawijaniem poziomym i przepełnieniem pionowym,
+    /// co pozwala na wyświetlanie wieloliniowych treści.
+    /// </remarks>
     private Text CreateText(
         Transform parent,
         string objectName,

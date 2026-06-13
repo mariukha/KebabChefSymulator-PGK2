@@ -1,0 +1,161 @@
+\doxysection{Dokumentacja klasy Kitchen\+Item}
+\hypertarget{class_kitchen_item}{}\label{class_kitchen_item}\index{KitchenItem@{KitchenItem}}
+
+
+Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać listę zawartych składników w przypadku potrawy złożonej (np. kebab). Jest centralnym obiektem danych przechodzącym przez stacje kuchenne.  
+
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} \mbox{\hyperlink{class_kitchen_item_a4a937722904247ec88289f23d748004f}{Clone}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy głęboką kopię przedmiotu kuchennego, włącznie z listą zawartych składników. Nowy obiekt jest całkowicie niezależny od oryginału. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_kitchen_item_a5a148c2b2ee1bdbd623341d3b3da5cf7}{Build\+Summary}} ()
+\begin{DoxyCompactList}\small\item\em Buduje tekstowe podsumowanie przedmiotu kuchennego. Dla pojedynczego składnika zwraca jego sformatowaną nazwę z uwzględnieniem stanu. Dla potrawy złożonej zwraca nazwę przedmiotu wraz z listą wszystkich składników. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} \mbox{\hyperlink{class_kitchen_item_aac748ff8356cf60147db8b6159e4e235}{From\+Ingredient}} (\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Tworzy nowy przedmiot kuchenny na podstawie danych składnika z assetu \doxylink{class_ingredient_data}{Ingredient\+Data}. Metoda fabryczna konwertująca dane Scriptable\+Object na obiekt runtime. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_kitchen_item_a53b09433d71fa6eeaeaabcc2efd6a263}{item\+Name}}
+\begin{DoxyCompactList}\small\item\em Nazwa przedmiotu kuchennego wyświetlana w interfejsie użytkownika. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \mbox{\hyperlink{class_kitchen_item_ab452df6ceb91c7521ff1f8c3f9071944}{ingredient\+Kind}} = \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f}{Ingredient\+Kind.\+Meat}}
+\begin{DoxyCompactList}\small\item\em Rodzaj składnika, z którego wywodzi się ten przedmiot. Dla potraw złożonych określa główny typ (np. Kebab). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \mbox{\hyperlink{class_kitchen_item_adf09e3c805bb0e05e94ba24e69fd316e}{state}} = \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}{Ingredient\+Process\+State.\+Raw}}
+\begin{DoxyCompactList}\small\item\em Aktualny stan przetworzenia przedmiotu kuchennego. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_item_a7fddae2de79351f32bcbb10be16386b8}{is\+Dish}}
+\begin{DoxyCompactList}\small\item\em Flaga określająca, czy przedmiot jest gotową potrawą (daniem). Wartość {\ttfamily true} oznacza potrawę złożoną z wielu składników, {\ttfamily false} — pojedynczy składnik. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_item_a54efb70bd7493c23931cd6339dcb78ae}{estimated\+Value}}
+\begin{DoxyCompactList}\small\item\em Szacowana wartość przedmiotu w walucie gry. Dla gotowych potraw może być sumą wartości poszczególnych składników. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}} $>$ \mbox{\hyperlink{class_kitchen_item_a17f90ea6bae8d28c174304498d81bf93}{contents}} = new List$<$\mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}}$>$()
+\begin{DoxyCompactList}\small\item\em Lista przygotowanych składników wchodzących w skład potrawy. Wypełniana tylko dla potraw (\doxylink{class_kitchen_item_a7fddae2de79351f32bcbb10be16386b8}{is\+Dish} = {\ttfamily true}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać listę zawartych składników w przypadku potrawy złożonej (np. kebab). Jest centralnym obiektem danych przechodzącym przez stacje kuchenne. 
+
+Pole \doxylink{class_kitchen_item_a7fddae2de79351f32bcbb10be16386b8}{is\+Dish} rozróżnia między pojedynczym składnikiem a gotową potrawą. Gotowa potrawa zawiera listę \doxylink{class_kitchen_item_a17f90ea6bae8d28c174304498d81bf93}{contents} z przygotowanymi składnikami, która jest porównywana z wymaganiami zamówienia przez \doxylink{class_kitchen_order_validator}{Kitchen\+Order\+Validator}. 
+
+\begin{DoxySeeAlso}{Zobacz również}
+\doxylink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}, \doxylink{class_ingredient_data}{Ingredient\+Data}
+
+
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_kitchen_item_a5a148c2b2ee1bdbd623341d3b3da5cf7}\index{KitchenItem@{KitchenItem}!BuildSummary@{BuildSummary}}
+\index{BuildSummary@{BuildSummary}!KitchenItem@{KitchenItem}}
+\doxysubsubsection{\texorpdfstring{BuildSummary()}{BuildSummary()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_a5a148c2b2ee1bdbd623341d3b3da5cf7} 
+string Kitchen\+Item.\+Build\+Summary (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Buduje tekstowe podsumowanie przedmiotu kuchennego. Dla pojedynczego składnika zwraca jego sformatowaną nazwę z uwzględnieniem stanu. Dla potrawy złożonej zwraca nazwę przedmiotu wraz z listą wszystkich składników. 
+
+\begin{DoxyReturn}{Zwraca}
+Czytelny dla człowieka opis przedmiotu, np. "{}\+Kebab\+: Mieso (upieczony), Pomidor, Cebula (pokrojony)"{}. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_item_a4a937722904247ec88289f23d748004f}\index{KitchenItem@{KitchenItem}!Clone@{Clone}}
+\index{Clone@{Clone}!KitchenItem@{KitchenItem}}
+\doxysubsubsection{\texorpdfstring{Clone()}{Clone()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_a4a937722904247ec88289f23d748004f} 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} Kitchen\+Item.\+Clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Tworzy głęboką kopię przedmiotu kuchennego, włącznie z listą zawartych składników. Nowy obiekt jest całkowicie niezależny od oryginału. 
+
+\begin{DoxyReturn}{Zwraca}
+Nowa instancja \doxylink{class_kitchen_item}{Kitchen\+Item} będąca pełną kopią bieżącego przedmiotu.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_item_aac748ff8356cf60147db8b6159e4e235}\index{KitchenItem@{KitchenItem}!FromIngredient@{FromIngredient}}
+\index{FromIngredient@{FromIngredient}!KitchenItem@{KitchenItem}}
+\doxysubsubsection{\texorpdfstring{FromIngredient()}{FromIngredient()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_aac748ff8356cf60147db8b6159e4e235} 
+static \mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} Kitchen\+Item.\+From\+Ingredient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Tworzy nowy przedmiot kuchenny na podstawie danych składnika z assetu \doxylink{class_ingredient_data}{Ingredient\+Data}. Metoda fabryczna konwertująca dane Scriptable\+Object na obiekt runtime. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em data} & Dane składnika (asset Scriptable\+Object). Jeśli {\ttfamily null}, tworzony jest przedmiot z wartościami domyślnymi. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Nowa instancja \doxylink{class_kitchen_item}{Kitchen\+Item} zainicjalizowana danymi ze składnika.
+\end{DoxyReturn}
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_kitchen_item_a17f90ea6bae8d28c174304498d81bf93}\index{KitchenItem@{KitchenItem}!contents@{contents}}
+\index{contents@{contents}!KitchenItem@{KitchenItem}}
+\doxysubsubsection{\texorpdfstring{contents}{contents}}
+{\footnotesize\ttfamily \label{class_kitchen_item_a17f90ea6bae8d28c174304498d81bf93} 
+List$<$\mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}}$>$ Kitchen\+Item.\+contents = new List$<$\mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}}$>$()}
+
+
+
+Lista przygotowanych składników wchodzących w skład potrawy. Wypełniana tylko dla potraw (\doxylink{class_kitchen_item_a7fddae2de79351f32bcbb10be16386b8}{is\+Dish} = {\ttfamily true}). 
+
+\Hypertarget{class_kitchen_item_a54efb70bd7493c23931cd6339dcb78ae}\index{KitchenItem@{KitchenItem}!estimatedValue@{estimatedValue}}
+\index{estimatedValue@{estimatedValue}!KitchenItem@{KitchenItem}}
+\doxysubsubsection{\texorpdfstring{estimatedValue}{estimatedValue}}
+{\footnotesize\ttfamily \label{class_kitchen_item_a54efb70bd7493c23931cd6339dcb78ae} 
+float Kitchen\+Item.\+estimated\+Value}
+
+
+
+Szacowana wartość przedmiotu w walucie gry. Dla gotowych potraw może być sumą wartości poszczególnych składników. 
+
+\Hypertarget{class_kitchen_item_ab452df6ceb91c7521ff1f8c3f9071944}\index{KitchenItem@{KitchenItem}!ingredientKind@{ingredientKind}}
+\index{ingredientKind@{ingredientKind}!KitchenItem@{KitchenItem}}
+\doxysubsubsection{\texorpdfstring{ingredientKind}{ingredientKind}}
+{\footnotesize\ttfamily \label{class_kitchen_item_ab452df6ceb91c7521ff1f8c3f9071944} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} Kitchen\+Item.\+ingredient\+Kind = \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f}{Ingredient\+Kind.\+Meat}}}
+
+
+
+Rodzaj składnika, z którego wywodzi się ten przedmiot. Dla potraw złożonych określa główny typ (np. Kebab). 
+
+\Hypertarget{class_kitchen_item_a7fddae2de79351f32bcbb10be16386b8}\index{KitchenItem@{KitchenItem}!isDish@{isDish}}
+\index{isDish@{isDish}!KitchenItem@{KitchenItem}}
+\doxysubsubsection{\texorpdfstring{isDish}{isDish}}
+{\footnotesize\ttfamily \label{class_kitchen_item_a7fddae2de79351f32bcbb10be16386b8} 
+bool Kitchen\+Item.\+is\+Dish}
+
+
+
+Flaga określająca, czy przedmiot jest gotową potrawą (daniem). Wartość {\ttfamily true} oznacza potrawę złożoną z wielu składników, {\ttfamily false} — pojedynczy składnik. 
+
+\Hypertarget{class_kitchen_item_a53b09433d71fa6eeaeaabcc2efd6a263}\index{KitchenItem@{KitchenItem}!itemName@{itemName}}
+\index{itemName@{itemName}!KitchenItem@{KitchenItem}}
+\doxysubsubsection{\texorpdfstring{itemName}{itemName}}
+{\footnotesize\ttfamily \label{class_kitchen_item_a53b09433d71fa6eeaeaabcc2efd6a263} 
+string Kitchen\+Item.\+item\+Name}
+
+
+
+Nazwa przedmiotu kuchennego wyświetlana w interfejsie użytkownika. 
+
+\Hypertarget{class_kitchen_item_adf09e3c805bb0e05e94ba24e69fd316e}\index{KitchenItem@{KitchenItem}!state@{state}}
+\index{state@{state}!KitchenItem@{KitchenItem}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{class_kitchen_item_adf09e3c805bb0e05e94ba24e69fd316e} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} Kitchen\+Item.\+state = \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}{Ingredient\+Process\+State.\+Raw}}}
+
+
+
+Aktualny stan przetworzenia przedmiotu kuchennego. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_game_models_8cs}{Kitchen\+Game\+Models.\+cs}}\end{DoxyCompactItemize}

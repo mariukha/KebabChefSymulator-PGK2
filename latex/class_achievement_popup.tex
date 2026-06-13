@@ -1,0 +1,314 @@
+\doxysection{Dokumentacja klasy Achievement\+Popup}
+\hypertarget{class_achievement_popup}{}\label{class_achievement_popup}\index{AchievementPopup@{AchievementPopup}}
+Diagram dziedziczenia dla Achievement\+Popup\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_achievement_popup}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_achievement_popup}{Achievement\+Popup}} \mbox{\hyperlink{class_achievement_popup_ad8b64d540ce7908c56f08529ada4c33f}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna instancja Singletona systemu osiągnięć. Umożliwia globalny dostęp do wyświetlania powiadomień o osiągnięciach. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_achievement_popup_a707b1a3fc39e7961358d1d74f756243b}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje Singleton systemu osiągnięć i ładuje czcionkę. Jeśli instancja już istnieje, niszczy duplikat obiektu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_achievement_popup_a6a217d8683d9187eec6f3336d40ce289}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy Canvas do wyświetlania powiadomień o osiągnięciach. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_achievement_popup_af82348e64e49b19ce0d6bf1d31d9cb2c}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Sprawdza kamienie milowe i aktualizuje stan wyświetlanych powiadomień w każdej klatce. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_achievement_popup_a7c1c2482aa470d4eb9fc1ae22fd0bb84}{Check\+Milestones}} ()
+\begin{DoxyCompactList}\small\item\em Sprawdza postęp gracza i próbuje odblokować odpowiednie osiągnięcia. Monitoruje liczbę zrealizowanych zamówień, serie sukcesów, zakupione ulepszenia oraz czy wszystkie ulepszenia osiągnęły maksymalny poziom. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_achievement_popup_a55bae677edc860014ef0f2e50d51073d}{Try\+Unlock}} (string id, string title, string description)
+\begin{DoxyCompactList}\small\item\em Próbuje odblokować osiągnięcie o podanym identyfikatorze. Jeśli osiągnięcie nie było jeszcze odblokowane, dodaje je do kolejki powiadomień. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_achievement_popup_a28845597d918624e6dad2fafd737257b}{Update\+Popup}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje stan aktywnego powiadomienia — animuje wsuwanie, wygaszanie i usuwa powiadomienie po upływie czasu. Jeśli nie ma aktywnego powiadomienia, pobiera następne z kolejki oczekujących. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_achievement_popup_ae3ce540ae58bb95e441e1dd4046545b7}{Show\+Popup}} (string title, string description)
+\begin{DoxyCompactList}\small\item\em Tworzy i wyświetla wizualne powiadomienie o osiągnięciu na ekranie. Powiadomienie składa się z tła, złotego akcentu, tytułu i opisu. Wsuwa się z prawej strony ekranu i odtwarza dźwięk dzwonka. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_achievement_popup_aafa4d48eb26752cda386bade17f3b404}{Create\+Canvas}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy dedykowany Canvas do wyświetlania powiadomień o osiągnięciach. Canvas jest ustawiony w trybie Screen Space Overlay z wysokim porządkiem sortowania (160), aby powiadomienia były widoczne ponad większością elementów UI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_achievement_popup_aae4ac698e5c2a4b1a895fec05154fd5b}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Czyści referencję Singletona przy niszczeniu obiektu, zapobiegając odwoływaniu się do zniszczonej instancji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Canvas \mbox{\hyperlink{class_achievement_popup_a93c2f737785dbdc421463a36532021a1}{achievement\+Canvas}}
+\begin{DoxyCompactList}\small\item\em Canvas używany do renderowania powiadomień o osiągnięciach. Wyświetlany jest w trybie Screen Space Overlay z wysokim porządkiem sortowania. \end{DoxyCompactList}\item 
+Font \mbox{\hyperlink{class_achievement_popup_a16003c24258cccc99cc0360ab729addb}{cached\+Font}}
+\begin{DoxyCompactList}\small\item\em Buforowana czcionka używana do renderowania tekstu w powiadomieniach. Ładowana jest z wbudowanych zasobów Unity. \end{DoxyCompactList}\item 
+readonly Hash\+Set$<$ string $>$ \mbox{\hyperlink{class_achievement_popup_a9726682701d444eefe993f41333d933d}{unlocked}} = new Hash\+Set$<$string$>$()
+\begin{DoxyCompactList}\small\item\em Zbiór identyfikatorów już odblokowanych osiągnięć. Zapobiega wielokrotnemu odblokowania tego samego osiągnięcia. \end{DoxyCompactList}\item 
+readonly Queue$<$ string\mbox{[}$\,$\mbox{]}$>$ \mbox{\hyperlink{class_achievement_popup_aad70e1fe530a541ee368d12106f1ceeb}{pending\+Popups}} = new Queue$<$string\mbox{[}$\,$\mbox{]}$>$()
+\begin{DoxyCompactList}\small\item\em Kolejka oczekujących powiadomień do wyświetlenia. Każdy element to tablica dwuelementowa\+: \mbox{[}tytuł, opis\mbox{]}. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_achievement_popup_a8e92e007ae8cb9ea464210898bad355f}{active\+Popup}}
+\begin{DoxyCompactList}\small\item\em Aktualnie wyświetlany obiekt powiadomienia (popup). Wartość null oznacza brak aktywnego powiadomienia. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_achievement_popup_a31f9a01bf94afcfe3d25ab1e65a17b20}{popup\+Timer}}
+\begin{DoxyCompactList}\small\item\em Licznik czasu pozostałego do zamknięcia aktywnego powiadomienia (w sekundach). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_achievement_popup_a54f91ba3f9c4087c73c501bacdc08a8a}{last\+Completed}}
+\begin{DoxyCompactList}\small\item\em Ostatnia zapamiętana liczba zrealizowanych zamówień. Służy do wykrywania nowych ukończonych zamówień w kolejnych klatkach. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_achievement_popup_a2c73ecfa4b3839f5f5dacc9e068fbc34}{last\+Failed}}
+\begin{DoxyCompactList}\small\item\em Ostatnia zapamiętana liczba nieudanych zamówień. Służy do wykrywania nowych porażek i resetowania serii sukcesów. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_achievement_popup_aac7586bd5c75762e1bf41861cdf6a09b}{consecutive\+Success}}
+\begin{DoxyCompactList}\small\item\em Licznik kolejnych sukcesów bez porażki. Resetowany przy każdym nieudanym zamówieniu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_achievement_popup_ab30871475f463aeda3b591f60f4e0221}{last\+Upgrade\+Count}}
+\begin{DoxyCompactList}\small\item\em Ostatnia zapamiętana łączna liczba zakupionych ulepszeń. Służy do wykrywania nowych zakupów ulepszeń. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+const float \mbox{\hyperlink{class_achievement_popup_adba2ebeab0b309dc6fdedd34b2d3d871}{Popup\+Duration}} = 3.\+5f
+\begin{DoxyCompactList}\small\item\em Czas wyświetlania pojedynczego powiadomienia o osiągnięciu (w sekundach). \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_achievement_popup_a8726b920ae9b5f10eb41706065a49981}{Slide\+Speed}} = 6f
+\begin{DoxyCompactList}\small\item\em Szybkość animacji wsuwania powiadomienia na ekran. Wyższa wartość oznacza szybsze wsunięcie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_achievement_popup_a707b1a3fc39e7961358d1d74f756243b}\index{AchievementPopup@{AchievementPopup}!Awake@{Awake}}
+\index{Awake@{Awake}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a707b1a3fc39e7961358d1d74f756243b} 
+void Achievement\+Popup.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje Singleton systemu osiągnięć i ładuje czcionkę. Jeśli instancja już istnieje, niszczy duplikat obiektu. 
+
+\Hypertarget{class_achievement_popup_a7c1c2482aa470d4eb9fc1ae22fd0bb84}\index{AchievementPopup@{AchievementPopup}!CheckMilestones@{CheckMilestones}}
+\index{CheckMilestones@{CheckMilestones}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{CheckMilestones()}{CheckMilestones()}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a7c1c2482aa470d4eb9fc1ae22fd0bb84} 
+void Achievement\+Popup.\+Check\+Milestones (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sprawdza postęp gracza i próbuje odblokować odpowiednie osiągnięcia. Monitoruje liczbę zrealizowanych zamówień, serie sukcesów, zakupione ulepszenia oraz czy wszystkie ulepszenia osiągnęły maksymalny poziom. 
+
+\Hypertarget{class_achievement_popup_aafa4d48eb26752cda386bade17f3b404}\index{AchievementPopup@{AchievementPopup}!CreateCanvas@{CreateCanvas}}
+\index{CreateCanvas@{CreateCanvas}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{CreateCanvas()}{CreateCanvas()}}
+{\footnotesize\ttfamily \label{class_achievement_popup_aafa4d48eb26752cda386bade17f3b404} 
+void Achievement\+Popup.\+Create\+Canvas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy dedykowany Canvas do wyświetlania powiadomień o osiągnięciach. Canvas jest ustawiony w trybie Screen Space Overlay z wysokim porządkiem sortowania (160), aby powiadomienia były widoczne ponad większością elementów UI. 
+
+\Hypertarget{class_achievement_popup_aae4ac698e5c2a4b1a895fec05154fd5b}\index{AchievementPopup@{AchievementPopup}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_achievement_popup_aae4ac698e5c2a4b1a895fec05154fd5b} 
+void Achievement\+Popup.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Czyści referencję Singletona przy niszczeniu obiektu, zapobiegając odwoływaniu się do zniszczonej instancji. 
+
+\Hypertarget{class_achievement_popup_ae3ce540ae58bb95e441e1dd4046545b7}\index{AchievementPopup@{AchievementPopup}!ShowPopup@{ShowPopup}}
+\index{ShowPopup@{ShowPopup}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{ShowPopup()}{ShowPopup()}}
+{\footnotesize\ttfamily \label{class_achievement_popup_ae3ce540ae58bb95e441e1dd4046545b7} 
+void Achievement\+Popup.\+Show\+Popup (\begin{DoxyParamCaption}\item[{string}]{title}{, }\item[{string}]{description}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy i wyświetla wizualne powiadomienie o osiągnięciu na ekranie. Powiadomienie składa się z tła, złotego akcentu, tytułu i opisu. Wsuwa się z prawej strony ekranu i odtwarza dźwięk dzwonka. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em title} & Tytuł osiągnięcia do wyświetlenia.\\
+\hline
+{\em description} & Opis osiągnięcia do wyświetlenia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_achievement_popup_a6a217d8683d9187eec6f3336d40ce289}\index{AchievementPopup@{AchievementPopup}!Start@{Start}}
+\index{Start@{Start}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a6a217d8683d9187eec6f3336d40ce289} 
+void Achievement\+Popup.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy Canvas do wyświetlania powiadomień o osiągnięciach. 
+
+\Hypertarget{class_achievement_popup_a55bae677edc860014ef0f2e50d51073d}\index{AchievementPopup@{AchievementPopup}!TryUnlock@{TryUnlock}}
+\index{TryUnlock@{TryUnlock}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{TryUnlock()}{TryUnlock()}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a55bae677edc860014ef0f2e50d51073d} 
+void Achievement\+Popup.\+Try\+Unlock (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{title}{, }\item[{string}]{description}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Próbuje odblokować osiągnięcie o podanym identyfikatorze. Jeśli osiągnięcie nie było jeszcze odblokowane, dodaje je do kolejki powiadomień. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em id} & Unikalny identyfikator osiągnięcia.\\
+\hline
+{\em title} & Tytuł osiągnięcia wyświetlany w powiadomieniu.\\
+\hline
+{\em description} & Opis osiągnięcia wyświetlany pod tytułem.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_achievement_popup_af82348e64e49b19ce0d6bf1d31d9cb2c}\index{AchievementPopup@{AchievementPopup}!Update@{Update}}
+\index{Update@{Update}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_achievement_popup_af82348e64e49b19ce0d6bf1d31d9cb2c} 
+void Achievement\+Popup.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sprawdza kamienie milowe i aktualizuje stan wyświetlanych powiadomień w każdej klatce. 
+
+\Hypertarget{class_achievement_popup_a28845597d918624e6dad2fafd737257b}\index{AchievementPopup@{AchievementPopup}!UpdatePopup@{UpdatePopup}}
+\index{UpdatePopup@{UpdatePopup}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{UpdatePopup()}{UpdatePopup()}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a28845597d918624e6dad2fafd737257b} 
+void Achievement\+Popup.\+Update\+Popup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje stan aktywnego powiadomienia — animuje wsuwanie, wygaszanie i usuwa powiadomienie po upływie czasu. Jeśli nie ma aktywnego powiadomienia, pobiera następne z kolejki oczekujących. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_achievement_popup_a93c2f737785dbdc421463a36532021a1}\index{AchievementPopup@{AchievementPopup}!achievementCanvas@{achievementCanvas}}
+\index{achievementCanvas@{achievementCanvas}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{achievementCanvas}{achievementCanvas}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a93c2f737785dbdc421463a36532021a1} 
+Canvas Achievement\+Popup.\+achievement\+Canvas\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Canvas używany do renderowania powiadomień o osiągnięciach. Wyświetlany jest w trybie Screen Space Overlay z wysokim porządkiem sortowania. 
+
+\Hypertarget{class_achievement_popup_a8e92e007ae8cb9ea464210898bad355f}\index{AchievementPopup@{AchievementPopup}!activePopup@{activePopup}}
+\index{activePopup@{activePopup}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{activePopup}{activePopup}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a8e92e007ae8cb9ea464210898bad355f} 
+Game\+Object Achievement\+Popup.\+active\+Popup\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualnie wyświetlany obiekt powiadomienia (popup). Wartość null oznacza brak aktywnego powiadomienia. 
+
+\Hypertarget{class_achievement_popup_a16003c24258cccc99cc0360ab729addb}\index{AchievementPopup@{AchievementPopup}!cachedFont@{cachedFont}}
+\index{cachedFont@{cachedFont}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{cachedFont}{cachedFont}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a16003c24258cccc99cc0360ab729addb} 
+Font Achievement\+Popup.\+cached\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowana czcionka używana do renderowania tekstu w powiadomieniach. Ładowana jest z wbudowanych zasobów Unity. 
+
+\Hypertarget{class_achievement_popup_aac7586bd5c75762e1bf41861cdf6a09b}\index{AchievementPopup@{AchievementPopup}!consecutiveSuccess@{consecutiveSuccess}}
+\index{consecutiveSuccess@{consecutiveSuccess}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{consecutiveSuccess}{consecutiveSuccess}}
+{\footnotesize\ttfamily \label{class_achievement_popup_aac7586bd5c75762e1bf41861cdf6a09b} 
+int Achievement\+Popup.\+consecutive\+Success\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Licznik kolejnych sukcesów bez porażki. Resetowany przy każdym nieudanym zamówieniu. 
+
+\Hypertarget{class_achievement_popup_a54f91ba3f9c4087c73c501bacdc08a8a}\index{AchievementPopup@{AchievementPopup}!lastCompleted@{lastCompleted}}
+\index{lastCompleted@{lastCompleted}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{lastCompleted}{lastCompleted}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a54f91ba3f9c4087c73c501bacdc08a8a} 
+int Achievement\+Popup.\+last\+Completed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatnia zapamiętana liczba zrealizowanych zamówień. Służy do wykrywania nowych ukończonych zamówień w kolejnych klatkach. 
+
+\Hypertarget{class_achievement_popup_a2c73ecfa4b3839f5f5dacc9e068fbc34}\index{AchievementPopup@{AchievementPopup}!lastFailed@{lastFailed}}
+\index{lastFailed@{lastFailed}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{lastFailed}{lastFailed}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a2c73ecfa4b3839f5f5dacc9e068fbc34} 
+int Achievement\+Popup.\+last\+Failed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatnia zapamiętana liczba nieudanych zamówień. Służy do wykrywania nowych porażek i resetowania serii sukcesów. 
+
+\Hypertarget{class_achievement_popup_ab30871475f463aeda3b591f60f4e0221}\index{AchievementPopup@{AchievementPopup}!lastUpgradeCount@{lastUpgradeCount}}
+\index{lastUpgradeCount@{lastUpgradeCount}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{lastUpgradeCount}{lastUpgradeCount}}
+{\footnotesize\ttfamily \label{class_achievement_popup_ab30871475f463aeda3b591f60f4e0221} 
+int Achievement\+Popup.\+last\+Upgrade\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatnia zapamiętana łączna liczba zakupionych ulepszeń. Służy do wykrywania nowych zakupów ulepszeń. 
+
+\Hypertarget{class_achievement_popup_aad70e1fe530a541ee368d12106f1ceeb}\index{AchievementPopup@{AchievementPopup}!pendingPopups@{pendingPopups}}
+\index{pendingPopups@{pendingPopups}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{pendingPopups}{pendingPopups}}
+{\footnotesize\ttfamily \label{class_achievement_popup_aad70e1fe530a541ee368d12106f1ceeb} 
+readonly Queue$<$string\mbox{[}$\,$\mbox{]}$>$ Achievement\+Popup.\+pending\+Popups = new Queue$<$string\mbox{[}$\,$\mbox{]}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Kolejka oczekujących powiadomień do wyświetlenia. Każdy element to tablica dwuelementowa\+: \mbox{[}tytuł, opis\mbox{]}. 
+
+\Hypertarget{class_achievement_popup_adba2ebeab0b309dc6fdedd34b2d3d871}\index{AchievementPopup@{AchievementPopup}!PopupDuration@{PopupDuration}}
+\index{PopupDuration@{PopupDuration}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{PopupDuration}{PopupDuration}}
+{\footnotesize\ttfamily \label{class_achievement_popup_adba2ebeab0b309dc6fdedd34b2d3d871} 
+const float Achievement\+Popup.\+Popup\+Duration = 3.\+5f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Czas wyświetlania pojedynczego powiadomienia o osiągnięciu (w sekundach). 
+
+\Hypertarget{class_achievement_popup_a31f9a01bf94afcfe3d25ab1e65a17b20}\index{AchievementPopup@{AchievementPopup}!popupTimer@{popupTimer}}
+\index{popupTimer@{popupTimer}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{popupTimer}{popupTimer}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a31f9a01bf94afcfe3d25ab1e65a17b20} 
+float Achievement\+Popup.\+popup\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Licznik czasu pozostałego do zamknięcia aktywnego powiadomienia (w sekundach). 
+
+\Hypertarget{class_achievement_popup_a8726b920ae9b5f10eb41706065a49981}\index{AchievementPopup@{AchievementPopup}!SlideSpeed@{SlideSpeed}}
+\index{SlideSpeed@{SlideSpeed}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{SlideSpeed}{SlideSpeed}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a8726b920ae9b5f10eb41706065a49981} 
+const float Achievement\+Popup.\+Slide\+Speed = 6f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Szybkość animacji wsuwania powiadomienia na ekran. Wyższa wartość oznacza szybsze wsunięcie. 
+
+\Hypertarget{class_achievement_popup_a9726682701d444eefe993f41333d933d}\index{AchievementPopup@{AchievementPopup}!unlocked@{unlocked}}
+\index{unlocked@{unlocked}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{unlocked}{unlocked}}
+{\footnotesize\ttfamily \label{class_achievement_popup_a9726682701d444eefe993f41333d933d} 
+readonly Hash\+Set$<$string$>$ Achievement\+Popup.\+unlocked = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Zbiór identyfikatorów już odblokowanych osiągnięć. Zapobiega wielokrotnemu odblokowania tego samego osiągnięcia. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_achievement_popup_ad8b64d540ce7908c56f08529ada4c33f}\index{AchievementPopup@{AchievementPopup}!Instance@{Instance}}
+\index{Instance@{Instance}!AchievementPopup@{AchievementPopup}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_achievement_popup_ad8b64d540ce7908c56f08529ada4c33f} 
+\mbox{\hyperlink{class_achievement_popup}{Achievement\+Popup}} Achievement\+Popup.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna instancja Singletona systemu osiągnięć. Umożliwia globalny dostęp do wyświetlania powiadomień o osiągnięciach. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+UI/\mbox{\hyperlink{_achievement_popup_8cs}{Achievement\+Popup.\+cs}}\end{DoxyCompactItemize}

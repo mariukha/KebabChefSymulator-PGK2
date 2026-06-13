@@ -1,0 +1,2594 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy KitchenHUD</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="#pri-static-attribs">Statyczne atrybuty prywatne</a> &#124;
+<a href="class_kitchen_h_u_d-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy KitchenHUD</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa zarządzająca interfejsem HUD w scenie kuchni. Odpowiada za tworzenie i aktualizowanie wszystkich elementów UI widocznych podczas rozgrywki, w tym: paska salda, informacji o trzymanym przedmiocie, licznika zamówień, celownika, powiadomień oraz timera pilności zamówienia.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla KitchenHUD</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_kitchen_h_u_d.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:a146739bde4b65b5d745fed99f7b88871" id="r_a146739bde4b65b5d745fed99f7b88871"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a146739bde4b65b5d745fed99f7b88871">Awake</a> ()</td></tr>
+<tr class="memdesc:a146739bde4b65b5d745fed99f7b88871"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda Unity wywoływana podczas inicjalizacji obiektu. Tworzy cały interfejs HUD wywołując <a class="el" href="#a88fb03720ff95df03edf2f230a81cb5c" title="Tworzy programowo cały interfejs HUD, w tym Canvas, górny pasek statusu, pasek ulepszeń,...">CreateCanvas</a>.  <br /></td></tr>
+<tr class="separator:a146739bde4b65b5d745fed99f7b88871"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae202f3fd38d71b8ec9635e6efda8a097" id="r_ae202f3fd38d71b8ec9635e6efda8a097"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae202f3fd38d71b8ec9635e6efda8a097">Update</a> ()</td></tr>
+<tr class="memdesc:ae202f3fd38d71b8ec9635e6efda8a097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda Unity wywoływana co klatkę. Wyszukuje gracza sieciowego, buforuje referencje do UI sklepu i lobby, a następnie odświeża wszystkie elementy HUD jeśli lobby nie jest otwarte.  <br /></td></tr>
+<tr class="separator:ae202f3fd38d71b8ec9635e6efda8a097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88fb03720ff95df03edf2f230a81cb5c" id="r_a88fb03720ff95df03edf2f230a81cb5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88fb03720ff95df03edf2f230a81cb5c">CreateCanvas</a> ()</td></tr>
+<tr class="memdesc:a88fb03720ff95df03edf2f230a81cb5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy programowo cały interfejs HUD, w tym Canvas, górny pasek statusu, pasek ulepszeń, panel podpowiedzi, powiadomienie toast, celownik, pływający tekst pieniędzy, panel timera zamówienia oraz tekst combo.  <br /></td></tr>
+<tr class="separator:a88fb03720ff95df03edf2f230a81cb5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c7242fd7c8d751e837b2b81bbd41bf6" id="r_a0c7242fd7c8d751e837b2b81bbd41bf6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c7242fd7c8d751e837b2b81bbd41bf6">CreateModernCrosshair</a> (Transform parent)</td></tr>
+<tr class="memdesc:a0c7242fd7c8d751e837b2b81bbd41bf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy nowoczesny celownik składający się z czterech linii (góra, dół, lewo, prawo) oraz centralnej kropki.  <br /></td></tr>
+<tr class="separator:a0c7242fd7c8d751e837b2b81bbd41bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8fc1b14c58ca349ff8f1598a278c4d1" id="r_ac8fc1b14c58ca349ff8f1598a278c4d1"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8fc1b14c58ca349ff8f1598a278c4d1">CreateCrosshairLine</a> (RectTransform parent, string name, Vector2 position, Vector2 size)</td></tr>
+<tr class="memdesc:ac8fc1b14c58ca349ff8f1598a278c4d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy pojedynczą linię (element) celownika jako prostokątny obraz UI.  <br /></td></tr>
+<tr class="separator:ac8fc1b14c58ca349ff8f1598a278c4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5d827f0ea5b4c6d14bdf5feab8e4d67" id="r_aa5d827f0ea5b4c6d14bdf5feab8e4d67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5d827f0ea5b4c6d14bdf5feab8e4d67">UpdateCrosshair</a> (bool hasTarget, bool shopOpen)</td></tr>
+<tr class="memdesc:aa5d827f0ea5b4c6d14bdf5feab8e4d67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje wygląd celownika w zależności od tego czy gracz celuje w interaktywny obiekt oraz czy sklep jest otwarty.  <br /></td></tr>
+<tr class="separator:aa5d827f0ea5b4c6d14bdf5feab8e4d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d13233f27ee9174503e542fea65ab86" id="r_a4d13233f27ee9174503e542fea65ab86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d13233f27ee9174503e542fea65ab86">UpdateStreak</a> (int completed, int failed)</td></tr>
+<tr class="memdesc:a4d13233f27ee9174503e542fea65ab86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje wyświetlanie serii (combo) zamówień ukończonych z rzędu. Zwiększa serię przy nowych ukończeniach, resetuje przy niepowodzeniu, i animuje tekst z efektem pulsowania.  <br /></td></tr>
+<tr class="separator:a4d13233f27ee9174503e542fea65ab86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1509ef4e8a0eb40360c34223ffb21f7" id="r_aa1509ef4e8a0eb40360c34223ffb21f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1509ef4e8a0eb40360c34223ffb21f7">UpdateUrgencyTimer</a> ()</td></tr>
+<tr class="memdesc:aa1509ef4e8a0eb40360c34223ffb21f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje timer pilności aktualnego zamówienia. Wyświetla pozostały czas i zmienia kolor w zależności od pilności: zielony (&gt;20s), złoty (10-20s), migający czerwony (&lt;10s).  <br /></td></tr>
+<tr class="separator:aa1509ef4e8a0eb40360c34223ffb21f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafce49ecfc1e77d6c355d059e4589bc1" id="r_aafce49ecfc1e77d6c355d059e4589bc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafce49ecfc1e77d6c355d059e4589bc1">UpdateControlHintText</a> ()</td></tr>
+<tr class="memdesc:aafce49ecfc1e77d6c355d059e4589bc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje tekst podpowiedzi sterowania w zależności od trybu gry. W trybie solo wyświetla mniej opcji (bez F1: Lobby).  <br /></td></tr>
+<tr class="separator:aafce49ecfc1e77d6c355d059e4589bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38d2745701e9f619db528125b10b766b" id="r_a38d2745701e9f619db528125b10b766b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38d2745701e9f619db528125b10b766b">RefreshTexts</a> ()</td></tr>
+<tr class="memdesc:a38d2745701e9f619db528125b10b766b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odświeża wszystkie teksty i elementy HUD, w tym saldo, trzymany przedmiot, statystyki sesji, podpowiedzi, celownik, ulepszenia oraz efekty wizualne.  <br /></td></tr>
+<tr class="separator:a38d2745701e9f619db528125b10b766b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad27dccd1a4737d1f2e94ac3d78f62cf1" id="r_ad27dccd1a4737d1f2e94ac3d78f62cf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad27dccd1a4737d1f2e94ac3d78f62cf1">ShowFloatingMoney</a> (float amount)</td></tr>
+<tr class="memdesc:ad27dccd1a4737d1f2e94ac3d78f62cf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyświetla pływający tekst z informacją o zdobytej kwocie pieniędzy. Tekst unosi się w górę i zanika w ciągu 1.6 sekundy.  <br /></td></tr>
+<tr class="separator:ad27dccd1a4737d1f2e94ac3d78f62cf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9200639616eed80c884eadd0e6c8dc33" id="r_a9200639616eed80c884eadd0e6c8dc33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9200639616eed80c884eadd0e6c8dc33">ShowFeedbackToast</a> (string message)</td></tr>
+<tr class="memdesc:a9200639616eed80c884eadd0e6c8dc33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyświetla powiadomienie toast z podanym komunikatem. Ignoruje duplikaty tego samego komunikatu.  <br /></td></tr>
+<tr class="separator:a9200639616eed80c884eadd0e6c8dc33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2e011be5055631894c479836477dc2d" id="r_aa2e011be5055631894c479836477dc2d"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2e011be5055631894c479836477dc2d">GetToastColor</a> (string message)</td></tr>
+<tr class="memdesc:aa2e011be5055631894c479836477dc2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Określa kolor akcentu powiadomienia toast na podstawie treści komunikatu.  <br /></td></tr>
+<tr class="separator:aa2e011be5055631894c479836477dc2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b297a8817021732757f0a34c1a21f0e" id="r_a9b297a8817021732757f0a34c1a21f0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b297a8817021732757f0a34c1a21f0e">UpdateToastAnimation</a> ()</td></tr>
+<tr class="memdesc:a9b297a8817021732757f0a34c1a21f0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Animuje pojawianie i zanikanie powiadomienia toast. Obsługuje interpolację przezroczystości, pozycji i skali panelu.  <br /></td></tr>
+<tr class="separator:a9b297a8817021732757f0a34c1a21f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9452cf05951796a5e31b02be2f6bd3c2" id="r_a9452cf05951796a5e31b02be2f6bd3c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9452cf05951796a5e31b02be2f6bd3c2">UpdateFloatingMoney</a> ()</td></tr>
+<tr class="memdesc:a9452cf05951796a5e31b02be2f6bd3c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Animuje pływający tekst pieniędzy: unosi go w górę, skaluje rozmiar czcionki sinusoidalnie i stopniowo zanika.  <br /></td></tr>
+<tr class="separator:a9452cf05951796a5e31b02be2f6bd3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a019f0e45c3855e48286bd6fbd7fe0077" id="r_a019f0e45c3855e48286bd6fbd7fe0077"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a019f0e45c3855e48286bd6fbd7fe0077">UpdateUpgradeStatus</a> ()</td></tr>
+<tr class="memdesc:a019f0e45c3855e48286bd6fbd7fe0077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje pasek statusu ulepszeń, wyświetlając aktywne bonusy zakupione w sklepie (szybkość grilla, szybkość krojenia, bonus nagrody, dodatkowy czas, wielkość porcji mięsa).  <br /></td></tr>
+<tr class="separator:a019f0e45c3855e48286bd6fbd7fe0077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7765621e10da6253c2be5a79b3797607" id="r_a7765621e10da6253c2be5a79b3797607"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7765621e10da6253c2be5a79b3797607">Truncate</a> (string value, int maxLength)</td></tr>
+<tr class="memdesc:a7765621e10da6253c2be5a79b3797607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obcina tekst do podanej maksymalnej długości, dodając wielokropek ("...") jeśli tekst jest dłuższy.  <br /></td></tr>
+<tr class="separator:a7765621e10da6253c2be5a79b3797607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af84c0cee6cdd0c4c668810a5985a079b" id="r_af84c0cee6cdd0c4c668810a5985a079b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af84c0cee6cdd0c4c668810a5985a079b">AddTextShadow</a> (Text sourceText)</td></tr>
+<tr class="memdesc:af84c0cee6cdd0c4c668810a5985a079b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dodaje komponent cienia (Shadow) do elementu tekstowego dla lepszej czytelności na różnych tłach.  <br /></td></tr>
+<tr class="separator:af84c0cee6cdd0c4c668810a5985a079b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66b8797f5fd5a947911746303801dff4" id="r_a66b8797f5fd5a947911746303801dff4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66b8797f5fd5a947911746303801dff4">CreateSectionDivider</a> (Transform parent, string objectName, Vector2 anchor)</td></tr>
+<tr class="memdesc:a66b8797f5fd5a947911746303801dff4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy pionowy separator sekcji w pasku statusu.  <br /></td></tr>
+<tr class="separator:a66b8797f5fd5a947911746303801dff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74a1fca0f23020a29538aa56fd3596ea" id="r_a74a1fca0f23020a29538aa56fd3596ea"><td class="memItemLeft" align="right" valign="top">RectTransform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74a1fca0f23020a29538aa56fd3596ea">CreateRoundedPill</a> (Transform parent, string objectName, Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot, Vector2 anchoredPosition, Vector2 size, Color backgroundColor)</td></tr>
+<tr class="memdesc:a74a1fca0f23020a29538aa56fd3596ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy zaokrąglony panel "pigułkowy" (pill). W aktualnej implementacji deleguje do <a class="el" href="#ad3ac3546caffd26802f07596dc928773" title="Tworzy prostokątny panel UI z obrazem tła. Podstawowa metoda budowania elementów interfejsu HUD.">CreatePanel</a> bez dodatkowej stylizacji.  <br /></td></tr>
+<tr class="separator:a74a1fca0f23020a29538aa56fd3596ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3ac3546caffd26802f07596dc928773" id="r_ad3ac3546caffd26802f07596dc928773"><td class="memItemLeft" align="right" valign="top">RectTransform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3ac3546caffd26802f07596dc928773">CreatePanel</a> (Transform parent, string objectName, Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot, Vector2 anchoredPosition, Vector2 size, Color backgroundColor)</td></tr>
+<tr class="memdesc:ad3ac3546caffd26802f07596dc928773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy prostokątny panel UI z obrazem tła. Podstawowa metoda budowania elementów interfejsu HUD.  <br /></td></tr>
+<tr class="separator:ad3ac3546caffd26802f07596dc928773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d76fa3ecea1e24ab8a4262f377cbfaf" id="r_a2d76fa3ecea1e24ab8a4262f377cbfaf"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d76fa3ecea1e24ab8a4262f377cbfaf">CreateText</a> (Transform parent, string objectName, Font font, int fontSize, TextAnchor alignment, Vector2 anchoredPosition, Vector2 size, FontStyle fontStyle, Color color)</td></tr>
+<tr class="memdesc:a2d76fa3ecea1e24ab8a4262f377cbfaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy element tekstowy UI z domyślnym zakotwiczeniem w lewym górnym rogu. Uproszczona wersja pełnej metody <a class="el" href="#ab16e025b860dac663cd096d9a6723442" title="Tworzy element tekstowy UI z pełną kontrolą nad zakotwiczeniem i pozycjonowaniem.">CreateText(Transform, string, Font, int, TextAnchor, Vector2, Vector2, Vector2, Vector2, Vector2, FontStyle, Color)</a>.  <br /></td></tr>
+<tr class="separator:a2d76fa3ecea1e24ab8a4262f377cbfaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab16e025b860dac663cd096d9a6723442" id="r_ab16e025b860dac663cd096d9a6723442"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab16e025b860dac663cd096d9a6723442">CreateText</a> (Transform parent, string objectName, Font font, int fontSize, TextAnchor alignment, Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot, Vector2 anchoredPosition, Vector2 size, FontStyle fontStyle, Color color)</td></tr>
+<tr class="memdesc:ab16e025b860dac663cd096d9a6723442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy element tekstowy UI z pełną kontrolą nad zakotwiczeniem i pozycjonowaniem.  <br /></td></tr>
+<tr class="separator:ab16e025b860dac663cd096d9a6723442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:afb4983f1365d0ba9ad261b399ba3ddce" id="r_afb4983f1365d0ba9ad261b399ba3ddce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player_interaction.html">PlayerInteraction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb4983f1365d0ba9ad261b399ba3ddce">playerInteraction</a></td></tr>
+<tr class="memdesc:afb4983f1365d0ba9ad261b399ba3ddce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Referencja do komponentu interakcji gracza, używana do pobierania informacji o trzymanym przedmiocie i aktualnych podpowiedziach.  <br /></td></tr>
+<tr class="separator:afb4983f1365d0ba9ad261b399ba3ddce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d0823107f543b65c0eea9ac461283bf" id="r_a6d0823107f543b65c0eea9ac461283bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_shop_u_i.html">ShopUI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d0823107f543b65c0eea9ac461283bf">cachedShopUI</a></td></tr>
+<tr class="memdesc:a6d0823107f543b65c0eea9ac461283bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowana referencja do interfejsu sklepu, wykorzystywana do sprawdzania czy sklep jest aktualnie otwarty.  <br /></td></tr>
+<tr class="separator:a6d0823107f543b65c0eea9ac461283bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac00c0472deed39afb600a75c57b22f3c" id="r_ac00c0472deed39afb600a75c57b22f3c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_lobby_u_i.html">LobbyUI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac00c0472deed39afb600a75c57b22f3c">cachedLobbyUI</a></td></tr>
+<tr class="memdesc:ac00c0472deed39afb600a75c57b22f3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowana referencja do interfejsu lobby, wykorzystywana do sprawdzania czy widok lobby jest aktualnie otwarty.  <br /></td></tr>
+<tr class="separator:ac00c0472deed39afb600a75c57b22f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff0484605b9e6b7c7e7ff02a8cc4f378" id="r_aff0484605b9e6b7c7e7ff02a8cc4f378"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff0484605b9e6b7c7e7ff02a8cc4f378">lastPlayerSearchTime</a></td></tr>
+<tr class="memdesc:aff0484605b9e6b7c7e7ff02a8cc4f378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Znacznik czasowy ostatniego wyszukiwania gracza w scenie. Zapobiega wyszukiwaniu co klatkę, ograniczając je do co 1 sekundy.  <br /></td></tr>
+<tr class="separator:aff0484605b9e6b7c7e7ff02a8cc4f378"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae171dc43d5c5ab34bed8c8ca76c44929" id="r_ae171dc43d5c5ab34bed8c8ca76c44929"><td class="memItemLeft" align="right" valign="top">Canvas&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae171dc43d5c5ab34bed8c8ca76c44929">hudCanvas</a></td></tr>
+<tr class="memdesc:ae171dc43d5c5ab34bed8c8ca76c44929"><td class="mdescLeft">&#160;</td><td class="mdescRight">Główny Canvas HUD na którym umieszczone są wszystkie elementy interfejsu. Renderowany jako ScreenSpaceOverlay z sortingOrder 10.  <br /></td></tr>
+<tr class="separator:ae171dc43d5c5ab34bed8c8ca76c44929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e5ec619938d29c5ccb0b99b90a84245" id="r_a2e5ec619938d29c5ccb0b99b90a84245"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e5ec619938d29c5ccb0b99b90a84245">balanceText</a></td></tr>
+<tr class="memdesc:a2e5ec619938d29c5ccb0b99b90a84245"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst wyświetlający aktualne saldo gracza w złotówkach. Umieszczony w lewej części górnego paska.  <br /></td></tr>
+<tr class="separator:a2e5ec619938d29c5ccb0b99b90a84245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab167cc5afeb6ec427514ffc97f439908" id="r_ab167cc5afeb6ec427514ffc97f439908"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab167cc5afeb6ec427514ffc97f439908">heldItemText</a></td></tr>
+<tr class="memdesc:ab167cc5afeb6ec427514ffc97f439908"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst wyświetlający opis aktualnie trzymanego przez gracza przedmiotu. Umieszczony centralnie w górnym pasku.  <br /></td></tr>
+<tr class="separator:ab167cc5afeb6ec427514ffc97f439908"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3245c0f6b0aa8bd765bb2f0bb111bf6b" id="r_a3245c0f6b0aa8bd765bb2f0bb111bf6b"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3245c0f6b0aa8bd765bb2f0bb111bf6b">sessionText</a></td></tr>
+<tr class="memdesc:a3245c0f6b0aa8bd765bb2f0bb111bf6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst wyświetlający statystyki sesji (ukończone/nieudane zamówienia). Umieszczony w prawej części górnego paska.  <br /></td></tr>
+<tr class="separator:a3245c0f6b0aa8bd765bb2f0bb111bf6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e4cd6ab7965236b1ab80a4fa16e949a" id="r_a7e4cd6ab7965236b1ab80a4fa16e949a"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e4cd6ab7965236b1ab80a4fa16e949a">promptText</a></td></tr>
+<tr class="memdesc:a7e4cd6ab7965236b1ab80a4fa16e949a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst podpowiedzi interakcji wyświetlany w dolnej części ekranu. Pokazuje akcję dostępną do wykonania (np. "Podnieś", "Odłóż").  <br /></td></tr>
+<tr class="separator:a7e4cd6ab7965236b1ab80a4fa16e949a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f4c594f19b516bbf583a09ae75207d8" id="r_a5f4c594f19b516bbf583a09ae75207d8"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f4c594f19b516bbf583a09ae75207d8">feedbackText</a></td></tr>
+<tr class="memdesc:a5f4c594f19b516bbf583a09ae75207d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst komunikatu zwrotnego wyświetlany w powiadomieniu toast.  <br /></td></tr>
+<tr class="separator:a5f4c594f19b516bbf583a09ae75207d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae56614266dff2732cb961833d969b37d" id="r_ae56614266dff2732cb961833d969b37d"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae56614266dff2732cb961833d969b37d">shopHintText</a></td></tr>
+<tr class="memdesc:ae56614266dff2732cb961833d969b37d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst podpowiedzi skrótów klawiszowych (B: Sklep, TAB: Gracze itp.). Umieszczony w prawym dolnym rogu ekranu.  <br /></td></tr>
+<tr class="separator:ae56614266dff2732cb961833d969b37d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbf2fa41af78515107a754dc1c196ac5" id="r_abbf2fa41af78515107a754dc1c196ac5"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbf2fa41af78515107a754dc1c196ac5">upgradeStatusText</a></td></tr>
+<tr class="memdesc:abbf2fa41af78515107a754dc1c196ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst wyświetlający aktualnie aktywne bonusy z ulepszeń sklepu. Widoczny tylko gdy gracz zakupił co najmniej jedno ulepszenie.  <br /></td></tr>
+<tr class="separator:abbf2fa41af78515107a754dc1c196ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a5d7d5a8875d26de9d31e2c15c7e149" id="r_a6a5d7d5a8875d26de9d31e2c15c7e149"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a5d7d5a8875d26de9d31e2c15c7e149">promptBackground</a></td></tr>
+<tr class="memdesc:a6a5d7d5a8875d26de9d31e2c15c7e149"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obraz tła panelu podpowiedzi interakcji. Ukrywany gdy nie ma aktywnej podpowiedzi do wyświetlenia.  <br /></td></tr>
+<tr class="separator:a6a5d7d5a8875d26de9d31e2c15c7e149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45a059076c0402d5c4abfce0f0186a20" id="r_a45a059076c0402d5c4abfce0f0186a20"><td class="memItemLeft" align="right" valign="top">RectTransform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45a059076c0402d5c4abfce0f0186a20">upgradeBar</a></td></tr>
+<tr class="memdesc:a45a059076c0402d5c4abfce0f0186a20"><td class="mdescLeft">&#160;</td><td class="mdescRight">RectTransform paska ulepszeń, pozwalający na pokazywanie/ukrywanie całego panelu statusu ulepszeń.  <br /></td></tr>
+<tr class="separator:a45a059076c0402d5c4abfce0f0186a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7e0be6b1651c029c61ad6c0647e2ddd" id="r_aa7e0be6b1651c029c61ad6c0647e2ddd"><td class="memItemLeft" align="right" valign="top">RectTransform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7e0be6b1651c029c61ad6c0647e2ddd">toastPanel</a></td></tr>
+<tr class="memdesc:aa7e0be6b1651c029c61ad6c0647e2ddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">RectTransform panelu powiadomień toast, używany do animacji pozycji i skali podczas pojawiania się i zanikania.  <br /></td></tr>
+<tr class="separator:aa7e0be6b1651c029c61ad6c0647e2ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9ad434d3a0fe79eb03588b052f7cdd7" id="r_af9ad434d3a0fe79eb03588b052f7cdd7"><td class="memItemLeft" align="right" valign="top">CanvasGroup&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9ad434d3a0fe79eb03588b052f7cdd7">toastCanvasGroup</a></td></tr>
+<tr class="memdesc:af9ad434d3a0fe79eb03588b052f7cdd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grupa Canvas panelu toast, kontrolująca przezroczystość całego powiadomienia podczas animacji pojawiania/zanikania.  <br /></td></tr>
+<tr class="separator:af9ad434d3a0fe79eb03588b052f7cdd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ea81ce1f20c0c37f26e89f10ae0875f" id="r_a2ea81ce1f20c0c37f26e89f10ae0875f"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ea81ce1f20c0c37f26e89f10ae0875f">toastAccentImage</a></td></tr>
+<tr class="memdesc:a2ea81ce1f20c0c37f26e89f10ae0875f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obraz akcentowej linii z boku powiadomienia toast. Jego kolor zmienia się w zależności od typu komunikatu.  <br /></td></tr>
+<tr class="separator:a2ea81ce1f20c0c37f26e89f10ae0875f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac69e9d856e8cf1945f7f141d99edd9c9" id="r_ac69e9d856e8cf1945f7f141d99edd9c9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac69e9d856e8cf1945f7f141d99edd9c9">toastTimer</a></td></tr>
+<tr class="memdesc:ac69e9d856e8cf1945f7f141d99edd9c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer odliczający czas wyświetlania powiadomienia toast. Gdy spadnie do zera, powiadomienie zaczyna zanikać.  <br /></td></tr>
+<tr class="separator:ac69e9d856e8cf1945f7f141d99edd9c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a0ccd66b50383f700cc4647b495911f" id="r_a1a0ccd66b50383f700cc4647b495911f"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a0ccd66b50383f700cc4647b495911f">lastToastMessage</a> = string.Empty</td></tr>
+<tr class="memdesc:a1a0ccd66b50383f700cc4647b495911f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ostatni wyświetlony komunikat toast. Zapobiega wielokrotnemu wyświetlaniu tego samego komunikatu.  <br /></td></tr>
+<tr class="separator:a1a0ccd66b50383f700cc4647b495911f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f72efa329818e9d30c0285af5c695ae" id="r_a9f72efa329818e9d30c0285af5c695ae"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f72efa329818e9d30c0285af5c695ae">toastAccentColor</a> = <a class="el" href="#aa0448ef360ba67a68c627d8405e68748">AccentGold</a></td></tr>
+<tr class="memdesc:a9f72efa329818e9d30c0285af5c695ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualny kolor akcentu powiadomienia toast, ustalany na podstawie treści komunikatu (czerwony dla błędów, zielony dla sukcesów itp.).  <br /></td></tr>
+<tr class="separator:a9f72efa329818e9d30c0285af5c695ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426d7e4bb6190b9f5394197a0e14a780" id="r_a426d7e4bb6190b9f5394197a0e14a780"><td class="memItemLeft" align="right" valign="top">RectTransform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a426d7e4bb6190b9f5394197a0e14a780">crosshairContainer</a></td></tr>
+<tr class="memdesc:a426d7e4bb6190b9f5394197a0e14a780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kontener RectTransform celownika, zawierający wszystkie linie i kropkę. Ukrywany gdy sklep jest otwarty.  <br /></td></tr>
+<tr class="separator:a426d7e4bb6190b9f5394197a0e14a780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62f7393b698e3c3405526902d367e183" id="r_a62f7393b698e3c3405526902d367e183"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62f7393b698e3c3405526902d367e183">crosshairTop</a></td></tr>
+<tr class="memdesc:a62f7393b698e3c3405526902d367e183"><td class="mdescLeft">&#160;</td><td class="mdescRight">Górna linia celownika.  <br /></td></tr>
+<tr class="separator:a62f7393b698e3c3405526902d367e183"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fc8ded1658bccd471ad0c894ed751cd" id="r_a9fc8ded1658bccd471ad0c894ed751cd"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fc8ded1658bccd471ad0c894ed751cd">crosshairBottom</a></td></tr>
+<tr class="memdesc:a9fc8ded1658bccd471ad0c894ed751cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dolna linia celownika.  <br /></td></tr>
+<tr class="separator:a9fc8ded1658bccd471ad0c894ed751cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe0b15e74417ac01048ce7d0e737675d" id="r_afe0b15e74417ac01048ce7d0e737675d"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe0b15e74417ac01048ce7d0e737675d">crosshairLeft</a></td></tr>
+<tr class="memdesc:afe0b15e74417ac01048ce7d0e737675d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lewa linia celownika.  <br /></td></tr>
+<tr class="separator:afe0b15e74417ac01048ce7d0e737675d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a270ef8615faac1c47b0681f7088d152c" id="r_a270ef8615faac1c47b0681f7088d152c"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a270ef8615faac1c47b0681f7088d152c">crosshairRight</a></td></tr>
+<tr class="memdesc:a270ef8615faac1c47b0681f7088d152c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prawa linia celownika.  <br /></td></tr>
+<tr class="separator:a270ef8615faac1c47b0681f7088d152c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6d20ca2d8e29d6cc957cf1777fc425c" id="r_ab6d20ca2d8e29d6cc957cf1777fc425c"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6d20ca2d8e29d6cc957cf1777fc425c">crosshairDot</a></td></tr>
+<tr class="memdesc:ab6d20ca2d8e29d6cc957cf1777fc425c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Centralna kropka celownika.  <br /></td></tr>
+<tr class="separator:ab6d20ca2d8e29d6cc957cf1777fc425c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c335f22233207e3180b4dae06253f1e" id="r_a9c335f22233207e3180b4dae06253f1e"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c335f22233207e3180b4dae06253f1e">floatingMoneyText</a></td></tr>
+<tr class="memdesc:a9c335f22233207e3180b4dae06253f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst pływającego komunikatu o zdobytych pieniądzach. Unosi się w górę i zanika po otrzymaniu nagrody.  <br /></td></tr>
+<tr class="separator:a9c335f22233207e3180b4dae06253f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7c35cae33f33d68ed7b32c2c39a17ef" id="r_ae7c35cae33f33d68ed7b32c2c39a17ef"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7c35cae33f33d68ed7b32c2c39a17ef">floatingMoneyTimer</a></td></tr>
+<tr class="memdesc:ae7c35cae33f33d68ed7b32c2c39a17ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer animacji pływającego tekstu pieniędzy. Odlicza czas trwania animacji (1.6s).  <br /></td></tr>
+<tr class="separator:ae7c35cae33f33d68ed7b32c2c39a17ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab08998a49d3c0ab33b30a1194b59f9ba" id="r_ab08998a49d3c0ab33b30a1194b59f9ba"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab08998a49d3c0ab33b30a1194b59f9ba">floatingMoneyStartY</a></td></tr>
+<tr class="memdesc:ab08998a49d3c0ab33b30a1194b59f9ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pozycja początkowa Y pływającego tekstu pieniędzy, od której zaczyna się animacja unoszenia.  <br /></td></tr>
+<tr class="separator:ab08998a49d3c0ab33b30a1194b59f9ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86d077ad37aab4c0bccf8a1ce61a24b5" id="r_a86d077ad37aab4c0bccf8a1ce61a24b5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86d077ad37aab4c0bccf8a1ce61a24b5">lastKnownBalance</a></td></tr>
+<tr class="memdesc:a86d077ad37aab4c0bccf8a1ce61a24b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ostatnia znana wartość salda gracza, używana do wykrywania zmian i uruchamiania animacji pływającego tekstu pieniędzy.  <br /></td></tr>
+<tr class="separator:a86d077ad37aab4c0bccf8a1ce61a24b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a073cdf714314f4fb8c45e749a94b7dd5" id="r_a073cdf714314f4fb8c45e749a94b7dd5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a073cdf714314f4fb8c45e749a94b7dd5">balancePulseTimer</a></td></tr>
+<tr class="memdesc:a073cdf714314f4fb8c45e749a94b7dd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer animacji pulsowania koloru tekstu salda po otrzymaniu nagrody. Efekt przejścia z zielonego z powrotem do złotego.  <br /></td></tr>
+<tr class="separator:a073cdf714314f4fb8c45e749a94b7dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f664bb664b9c9954ef8b6c83a338cbe" id="r_a8f664bb664b9c9954ef8b6c83a338cbe"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f664bb664b9c9954ef8b6c83a338cbe">displayedBalance</a></td></tr>
+<tr class="memdesc:a8f664bb664b9c9954ef8b6c83a338cbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyświetlana wartość salda, interpolowana do aktualnej wartości dla uzyskania płynnej animacji zmiany liczby.  <br /></td></tr>
+<tr class="separator:a8f664bb664b9c9954ef8b6c83a338cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0eb7b649c94f01cc05a56604def7780" id="r_af0eb7b649c94f01cc05a56604def7780"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0eb7b649c94f01cc05a56604def7780">streakText</a></td></tr>
+<tr class="memdesc:af0eb7b649c94f01cc05a56604def7780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst wyświetlający aktualną serię (combo) ukończonych zamówień. Widoczny gdy gracz ukończył co najmniej 2 zamówienia z rzędu.  <br /></td></tr>
+<tr class="separator:af0eb7b649c94f01cc05a56604def7780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d08a8ecd9a04e32712cacf395845b3e" id="r_a7d08a8ecd9a04e32712cacf395845b3e"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d08a8ecd9a04e32712cacf395845b3e">timerText</a></td></tr>
+<tr class="memdesc:a7d08a8ecd9a04e32712cacf395845b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst timera pilności aktualnego zamówienia. Wyświetla pozostały czas w sekundach.  <br /></td></tr>
+<tr class="separator:a7d08a8ecd9a04e32712cacf395845b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a925ca9f9d0dde57a4aa0ef0408be6582" id="r_a925ca9f9d0dde57a4aa0ef0408be6582"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a925ca9f9d0dde57a4aa0ef0408be6582">timerPanelImage</a></td></tr>
+<tr class="memdesc:a925ca9f9d0dde57a4aa0ef0408be6582"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obraz tła panelu timera, którego kolor zmienia się w zależności od pozostałego czasu (normalny/ostrzegawczy/krytyczny).  <br /></td></tr>
+<tr class="separator:a925ca9f9d0dde57a4aa0ef0408be6582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9b6c6ce3b6c548f0c35a74aca13af08" id="r_aa9b6c6ce3b6c548f0c35a74aca13af08"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9b6c6ce3b6c548f0c35a74aca13af08">currentStreak</a></td></tr>
+<tr class="memdesc:aa9b6c6ce3b6c548f0c35a74aca13af08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualna wartość serii (combo) zamówień ukończonych z rzędu. Resetowana do zera po nieudanym zamówieniu.  <br /></td></tr>
+<tr class="separator:aa9b6c6ce3b6c548f0c35a74aca13af08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaec53bafa123f951f431677ee635d552" id="r_aaec53bafa123f951f431677ee635d552"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaec53bafa123f951f431677ee635d552">streakDisplayTimer</a></td></tr>
+<tr class="memdesc:aaec53bafa123f951f431677ee635d552"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer wyświetlania tekstu serii (combo). Po osiągnięciu zera tekst zanika.  <br /></td></tr>
+<tr class="separator:aaec53bafa123f951f431677ee635d552"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10f9ff15c71768f3c01fb45415fad247" id="r_a10f9ff15c71768f3c01fb45415fad247"><td class="memItemLeft" align="right" valign="top">Font&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10f9ff15c71768f3c01fb45415fad247">hudFont</a></td></tr>
+<tr class="memdesc:a10f9ff15c71768f3c01fb45415fad247"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czcionka używana we wszystkich elementach tekstowych HUD. Preferuje LegacyRuntime.ttf, awaryjnie Arial.ttf.  <br /></td></tr>
+<tr class="separator:a10f9ff15c71768f3c01fb45415fad247"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecceebd6fc9e9a5c0a9af88e062dedf6" id="r_aecceebd6fc9e9a5c0a9af88e062dedf6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecceebd6fc9e9a5c0a9af88e062dedf6">lastCompletedCount</a></td></tr>
+<tr class="memdesc:aecceebd6fc9e9a5c0a9af88e062dedf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ostatnia zapamiętana liczba ukończonych zamówień, używana do wykrywania nowych ukończonych zamówień i aktualizacji serii combo.  <br /></td></tr>
+<tr class="separator:aecceebd6fc9e9a5c0a9af88e062dedf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4ddd1e9e2f8f7d2a2c8cbf86fffcdd3" id="r_ad4ddd1e9e2f8f7d2a2c8cbf86fffcdd3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4ddd1e9e2f8f7d2a2c8cbf86fffcdd3">lastFailedCount</a></td></tr>
+<tr class="memdesc:ad4ddd1e9e2f8f7d2a2c8cbf86fffcdd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ostatnia zapamiętana liczba nieudanych zamówień, używana do wykrywania nowych nieudanych zamówień i resetowania serii combo.  <br /></td></tr>
+<tr class="separator:ad4ddd1e9e2f8f7d2a2c8cbf86fffcdd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Statyczne atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a60fefe210b84e0c5ea5c27543d6de809" id="r_a60fefe210b84e0c5ea5c27543d6de809"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60fefe210b84e0c5ea5c27543d6de809">PanelDark</a> = new Color(0.025f, 0.03f, 0.04f, 0.58f)</td></tr>
+<tr class="memdesc:a60fefe210b84e0c5ea5c27543d6de809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ciemny kolor panelu tła, używany w głównym pasku górnym i panelach.  <br /></td></tr>
+<tr class="separator:a60fefe210b84e0c5ea5c27543d6de809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f8f184fb3bcd4b83237fe8cace4c12f" id="r_a9f8f184fb3bcd4b83237fe8cace4c12f"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f8f184fb3bcd4b83237fe8cace4c12f">PanelMedium</a> = new Color(0.035f, 0.043f, 0.058f, 0.48f)</td></tr>
+<tr class="memdesc:a9f8f184fb3bcd4b83237fe8cace4c12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Średni kolor panelu tła, używany w pasku ulepszeń.  <br /></td></tr>
+<tr class="separator:a9f8f184fb3bcd4b83237fe8cace4c12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2632f44419404df4877f341ecde8402" id="r_af2632f44419404df4877f341ecde8402"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2632f44419404df4877f341ecde8402">PanelLight</a> = new Color(0.045f, 0.052f, 0.068f, 0.48f)</td></tr>
+<tr class="memdesc:af2632f44419404df4877f341ecde8402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jasny kolor panelu tła, używany w panelu podpowiedzi sterowania.  <br /></td></tr>
+<tr class="separator:af2632f44419404df4877f341ecde8402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0448ef360ba67a68c627d8405e68748" id="r_aa0448ef360ba67a68c627d8405e68748"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0448ef360ba67a68c627d8405e68748">AccentGold</a> = new Color(0.86f, 0.68f, 0.28f, 1f)</td></tr>
+<tr class="memdesc:aa0448ef360ba67a68c627d8405e68748"><td class="mdescLeft">&#160;</td><td class="mdescRight">Złoty kolor akcentu, używany m.in. w tekście salda, timerze i domyślnym akcencie powiadomień toast.  <br /></td></tr>
+<tr class="separator:aa0448ef360ba67a68c627d8405e68748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a929c821b6ee031f095374301d34efb50" id="r_a929c821b6ee031f095374301d34efb50"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a929c821b6ee031f095374301d34efb50">TextPrimary</a> = new Color(0.92f, 0.93f, 0.95f, 0.95f)</td></tr>
+<tr class="memdesc:a929c821b6ee031f095374301d34efb50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Główny kolor tekstu, wysoki kontrast z lekkim odcieniem niebieskiego.  <br /></td></tr>
+<tr class="separator:a929c821b6ee031f095374301d34efb50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6f2990bd3083173f7c283acbf7df163" id="r_ae6f2990bd3083173f7c283acbf7df163"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6f2990bd3083173f7c283acbf7df163">TextSecondary</a> = new Color(0.68f, 0.72f, 0.78f, 0.85f)</td></tr>
+<tr class="memdesc:ae6f2990bd3083173f7c283acbf7df163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drugorzędny kolor tekstu, nieco ciemniejszy i bardziej przezroczysty.  <br /></td></tr>
+<tr class="separator:ae6f2990bd3083173f7c283acbf7df163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a528484103e590ce76820985b871c84f3" id="r_a528484103e590ce76820985b871c84f3"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a528484103e590ce76820985b871c84f3">TextMuted</a> = new Color(0.55f, 0.58f, 0.65f, 0.70f)</td></tr>
+<tr class="memdesc:a528484103e590ce76820985b871c84f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyciszony kolor tekstu, używany w podpowiedziach sterowania.  <br /></td></tr>
+<tr class="separator:a528484103e590ce76820985b871c84f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c85f2f675b48a5685ced57440b2d44" id="r_ac5c85f2f675b48a5685ced57440b2d44"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5c85f2f675b48a5685ced57440b2d44">GreenAccent</a> = new Color(0.35f, 0.85f, 0.50f, 1f)</td></tr>
+<tr class="memdesc:ac5c85f2f675b48a5685ced57440b2d44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zielony kolor akcentu, używany w efekcie pulsowania salda po nagrodzie.  <br /></td></tr>
+<tr class="separator:ac5c85f2f675b48a5685ced57440b2d44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37b1251d91ed99f4a32483ecbf18567d" id="r_a37b1251d91ed99f4a32483ecbf18567d"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37b1251d91ed99f4a32483ecbf18567d">RedAccent</a> = new Color(0.95f, 0.35f, 0.30f, 1f)</td></tr>
+<tr class="memdesc:a37b1251d91ed99f4a32483ecbf18567d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czerwony kolor akcentu, używany w timerze gdy czas jest krytycznie niski.  <br /></td></tr>
+<tr class="separator:a37b1251d91ed99f4a32483ecbf18567d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adddafbcfbce1d2c433d9cdcb9b9007c4" id="r_adddafbcfbce1d2c433d9cdcb9b9007c4"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adddafbcfbce1d2c433d9cdcb9b9007c4">DividerColor</a> = new Color(1f, 1f, 1f, 0.08f)</td></tr>
+<tr class="memdesc:adddafbcfbce1d2c433d9cdcb9b9007c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor separatorów sekcji w górnym pasku statusu.  <br /></td></tr>
+<tr class="separator:adddafbcfbce1d2c433d9cdcb9b9007c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb06b3162ed5596c42358e2badce986c" id="r_afb06b3162ed5596c42358e2badce986c"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb06b3162ed5596c42358e2badce986c">CrosshairDefault</a> = new Color(0.85f, 0.87f, 0.90f, 0.32f)</td></tr>
+<tr class="memdesc:afb06b3162ed5596c42358e2badce986c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Domyślny kolor celownika gdy gracz nie celuje w żaden interaktywny obiekt.  <br /></td></tr>
+<tr class="separator:afb06b3162ed5596c42358e2badce986c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d7be4472e693bc934e4e13a9752bb61" id="r_a9d7be4472e693bc934e4e13a9752bb61"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d7be4472e693bc934e4e13a9752bb61">CrosshairActive</a> = new Color(0.95f, 0.78f, 0.30f, 0.72f)</td></tr>
+<tr class="memdesc:a9d7be4472e693bc934e4e13a9752bb61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktywny kolor celownika gdy gracz celuje w interaktywny obiekt.  <br /></td></tr>
+<tr class="separator:a9d7be4472e693bc934e4e13a9752bb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41b005acb5d3ae46f41007415b348b52" id="r_a41b005acb5d3ae46f41007415b348b52"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41b005acb5d3ae46f41007415b348b52">ToastBackground</a> = new Color(0.012f, 0.014f, 0.018f, 0.74f)</td></tr>
+<tr class="memdesc:a41b005acb5d3ae46f41007415b348b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor tła powiadomienia toast.  <br /></td></tr>
+<tr class="separator:a41b005acb5d3ae46f41007415b348b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa zarządzająca interfejsem HUD w scenie kuchni. Odpowiada za tworzenie i aktualizowanie wszystkich elementów UI widocznych podczas rozgrywki, w tym: paska salda, informacji o trzymanym przedmiocie, licznika zamówień, celownika, powiadomień oraz timera pilności zamówienia. </p>
+<p>Cały interfejs jest tworzony programowo w metodzie <a class="el" href="#a88fb03720ff95df03edf2f230a81cb5c" title="Tworzy programowo cały interfejs HUD, w tym Canvas, górny pasek statusu, pasek ulepszeń,...">CreateCanvas</a> wywoływanej w <code>Awake</code>. Klasa wyszukuje gracza sieciowego w scenie, aby uzyskać informacje o interakcji (trzymany przedmiot, podpowiedzi). HUD jest automatycznie ukrywany, gdy widok lobby jest otwarty. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="af84c0cee6cdd0c4c668810a5985a079b" name="af84c0cee6cdd0c4c668810a5985a079b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af84c0cee6cdd0c4c668810a5985a079b">&#9670;&#160;</a></span>AddTextShadow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.AddTextShadow </td>
+          <td>(</td>
+          <td class="paramtype">Text</td>          <td class="paramname"><span class="paramname"><em>sourceText</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dodaje komponent cienia (Shadow) do elementu tekstowego dla lepszej czytelności na różnych tłach. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sourceText</td><td>Komponent Text, do którego zostanie dodany cień.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a146739bde4b65b5d745fed99f7b88871" name="a146739bde4b65b5d745fed99f7b88871"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a146739bde4b65b5d745fed99f7b88871">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda Unity wywoływana podczas inicjalizacji obiektu. Tworzy cały interfejs HUD wywołując <a class="el" href="#a88fb03720ff95df03edf2f230a81cb5c" title="Tworzy programowo cały interfejs HUD, w tym Canvas, górny pasek statusu, pasek ulepszeń,...">CreateCanvas</a>. </p>
+
+</div>
+</div>
+<a id="a88fb03720ff95df03edf2f230a81cb5c" name="a88fb03720ff95df03edf2f230a81cb5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88fb03720ff95df03edf2f230a81cb5c">&#9670;&#160;</a></span>CreateCanvas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.CreateCanvas </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy programowo cały interfejs HUD, w tym Canvas, górny pasek statusu, pasek ulepszeń, panel podpowiedzi, powiadomienie toast, celownik, pływający tekst pieniędzy, panel timera zamówienia oraz tekst combo. </p>
+<p>Metoda jest wywoływana raz w <a class="el" href="#a146739bde4b65b5d745fed99f7b88871" title="Metoda Unity wywoływana podczas inicjalizacji obiektu. Tworzy cały interfejs HUD wywołując CreateCanv...">Awake</a>. Sprawdza czy Canvas już istnieje, aby zapobiec duplikacji. Używa wbudowanej czcionki LegacyRuntime.ttf (lub Arial.ttf jako awaryjnej). Wszystkie elementy UI tworzone są ręcznie za pomocą metod pomocniczych <a class="el" href="#ad3ac3546caffd26802f07596dc928773" title="Tworzy prostokątny panel UI z obrazem tła. Podstawowa metoda budowania elementów interfejsu HUD.">CreatePanel</a>, <a class="el" href="#a2d76fa3ecea1e24ab8a4262f377cbfaf" title="Tworzy element tekstowy UI z domyślnym zakotwiczeniem w lewym górnym rogu. Uproszczona wersja pełnej ...">CreateText</a> i <a class="el" href="#a74a1fca0f23020a29538aa56fd3596ea" title="Tworzy zaokrąglony panel &quot;pigułkowy&quot; (pill). W aktualnej implementacji deleguje do CreatePanel bez do...">CreateRoundedPill</a>. </p>
+
+</div>
+</div>
+<a id="ac8fc1b14c58ca349ff8f1598a278c4d1" name="ac8fc1b14c58ca349ff8f1598a278c4d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8fc1b14c58ca349ff8f1598a278c4d1">&#9670;&#160;</a></span>CreateCrosshairLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image KitchenHUD.CreateCrosshairLine </td>
+          <td>(</td>
+          <td class="paramtype">RectTransform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy pojedynczą linię (element) celownika jako prostokątny obraz UI. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>RectTransform rodzica (kontener celownika).</td></tr>
+    <tr><td class="paramname">name</td><td>Nazwa elementu celownika (np. "Top", "Dot").</td></tr>
+    <tr><td class="paramname">position</td><td>Pozycja zakotwiczona elementu względem środka kontenera.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar elementu (szerokość x wysokość) w pikselach.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Komponent Image utworzonej linii celownika.</dd></dl>
+
+</div>
+</div>
+<a id="a0c7242fd7c8d751e837b2b81bbd41bf6" name="a0c7242fd7c8d751e837b2b81bbd41bf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c7242fd7c8d751e837b2b81bbd41bf6">&#9670;&#160;</a></span>CreateModernCrosshair()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.CreateModernCrosshair </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy nowoczesny celownik składający się z czterech linii (góra, dół, lewo, prawo) oraz centralnej kropki. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transformata rodzica, do którego zostanie dołączony kontener celownika.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad3ac3546caffd26802f07596dc928773" name="ad3ac3546caffd26802f07596dc928773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3ac3546caffd26802f07596dc928773">&#9670;&#160;</a></span>CreatePanel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RectTransform KitchenHUD.CreatePanel </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>objectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchorMin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchorMax</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>pivot</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>backgroundColor</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy prostokątny panel UI z obrazem tła. Podstawowa metoda budowania elementów interfejsu HUD. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transformata rodzica.</td></tr>
+    <tr><td class="paramname">objectName</td><td>Nazwa obiektu panelu.</td></tr>
+    <tr><td class="paramname">anchorMin</td><td>Minimalny punkt zakotwiczenia (0-1).</td></tr>
+    <tr><td class="paramname">anchorMax</td><td>Maksymalny punkt zakotwiczenia (0-1).</td></tr>
+    <tr><td class="paramname">pivot</td><td>Punkt obrotu elementu.</td></tr>
+    <tr><td class="paramname">anchoredPosition</td><td>Pozycja zakotwiczona względem punktu obrotu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar panelu w pikselach.</td></tr>
+    <tr><td class="paramname">backgroundColor</td><td>Kolor tła panelu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>RectTransform utworzonego panelu.</dd></dl>
+
+</div>
+</div>
+<a id="a74a1fca0f23020a29538aa56fd3596ea" name="a74a1fca0f23020a29538aa56fd3596ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74a1fca0f23020a29538aa56fd3596ea">&#9670;&#160;</a></span>CreateRoundedPill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RectTransform KitchenHUD.CreateRoundedPill </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>objectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchorMin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchorMax</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>pivot</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>backgroundColor</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy zaokrąglony panel "pigułkowy" (pill). W aktualnej implementacji deleguje do <a class="el" href="#ad3ac3546caffd26802f07596dc928773" title="Tworzy prostokątny panel UI z obrazem tła. Podstawowa metoda budowania elementów interfejsu HUD.">CreatePanel</a> bez dodatkowej stylizacji. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transformata rodzica.</td></tr>
+    <tr><td class="paramname">objectName</td><td>Nazwa obiektu panelu.</td></tr>
+    <tr><td class="paramname">anchorMin</td><td>Minimalny punkt zakotwiczenia.</td></tr>
+    <tr><td class="paramname">anchorMax</td><td>Maksymalny punkt zakotwiczenia.</td></tr>
+    <tr><td class="paramname">pivot</td><td>Punkt obrotu panelu.</td></tr>
+    <tr><td class="paramname">anchoredPosition</td><td>Pozycja zakotwiczona panelu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar panelu (szerokość x wysokość).</td></tr>
+    <tr><td class="paramname">backgroundColor</td><td>Kolor tła panelu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>RectTransform utworzonego panelu.</dd></dl>
+
+</div>
+</div>
+<a id="a66b8797f5fd5a947911746303801dff4" name="a66b8797f5fd5a947911746303801dff4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66b8797f5fd5a947911746303801dff4">&#9670;&#160;</a></span>CreateSectionDivider()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.CreateSectionDivider </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>objectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchor</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy pionowy separator sekcji w pasku statusu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transformata rodzica (pasek statusu).</td></tr>
+    <tr><td class="paramname">objectName</td><td>Nazwa obiektu separatora.</td></tr>
+    <tr><td class="paramname">anchor</td><td>Pozycja zakotwiczenia separatora w rodzicu.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2d76fa3ecea1e24ab8a4262f377cbfaf" name="a2d76fa3ecea1e24ab8a4262f377cbfaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d76fa3ecea1e24ab8a4262f377cbfaf">&#9670;&#160;</a></span>CreateText() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.CreateText </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>objectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Font</td>          <td class="paramname"><span class="paramname"><em>font</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fontSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TextAnchor</td>          <td class="paramname"><span class="paramname"><em>alignment</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FontStyle</td>          <td class="paramname"><span class="paramname"><em>fontStyle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy element tekstowy UI z domyślnym zakotwiczeniem w lewym górnym rogu. Uproszczona wersja pełnej metody <a class="el" href="#ab16e025b860dac663cd096d9a6723442" title="Tworzy element tekstowy UI z pełną kontrolą nad zakotwiczeniem i pozycjonowaniem.">CreateText(Transform, string, Font, int, TextAnchor, Vector2, Vector2, Vector2, Vector2, Vector2, FontStyle, Color)</a>. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transformata rodzica.</td></tr>
+    <tr><td class="paramname">objectName</td><td>Nazwa obiektu tekstowego.</td></tr>
+    <tr><td class="paramname">font</td><td>Czcionka do użycia.</td></tr>
+    <tr><td class="paramname">fontSize</td><td>Rozmiar czcionki w pikselach.</td></tr>
+    <tr><td class="paramname">alignment</td><td>Wyrównanie tekstu.</td></tr>
+    <tr><td class="paramname">anchoredPosition</td><td>Pozycja zakotwiczona elementu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar elementu tekstowego.</td></tr>
+    <tr><td class="paramname">fontStyle</td><td>Styl czcionki (normalny, pogrubiony itp.).</td></tr>
+    <tr><td class="paramname">color</td><td>Kolor tekstu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Komponent Text utworzonego elementu tekstowego.</dd></dl>
+
+</div>
+</div>
+<a id="ab16e025b860dac663cd096d9a6723442" name="ab16e025b860dac663cd096d9a6723442"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab16e025b860dac663cd096d9a6723442">&#9670;&#160;</a></span>CreateText() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.CreateText </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>objectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Font</td>          <td class="paramname"><span class="paramname"><em>font</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fontSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TextAnchor</td>          <td class="paramname"><span class="paramname"><em>alignment</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchorMin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchorMax</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>pivot</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FontStyle</td>          <td class="paramname"><span class="paramname"><em>fontStyle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy element tekstowy UI z pełną kontrolą nad zakotwiczeniem i pozycjonowaniem. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transformata rodzica.</td></tr>
+    <tr><td class="paramname">objectName</td><td>Nazwa obiektu tekstowego.</td></tr>
+    <tr><td class="paramname">font</td><td>Czcionka do użycia.</td></tr>
+    <tr><td class="paramname">fontSize</td><td>Rozmiar czcionki w pikselach.</td></tr>
+    <tr><td class="paramname">alignment</td><td>Wyrównanie tekstu (lewo, środek, prawo itp.).</td></tr>
+    <tr><td class="paramname">anchorMin</td><td>Minimalny punkt zakotwiczenia.</td></tr>
+    <tr><td class="paramname">anchorMax</td><td>Maksymalny punkt zakotwiczenia.</td></tr>
+    <tr><td class="paramname">pivot</td><td>Punkt obrotu elementu.</td></tr>
+    <tr><td class="paramname">anchoredPosition</td><td>Pozycja zakotwiczona elementu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar elementu tekstowego.</td></tr>
+    <tr><td class="paramname">fontStyle</td><td>Styl czcionki (normalny, pogrubiony itp.).</td></tr>
+    <tr><td class="paramname">color</td><td>Kolor tekstu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Komponent Text utworzonego elementu tekstowego.</dd></dl>
+<p>Tekst jest konfigurowany z zawijaniem poziomym (<code>HorizontalWrapMode.Wrap</code>) i przepełnieniem pionowym (<code>VerticalWrapMode.Overflow</code>). Raycast target jest wyłączony, aby tekst nie przechwytywał zdarzeń UI. </p>
+
+</div>
+</div>
+<a id="aa2e011be5055631894c479836477dc2d" name="aa2e011be5055631894c479836477dc2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2e011be5055631894c479836477dc2d">&#9670;&#160;</a></span>GetToastColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color KitchenHUD.GetToastColor </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Określa kolor akcentu powiadomienia toast na podstawie treści komunikatu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Treść komunikatu do analizy.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Kolor akcentu:<ul>
+<li>Czerwony dla komunikatów o błędach (zawierających "zly", "brak", "nie " itp.),</li>
+<li>Zielony dla komunikatów o sukcesie ("zamowienie zrealizowane", "nagroda" itp.),</li>
+<li>Złoty dla komunikatów informacyjnych ("zawiniety", "dodano" itp.),</li>
+<li>Szary dla pozostałych komunikatów. </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="a38d2745701e9f619db528125b10b766b" name="a38d2745701e9f619db528125b10b766b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38d2745701e9f619db528125b10b766b">&#9670;&#160;</a></span>RefreshTexts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.RefreshTexts </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odświeża wszystkie teksty i elementy HUD, w tym saldo, trzymany przedmiot, statystyki sesji, podpowiedzi, celownik, ulepszenia oraz efekty wizualne. </p>
+<p>Wywoływana co klatkę z <a class="el" href="#ae202f3fd38d71b8ec9635e6efda8a097" title="Metoda Unity wywoływana co klatkę. Wyszukuje gracza sieciowego, buforuje referencje do UI sklepu i lo...">Update</a>. Sprawdza czy kluczowe komponenty tekstowe istnieją przed aktualizacją. Obsługuje interpolację wyświetlanego salda, wykrywanie zmian salda (dla pływającego tekstu) oraz ukrywanie podpowiedzi gdy sklep, menu, pauza lub ustawienia są otwarte. </p>
+
+</div>
+</div>
+<a id="a9200639616eed80c884eadd0e6c8dc33" name="a9200639616eed80c884eadd0e6c8dc33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9200639616eed80c884eadd0e6c8dc33">&#9670;&#160;</a></span>ShowFeedbackToast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.ShowFeedbackToast </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyświetla powiadomienie toast z podanym komunikatem. Ignoruje duplikaty tego samego komunikatu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Treść komunikatu do wyświetlenia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Kolor akcentu jest automatycznie dobierany na podstawie zawartości komunikatu za pomocą <a class="el" href="#aa2e011be5055631894c479836477dc2d" title="Określa kolor akcentu powiadomienia toast na podstawie treści komunikatu.">GetToastColor</a>. Czas wyświetlania wynosi 2.25 sekundy. </p>
+
+</div>
+</div>
+<a id="ad27dccd1a4737d1f2e94ac3d78f62cf1" name="ad27dccd1a4737d1f2e94ac3d78f62cf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad27dccd1a4737d1f2e94ac3d78f62cf1">&#9670;&#160;</a></span>ShowFloatingMoney()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.ShowFloatingMoney </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>amount</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyświetla pływający tekst z informacją o zdobytej kwocie pieniędzy. Tekst unosi się w górę i zanika w ciągu 1.6 sekundy. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">amount</td><td>Kwota do wyświetlenia (w złotówkach).</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ustawia również timer pulsowania koloru tekstu salda (<a class="el" href="#a073cdf714314f4fb8c45e749a94b7dd5" title="Timer animacji pulsowania koloru tekstu salda po otrzymaniu nagrody. Efekt przejścia z zielonego z po...">balancePulseTimer</a>), dając efekt wizualnego potwierdzenia otrzymania nagrody. </p>
+
+</div>
+</div>
+<a id="a7765621e10da6253c2be5a79b3797607" name="a7765621e10da6253c2be5a79b3797607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7765621e10da6253c2be5a79b3797607">&#9670;&#160;</a></span>Truncate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string KitchenHUD.Truncate </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>maxLength</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obcina tekst do podanej maksymalnej długości, dodając wielokropek ("...") jeśli tekst jest dłuższy. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Tekst do obcięcia.</td></tr>
+    <tr><td class="paramname">maxLength</td><td>Maksymalna dozwolona długość tekstu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Oryginalny tekst jeśli mieści się w limicie, lub obcięty tekst z wielokropkiem.</dd></dl>
+
+</div>
+</div>
+<a id="ae202f3fd38d71b8ec9635e6efda8a097" name="ae202f3fd38d71b8ec9635e6efda8a097"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae202f3fd38d71b8ec9635e6efda8a097">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda Unity wywoływana co klatkę. Wyszukuje gracza sieciowego, buforuje referencje do UI sklepu i lobby, a następnie odświeża wszystkie elementy HUD jeśli lobby nie jest otwarte. </p>
+
+</div>
+</div>
+<a id="aafce49ecfc1e77d6c355d059e4589bc1" name="aafce49ecfc1e77d6c355d059e4589bc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafce49ecfc1e77d6c355d059e4589bc1">&#9670;&#160;</a></span>UpdateControlHintText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.UpdateControlHintText </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizuje tekst podpowiedzi sterowania w zależności od trybu gry. W trybie solo wyświetla mniej opcji (bez F1: Lobby). </p>
+
+</div>
+</div>
+<a id="aa5d827f0ea5b4c6d14bdf5feab8e4d67" name="aa5d827f0ea5b4c6d14bdf5feab8e4d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5d827f0ea5b4c6d14bdf5feab8e4d67">&#9670;&#160;</a></span>UpdateCrosshair()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.UpdateCrosshair </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>hasTarget</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>shopOpen</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizuje wygląd celownika w zależności od tego czy gracz celuje w interaktywny obiekt oraz czy sklep jest otwarty. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hasTarget</td><td>Czy gracz aktualnie celuje w interaktywny obiekt.</td></tr>
+    <tr><td class="paramname">shopOpen</td><td>Czy interfejs sklepu jest otwarty (celownik będzie ukryty).</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Kolor celownika i odstęp między liniami interpolowane są płynnie za pomocą <code>Color.Lerp</code> i <code>Mathf.Lerp</code> z prędkością zależną od deltaTime, dając efekt płynnej animacji. </p>
+
+</div>
+</div>
+<a id="a9452cf05951796a5e31b02be2f6bd3c2" name="a9452cf05951796a5e31b02be2f6bd3c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9452cf05951796a5e31b02be2f6bd3c2">&#9670;&#160;</a></span>UpdateFloatingMoney()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.UpdateFloatingMoney </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Animuje pływający tekst pieniędzy: unosi go w górę, skaluje rozmiar czcionki sinusoidalnie i stopniowo zanika. </p>
+<p>Animacja trwa 1.6 sekundy. Tekst przesuwa się o 60 pikseli w górę, rozmiar czcionki pulsuje z amplitudą 15%, a przezroczystość zanika w drugiej połowie animacji. </p>
+
+</div>
+</div>
+<a id="a4d13233f27ee9174503e542fea65ab86" name="a4d13233f27ee9174503e542fea65ab86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d13233f27ee9174503e542fea65ab86">&#9670;&#160;</a></span>UpdateStreak()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.UpdateStreak </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>completed</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>failed</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizuje wyświetlanie serii (combo) zamówień ukończonych z rzędu. Zwiększa serię przy nowych ukończeniach, resetuje przy niepowodzeniu, i animuje tekst z efektem pulsowania. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">completed</td><td>Aktualna łączna liczba ukończonych zamówień.</td></tr>
+    <tr><td class="paramname">failed</td><td>Aktualna łączna liczba nieudanych zamówień.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9b297a8817021732757f0a34c1a21f0e" name="a9b297a8817021732757f0a34c1a21f0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b297a8817021732757f0a34c1a21f0e">&#9670;&#160;</a></span>UpdateToastAnimation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.UpdateToastAnimation </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Animuje pojawianie i zanikanie powiadomienia toast. Obsługuje interpolację przezroczystości, pozycji i skali panelu. </p>
+<p>Animacja jest sterowana timerem <a class="el" href="#ac69e9d856e8cf1945f7f141d99edd9c9" title="Timer odliczający czas wyświetlania powiadomienia toast. Gdy spadnie do zera, powiadomienie zaczyna z...">toastTimer</a>. Gdy timer spadnie do zera, panel płynnie zanika. Po całkowitym zaniku panel jest dezaktywowany. Używa <code>Mathf.SmoothStep</code> do uzyskania płynnej krzywej animacji. </p>
+
+</div>
+</div>
+<a id="a019f0e45c3855e48286bd6fbd7fe0077" name="a019f0e45c3855e48286bd6fbd7fe0077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a019f0e45c3855e48286bd6fbd7fe0077">&#9670;&#160;</a></span>UpdateUpgradeStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.UpdateUpgradeStatus </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizuje pasek statusu ulepszeń, wyświetlając aktywne bonusy zakupione w sklepie (szybkość grilla, szybkość krojenia, bonus nagrody, dodatkowy czas, wielkość porcji mięsa). </p>
+<p>Pasek jest ukrywany gdy nie zakupiono żadnych ulepszeń. Poszczególne bonusy są oddzielone separatorem "|". Wartości procentowe obliczane są na podstawie mnożników z <code><a class="el" href="class_shop_manager.html" title="Główna klasa zarządzająca systemem sklepu z ulepszeniami.">ShopManager</a></code>. </p>
+
+</div>
+</div>
+<a id="aa1509ef4e8a0eb40360c34223ffb21f7" name="aa1509ef4e8a0eb40360c34223ffb21f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1509ef4e8a0eb40360c34223ffb21f7">&#9670;&#160;</a></span>UpdateUrgencyTimer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenHUD.UpdateUrgencyTimer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizuje timer pilności aktualnego zamówienia. Wyświetla pozostały czas i zmienia kolor w zależności od pilności: zielony (&gt;20s), złoty (10-20s), migający czerwony (&lt;10s). </p>
+<p>Gdy nie ma aktywnego zamówienia, timer jest ukrywany. Przy krytycznie niskim czasie (&lt;10s) tło panelu również zmienia kolor na czerwonawy z efektem pulsowania. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="aa0448ef360ba67a68c627d8405e68748" name="aa0448ef360ba67a68c627d8405e68748"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0448ef360ba67a68c627d8405e68748">&#9670;&#160;</a></span>AccentGold</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.AccentGold = new Color(0.86f, 0.68f, 0.28f, 1f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Złoty kolor akcentu, używany m.in. w tekście salda, timerze i domyślnym akcencie powiadomień toast. </p>
+
+</div>
+</div>
+<a id="a073cdf714314f4fb8c45e749a94b7dd5" name="a073cdf714314f4fb8c45e749a94b7dd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a073cdf714314f4fb8c45e749a94b7dd5">&#9670;&#160;</a></span>balancePulseTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenHUD.balancePulseTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Timer animacji pulsowania koloru tekstu salda po otrzymaniu nagrody. Efekt przejścia z zielonego z powrotem do złotego. </p>
+
+</div>
+</div>
+<a id="a2e5ec619938d29c5ccb0b99b90a84245" name="a2e5ec619938d29c5ccb0b99b90a84245"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e5ec619938d29c5ccb0b99b90a84245">&#9670;&#160;</a></span>balanceText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.balanceText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst wyświetlający aktualne saldo gracza w złotówkach. Umieszczony w lewej części górnego paska. </p>
+
+</div>
+</div>
+<a id="ac00c0472deed39afb600a75c57b22f3c" name="ac00c0472deed39afb600a75c57b22f3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac00c0472deed39afb600a75c57b22f3c">&#9670;&#160;</a></span>cachedLobbyUI</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_lobby_u_i.html">LobbyUI</a> KitchenHUD.cachedLobbyUI</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowana referencja do interfejsu lobby, wykorzystywana do sprawdzania czy widok lobby jest aktualnie otwarty. </p>
+
+</div>
+</div>
+<a id="a6d0823107f543b65c0eea9ac461283bf" name="a6d0823107f543b65c0eea9ac461283bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d0823107f543b65c0eea9ac461283bf">&#9670;&#160;</a></span>cachedShopUI</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_shop_u_i.html">ShopUI</a> KitchenHUD.cachedShopUI</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowana referencja do interfejsu sklepu, wykorzystywana do sprawdzania czy sklep jest aktualnie otwarty. </p>
+
+</div>
+</div>
+<a id="a9d7be4472e693bc934e4e13a9752bb61" name="a9d7be4472e693bc934e4e13a9752bb61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d7be4472e693bc934e4e13a9752bb61">&#9670;&#160;</a></span>CrosshairActive</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.CrosshairActive = new Color(0.95f, 0.78f, 0.30f, 0.72f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktywny kolor celownika gdy gracz celuje w interaktywny obiekt. </p>
+
+</div>
+</div>
+<a id="a9fc8ded1658bccd471ad0c894ed751cd" name="a9fc8ded1658bccd471ad0c894ed751cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fc8ded1658bccd471ad0c894ed751cd">&#9670;&#160;</a></span>crosshairBottom</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image KitchenHUD.crosshairBottom</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dolna linia celownika. </p>
+
+</div>
+</div>
+<a id="a426d7e4bb6190b9f5394197a0e14a780" name="a426d7e4bb6190b9f5394197a0e14a780"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a426d7e4bb6190b9f5394197a0e14a780">&#9670;&#160;</a></span>crosshairContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RectTransform KitchenHUD.crosshairContainer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kontener RectTransform celownika, zawierający wszystkie linie i kropkę. Ukrywany gdy sklep jest otwarty. </p>
+
+</div>
+</div>
+<a id="afb06b3162ed5596c42358e2badce986c" name="afb06b3162ed5596c42358e2badce986c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb06b3162ed5596c42358e2badce986c">&#9670;&#160;</a></span>CrosshairDefault</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.CrosshairDefault = new Color(0.85f, 0.87f, 0.90f, 0.32f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Domyślny kolor celownika gdy gracz nie celuje w żaden interaktywny obiekt. </p>
+
+</div>
+</div>
+<a id="ab6d20ca2d8e29d6cc957cf1777fc425c" name="ab6d20ca2d8e29d6cc957cf1777fc425c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6d20ca2d8e29d6cc957cf1777fc425c">&#9670;&#160;</a></span>crosshairDot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image KitchenHUD.crosshairDot</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Centralna kropka celownika. </p>
+
+</div>
+</div>
+<a id="afe0b15e74417ac01048ce7d0e737675d" name="afe0b15e74417ac01048ce7d0e737675d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe0b15e74417ac01048ce7d0e737675d">&#9670;&#160;</a></span>crosshairLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image KitchenHUD.crosshairLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lewa linia celownika. </p>
+
+</div>
+</div>
+<a id="a270ef8615faac1c47b0681f7088d152c" name="a270ef8615faac1c47b0681f7088d152c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a270ef8615faac1c47b0681f7088d152c">&#9670;&#160;</a></span>crosshairRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image KitchenHUD.crosshairRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prawa linia celownika. </p>
+
+</div>
+</div>
+<a id="a62f7393b698e3c3405526902d367e183" name="a62f7393b698e3c3405526902d367e183"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62f7393b698e3c3405526902d367e183">&#9670;&#160;</a></span>crosshairTop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image KitchenHUD.crosshairTop</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Górna linia celownika. </p>
+
+</div>
+</div>
+<a id="aa9b6c6ce3b6c548f0c35a74aca13af08" name="aa9b6c6ce3b6c548f0c35a74aca13af08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9b6c6ce3b6c548f0c35a74aca13af08">&#9670;&#160;</a></span>currentStreak</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int KitchenHUD.currentStreak</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualna wartość serii (combo) zamówień ukończonych z rzędu. Resetowana do zera po nieudanym zamówieniu. </p>
+
+</div>
+</div>
+<a id="a8f664bb664b9c9954ef8b6c83a338cbe" name="a8f664bb664b9c9954ef8b6c83a338cbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f664bb664b9c9954ef8b6c83a338cbe">&#9670;&#160;</a></span>displayedBalance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenHUD.displayedBalance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyświetlana wartość salda, interpolowana do aktualnej wartości dla uzyskania płynnej animacji zmiany liczby. </p>
+
+</div>
+</div>
+<a id="adddafbcfbce1d2c433d9cdcb9b9007c4" name="adddafbcfbce1d2c433d9cdcb9b9007c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adddafbcfbce1d2c433d9cdcb9b9007c4">&#9670;&#160;</a></span>DividerColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.DividerColor = new Color(1f, 1f, 1f, 0.08f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor separatorów sekcji w górnym pasku statusu. </p>
+
+</div>
+</div>
+<a id="a5f4c594f19b516bbf583a09ae75207d8" name="a5f4c594f19b516bbf583a09ae75207d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f4c594f19b516bbf583a09ae75207d8">&#9670;&#160;</a></span>feedbackText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.feedbackText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst komunikatu zwrotnego wyświetlany w powiadomieniu toast. </p>
+
+</div>
+</div>
+<a id="ab08998a49d3c0ab33b30a1194b59f9ba" name="ab08998a49d3c0ab33b30a1194b59f9ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab08998a49d3c0ab33b30a1194b59f9ba">&#9670;&#160;</a></span>floatingMoneyStartY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenHUD.floatingMoneyStartY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pozycja początkowa Y pływającego tekstu pieniędzy, od której zaczyna się animacja unoszenia. </p>
+
+</div>
+</div>
+<a id="a9c335f22233207e3180b4dae06253f1e" name="a9c335f22233207e3180b4dae06253f1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c335f22233207e3180b4dae06253f1e">&#9670;&#160;</a></span>floatingMoneyText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.floatingMoneyText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst pływającego komunikatu o zdobytych pieniądzach. Unosi się w górę i zanika po otrzymaniu nagrody. </p>
+
+</div>
+</div>
+<a id="ae7c35cae33f33d68ed7b32c2c39a17ef" name="ae7c35cae33f33d68ed7b32c2c39a17ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7c35cae33f33d68ed7b32c2c39a17ef">&#9670;&#160;</a></span>floatingMoneyTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenHUD.floatingMoneyTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Timer animacji pływającego tekstu pieniędzy. Odlicza czas trwania animacji (1.6s). </p>
+
+</div>
+</div>
+<a id="ac5c85f2f675b48a5685ced57440b2d44" name="ac5c85f2f675b48a5685ced57440b2d44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5c85f2f675b48a5685ced57440b2d44">&#9670;&#160;</a></span>GreenAccent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.GreenAccent = new Color(0.35f, 0.85f, 0.50f, 1f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zielony kolor akcentu, używany w efekcie pulsowania salda po nagrodzie. </p>
+
+</div>
+</div>
+<a id="ab167cc5afeb6ec427514ffc97f439908" name="ab167cc5afeb6ec427514ffc97f439908"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab167cc5afeb6ec427514ffc97f439908">&#9670;&#160;</a></span>heldItemText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.heldItemText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst wyświetlający opis aktualnie trzymanego przez gracza przedmiotu. Umieszczony centralnie w górnym pasku. </p>
+
+</div>
+</div>
+<a id="ae171dc43d5c5ab34bed8c8ca76c44929" name="ae171dc43d5c5ab34bed8c8ca76c44929"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae171dc43d5c5ab34bed8c8ca76c44929">&#9670;&#160;</a></span>hudCanvas</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Canvas KitchenHUD.hudCanvas</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Główny Canvas HUD na którym umieszczone są wszystkie elementy interfejsu. Renderowany jako ScreenSpaceOverlay z sortingOrder 10. </p>
+
+</div>
+</div>
+<a id="a10f9ff15c71768f3c01fb45415fad247" name="a10f9ff15c71768f3c01fb45415fad247"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10f9ff15c71768f3c01fb45415fad247">&#9670;&#160;</a></span>hudFont</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Font KitchenHUD.hudFont</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czcionka używana we wszystkich elementach tekstowych HUD. Preferuje LegacyRuntime.ttf, awaryjnie Arial.ttf. </p>
+
+</div>
+</div>
+<a id="aecceebd6fc9e9a5c0a9af88e062dedf6" name="aecceebd6fc9e9a5c0a9af88e062dedf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecceebd6fc9e9a5c0a9af88e062dedf6">&#9670;&#160;</a></span>lastCompletedCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int KitchenHUD.lastCompletedCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ostatnia zapamiętana liczba ukończonych zamówień, używana do wykrywania nowych ukończonych zamówień i aktualizacji serii combo. </p>
+
+</div>
+</div>
+<a id="ad4ddd1e9e2f8f7d2a2c8cbf86fffcdd3" name="ad4ddd1e9e2f8f7d2a2c8cbf86fffcdd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4ddd1e9e2f8f7d2a2c8cbf86fffcdd3">&#9670;&#160;</a></span>lastFailedCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int KitchenHUD.lastFailedCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ostatnia zapamiętana liczba nieudanych zamówień, używana do wykrywania nowych nieudanych zamówień i resetowania serii combo. </p>
+
+</div>
+</div>
+<a id="a86d077ad37aab4c0bccf8a1ce61a24b5" name="a86d077ad37aab4c0bccf8a1ce61a24b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86d077ad37aab4c0bccf8a1ce61a24b5">&#9670;&#160;</a></span>lastKnownBalance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenHUD.lastKnownBalance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ostatnia znana wartość salda gracza, używana do wykrywania zmian i uruchamiania animacji pływającego tekstu pieniędzy. </p>
+
+</div>
+</div>
+<a id="aff0484605b9e6b7c7e7ff02a8cc4f378" name="aff0484605b9e6b7c7e7ff02a8cc4f378"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff0484605b9e6b7c7e7ff02a8cc4f378">&#9670;&#160;</a></span>lastPlayerSearchTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenHUD.lastPlayerSearchTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Znacznik czasowy ostatniego wyszukiwania gracza w scenie. Zapobiega wyszukiwaniu co klatkę, ograniczając je do co 1 sekundy. </p>
+
+</div>
+</div>
+<a id="a1a0ccd66b50383f700cc4647b495911f" name="a1a0ccd66b50383f700cc4647b495911f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a0ccd66b50383f700cc4647b495911f">&#9670;&#160;</a></span>lastToastMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string KitchenHUD.lastToastMessage = string.Empty</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ostatni wyświetlony komunikat toast. Zapobiega wielokrotnemu wyświetlaniu tego samego komunikatu. </p>
+
+</div>
+</div>
+<a id="a60fefe210b84e0c5ea5c27543d6de809" name="a60fefe210b84e0c5ea5c27543d6de809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60fefe210b84e0c5ea5c27543d6de809">&#9670;&#160;</a></span>PanelDark</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.PanelDark = new Color(0.025f, 0.03f, 0.04f, 0.58f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ciemny kolor panelu tła, używany w głównym pasku górnym i panelach. </p>
+
+</div>
+</div>
+<a id="af2632f44419404df4877f341ecde8402" name="af2632f44419404df4877f341ecde8402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2632f44419404df4877f341ecde8402">&#9670;&#160;</a></span>PanelLight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.PanelLight = new Color(0.045f, 0.052f, 0.068f, 0.48f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Jasny kolor panelu tła, używany w panelu podpowiedzi sterowania. </p>
+
+</div>
+</div>
+<a id="a9f8f184fb3bcd4b83237fe8cace4c12f" name="a9f8f184fb3bcd4b83237fe8cace4c12f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f8f184fb3bcd4b83237fe8cace4c12f">&#9670;&#160;</a></span>PanelMedium</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.PanelMedium = new Color(0.035f, 0.043f, 0.058f, 0.48f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Średni kolor panelu tła, używany w pasku ulepszeń. </p>
+
+</div>
+</div>
+<a id="afb4983f1365d0ba9ad261b399ba3ddce" name="afb4983f1365d0ba9ad261b399ba3ddce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb4983f1365d0ba9ad261b399ba3ddce">&#9670;&#160;</a></span>playerInteraction</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_player_interaction.html">PlayerInteraction</a> KitchenHUD.playerInteraction</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Referencja do komponentu interakcji gracza, używana do pobierania informacji o trzymanym przedmiocie i aktualnych podpowiedziach. </p>
+
+</div>
+</div>
+<a id="a6a5d7d5a8875d26de9d31e2c15c7e149" name="a6a5d7d5a8875d26de9d31e2c15c7e149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a5d7d5a8875d26de9d31e2c15c7e149">&#9670;&#160;</a></span>promptBackground</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image KitchenHUD.promptBackground</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obraz tła panelu podpowiedzi interakcji. Ukrywany gdy nie ma aktywnej podpowiedzi do wyświetlenia. </p>
+
+</div>
+</div>
+<a id="a7e4cd6ab7965236b1ab80a4fa16e949a" name="a7e4cd6ab7965236b1ab80a4fa16e949a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e4cd6ab7965236b1ab80a4fa16e949a">&#9670;&#160;</a></span>promptText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.promptText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst podpowiedzi interakcji wyświetlany w dolnej części ekranu. Pokazuje akcję dostępną do wykonania (np. "Podnieś", "Odłóż"). </p>
+
+</div>
+</div>
+<a id="a37b1251d91ed99f4a32483ecbf18567d" name="a37b1251d91ed99f4a32483ecbf18567d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37b1251d91ed99f4a32483ecbf18567d">&#9670;&#160;</a></span>RedAccent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.RedAccent = new Color(0.95f, 0.35f, 0.30f, 1f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czerwony kolor akcentu, używany w timerze gdy czas jest krytycznie niski. </p>
+
+</div>
+</div>
+<a id="a3245c0f6b0aa8bd765bb2f0bb111bf6b" name="a3245c0f6b0aa8bd765bb2f0bb111bf6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3245c0f6b0aa8bd765bb2f0bb111bf6b">&#9670;&#160;</a></span>sessionText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.sessionText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst wyświetlający statystyki sesji (ukończone/nieudane zamówienia). Umieszczony w prawej części górnego paska. </p>
+
+</div>
+</div>
+<a id="ae56614266dff2732cb961833d969b37d" name="ae56614266dff2732cb961833d969b37d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae56614266dff2732cb961833d969b37d">&#9670;&#160;</a></span>shopHintText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.shopHintText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst podpowiedzi skrótów klawiszowych (B: Sklep, TAB: Gracze itp.). Umieszczony w prawym dolnym rogu ekranu. </p>
+
+</div>
+</div>
+<a id="aaec53bafa123f951f431677ee635d552" name="aaec53bafa123f951f431677ee635d552"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaec53bafa123f951f431677ee635d552">&#9670;&#160;</a></span>streakDisplayTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenHUD.streakDisplayTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Timer wyświetlania tekstu serii (combo). Po osiągnięciu zera tekst zanika. </p>
+
+</div>
+</div>
+<a id="af0eb7b649c94f01cc05a56604def7780" name="af0eb7b649c94f01cc05a56604def7780"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0eb7b649c94f01cc05a56604def7780">&#9670;&#160;</a></span>streakText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.streakText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst wyświetlający aktualną serię (combo) ukończonych zamówień. Widoczny gdy gracz ukończył co najmniej 2 zamówienia z rzędu. </p>
+
+</div>
+</div>
+<a id="a528484103e590ce76820985b871c84f3" name="a528484103e590ce76820985b871c84f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a528484103e590ce76820985b871c84f3">&#9670;&#160;</a></span>TextMuted</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.TextMuted = new Color(0.55f, 0.58f, 0.65f, 0.70f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyciszony kolor tekstu, używany w podpowiedziach sterowania. </p>
+
+</div>
+</div>
+<a id="a929c821b6ee031f095374301d34efb50" name="a929c821b6ee031f095374301d34efb50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a929c821b6ee031f095374301d34efb50">&#9670;&#160;</a></span>TextPrimary</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.TextPrimary = new Color(0.92f, 0.93f, 0.95f, 0.95f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Główny kolor tekstu, wysoki kontrast z lekkim odcieniem niebieskiego. </p>
+
+</div>
+</div>
+<a id="ae6f2990bd3083173f7c283acbf7df163" name="ae6f2990bd3083173f7c283acbf7df163"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6f2990bd3083173f7c283acbf7df163">&#9670;&#160;</a></span>TextSecondary</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.TextSecondary = new Color(0.68f, 0.72f, 0.78f, 0.85f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Drugorzędny kolor tekstu, nieco ciemniejszy i bardziej przezroczysty. </p>
+
+</div>
+</div>
+<a id="a925ca9f9d0dde57a4aa0ef0408be6582" name="a925ca9f9d0dde57a4aa0ef0408be6582"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a925ca9f9d0dde57a4aa0ef0408be6582">&#9670;&#160;</a></span>timerPanelImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image KitchenHUD.timerPanelImage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obraz tła panelu timera, którego kolor zmienia się w zależności od pozostałego czasu (normalny/ostrzegawczy/krytyczny). </p>
+
+</div>
+</div>
+<a id="a7d08a8ecd9a04e32712cacf395845b3e" name="a7d08a8ecd9a04e32712cacf395845b3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d08a8ecd9a04e32712cacf395845b3e">&#9670;&#160;</a></span>timerText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.timerText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst timera pilności aktualnego zamówienia. Wyświetla pozostały czas w sekundach. </p>
+
+</div>
+</div>
+<a id="a9f72efa329818e9d30c0285af5c695ae" name="a9f72efa329818e9d30c0285af5c695ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f72efa329818e9d30c0285af5c695ae">&#9670;&#160;</a></span>toastAccentColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color KitchenHUD.toastAccentColor = <a class="el" href="#aa0448ef360ba67a68c627d8405e68748">AccentGold</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualny kolor akcentu powiadomienia toast, ustalany na podstawie treści komunikatu (czerwony dla błędów, zielony dla sukcesów itp.). </p>
+
+</div>
+</div>
+<a id="a2ea81ce1f20c0c37f26e89f10ae0875f" name="a2ea81ce1f20c0c37f26e89f10ae0875f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ea81ce1f20c0c37f26e89f10ae0875f">&#9670;&#160;</a></span>toastAccentImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image KitchenHUD.toastAccentImage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obraz akcentowej linii z boku powiadomienia toast. Jego kolor zmienia się w zależności od typu komunikatu. </p>
+
+</div>
+</div>
+<a id="a41b005acb5d3ae46f41007415b348b52" name="a41b005acb5d3ae46f41007415b348b52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41b005acb5d3ae46f41007415b348b52">&#9670;&#160;</a></span>ToastBackground</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color KitchenHUD.ToastBackground = new Color(0.012f, 0.014f, 0.018f, 0.74f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor tła powiadomienia toast. </p>
+
+</div>
+</div>
+<a id="af9ad434d3a0fe79eb03588b052f7cdd7" name="af9ad434d3a0fe79eb03588b052f7cdd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9ad434d3a0fe79eb03588b052f7cdd7">&#9670;&#160;</a></span>toastCanvasGroup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CanvasGroup KitchenHUD.toastCanvasGroup</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Grupa Canvas panelu toast, kontrolująca przezroczystość całego powiadomienia podczas animacji pojawiania/zanikania. </p>
+
+</div>
+</div>
+<a id="aa7e0be6b1651c029c61ad6c0647e2ddd" name="aa7e0be6b1651c029c61ad6c0647e2ddd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7e0be6b1651c029c61ad6c0647e2ddd">&#9670;&#160;</a></span>toastPanel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RectTransform KitchenHUD.toastPanel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RectTransform panelu powiadomień toast, używany do animacji pozycji i skali podczas pojawiania się i zanikania. </p>
+
+</div>
+</div>
+<a id="ac69e9d856e8cf1945f7f141d99edd9c9" name="ac69e9d856e8cf1945f7f141d99edd9c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac69e9d856e8cf1945f7f141d99edd9c9">&#9670;&#160;</a></span>toastTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenHUD.toastTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Timer odliczający czas wyświetlania powiadomienia toast. Gdy spadnie do zera, powiadomienie zaczyna zanikać. </p>
+
+</div>
+</div>
+<a id="a45a059076c0402d5c4abfce0f0186a20" name="a45a059076c0402d5c4abfce0f0186a20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45a059076c0402d5c4abfce0f0186a20">&#9670;&#160;</a></span>upgradeBar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RectTransform KitchenHUD.upgradeBar</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RectTransform paska ulepszeń, pozwalający na pokazywanie/ukrywanie całego panelu statusu ulepszeń. </p>
+
+</div>
+</div>
+<a id="abbf2fa41af78515107a754dc1c196ac5" name="abbf2fa41af78515107a754dc1c196ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbf2fa41af78515107a754dc1c196ac5">&#9670;&#160;</a></span>upgradeStatusText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenHUD.upgradeStatusText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst wyświetlający aktualnie aktywne bonusy z ulepszeń sklepu. Widoczny tylko gdy gracz zakupił co najmniej jedno ulepszenie. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_kitchen_h_u_d_8cs.html">KitchenHUD.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

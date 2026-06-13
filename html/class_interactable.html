@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy Interactable</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="class_interactable-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy Interactable</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Bazowa klasa dla wszystkich obiektów interaktywnych w grze. Zapewnia mechanizm wyświetlania komunikatu podpowiedzi gracza oraz wywoływania akcji po interakcji. Klasy pochodne mogą nadpisywać metody wirtualne, aby dostarczyć niestandardowe zachowanie.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla Interactable</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_interactable.png" usemap="#Interactable_map" alt=""/>
+  <map id="Interactable_map" name="Interactable_map">
+<area href="class_kitchen_station.html" title="Klasa reprezentująca stanowisko kuchenne w symulatorze kebaba. Dziedziczy po klasie Interactable i ob..." alt="KitchenStation" shape="rect" coords="0,112,102,136"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a323fd56ebb72a471e459f57bfe68a186" id="r_a323fd56ebb72a471e459f57bfe68a186"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a323fd56ebb72a471e459f57bfe68a186">GetPrompt</a> (<a class="el" href="class_player_interaction.html">PlayerInteraction</a> player)</td></tr>
+<tr class="memdesc:a323fd56ebb72a471e459f57bfe68a186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca komunikat podpowiedzi dla danego gracza. Metoda wirtualna — klasy pochodne mogą ją nadpisać, aby dostarczyć kontekstowy komunikat zależny od stanu gry lub gracza.  <br /></td></tr>
+<tr class="separator:a323fd56ebb72a471e459f57bfe68a186"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5864e220ef0a89b8bf1aecb7c5d1070" id="r_af5864e220ef0a89b8bf1aecb7c5d1070"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5864e220ef0a89b8bf1aecb7c5d1070">Interact</a> (<a class="el" href="class_player_interaction.html">PlayerInteraction</a> player)</td></tr>
+<tr class="memdesc:af5864e220ef0a89b8bf1aecb7c5d1070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wykonuje akcję interakcji z obiektem. Domyślna implementacja wywołuje zdarzenie <a class="el" href="#a881bccce80cbf2e419c96e95bfde68d5" title="Zdarzenie Unity wywoływane podczas interakcji gracza z obiektem. Umożliwia podpięcie dowolnych akcji ...">onInteract</a>. Metoda wirtualna — klasy pochodne mogą ją nadpisać, aby dodać własną logikę interakcji (np. podnoszenie składników, obsługa stacji).  <br /></td></tr>
+<tr class="separator:af5864e220ef0a89b8bf1aecb7c5d1070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2f8057416ebac677551e512cd517f27" id="r_ac2f8057416ebac677551e512cd517f27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2f8057416ebac677551e512cd517f27">BaseInteract</a> ()</td></tr>
+<tr class="memdesc:ac2f8057416ebac677551e512cd517f27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda pomocnicza wywołująca interakcję bez podania referencji do gracza. Przydatna do wywoływania interakcji z poziomu zdarzeń Unity lub skryptów, które nie posiadają referencji do obiektu gracza.  <br /></td></tr>
+<tr class="separator:ac2f8057416ebac677551e512cd517f27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:a11e13c039acf943e83108cb9bea3186e" id="r_a11e13c039acf943e83108cb9bea3186e"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11e13c039acf943e83108cb9bea3186e">PromptMessage</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a11e13c039acf943e83108cb9bea3186e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Właściwość dostępowa do komunikatu podpowiedzi interakcji. Pozwala na odczyt i zapis tekstu wyświetlanego graczowi w momencie, gdy obiekt jest w zasięgu interakcji.  <br /></td></tr>
+<tr class="separator:a11e13c039acf943e83108cb9bea3186e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:ac3fabdda1fc338d0bf6131faa04074f0" id="r_ac3fabdda1fc338d0bf6131faa04074f0"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3fabdda1fc338d0bf6131faa04074f0">promptMessage</a> = &quot;Interact&quot;</td></tr>
+<tr class="memdesc:ac3fabdda1fc338d0bf6131faa04074f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Komunikat podpowiedzi wyświetlany graczowi, gdy jest w zasięgu interakcji. Domyślna wartość to "Interact".  <br /></td></tr>
+<tr class="separator:ac3fabdda1fc338d0bf6131faa04074f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a881bccce80cbf2e419c96e95bfde68d5" id="r_a881bccce80cbf2e419c96e95bfde68d5"><td class="memItemLeft" align="right" valign="top">UnityEvent&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a881bccce80cbf2e419c96e95bfde68d5">onInteract</a></td></tr>
+<tr class="memdesc:a881bccce80cbf2e419c96e95bfde68d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zdarzenie Unity wywoływane podczas interakcji gracza z obiektem. Umożliwia podpięcie dowolnych akcji z poziomu Inspektora Unity.  <br /></td></tr>
+<tr class="separator:a881bccce80cbf2e419c96e95bfde68d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Bazowa klasa dla wszystkich obiektów interaktywnych w grze. Zapewnia mechanizm wyświetlania komunikatu podpowiedzi gracza oraz wywoływania akcji po interakcji. Klasy pochodne mogą nadpisywać metody wirtualne, aby dostarczyć niestandardowe zachowanie. </p>
+<p>Klasa korzysta z systemu UnityEvent, co pozwala na konfigurację reakcji na interakcję bezpośrednio z poziomu Inspektora Unity bez konieczności pisania dodatkowego kodu. Metody <a class="el" href="#a323fd56ebb72a471e459f57bfe68a186" title="Zwraca komunikat podpowiedzi dla danego gracza. Metoda wirtualna — klasy pochodne mogą ją nadpisać,...">GetPrompt</a> i <a class="el" href="#af5864e220ef0a89b8bf1aecb7c5d1070" title="Wykonuje akcję interakcji z obiektem. Domyślna implementacja wywołuje zdarzenie onInteract....">Interact</a> są wirtualne, umożliwiając specjalizację w klasach pochodnych (np. stacje kuchenne, źródła składników). </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ac2f8057416ebac677551e512cd517f27" name="ac2f8057416ebac677551e512cd517f27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2f8057416ebac677551e512cd517f27">&#9670;&#160;</a></span>BaseInteract()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Interactable.BaseInteract </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda pomocnicza wywołująca interakcję bez podania referencji do gracza. Przydatna do wywoływania interakcji z poziomu zdarzeń Unity lub skryptów, które nie posiadają referencji do obiektu gracza. </p>
+<p>Wywołuje metodę <a class="el" href="#af5864e220ef0a89b8bf1aecb7c5d1070" title="Wykonuje akcję interakcji z obiektem. Domyślna implementacja wywołuje zdarzenie onInteract....">Interact</a> z parametrem <code>null</code> zamiast konkretnego obiektu gracza. </p>
+
+</div>
+</div>
+<a id="a323fd56ebb72a471e459f57bfe68a186" name="a323fd56ebb72a471e459f57bfe68a186"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a323fd56ebb72a471e459f57bfe68a186">&#9670;&#160;</a></span>GetPrompt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual string Interactable.GetPrompt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player_interaction.html">PlayerInteraction</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zwraca komunikat podpowiedzi dla danego gracza. Metoda wirtualna — klasy pochodne mogą ją nadpisać, aby dostarczyć kontekstowy komunikat zależny od stanu gry lub gracza. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Referencja do komponentu interakcji gracza, który żąda podpowiedzi.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Tekst komunikatu podpowiedzi do wyświetlenia w interfejsie użytkownika.</dd></dl>
+
+<p>Reimplementowana w <a class="el" href="class_kitchen_station.html#a5a006d053d065eaf3a02da8394712b7c">KitchenStation</a>.</p>
+
+</div>
+</div>
+<a id="af5864e220ef0a89b8bf1aecb7c5d1070" name="af5864e220ef0a89b8bf1aecb7c5d1070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5864e220ef0a89b8bf1aecb7c5d1070">&#9670;&#160;</a></span>Interact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Interactable.Interact </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player_interaction.html">PlayerInteraction</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wykonuje akcję interakcji z obiektem. Domyślna implementacja wywołuje zdarzenie <a class="el" href="#a881bccce80cbf2e419c96e95bfde68d5" title="Zdarzenie Unity wywoływane podczas interakcji gracza z obiektem. Umożliwia podpięcie dowolnych akcji ...">onInteract</a>. Metoda wirtualna — klasy pochodne mogą ją nadpisać, aby dodać własną logikę interakcji (np. podnoszenie składników, obsługa stacji). </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Referencja do komponentu interakcji gracza wykonującego akcję. Może być <code>null</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplementowana w <a class="el" href="class_kitchen_station.html#a913ee51c7b0f2d26adcc6ce6e70fb71c">KitchenStation</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a881bccce80cbf2e419c96e95bfde68d5" name="a881bccce80cbf2e419c96e95bfde68d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a881bccce80cbf2e419c96e95bfde68d5">&#9670;&#160;</a></span>onInteract</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UnityEvent Interactable.onInteract</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zdarzenie Unity wywoływane podczas interakcji gracza z obiektem. Umożliwia podpięcie dowolnych akcji z poziomu Inspektora Unity. </p>
+
+</div>
+</div>
+<a id="ac3fabdda1fc338d0bf6131faa04074f0" name="ac3fabdda1fc338d0bf6131faa04074f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3fabdda1fc338d0bf6131faa04074f0">&#9670;&#160;</a></span>promptMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Interactable.promptMessage = &quot;Interact&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Komunikat podpowiedzi wyświetlany graczowi, gdy jest w zasięgu interakcji. Domyślna wartość to "Interact". </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="a11e13c039acf943e83108cb9bea3186e" name="a11e13c039acf943e83108cb9bea3186e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11e13c039acf943e83108cb9bea3186e">&#9670;&#160;</a></span>PromptMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Interactable.PromptMessage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Właściwość dostępowa do komunikatu podpowiedzi interakcji. Pozwala na odczyt i zapis tekstu wyświetlanego graczowi w momencie, gdy obiekt jest w zasięgu interakcji. </p>
+<p>Tekst komunikatu podpowiedzi interakcji.</p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_interactable_8cs.html">Interactable.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

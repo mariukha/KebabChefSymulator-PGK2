@@ -1,0 +1,1085 @@
+\doxysection{Dokumentacja klasy Kitchen\+Station}
+\hypertarget{class_kitchen_station}{}\label{class_kitchen_station}\index{KitchenStation@{KitchenStation}}
+
+
+Klasa reprezentująca stanowisko kuchenne w symulatorze kebaba. Dziedziczy po klasie \doxylink{class_interactable}{Interactable} i obsługuje interakcje gracza z różnymi typami stanowisk kuchennych.  
+
+
+Diagram dziedziczenia dla Kitchen\+Station\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_kitchen_station}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_kitchen_station_aac88098da51643c0e05189ffff2e6d0c}{Sync\+Network\+State}} (\mbox{\hyperlink{struct_station_state_snapshot}{Station\+State\+Snapshot}} snapshot)
+\begin{DoxyCompactList}\small\item\em Synchronizuje stan stanowiska na podstawie migawki sieciowej (snapshot). Nadpisuje bieżący stan lokalny wartościami otrzymanymi z serwera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a46e9fcfd4aceabaa97ee0cf63951609b}{Write\+Assembly\+To\+Snapshot}} (ref \mbox{\hyperlink{struct_station_state_snapshot}{Station\+State\+Snapshot}} snapshot)
+\begin{DoxyCompactList}\small\item\em Zapisuje aktualny stan składników montażu do migawki sieciowej. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_ae68561a9982ecc164d5160fd7ac0dab7}{Configure}} (string \mbox{\hyperlink{class_kitchen_station_a67ea505e895e18564517431f7a72e3c6}{station\+Name}}, \mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}} \mbox{\hyperlink{class_kitchen_station_a5bd30761d2c3b58b629d3cbf7c4adf80}{station\+Type}}, \mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} \mbox{\hyperlink{class_kitchen_station_a7234a3f45a0da0c094261cd5daa651d1}{source\+Ingredient}}, float \mbox{\hyperlink{class_kitchen_station_ae46dd3288cc277b18efcd2eacde6f7f1}{processing\+Duration}}, Renderer \mbox{\hyperlink{class_kitchen_station_a5479b30e96196dacb9eb0c53c00e572f}{visual\+Renderer}})
+\begin{DoxyCompactList}\small\item\em Konfiguruje stanowisko kuchenne z podanymi parametrami. Ustawia nazwę, typ, składnik źródłowy, czas przetwarzania i renderer wizualny. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_afd705052e999a7c1b9873989931d737e}{Set\+Linked\+Meat\+Tray}} (\mbox{\hyperlink{class_kitchen_station}{Kitchen\+Station}} tray\+Station)
+\begin{DoxyCompactList}\small\item\em Ustawia powiązane stanowisko tacy z mięsem dla donera. Grill-\/doner po zakończeniu procesu przesyła gotowe mięso na powiązaną tacę. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_aa949240f2b26da4fe063761f9b046661}{Refresh\+Visual\+State}} ()
+\begin{DoxyCompactList}\small\item\em Odświeża kompletny stan wizualny stanowiska, w tym kolor i dynamiczne obiekty 3D. \end{DoxyCompactList}\item 
+override string \mbox{\hyperlink{class_kitchen_station_a5a006d053d065eaf3a02da8394712b7c}{Get\+Prompt}} (\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} player)
+\begin{DoxyCompactList}\small\item\em Zwraca komunikat podpowiedzi wyświetlany graczowi w zależności od typu stanowiska i bieżącego stanu przetwarzania. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_kitchen_station_a913ee51c7b0f2d26adcc6ce6e70fb71c}{Interact}} (\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} player)
+\begin{DoxyCompactList}\small\item\em Obsługuje interakcję gracza ze stanowiskiem kuchennym. Deleguje logikę do odpowiedniej metody w zależności od typu stanowiska. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Metody publiczne dziedziczone z \mbox{\hyperlink{class_interactable}{Interactable}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_interactable_ac2f8057416ebac677551e512cd517f27}{Base\+Interact}} ()
+\begin{DoxyCompactList}\small\item\em Metoda pomocnicza wywołująca interakcję bez podania referencji do gracza. Przydatna do wywoływania interakcji z poziomu zdarzeń Unity lub skryptów, które nie posiadają referencji do obiektu gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_kitchen_station_a056a0653a9d8a10494e9b162897d92af}{Is\+Processing}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Informuje, czy stanowisko aktualnie przetwarza składnik. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_station_aa2b02d55bd3751f50250473cfcec449a}{Process\+End\+Time}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Czas ({\ttfamily Time.\+time}) zakończenia bieżącego przetwarzania. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_kitchen_station_aff9469cdd11ad8855297fe5eff41a32b}{Prepared\+Meat\+Servings}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Liczba gotowych porcji mięsa na tacy. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_station_ac61b7c51ed058d529c61d2529383fdbf}{Has\+Lavash}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Informuje, czy na stanowisku montażu leży ławasz. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_kitchen_station_a01bdfb6e70941cedcaadd9258c3f0fc4}{Assembly\+Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Liczba składników dodanych do montażu kebaba. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} \mbox{\hyperlink{class_kitchen_station_a451dda30ac4ee9405fc752022ffba764}{Station\+Item}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Przedmiot kuchenny aktualnie znajdujący się na stanowisku. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}} \mbox{\hyperlink{class_kitchen_station_a86e6919ee81fbe571a9b223171ec01c1}{Station\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Typ tego stanowiska kuchennego. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}} $>$ \mbox{\hyperlink{class_kitchen_station_a2e5855f782e6a1f4684d7aec398623f3}{Assembly\+Ingredients}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Lista przygotowanych składników na stanowisku montażu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Właściwości dziedziczone z \mbox{\hyperlink{class_interactable}{Interactable}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_interactable_a11e13c039acf943e83108cb9bea3186e}{Prompt\+Message}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość dostępowa do komunikatu podpowiedzi interakcji. Pozwala na odczyt i zapis tekstu wyświetlanego graczowi w momencie, gdy obiekt jest w zasięgu interakcji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_kitchen_station_ac7ee51b9e1b414d520fbaf846f052f9e}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Update wywoływana w każdej klatce przez Unity. Na kliencie sieciowym aktualizuje jedynie efekt pulsowania. Na serwerze sprawdza, czy przetwarzanie dobiegło końca i je finalizuje. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a1535ee640469ef8fb26d297cba422c22}{Update\+Pulse\+Effect}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje efekt pulsowania skali stanowiska. Pulsowanie jest aktywne gdy stanowisko posiada gotowy przedmiot do odebrania lub tacę z przygotowanym mięsem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a759de80b42c92da02e67e454ecfca803}{Handle\+Ingredient\+Source}} (\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} player)
+\begin{DoxyCompactList}\small\item\em Obsługuje interakcję ze stanowiskiem źródła składników. Pozwala graczowi pobrać surowy składnik lub mięso z tacy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a16499b2e3c088ef5d7dcbf06e6ff2932}{Handle\+Processing\+Station}} (\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} player, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} output\+State)
+\begin{DoxyCompactList}\small\item\em Obsługuje interakcję ze stanowiskiem przetwarzającym (deska do krojenia lub grill). Umożliwia położenie składnika do przetworzenia, odebranie gotowego produktu lub wyświetlenie komunikatu o zajętości stanowiska. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a113a7153d7c63136f771c540761beb1a}{Handle\+Meat\+Tray\+Source}} (\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} player)
+\begin{DoxyCompactList}\small\item\em Obsługuje pobieranie mięsa z tacy (stanowisko źródła mięsa powiązane z donerem). Gracz może pobrać jedną porcję gotowego mięsa, jeśli taca nie jest pusta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a41c1eb66d57b59cb9bc6c6b00135b966}{Handle\+Doner\+Station}} (\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} player)
+\begin{DoxyCompactList}\small\item\em Obsługuje interakcję ze stanowiskiem doner kebab (grill powiązany z tacą na mięso). Rozpoczyna proces ścinania mięsa z szpikulca donera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a47e8295194c4993565f427a33cc57165}{Handle\+Assembly}} (\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} player)
+\begin{DoxyCompactList}\small\item\em Obsługuje interakcję ze stanowiskiem montażu kebaba. Pozwala dodawać składniki, kłaść ławasz lub zawinąć gotowego kebaba. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a193e18208e07392539c85f22facdf543}{Handle\+Delivery}} (\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} player)
+\begin{DoxyCompactList}\small\item\em Obsługuje wydawanie gotowego kebaba klientowi na stanowisku dostawy. Próbuje dostarczyć danie do systemu zamówień i uruchamia odpowiednie efekty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_station_acd0a4ab31d9f9ceb97cd70098e956f9e}{Can\+Be\+Processed\+Here}} (\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} item, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} output\+State)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy dany przedmiot kuchenny może być przetworzony na tym stanowisku. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_station_a387a3e480abfef81f3e731e043f39f42}{Can\+Be\+Added\+To\+Assembly}} (\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} item)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy dany przedmiot kuchenny może zostać dodany do montażu kebaba. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_station_abcbe122fed5bdf991bf0d70a69397607}{Can\+Create\+Dish}} ()
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy na stanowisku montażu zebrano wystarczającą liczbę składników do utworzenia gotowego kebaba. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} \mbox{\hyperlink{class_kitchen_station_a77b7fc3a637e1b528f6ea1916b236538}{Build\+Dish}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy gotowy kebab (danie) na podstawie ławasza i zebranych składników montażu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a1215154323b2a04a93e07226816f0577}{Finish\+Processing}} ()
+\begin{DoxyCompactList}\small\item\em Finalizuje proces przetwarzania składnika na stanowisku. Zmienia stan przedmiotu, odświeża wizualizację i uruchamia efekty gotowości. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a65d80f704ada230f620860964cc6ec02}{Reset\+Assembly}} ()
+\begin{DoxyCompactList}\small\item\em Resetuje stanowisko montażu do stanu początkowego. Usuwa ławasz i czyści listę składników montażu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a479476f53d0a2f5b6ea0e3ebbfa428db}{Receive\+Prepared\+Meat}} (int servings)
+\begin{DoxyCompactList}\small\item\em Przyjmuje gotowe porcje mięsa na tacę. Wywoływane przez stanowisko donera po zakończeniu procesu ścinania. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_station_aa4c2842c2efa6f017f424beda54ba996}{Has\+Prepared\+Meat}} ()
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy na tacy z mięsem są dostępne gotowe porcje. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_ab8dd769eac68b01967efcc5cec0055d9}{Play\+Pickup\+Feedback}} (\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} item)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt wizualny i kamerowy związany z pobraniem przedmiotu ze stanowiska. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a4cdad2ae98846dd7a7f3d5eb94445839}{Play\+Place\+Feedback}} (\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} item)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt wizualny i dźwiękowy związany z położeniem przedmiotu na stanowisku. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a3bb8e56b6e6e78d6d049354b68ab4102}{Play\+Ready\+Feedback}} (\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} item)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt wizualny i dźwiękowy sygnalizujący gotowość przedmiotu na stanowisku. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a63494a8aed8534022b64712fbddfdf6b}{Play\+Station\+Pulse}} (float intensity)
+\begin{DoxyCompactList}\small\item\em Uruchamia krótki efekt pulsowania (powiększenia) stanowiska za pomocą animatora przedmiotów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_ae828cc7f91a7be5bfa4cb44969b967ec}{Play\+Micro\+Camera\+Feedback}} (float intensity, float duration)
+\begin{DoxyCompactList}\small\item\em Uruchamia subtelne trzęsienie kamery jako informację zwrotną dla gracza. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_kitchen_station_ab01914ae93c27880a16879f7a26bf60f}{Get\+Item\+Feedback\+Color}} (\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} item)
+\begin{DoxyCompactList}\small\item\em Pobiera kolor odpowiadający danemu przedmiotowi kuchennemu do użycia w efektach wizualnych. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_station_a262f4cc688ffcb13fbd42cdb8eb1d39b}{Is\+Meat\+Tray\+Station}} ()
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy to stanowisko jest tacą z mięsem (źródło składnika typu mięso). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_station_adfd0054dd742f24af8305a1d5cac5cd9}{Is\+Doner\+Station}} ()
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy to stanowisko jest donerem (grill powiązany z tacą na mięso). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a560f4d5d6d21fa20193bbe06914b9965}{Apply\+Current\+Color}} ()
+\begin{DoxyCompactList}\small\item\em Ustala i nakłada odpowiedni kolor materiału na renderer stanowiska w zależności od bieżącego stanu (przetwarzanie, gotowość, bezczynność). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_kitchen_station_af10362153e8d4bdfa7048dc375a3bc62}{Compute\+Visual\+Hash}} ()
+\begin{DoxyCompactList}\small\item\em Oblicza hash bieżącego stanu wizualnego stanowiska. Używany do optymalizacji — wizualizacja jest odświeżana tylko gdy hash się zmieni. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_a7e63ae72b28a1cd4dfac530d9ec1dd9d}{Update\+Dynamic\+Visuals}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje dynamiczne obiekty wizualne 3D na stanowisku (przedmioty, ławasz, składniki montażu). Używa systemu hashowania do unikania niepotrzebnych odświeżeń. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_station_af6d4e3521cf51eaa097a6cef44b6299a}{Refresh\+Special\+Visuals}} ()
+\begin{DoxyCompactList}\small\item\em Odświeża specjalne wizualizacje stanowiska, w szczególności widoczność mięsa na tacy. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_station_a796818fdbe17630e41cc7e5257a75cdf}{Get\+Shop\+Speed\+Multiplier}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera mnożnik prędkości przetwarzania ze sklepu dla aktualnego typu stanowiska. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_kitchen_station_a67ea505e895e18564517431f7a72e3c6}{station\+Name}} = "{}Stacja"{}
+\begin{DoxyCompactList}\small\item\em Nazwa wyświetlana stanowiska kuchennego, używana w komunikatach dla gracza. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}} \mbox{\hyperlink{class_kitchen_station_a5bd30761d2c3b58b629d3cbf7c4adf80}{station\+Type}} = \mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2}{Kitchen\+Station\+Type.\+Ingredient\+Source}}
+\begin{DoxyCompactList}\small\item\em Typ stanowiska kuchennego określający jego funkcję i zachowanie. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} \mbox{\hyperlink{class_kitchen_station_a7234a3f45a0da0c094261cd5daa651d1}{source\+Ingredient}}
+\begin{DoxyCompactList}\small\item\em Dane składnika źródłowego dostarczanego przez to stanowisko. Używane tylko dla stanowisk typu \doxylink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2}{Kitchen\+Station\+Type.\+Ingredient\+Source}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_station_ae46dd3288cc277b18efcd2eacde6f7f1}{processing\+Duration}} = 2.\+5f
+\begin{DoxyCompactList}\small\item\em Bazowy czas trwania przetwarzania składnika na stanowisku (w sekundach). Może być modyfikowany przez mnożnik prędkości ze sklepu. \end{DoxyCompactList}\item 
+Renderer \mbox{\hyperlink{class_kitchen_station_a5479b30e96196dacb9eb0c53c00e572f}{visual\+Renderer}}
+\begin{DoxyCompactList}\small\item\em Renderer wizualny stanowiska, którego kolor zmienia się w zależności od stanu. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_kitchen_station_a83a8f40049ff6dab5e8afe92ba8838ff}{idle\+Color}} = new Color(0.\+35f, 0.\+35f, 0.\+35f)
+\begin{DoxyCompactList}\small\item\em Kolor stanowiska w stanie bezczynności (brak przetwarzania, brak przedmiotu). \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_kitchen_station_af2ad95dec4b1a0842d560de0a9736b4e}{busy\+Color}} = new Color(0.\+95f, 0.\+65f, 0.\+2f)
+\begin{DoxyCompactList}\small\item\em Kolor stanowiska podczas aktywnego przetwarzania składnika. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_kitchen_station_ac60613e24ea5c5a595807b60fb69572d}{ready\+Color}} = new Color(0.\+35f, 0.\+8f, 0.\+35f)
+\begin{DoxyCompactList}\small\item\em Kolor stanowiska gdy składnik jest gotowy do odebrania. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} \mbox{\hyperlink{class_kitchen_station_a32991ddcf346de28946df08e56711671}{station\+Item}}
+\begin{DoxyCompactList}\small\item\em Przedmiot kuchenny aktualnie znajdujący się na stanowisku (przetwarzany lub gotowy). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_station_aecd8aaff5c09ca6a9030685ca401792a}{has\+Lavash}}
+\begin{DoxyCompactList}\small\item\em Flaga określająca, czy na stanowisku montażu znajduje się ławasz. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}} $>$ \mbox{\hyperlink{class_kitchen_station_a156230809f45ddda4ffec08fa05592a9}{assembly\+Ingredients}} = new List$<$\mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}}$>$()
+\begin{DoxyCompactList}\small\item\em Lista przygotowanych składników dodanych do montażu kebaba na stanowisku Assembly. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_kitchen_station_aa043c95ad389235aef709e2d7d4927d3}{prepared\+Meat\+Servings}}
+\begin{DoxyCompactList}\small\item\em Liczba przygotowanych porcji mięsa dostępnych na tacy z mięsem. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_kitchen_station_ad7b2c07304ada13024c82d6149b6aaa5}{prepared\+Meat\+Batch\+Size}} = 3
+\begin{DoxyCompactList}\small\item\em Domyślna wielkość partii mięsa wytwarzanej przy jednorazowym ścięciu z donera. Może być nadpisana przez wartość z \doxylink{class_shop_manager}{Shop\+Manager}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_station_a6beec3d3183d8686dac6a98957c62900}{is\+Processing}}
+\begin{DoxyCompactList}\small\item\em Flaga wskazująca, czy stanowisko aktualnie przetwarza składnik. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_station_a30e17669e732850fb85ace3a59093a16}{process\+End\+Time}}
+\begin{DoxyCompactList}\small\item\em Czas zakończenia bieżącego procesu przetwarzania (w {\ttfamily Time.\+time}). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kitchen_station}{Kitchen\+Station}} \mbox{\hyperlink{class_kitchen_station_a48f2f452d63f65ce66af48c462f43750}{linked\+Meat\+Tray}}
+\begin{DoxyCompactList}\small\item\em Powiązane stanowisko tacy z mięsem, na którą trafia mięso ścięte z donera. Używane przez stanowiska typu grill-\/doner. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{class_kitchen_station_a2282e8b68aa4d018ab506bcdb428851d}{meat\+Visual}}
+\begin{DoxyCompactList}\small\item\em Transform wizualizacji mięsa na tacy, wyszukiwany jako obiekt potomny "{}\+Meat\+Visual"{}. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_kitchen_station_a91bef39b351b710cd613b9a3ee9cab05}{dynamic\+Station\+Item\+Visual}}
+\begin{DoxyCompactList}\small\item\em Dynamicznie tworzony obiekt wizualny reprezentujący przedmiot na stanowisku. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_kitchen_station_a3c25cd6fb06253cde28d5bcdfd51d7ee}{dynamic\+Lavash\+Visual}}
+\begin{DoxyCompactList}\small\item\em Dynamicznie tworzony obiekt wizualny reprezentujący ławasz na stanowisku montażu. \end{DoxyCompactList}\item 
+List$<$ Game\+Object $>$ \mbox{\hyperlink{class_kitchen_station_ab2edf42a5a583301d4fa1ad05e6a2c30}{dynamic\+Assembly\+Visuals}} = new List$<$Game\+Object$>$()
+\begin{DoxyCompactList}\small\item\em Lista dynamicznie tworzonych obiektów wizualnych reprezentujących składniki montażu kebaba. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_station_ac3eab3d8cafaef65c80a270c5026eb59}{pulse\+Phase}}
+\begin{DoxyCompactList}\small\item\em Bieżąca faza animacji pulsowania stanowiska, przyrastająca w czasie. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_kitchen_station_a3251d77d59e1a81c1d4f5cc1f260033e}{base\+Scale}}
+\begin{DoxyCompactList}\small\item\em Bazowa skala stanowiska zapamiętana przed rozpoczęciem efektu pulsowania. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_kitchen_station_a118ed9d95ca9caf4f5e0808a6c6ec455}{last\+Visual\+Hash}}
+\begin{DoxyCompactList}\small\item\em Hash ostatniego stanu wizualnego, używany do optymalizacji odświeżania wizualizacji. Jeśli hash się nie zmienił, wizualizacja nie jest przerysowywana. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa reprezentująca stanowisko kuchenne w symulatorze kebaba. Dziedziczy po klasie \doxylink{class_interactable}{Interactable} i obsługuje interakcje gracza z różnymi typami stanowisk kuchennych. 
+
+Stanowisko kuchenne może pełnić jedną z pięciu ról\+: 
+\begin{DoxyItemize}
+\item {\ttfamily Ingredient\+Source} — źródło surowych składników (w tym taca z mięsem) 
+\item {\ttfamily Cutting\+Board} — deska do krojenia warzyw 
+\item {\ttfamily Grill} — grill do pieczenia mięsa lub doner kebab 
+\item {\ttfamily Assembly} — stanowisko montażu gotowego kebaba 
+\item {\ttfamily Delivery} — punkt wydania gotowego dania klientowi 
+\end{DoxyItemize}Klasa zarządza stanem przetwarzania składników, wizualizacją dynamicznych obiektów na stanowisku oraz synchronizacją stanu przez sieć. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_kitchen_station_a560f4d5d6d21fa20193bbe06914b9965}\index{KitchenStation@{KitchenStation}!ApplyCurrentColor@{ApplyCurrentColor}}
+\index{ApplyCurrentColor@{ApplyCurrentColor}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{ApplyCurrentColor()}{ApplyCurrentColor()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a560f4d5d6d21fa20193bbe06914b9965} 
+void Kitchen\+Station.\+Apply\+Current\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ustala i nakłada odpowiedni kolor materiału na renderer stanowiska w zależności od bieżącego stanu (przetwarzanie, gotowość, bezczynność). 
+
+Priorytet kolorów\+: 
+\begin{DoxyEnumerate}
+\item \doxylink{class_kitchen_station_af2ad95dec4b1a0842d560de0a9736b4e}{busy\+Color} — stanowisko przetwarza składnik. 
+\item \doxylink{class_kitchen_station_ac60613e24ea5c5a595807b60fb69572d}{ready\+Color} — gotowy produkt, mięso na tacy, ławasz lub składniki montażu. 
+\item Kolor debugowy składnika źródłowego — jeśli istnieje składnik źródłowy. 
+\item \doxylink{class_kitchen_station_a83a8f40049ff6dab5e8afe92ba8838ff}{idle\+Color} — domyślny kolor bezczynności. 
+\end{DoxyEnumerate}Wywołuje również \doxylink{class_kitchen_station_af6d4e3521cf51eaa097a6cef44b6299a}{Refresh\+Special\+Visuals} do aktualizacji wizualizacji tacy z mięsem. \Hypertarget{class_kitchen_station_a77b7fc3a637e1b528f6ea1916b236538}\index{KitchenStation@{KitchenStation}!BuildDish@{BuildDish}}
+\index{BuildDish@{BuildDish}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{BuildDish()}{BuildDish()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a77b7fc3a637e1b528f6ea1916b236538} 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} Kitchen\+Station.\+Build\+Dish (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy gotowy kebab (danie) na podstawie ławasza i zebranych składników montażu. 
+
+\begin{DoxyReturn}{Zwraca}
+Nowy obiekt \doxylink{class_kitchen_item}{Kitchen\+Item} reprezentujący zawinięty kebab z flagą {\ttfamily is\+Dish = true}, zawierający ławasz oraz wszystkie dodane składniki. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_station_a387a3e480abfef81f3e731e043f39f42}\index{KitchenStation@{KitchenStation}!CanBeAddedToAssembly@{CanBeAddedToAssembly}}
+\index{CanBeAddedToAssembly@{CanBeAddedToAssembly}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{CanBeAddedToAssembly()}{CanBeAddedToAssembly()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a387a3e480abfef81f3e731e043f39f42} 
+bool Kitchen\+Station.\+Can\+Be\+Added\+To\+Assembly (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}}}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sprawdza, czy dany przedmiot kuchenny może zostać dodany do montażu kebaba. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em item} & Przedmiot kuchenny do weryfikacji.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli przedmiot spełnia wymagania montażu\+: 
+\begin{DoxyItemize}
+\item Mięso — musi być upieczone (\doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea603704d17e2b294629335466e6ca92bb}{Ingredient\+Process\+State.\+Cooked}). 
+\item Pomidor, cebula, sałata — muszą być pokrojone (\doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea984c80c3e1a5734378386e95df6b0c63}{Ingredient\+Process\+State.\+Chopped}). 
+\item Sos czosnkowy — może być surowy (\doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}{Ingredient\+Process\+State.\+Raw}). 
+\end{DoxyItemize}W przeciwnym razie {\ttfamily false}. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_station_acd0a4ab31d9f9ceb97cd70098e956f9e}\index{KitchenStation@{KitchenStation}!CanBeProcessedHere@{CanBeProcessedHere}}
+\index{CanBeProcessedHere@{CanBeProcessedHere}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{CanBeProcessedHere()}{CanBeProcessedHere()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_acd0a4ab31d9f9ceb97cd70098e956f9e} 
+bool Kitchen\+Station.\+Can\+Be\+Processed\+Here (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}}}]{item}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{output\+State}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sprawdza, czy dany przedmiot kuchenny może być przetworzony na tym stanowisku. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em item} & Przedmiot kuchenny do sprawdzenia.\\
+\hline
+{\em output\+State} & Oczekiwany stan wyjściowy przetwarzania.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli przedmiot jest surowy i pasuje do typu stanowiska\+: mięso na grill, warzywa (pomidor, cebula, sałata) na deskę do krojenia. W przeciwnym razie {\ttfamily false}. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_station_abcbe122fed5bdf991bf0d70a69397607}\index{KitchenStation@{KitchenStation}!CanCreateDish@{CanCreateDish}}
+\index{CanCreateDish@{CanCreateDish}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{CanCreateDish()}{CanCreateDish()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_abcbe122fed5bdf991bf0d70a69397607} 
+bool Kitchen\+Station.\+Can\+Create\+Dish (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sprawdza, czy na stanowisku montażu zebrano wystarczającą liczbę składników do utworzenia gotowego kebaba. 
+
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli stanowisko posiada ławasz oraz co najmniej jedno upieczone mięso wśród składników montażu. W przeciwnym razie {\ttfamily false}. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_station_af10362153e8d4bdfa7048dc375a3bc62}\index{KitchenStation@{KitchenStation}!ComputeVisualHash@{ComputeVisualHash}}
+\index{ComputeVisualHash@{ComputeVisualHash}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{ComputeVisualHash()}{ComputeVisualHash()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_af10362153e8d4bdfa7048dc375a3bc62} 
+int Kitchen\+Station.\+Compute\+Visual\+Hash (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Oblicza hash bieżącego stanu wizualnego stanowiska. Używany do optymalizacji — wizualizacja jest odświeżana tylko gdy hash się zmieni. 
+
+\begin{DoxyReturn}{Zwraca}
+Wartość hash obliczona na podstawie stanu przetwarzania, przedmiotu na stanowisku, flagi ławasza oraz listy składników montażu. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_station_ae68561a9982ecc164d5160fd7ac0dab7}\index{KitchenStation@{KitchenStation}!Configure@{Configure}}
+\index{Configure@{Configure}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_ae68561a9982ecc164d5160fd7ac0dab7} 
+void Kitchen\+Station.\+Configure (\begin{DoxyParamCaption}\item[{string}]{station\+Name}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}}}]{station\+Type}{, }\item[{\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}}}]{source\+Ingredient}{, }\item[{float}]{processing\+Duration}{, }\item[{Renderer}]{visual\+Renderer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konfiguruje stanowisko kuchenne z podanymi parametrami. Ustawia nazwę, typ, składnik źródłowy, czas przetwarzania i renderer wizualny. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em station\+Name} & Nazwa wyświetlana stanowiska.\\
+\hline
+{\em station\+Type} & Typ stanowiska kuchennego.\\
+\hline
+{\em source\+Ingredient} & Dane składnika źródłowego (może być {\ttfamily null} dla stanowisk nie będących źródłami).\\
+\hline
+{\em processing\+Duration} & Bazowy czas przetwarzania w sekundach.\\
+\hline
+{\em visual\+Renderer} & Renderer wizualny do zmiany koloru stanowiska.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_station_a1215154323b2a04a93e07226816f0577}\index{KitchenStation@{KitchenStation}!FinishProcessing@{FinishProcessing}}
+\index{FinishProcessing@{FinishProcessing}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{FinishProcessing()}{FinishProcessing()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a1215154323b2a04a93e07226816f0577} 
+void Kitchen\+Station.\+Finish\+Processing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Finalizuje proces przetwarzania składnika na stanowisku. Zmienia stan przedmiotu, odświeża wizualizację i uruchamia efekty gotowości. 
+
+Dla stanowiska doner\+: 
+\begin{DoxyItemize}
+\item Zatrzymuje efekt dymu i dźwięk grilla. 
+\item Przesyła partię mięsa na powiązaną tacę. 
+\end{DoxyItemize}Dla deski do krojenia — ustawia stan na \doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea984c80c3e1a5734378386e95df6b0c63}{Ingredient\+Process\+State.\+Chopped}. Dla grilla — ustawia stan na \doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea603704d17e2b294629335466e6ca92bb}{Ingredient\+Process\+State.\+Cooked} i zatrzymuje efekt pary oraz dźwięk grilla. \Hypertarget{class_kitchen_station_ab01914ae93c27880a16879f7a26bf60f}\index{KitchenStation@{KitchenStation}!GetItemFeedbackColor@{GetItemFeedbackColor}}
+\index{GetItemFeedbackColor@{GetItemFeedbackColor}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{GetItemFeedbackColor()}{GetItemFeedbackColor()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_ab01914ae93c27880a16879f7a26bf60f} 
+Color Kitchen\+Station.\+Get\+Item\+Feedback\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}}}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Pobiera kolor odpowiadający danemu przedmiotowi kuchennemu do użycia w efektach wizualnych. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em item} & Przedmiot kuchenny, dla którego pobierany jest kolor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Kolor odpowiadający rodzajowi i stanowi składnika. Zwraca {\ttfamily Color.\+white} jeśli przedmiot jest {\ttfamily null}. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_station_a5a006d053d065eaf3a02da8394712b7c}\index{KitchenStation@{KitchenStation}!GetPrompt@{GetPrompt}}
+\index{GetPrompt@{GetPrompt}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{GetPrompt()}{GetPrompt()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a5a006d053d065eaf3a02da8394712b7c} 
+override string Kitchen\+Station.\+Get\+Prompt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}}}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Zwraca komunikat podpowiedzi wyświetlany graczowi w zależności od typu stanowiska i bieżącego stanu przetwarzania. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em player} & Gracz, dla którego generowany jest komunikat podpowiedzi.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Tekst podpowiedzi opisujący dostępną akcję lub aktualny stan stanowiska. 
+\end{DoxyReturn}
+
+
+Komunikaty różnią się w zależności od typu stanowiska\+: źródła składników, deski do krojenia, grilla/donera, montażu i wydania. Dla stanowisk przetwarzających wyświetlany jest pozostały czas. 
+
+Reimplementowana z \mbox{\hyperlink{class_interactable_a323fd56ebb72a471e459f57bfe68a186}{Interactable}}.
+
+\Hypertarget{class_kitchen_station_a796818fdbe17630e41cc7e5257a75cdf}\index{KitchenStation@{KitchenStation}!GetShopSpeedMultiplier@{GetShopSpeedMultiplier}}
+\index{GetShopSpeedMultiplier@{GetShopSpeedMultiplier}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{GetShopSpeedMultiplier()}{GetShopSpeedMultiplier()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a796818fdbe17630e41cc7e5257a75cdf} 
+float Kitchen\+Station.\+Get\+Shop\+Speed\+Multiplier (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Pobiera mnożnik prędkości przetwarzania ze sklepu dla aktualnego typu stanowiska. 
+
+\begin{DoxyReturn}{Zwraca}
+Mnożnik prędkości z \doxylink{class_shop_manager}{Shop\+Manager}, lub {\ttfamily 1.\+0f} jeśli \doxylink{class_shop_manager}{Shop\+Manager} nie jest dostępny. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_station_a47e8295194c4993565f427a33cc57165}\index{KitchenStation@{KitchenStation}!HandleAssembly@{HandleAssembly}}
+\index{HandleAssembly@{HandleAssembly}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{HandleAssembly()}{HandleAssembly()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a47e8295194c4993565f427a33cc57165} 
+void Kitchen\+Station.\+Handle\+Assembly (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}}}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje interakcję ze stanowiskiem montażu kebaba. Pozwala dodawać składniki, kłaść ławasz lub zawinąć gotowego kebaba. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em player} & Gracz montujący kebaba na stanowisku.\\
+\hline
+\end{DoxyParams}
+
+
+Jeśli gracz trzyma przedmiot\+: 
+\begin{DoxyItemize}
+\item Gotowy kebab — informuje, że jest już złożony. 
+\item Ławasz — kładzie go na stanowisku (max 1 ławasz). 
+\item Składnik — dodaje do listy montażu jeśli jest odpowiednio przygotowany. 
+\end{DoxyItemize}Jeśli gracz nie trzyma przedmiotu i warunki są spełnione — tworzy gotowego kebaba z ławasza i zebranych składników, a następnie resetuje stanowisko montażu. \Hypertarget{class_kitchen_station_a193e18208e07392539c85f22facdf543}\index{KitchenStation@{KitchenStation}!HandleDelivery@{HandleDelivery}}
+\index{HandleDelivery@{HandleDelivery}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{HandleDelivery()}{HandleDelivery()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a193e18208e07392539c85f22facdf543} 
+void Kitchen\+Station.\+Handle\+Delivery (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}}}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje wydawanie gotowego kebaba klientowi na stanowisku dostawy. Próbuje dostarczyć danie do systemu zamówień i uruchamia odpowiednie efekty. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em player} & Gracz próbujący wydać kebaba klientowi.\\
+\hline
+\end{DoxyParams}
+
+
+Wymaga, aby gracz trzymał gotowy kebab (przedmiot z flagą {\ttfamily is\+Dish}). Przy udanym wydaniu\+: 
+\begin{DoxyItemize}
+\item Czyści ręce gracza. 
+\item Wyświetla animację wydanego kebaba na tacy. 
+\item Odtwarza efekty sukcesu (pieniądze, bloom, trzęsienie kamery, zielony błysk). 
+\end{DoxyItemize}Przy nieudanym wydaniu uruchamiane są efekty porażki (czerwony błysk, trzęsienie kamery). \Hypertarget{class_kitchen_station_a41c1eb66d57b59cb9bc6c6b00135b966}\index{KitchenStation@{KitchenStation}!HandleDonerStation@{HandleDonerStation}}
+\index{HandleDonerStation@{HandleDonerStation}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{HandleDonerStation()}{HandleDonerStation()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a41c1eb66d57b59cb9bc6c6b00135b966} 
+void Kitchen\+Station.\+Handle\+Doner\+Station (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}}}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje interakcję ze stanowiskiem doner kebab (grill powiązany z tacą na mięso). Rozpoczyna proces ścinania mięsa z szpikulca donera. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em player} & Gracz inicjujący ścinanie mięsa z donera.\\
+\hline
+\end{DoxyParams}
+
+
+Wymagania rozpoczęcia procesu\+: 
+\begin{DoxyItemize}
+\item Stanowisko nie jest zajęte przetwarzaniem. 
+\item Gracz ma puste ręce. 
+\item Istnieje powiązana taca na mięso. 
+\item Powiązana taca nie jest już pełna. 
+\end{DoxyItemize}Po rozpoczęciu uruchamia efekt dymu donera oraz dźwięk krojenia. \Hypertarget{class_kitchen_station_a759de80b42c92da02e67e454ecfca803}\index{KitchenStation@{KitchenStation}!HandleIngredientSource@{HandleIngredientSource}}
+\index{HandleIngredientSource@{HandleIngredientSource}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{HandleIngredientSource()}{HandleIngredientSource()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a759de80b42c92da02e67e454ecfca803} 
+void Kitchen\+Station.\+Handle\+Ingredient\+Source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}}}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje interakcję ze stanowiskiem źródła składników. Pozwala graczowi pobrać surowy składnik lub mięso z tacy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em player} & Gracz próbujący pobrać składnik ze stanowiska.\\
+\hline
+\end{DoxyParams}
+
+
+Jeśli stanowisko jest tacą z mięsem, deleguje do \doxylink{class_kitchen_station_a113a7153d7c63136f771c540761beb1a}{Handle\+Meat\+Tray\+Source}. W przeciwnym razie tworzy nowy przedmiot kuchenny na podstawie \doxylink{class_kitchen_station_a7234a3f45a0da0c094261cd5daa651d1}{source\+Ingredient} i przekazuje go graczowi. Gracz musi mieć puste ręce. \Hypertarget{class_kitchen_station_a113a7153d7c63136f771c540761beb1a}\index{KitchenStation@{KitchenStation}!HandleMeatTraySource@{HandleMeatTraySource}}
+\index{HandleMeatTraySource@{HandleMeatTraySource}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{HandleMeatTraySource()}{HandleMeatTraySource()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a113a7153d7c63136f771c540761beb1a} 
+void Kitchen\+Station.\+Handle\+Meat\+Tray\+Source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}}}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje pobieranie mięsa z tacy (stanowisko źródła mięsa powiązane z donerem). Gracz może pobrać jedną porcję gotowego mięsa, jeśli taca nie jest pusta. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em player} & Gracz próbujący pobrać mięso z tacy.\\
+\hline
+\end{DoxyParams}
+
+
+Wymaga, aby na tacy były dostępne porcje mięsa (\doxylink{class_kitchen_station_aa043c95ad389235aef709e2d7d4927d3}{prepared\+Meat\+Servings} \texorpdfstring{$>$}{>} 0) oraz aby gracz miał puste ręce. Pobrane mięso ma stan \doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea603704d17e2b294629335466e6ca92bb}{Ingredient\+Process\+State.\+Cooked}. Po pobraniu zmniejsza licznik porcji i odświeża wizualizację tacy i powiązanego donera. \Hypertarget{class_kitchen_station_a16499b2e3c088ef5d7dcbf06e6ff2932}\index{KitchenStation@{KitchenStation}!HandleProcessingStation@{HandleProcessingStation}}
+\index{HandleProcessingStation@{HandleProcessingStation}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{HandleProcessingStation()}{HandleProcessingStation()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a16499b2e3c088ef5d7dcbf06e6ff2932} 
+void Kitchen\+Station.\+Handle\+Processing\+Station (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}}}]{player}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{output\+State}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje interakcję ze stanowiskiem przetwarzającym (deska do krojenia lub grill). Umożliwia położenie składnika do przetworzenia, odebranie gotowego produktu lub wyświetlenie komunikatu o zajętości stanowiska. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em player} & Gracz wchodzący w interakcję ze stanowiskiem.\\
+\hline
+{\em output\+State} & Docelowy stan przetworzenia składnika (\doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea984c80c3e1a5734378386e95df6b0c63}{Ingredient\+Process\+State.\+Chopped} dla deski, \doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea603704d17e2b294629335466e6ca92bb}{Ingredient\+Process\+State.\+Cooked} dla grilla).\\
+\hline
+\end{DoxyParams}
+
+
+Logika działania\+: 
+\begin{DoxyEnumerate}
+\item Jeśli stanowisko jest donerem — deleguje do \doxylink{class_kitchen_station_a41c1eb66d57b59cb9bc6c6b00135b966}{Handle\+Doner\+Station}. 
+\item Jeśli trwa przetwarzanie — informuje gracza o zajętości. 
+\item Jeśli gotowy produkt czeka — pozwala go odebrać. 
+\item Jeśli gracz trzyma odpowiedni składnik — rozpoczyna przetwarzanie. 
+\end{DoxyEnumerate}Czas przetwarzania jest modyfikowany przez mnożnik prędkości ze sklepu. Uruchamiane są odpowiednie efekty wizualne i dźwiękowe. \Hypertarget{class_kitchen_station_aa4c2842c2efa6f017f424beda54ba996}\index{KitchenStation@{KitchenStation}!HasPreparedMeat@{HasPreparedMeat}}
+\index{HasPreparedMeat@{HasPreparedMeat}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{HasPreparedMeat()}{HasPreparedMeat()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_aa4c2842c2efa6f017f424beda54ba996} 
+bool Kitchen\+Station.\+Has\+Prepared\+Meat (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sprawdza, czy na tacy z mięsem są dostępne gotowe porcje. 
+
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli liczba porcji jest większa od zera; w przeciwnym razie {\ttfamily false}.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_station_a913ee51c7b0f2d26adcc6ce6e70fb71c}\index{KitchenStation@{KitchenStation}!Interact@{Interact}}
+\index{Interact@{Interact}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{Interact()}{Interact()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a913ee51c7b0f2d26adcc6ce6e70fb71c} 
+override void Kitchen\+Station.\+Interact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}}}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Obsługuje interakcję gracza ze stanowiskiem kuchennym. Deleguje logikę do odpowiedniej metody w zależności od typu stanowiska. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em player} & Gracz wykonujący interakcję ze stanowiskiem.\\
+\hline
+\end{DoxyParams}
+
+
+Jeśli {\itshape player}  jest {\ttfamily null}, wywołuje implementację bazową. W przeciwnym razie rozdziela logikę między\+: \doxylink{class_kitchen_station_a759de80b42c92da02e67e454ecfca803}{Handle\+Ingredient\+Source}, \doxylink{class_kitchen_station_a16499b2e3c088ef5d7dcbf06e6ff2932}{Handle\+Processing\+Station}, \doxylink{class_kitchen_station_a47e8295194c4993565f427a33cc57165}{Handle\+Assembly} oraz \doxylink{class_kitchen_station_a193e18208e07392539c85f22facdf543}{Handle\+Delivery}. 
+
+Reimplementowana z \mbox{\hyperlink{class_interactable_af5864e220ef0a89b8bf1aecb7c5d1070}{Interactable}}.
+
+\Hypertarget{class_kitchen_station_adfd0054dd742f24af8305a1d5cac5cd9}\index{KitchenStation@{KitchenStation}!IsDonerStation@{IsDonerStation}}
+\index{IsDonerStation@{IsDonerStation}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{IsDonerStation()}{IsDonerStation()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_adfd0054dd742f24af8305a1d5cac5cd9} 
+bool Kitchen\+Station.\+Is\+Doner\+Station (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sprawdza, czy to stanowisko jest donerem (grill powiązany z tacą na mięso). 
+
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli stanowisko jest typu \doxylink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a475de6eac229ec35f1b543628c381d6b}{Kitchen\+Station\+Type.\+Grill} i posiada powiązaną tacę z mięsem. W przeciwnym razie {\ttfamily false}. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_station_a262f4cc688ffcb13fbd42cdb8eb1d39b}\index{KitchenStation@{KitchenStation}!IsMeatTrayStation@{IsMeatTrayStation}}
+\index{IsMeatTrayStation@{IsMeatTrayStation}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{IsMeatTrayStation()}{IsMeatTrayStation()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a262f4cc688ffcb13fbd42cdb8eb1d39b} 
+bool Kitchen\+Station.\+Is\+Meat\+Tray\+Station (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sprawdza, czy to stanowisko jest tacą z mięsem (źródło składnika typu mięso). 
+
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli stanowisko jest typu \doxylink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2}{Kitchen\+Station\+Type.\+Ingredient\+Source}, posiada ustawiony składnik źródłowy i jest to mięso. W przeciwnym razie {\ttfamily false}. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_station_ae828cc7f91a7be5bfa4cb44969b967ec}\index{KitchenStation@{KitchenStation}!PlayMicroCameraFeedback@{PlayMicroCameraFeedback}}
+\index{PlayMicroCameraFeedback@{PlayMicroCameraFeedback}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{PlayMicroCameraFeedback()}{PlayMicroCameraFeedback()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_ae828cc7f91a7be5bfa4cb44969b967ec} 
+void Kitchen\+Station.\+Play\+Micro\+Camera\+Feedback (\begin{DoxyParamCaption}\item[{float}]{intensity}{, }\item[{float}]{duration}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Uruchamia subtelne trzęsienie kamery jako informację zwrotną dla gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em intensity} & Siła trzęsienia kamery.\\
+\hline
+{\em duration} & Czas trwania trzęsienia w sekundach.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_station_ab8dd769eac68b01967efcc5cec0055d9}\index{KitchenStation@{KitchenStation}!PlayPickupFeedback@{PlayPickupFeedback}}
+\index{PlayPickupFeedback@{PlayPickupFeedback}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{PlayPickupFeedback()}{PlayPickupFeedback()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_ab8dd769eac68b01967efcc5cec0055d9} 
+void Kitchen\+Station.\+Play\+Pickup\+Feedback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}}}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Odtwarza efekt wizualny i kamerowy związany z pobraniem przedmiotu ze stanowiska. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em item} & Pobrany przedmiot kuchenny, na podstawie którego dobierany jest kolor efektu.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_station_a4cdad2ae98846dd7a7f3d5eb94445839}\index{KitchenStation@{KitchenStation}!PlayPlaceFeedback@{PlayPlaceFeedback}}
+\index{PlayPlaceFeedback@{PlayPlaceFeedback}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{PlayPlaceFeedback()}{PlayPlaceFeedback()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a4cdad2ae98846dd7a7f3d5eb94445839} 
+void Kitchen\+Station.\+Play\+Place\+Feedback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}}}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Odtwarza efekt wizualny i dźwiękowy związany z położeniem przedmiotu na stanowisku. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em item} & Położony przedmiot kuchenny (może być {\ttfamily null}).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_station_a3bb8e56b6e6e78d6d049354b68ab4102}\index{KitchenStation@{KitchenStation}!PlayReadyFeedback@{PlayReadyFeedback}}
+\index{PlayReadyFeedback@{PlayReadyFeedback}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{PlayReadyFeedback()}{PlayReadyFeedback()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a3bb8e56b6e6e78d6d049354b68ab4102} 
+void Kitchen\+Station.\+Play\+Ready\+Feedback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}}}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Odtwarza efekt wizualny i dźwiękowy sygnalizujący gotowość przedmiotu na stanowisku. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em item} & Gotowy przedmiot kuchenny, na podstawie którego dobierany jest kolor efektu.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_station_a63494a8aed8534022b64712fbddfdf6b}\index{KitchenStation@{KitchenStation}!PlayStationPulse@{PlayStationPulse}}
+\index{PlayStationPulse@{PlayStationPulse}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{PlayStationPulse()}{PlayStationPulse()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a63494a8aed8534022b64712fbddfdf6b} 
+void Kitchen\+Station.\+Play\+Station\+Pulse (\begin{DoxyParamCaption}\item[{float}]{intensity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Uruchamia krótki efekt pulsowania (powiększenia) stanowiska za pomocą animatora przedmiotów. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em intensity} & Intensywność pulsowania (np. 1.\+035 = powiększenie o 3.\+5\%).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_station_a479476f53d0a2f5b6ea0e3ebbfa428db}\index{KitchenStation@{KitchenStation}!ReceivePreparedMeat@{ReceivePreparedMeat}}
+\index{ReceivePreparedMeat@{ReceivePreparedMeat}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{ReceivePreparedMeat()}{ReceivePreparedMeat()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a479476f53d0a2f5b6ea0e3ebbfa428db} 
+void Kitchen\+Station.\+Receive\+Prepared\+Meat (\begin{DoxyParamCaption}\item[{int}]{servings}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Przyjmuje gotowe porcje mięsa na tacę. Wywoływane przez stanowisko donera po zakończeniu procesu ścinania. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em servings} & Liczba porcji mięsa do dodania (ujemne wartości są zerowane).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_station_af6d4e3521cf51eaa097a6cef44b6299a}\index{KitchenStation@{KitchenStation}!RefreshSpecialVisuals@{RefreshSpecialVisuals}}
+\index{RefreshSpecialVisuals@{RefreshSpecialVisuals}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{RefreshSpecialVisuals()}{RefreshSpecialVisuals()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_af6d4e3521cf51eaa097a6cef44b6299a} 
+void Kitchen\+Station.\+Refresh\+Special\+Visuals (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Odświeża specjalne wizualizacje stanowiska, w szczególności widoczność mięsa na tacy. 
+
+Dotyczy wyłącznie stanowisk typu taca z mięsem. Wyszukuje obiekt potomny "{}\+Meat\+Visual"{} i ustawia jego aktywność w zależności od liczby dostępnych porcji mięsa. \Hypertarget{class_kitchen_station_aa949240f2b26da4fe063761f9b046661}\index{KitchenStation@{KitchenStation}!RefreshVisualState@{RefreshVisualState}}
+\index{RefreshVisualState@{RefreshVisualState}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{RefreshVisualState()}{RefreshVisualState()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_aa949240f2b26da4fe063761f9b046661} 
+void Kitchen\+Station.\+Refresh\+Visual\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odświeża kompletny stan wizualny stanowiska, w tym kolor i dynamiczne obiekty 3D. 
+
+\Hypertarget{class_kitchen_station_a65d80f704ada230f620860964cc6ec02}\index{KitchenStation@{KitchenStation}!ResetAssembly@{ResetAssembly}}
+\index{ResetAssembly@{ResetAssembly}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{ResetAssembly()}{ResetAssembly()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a65d80f704ada230f620860964cc6ec02} 
+void Kitchen\+Station.\+Reset\+Assembly (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Resetuje stanowisko montażu do stanu początkowego. Usuwa ławasz i czyści listę składników montażu. 
+
+\Hypertarget{class_kitchen_station_afd705052e999a7c1b9873989931d737e}\index{KitchenStation@{KitchenStation}!SetLinkedMeatTray@{SetLinkedMeatTray}}
+\index{SetLinkedMeatTray@{SetLinkedMeatTray}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{SetLinkedMeatTray()}{SetLinkedMeatTray()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_afd705052e999a7c1b9873989931d737e} 
+void Kitchen\+Station.\+Set\+Linked\+Meat\+Tray (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_kitchen_station}{Kitchen\+Station}}}]{tray\+Station}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia powiązane stanowisko tacy z mięsem dla donera. Grill-\/doner po zakończeniu procesu przesyła gotowe mięso na powiązaną tacę. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em tray\+Station} & Stanowisko tacy z mięsem do powiązania.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_station_aac88098da51643c0e05189ffff2e6d0c}\index{KitchenStation@{KitchenStation}!SyncNetworkState@{SyncNetworkState}}
+\index{SyncNetworkState@{SyncNetworkState}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{SyncNetworkState()}{SyncNetworkState()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_aac88098da51643c0e05189ffff2e6d0c} 
+void Kitchen\+Station.\+Sync\+Network\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_station_state_snapshot}{Station\+State\+Snapshot}}}]{snapshot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Synchronizuje stan stanowiska na podstawie migawki sieciowej (snapshot). Nadpisuje bieżący stan lokalny wartościami otrzymanymi z serwera. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em snapshot} & Migawka stanu stanowiska otrzymana z serwera, zawierająca informacje o przetwarzaniu, mięsie, ławaszu, przedmiocie i składnikach montażu.\\
+\hline
+\end{DoxyParams}
+
+
+Metoda konwertuje pozostały czas przetwarzania z migawki na bezwzględny czas zakończenia względem {\ttfamily Time.\+time}. Składniki montażu są ograniczone do maksymalnie 8 slotów. Po synchronizacji odświeża wizualizację stanowiska. \Hypertarget{class_kitchen_station_ac7ee51b9e1b414d520fbaf846f052f9e}\index{KitchenStation@{KitchenStation}!Update@{Update}}
+\index{Update@{Update}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_ac7ee51b9e1b414d520fbaf846f052f9e} 
+void Kitchen\+Station.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Update wywoływana w każdej klatce przez Unity. Na kliencie sieciowym aktualizuje jedynie efekt pulsowania. Na serwerze sprawdza, czy przetwarzanie dobiegło końca i je finalizuje. 
+
+\Hypertarget{class_kitchen_station_a7e63ae72b28a1cd4dfac530d9ec1dd9d}\index{KitchenStation@{KitchenStation}!UpdateDynamicVisuals@{UpdateDynamicVisuals}}
+\index{UpdateDynamicVisuals@{UpdateDynamicVisuals}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{UpdateDynamicVisuals()}{UpdateDynamicVisuals()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a7e63ae72b28a1cd4dfac530d9ec1dd9d} 
+void Kitchen\+Station.\+Update\+Dynamic\+Visuals (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje dynamiczne obiekty wizualne 3D na stanowisku (przedmioty, ławasz, składniki montażu). Używa systemu hashowania do unikania niepotrzebnych odświeżeń. 
+
+Metoda niszczy poprzednie obiekty wizualne i tworzy nowe za pomocą \doxylink{class_kitchen_item_visual_factory}{Kitchen\+Item\+Visual\+Factory}. Dla stanowiska montażu tworzy wizualizacje ławasza oraz poszczególnych składników rozmieszczonych w predefiniowanych slotach z offsetami i rotacjami. Składniki typu sałata i sos czosnkowy są renderowane jako rozsypane kawałki. \Hypertarget{class_kitchen_station_a1535ee640469ef8fb26d297cba422c22}\index{KitchenStation@{KitchenStation}!UpdatePulseEffect@{UpdatePulseEffect}}
+\index{UpdatePulseEffect@{UpdatePulseEffect}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{UpdatePulseEffect()}{UpdatePulseEffect()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a1535ee640469ef8fb26d297cba422c22} 
+void Kitchen\+Station.\+Update\+Pulse\+Effect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje efekt pulsowania skali stanowiska. Pulsowanie jest aktywne gdy stanowisko posiada gotowy przedmiot do odebrania lub tacę z przygotowanym mięsem. 
+
+Efekt pulsowania polega na cyklicznej zmianie skali obiektu w oparciu o funkcję sinus. Gdy pulsowanie nie jest potrzebne, skala jest płynnie przywracana do wartości bazowej. \Hypertarget{class_kitchen_station_a46e9fcfd4aceabaa97ee0cf63951609b}\index{KitchenStation@{KitchenStation}!WriteAssemblyToSnapshot@{WriteAssemblyToSnapshot}}
+\index{WriteAssemblyToSnapshot@{WriteAssemblyToSnapshot}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{WriteAssemblyToSnapshot()}{WriteAssemblyToSnapshot()}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a46e9fcfd4aceabaa97ee0cf63951609b} 
+void Kitchen\+Station.\+Write\+Assembly\+To\+Snapshot (\begin{DoxyParamCaption}\item[{ref \mbox{\hyperlink{struct_station_state_snapshot}{Station\+State\+Snapshot}}}]{snapshot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zapisuje aktualny stan składników montażu do migawki sieciowej. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em snapshot} & Referencja do migawki stanu stanowiska, do której zostaną zapisane dane o składnikach montażu (maksymalnie 8 slotów).\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_kitchen_station_a156230809f45ddda4ffec08fa05592a9}\index{KitchenStation@{KitchenStation}!assemblyIngredients@{assemblyIngredients}}
+\index{assemblyIngredients@{assemblyIngredients}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{assemblyIngredients}{assemblyIngredients}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a156230809f45ddda4ffec08fa05592a9} 
+List$<$\mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}}$>$ Kitchen\+Station.\+assembly\+Ingredients = new List$<$\mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista przygotowanych składników dodanych do montażu kebaba na stanowisku Assembly. 
+
+\Hypertarget{class_kitchen_station_a3251d77d59e1a81c1d4f5cc1f260033e}\index{KitchenStation@{KitchenStation}!baseScale@{baseScale}}
+\index{baseScale@{baseScale}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{baseScale}{baseScale}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a3251d77d59e1a81c1d4f5cc1f260033e} 
+Vector3 Kitchen\+Station.\+base\+Scale\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bazowa skala stanowiska zapamiętana przed rozpoczęciem efektu pulsowania. 
+
+\Hypertarget{class_kitchen_station_af2ad95dec4b1a0842d560de0a9736b4e}\index{KitchenStation@{KitchenStation}!busyColor@{busyColor}}
+\index{busyColor@{busyColor}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{busyColor}{busyColor}}
+{\footnotesize\ttfamily \label{class_kitchen_station_af2ad95dec4b1a0842d560de0a9736b4e} 
+Color Kitchen\+Station.\+busy\+Color = new Color(0.\+95f, 0.\+65f, 0.\+2f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Kolor stanowiska podczas aktywnego przetwarzania składnika. 
+
+\Hypertarget{class_kitchen_station_ab2edf42a5a583301d4fa1ad05e6a2c30}\index{KitchenStation@{KitchenStation}!dynamicAssemblyVisuals@{dynamicAssemblyVisuals}}
+\index{dynamicAssemblyVisuals@{dynamicAssemblyVisuals}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{dynamicAssemblyVisuals}{dynamicAssemblyVisuals}}
+{\footnotesize\ttfamily \label{class_kitchen_station_ab2edf42a5a583301d4fa1ad05e6a2c30} 
+List$<$Game\+Object$>$ Kitchen\+Station.\+dynamic\+Assembly\+Visuals = new List$<$Game\+Object$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista dynamicznie tworzonych obiektów wizualnych reprezentujących składniki montażu kebaba. 
+
+\Hypertarget{class_kitchen_station_a3c25cd6fb06253cde28d5bcdfd51d7ee}\index{KitchenStation@{KitchenStation}!dynamicLavashVisual@{dynamicLavashVisual}}
+\index{dynamicLavashVisual@{dynamicLavashVisual}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{dynamicLavashVisual}{dynamicLavashVisual}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a3c25cd6fb06253cde28d5bcdfd51d7ee} 
+Game\+Object Kitchen\+Station.\+dynamic\+Lavash\+Visual\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dynamicznie tworzony obiekt wizualny reprezentujący ławasz na stanowisku montażu. 
+
+\Hypertarget{class_kitchen_station_a91bef39b351b710cd613b9a3ee9cab05}\index{KitchenStation@{KitchenStation}!dynamicStationItemVisual@{dynamicStationItemVisual}}
+\index{dynamicStationItemVisual@{dynamicStationItemVisual}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{dynamicStationItemVisual}{dynamicStationItemVisual}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a91bef39b351b710cd613b9a3ee9cab05} 
+Game\+Object Kitchen\+Station.\+dynamic\+Station\+Item\+Visual\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dynamicznie tworzony obiekt wizualny reprezentujący przedmiot na stanowisku. 
+
+\Hypertarget{class_kitchen_station_aecd8aaff5c09ca6a9030685ca401792a}\index{KitchenStation@{KitchenStation}!hasLavash@{hasLavash}}
+\index{hasLavash@{hasLavash}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{hasLavash}{hasLavash}}
+{\footnotesize\ttfamily \label{class_kitchen_station_aecd8aaff5c09ca6a9030685ca401792a} 
+bool Kitchen\+Station.\+has\+Lavash\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga określająca, czy na stanowisku montażu znajduje się ławasz. 
+
+\Hypertarget{class_kitchen_station_a83a8f40049ff6dab5e8afe92ba8838ff}\index{KitchenStation@{KitchenStation}!idleColor@{idleColor}}
+\index{idleColor@{idleColor}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{idleColor}{idleColor}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a83a8f40049ff6dab5e8afe92ba8838ff} 
+Color Kitchen\+Station.\+idle\+Color = new Color(0.\+35f, 0.\+35f, 0.\+35f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Kolor stanowiska w stanie bezczynności (brak przetwarzania, brak przedmiotu). 
+
+\Hypertarget{class_kitchen_station_a6beec3d3183d8686dac6a98957c62900}\index{KitchenStation@{KitchenStation}!isProcessing@{isProcessing}}
+\index{isProcessing@{isProcessing}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{isProcessing}{isProcessing}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a6beec3d3183d8686dac6a98957c62900} 
+bool Kitchen\+Station.\+is\+Processing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga wskazująca, czy stanowisko aktualnie przetwarza składnik. 
+
+\Hypertarget{class_kitchen_station_a118ed9d95ca9caf4f5e0808a6c6ec455}\index{KitchenStation@{KitchenStation}!lastVisualHash@{lastVisualHash}}
+\index{lastVisualHash@{lastVisualHash}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{lastVisualHash}{lastVisualHash}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a118ed9d95ca9caf4f5e0808a6c6ec455} 
+int Kitchen\+Station.\+last\+Visual\+Hash\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Hash ostatniego stanu wizualnego, używany do optymalizacji odświeżania wizualizacji. Jeśli hash się nie zmienił, wizualizacja nie jest przerysowywana. 
+
+\Hypertarget{class_kitchen_station_a48f2f452d63f65ce66af48c462f43750}\index{KitchenStation@{KitchenStation}!linkedMeatTray@{linkedMeatTray}}
+\index{linkedMeatTray@{linkedMeatTray}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{linkedMeatTray}{linkedMeatTray}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a48f2f452d63f65ce66af48c462f43750} 
+\mbox{\hyperlink{class_kitchen_station}{Kitchen\+Station}} Kitchen\+Station.\+linked\+Meat\+Tray\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Powiązane stanowisko tacy z mięsem, na którą trafia mięso ścięte z donera. Używane przez stanowiska typu grill-\/doner. 
+
+\Hypertarget{class_kitchen_station_a2282e8b68aa4d018ab506bcdb428851d}\index{KitchenStation@{KitchenStation}!meatVisual@{meatVisual}}
+\index{meatVisual@{meatVisual}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{meatVisual}{meatVisual}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a2282e8b68aa4d018ab506bcdb428851d} 
+Transform Kitchen\+Station.\+meat\+Visual\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Transform wizualizacji mięsa na tacy, wyszukiwany jako obiekt potomny "{}\+Meat\+Visual"{}. 
+
+\Hypertarget{class_kitchen_station_ad7b2c07304ada13024c82d6149b6aaa5}\index{KitchenStation@{KitchenStation}!preparedMeatBatchSize@{preparedMeatBatchSize}}
+\index{preparedMeatBatchSize@{preparedMeatBatchSize}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{preparedMeatBatchSize}{preparedMeatBatchSize}}
+{\footnotesize\ttfamily \label{class_kitchen_station_ad7b2c07304ada13024c82d6149b6aaa5} 
+int Kitchen\+Station.\+prepared\+Meat\+Batch\+Size = 3\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Domyślna wielkość partii mięsa wytwarzanej przy jednorazowym ścięciu z donera. Może być nadpisana przez wartość z \doxylink{class_shop_manager}{Shop\+Manager}. 
+
+\Hypertarget{class_kitchen_station_aa043c95ad389235aef709e2d7d4927d3}\index{KitchenStation@{KitchenStation}!preparedMeatServings@{preparedMeatServings}}
+\index{preparedMeatServings@{preparedMeatServings}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{preparedMeatServings}{preparedMeatServings}}
+{\footnotesize\ttfamily \label{class_kitchen_station_aa043c95ad389235aef709e2d7d4927d3} 
+int Kitchen\+Station.\+prepared\+Meat\+Servings\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Liczba przygotowanych porcji mięsa dostępnych na tacy z mięsem. 
+
+\Hypertarget{class_kitchen_station_a30e17669e732850fb85ace3a59093a16}\index{KitchenStation@{KitchenStation}!processEndTime@{processEndTime}}
+\index{processEndTime@{processEndTime}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{processEndTime}{processEndTime}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a30e17669e732850fb85ace3a59093a16} 
+float Kitchen\+Station.\+process\+End\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czas zakończenia bieżącego procesu przetwarzania (w {\ttfamily Time.\+time}). 
+
+\Hypertarget{class_kitchen_station_ae46dd3288cc277b18efcd2eacde6f7f1}\index{KitchenStation@{KitchenStation}!processingDuration@{processingDuration}}
+\index{processingDuration@{processingDuration}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{processingDuration}{processingDuration}}
+{\footnotesize\ttfamily \label{class_kitchen_station_ae46dd3288cc277b18efcd2eacde6f7f1} 
+float Kitchen\+Station.\+processing\+Duration = 2.\+5f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bazowy czas trwania przetwarzania składnika na stanowisku (w sekundach). Może być modyfikowany przez mnożnik prędkości ze sklepu. 
+
+\Hypertarget{class_kitchen_station_ac3eab3d8cafaef65c80a270c5026eb59}\index{KitchenStation@{KitchenStation}!pulsePhase@{pulsePhase}}
+\index{pulsePhase@{pulsePhase}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{pulsePhase}{pulsePhase}}
+{\footnotesize\ttfamily \label{class_kitchen_station_ac3eab3d8cafaef65c80a270c5026eb59} 
+float Kitchen\+Station.\+pulse\+Phase\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bieżąca faza animacji pulsowania stanowiska, przyrastająca w czasie. 
+
+\Hypertarget{class_kitchen_station_ac60613e24ea5c5a595807b60fb69572d}\index{KitchenStation@{KitchenStation}!readyColor@{readyColor}}
+\index{readyColor@{readyColor}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{readyColor}{readyColor}}
+{\footnotesize\ttfamily \label{class_kitchen_station_ac60613e24ea5c5a595807b60fb69572d} 
+Color Kitchen\+Station.\+ready\+Color = new Color(0.\+35f, 0.\+8f, 0.\+35f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Kolor stanowiska gdy składnik jest gotowy do odebrania. 
+
+\Hypertarget{class_kitchen_station_a7234a3f45a0da0c094261cd5daa651d1}\index{KitchenStation@{KitchenStation}!sourceIngredient@{sourceIngredient}}
+\index{sourceIngredient@{sourceIngredient}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{sourceIngredient}{sourceIngredient}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a7234a3f45a0da0c094261cd5daa651d1} 
+\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} Kitchen\+Station.\+source\+Ingredient\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dane składnika źródłowego dostarczanego przez to stanowisko. Używane tylko dla stanowisk typu \doxylink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2}{Kitchen\+Station\+Type.\+Ingredient\+Source}. 
+
+\Hypertarget{class_kitchen_station_a32991ddcf346de28946df08e56711671}\index{KitchenStation@{KitchenStation}!stationItem@{stationItem}}
+\index{stationItem@{stationItem}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{stationItem}{stationItem}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a32991ddcf346de28946df08e56711671} 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} Kitchen\+Station.\+station\+Item\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Przedmiot kuchenny aktualnie znajdujący się na stanowisku (przetwarzany lub gotowy). 
+
+\Hypertarget{class_kitchen_station_a67ea505e895e18564517431f7a72e3c6}\index{KitchenStation@{KitchenStation}!stationName@{stationName}}
+\index{stationName@{stationName}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{stationName}{stationName}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a67ea505e895e18564517431f7a72e3c6} 
+string Kitchen\+Station.\+station\+Name = "{}Stacja"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Nazwa wyświetlana stanowiska kuchennego, używana w komunikatach dla gracza. 
+
+\Hypertarget{class_kitchen_station_a5bd30761d2c3b58b629d3cbf7c4adf80}\index{KitchenStation@{KitchenStation}!stationType@{stationType}}
+\index{stationType@{stationType}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{stationType}{stationType}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a5bd30761d2c3b58b629d3cbf7c4adf80} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}} Kitchen\+Station.\+station\+Type = \mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2}{Kitchen\+Station\+Type.\+Ingredient\+Source}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Typ stanowiska kuchennego określający jego funkcję i zachowanie. 
+
+\begin{DoxySeeAlso}{Zobacz również}
+\doxylink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}
+
+
+\end{DoxySeeAlso}
+\Hypertarget{class_kitchen_station_a5479b30e96196dacb9eb0c53c00e572f}\index{KitchenStation@{KitchenStation}!visualRenderer@{visualRenderer}}
+\index{visualRenderer@{visualRenderer}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{visualRenderer}{visualRenderer}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a5479b30e96196dacb9eb0c53c00e572f} 
+Renderer Kitchen\+Station.\+visual\+Renderer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Renderer wizualny stanowiska, którego kolor zmienia się w zależności od stanu. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_kitchen_station_a01bdfb6e70941cedcaadd9258c3f0fc4}\index{KitchenStation@{KitchenStation}!AssemblyCount@{AssemblyCount}}
+\index{AssemblyCount@{AssemblyCount}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{AssemblyCount}{AssemblyCount}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a01bdfb6e70941cedcaadd9258c3f0fc4} 
+int Kitchen\+Station.\+Assembly\+Count\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Liczba składników dodanych do montażu kebaba. 
+
+Liczba elementów na liście składników montażu.\Hypertarget{class_kitchen_station_a2e5855f782e6a1f4684d7aec398623f3}\index{KitchenStation@{KitchenStation}!AssemblyIngredients@{AssemblyIngredients}}
+\index{AssemblyIngredients@{AssemblyIngredients}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{AssemblyIngredients}{AssemblyIngredients}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a2e5855f782e6a1f4684d7aec398623f3} 
+List$<$\mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}}$>$ Kitchen\+Station.\+Assembly\+Ingredients\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Lista przygotowanych składników na stanowisku montażu. 
+
+Lista obiektów \doxylink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data} zawierających rodzaj i stan składników.\Hypertarget{class_kitchen_station_ac61b7c51ed058d529c61d2529383fdbf}\index{KitchenStation@{KitchenStation}!HasLavash@{HasLavash}}
+\index{HasLavash@{HasLavash}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{HasLavash}{HasLavash}}
+{\footnotesize\ttfamily \label{class_kitchen_station_ac61b7c51ed058d529c61d2529383fdbf} 
+bool Kitchen\+Station.\+Has\+Lavash\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Informuje, czy na stanowisku montażu leży ławasz. 
+
+{\ttfamily true} jeśli ławasz jest obecny; w przeciwnym razie {\ttfamily false}.\Hypertarget{class_kitchen_station_a056a0653a9d8a10494e9b162897d92af}\index{KitchenStation@{KitchenStation}!IsProcessing@{IsProcessing}}
+\index{IsProcessing@{IsProcessing}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{IsProcessing}{IsProcessing}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a056a0653a9d8a10494e9b162897d92af} 
+bool Kitchen\+Station.\+Is\+Processing\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Informuje, czy stanowisko aktualnie przetwarza składnik. 
+
+{\ttfamily true} jeśli trwa przetwarzanie; w przeciwnym razie {\ttfamily false}.\Hypertarget{class_kitchen_station_aff9469cdd11ad8855297fe5eff41a32b}\index{KitchenStation@{KitchenStation}!PreparedMeatServings@{PreparedMeatServings}}
+\index{PreparedMeatServings@{PreparedMeatServings}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{PreparedMeatServings}{PreparedMeatServings}}
+{\footnotesize\ttfamily \label{class_kitchen_station_aff9469cdd11ad8855297fe5eff41a32b} 
+int Kitchen\+Station.\+Prepared\+Meat\+Servings\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Liczba gotowych porcji mięsa na tacy. 
+
+Nieujemna liczba dostępnych porcji mięsa.\Hypertarget{class_kitchen_station_aa2b02d55bd3751f50250473cfcec449a}\index{KitchenStation@{KitchenStation}!ProcessEndTime@{ProcessEndTime}}
+\index{ProcessEndTime@{ProcessEndTime}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{ProcessEndTime}{ProcessEndTime}}
+{\footnotesize\ttfamily \label{class_kitchen_station_aa2b02d55bd3751f50250473cfcec449a} 
+float Kitchen\+Station.\+Process\+End\+Time\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Czas ({\ttfamily Time.\+time}) zakończenia bieżącego przetwarzania. 
+
+Moment zakończenia procesu lub 0 jeśli nic nie jest przetwarzane.\Hypertarget{class_kitchen_station_a451dda30ac4ee9405fc752022ffba764}\index{KitchenStation@{KitchenStation}!StationItem@{StationItem}}
+\index{StationItem@{StationItem}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{StationItem}{StationItem}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a451dda30ac4ee9405fc752022ffba764} 
+\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} Kitchen\+Station.\+Station\+Item\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Przedmiot kuchenny aktualnie znajdujący się na stanowisku. 
+
+Instancja \doxylink{class_kitchen_item}{Kitchen\+Item} lub {\ttfamily null} jeśli stanowisko jest puste.\Hypertarget{class_kitchen_station_a86e6919ee81fbe571a9b223171ec01c1}\index{KitchenStation@{KitchenStation}!StationType@{StationType}}
+\index{StationType@{StationType}!KitchenStation@{KitchenStation}}
+\doxysubsubsection{\texorpdfstring{StationType}{StationType}}
+{\footnotesize\ttfamily \label{class_kitchen_station_a86e6919ee81fbe571a9b223171ec01c1} 
+\mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}} Kitchen\+Station.\+Station\+Type\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Typ tego stanowiska kuchennego. 
+
+Wartość enumeracji \doxylink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}.
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_station_8cs}{Kitchen\+Station.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,197 @@
+\doxysection{Dokumentacja klasy Remote\+Player\+Animator}
+\hypertarget{class_remote_player_animator}{}\label{class_remote_player_animator}\index{RemotePlayerAnimator@{RemotePlayerAnimator}}
+
+
+Komponent animacji gracza zdalnego wykorzystujący system Playable\+Graph.  
+
+
+Diagram dziedziczenia dla Remote\+Player\+Animator\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_remote_player_animator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_remote_player_animator_abdd03b465f1eea7133349d7d2fa96eee}{Initialize}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje system animacji\+: tworzy Playable\+Graph, konfiguruje mikser i podłącza klipy animacji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+Animation\+Clip \mbox{\hyperlink{class_remote_player_animator_aec4d884141acd0f39456bebdd9df512c}{idle\+Clip}}
+\begin{DoxyCompactList}\small\item\em Klip animacji bezczynności (idle) gracza. \end{DoxyCompactList}\item 
+Animation\+Clip \mbox{\hyperlink{class_remote_player_animator_a1f90623be6a25eb5eb659d98bdb3e4d6}{walk\+Clip}}
+\begin{DoxyCompactList}\small\item\em Klip animacji chodzenia (walk) gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_remote_player_animator_aab47607da2bdacee2da68e027a8095a4}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje wagi miksera animacji na podstawie prędkości przemieszczania się gracza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_remote_player_animator_ac0a2f2bde90db01f59c205bf857d9831}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Niszczy graf odtwarzania animacji przy usunięciu komponentu z obiektu gry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Playable\+Graph \mbox{\hyperlink{class_remote_player_animator_a75c5e4bcd76df4b908e551f8c3bda940}{graph}}
+\begin{DoxyCompactList}\small\item\em Graf odtwarzania animacji (Playable\+Graph) zarządzający miksowaniem klipów. \end{DoxyCompactList}\item 
+Animation\+Mixer\+Playable \mbox{\hyperlink{class_remote_player_animator_a21e97bce4221d0979a6f51c49726ff2c}{mixer}}
+\begin{DoxyCompactList}\small\item\em Mikser animacji łączący animację idle i walk z odpowiednimi wagami. \end{DoxyCompactList}\item 
+Animation\+Clip\+Playable \mbox{\hyperlink{class_remote_player_animator_a52073e6ebce5dd2d2ca80115284d156e}{idle\+Playable}}
+\begin{DoxyCompactList}\small\item\em Odtwarzalny klip animacji bezczynności. \end{DoxyCompactList}\item 
+Animation\+Clip\+Playable \mbox{\hyperlink{class_remote_player_animator_a77aac738e7b92ada922479941c236048}{walk\+Playable}}
+\begin{DoxyCompactList}\small\item\em Odtwarzalny klip animacji chodzenia. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_remote_player_animator_a51569562502ab44b09c49d34380a9939}{idle\+Length}}
+\begin{DoxyCompactList}\small\item\em Długość klipu animacji bezczynności (w sekundach). \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_remote_player_animator_a2602fda3c49b4e320252447b19c5b681}{walk\+Length}}
+\begin{DoxyCompactList}\small\item\em Długość klipu animacji chodzenia (w sekundach). \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_remote_player_animator_acddb8d31d71232cf558e5e113967806b}{last\+Position}}
+\begin{DoxyCompactList}\small\item\em Ostatnia zapamiętana pozycja gracza, używana do obliczania prędkości. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_remote_player_animator_ae5d7c35935f9e3c55ae60e6c34d6593f}{speed\+Smoothed}}
+\begin{DoxyCompactList}\small\item\em Wygładzona wartość prędkości używana do interpolacji wag miksera animacji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Komponent animacji gracza zdalnego wykorzystujący system Playable\+Graph. 
+
+Miksuje animacje bezczynności (idle) i chodzenia (walk) na podstawie prędkości przemieszczania się obiektu gracza. Używa Playable\+Graph do płynnego przejścia między animacjami bez konieczności używania Animator Controller. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_remote_player_animator_abdd03b465f1eea7133349d7d2fa96eee}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_abdd03b465f1eea7133349d7d2fa96eee} 
+void Remote\+Player\+Animator.\+Initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inicjalizuje system animacji\+: tworzy Playable\+Graph, konfiguruje mikser i podłącza klipy animacji. 
+
+Wymaga, aby \doxylink{class_remote_player_animator_aec4d884141acd0f39456bebdd9df512c}{idle\+Clip} i \doxylink{class_remote_player_animator_a1f90623be6a25eb5eb659d98bdb3e4d6}{walk\+Clip} były ustawione przed wywołaniem. Automatycznie dodaje komponent Animator jeśli nie istnieje. Początkowo ustawia pełną wagę na animację bezczynności. \Hypertarget{class_remote_player_animator_ac0a2f2bde90db01f59c205bf857d9831}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_ac0a2f2bde90db01f59c205bf857d9831} 
+void Remote\+Player\+Animator.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Niszczy graf odtwarzania animacji przy usunięciu komponentu z obiektu gry. 
+
+\Hypertarget{class_remote_player_animator_aab47607da2bdacee2da68e027a8095a4}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!Update@{Update}}
+\index{Update@{Update}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_aab47607da2bdacee2da68e027a8095a4} 
+void Remote\+Player\+Animator.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje wagi miksera animacji na podstawie prędkości przemieszczania się gracza. 
+
+Oblicza prędkość na podstawie zmiany pozycji między klatkami. Waga animacji chodzenia jest proporcjonalna do prędkości (znormalizowana do 2.\+5 jednostek/s). Zapewnia zapętlanie klipów animacji po osiągnięciu ich końca. 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_remote_player_animator_a75c5e4bcd76df4b908e551f8c3bda940}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!graph@{graph}}
+\index{graph@{graph}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{graph}{graph}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_a75c5e4bcd76df4b908e551f8c3bda940} 
+Playable\+Graph Remote\+Player\+Animator.\+graph\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Graf odtwarzania animacji (Playable\+Graph) zarządzający miksowaniem klipów. 
+
+\Hypertarget{class_remote_player_animator_aec4d884141acd0f39456bebdd9df512c}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!idleClip@{idleClip}}
+\index{idleClip@{idleClip}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{idleClip}{idleClip}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_aec4d884141acd0f39456bebdd9df512c} 
+Animation\+Clip Remote\+Player\+Animator.\+idle\+Clip}
+
+
+
+Klip animacji bezczynności (idle) gracza. 
+
+\Hypertarget{class_remote_player_animator_a51569562502ab44b09c49d34380a9939}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!idleLength@{idleLength}}
+\index{idleLength@{idleLength}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{idleLength}{idleLength}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_a51569562502ab44b09c49d34380a9939} 
+float Remote\+Player\+Animator.\+idle\+Length\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Długość klipu animacji bezczynności (w sekundach). 
+
+\Hypertarget{class_remote_player_animator_a52073e6ebce5dd2d2ca80115284d156e}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!idlePlayable@{idlePlayable}}
+\index{idlePlayable@{idlePlayable}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{idlePlayable}{idlePlayable}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_a52073e6ebce5dd2d2ca80115284d156e} 
+Animation\+Clip\+Playable Remote\+Player\+Animator.\+idle\+Playable\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Odtwarzalny klip animacji bezczynności. 
+
+\Hypertarget{class_remote_player_animator_acddb8d31d71232cf558e5e113967806b}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!lastPosition@{lastPosition}}
+\index{lastPosition@{lastPosition}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{lastPosition}{lastPosition}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_acddb8d31d71232cf558e5e113967806b} 
+Vector3 Remote\+Player\+Animator.\+last\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatnia zapamiętana pozycja gracza, używana do obliczania prędkości. 
+
+\Hypertarget{class_remote_player_animator_a21e97bce4221d0979a6f51c49726ff2c}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!mixer@{mixer}}
+\index{mixer@{mixer}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{mixer}{mixer}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_a21e97bce4221d0979a6f51c49726ff2c} 
+Animation\+Mixer\+Playable Remote\+Player\+Animator.\+mixer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mikser animacji łączący animację idle i walk z odpowiednimi wagami. 
+
+\Hypertarget{class_remote_player_animator_ae5d7c35935f9e3c55ae60e6c34d6593f}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!speedSmoothed@{speedSmoothed}}
+\index{speedSmoothed@{speedSmoothed}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{speedSmoothed}{speedSmoothed}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_ae5d7c35935f9e3c55ae60e6c34d6593f} 
+float Remote\+Player\+Animator.\+speed\+Smoothed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Wygładzona wartość prędkości używana do interpolacji wag miksera animacji. 
+
+\Hypertarget{class_remote_player_animator_a1f90623be6a25eb5eb659d98bdb3e4d6}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!walkClip@{walkClip}}
+\index{walkClip@{walkClip}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{walkClip}{walkClip}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_a1f90623be6a25eb5eb659d98bdb3e4d6} 
+Animation\+Clip Remote\+Player\+Animator.\+walk\+Clip}
+
+
+
+Klip animacji chodzenia (walk) gracza. 
+
+\Hypertarget{class_remote_player_animator_a2602fda3c49b4e320252447b19c5b681}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!walkLength@{walkLength}}
+\index{walkLength@{walkLength}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{walkLength}{walkLength}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_a2602fda3c49b4e320252447b19c5b681} 
+float Remote\+Player\+Animator.\+walk\+Length\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Długość klipu animacji chodzenia (w sekundach). 
+
+\Hypertarget{class_remote_player_animator_a77aac738e7b92ada922479941c236048}\index{RemotePlayerAnimator@{RemotePlayerAnimator}!walkPlayable@{walkPlayable}}
+\index{walkPlayable@{walkPlayable}!RemotePlayerAnimator@{RemotePlayerAnimator}}
+\doxysubsubsection{\texorpdfstring{walkPlayable}{walkPlayable}}
+{\footnotesize\ttfamily \label{class_remote_player_animator_a77aac738e7b92ada922479941c236048} 
+Animation\+Clip\+Playable Remote\+Player\+Animator.\+walk\+Playable\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Odtwarzalny klip animacji chodzenia. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_network_player_8cs}{Network\+Player.\+cs}}\end{DoxyCompactItemize}

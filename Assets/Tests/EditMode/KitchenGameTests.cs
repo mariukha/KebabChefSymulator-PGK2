@@ -1,11 +1,36 @@
+/// \file KitchenGameTests.cs
+/// \brief Plik zawierający testy jednostkowe EditMode dla logiki gry kuchennej (symulator kebaba).
+/// \details Testy obejmują walidację zamówień, serializację/deserializację danych zapisu,
+/// system ulepszeń sklepu, nazewnictwo składników w języku polskim, klonowanie obiektów
+/// oraz poprawność definicji typów wyliczeniowych. Testy korzystają z refleksji,
+/// aby uzyskać dostęp do typów z assembly głównego projektu (Assembly-CSharp).
+
 using System;
 using System.Collections;
 using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
 
+/// <summary>
+/// Klasa testów jednostkowych EditMode dla systemu kuchni w grze Kebab Chef Symulator.
+/// </summary>
+/// <remarks>
+/// Testy wykorzystują refleksję do dynamicznego tworzenia i manipulowania obiektami
+/// z głównego assembly gry (Assembly-CSharp). Dzięki temu testy mogą weryfikować
+/// logikę biznesową bez bezpośredniej zależności kompilacyjnej od testowanych typów.
+/// Klasa zawiera testy walidatora zamówień, serializacji danych zapisu, systemu
+/// ulepszeń, nazewnictwa po polsku oraz integralności typów wyliczeniowych.
+/// </remarks>
 public class KitchenGameTests
 {
+    /// <summary>
+    /// Weryfikuje, że walidator akceptuje danie zawierające dokładnie wymagane składniki.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy zamówienie z trzema wymaganiami (Lavash surowy, Mięso upieczone, Pomidor pokrojony)
+    /// i danie z dokładnie tymi samymi składnikami. Oczekuje, że metoda
+    /// <c>KitchenOrderValidator.MatchesOrder</c> zwróci <c>true</c>.
+    /// </remarks>
     [Test]
     public void ValidatorAcceptsDishWithExactIngredients()
     {
@@ -32,6 +57,13 @@ public class KitchenGameTests
         Assert.IsTrue(result, arguments[2] as string);
     }
 
+    /// <summary>
+    /// Weryfikuje, że walidator odrzuca danie ze składnikiem w nieprawidłowym stanie przygotowania.
+    /// </summary>
+    /// <remarks>
+    /// Zamówienie wymaga pokrojonego pomidora, ale danie zawiera surowy pomidor.
+    /// Oczekuje się, że walidator zwróci <c>false</c>, a komunikat błędu będzie zawierał słowo "Brakuje".
+    /// </remarks>
     [Test]
     public void ValidatorRejectsWrongPreparationState()
     {
@@ -50,6 +82,15 @@ public class KitchenGameTests
         StringAssert.Contains("Brakuje", arguments[2] as string);
     }
 
+    /// <summary>
+    /// Weryfikuje, że dane zapisu gry zachowują postęp po serializacji i deserializacji JSON.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy obiekt <c>GameSaveData</c> z ustawionymi wartościami ekonomii (saldo, zarobki)
+    /// oraz postępem zamówień (ukończone, nieudane, pozostały czas, aktywne zamówienie).
+    /// Serializuje do JSON za pomocą <c>JsonUtility</c>, a następnie deserializuje i porównuje
+    /// przywrócone wartości z oryginalnymi.
+    /// </remarks>
     [Test]
     public void SaveDataRoundTripPreservesProgress()
     {
@@ -85,6 +126,14 @@ public class KitchenGameTests
         Assert.AreEqual(1, ((IList)GetField(restoredOrder, "requirements")).Count);
     }
 
+    /// <summary>
+    /// Weryfikuje, że dane zapisu sklepu zachowują informacje o ulepszeniach po serializacji i deserializacji.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy obiekt <c>ShopSaveData</c> z dwiema pozycjami ulepszeń (GrillSpeed i RewardBonus)
+    /// o różnych poziomach. Sprawdza, czy po cyklu JSON round-trip wszystkie pola są poprawnie zachowane,
+    /// w tym liczba zakupionych ulepszeń, typy i poziomy poszczególnych wpisów.
+    /// </remarks>
     [Test]
     public void ShopSaveDataRoundTripPreservesUpgrades()
     {
@@ -114,6 +163,13 @@ public class KitchenGameTests
         Assert.AreEqual(1, (int)GetField(restoredLevels[1], "level"));
     }
 
+    /// <summary>
+    /// Weryfikuje, że obiekt <c>GameSaveData</c> zawiera pole sklepu z poprawną inicjalizacją.
+    /// </summary>
+    /// <remarks>
+    /// Sprawdza, czy nowo utworzony obiekt <c>GameSaveData</c> posiada niezerowe pole <c>shop</c>
+    /// z pustą listą poziomów ulepszeń (<c>upgradeLevels</c>).
+    /// </remarks>
     [Test]
     public void GameSaveDataIncludesShopField()
     {
@@ -127,6 +183,14 @@ public class KitchenGameTests
         Assert.AreEqual(0, levels.Count);
     }
 
+    /// <summary>
+    /// Weryfikuje, że koszt ulepszenia skaluje się poprawnie według wzoru wykładniczego.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy definicję ulepszenia z kosztem bazowym 50 i współczynnikiem skalowania 2.
+    /// Sprawdza, czy koszt dla poziomu 0 wynosi 50, dla poziomu 1 wynosi 100,
+    /// a dla poziomu 2 wynosi 200 (każdy kolejny poziom podwaja koszt).
+    /// </remarks>
     [Test]
     public void UpgradeDefinitionCostScalesCorrectly()
     {
@@ -146,6 +210,13 @@ public class KitchenGameTests
         Assert.AreEqual(200f, costLevel2);
     }
 
+    /// <summary>
+    /// Weryfikuje, że typ wyliczeniowy <c>UpgradeType</c> posiada dokładnie pięć wartości.
+    /// </summary>
+    /// <remarks>
+    /// Sprawdza, czy enum <c>UpgradeType</c> zawiera wartości: GrillSpeed, CuttingSpeed,
+    /// RewardBonus, OrderTime oraz MeatBatchSize.
+    /// </remarks>
     [Test]
     public void UpgradeTypeEnumHasFiveValues()
     {
@@ -165,6 +236,14 @@ public class KitchenGameTests
     //  NOWE TESTY — Kamień milowy 2
     // =========================================================================
 
+    /// <summary>
+    /// Weryfikuje, że koszt ulepszenia w sklepie skaluje się wykładniczo z niestandardowym współczynnikiem.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy definicję ulepszenia z kosztem bazowym 40 i współczynnikiem skalowania 1,8.
+    /// Sprawdza, że koszty rosną w sposób wykładniczy — stosunek kosztów kolejnych poziomów
+    /// powinien być stały i równy współczynnikowi skalowania.
+    /// </remarks>
     [Test]
     public void ShopUpgradeCostScalesExponentially()
     {
@@ -188,6 +267,13 @@ public class KitchenGameTests
         Assert.AreEqual(ratio1, ratio2, 0.01f, "Skalowanie powinno byc wykladnicze.");
     }
 
+    /// <summary>
+    /// Weryfikuje, że opis efektu ulepszenia w sklepie zwraca poprawny tekst.
+    /// </summary>
+    /// <remarks>
+    /// Dla ulepszenia typu RewardBonus z tablicą wartości efektów sprawdza, czy opis
+    /// na poziomie 0 zawiera znak procentu, a na maksymalnym poziomie zwraca tekst "MAX".
+    /// </remarks>
     [Test]
     public void ShopEffectDescriptionReturnsCorrectText()
     {
@@ -206,6 +292,14 @@ public class KitchenGameTests
         Assert.AreEqual("MAX", descMax, "Na max poziomie opis powinien byc MAX.");
     }
 
+    /// <summary>
+    /// Weryfikuje, że osiągnięcie maksymalnego poziomu ulepszenia blokuje dalsze ulepszanie.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy definicję ulepszenia typu GrillSpeed z maksymalnym poziomem 2.
+    /// Sprawdza, czy metoda <c>GetEffectDescription</c> dla poziomu maksymalnego
+    /// zwraca tekst "MAX", sygnalizując brak dalszych ulepszeń.
+    /// </remarks>
     [Test]
     public void ShopMaxLevelBlocksFurtherUpgradeCheck()
     {
@@ -222,6 +316,14 @@ public class KitchenGameTests
         Assert.AreEqual("MAX", atMax);
     }
 
+    /// <summary>
+    /// Weryfikuje poprawność cyklu serializacji i deserializacji danych ekonomicznych.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy obiekt <c>EconomySaveData</c> z ustawionym saldem (999.5), łącznymi zarobkami (1500)
+    /// oraz łącznymi wydatkami (500.5). Po serializacji JSON i deserializacji sprawdza,
+    /// czy wszystkie wartości zmiennoprzecinkowe zostały zachowane z dokładnością do 0.01.
+    /// </remarks>
     [Test]
     public void EconomySaveDataRoundTrip()
     {
@@ -238,6 +340,14 @@ public class KitchenGameTests
         Assert.AreEqual(500.5f, (float)GetField(restored, "totalSpent"), 0.01f);
     }
 
+    /// <summary>
+    /// Weryfikuje, że pusty stan elementu sieciowego poprawnie przechodzi cykl serializacji.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy pusty obiekt <c>NetworkItemState</c> za pomocą metody fabrycznej <c>Empty()</c>.
+    /// Sprawdza, że pole <c>exists</c> jest ustawione na <c>false</c> oraz że metoda
+    /// <c>ToKitchenItem()</c> zwraca <c>null</c> dla pustego stanu.
+    /// </remarks>
     [Test]
     public void NetworkItemStateEmptyRoundTrip()
     {
@@ -254,6 +364,15 @@ public class KitchenGameTests
         Assert.IsNull(item, "Pusty stan powinien zwrocic null KitchenItem.");
     }
 
+    /// <summary>
+    /// Weryfikuje poprawność konwersji dania do stanu sieciowego i z powrotem.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy danie z czterema składnikami (Lavash, Meat, Tomato, GarlicSauce) i konwertuje je
+    /// do obiektu <c>NetworkItemState</c> za pomocą <c>FromKitchenItem</c>. Sprawdza, że pole
+    /// <c>exists</c> jest <c>true</c>, <c>contentCount</c> wynosi 4, a konwersja z powrotem
+    /// przez <c>ToKitchenItem</c> daje danie z 4 składnikami i flagą <c>isDish</c> ustawioną na <c>true</c>.
+    /// </remarks>
     [Test]
     public void NetworkItemStateDishRoundTrip()
     {
@@ -280,6 +399,14 @@ public class KitchenGameTests
         Assert.AreEqual(4, ((IList)GetField(restored, "contents")).Count);
     }
 
+    /// <summary>
+    /// Weryfikuje, że walidator odrzuca danie zawierające nadmiarowe składniki.
+    /// </summary>
+    /// <remarks>
+    /// Zamówienie wymaga tylko mięsa, ale danie zawiera mięso i dodatkowo pomidora.
+    /// Oczekuje się, że walidator zwróci <c>false</c>, a komunikat błędu będzie zawierał
+    /// słowo "nadmiarowe".
+    /// </remarks>
     [Test]
     public void ValidatorRejectsExtraIngredients()
     {
@@ -301,6 +428,14 @@ public class KitchenGameTests
         StringAssert.Contains("nadmiarowe", args[2] as string);
     }
 
+    /// <summary>
+    /// Weryfikuje, że walidator odrzuca element kuchenny, który nie jest daniem (nie jest złożony).
+    /// </summary>
+    /// <remarks>
+    /// Tworzy pojedynczy surowy składnik (mięso) zamiast złożonego dania.
+    /// Oczekuje się, że walidator zwróci <c>false</c>, ponieważ zamówienie
+    /// wymaga złożonego dania, a nie pojedynczego składnika.
+    /// </remarks>
     [Test]
     public void ValidatorRejectsNonDishItem()
     {
@@ -321,6 +456,15 @@ public class KitchenGameTests
         Assert.IsFalse(result, "Walidator powinien odrzucic pojedynczy skladnik.");
     }
 
+    /// <summary>
+    /// Weryfikuje, że klonowanie zamówienia zachowuje wszystkie pola i tworzy głęboką kopię.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy zamówienie z ustawionymi polami (id, klient, nazwa, czas, nagroda) oraz dwiema
+    /// pozycjami wymaganych składników. Po klonowaniu sprawdza, czy wszystkie wartości
+    /// zostały skopiowane poprawnie. Dodatkowo weryfikuje, że modyfikacja oryginalnych
+    /// wymagań nie wpływa na klon (głęboka kopia).
+    /// </remarks>
     [Test]
     public void OrderClonePreservesAllFields()
     {
@@ -356,6 +500,15 @@ public class KitchenGameTests
     //  NOWE TESTY — Mechanika gotowania i progressive difficulty
     // =========================================================================
 
+    /// <summary>
+    /// Weryfikuje, że metoda <c>KitchenItem.FromIngredient</c> poprawnie obsługuje wartość null.
+    /// </summary>
+    /// <remarks>
+    /// Ponieważ <c>IngredientData</c> jest obiektem ScriptableObject i nie można go
+    /// bezpośrednio utworzyć w testach EditMode, test sprawdza ścieżkę null —
+    /// oczekuje się, że metoda zwróci nowy obiekt <c>KitchenItem</c> z domyślną nazwą
+    /// "Skladnik" i flagą <c>isDish</c> ustawioną na <c>false</c>.
+    /// </remarks>
     [Test]
     public void KitchenItemFromIngredientCreatesCorrectItem()
     {
@@ -373,6 +526,14 @@ public class KitchenGameTests
         Assert.IsFalse((bool)GetField(item, "isDish"));
     }
 
+    /// <summary>
+    /// Weryfikuje, że klonowanie obiektu <c>KitchenItem</c> zachowuje zawartość dania i tworzy głęboką kopię.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy danie z trzema składnikami i klonuje je. Sprawdza, czy klon jest daniem
+    /// z trzema składnikami. Następnie dodaje nowy składnik do oryginału i weryfikuje,
+    /// że klon nie został zmodyfikowany (głęboka kopia).
+    /// </remarks>
     [Test]
     public void KitchenItemClonePreservesContents()
     {
@@ -395,6 +556,14 @@ public class KitchenGameTests
         Assert.AreEqual(3, clonedContents.Count, "Klon nie powinien zmieniac sie po modyfikacji oryginalu.");
     }
 
+    /// <summary>
+    /// Weryfikuje, że podsumowanie dania zawiera listę wszystkich składników.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy danie z nazwą "Kebab testowy" zawierające Lavash i mięso.
+    /// Sprawdza, czy metoda <c>BuildSummary</c> zwraca tekst zawierający
+    /// nazwę dania oraz polskie nazwy składników ("Lawasz", "Mieso").
+    /// </remarks>
     [Test]
     public void DishBuildSummaryListsAllIngredients()
     {
@@ -413,6 +582,13 @@ public class KitchenGameTests
         StringAssert.Contains("Mieso", summary);
     }
 
+    /// <summary>
+    /// Weryfikuje, że podsumowanie surowego składnika wyświetla jego stan przetworzenia.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy surowy pomidor (nie danie) i wywołuje metodę <c>BuildSummary</c>.
+    /// Sprawdza, czy zwrócony tekst zawiera polskie nazwy: "Pomidor" i "surowy".
+    /// </remarks>
     [Test]
     public void RawIngredientBuildSummaryShowsState()
     {
@@ -430,6 +606,14 @@ public class KitchenGameTests
         StringAssert.Contains("surowy", summary);
     }
 
+    /// <summary>
+    /// Weryfikuje pełną integrację walidatora dla kompletnego klasycznego kebaba.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy zamówienie na klasyczny kebab z pięcioma wymaganiami (Lavash, Meat, Tomato,
+    /// Onion, GarlicSauce) oraz danie z dokładnie tymi samymi składnikami.
+    /// Sprawdza, czy walidator akceptuje takie danie jako prawidłowe.
+    /// </remarks>
     [Test]
     public void ValidatorAcceptsCompleteClassicKebab()
     {
@@ -461,6 +645,14 @@ public class KitchenGameTests
         Assert.IsTrue(result, "Pelny klasyczny kebab powinien byc zaakceptowany. Blad: " + (args[2] as string));
     }
 
+    /// <summary>
+    /// Weryfikuje, że walidator odrzuca danie z brakującym wymaganym składnikiem.
+    /// </summary>
+    /// <remarks>
+    /// Zamówienie wymaga mięsa i pomidora, ale danie zawiera tylko mięso.
+    /// Oczekuje się, że walidator zwróci <c>false</c>, a komunikat błędu
+    /// będzie zawierał słowo "Brakuje".
+    /// </remarks>
     [Test]
     public void ValidatorRejectsMissingIngredient()
     {
@@ -482,6 +674,14 @@ public class KitchenGameTests
         StringAssert.Contains("Brakuje", args[2] as string);
     }
 
+    /// <summary>
+    /// Weryfikuje, że walidator odrzuca danie z podwójną ilością składnika, gdy wymagana jest pojedyncza.
+    /// </summary>
+    /// <remarks>
+    /// Zamówienie wymaga 1 sztuki mięsa, ale danie zawiera 2 sztuki mięsa.
+    /// Oczekuje się, że walidator zwróci <c>false</c>, a komunikat błędu
+    /// będzie zawierał słowo "nadmiarowe".
+    /// </remarks>
     [Test]
     public void ValidatorRejectsDoubleQuantityWhenSingleRequired()
     {
@@ -503,6 +703,15 @@ public class KitchenGameTests
         StringAssert.Contains("nadmiarowe", args[2] as string);
     }
 
+    /// <summary>
+    /// Weryfikuje, że klasa <c>KitchenNaming</c> zwraca poprawne polskie etykiety składników i stanów.
+    /// </summary>
+    /// <remarks>
+    /// Sprawdza tłumaczenia wszystkich typów składników (Meat → "Mieso", Tomato → "Pomidor",
+    /// Onion → "Cebula", Lettuce → "Salata", GarlicSauce → "Sos czosnkowy",
+    /// Lavash → "Lawasz", Kebab → "Kebab") oraz stanów przetworzenia
+    /// (Raw → "surowy", Chopped → "pokrojony", Cooked → "upieczony", Assembled → "zlozony").
+    /// </remarks>
     [Test]
     public void KitchenNamingReturnsPolishLabels()
     {
@@ -524,6 +733,13 @@ public class KitchenGameTests
         Assert.AreEqual("zlozony", getProcess.Invoke(null, new object[] { ParseEnum("IngredientProcessState", "Assembled") }));
     }
 
+    /// <summary>
+    /// Weryfikuje, że ciąg wyświetlania wymagania składnika zawiera nazwę i stan przetworzenia.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy wymaganie dotyczące upieczonego mięsa i sprawdza, czy metoda <c>ToDisplayString</c>
+    /// zwraca tekst zawierający "Mieso" i "upieczony".
+    /// </remarks>
     [Test]
     public void IngredientRequirementDisplayStringContainsNameAndState()
     {
@@ -536,6 +752,13 @@ public class KitchenGameTests
         StringAssert.Contains("upieczony", display);
     }
 
+    /// <summary>
+    /// Weryfikuje, że wymaganie składnika z ilością większą niż 1 wyświetla mnożnik.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy wymaganie na 3 sztuki upieczonego mięsa i sprawdza, czy metoda
+    /// <c>ToDisplayString</c> zawiera tekst "3x" oraz "Mieso".
+    /// </remarks>
     [Test]
     public void IngredientRequirementQuantityShowsMultiplier()
     {
@@ -548,6 +771,14 @@ public class KitchenGameTests
         StringAssert.Contains("Mieso", display);
     }
 
+    /// <summary>
+    /// Weryfikuje, że opis zamówienia zawiera imię klienta oraz nazwę dania.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy zamówienie dla klienta "Marek" na "Testowy kebab" z wymaganiami na mięso i pomidora.
+    /// Sprawdza, czy metoda <c>BuildDescription</c> generuje tekst zawierający imię klienta,
+    /// nazwę zamówienia oraz polskie nazwy składników.
+    /// </remarks>
     [Test]
     public void OrderBuildDescriptionContainsClientAndDishName()
     {
@@ -569,6 +800,14 @@ public class KitchenGameTests
         StringAssert.Contains("Pomidor", desc);
     }
 
+    /// <summary>
+    /// Weryfikuje, że ciąg wyświetlania przygotowanego składnika jest poprawny.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy obiekt <c>PreparedIngredientData</c> reprezentujący pokrojony pomidor
+    /// i sprawdza, czy metoda <c>ToDisplayString</c> zwraca tekst zawierający
+    /// "Pomidor" i "pokrojony".
+    /// </remarks>
     [Test]
     public void PreparedIngredientDisplayStringCorrect()
     {
@@ -581,6 +820,13 @@ public class KitchenGameTests
         StringAssert.Contains("pokrojony", display);
     }
 
+    /// <summary>
+    /// Weryfikuje, że typ wyliczeniowy <c>KitchenStationType</c> posiada dokładnie pięć wartości.
+    /// </summary>
+    /// <remarks>
+    /// Sprawdza, czy enum <c>KitchenStationType</c> zawiera wartości: IngredientSource,
+    /// CuttingBoard, Grill, Assembly oraz Delivery.
+    /// </remarks>
     [Test]
     public void KitchenStationTypeEnumHasFiveValues()
     {
@@ -596,6 +842,13 @@ public class KitchenGameTests
         Assert.Contains("Delivery", names);
     }
 
+    /// <summary>
+    /// Weryfikuje, że typ wyliczeniowy <c>IngredientKind</c> posiada dokładnie siedem wartości.
+    /// </summary>
+    /// <remarks>
+    /// Sprawdza, czy enum <c>IngredientKind</c> zawiera wartości: Meat, Tomato, Onion,
+    /// Lettuce, GarlicSauce, Lavash oraz Kebab.
+    /// </remarks>
     [Test]
     public void IngredientKindEnumHasSevenValues()
     {
@@ -613,6 +866,13 @@ public class KitchenGameTests
         Assert.Contains("Kebab", names);
     }
 
+    /// <summary>
+    /// Weryfikuje, że typ wyliczeniowy <c>IngredientProcessState</c> posiada dokładnie cztery wartości.
+    /// </summary>
+    /// <remarks>
+    /// Sprawdza, czy enum <c>IngredientProcessState</c> zawiera wartości: Raw, Chopped,
+    /// Cooked oraz Assembled.
+    /// </remarks>
     [Test]
     public void ProcessStateEnumHasFourValues()
     {
@@ -627,6 +887,12 @@ public class KitchenGameTests
         Assert.Contains("Assembled", names);
     }
 
+    /// <summary>
+    /// Tworzy obiekt dania (KitchenItem) z podanymi przygotowanymi składnikami.
+    /// </summary>
+    /// <param name="ingredients">Tablica przygotowanych składników do umieszczenia w daniu.</param>
+    /// <returns>Obiekt dania typu <c>KitchenItem</c> z flagą <c>isDish</c> ustawioną na <c>true</c>,
+    /// typem składnika Kebab, stanem Assembled i podanymi składnikami w polu <c>contents</c>.</returns>
     private static object CreateDish(params object[] ingredients)
     {
         object dish = Create("KitchenItem");
@@ -644,6 +910,13 @@ public class KitchenGameTests
         return dish;
     }
 
+    /// <summary>
+    /// Tworzy obiekt wymagania składnika z określonym typem, stanem i ilością.
+    /// </summary>
+    /// <param name="ingredientKind">Nazwa typu składnika (np. "Meat", "Tomato").</param>
+    /// <param name="processState">Nazwa wymaganego stanu przetworzenia (np. "Cooked", "Chopped").</param>
+    /// <param name="quantity">Wymagana ilość składnika. Domyślnie 1.</param>
+    /// <returns>Obiekt <c>IngredientRequirement</c> z ustawionymi polami typu, stanu i ilości.</returns>
     private static object CreateIngredientRequirement(string ingredientKind, string processState, int quantity = 1)
     {
         object requirement = Create("IngredientRequirement");
@@ -653,6 +926,12 @@ public class KitchenGameTests
         return requirement;
     }
 
+    /// <summary>
+    /// Tworzy obiekt przygotowanego składnika z określonym typem i stanem przetworzenia.
+    /// </summary>
+    /// <param name="ingredientKind">Nazwa typu składnika (np. "Meat", "Lavash").</param>
+    /// <param name="processState">Nazwa stanu przetworzenia (np. "Raw", "Cooked").</param>
+    /// <returns>Obiekt <c>PreparedIngredientData</c> z ustawionymi polami typu i stanu.</returns>
     private static object CreatePreparedIngredient(string ingredientKind, string processState)
     {
         object ingredient = Create("PreparedIngredientData");
@@ -661,26 +940,59 @@ public class KitchenGameTests
         return ingredient;
     }
 
+    /// <summary>
+    /// Parsuje wartość tekstową na odpowiadający jej element typu wyliczeniowego.
+    /// </summary>
+    /// <param name="typeName">Nazwa typu wyliczeniowego do wyszukania w assembly.</param>
+    /// <param name="value">Wartość tekstowa do sparsowania (np. "Meat", "Cooked").</param>
+    /// <returns>Sparsowana wartość enumeracji jako <c>object</c>.</returns>
     private static object ParseEnum(string typeName, string value)
     {
         return Enum.Parse(GetTypeByName(typeName), value);
     }
 
+    /// <summary>
+    /// Tworzy nową instancję typu o podanej nazwie z assembly głównego projektu.
+    /// </summary>
+    /// <param name="typeName">Nazwa typu do utworzenia (np. "Order", "KitchenItem").</param>
+    /// <returns>Nowo utworzona instancja podanego typu.</returns>
     private static object Create(string typeName)
     {
         return Activator.CreateInstance(GetTypeByName(typeName));
     }
 
+    /// <summary>
+    /// Pobiera wartość pola publicznego z podanej instancji obiektu za pomocą refleksji.
+    /// </summary>
+    /// <param name="instance">Instancja obiektu, z której pobieramy wartość pola.</param>
+    /// <param name="fieldName">Nazwa pola do odczytania.</param>
+    /// <returns>Wartość pola jako <c>object</c>.</returns>
     private static object GetField(object instance, string fieldName)
     {
         return instance.GetType().GetField(fieldName).GetValue(instance);
     }
 
+    /// <summary>
+    /// Ustawia wartość pola publicznego w podanej instancji obiektu za pomocą refleksji.
+    /// </summary>
+    /// <param name="instance">Instancja obiektu, w której ustawiamy wartość pola.</param>
+    /// <param name="fieldName">Nazwa pola do zapisania.</param>
+    /// <param name="value">Nowa wartość do przypisania do pola.</param>
     private static void SetField(object instance, string fieldName, object value)
     {
         instance.GetType().GetField(fieldName).SetValue(instance, value);
     }
 
+    /// <summary>
+    /// Wyszukuje i zwraca typ o podanej nazwie z assembly <c>Assembly-CSharp</c>.
+    /// </summary>
+    /// <param name="typeName">Nazwa typu do wyszukania.</param>
+    /// <returns>Obiekt <see cref="Type"/> odpowiadający podanej nazwie.</returns>
+    /// <remarks>
+    /// Metoda iteruje po wszystkich załadowanych assembly w bieżącej domenie aplikacji,
+    /// szukając assembly o nazwie "Assembly-CSharp". Jeśli assembly nie jest załadowane
+    /// lub typ nie zostanie znaleziony, test kończy się niepowodzeniem z odpowiednim komunikatem.
+    /// </remarks>
     private static Type GetTypeByName(string typeName)
     {
         Assembly assembly = null;

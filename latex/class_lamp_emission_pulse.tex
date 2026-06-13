@@ -1,0 +1,105 @@
+\doxysection{Dokumentacja klasy Lamp\+Emission\+Pulse}
+\hypertarget{class_lamp_emission_pulse}{}\label{class_lamp_emission_pulse}\index{LampEmissionPulse@{LampEmissionPulse}}
+
+
+Adds warm emission pulse to lamp renderers, making them glow rhythmically. Works in tandem with \doxylink{class_lamp_flicker}{Lamp\+Flicker} for a cohesive lighting effect.  
+
+
+Diagram dziedziczenia dla Lamp\+Emission\+Pulse\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_lamp_emission_pulse}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_lamp_emission_pulse_aebbf53a953c79ade957f9798f97173a4}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_lamp_emission_pulse_a53ed20874a47f7541b6be3ae70fd3d2b}{Update}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_lamp_emission_pulse_ab5ced90b6e68db9b254348914acf2f0a}{pulse\+Speed}} = 1.\+8f
+\item 
+float \mbox{\hyperlink{class_lamp_emission_pulse_a9768c388b934d1544e93f39280bf6af5}{min\+Emission}} = 0.\+3f
+\item 
+float \mbox{\hyperlink{class_lamp_emission_pulse_a94930655a725271844035f2b695fc51b}{max\+Emission}} = 0.\+65f
+\item 
+Color \mbox{\hyperlink{class_lamp_emission_pulse_aecfce976809c1a6626545de4f0c4829a}{emission\+Color}} = new Color(1f, 0.\+78f, 0.\+35f)
+\item 
+Renderer\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_lamp_emission_pulse_a54937ac09b9e88aef222465e1d0c526d}{target\+Renderers}}
+\item 
+float \mbox{\hyperlink{class_lamp_emission_pulse_a76bd75c38a179c570e95e938d2bd4417}{phase\+Offset}}
+\item 
+Material\+Property\+Block \mbox{\hyperlink{class_lamp_emission_pulse_a6bcf3603514bb84acec4da585b0ff494}{prop\+Block}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Adds warm emission pulse to lamp renderers, making them glow rhythmically. Works in tandem with \doxylink{class_lamp_flicker}{Lamp\+Flicker} for a cohesive lighting effect. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_lamp_emission_pulse_aebbf53a953c79ade957f9798f97173a4}\index{LampEmissionPulse@{LampEmissionPulse}!Start@{Start}}
+\index{Start@{Start}!LampEmissionPulse@{LampEmissionPulse}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_lamp_emission_pulse_aebbf53a953c79ade957f9798f97173a4} 
+void Lamp\+Emission\+Pulse.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_lamp_emission_pulse_a53ed20874a47f7541b6be3ae70fd3d2b}\index{LampEmissionPulse@{LampEmissionPulse}!Update@{Update}}
+\index{Update@{Update}!LampEmissionPulse@{LampEmissionPulse}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_lamp_emission_pulse_a53ed20874a47f7541b6be3ae70fd3d2b} 
+void Lamp\+Emission\+Pulse.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_lamp_emission_pulse_aecfce976809c1a6626545de4f0c4829a}\index{LampEmissionPulse@{LampEmissionPulse}!emissionColor@{emissionColor}}
+\index{emissionColor@{emissionColor}!LampEmissionPulse@{LampEmissionPulse}}
+\doxysubsubsection{\texorpdfstring{emissionColor}{emissionColor}}
+{\footnotesize\ttfamily \label{class_lamp_emission_pulse_aecfce976809c1a6626545de4f0c4829a} 
+Color Lamp\+Emission\+Pulse.\+emission\+Color = new Color(1f, 0.\+78f, 0.\+35f)\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_emission_pulse_a94930655a725271844035f2b695fc51b}\index{LampEmissionPulse@{LampEmissionPulse}!maxEmission@{maxEmission}}
+\index{maxEmission@{maxEmission}!LampEmissionPulse@{LampEmissionPulse}}
+\doxysubsubsection{\texorpdfstring{maxEmission}{maxEmission}}
+{\footnotesize\ttfamily \label{class_lamp_emission_pulse_a94930655a725271844035f2b695fc51b} 
+float Lamp\+Emission\+Pulse.\+max\+Emission = 0.\+65f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_emission_pulse_a9768c388b934d1544e93f39280bf6af5}\index{LampEmissionPulse@{LampEmissionPulse}!minEmission@{minEmission}}
+\index{minEmission@{minEmission}!LampEmissionPulse@{LampEmissionPulse}}
+\doxysubsubsection{\texorpdfstring{minEmission}{minEmission}}
+{\footnotesize\ttfamily \label{class_lamp_emission_pulse_a9768c388b934d1544e93f39280bf6af5} 
+float Lamp\+Emission\+Pulse.\+min\+Emission = 0.\+3f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_emission_pulse_a76bd75c38a179c570e95e938d2bd4417}\index{LampEmissionPulse@{LampEmissionPulse}!phaseOffset@{phaseOffset}}
+\index{phaseOffset@{phaseOffset}!LampEmissionPulse@{LampEmissionPulse}}
+\doxysubsubsection{\texorpdfstring{phaseOffset}{phaseOffset}}
+{\footnotesize\ttfamily \label{class_lamp_emission_pulse_a76bd75c38a179c570e95e938d2bd4417} 
+float Lamp\+Emission\+Pulse.\+phase\+Offset\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_emission_pulse_a6bcf3603514bb84acec4da585b0ff494}\index{LampEmissionPulse@{LampEmissionPulse}!propBlock@{propBlock}}
+\index{propBlock@{propBlock}!LampEmissionPulse@{LampEmissionPulse}}
+\doxysubsubsection{\texorpdfstring{propBlock}{propBlock}}
+{\footnotesize\ttfamily \label{class_lamp_emission_pulse_a6bcf3603514bb84acec4da585b0ff494} 
+Material\+Property\+Block Lamp\+Emission\+Pulse.\+prop\+Block\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_emission_pulse_ab5ced90b6e68db9b254348914acf2f0a}\index{LampEmissionPulse@{LampEmissionPulse}!pulseSpeed@{pulseSpeed}}
+\index{pulseSpeed@{pulseSpeed}!LampEmissionPulse@{LampEmissionPulse}}
+\doxysubsubsection{\texorpdfstring{pulseSpeed}{pulseSpeed}}
+{\footnotesize\ttfamily \label{class_lamp_emission_pulse_ab5ced90b6e68db9b254348914acf2f0a} 
+float Lamp\+Emission\+Pulse.\+pulse\+Speed = 1.\+8f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_emission_pulse_a54937ac09b9e88aef222465e1d0c526d}\index{LampEmissionPulse@{LampEmissionPulse}!targetRenderers@{targetRenderers}}
+\index{targetRenderers@{targetRenderers}!LampEmissionPulse@{LampEmissionPulse}}
+\doxysubsubsection{\texorpdfstring{targetRenderers}{targetRenderers}}
+{\footnotesize\ttfamily \label{class_lamp_emission_pulse_a54937ac09b9e88aef222465e1d0c526d} 
+Renderer \mbox{[}$\,$\mbox{]} Lamp\+Emission\+Pulse.\+target\+Renderers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Effects/\mbox{\hyperlink{_lamp_flicker_8cs}{Lamp\+Flicker.\+cs}}\end{DoxyCompactItemize}

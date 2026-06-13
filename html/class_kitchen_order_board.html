@@ -1,0 +1,788 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy KitchenOrderBoard</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="class_kitchen_order_board-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy KitchenOrderBoard</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa odpowiedzialna za tworzenie i aktualizowanie tablicy zamówień wyświetlanej na monitorze 3D w scenie kuchni.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla KitchenOrderBoard</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_kitchen_order_board.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a5354fc83e2695a27636459931d348e0d" id="r_a5354fc83e2695a27636459931d348e0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5354fc83e2695a27636459931d348e0d">Initialize</a> ()</td></tr>
+<tr class="memdesc:a5354fc83e2695a27636459931d348e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizuje tablicę zamówień, tworząc wizualne elementy monitora (bloki 3D i Canvas z tekstami).  <br /></td></tr>
+<tr class="separator:a5354fc83e2695a27636459931d348e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:ac7b04e891f10c5f8c68b9e9e6905337e" id="r_ac7b04e891f10c5f8c68b9e9e6905337e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7b04e891f10c5f8c68b9e9e6905337e">Update</a> ()</td></tr>
+<tr class="memdesc:ac7b04e891f10c5f8c68b9e9e6905337e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda Unity wywoływana co klatkę. Odświeża zawartość tablicy zamówień aktualnymi danymi.  <br /></td></tr>
+<tr class="separator:ac7b04e891f10c5f8c68b9e9e6905337e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb0076c76307fca396e780a02e96ab52" id="r_adb0076c76307fca396e780a02e96ab52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb0076c76307fca396e780a02e96ab52">CreateMonitorVisuals</a> ()</td></tr>
+<tr class="memdesc:adb0076c76307fca396e780a02e96ab52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy kompletną wizualizację monitora: bloki 3D (obudowa, rama, ekran, krawędź, dioda) oraz Canvas World Space z elementami tekstowymi i paskiem pilności.  <br /></td></tr>
+<tr class="separator:adb0076c76307fca396e780a02e96ab52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae10406045fcd05d30955c7f53afd1b56" id="r_ae10406045fcd05d30955c7f53afd1b56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae10406045fcd05d30955c7f53afd1b56">RefreshBoard</a> ()</td></tr>
+<tr class="memdesc:ae10406045fcd05d30955c7f53afd1b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odświeża zawartość tablicy zamówień danymi z <a class="el" href="class_order_manager.html" title="Menedżer systemu zamówień w grze Kebab Chef Symulator. Zarządza generowaniem nowych zamówień z predef...">OrderManager</a>. Aktualizuje nagłówek, metadane zamówienia, listę składników, stopkę ze statystykami oraz pasek pilności.  <br /></td></tr>
+<tr class="separator:ae10406045fcd05d30955c7f53afd1b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69b468f4a43f425b9b8f4aab698e0be7" id="r_a69b468f4a43f425b9b8f4aab698e0be7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69b468f4a43f425b9b8f4aab698e0be7">SetUrgencyProgress</a> (float ratio)</td></tr>
+<tr class="memdesc:a69b468f4a43f425b9b8f4aab698e0be7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia postęp paska pilności poprzez zmianę jego szerokości.  <br /></td></tr>
+<tr class="separator:a69b468f4a43f425b9b8f4aab698e0be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3704d0e6bea3f15a7dc508763755d771" id="r_a3704d0e6bea3f15a7dc508763755d771"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3704d0e6bea3f15a7dc508763755d771">GetUrgencyColor</a> (float remainingTime, float fullTime)</td></tr>
+<tr class="memdesc:a3704d0e6bea3f15a7dc508763755d771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oblicza kolor paska pilności na podstawie pozostałego czasu zamówienia.  <br /></td></tr>
+<tr class="separator:a3704d0e6bea3f15a7dc508763755d771"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9869cb767ae93462a5825c17b7a561fe" id="r_a9869cb767ae93462a5825c17b7a561fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9869cb767ae93462a5825c17b7a561fe">CreateBlock</a> (string objectName, Vector3 localPosition, Vector3 localScale, Color color)</td></tr>
+<tr class="memdesc:a9869cb767ae93462a5825c17b7a561fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy blok 3D (sześcian) jako element fizyczny monitora.  <br /></td></tr>
+<tr class="separator:a9869cb767ae93462a5825c17b7a561fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9a3a3336e51b1239269a64ee60a7f0b" id="r_ac9a3a3336e51b1239269a64ee60a7f0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9a3a3336e51b1239269a64ee60a7f0b">CreatePanel</a> (Transform parent, string objectName, Vector2 anchoredPosition, Vector2 size, Color color)</td></tr>
+<tr class="memdesc:ac9a3a3336e51b1239269a64ee60a7f0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy panel UI z obrazem tła na podanej pozycji i o podanym rozmiarze. Element jest zakotwiczony centralnie.  <br /></td></tr>
+<tr class="separator:ac9a3a3336e51b1239269a64ee60a7f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec2effb93b4640df715d980af1174219" id="r_aec2effb93b4640df715d980af1174219"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec2effb93b4640df715d980af1174219">CreateImage</a> (Transform parent, string objectName, Vector2 anchoredPosition, Vector2 size, Color color)</td></tr>
+<tr class="memdesc:aec2effb93b4640df715d980af1174219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy element obrazu UI i zwraca jego komponent Image. Podobna do <a class="el" href="#ac9a3a3336e51b1239269a64ee60a7f0b" title="Tworzy panel UI z obrazem tła na podanej pozycji i o podanym rozmiarze. Element jest zakotwiczony cen...">CreatePanel</a>, ale zwraca referencję do komponentu Image.  <br /></td></tr>
+<tr class="separator:aec2effb93b4640df715d980af1174219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3299641a20465e5b0cd74758564bd859" id="r_a3299641a20465e5b0cd74758564bd859"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3299641a20465e5b0cd74758564bd859">CreateText</a> (Transform parent, string objectName, Font font, int fontSize, FontStyle fontStyle, TextAnchor alignment, Vector2 anchoredPosition, Vector2 size, Color color)</td></tr>
+<tr class="memdesc:a3299641a20465e5b0cd74758564bd859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy element tekstowy UI z określoną czcionką, rozmiarem, stylem, wyrównaniem, pozycją i kolorem. Zakotwiczony w lewym górnym rogu.  <br /></td></tr>
+<tr class="separator:a3299641a20465e5b0cd74758564bd859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a7f10f7aefb9e34e27c01b86973b16fd7" id="r_a7f10f7aefb9e34e27c01b86973b16fd7"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f10f7aefb9e34e27c01b86973b16fd7">headerText</a></td></tr>
+<tr class="memdesc:a7f10f7aefb9e34e27c01b86973b16fd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst nagłówka tablicy zamówień (wyświetla "LIVE ORDERS").  <br /></td></tr>
+<tr class="separator:a7f10f7aefb9e34e27c01b86973b16fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a578f17fc6bfe8958ace320492b2d9cb7" id="r_a578f17fc6bfe8958ace320492b2d9cb7"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a578f17fc6bfe8958ace320492b2d9cb7">metaText</a></td></tr>
+<tr class="memdesc:a578f17fc6bfe8958ace320492b2d9cb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst metadanych zamówienia zawierający nazwę klienta, nazwę dania, pozostały czas i kwotę nagrody.  <br /></td></tr>
+<tr class="separator:a578f17fc6bfe8958ace320492b2d9cb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5da66118ac98150d3503aea0cef7556f" id="r_a5da66118ac98150d3503aea0cef7556f"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5da66118ac98150d3503aea0cef7556f">ingredientsText</a></td></tr>
+<tr class="memdesc:a5da66118ac98150d3503aea0cef7556f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst listy wymaganych składników z oznaczeniami wypunktowanymi.  <br /></td></tr>
+<tr class="separator:a5da66118ac98150d3503aea0cef7556f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb7d31275d6418e1b089e20e27b15161" id="r_abb7d31275d6418e1b089e20e27b15161"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb7d31275d6418e1b089e20e27b15161">footerText</a></td></tr>
+<tr class="memdesc:abb7d31275d6418e1b089e20e27b15161"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst stopki wyświetlający statystyki sesji (liczba ukończonych i nieudanych zamówień).  <br /></td></tr>
+<tr class="separator:abb7d31275d6418e1b089e20e27b15161"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee48353e4f9fe2dd19199a06143077aa" id="r_aee48353e4f9fe2dd19199a06143077aa"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee48353e4f9fe2dd19199a06143077aa">urgencyBar</a></td></tr>
+<tr class="memdesc:aee48353e4f9fe2dd19199a06143077aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obraz paska pilności zamówienia, którego kolor zmienia się w zależności od proporcji pozostałego czasu do całkowitego.  <br /></td></tr>
+<tr class="separator:aee48353e4f9fe2dd19199a06143077aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a110afd7d14ab36192ac2624f08186c4a" id="r_a110afd7d14ab36192ac2624f08186c4a"><td class="memItemLeft" align="right" valign="top">RectTransform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a110afd7d14ab36192ac2624f08186c4a">urgencyBarRect</a></td></tr>
+<tr class="memdesc:a110afd7d14ab36192ac2624f08186c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">RectTransform paska pilności, używany do dynamicznej zmiany szerokości w zależności od postępu czasu zamówienia.  <br /></td></tr>
+<tr class="separator:a110afd7d14ab36192ac2624f08186c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31c5315b838d5d8a6a87cb7c7238d35d" id="r_a31c5315b838d5d8a6a87cb7c7238d35d"><td class="memItemLeft" align="right" valign="top">Shader&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31c5315b838d5d8a6a87cb7c7238d35d">cachedLitShader</a></td></tr>
+<tr class="memdesc:a31c5315b838d5d8a6a87cb7c7238d35d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buforowany shader używany do tworzenia materiałów bloków 3D monitora. Preferuje URP Lit, awaryjnie Standard.  <br /></td></tr>
+<tr class="separator:a31c5315b838d5d8a6a87cb7c7238d35d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa odpowiedzialna za tworzenie i aktualizowanie tablicy zamówień wyświetlanej na monitorze 3D w scenie kuchni. </p>
+<p>Monitor składa się z fizycznych bloków 3D (rama, ekran, dioda statusu) oraz Canvas w trybie World Space wyświetlającego informacje o zamówieniu. Tablica jest aktualizowana co klatkę i wyświetla: nagłówek "LIVE ORDERS", dane klienta i zamówienia, listę wymaganych składników, statystyki sesji oraz animowany pasek pilności zmieniający kolor w zależności od pozostałego czasu. Inicjalizacja odbywa się przez wywołanie metody <a class="el" href="#a5354fc83e2695a27636459931d348e0d" title="Inicjalizuje tablicę zamówień, tworząc wizualne elementy monitora (bloki 3D i Canvas z tekstami).">Initialize</a>. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a9869cb767ae93462a5825c17b7a561fe" name="a9869cb767ae93462a5825c17b7a561fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9869cb767ae93462a5825c17b7a561fe">&#9670;&#160;</a></span>CreateBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenOrderBoard.CreateBlock </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>objectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>localPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>localScale</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy blok 3D (sześcian) jako element fizyczny monitora. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">objectName</td><td>Nazwa obiektu bloku.</td></tr>
+    <tr><td class="paramname">localPosition</td><td>Lokalna pozycja bloku względem rodzica.</td></tr>
+    <tr><td class="paramname">localScale</td><td>Lokalna skala bloku (wymiary).</td></tr>
+    <tr><td class="paramname">color</td><td>Kolor materiału bloku.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Używa buforowanego shadera URP Lit (lub Standard jako awaryjnego). Tworzony jest nowy materiał z podanym kolorem. </p>
+
+</div>
+</div>
+<a id="aec2effb93b4640df715d980af1174219" name="aec2effb93b4640df715d980af1174219"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec2effb93b4640df715d980af1174219">&#9670;&#160;</a></span>CreateImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image KitchenOrderBoard.CreateImage </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>objectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy element obrazu UI i zwraca jego komponent Image. Podobna do <a class="el" href="#ac9a3a3336e51b1239269a64ee60a7f0b" title="Tworzy panel UI z obrazem tła na podanej pozycji i o podanym rozmiarze. Element jest zakotwiczony cen...">CreatePanel</a>, ale zwraca referencję do komponentu Image. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transformata rodzica.</td></tr>
+    <tr><td class="paramname">objectName</td><td>Nazwa obiektu obrazu.</td></tr>
+    <tr><td class="paramname">anchoredPosition</td><td>Pozycja zakotwiczona obrazu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar obrazu w pikselach.</td></tr>
+    <tr><td class="paramname">color</td><td>Kolor obrazu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Komponent Image utworzonego elementu.</dd></dl>
+
+</div>
+</div>
+<a id="adb0076c76307fca396e780a02e96ab52" name="adb0076c76307fca396e780a02e96ab52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb0076c76307fca396e780a02e96ab52">&#9670;&#160;</a></span>CreateMonitorVisuals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenOrderBoard.CreateMonitorVisuals </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy kompletną wizualizację monitora: bloki 3D (obudowa, rama, ekran, krawędź, dioda) oraz Canvas World Space z elementami tekstowymi i paskiem pilności. </p>
+<p>Monitor ma wymiary około 3.5 x 2.05 jednostek i składa się z wielu warstw:</p><ul>
+<li>MonitorBack: główna obudowa w ciemnym kolorze,</li>
+<li>MonitorFrame: rama w nieco jaśniejszym odcieniu,</li>
+<li>ScreenGlow: powierzchnia ekranu z ciemnym odcieniem niebieskiego,</li>
+<li>MonitorShadowLip: dolna krawędź cienia,</li>
+<li>StatusLight: zielona dioda statusu w prawym dolnym rogu.</li>
+</ul>
+<p>Canvas jest skalowany do 0.00245 i obrócony o 180° wokół osi Y, aby tekst był widoczny od przodu monitora. </p>
+
+</div>
+</div>
+<a id="ac9a3a3336e51b1239269a64ee60a7f0b" name="ac9a3a3336e51b1239269a64ee60a7f0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9a3a3336e51b1239269a64ee60a7f0b">&#9670;&#160;</a></span>CreatePanel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenOrderBoard.CreatePanel </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>objectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy panel UI z obrazem tła na podanej pozycji i o podanym rozmiarze. Element jest zakotwiczony centralnie. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transformata rodzica.</td></tr>
+    <tr><td class="paramname">objectName</td><td>Nazwa obiektu panelu.</td></tr>
+    <tr><td class="paramname">anchoredPosition</td><td>Pozycja zakotwiczona panelu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar panelu w pikselach.</td></tr>
+    <tr><td class="paramname">color</td><td>Kolor tła panelu.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3299641a20465e5b0cd74758564bd859" name="a3299641a20465e5b0cd74758564bd859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3299641a20465e5b0cd74758564bd859">&#9670;&#160;</a></span>CreateText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenOrderBoard.CreateText </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>objectName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Font</td>          <td class="paramname"><span class="paramname"><em>font</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fontSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FontStyle</td>          <td class="paramname"><span class="paramname"><em>fontStyle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TextAnchor</td>          <td class="paramname"><span class="paramname"><em>alignment</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy element tekstowy UI z określoną czcionką, rozmiarem, stylem, wyrównaniem, pozycją i kolorem. Zakotwiczony w lewym górnym rogu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transformata rodzica.</td></tr>
+    <tr><td class="paramname">objectName</td><td>Nazwa obiektu tekstowego.</td></tr>
+    <tr><td class="paramname">font</td><td>Czcionka do użycia.</td></tr>
+    <tr><td class="paramname">fontSize</td><td>Rozmiar czcionki w pikselach.</td></tr>
+    <tr><td class="paramname">fontStyle</td><td>Styl czcionki (normalny, pogrubiony itp.).</td></tr>
+    <tr><td class="paramname">alignment</td><td>Wyrównanie tekstu.</td></tr>
+    <tr><td class="paramname">anchoredPosition</td><td>Pozycja zakotwiczona elementu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar elementu tekstowego.</td></tr>
+    <tr><td class="paramname">color</td><td>Kolor tekstu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Komponent Text utworzonego elementu tekstowego.</dd></dl>
+<p>Tekst jest konfigurowany z zawijaniem poziomym i przepełnieniem pionowym, co pozwala na wyświetlanie wieloliniowych treści. </p>
+
+</div>
+</div>
+<a id="a3704d0e6bea3f15a7dc508763755d771" name="a3704d0e6bea3f15a7dc508763755d771"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3704d0e6bea3f15a7dc508763755d771">&#9670;&#160;</a></span>GetUrgencyColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color KitchenOrderBoard.GetUrgencyColor </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>remainingTime</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>fullTime</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oblicza kolor paska pilności na podstawie pozostałego czasu zamówienia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">remainingTime</td><td>Pozostały czas zamówienia w sekundach.</td></tr>
+    <tr><td class="paramname">fullTime</td><td>Całkowity czas przeznaczony na zamówienie w sekundach.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Kolor paska pilności:<ul>
+<li>Zielony gdy pozostało ponad 50% czasu,</li>
+<li>Żółty gdy pozostało 25-50% czasu,</li>
+<li>Czerwony gdy pozostało mniej niż 25% czasu. </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="a5354fc83e2695a27636459931d348e0d" name="a5354fc83e2695a27636459931d348e0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5354fc83e2695a27636459931d348e0d">&#9670;&#160;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenOrderBoard.Initialize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicjalizuje tablicę zamówień, tworząc wizualne elementy monitora (bloki 3D i Canvas z tekstami). </p>
+
+</div>
+</div>
+<a id="ae10406045fcd05d30955c7f53afd1b56" name="ae10406045fcd05d30955c7f53afd1b56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae10406045fcd05d30955c7f53afd1b56">&#9670;&#160;</a></span>RefreshBoard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenOrderBoard.RefreshBoard </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odświeża zawartość tablicy zamówień danymi z <a class="el" href="class_order_manager.html" title="Menedżer systemu zamówień w grze Kebab Chef Symulator. Zarządza generowaniem nowych zamówień z predef...">OrderManager</a>. Aktualizuje nagłówek, metadane zamówienia, listę składników, stopkę ze statystykami oraz pasek pilności. </p>
+<p>Gdy nie ma aktywnego zamówienia, wyświetla komunikat "No active order" i ustawia pasek pilności na pełny (zielony). Gdy zamówienie jest aktywne, wyświetla szczegółowe informacje o kliencie, daniu, nagrodzie i wymaganych składnikach. </p>
+
+</div>
+</div>
+<a id="a69b468f4a43f425b9b8f4aab698e0be7" name="a69b468f4a43f425b9b8f4aab698e0be7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69b468f4a43f425b9b8f4aab698e0be7">&#9670;&#160;</a></span>SetUrgencyProgress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenOrderBoard.SetUrgencyProgress </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ratio</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia postęp paska pilności poprzez zmianę jego szerokości. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ratio</td><td>Proporcja postępu w zakresie 0-1, gdzie 1 oznacza pełny pasek.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac7b04e891f10c5f8c68b9e9e6905337e" name="ac7b04e891f10c5f8c68b9e9e6905337e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7b04e891f10c5f8c68b9e9e6905337e">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenOrderBoard.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda Unity wywoływana co klatkę. Odświeża zawartość tablicy zamówień aktualnymi danymi. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a31c5315b838d5d8a6a87cb7c7238d35d" name="a31c5315b838d5d8a6a87cb7c7238d35d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31c5315b838d5d8a6a87cb7c7238d35d">&#9670;&#160;</a></span>cachedLitShader</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Shader KitchenOrderBoard.cachedLitShader</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buforowany shader używany do tworzenia materiałów bloków 3D monitora. Preferuje URP Lit, awaryjnie Standard. </p>
+
+</div>
+</div>
+<a id="abb7d31275d6418e1b089e20e27b15161" name="abb7d31275d6418e1b089e20e27b15161"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb7d31275d6418e1b089e20e27b15161">&#9670;&#160;</a></span>footerText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenOrderBoard.footerText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst stopki wyświetlający statystyki sesji (liczba ukończonych i nieudanych zamówień). </p>
+
+</div>
+</div>
+<a id="a7f10f7aefb9e34e27c01b86973b16fd7" name="a7f10f7aefb9e34e27c01b86973b16fd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f10f7aefb9e34e27c01b86973b16fd7">&#9670;&#160;</a></span>headerText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenOrderBoard.headerText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst nagłówka tablicy zamówień (wyświetla "LIVE ORDERS"). </p>
+
+</div>
+</div>
+<a id="a5da66118ac98150d3503aea0cef7556f" name="a5da66118ac98150d3503aea0cef7556f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5da66118ac98150d3503aea0cef7556f">&#9670;&#160;</a></span>ingredientsText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenOrderBoard.ingredientsText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst listy wymaganych składników z oznaczeniami wypunktowanymi. </p>
+
+</div>
+</div>
+<a id="a578f17fc6bfe8958ace320492b2d9cb7" name="a578f17fc6bfe8958ace320492b2d9cb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a578f17fc6bfe8958ace320492b2d9cb7">&#9670;&#160;</a></span>metaText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text KitchenOrderBoard.metaText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst metadanych zamówienia zawierający nazwę klienta, nazwę dania, pozostały czas i kwotę nagrody. </p>
+
+</div>
+</div>
+<a id="aee48353e4f9fe2dd19199a06143077aa" name="aee48353e4f9fe2dd19199a06143077aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee48353e4f9fe2dd19199a06143077aa">&#9670;&#160;</a></span>urgencyBar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image KitchenOrderBoard.urgencyBar</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obraz paska pilności zamówienia, którego kolor zmienia się w zależności od proporcji pozostałego czasu do całkowitego. </p>
+
+</div>
+</div>
+<a id="a110afd7d14ab36192ac2624f08186c4a" name="a110afd7d14ab36192ac2624f08186c4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a110afd7d14ab36192ac2624f08186c4a">&#9670;&#160;</a></span>urgencyBarRect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RectTransform KitchenOrderBoard.urgencyBarRect</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RectTransform paska pilności, używany do dynamicznej zmiany szerokości w zależności od postępu czasu zamówienia. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_kitchen_order_board_8cs.html">KitchenOrderBoard.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

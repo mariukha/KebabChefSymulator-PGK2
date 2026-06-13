@@ -1,0 +1,232 @@
+\doxysection{Dokumentacja klasy Network\+Kitchen\+Station}
+\hypertarget{class_network_kitchen_station}{}\label{class_network_kitchen_station}\index{NetworkKitchenStation@{NetworkKitchenStation}}
+
+
+Komponent sieciowy opakowujący lokalną stację kuchenną (\doxylink{class_kitchen_station}{Kitchen\+Station}).  
+
+
+Diagram dziedziczenia dla Network\+Kitchen\+Station\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_network_kitchen_station}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_network_kitchen_station_a2c07bda5625a0970773a872bd6115258}{Is\+State\+Dirty}} ()
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy stan stacji kuchennej zmienił się od ostatniej migawki. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_station_state_snapshot}{Station\+State\+Snapshot}} \mbox{\hyperlink{class_network_kitchen_station_a682c4cef144ace5cacab81cd9dc5d885}{Capture\+Snapshot}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy migawkę aktualnego stanu stacji kuchennej i zapamiętuje go jako ostatni znany. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_kitchen_station_a790a5d957a9f1ed9aefe922ab111586d}{Apply\+Snapshot}} (\mbox{\hyperlink{struct_station_state_snapshot}{Station\+State\+Snapshot}} snapshot)
+\begin{DoxyCompactList}\small\item\em Aplikuje migawkę stanu stacji otrzymaną od serwera na lokalnej stacji kuchennej. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_kitchen_station_a1f275f9fdbdfb8e37f4f493370ab3c80}{Server\+Interact}} (\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} interaction)
+\begin{DoxyCompactList}\small\item\em Wykonuje interakcję na stacji kuchennej na serwerze w imieniu danego gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_network_kitchen_station_ad7a39900a976a225cc4c3156d8508f12}{Station\+Index}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Unikalny indeks stacji kuchennej na scenie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_network_kitchen_station_aa44a3895515f1e81f4d238f1b171f0f7}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje referencję do lokalnej stacji kuchennej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_kitchen_station}{Kitchen\+Station}} \mbox{\hyperlink{class_network_kitchen_station_a791c4bb4c6e2b8fe883376b43a4eee0c}{local\+Station}}
+\begin{DoxyCompactList}\small\item\em Referencja do lokalnego komponentu stacji kuchennej. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_network_kitchen_station_ac3a4dc0e8c844757f23f3c0ea0ee4559}{last\+Is\+Processing}}
+\begin{DoxyCompactList}\small\item\em Ostatni znany stan przetwarzania (czy stacja aktualnie przetwarza składnik). \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_network_kitchen_station_ae9e9fa3827edbe7a41bc602d1e3bcf08}{last\+Remaining\+Process\+Time}}
+\begin{DoxyCompactList}\small\item\em Ostatni znany pozostały czas przetwarzania (w sekundach). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_network_kitchen_station_a3e82f27731212e3faaa7a8c96be735f5}{last\+Prepared\+Meat\+Servings}}
+\begin{DoxyCompactList}\small\item\em Ostatnia znana liczba przygotowanych porcji mięsa. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_network_kitchen_station_a3a5f180d079c47998993f0427763d9d0}{last\+Has\+Lavash}}
+\begin{DoxyCompactList}\small\item\em Ostatni znany stan obecności lawasza na stacji. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_network_kitchen_station_a408f497d8d572a76b1a9855a6d9114a5}{last\+Assembly\+Count}}
+\begin{DoxyCompactList}\small\item\em Ostatnia znana liczba składników w zestawie montażowym (assembly). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} \mbox{\hyperlink{class_network_kitchen_station_a5e8f086633e2aed3ab8679767bd5615e}{last\+Station\+Item}}
+\begin{DoxyCompactList}\small\item\em Ostatni znany stan sieciowy przedmiotu znajdującego się na stacji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Komponent sieciowy opakowujący lokalną stację kuchenną (\doxylink{class_kitchen_station}{Kitchen\+Station}). 
+
+Odpowiada za\+: 
+\begin{DoxyItemize}
+\item Wykrywanie zmian stanu lokalnej stacji kuchennej (dirty check) 
+\item Tworzenie migawek stanu do przesyłania przez sieć 
+\item Aplikowanie migawek odebranych od serwera na kliencie 
+\item Wykonywanie interakcji na serwerze w imieniu gracza 
+\end{DoxyItemize}Każda stacja kuchenna na scenie powinna posiadać ten komponent wraz z unikalnym \doxylink{class_network_kitchen_station_ad7a39900a976a225cc4c3156d8508f12}{Station\+Index}. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_network_kitchen_station_a790a5d957a9f1ed9aefe922ab111586d}\index{NetworkKitchenStation@{NetworkKitchenStation}!ApplySnapshot@{ApplySnapshot}}
+\index{ApplySnapshot@{ApplySnapshot}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{ApplySnapshot()}{ApplySnapshot()}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_a790a5d957a9f1ed9aefe922ab111586d} 
+void Network\+Kitchen\+Station.\+Apply\+Snapshot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_station_state_snapshot}{Station\+State\+Snapshot}}}]{snapshot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Aplikuje migawkę stanu stacji otrzymaną od serwera na lokalnej stacji kuchennej. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em snapshot} & Migawka stanu do zastosowania.\\
+\hline
+\end{DoxyParams}
+
+
+Automatycznie inicjalizuje referencję do lokalnej stacji, jeśli nie jest jeszcze dostępna. Deleguje synchronizację do \doxylink{class_kitchen_station_aac88098da51643c0e05189ffff2e6d0c}{Kitchen\+Station.\+Sync\+Network\+State}. \Hypertarget{class_network_kitchen_station_a682c4cef144ace5cacab81cd9dc5d885}\index{NetworkKitchenStation@{NetworkKitchenStation}!CaptureSnapshot@{CaptureSnapshot}}
+\index{CaptureSnapshot@{CaptureSnapshot}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{CaptureSnapshot()}{CaptureSnapshot()}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_a682c4cef144ace5cacab81cd9dc5d885} 
+\mbox{\hyperlink{struct_station_state_snapshot}{Station\+State\+Snapshot}} Network\+Kitchen\+Station.\+Capture\+Snapshot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Tworzy migawkę aktualnego stanu stacji kuchennej i zapamiętuje go jako ostatni znany. 
+
+\begin{DoxyReturn}{Zwraca}
+Struktura \doxylink{struct_station_state_snapshot}{Station\+State\+Snapshot} zawierająca pełny stan stacji lub wartość domyślna, jeśli lokalna stacja nie jest dostępna. 
+\end{DoxyReturn}
+
+
+Aktualizuje wewnętrzne zmienne śledzące ostatni stan (dirty tracking), a następnie deleguje zapis składników montażowych do \doxylink{class_kitchen_station_a46e9fcfd4aceabaa97ee0cf63951609b}{Kitchen\+Station.\+Write\+Assembly\+To\+Snapshot}. \Hypertarget{class_network_kitchen_station_a2c07bda5625a0970773a872bd6115258}\index{NetworkKitchenStation@{NetworkKitchenStation}!IsStateDirty@{IsStateDirty}}
+\index{IsStateDirty@{IsStateDirty}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{IsStateDirty()}{IsStateDirty()}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_a2c07bda5625a0970773a872bd6115258} 
+bool Network\+Kitchen\+Station.\+Is\+State\+Dirty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sprawdza, czy stan stacji kuchennej zmienił się od ostatniej migawki. 
+
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli którakolwiek z właściwości stacji uległa zmianie; w przeciwnym razie {\ttfamily false}. 
+\end{DoxyReturn}
+
+
+Porównuje aktualny stan stacji z ostatnio zapamiętanymi wartościami\+: stan przetwarzania, obecność lawasza, liczbę porcji mięsa, liczbę składników montażowych, pozostały czas przetwarzania (z tolerancją 0.\+5s) oraz stan przedmiotu na stacji. \Hypertarget{class_network_kitchen_station_a1f275f9fdbdfb8e37f4f493370ab3c80}\index{NetworkKitchenStation@{NetworkKitchenStation}!ServerInteract@{ServerInteract}}
+\index{ServerInteract@{ServerInteract}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{ServerInteract()}{ServerInteract()}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_a1f275f9fdbdfb8e37f4f493370ab3c80} 
+void Network\+Kitchen\+Station.\+Server\+Interact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}}}]{interaction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Wykonuje interakcję na stacji kuchennej na serwerze w imieniu danego gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em interaction} & Komponent interakcji gracza wykonującego akcję.\\
+\hline
+\end{DoxyParams}
+
+
+Deleguje wywołanie do \doxylink{class_kitchen_station_a913ee51c7b0f2d26adcc6ce6e70fb71c}{Kitchen\+Station.\+Interact}. Wywoływana wyłącznie na serwerze przez \doxylink{class_network_player_a208c4411a2fbf559f82a14387a9466d5}{Network\+Player.\+Interact\+With\+Station\+Server\+Rpc}. \Hypertarget{class_network_kitchen_station_aa44a3895515f1e81f4d238f1b171f0f7}\index{NetworkKitchenStation@{NetworkKitchenStation}!Start@{Start}}
+\index{Start@{Start}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_aa44a3895515f1e81f4d238f1b171f0f7} 
+void Network\+Kitchen\+Station.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje referencję do lokalnej stacji kuchennej. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_network_kitchen_station_a408f497d8d572a76b1a9855a6d9114a5}\index{NetworkKitchenStation@{NetworkKitchenStation}!lastAssemblyCount@{lastAssemblyCount}}
+\index{lastAssemblyCount@{lastAssemblyCount}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{lastAssemblyCount}{lastAssemblyCount}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_a408f497d8d572a76b1a9855a6d9114a5} 
+int Network\+Kitchen\+Station.\+last\+Assembly\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatnia znana liczba składników w zestawie montażowym (assembly). 
+
+\Hypertarget{class_network_kitchen_station_a3a5f180d079c47998993f0427763d9d0}\index{NetworkKitchenStation@{NetworkKitchenStation}!lastHasLavash@{lastHasLavash}}
+\index{lastHasLavash@{lastHasLavash}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{lastHasLavash}{lastHasLavash}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_a3a5f180d079c47998993f0427763d9d0} 
+bool Network\+Kitchen\+Station.\+last\+Has\+Lavash\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatni znany stan obecności lawasza na stacji. 
+
+\Hypertarget{class_network_kitchen_station_ac3a4dc0e8c844757f23f3c0ea0ee4559}\index{NetworkKitchenStation@{NetworkKitchenStation}!lastIsProcessing@{lastIsProcessing}}
+\index{lastIsProcessing@{lastIsProcessing}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{lastIsProcessing}{lastIsProcessing}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_ac3a4dc0e8c844757f23f3c0ea0ee4559} 
+bool Network\+Kitchen\+Station.\+last\+Is\+Processing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatni znany stan przetwarzania (czy stacja aktualnie przetwarza składnik). 
+
+\Hypertarget{class_network_kitchen_station_a3e82f27731212e3faaa7a8c96be735f5}\index{NetworkKitchenStation@{NetworkKitchenStation}!lastPreparedMeatServings@{lastPreparedMeatServings}}
+\index{lastPreparedMeatServings@{lastPreparedMeatServings}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{lastPreparedMeatServings}{lastPreparedMeatServings}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_a3e82f27731212e3faaa7a8c96be735f5} 
+int Network\+Kitchen\+Station.\+last\+Prepared\+Meat\+Servings\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatnia znana liczba przygotowanych porcji mięsa. 
+
+\Hypertarget{class_network_kitchen_station_ae9e9fa3827edbe7a41bc602d1e3bcf08}\index{NetworkKitchenStation@{NetworkKitchenStation}!lastRemainingProcessTime@{lastRemainingProcessTime}}
+\index{lastRemainingProcessTime@{lastRemainingProcessTime}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{lastRemainingProcessTime}{lastRemainingProcessTime}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_ae9e9fa3827edbe7a41bc602d1e3bcf08} 
+float Network\+Kitchen\+Station.\+last\+Remaining\+Process\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatni znany pozostały czas przetwarzania (w sekundach). 
+
+\Hypertarget{class_network_kitchen_station_a5e8f086633e2aed3ab8679767bd5615e}\index{NetworkKitchenStation@{NetworkKitchenStation}!lastStationItem@{lastStationItem}}
+\index{lastStationItem@{lastStationItem}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{lastStationItem}{lastStationItem}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_a5e8f086633e2aed3ab8679767bd5615e} 
+\mbox{\hyperlink{struct_network_item_state}{Network\+Item\+State}} Network\+Kitchen\+Station.\+last\+Station\+Item\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatni znany stan sieciowy przedmiotu znajdującego się na stacji. 
+
+\Hypertarget{class_network_kitchen_station_a791c4bb4c6e2b8fe883376b43a4eee0c}\index{NetworkKitchenStation@{NetworkKitchenStation}!localStation@{localStation}}
+\index{localStation@{localStation}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{localStation}{localStation}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_a791c4bb4c6e2b8fe883376b43a4eee0c} 
+\mbox{\hyperlink{class_kitchen_station}{Kitchen\+Station}} Network\+Kitchen\+Station.\+local\+Station\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referencja do lokalnego komponentu stacji kuchennej. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_network_kitchen_station_ad7a39900a976a225cc4c3156d8508f12}\index{NetworkKitchenStation@{NetworkKitchenStation}!StationIndex@{StationIndex}}
+\index{StationIndex@{StationIndex}!NetworkKitchenStation@{NetworkKitchenStation}}
+\doxysubsubsection{\texorpdfstring{StationIndex}{StationIndex}}
+{\footnotesize\ttfamily \label{class_network_kitchen_station_ad7a39900a976a225cc4c3156d8508f12} 
+int Network\+Kitchen\+Station.\+Station\+Index\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Unikalny indeks stacji kuchennej na scenie. 
+
+Indeks używany do identyfikacji stacji w komunikacji sieciowej.
+
+Musi być unikalny w obrębie sceny. Służy do dopasowania migawek do odpowiednich stacji na klientach. 
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_network_kitchen_station_8cs}{Network\+Kitchen\+Station.\+cs}}\end{DoxyCompactItemize}

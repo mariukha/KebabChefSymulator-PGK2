@@ -1,0 +1,489 @@
+\doxysection{Dokumentacja klasy Player\+List\+UI}
+\hypertarget{class_player_list_u_i}{}\label{class_player_list_u_i}\index{PlayerListUI@{PlayerListUI}}
+
+
+Klasa zarządzająca interfejsem użytkownika listy graczy online. Wyświetla tabelę z maksymalnie 4 graczami, ich pseudonimami, kolorami identyfikacyjnymi, rolami sieciowymi oraz pingiem.  
+
+
+Diagram dziedziczenia dla Player\+List\+UI\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_player_list_u_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_list_u_i_af11adbf9aea09f93ffabd8ec933ebc56}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje interfejs listy graczy podczas przebudzenia obiektu. Wywołuje \doxylink{class_player_list_u_i_a13d35efd3f5ad05525de91f0a3aca67c}{Create\+UI} do zbudowania struktury UI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_list_u_i_a50405c0608498a7eca9c3a10bff48390}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizacja wywoływana co klatkę. Obsługuje wejście klawiszowe (TAB) do wyświetlania i ukrywania listy graczy oraz odświeża dane graczy, gdy lista jest widoczna. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_list_u_i_a36752df95f3024c4a421990c683ab915}{Show\+List}} ()
+\begin{DoxyCompactList}\small\item\em Wyświetla listę graczy, włączając canvas nakładki. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_list_u_i_a3772148c4777f0e5eebb382928632d8d}{Hide\+List}} ()
+\begin{DoxyCompactList}\small\item\em Ukrywa listę graczy, wyłączając canvas nakładki. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_list_u_i_a13d35efd3f5ad05525de91f0a3aca67c}{Create\+UI}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy cały interfejs listy graczy programistycznie, bez użycia prefabów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_list_u_i_a9709ab437523b81e26a2beeda926dc83}{Create\+Player\+Row}} (int index)
+\begin{DoxyCompactList}\small\item\em Tworzy pojedynczy wiersz gracza w tabeli listy. Wiersz zawiera kolorową kropkę identyfikacyjną, pseudonim, rolę sieciową i ping. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_list_u_i_aa6e6b4f970b7e2e68c1c71f7b5d7d623}{Refresh\+Player\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Odświeża dane graczy wyświetlane na liście. Wyszukuje wszystkie aktywne obiekty \doxylink{class_network_player}{Network\+Player} na scenie i aktualizuje odpowiadające im wiersze w tabeli. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_player_list_u_i_aeac891209570c7dad189598a239a25c8}{Create\+Panel}} (Transform parent, string name, Vector2 anchor\+Min, Vector2 anchor\+Max, Vector2 pivot, Vector2 anchored\+Position, Vector2 size, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy obiekt panelu UI z komponentem Image i skonfigurowanym Rect\+Transform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_list_u_i_af255d4f611f8ede7b9b2d4fc777bc144}{Create\+Panel\+Border}} (Transform parent, Color border\+Color)
+\begin{DoxyCompactList}\small\item\em Tworzy ramkę (obramowanie) wokół panelu, składającą się z czterech cienkich paneli o grubości 2 pikseli umieszczonych na górze, dole, lewej i prawej stronie. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_player_list_u_i_aa929c888664f9176551d6ede8a10b797}{Create\+Text}} (Transform parent, string name, int size, Text\+Anchor alignment, Color color, Font\+Style style)
+\begin{DoxyCompactList}\small\item\em Tworzy element tekstowy UI z określonym stylem, używając buforowanej czcionki. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_list_u_i_ae838e034ebc0e248fba163d96107b40a}{Position\+Rect}} (Component comp, Vector2 anchor, Vector2 pos, Vector2 size)
+\begin{DoxyCompactList}\small\item\em Ustawia pozycję i rozmiar Rect\+Transform danego komponentu, używając pojedynczego punktu zakotwiczenia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Canvas \mbox{\hyperlink{class_player_list_u_i_a02defc53272d05f7bdbcbca8cbfdddb9}{list\+Canvas}}
+\begin{DoxyCompactList}\small\item\em Komponent Canvas używany do renderowania nakładki listy graczy. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_player_list_u_i_a5765bc5b603f667d9f791800e4f604db}{list\+Panel}}
+\begin{DoxyCompactList}\small\item\em Główny obiekt panelu listy graczy zawierający wszystkie elementy interfejsu. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_player_list_u_i_a57e316fa84f7f374b939295784f5edf5}{title\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst tytułowy wyświetlający "{}\+GRACZE ONLINE"{} wraz z liczbą połączonych graczy. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_player_list_u_i_a72d20dcb56c3fb7bd98d5b5f3dd7f577}{hint\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst podpowiedzi na dole panelu informujący o sterowaniu (TAB, B). \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_player_list_u_i_ab82b7694f48073743f54663b3a731a80}{row\+Container}}
+\begin{DoxyCompactList}\small\item\em Kontener przechowujący wiersze z danymi poszczególnych graczy. \end{DoxyCompactList}\item 
+Game\+Object\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_player_list_u_i_a0cca8b72c191e6e808e22dda8418e438}{player\+Rows}} = new Game\+Object\mbox{[}4\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tablica obiektów Game\+Object reprezentujących wiersze graczy (maksymalnie 4). \end{DoxyCompactList}\item 
+Image\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_player_list_u_i_a8c84e7dcbc91b0c94b32a2816e8270f9}{player\+Color\+Dots}} = new Image\mbox{[}4\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tablica kolorowych kropek identyfikujących poszczególnych graczy. Każdy gracz ma przypisany unikalny kolor z palety \doxylink{class_network_player_a9da055a3ae82ffcd9938ce9c00765da7}{Network\+Player.\+Player\+Colors}. \end{DoxyCompactList}\item 
+Text\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_player_list_u_i_a2047aa76570648347f795162bc094f8f}{player\+Name\+Texts}} = new Text\mbox{[}4\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tablica tekstów wyświetlających pseudonimy graczy. Pseudonim lokalnego gracza jest oznaczony sufiksem "{}(\+TY)"{}. \end{DoxyCompactList}\item 
+Text\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_player_list_u_i_a75088b5f113f5fc2a5412f69aeb65d8a}{player\+Role\+Texts}} = new Text\mbox{[}4\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tablica tekstów wyświetlających role graczy (HOST lub KLIENT). \end{DoxyCompactList}\item 
+Text\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_player_list_u_i_a5e7883b0990b6563e86bf393e1881a13}{player\+Ping\+Texts}} = new Text\mbox{[}4\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tablica tekstów wyświetlających przybliżone wartości pingu graczy. \end{DoxyCompactList}\item 
+Font \mbox{\hyperlink{class_player_list_u_i_af76b94fec1fd81abd1520d0cd74ec2e9}{cached\+Font}}
+\begin{DoxyCompactList}\small\item\em Buforowana czcionka używana do renderowania wszystkich elementów tekstowych. Ładowana raz podczas inicjalizacji z zasobów wbudowanych. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_list_u_i_ada1009fe2fadbb368b7842c1d15e3166}{is\+Visible}}
+\begin{DoxyCompactList}\small\item\em Flaga określająca czy lista graczy jest aktualnie widoczna na ekranie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static readonly Color \mbox{\hyperlink{class_player_list_u_i_aa7b86a5cb00f182fb1a338a80a4b3f90}{Panel\+Background}} = new Color(0.\+025f, 0.\+03f, 0.\+045f, 0.\+94f)
+\begin{DoxyCompactList}\small\item\em Kolor tła głównego panelu listy graczy. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_player_list_u_i_a2d1292f351790686b0e72059a94208b7}{Header\+Color}} = new Color(0.\+06f, 0.\+10f, 0.\+16f, 0.\+95f)
+\begin{DoxyCompactList}\small\item\em Kolor tła nagłówka panelu listy graczy. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_player_list_u_i_a772cf0eb1655856a2c1a1597fbff76e8}{Row\+Even}} = new Color(0.\+05f, 0.\+07f, 0.\+10f, 0.\+80f)
+\begin{DoxyCompactList}\small\item\em Kolor tła parzystych wierszy listy graczy (efekt naprzemiennych kolorów). \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_player_list_u_i_a42a44d1bdc62b1787ec901f5c74b45a4}{Row\+Odd}} = new Color(0.\+07f, 0.\+09f, 0.\+13f, 0.\+80f)
+\begin{DoxyCompactList}\small\item\em Kolor tła nieparzystych wierszy listy graczy (efekt naprzemiennych kolorów). \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_player_list_u_i_a08102d933433ed8a863f3fe52a3a9cf9}{Gold\+Text}} = new Color(0.\+875f, 0.\+725f, 0.\+32f)
+\begin{DoxyCompactList}\small\item\em Kolor złotego tekstu używany dla tytułu listy. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_player_list_u_i_af899ad8debb14884e6e45763654c83c5}{White\+Text}} = new Color(0.\+9f, 0.\+91f, 0.\+93f, 0.\+92f)
+\begin{DoxyCompactList}\small\item\em Kolor białego tekstu używany dla pseudonimów graczy. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_player_list_u_i_a3ab66f1d7bd3043002f32e31e9d28fb7}{Sub\+Text}} = new Color(0.\+65f, 0.\+70f, 0.\+78f)
+\begin{DoxyCompactList}\small\item\em Kolor tekstu drugorzędnego używany dla nagłówków kolumn, ról i pingu. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_player_list_u_i_a1aa5db81ba5cfe3c3ea227c8e8431481}{Frame\+Color}} = new Color(0.\+14f, 0.\+16f, 0.\+20f)
+\begin{DoxyCompactList}\small\item\em Kolor ramki otaczającej panel listy graczy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa zarządzająca interfejsem użytkownika listy graczy online. Wyświetla tabelę z maksymalnie 4 graczami, ich pseudonimami, kolorami identyfikacyjnymi, rolami sieciowymi oraz pingiem. 
+
+Lista jest widoczna tylko podczas przytrzymywania klawisza TAB. Interfejs jest tworzony w całości programistycznie w metodzie \doxylink{class_player_list_u_i_a13d35efd3f5ad05525de91f0a3aca67c}{Create\+UI}. Dane graczy są odświeżane co klatkę z obiektów \doxylink{class_network_player}{Network\+Player}. Panel obsługuje do 4 graczy jednocześnie. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_player_list_u_i_af11adbf9aea09f93ffabd8ec933ebc56}\index{PlayerListUI@{PlayerListUI}!Awake@{Awake}}
+\index{Awake@{Awake}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_af11adbf9aea09f93ffabd8ec933ebc56} 
+void Player\+List\+UI.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje interfejs listy graczy podczas przebudzenia obiektu. Wywołuje \doxylink{class_player_list_u_i_a13d35efd3f5ad05525de91f0a3aca67c}{Create\+UI} do zbudowania struktury UI. 
+
+\Hypertarget{class_player_list_u_i_aeac891209570c7dad189598a239a25c8}\index{PlayerListUI@{PlayerListUI}!CreatePanel@{CreatePanel}}
+\index{CreatePanel@{CreatePanel}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{CreatePanel()}{CreatePanel()}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_aeac891209570c7dad189598a239a25c8} 
+Game\+Object Player\+List\+UI.\+Create\+Panel (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Vector2}]{anchor\+Min}{, }\item[{Vector2}]{anchor\+Max}{, }\item[{Vector2}]{pivot}{, }\item[{Vector2}]{anchored\+Position}{, }\item[{Vector2}]{size}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy obiekt panelu UI z komponentem Image i skonfigurowanym Rect\+Transform. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica, pod którym panel zostanie utworzony.\\
+\hline
+{\em name} & Nazwa obiektu panelu w hierarchii.\\
+\hline
+{\em anchor\+Min} & Minimalny punkt zakotwiczenia Rect\+Transform.\\
+\hline
+{\em anchor\+Max} & Maksymalny punkt zakotwiczenia Rect\+Transform.\\
+\hline
+{\em pivot} & Punkt obrotu (pivot) Rect\+Transform.\\
+\hline
+{\em anchored\+Position} & Pozycja zakotwiczona panelu.\\
+\hline
+{\em size} & Rozmiar panelu (size\+Delta).\\
+\hline
+{\em color} & Kolor tła panelu (Image).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony obiekt Game\+Object panelu.
+\end{DoxyReturn}
+\Hypertarget{class_player_list_u_i_af255d4f611f8ede7b9b2d4fc777bc144}\index{PlayerListUI@{PlayerListUI}!CreatePanelBorder@{CreatePanelBorder}}
+\index{CreatePanelBorder@{CreatePanelBorder}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{CreatePanelBorder()}{CreatePanelBorder()}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_af255d4f611f8ede7b9b2d4fc777bc144} 
+void Player\+List\+UI.\+Create\+Panel\+Border (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{Color}]{border\+Color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy ramkę (obramowanie) wokół panelu, składającą się z czterech cienkich paneli o grubości 2 pikseli umieszczonych na górze, dole, lewej i prawej stronie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica (panel, wokół którego tworzona jest ramka).\\
+\hline
+{\em border\+Color} & Kolor ramki.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_list_u_i_a9709ab437523b81e26a2beeda926dc83}\index{PlayerListUI@{PlayerListUI}!CreatePlayerRow@{CreatePlayerRow}}
+\index{CreatePlayerRow@{CreatePlayerRow}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{CreatePlayerRow()}{CreatePlayerRow()}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a9709ab437523b81e26a2beeda926dc83} 
+void Player\+List\+UI.\+Create\+Player\+Row (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy pojedynczy wiersz gracza w tabeli listy. Wiersz zawiera kolorową kropkę identyfikacyjną, pseudonim, rolę sieciową i ping. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em index} & Indeks wiersza (0-\/3). Określa pozycję pionową, kolor tła (parzyste/nieparzyste) oraz domyślny kolor kropki identyfikacyjnej gracza. \\
+\hline
+\end{DoxyParams}
+
+
+Wiersze są domyślnie nieaktywne i aktywowane dopiero gdy odpowiadający im gracz jest połączony i zspawnowany na serwerze. \Hypertarget{class_player_list_u_i_aa929c888664f9176551d6ede8a10b797}\index{PlayerListUI@{PlayerListUI}!CreateText@{CreateText}}
+\index{CreateText@{CreateText}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{CreateText()}{CreateText()}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_aa929c888664f9176551d6ede8a10b797} 
+Text Player\+List\+UI.\+Create\+Text (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{name}{, }\item[{int}]{size}{, }\item[{Text\+Anchor}]{alignment}{, }\item[{Color}]{color}{, }\item[{Font\+Style}]{style}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy element tekstowy UI z określonym stylem, używając buforowanej czcionki. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla tekstu.\\
+\hline
+{\em name} & Nazwa obiektu tekstowego w hierarchii.\\
+\hline
+{\em size} & Rozmiar czcionki w pikselach.\\
+\hline
+{\em alignment} & Wyrównanie tekstu (np. środek, lewo, prawo).\\
+\hline
+{\em color} & Kolor tekstu.\\
+\hline
+{\em style} & Styl czcionki (normalny, pogrubiony, kursywa).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony komponent Text.
+\end{DoxyReturn}
+\Hypertarget{class_player_list_u_i_a13d35efd3f5ad05525de91f0a3aca67c}\index{PlayerListUI@{PlayerListUI}!CreateUI@{CreateUI}}
+\index{CreateUI@{CreateUI}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{CreateUI()}{CreateUI()}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a13d35efd3f5ad05525de91f0a3aca67c} 
+void Player\+List\+UI.\+Create\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy cały interfejs listy graczy programistycznie, bez użycia prefabów. 
+
+Buduje następujące elementy\+: 
+\begin{DoxyItemize}
+\item Canvas z Canvas\+Scaler i Graphic\+Raycaster (sorting\+Order 150) 
+\item Półprzezroczyste tło przyciemniające (backdrop) 
+\item Panel główny z ramką i nagłówkiem 
+\item Nagłówki kolumn\+: NICK, ROLA, PING 
+\item 4 wiersze graczy z kropką kolorową, pseudonimem, rolą i pingiem 
+\item Tekst podpowiedzi na dole panelu 
+\end{DoxyItemize}\Hypertarget{class_player_list_u_i_a3772148c4777f0e5eebb382928632d8d}\index{PlayerListUI@{PlayerListUI}!HideList@{HideList}}
+\index{HideList@{HideList}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{HideList()}{HideList()}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a3772148c4777f0e5eebb382928632d8d} 
+void Player\+List\+UI.\+Hide\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ukrywa listę graczy, wyłączając canvas nakładki. 
+
+\Hypertarget{class_player_list_u_i_ae838e034ebc0e248fba163d96107b40a}\index{PlayerListUI@{PlayerListUI}!PositionRect@{PositionRect}}
+\index{PositionRect@{PositionRect}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{PositionRect()}{PositionRect()}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_ae838e034ebc0e248fba163d96107b40a} 
+void Player\+List\+UI.\+Position\+Rect (\begin{DoxyParamCaption}\item[{Component}]{comp}{, }\item[{Vector2}]{anchor}{, }\item[{Vector2}]{pos}{, }\item[{Vector2}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ustawia pozycję i rozmiar Rect\+Transform danego komponentu, używając pojedynczego punktu zakotwiczenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em comp} & Komponent, którego Rect\+Transform ma zostać skonfigurowany.\\
+\hline
+{\em anchor} & Punkt zakotwiczenia (anchor\+Min i anchor\+Max ustawione na tę samą wartość).\\
+\hline
+{\em pos} & Pozycja zakotwiczona elementu.\\
+\hline
+{\em size} & Rozmiar elementu (size\+Delta).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_list_u_i_aa6e6b4f970b7e2e68c1c71f7b5d7d623}\index{PlayerListUI@{PlayerListUI}!RefreshPlayerData@{RefreshPlayerData}}
+\index{RefreshPlayerData@{RefreshPlayerData}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{RefreshPlayerData()}{RefreshPlayerData()}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_aa6e6b4f970b7e2e68c1c71f7b5d7d623} 
+void Player\+List\+UI.\+Refresh\+Player\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Odświeża dane graczy wyświetlane na liście. Wyszukuje wszystkie aktywne obiekty \doxylink{class_network_player}{Network\+Player} na scenie i aktualizuje odpowiadające im wiersze w tabeli. 
+
+Dla każdego spawnerowanego gracza aktualizowane są\+: 
+\begin{DoxyItemize}
+\item Kolor kropki identyfikacyjnej (na podstawie indeksu gracza) 
+\item Pseudonim (z dopiskiem "{}(\+TY)"{} dla lokalnego gracza) 
+\item Rola sieciowa (HOST z zielonym kolorem tekstu lub KLIENT) 
+\item Ping (przybliżona wartość lub "{}—"{} dla hosta) 
+\end{DoxyItemize}Tytuł panelu jest aktualizowany z bieżącą liczbą połączonych graczy (np. "{}\+GRACZE ONLINE — 3/4"{}). \Hypertarget{class_player_list_u_i_a36752df95f3024c4a421990c683ab915}\index{PlayerListUI@{PlayerListUI}!ShowList@{ShowList}}
+\index{ShowList@{ShowList}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{ShowList()}{ShowList()}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a36752df95f3024c4a421990c683ab915} 
+void Player\+List\+UI.\+Show\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wyświetla listę graczy, włączając canvas nakładki. 
+
+\Hypertarget{class_player_list_u_i_a50405c0608498a7eca9c3a10bff48390}\index{PlayerListUI@{PlayerListUI}!Update@{Update}}
+\index{Update@{Update}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a50405c0608498a7eca9c3a10bff48390} 
+void Player\+List\+UI.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizacja wywoływana co klatkę. Obsługuje wejście klawiszowe (TAB) do wyświetlania i ukrywania listy graczy oraz odświeża dane graczy, gdy lista jest widoczna. 
+
+Lista jest wyświetlana po naciśnięciu klawisza TAB i ukrywana po jego puszczeniu, co odpowiada typowemu wzorcowi "{}przytrzymaj aby zobaczyć"{} znanemu z gier wieloosobowych. 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_player_list_u_i_af76b94fec1fd81abd1520d0cd74ec2e9}\index{PlayerListUI@{PlayerListUI}!cachedFont@{cachedFont}}
+\index{cachedFont@{cachedFont}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{cachedFont}{cachedFont}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_af76b94fec1fd81abd1520d0cd74ec2e9} 
+Font Player\+List\+UI.\+cached\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowana czcionka używana do renderowania wszystkich elementów tekstowych. Ładowana raz podczas inicjalizacji z zasobów wbudowanych. 
+
+\Hypertarget{class_player_list_u_i_a1aa5db81ba5cfe3c3ea227c8e8431481}\index{PlayerListUI@{PlayerListUI}!FrameColor@{FrameColor}}
+\index{FrameColor@{FrameColor}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{FrameColor}{FrameColor}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a1aa5db81ba5cfe3c3ea227c8e8431481} 
+readonly Color Player\+List\+UI.\+Frame\+Color = new Color(0.\+14f, 0.\+16f, 0.\+20f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor ramki otaczającej panel listy graczy. 
+
+\Hypertarget{class_player_list_u_i_a08102d933433ed8a863f3fe52a3a9cf9}\index{PlayerListUI@{PlayerListUI}!GoldText@{GoldText}}
+\index{GoldText@{GoldText}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{GoldText}{GoldText}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a08102d933433ed8a863f3fe52a3a9cf9} 
+readonly Color Player\+List\+UI.\+Gold\+Text = new Color(0.\+875f, 0.\+725f, 0.\+32f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor złotego tekstu używany dla tytułu listy. 
+
+\Hypertarget{class_player_list_u_i_a2d1292f351790686b0e72059a94208b7}\index{PlayerListUI@{PlayerListUI}!HeaderColor@{HeaderColor}}
+\index{HeaderColor@{HeaderColor}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{HeaderColor}{HeaderColor}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a2d1292f351790686b0e72059a94208b7} 
+readonly Color Player\+List\+UI.\+Header\+Color = new Color(0.\+06f, 0.\+10f, 0.\+16f, 0.\+95f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła nagłówka panelu listy graczy. 
+
+\Hypertarget{class_player_list_u_i_a72d20dcb56c3fb7bd98d5b5f3dd7f577}\index{PlayerListUI@{PlayerListUI}!hintText@{hintText}}
+\index{hintText@{hintText}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{hintText}{hintText}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a72d20dcb56c3fb7bd98d5b5f3dd7f577} 
+Text Player\+List\+UI.\+hint\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst podpowiedzi na dole panelu informujący o sterowaniu (TAB, B). 
+
+\Hypertarget{class_player_list_u_i_ada1009fe2fadbb368b7842c1d15e3166}\index{PlayerListUI@{PlayerListUI}!isVisible@{isVisible}}
+\index{isVisible@{isVisible}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{isVisible}{isVisible}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_ada1009fe2fadbb368b7842c1d15e3166} 
+bool Player\+List\+UI.\+is\+Visible\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga określająca czy lista graczy jest aktualnie widoczna na ekranie. 
+
+\Hypertarget{class_player_list_u_i_a02defc53272d05f7bdbcbca8cbfdddb9}\index{PlayerListUI@{PlayerListUI}!listCanvas@{listCanvas}}
+\index{listCanvas@{listCanvas}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{listCanvas}{listCanvas}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a02defc53272d05f7bdbcbca8cbfdddb9} 
+Canvas Player\+List\+UI.\+list\+Canvas\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Komponent Canvas używany do renderowania nakładki listy graczy. 
+
+\Hypertarget{class_player_list_u_i_a5765bc5b603f667d9f791800e4f604db}\index{PlayerListUI@{PlayerListUI}!listPanel@{listPanel}}
+\index{listPanel@{listPanel}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{listPanel}{listPanel}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a5765bc5b603f667d9f791800e4f604db} 
+Game\+Object Player\+List\+UI.\+list\+Panel\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Główny obiekt panelu listy graczy zawierający wszystkie elementy interfejsu. 
+
+\Hypertarget{class_player_list_u_i_aa7b86a5cb00f182fb1a338a80a4b3f90}\index{PlayerListUI@{PlayerListUI}!PanelBackground@{PanelBackground}}
+\index{PanelBackground@{PanelBackground}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{PanelBackground}{PanelBackground}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_aa7b86a5cb00f182fb1a338a80a4b3f90} 
+readonly Color Player\+List\+UI.\+Panel\+Background = new Color(0.\+025f, 0.\+03f, 0.\+045f, 0.\+94f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła głównego panelu listy graczy. 
+
+\Hypertarget{class_player_list_u_i_a8c84e7dcbc91b0c94b32a2816e8270f9}\index{PlayerListUI@{PlayerListUI}!playerColorDots@{playerColorDots}}
+\index{playerColorDots@{playerColorDots}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{playerColorDots}{playerColorDots}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a8c84e7dcbc91b0c94b32a2816e8270f9} 
+Image \mbox{[}$\,$\mbox{]} Player\+List\+UI.\+player\+Color\+Dots = new Image\mbox{[}4\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tablica kolorowych kropek identyfikujących poszczególnych graczy. Każdy gracz ma przypisany unikalny kolor z palety \doxylink{class_network_player_a9da055a3ae82ffcd9938ce9c00765da7}{Network\+Player.\+Player\+Colors}. 
+
+\Hypertarget{class_player_list_u_i_a2047aa76570648347f795162bc094f8f}\index{PlayerListUI@{PlayerListUI}!playerNameTexts@{playerNameTexts}}
+\index{playerNameTexts@{playerNameTexts}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{playerNameTexts}{playerNameTexts}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a2047aa76570648347f795162bc094f8f} 
+Text \mbox{[}$\,$\mbox{]} Player\+List\+UI.\+player\+Name\+Texts = new Text\mbox{[}4\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tablica tekstów wyświetlających pseudonimy graczy. Pseudonim lokalnego gracza jest oznaczony sufiksem "{}(\+TY)"{}. 
+
+\Hypertarget{class_player_list_u_i_a5e7883b0990b6563e86bf393e1881a13}\index{PlayerListUI@{PlayerListUI}!playerPingTexts@{playerPingTexts}}
+\index{playerPingTexts@{playerPingTexts}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{playerPingTexts}{playerPingTexts}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a5e7883b0990b6563e86bf393e1881a13} 
+Text \mbox{[}$\,$\mbox{]} Player\+List\+UI.\+player\+Ping\+Texts = new Text\mbox{[}4\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tablica tekstów wyświetlających przybliżone wartości pingu graczy. 
+
+\Hypertarget{class_player_list_u_i_a75088b5f113f5fc2a5412f69aeb65d8a}\index{PlayerListUI@{PlayerListUI}!playerRoleTexts@{playerRoleTexts}}
+\index{playerRoleTexts@{playerRoleTexts}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{playerRoleTexts}{playerRoleTexts}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a75088b5f113f5fc2a5412f69aeb65d8a} 
+Text \mbox{[}$\,$\mbox{]} Player\+List\+UI.\+player\+Role\+Texts = new Text\mbox{[}4\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tablica tekstów wyświetlających role graczy (HOST lub KLIENT). 
+
+\Hypertarget{class_player_list_u_i_a0cca8b72c191e6e808e22dda8418e438}\index{PlayerListUI@{PlayerListUI}!playerRows@{playerRows}}
+\index{playerRows@{playerRows}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{playerRows}{playerRows}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a0cca8b72c191e6e808e22dda8418e438} 
+Game\+Object \mbox{[}$\,$\mbox{]} Player\+List\+UI.\+player\+Rows = new Game\+Object\mbox{[}4\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tablica obiektów Game\+Object reprezentujących wiersze graczy (maksymalnie 4). 
+
+\Hypertarget{class_player_list_u_i_ab82b7694f48073743f54663b3a731a80}\index{PlayerListUI@{PlayerListUI}!rowContainer@{rowContainer}}
+\index{rowContainer@{rowContainer}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{rowContainer}{rowContainer}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_ab82b7694f48073743f54663b3a731a80} 
+Game\+Object Player\+List\+UI.\+row\+Container\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Kontener przechowujący wiersze z danymi poszczególnych graczy. 
+
+\Hypertarget{class_player_list_u_i_a772cf0eb1655856a2c1a1597fbff76e8}\index{PlayerListUI@{PlayerListUI}!RowEven@{RowEven}}
+\index{RowEven@{RowEven}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{RowEven}{RowEven}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a772cf0eb1655856a2c1a1597fbff76e8} 
+readonly Color Player\+List\+UI.\+Row\+Even = new Color(0.\+05f, 0.\+07f, 0.\+10f, 0.\+80f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła parzystych wierszy listy graczy (efekt naprzemiennych kolorów). 
+
+\Hypertarget{class_player_list_u_i_a42a44d1bdc62b1787ec901f5c74b45a4}\index{PlayerListUI@{PlayerListUI}!RowOdd@{RowOdd}}
+\index{RowOdd@{RowOdd}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{RowOdd}{RowOdd}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a42a44d1bdc62b1787ec901f5c74b45a4} 
+readonly Color Player\+List\+UI.\+Row\+Odd = new Color(0.\+07f, 0.\+09f, 0.\+13f, 0.\+80f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła nieparzystych wierszy listy graczy (efekt naprzemiennych kolorów). 
+
+\Hypertarget{class_player_list_u_i_a3ab66f1d7bd3043002f32e31e9d28fb7}\index{PlayerListUI@{PlayerListUI}!SubText@{SubText}}
+\index{SubText@{SubText}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{SubText}{SubText}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a3ab66f1d7bd3043002f32e31e9d28fb7} 
+readonly Color Player\+List\+UI.\+Sub\+Text = new Color(0.\+65f, 0.\+70f, 0.\+78f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tekstu drugorzędnego używany dla nagłówków kolumn, ról i pingu. 
+
+\Hypertarget{class_player_list_u_i_a57e316fa84f7f374b939295784f5edf5}\index{PlayerListUI@{PlayerListUI}!titleText@{titleText}}
+\index{titleText@{titleText}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{titleText}{titleText}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_a57e316fa84f7f374b939295784f5edf5} 
+Text Player\+List\+UI.\+title\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst tytułowy wyświetlający "{}\+GRACZE ONLINE"{} wraz z liczbą połączonych graczy. 
+
+\Hypertarget{class_player_list_u_i_af899ad8debb14884e6e45763654c83c5}\index{PlayerListUI@{PlayerListUI}!WhiteText@{WhiteText}}
+\index{WhiteText@{WhiteText}!PlayerListUI@{PlayerListUI}}
+\doxysubsubsection{\texorpdfstring{WhiteText}{WhiteText}}
+{\footnotesize\ttfamily \label{class_player_list_u_i_af899ad8debb14884e6e45763654c83c5} 
+readonly Color Player\+List\+UI.\+White\+Text = new Color(0.\+9f, 0.\+91f, 0.\+93f, 0.\+92f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor białego tekstu używany dla pseudonimów graczy. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_player_list_u_i_8cs}{Player\+List\+UI.\+cs}}\end{DoxyCompactItemize}

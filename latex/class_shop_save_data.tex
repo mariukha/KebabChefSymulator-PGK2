@@ -1,0 +1,54 @@
+\doxysection{Dokumentacja klasy Shop\+Save\+Data}
+\hypertarget{class_shop_save_data}{}\label{class_shop_save_data}\index{ShopSaveData@{ShopSaveData}}
+
+
+Klasa danych zapisu stanu sklepu z ulepszeniami.  
+
+
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_upgrade_level_entry}{Upgrade\+Level\+Entry}} $>$ \mbox{\hyperlink{class_shop_save_data_a2a14debd0c1d3fd434bc5b544d5ba76c}{upgrade\+Levels}} = new List$<$\mbox{\hyperlink{class_upgrade_level_entry}{Upgrade\+Level\+Entry}}$>$()
+\begin{DoxyCompactList}\small\item\em Lista wpisów zawierających typ i poziom każdego ulepszenia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shop_save_data_ac70ad663cbcebf3340d2fe91efaf494a}{total\+Upgrades\+Purchased}}
+\begin{DoxyCompactList}\small\item\em Łączna liczba ulepszeń zakupionych przez gracza od początku gry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa danych zapisu stanu sklepu z ulepszeniami. 
+
+Serializowana struktura przechowująca poziomy wszystkich ulepszeń oraz łączną liczbę zakupionych ulepszeń. Używana przez system zapisu/odczytu gry. 
+
+\begin{DoxySeeAlso}{Zobacz również}
+\doxylink{class_save_manager}{Save\+Manager}, \doxylink{class_shop_manager_aae20c9acbacc4dc714671f22bfb89567}{Shop\+Manager.\+Capture\+State}
+
+
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_shop_save_data_ac70ad663cbcebf3340d2fe91efaf494a}\index{ShopSaveData@{ShopSaveData}!totalUpgradesPurchased@{totalUpgradesPurchased}}
+\index{totalUpgradesPurchased@{totalUpgradesPurchased}!ShopSaveData@{ShopSaveData}}
+\doxysubsubsection{\texorpdfstring{totalUpgradesPurchased}{totalUpgradesPurchased}}
+{\footnotesize\ttfamily \label{class_shop_save_data_ac70ad663cbcebf3340d2fe91efaf494a} 
+int Shop\+Save\+Data.\+total\+Upgrades\+Purchased}
+
+
+
+Łączna liczba ulepszeń zakupionych przez gracza od początku gry. 
+
+\Hypertarget{class_shop_save_data_a2a14debd0c1d3fd434bc5b544d5ba76c}\index{ShopSaveData@{ShopSaveData}!upgradeLevels@{upgradeLevels}}
+\index{upgradeLevels@{upgradeLevels}!ShopSaveData@{ShopSaveData}}
+\doxysubsubsection{\texorpdfstring{upgradeLevels}{upgradeLevels}}
+{\footnotesize\ttfamily \label{class_shop_save_data_a2a14debd0c1d3fd434bc5b544d5ba76c} 
+List$<$\mbox{\hyperlink{class_upgrade_level_entry}{Upgrade\+Level\+Entry}}$>$ Shop\+Save\+Data.\+upgrade\+Levels = new List$<$\mbox{\hyperlink{class_upgrade_level_entry}{Upgrade\+Level\+Entry}}$>$()}
+
+
+
+Lista wpisów zawierających typ i poziom każdego ulepszenia. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_shop_manager_8cs}{Shop\+Manager.\+cs}}\end{DoxyCompactItemize}

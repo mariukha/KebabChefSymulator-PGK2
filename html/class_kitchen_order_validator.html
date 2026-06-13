@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy KitchenOrderValidator</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">Statyczne metody publiczne</a> &#124;
+<a href="#pri-static-methods">Statyczne metody prywatne</a> &#124;
+<a href="class_kitchen_order_validator-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy KitchenOrderValidator</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa statyczna odpowiedzialna za walidację zgodności przygotowanej potrawy z zamówieniem klienta. Porównuje zawartość dostarczonego przedmiotu kuchennego z wymaganiami zamówienia, sprawdzając zarówno brakujące, jak i nadmiarowe składniki.  
+ <a href="#details">Więcej...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Statyczne metody publiczne</h2></td></tr>
+<tr class="memitem:a30f7d5f58dc24dd87b090189956ecc6d" id="r_a30f7d5f58dc24dd87b090189956ecc6d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30f7d5f58dc24dd87b090189956ecc6d">MatchesOrder</a> (<a class="el" href="class_order.html">Order</a> order, <a class="el" href="class_kitchen_item.html">KitchenItem</a> item, out string failureReason)</td></tr>
+<tr class="memdesc:a30f7d5f58dc24dd87b090189956ecc6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza, czy dostarczony przedmiot kuchenny spełnia wymagania zamówienia. Weryfikuje, czy przedmiot jest gotową potrawą, czy zawiera wszystkie wymagane składniki w odpowiednim stanie i ilości oraz czy nie zawiera nadmiarowych składników.  <br /></td></tr>
+<tr class="separator:a30f7d5f58dc24dd87b090189956ecc6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Statyczne metody prywatne</h2></td></tr>
+<tr class="memitem:ad2142a10219c8eb3d526b3d919acf86f" id="r_ad2142a10219c8eb3d526b3d919acf86f"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2142a10219c8eb3d526b3d919acf86f">BuildIngredientCountMap</a> (List&lt; <a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a> &gt; ingredients)</td></tr>
+<tr class="memdesc:ad2142a10219c8eb3d526b3d919acf86f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buduje mapę zliczającą przygotowane składniki według klucza (rodzaj + stan). Służy do porównania dostarczonych składników z wymaganiami zamówienia.  <br /></td></tr>
+<tr class="separator:ad2142a10219c8eb3d526b3d919acf86f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae63f192402621d3182811f107a1baa87" id="r_ae63f192402621d3182811f107a1baa87"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae63f192402621d3182811f107a1baa87">BuildRequirementCountMap</a> (List&lt; <a class="el" href="class_ingredient_requirement.html">IngredientRequirement</a> &gt; requirements)</td></tr>
+<tr class="memdesc:ae63f192402621d3182811f107a1baa87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buduje mapę zliczającą wymagane składniki zamówienia według klucza (rodzaj + stan). Uwzględnia ilość (<a class="el" href="class_ingredient_requirement.html#aa05716697ad996e6790678660dbd9dec" title="Wymagana ilość tego składnika w zamówieniu. Domyślnie 1.">IngredientRequirement.quantity</a>) każdego wymagania.  <br /></td></tr>
+<tr class="separator:ae63f192402621d3182811f107a1baa87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a360afde417aab3f3cb31d004ea21fb66" id="r_a360afde417aab3f3cb31d004ea21fb66"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a360afde417aab3f3cb31d004ea21fb66">GetKey</a> (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> state)</td></tr>
+<tr class="memdesc:a360afde417aab3f3cb31d004ea21fb66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje unikalny klucz tekstowy na podstawie rodzaju i stanu przetworzenia składnika. Klucz ma format "RodzajSkladnika|StanPrzetworzenia" i służy do indeksowania map zliczających w procesie walidacji zamówienia.  <br /></td></tr>
+<tr class="separator:a360afde417aab3f3cb31d004ea21fb66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa statyczna odpowiedzialna za walidację zgodności przygotowanej potrawy z zamówieniem klienta. Porównuje zawartość dostarczonego przedmiotu kuchennego z wymaganiami zamówienia, sprawdzając zarówno brakujące, jak i nadmiarowe składniki. </p>
+<p>Walidacja opiera się na porównaniu map zliczających składniki według klucza złożonego z rodzaju składnika i jego stanu przetworzenia. Zamówienie jest uznane za poprawnie zrealizowane tylko wtedy, gdy dostarczona potrawa zawiera dokładnie te składniki (w odpowiednim stanie i ilości), które zostały zamówione — bez nadmiarów i braków. </p>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_order.html" title="Klasa reprezentująca zamówienie klienta w grze. Zawiera informacje o wymaganych składnikach,...">Order</a>, <a class="el" href="class_kitchen_item.html" title="Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać l...">KitchenItem</a></dd></dl>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ad2142a10219c8eb3d526b3d919acf86f" name="ad2142a10219c8eb3d526b3d919acf86f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2142a10219c8eb3d526b3d919acf86f">&#9670;&#160;</a></span>BuildIngredientCountMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Dictionary&lt; string, int &gt; KitchenOrderValidator.BuildIngredientCountMap </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; <a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>ingredients</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buduje mapę zliczającą przygotowane składniki według klucza (rodzaj + stan). Służy do porównania dostarczonych składników z wymaganiami zamówienia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ingredients</td><td>Lista przygotowanych składników do zliczenia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Słownik, w którym kluczem jest połączenie rodzaju i stanu składnika (np. "Meat|Cooked"), a wartością — liczba wystąpień. </dd></dl>
+
+</div>
+</div>
+<a id="ae63f192402621d3182811f107a1baa87" name="ae63f192402621d3182811f107a1baa87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae63f192402621d3182811f107a1baa87">&#9670;&#160;</a></span>BuildRequirementCountMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Dictionary&lt; string, int &gt; KitchenOrderValidator.BuildRequirementCountMap </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; <a class="el" href="class_ingredient_requirement.html">IngredientRequirement</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>requirements</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buduje mapę zliczającą wymagane składniki zamówienia według klucza (rodzaj + stan). Uwzględnia ilość (<a class="el" href="class_ingredient_requirement.html#aa05716697ad996e6790678660dbd9dec" title="Wymagana ilość tego składnika w zamówieniu. Domyślnie 1.">IngredientRequirement.quantity</a>) każdego wymagania. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requirements</td><td>Lista wymagań składnikowych zamówienia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Słownik, w którym kluczem jest połączenie rodzaju i stanu składnika (np. "Tomato|Chopped"), a wartością — łączna wymagana ilość. </dd></dl>
+
+</div>
+</div>
+<a id="a360afde417aab3f3cb31d004ea21fb66" name="a360afde417aab3f3cb31d004ea21fb66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a360afde417aab3f3cb31d004ea21fb66">&#9670;&#160;</a></span>GetKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string KitchenOrderValidator.GetKey </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje unikalny klucz tekstowy na podstawie rodzaju i stanu przetworzenia składnika. Klucz ma format "RodzajSkladnika|StanPrzetworzenia" i służy do indeksowania map zliczających w procesie walidacji zamówienia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kind</td><td>Rodzaj składnika.</td></tr>
+    <tr><td class="paramname">state</td><td>Stan przetworzenia składnika.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Klucz tekstowy w formacie "kind|state".</dd></dl>
+
+</div>
+</div>
+<a id="a30f7d5f58dc24dd87b090189956ecc6d" name="a30f7d5f58dc24dd87b090189956ecc6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30f7d5f58dc24dd87b090189956ecc6d">&#9670;&#160;</a></span>MatchesOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool KitchenOrderValidator.MatchesOrder </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_order.html">Order</a></td>          <td class="paramname"><span class="paramname"><em>order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_kitchen_item.html">KitchenItem</a></td>          <td class="paramname"><span class="paramname"><em>item</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out string</td>          <td class="paramname"><span class="paramname"><em>failureReason</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprawdza, czy dostarczony przedmiot kuchenny spełnia wymagania zamówienia. Weryfikuje, czy przedmiot jest gotową potrawą, czy zawiera wszystkie wymagane składniki w odpowiednim stanie i ilości oraz czy nie zawiera nadmiarowych składników. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">order</td><td>Zamówienie do sprawdzenia. Jeśli <code>null</code>, walidacja kończy się niepowodzeniem.</td></tr>
+    <tr><td class="paramname">item</td><td>Dostarczony przedmiot kuchenny. Musi mieć ustawioną flagę <a class="el" href="class_kitchen_item.html#a7fddae2de79351f32bcbb10be16386b8" title="Flaga określająca, czy przedmiot jest gotową potrawą (daniem). Wartość true oznacza potrawę złożoną z...">KitchenItem.isDish</a> na <code>true</code>, aby walidacja mogła zakończyć się sukcesem. </td></tr>
+    <tr><td class="paramname">failureReason</td><td>Parametr wyjściowy zawierający opis powodu niepowodzenia walidacji. Pusty ciąg znaków, jeśli walidacja zakończyła się sukcesem. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd><code>true</code>, jeśli potrawa spełnia wszystkie wymagania zamówienia; <code>false</code> w przeciwnym wypadku. </dd></dl>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_kitchen_game_models_8cs.html">KitchenGameModels.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

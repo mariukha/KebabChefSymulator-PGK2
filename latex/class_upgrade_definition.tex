@@ -1,0 +1,187 @@
+\doxysection{Dokumentacja klasy Upgrade\+Definition}
+\hypertarget{class_upgrade_definition}{}\label{class_upgrade_definition}\index{UpgradeDefinition@{UpgradeDefinition}}
+
+
+Klasa definiująca pojedyncze ulepszenie dostępne w sklepie.  
+
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_upgrade_definition_a75180d59645fc13f19031a0e072cb944}{Get\+Cost\+For\+Level}} (int next\+Level)
+\begin{DoxyCompactList}\small\item\em Oblicza koszt ulepszenia dla podanego następnego poziomu. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_upgrade_definition_ad95b5db4d5f462ef007b575ca7316d7f}{Get\+Effect\+Description}} (int current\+Level)
+\begin{DoxyCompactList}\small\item\em Generuje tekstowy opis efektu ulepszenia na następnym poziomie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} \mbox{\hyperlink{class_upgrade_definition_ad6dacb2295e5e1321dfda56e100d6d12}{type}}
+\begin{DoxyCompactList}\small\item\em Typ ulepszenia określający, jaki aspekt rozgrywki jest ulepszany. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_upgrade_definition_aad2e2cb726a43ff8407b8b7491356815}{display\+Name}}
+\begin{DoxyCompactList}\small\item\em Nazwa wyświetlana ulepszenia widoczna w interfejsie sklepu. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_upgrade_definition_ae27a22d8c98aa353c5336421d2bce42b}{description}}
+\begin{DoxyCompactList}\small\item\em Tekstowy opis działania ulepszenia prezentowany graczowi. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_upgrade_definition_ac0a0561a5feeb0502cfd7d24468be508}{icon}}
+\begin{DoxyCompactList}\small\item\em Znak lub symbol ikony reprezentującej ulepszenie w interfejsie. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_upgrade_definition_a5c6c9779199b87784fa3619a590b7142}{max\+Level}}
+\begin{DoxyCompactList}\small\item\em Maksymalny poziom, do którego można ulepszyć dany element. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_upgrade_definition_a20861c3736ac14208197e89bc6fc3827}{base\+Cost}}
+\begin{DoxyCompactList}\small\item\em Bazowy koszt pierwszego poziomu ulepszenia. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_upgrade_definition_a74e5f52e3ccde2374c301c15107d9e94}{cost\+Scaling}}
+\begin{DoxyCompactList}\small\item\em Współczynnik skalowania kosztu dla kolejnych poziomów. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_upgrade_definition_abf433a364fa26779eec3d95cd75f8643}{accent\+Color}}
+\begin{DoxyCompactList}\small\item\em Kolor akcentu używany do wizualnego wyróżnienia ulepszenia w interfejsie sklepu. \end{DoxyCompactList}\item 
+float\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_upgrade_definition_a486fc64a08c821a10c4f75b7b7182386}{effect\+Values}}
+\begin{DoxyCompactList}\small\item\em Tablica wartości efektów dla każdego poziomu ulepszenia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa definiująca pojedyncze ulepszenie dostępne w sklepie. 
+
+Przechowuje wszystkie informacje potrzebne do wyświetlenia ulepszenia w interfejsie użytkownika, obliczenia kosztu na danym poziomie oraz opisu efektu ulepszenia. Klasa jest serializowalna, co umożliwia konfigurację z poziomu inspektora Unity. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_upgrade_definition_a75180d59645fc13f19031a0e072cb944}\index{UpgradeDefinition@{UpgradeDefinition}!GetCostForLevel@{GetCostForLevel}}
+\index{GetCostForLevel@{GetCostForLevel}!UpgradeDefinition@{UpgradeDefinition}}
+\doxysubsubsection{\texorpdfstring{GetCostForLevel()}{GetCostForLevel()}}
+{\footnotesize\ttfamily \label{class_upgrade_definition_a75180d59645fc13f19031a0e072cb944} 
+float Upgrade\+Definition.\+Get\+Cost\+For\+Level (\begin{DoxyParamCaption}\item[{int}]{next\+Level}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Oblicza koszt ulepszenia dla podanego następnego poziomu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em next\+Level} & Numer poziomu, na który gracz chce ulepszyć (0 oznacza pierwszy zakup).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Zaokrąglona kwota kosztu ulepszenia. Dla poziomu 0 lub mniejszego zwraca \doxylink{class_upgrade_definition_a20861c3736ac14208197e89bc6fc3827}{base\+Cost}. 
+\end{DoxyReturn}
+
+
+Koszt jest obliczany wykładniczo\+: base\+Cost \texorpdfstring{$\ast$}{*} cost\+Scaling\texorpdfstring{$^\wedge$}{\string^}next\+Level, a wynik jest zaokrąglany do najbliższej liczby całkowitej dla czytelności w interfejsie. \Hypertarget{class_upgrade_definition_ad95b5db4d5f462ef007b575ca7316d7f}\index{UpgradeDefinition@{UpgradeDefinition}!GetEffectDescription@{GetEffectDescription}}
+\index{GetEffectDescription@{GetEffectDescription}!UpgradeDefinition@{UpgradeDefinition}}
+\doxysubsubsection{\texorpdfstring{GetEffectDescription()}{GetEffectDescription()}}
+{\footnotesize\ttfamily \label{class_upgrade_definition_ad95b5db4d5f462ef007b575ca7316d7f} 
+string Upgrade\+Definition.\+Get\+Effect\+Description (\begin{DoxyParamCaption}\item[{int}]{current\+Level}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generuje tekstowy opis efektu ulepszenia na następnym poziomie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em current\+Level} & Aktualny poziom ulepszenia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Czytelny opis efektu ulepszenia (np. "{}-\/20\% czasu"{}, "{}+10\% nagrody"{}, "{}4 porcji"{}) lub "{}\+MAX"{} jeśli ulepszenie osiągnęło maksymalny poziom. Zwraca pusty ciąg jeśli brak zdefiniowanych wartości efektów. 
+\end{DoxyReturn}
+
+
+Format opisu zależy od typu ulepszenia\+:
+\begin{DoxyItemize}
+\item Grill\+Speed / Cutting\+Speed\+: procent redukcji czasu
+\item Reward\+Bonus\+: procent bonusu do nagrody
+\item Order\+Time\+: dodatkowe sekundy
+\item Meat\+Batch\+Size\+: liczba porcji 
+\end{DoxyItemize}
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_upgrade_definition_abf433a364fa26779eec3d95cd75f8643}\index{UpgradeDefinition@{UpgradeDefinition}!accentColor@{accentColor}}
+\index{accentColor@{accentColor}!UpgradeDefinition@{UpgradeDefinition}}
+\doxysubsubsection{\texorpdfstring{accentColor}{accentColor}}
+{\footnotesize\ttfamily \label{class_upgrade_definition_abf433a364fa26779eec3d95cd75f8643} 
+Color Upgrade\+Definition.\+accent\+Color}
+
+
+
+Kolor akcentu używany do wizualnego wyróżnienia ulepszenia w interfejsie sklepu. 
+
+\Hypertarget{class_upgrade_definition_a20861c3736ac14208197e89bc6fc3827}\index{UpgradeDefinition@{UpgradeDefinition}!baseCost@{baseCost}}
+\index{baseCost@{baseCost}!UpgradeDefinition@{UpgradeDefinition}}
+\doxysubsubsection{\texorpdfstring{baseCost}{baseCost}}
+{\footnotesize\ttfamily \label{class_upgrade_definition_a20861c3736ac14208197e89bc6fc3827} 
+float Upgrade\+Definition.\+base\+Cost}
+
+
+
+Bazowy koszt pierwszego poziomu ulepszenia. 
+
+\Hypertarget{class_upgrade_definition_a74e5f52e3ccde2374c301c15107d9e94}\index{UpgradeDefinition@{UpgradeDefinition}!costScaling@{costScaling}}
+\index{costScaling@{costScaling}!UpgradeDefinition@{UpgradeDefinition}}
+\doxysubsubsection{\texorpdfstring{costScaling}{costScaling}}
+{\footnotesize\ttfamily \label{class_upgrade_definition_a74e5f52e3ccde2374c301c15107d9e94} 
+float Upgrade\+Definition.\+cost\+Scaling}
+
+
+
+Współczynnik skalowania kosztu dla kolejnych poziomów. 
+
+Koszt kolejnego poziomu obliczany jest jako\+: bazowy koszt \texorpdfstring{$\ast$}{*} (współczynnik \texorpdfstring{$^\wedge$}{\string^} poziom). Wyższa wartość oznacza szybszy wzrost ceny ulepszeń. \Hypertarget{class_upgrade_definition_ae27a22d8c98aa353c5336421d2bce42b}\index{UpgradeDefinition@{UpgradeDefinition}!description@{description}}
+\index{description@{description}!UpgradeDefinition@{UpgradeDefinition}}
+\doxysubsubsection{\texorpdfstring{description}{description}}
+{\footnotesize\ttfamily \label{class_upgrade_definition_ae27a22d8c98aa353c5336421d2bce42b} 
+string Upgrade\+Definition.\+description}
+
+
+
+Tekstowy opis działania ulepszenia prezentowany graczowi. 
+
+\Hypertarget{class_upgrade_definition_aad2e2cb726a43ff8407b8b7491356815}\index{UpgradeDefinition@{UpgradeDefinition}!displayName@{displayName}}
+\index{displayName@{displayName}!UpgradeDefinition@{UpgradeDefinition}}
+\doxysubsubsection{\texorpdfstring{displayName}{displayName}}
+{\footnotesize\ttfamily \label{class_upgrade_definition_aad2e2cb726a43ff8407b8b7491356815} 
+string Upgrade\+Definition.\+display\+Name}
+
+
+
+Nazwa wyświetlana ulepszenia widoczna w interfejsie sklepu. 
+
+\Hypertarget{class_upgrade_definition_a486fc64a08c821a10c4f75b7b7182386}\index{UpgradeDefinition@{UpgradeDefinition}!effectValues@{effectValues}}
+\index{effectValues@{effectValues}!UpgradeDefinition@{UpgradeDefinition}}
+\doxysubsubsection{\texorpdfstring{effectValues}{effectValues}}
+{\footnotesize\ttfamily \label{class_upgrade_definition_a486fc64a08c821a10c4f75b7b7182386} 
+float \mbox{[}$\,$\mbox{]} Upgrade\+Definition.\+effect\+Values}
+
+
+
+Tablica wartości efektów dla każdego poziomu ulepszenia. 
+
+Indeks tablicy odpowiada poziomowi ulepszenia (0 = brak ulepszenia, 1 = pierwszy poziom itd.). Interpretacja wartości zależy od typu ulepszenia (np. mnożnik czasu, bonus procentowy, liczba porcji). \Hypertarget{class_upgrade_definition_ac0a0561a5feeb0502cfd7d24468be508}\index{UpgradeDefinition@{UpgradeDefinition}!icon@{icon}}
+\index{icon@{icon}!UpgradeDefinition@{UpgradeDefinition}}
+\doxysubsubsection{\texorpdfstring{icon}{icon}}
+{\footnotesize\ttfamily \label{class_upgrade_definition_ac0a0561a5feeb0502cfd7d24468be508} 
+string Upgrade\+Definition.\+icon}
+
+
+
+Znak lub symbol ikony reprezentującej ulepszenie w interfejsie. 
+
+\Hypertarget{class_upgrade_definition_a5c6c9779199b87784fa3619a590b7142}\index{UpgradeDefinition@{UpgradeDefinition}!maxLevel@{maxLevel}}
+\index{maxLevel@{maxLevel}!UpgradeDefinition@{UpgradeDefinition}}
+\doxysubsubsection{\texorpdfstring{maxLevel}{maxLevel}}
+{\footnotesize\ttfamily \label{class_upgrade_definition_a5c6c9779199b87784fa3619a590b7142} 
+int Upgrade\+Definition.\+max\+Level}
+
+
+
+Maksymalny poziom, do którego można ulepszyć dany element. 
+
+\Hypertarget{class_upgrade_definition_ad6dacb2295e5e1321dfda56e100d6d12}\index{UpgradeDefinition@{UpgradeDefinition}!type@{type}}
+\index{type@{type}!UpgradeDefinition@{UpgradeDefinition}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{class_upgrade_definition_ad6dacb2295e5e1321dfda56e100d6d12} 
+\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} Upgrade\+Definition.\+type}
+
+
+
+Typ ulepszenia określający, jaki aspekt rozgrywki jest ulepszany. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_shop_manager_8cs}{Shop\+Manager.\+cs}}\end{DoxyCompactItemize}

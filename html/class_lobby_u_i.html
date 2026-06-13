@@ -1,0 +1,1673 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy LobbyUI</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="#pri-static-attribs">Statyczne atrybuty prywatne</a> &#124;
+<a href="class_lobby_u_i-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy LobbyUI</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa zarządzająca interfejsem użytkownika lobby sieciowego. Odpowiada za wyświetlanie panelu lobby, tworzenie i dołączanie do pokojów wieloosobowych, zarządzanie pseudonimem gracza oraz obsługę stanu połączenia.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla LobbyUI</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_lobby_u_i.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:abdeb7aeaabf3e324c3d79d6104d7294c" id="r_abdeb7aeaabf3e324c3d79d6104d7294c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdeb7aeaabf3e324c3d79d6104d7294c">ShowLobby</a> ()</td></tr>
+<tr class="memdesc:abdeb7aeaabf3e324c3d79d6104d7294c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyświetla panel lobby na ekranie. Odblokowuje kursor myszy, aby gracz mógł korzystać z interfejsu.  <br /></td></tr>
+<tr class="separator:abdeb7aeaabf3e324c3d79d6104d7294c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafdf2a5b33a0c88943fcb04e25e9cb30" id="r_aafdf2a5b33a0c88943fcb04e25e9cb30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafdf2a5b33a0c88943fcb04e25e9cb30">HideLobby</a> ()</td></tr>
+<tr class="memdesc:aafdf2a5b33a0c88943fcb04e25e9cb30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ukrywa panel lobby i blokuje kursor myszy (powrót do trybu gry).  <br /></td></tr>
+<tr class="separator:aafdf2a5b33a0c88943fcb04e25e9cb30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:a1050401dcd7f18c815db01dde859f872" id="r_a1050401dcd7f18c815db01dde859f872"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1050401dcd7f18c815db01dde859f872">LocalPlayerNickname</a> = &quot;Gracz&quot;<code> [get, private set]</code></td></tr>
+<tr class="memdesc:a1050401dcd7f18c815db01dde859f872"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pseudonim lokalnego gracza używany w sesji sieciowej. Domyślna wartość to "Gracz".  <br /></td></tr>
+<tr class="separator:a1050401dcd7f18c815db01dde859f872"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ce45465a5a161065ac61ec7b6a736a2" id="r_a6ce45465a5a161065ac61ec7b6a736a2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ce45465a5a161065ac61ec7b6a736a2">IsLobbyOpen</a><code> [get]</code></td></tr>
+<tr class="memdesc:a6ce45465a5a161065ac61ec7b6a736a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza czy panel lobby jest aktualnie otwarty i widoczny.  <br /></td></tr>
+<tr class="separator:a6ce45465a5a161065ac61ec7b6a736a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:a35781abf05278449f53da4aa21dc2157" id="r_a35781abf05278449f53da4aa21dc2157"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35781abf05278449f53da4aa21dc2157">Awake</a> ()</td></tr>
+<tr class="memdesc:a35781abf05278449f53da4aa21dc2157"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizuje interfejs lobby podczas przebudzenia obiektu. Tworzy canvas i panel lobby, a następnie ukrywa je do momentu otwarcia przez gracza.  <br /></td></tr>
+<tr class="separator:a35781abf05278449f53da4aa21dc2157"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff393023d15eb47e537119e2e831c11a" id="r_aff393023d15eb47e537119e2e831c11a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff393023d15eb47e537119e2e831c11a">Update</a> ()</td></tr>
+<tr class="memdesc:aff393023d15eb47e537119e2e831c11a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizacja wywoływana co klatkę. Zarządza stanem połączenia, obsługuje wejście klawiszowe (F1 do przełączania lobby) oraz czyści komunikaty statusu po upływie czasu.  <br /></td></tr>
+<tr class="separator:aff393023d15eb47e537119e2e831c11a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c3b042eba3812da4f025dcf9b759ec5" id="r_a1c3b042eba3812da4f025dcf9b759ec5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c3b042eba3812da4f025dcf9b759ec5">CreateLobbyCanvas</a> ()</td></tr>
+<tr class="memdesc:a1c3b042eba3812da4f025dcf9b759ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy cały interfejs lobby programistycznie, w tym canvas, panele, przyciski, pola tekstowe i nagłówki.  <br /></td></tr>
+<tr class="separator:a1c3b042eba3812da4f025dcf9b759ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc525a01304364316cce84e464331733" id="r_afc525a01304364316cce84e464331733"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc525a01304364316cce84e464331733">UpdateConnectionState</a> ()</td></tr>
+<tr class="memdesc:afc525a01304364316cce84e464331733"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje stan interfejsu w zależności od bieżącego stanu połączenia sieciowego. Włącza/wyłącza przyciski oraz aktualizuje informacje o liczbie graczy.  <br /></td></tr>
+<tr class="separator:afc525a01304364316cce84e464331733"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a955e912c0f68f1a97fb41a502e145dff" id="r_a955e912c0f68f1a97fb41a502e145dff"><td class="memItemLeft" align="right" valign="top">async void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a955e912c0f68f1a97fb41a502e145dff">OnHostClicked</a> ()</td></tr>
+<tr class="memdesc:a955e912c0f68f1a97fb41a502e145dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje kliknięcie przycisku tworzenia pokoju (hostowania). Tworzy nowy pokój za pomocą systemu Relay i wyświetla kod pokoju.  <br /></td></tr>
+<tr class="separator:a955e912c0f68f1a97fb41a502e145dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae606e85bf20673c26b6e26d01e4e5395" id="r_ae606e85bf20673c26b6e26d01e4e5395"><td class="memItemLeft" align="right" valign="top">async void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae606e85bf20673c26b6e26d01e4e5395">OnJoinClicked</a> ()</td></tr>
+<tr class="memdesc:ae606e85bf20673c26b6e26d01e4e5395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje kliknięcie przycisku dołączania do istniejącego pokoju. Łączy się z pokojem za pomocą podanego kodu Relay.  <br /></td></tr>
+<tr class="separator:ae606e85bf20673c26b6e26d01e4e5395"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4463a52551b9f93bd32cb659debc1db5" id="r_a4463a52551b9f93bd32cb659debc1db5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4463a52551b9f93bd32cb659debc1db5">OnDisconnectClicked</a> ()</td></tr>
+<tr class="memdesc:a4463a52551b9f93bd32cb659debc1db5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje kliknięcie przycisku rozłączania. Kończy bieżącą sesję sieciową i wyświetla komunikat potwierdzający.  <br /></td></tr>
+<tr class="separator:a4463a52551b9f93bd32cb659debc1db5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a7be5c41ce5d29c332da9f22d75e513" id="r_a6a7be5c41ce5d29c332da9f22d75e513"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a7be5c41ce5d29c332da9f22d75e513">SetStatus</a> (string message, float clearAfter)</td></tr>
+<tr class="memdesc:a6a7be5c41ce5d29c332da9f22d75e513"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia komunikat statusu w panelu lobby.  <br /></td></tr>
+<tr class="separator:a6a7be5c41ce5d29c332da9f22d75e513"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92f529e8f058516657ae87dc865a8a2e" id="r_a92f529e8f058516657ae87dc865a8a2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92f529e8f058516657ae87dc865a8a2e">SaveNickname</a> ()</td></tr>
+<tr class="memdesc:a92f529e8f058516657ae87dc865a8a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zapisuje pseudonim gracza z pola wprowadzania do właściwości statycznej. Przycinanie białych znaków, walidacja pustego nicku (domyślnie "Gracz") oraz ograniczenie długości do 20 znaków.  <br /></td></tr>
+<tr class="separator:a92f529e8f058516657ae87dc865a8a2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f1d81123a0dd344c43db24e2421a9b8" id="r_a5f1d81123a0dd344c43db24e2421a9b8"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f1d81123a0dd344c43db24e2421a9b8">CreatePanel</a> (Transform parent, string name, Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot, Vector2 anchoredPosition, Vector2 size, Color color)</td></tr>
+<tr class="memdesc:a5f1d81123a0dd344c43db24e2421a9b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy obiekt panelu UI z komponentem Image i skonfigurowanym RectTransform.  <br /></td></tr>
+<tr class="separator:a5f1d81123a0dd344c43db24e2421a9b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d6102b5f078e6e04fea8d3c49af78c3" id="r_a3d6102b5f078e6e04fea8d3c49af78c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d6102b5f078e6e04fea8d3c49af78c3">CreatePanelBorder</a> (Transform parent, Vector2 panelSize, Color borderColor)</td></tr>
+<tr class="memdesc:a3d6102b5f078e6e04fea8d3c49af78c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy ramkę (obramowanie) wokół panelu, składającą się z czterech cienkich paneli umieszczonych na górze, dole, lewej i prawej stronie.  <br /></td></tr>
+<tr class="separator:a3d6102b5f078e6e04fea8d3c49af78c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9cdea6829827936b9f291a3fd6183f2" id="r_ab9cdea6829827936b9f291a3fd6183f2"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9cdea6829827936b9f291a3fd6183f2">CreateText</a> (Transform parent, string name, Font font, int size, TextAnchor alignment, Color color, FontStyle style)</td></tr>
+<tr class="memdesc:ab9cdea6829827936b9f291a3fd6183f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy element tekstowy UI z określonym stylem, czcionką i efektem cienia.  <br /></td></tr>
+<tr class="separator:ab9cdea6829827936b9f291a3fd6183f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a417a6111b302b04247aad9b22ff6936a" id="r_a417a6111b302b04247aad9b22ff6936a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a417a6111b302b04247aad9b22ff6936a">PositionRect</a> (Component comp, Vector2 anchor, Vector2 anchoredPos, Vector2 size)</td></tr>
+<tr class="memdesc:a417a6111b302b04247aad9b22ff6936a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia pozycję i rozmiar RectTransform danego komponentu, używając pojedynczego punktu zakotwiczenia.  <br /></td></tr>
+<tr class="separator:a417a6111b302b04247aad9b22ff6936a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1b55fc63d6aaa57c0a1bfb77dfed4c9" id="r_ae1b55fc63d6aaa57c0a1bfb77dfed4c9"><td class="memItemLeft" align="right" valign="top">Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1b55fc63d6aaa57c0a1bfb77dfed4c9">CreateStyledButton</a> (Transform parent, string name, Font font, string label, Color normalColor, Color hoverColor, Vector2 anchor, Vector2 anchoredPos, Vector2 size)</td></tr>
+<tr class="memdesc:ae1b55fc63d6aaa57c0a1bfb77dfed4c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy stylizowany przycisk UI z efektami kolorystycznymi dla różnych stanów (normalny, najechanie, naciśnięcie, wyłączony).  <br /></td></tr>
+<tr class="separator:ae1b55fc63d6aaa57c0a1bfb77dfed4c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaab56062b3d1be84aa8de5667f02b3f" id="r_adaab56062b3d1be84aa8de5667f02b3f"><td class="memItemLeft" align="right" valign="top">InputField&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adaab56062b3d1be84aa8de5667f02b3f">CreateInputField</a> (Transform parent, string name, Font font, string defaultText, string placeholder, Vector2 anchor, Vector2 anchoredPos, Vector2 size)</td></tr>
+<tr class="memdesc:adaab56062b3d1be84aa8de5667f02b3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy pole wprowadzania tekstu (InputField) z tekstem zastępczym, ramką i odpowiednim stylem wizualnym.  <br /></td></tr>
+<tr class="separator:adaab56062b3d1be84aa8de5667f02b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:ad14fde83a9b70f36bf9a4300419689ba" id="r_ad14fde83a9b70f36bf9a4300419689ba"><td class="memItemLeft" align="right" valign="top">Canvas&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad14fde83a9b70f36bf9a4300419689ba">lobbyCanvas</a></td></tr>
+<tr class="memdesc:ad14fde83a9b70f36bf9a4300419689ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Komponent Canvas używany do renderowania interfejsu lobby.  <br /></td></tr>
+<tr class="separator:ad14fde83a9b70f36bf9a4300419689ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7527926b6076b81856e9ea74b7fb4ae" id="r_ac7527926b6076b81856e9ea74b7fb4ae"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7527926b6076b81856e9ea74b7fb4ae">lobbyPanel</a></td></tr>
+<tr class="memdesc:ac7527926b6076b81856e9ea74b7fb4ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Główny obiekt panelu lobby zawierający wszystkie elementy interfejsu.  <br /></td></tr>
+<tr class="separator:ac7527926b6076b81856e9ea74b7fb4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fde275fc7a24500a4d53b6618628866" id="r_a6fde275fc7a24500a4d53b6618628866"><td class="memItemLeft" align="right" valign="top">InputField&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fde275fc7a24500a4d53b6618628866">ipInputField</a></td></tr>
+<tr class="memdesc:a6fde275fc7a24500a4d53b6618628866"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pole wprowadzania kodu pokoju (adresu IP lub kodu Relay).  <br /></td></tr>
+<tr class="separator:a6fde275fc7a24500a4d53b6618628866"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26456f1f56c63b77f087b1f1d2b63956" id="r_a26456f1f56c63b77f087b1f1d2b63956"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26456f1f56c63b77f087b1f1d2b63956">statusText</a></td></tr>
+<tr class="memdesc:a26456f1f56c63b77f087b1f1d2b63956"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst wyświetlający komunikaty statusu (np. błędy, potwierdzenia).  <br /></td></tr>
+<tr class="separator:a26456f1f56c63b77f087b1f1d2b63956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07c188d5cded6bef40d37786312d87f1" id="r_a07c188d5cded6bef40d37786312d87f1"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07c188d5cded6bef40d37786312d87f1">playerCountText</a></td></tr>
+<tr class="memdesc:a07c188d5cded6bef40d37786312d87f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekst wyświetlający liczbę połączonych graczy i rolę (HOST/KLIENT).  <br /></td></tr>
+<tr class="separator:a07c188d5cded6bef40d37786312d87f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39797a79009c824a788bc3de42f7d96f" id="r_a39797a79009c824a788bc3de42f7d96f"><td class="memItemLeft" align="right" valign="top">Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39797a79009c824a788bc3de42f7d96f">hostButton</a></td></tr>
+<tr class="memdesc:a39797a79009c824a788bc3de42f7d96f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przycisk do tworzenia nowego pokoju (hostowania).  <br /></td></tr>
+<tr class="separator:a39797a79009c824a788bc3de42f7d96f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e3175a1c1aee7e785c599051beca79" id="r_a51e3175a1c1aee7e785c599051beca79"><td class="memItemLeft" align="right" valign="top">Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51e3175a1c1aee7e785c599051beca79">joinButton</a></td></tr>
+<tr class="memdesc:a51e3175a1c1aee7e785c599051beca79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przycisk do dołączania do istniejącego pokoju.  <br /></td></tr>
+<tr class="separator:a51e3175a1c1aee7e785c599051beca79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a612846eec4f6b6e4ca716a4e7f7752dd" id="r_a612846eec4f6b6e4ca716a4e7f7752dd"><td class="memItemLeft" align="right" valign="top">Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a612846eec4f6b6e4ca716a4e7f7752dd">disconnectButton</a></td></tr>
+<tr class="memdesc:a612846eec4f6b6e4ca716a4e7f7752dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przycisk do rozłączania się z aktualną sesją sieciowej.  <br /></td></tr>
+<tr class="separator:a612846eec4f6b6e4ca716a4e7f7752dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75a20367a143a9807f29fb07ba679953" id="r_a75a20367a143a9807f29fb07ba679953"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75a20367a143a9807f29fb07ba679953">connectedPanel</a></td></tr>
+<tr class="memdesc:a75a20367a143a9807f29fb07ba679953"><td class="mdescLeft">&#160;</td><td class="mdescRight">Panel wyświetlany gdy gracz jest połączony, zawierający informacje o sesji.  <br /></td></tr>
+<tr class="separator:a75a20367a143a9807f29fb07ba679953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad213e64302caff75fb7bb8844b37ccc0" id="r_ad213e64302caff75fb7bb8844b37ccc0"><td class="memItemLeft" align="right" valign="top">InputField&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad213e64302caff75fb7bb8844b37ccc0">nicknameInputField</a></td></tr>
+<tr class="memdesc:ad213e64302caff75fb7bb8844b37ccc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pole wprowadzania pseudonimu gracza.  <br /></td></tr>
+<tr class="separator:ad213e64302caff75fb7bb8844b37ccc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae667cf45849d758c6e5c421418d80eb9" id="r_ae667cf45849d758c6e5c421418d80eb9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae667cf45849d758c6e5c421418d80eb9">isLobbyVisible</a></td></tr>
+<tr class="memdesc:ae667cf45849d758c6e5c421418d80eb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flaga określająca czy panel lobby jest aktualnie widoczny.  <br /></td></tr>
+<tr class="separator:ae667cf45849d758c6e5c421418d80eb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeece3aaddcbba8749d484eac2a9a374" id="r_afeece3aaddcbba8749d484eac2a9a374"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afeece3aaddcbba8749d484eac2a9a374">statusClearTime</a></td></tr>
+<tr class="memdesc:afeece3aaddcbba8749d484eac2a9a374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas (w skali nieskalowanej), po którym komunikat statusu powinien zostać wyczyszczony. Wartość 0 oznacza brak automatycznego czyszczenia.  <br /></td></tr>
+<tr class="separator:afeece3aaddcbba8749d484eac2a9a374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52f39aec56ab256f7143f63a35e8a339" id="r_a52f39aec56ab256f7143f63a35e8a339"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52f39aec56ab256f7143f63a35e8a339">lastActionTime</a></td></tr>
+<tr class="memdesc:a52f39aec56ab256f7143f63a35e8a339"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas ostatniej akcji sieciowej (host/join), używany do zapobiegania spamowaniu przycisków.  <br /></td></tr>
+<tr class="separator:a52f39aec56ab256f7143f63a35e8a339"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Statyczne atrybuty prywatne</h2></td></tr>
+<tr class="memitem:aa58ad6e152b8587a441d262d5a8060d5" id="r_aa58ad6e152b8587a441d262d5a8060d5"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa58ad6e152b8587a441d262d5a8060d5">PanelBackground</a> = new Color(0.012f, 0.014f, 0.018f, 0.95f)</td></tr>
+<tr class="memdesc:aa58ad6e152b8587a441d262d5a8060d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor tła głównego panelu lobby.  <br /></td></tr>
+<tr class="separator:aa58ad6e152b8587a441d262d5a8060d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a977fe891fcfe0e2769fd5da5e6fee610" id="r_a977fe891fcfe0e2769fd5da5e6fee610"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a977fe891fcfe0e2769fd5da5e6fee610">CardBackground</a> = new Color(0.035f, 0.045f, 0.06f, 0.76f)</td></tr>
+<tr class="memdesc:a977fe891fcfe0e2769fd5da5e6fee610"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor tła kart i sekcji wewnątrz panelu.  <br /></td></tr>
+<tr class="separator:a977fe891fcfe0e2769fd5da5e6fee610"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1f803efc683a22d6d870849b2fe2905" id="r_ae1f803efc683a22d6d870849b2fe2905"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1f803efc683a22d6d870849b2fe2905">FrameColor</a> = new Color(0.16f, 0.17f, 0.19f, 0.95f)</td></tr>
+<tr class="memdesc:ae1f803efc683a22d6d870849b2fe2905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor ramki otaczającej panel lobby.  <br /></td></tr>
+<tr class="separator:ae1f803efc683a22d6d870849b2fe2905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bd5412381ebbc369494cbf0a7e4bcc0" id="r_a2bd5412381ebbc369494cbf0a7e4bcc0"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bd5412381ebbc369494cbf0a7e4bcc0">HeaderColor</a> = new Color(0.032f, 0.038f, 0.052f, 0.94f)</td></tr>
+<tr class="memdesc:a2bd5412381ebbc369494cbf0a7e4bcc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor tła nagłówka panelu.  <br /></td></tr>
+<tr class="separator:a2bd5412381ebbc369494cbf0a7e4bcc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98cb1f6de5fcad26986e628169fe19e2" id="r_a98cb1f6de5fcad26986e628169fe19e2"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98cb1f6de5fcad26986e628169fe19e2">GoldText</a> = new Color(0.86f, 0.68f, 0.28f)</td></tr>
+<tr class="memdesc:a98cb1f6de5fcad26986e628169fe19e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor złotego tekstu używany dla tytułów i komunikatów statusu.  <br /></td></tr>
+<tr class="separator:a98cb1f6de5fcad26986e628169fe19e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e58a27819df3e78f304b92a034f4b8d" id="r_a9e58a27819df3e78f304b92a034f4b8d"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e58a27819df3e78f304b92a034f4b8d">WhiteText</a> = new Color(0.9f, 0.91f, 0.93f, 0.92f)</td></tr>
+<tr class="memdesc:a9e58a27819df3e78f304b92a034f4b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor białego tekstu używany dla etykiet i zawartości przycisków.  <br /></td></tr>
+<tr class="separator:a9e58a27819df3e78f304b92a034f4b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d7aac3461ef3a34ad78dbbccce9f3d9" id="r_a3d7aac3461ef3a34ad78dbbccce9f3d9"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d7aac3461ef3a34ad78dbbccce9f3d9">SubText</a> = new Color(0.58f, 0.62f, 0.69f)</td></tr>
+<tr class="memdesc:a3d7aac3461ef3a34ad78dbbccce9f3d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor tekstu drugorzędnego (podpisy, wskazówki).  <br /></td></tr>
+<tr class="separator:a3d7aac3461ef3a34ad78dbbccce9f3d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe4da2072c004d355c5f73b8d16eef5d" id="r_abe4da2072c004d355c5f73b8d16eef5d"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe4da2072c004d355c5f73b8d16eef5d">HostButtonColor</a> = new Color(0.05f, 0.34f, 0.16f)</td></tr>
+<tr class="memdesc:abe4da2072c004d355c5f73b8d16eef5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor przycisku "Utwórz pokój" w stanie normalnym.  <br /></td></tr>
+<tr class="separator:abe4da2072c004d355c5f73b8d16eef5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cd95c35e90b950e8d3a2264506cb739" id="r_a2cd95c35e90b950e8d3a2264506cb739"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cd95c35e90b950e8d3a2264506cb739">HostButtonHover</a> = new Color(0.08f, 0.46f, 0.22f)</td></tr>
+<tr class="memdesc:a2cd95c35e90b950e8d3a2264506cb739"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor przycisku "Utwórz pokój" przy najechaniu kursorem.  <br /></td></tr>
+<tr class="separator:a2cd95c35e90b950e8d3a2264506cb739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f99c2ef4f49d61e70013e53c673af69" id="r_a4f99c2ef4f49d61e70013e53c673af69"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f99c2ef4f49d61e70013e53c673af69">JoinButtonColor</a> = new Color(0.06f, 0.19f, 0.42f)</td></tr>
+<tr class="memdesc:a4f99c2ef4f49d61e70013e53c673af69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor przycisku "Dołącz" w stanie normalnym.  <br /></td></tr>
+<tr class="separator:a4f99c2ef4f49d61e70013e53c673af69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfaeb1c16f2cca6bbfac6370c5636d50" id="r_abfaeb1c16f2cca6bbfac6370c5636d50"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfaeb1c16f2cca6bbfac6370c5636d50">JoinButtonHover</a> = new Color(0.09f, 0.28f, 0.58f)</td></tr>
+<tr class="memdesc:abfaeb1c16f2cca6bbfac6370c5636d50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor przycisku "Dołącz" przy najechaniu kursorem.  <br /></td></tr>
+<tr class="separator:abfaeb1c16f2cca6bbfac6370c5636d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2ab35d8416f6ecb75bd100fd50e2827" id="r_ac2ab35d8416f6ecb75bd100fd50e2827"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2ab35d8416f6ecb75bd100fd50e2827">DisconnectColor</a> = new Color(0.48f, 0.08f, 0.07f)</td></tr>
+<tr class="memdesc:ac2ab35d8416f6ecb75bd100fd50e2827"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor przycisku rozłączania.  <br /></td></tr>
+<tr class="separator:ac2ab35d8416f6ecb75bd100fd50e2827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc4f3a9ea1a9dbf038295893703de2f0" id="r_acc4f3a9ea1a9dbf038295893703de2f0"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc4f3a9ea1a9dbf038295893703de2f0">InputFieldBg</a> = new Color(0.035f, 0.045f, 0.06f, 0.95f)</td></tr>
+<tr class="memdesc:acc4f3a9ea1a9dbf038295893703de2f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor tła pól wprowadzania tekstu.  <br /></td></tr>
+<tr class="separator:acc4f3a9ea1a9dbf038295893703de2f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa zarządzająca interfejsem użytkownika lobby sieciowego. Odpowiada za wyświetlanie panelu lobby, tworzenie i dołączanie do pokojów wieloosobowych, zarządzanie pseudonimem gracza oraz obsługę stanu połączenia. </p>
+<p>Panel lobby jest tworzony programistycznie w metodzie <a class="el" href="#a1c3b042eba3812da4f025dcf9b759ec5" title="Tworzy cały interfejs lobby programistycznie, w tym canvas, panele, przyciski, pola tekstowe i nagłów...">CreateLobbyCanvas</a>. Interfejs można otworzyć klawiszem F1 (o ile gra nie jest w trybie solo). Komunikacja sieciowa odbywa się za pośrednictwem <a class="el" href="class_relay_manager.html">RelayManager</a> oraz <a class="el" href="class_network_setup.html" title="Klasa singleton odpowiedzialna za konfigurację sieci w grze wieloosobowej.">NetworkSetup</a>. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a35781abf05278449f53da4aa21dc2157" name="a35781abf05278449f53da4aa21dc2157"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35781abf05278449f53da4aa21dc2157">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LobbyUI.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicjalizuje interfejs lobby podczas przebudzenia obiektu. Tworzy canvas i panel lobby, a następnie ukrywa je do momentu otwarcia przez gracza. </p>
+
+</div>
+</div>
+<a id="adaab56062b3d1be84aa8de5667f02b3f" name="adaab56062b3d1be84aa8de5667f02b3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaab56062b3d1be84aa8de5667f02b3f">&#9670;&#160;</a></span>CreateInputField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">InputField LobbyUI.CreateInputField </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Font</td>          <td class="paramname"><span class="paramname"><em>font</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>defaultText</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>placeholder</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy pole wprowadzania tekstu (InputField) z tekstem zastępczym, ramką i odpowiednim stylem wizualnym. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transform rodzica dla pola wprowadzania.</td></tr>
+    <tr><td class="paramname">name</td><td>Nazwa obiektu pola w hierarchii.</td></tr>
+    <tr><td class="paramname">font</td><td>Czcionka używana w polu tekstowym.</td></tr>
+    <tr><td class="paramname">defaultText</td><td>Domyślny tekst wyświetlany w polu.</td></tr>
+    <tr><td class="paramname">placeholder</td><td>Tekst zastępczy (placeholder) wyświetlany gdy pole jest puste.</td></tr>
+    <tr><td class="paramname">anchor</td><td>Punkt zakotwiczenia pola.</td></tr>
+    <tr><td class="paramname">anchoredPos</td><td>Pozycja zakotwiczona pola.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar pola wprowadzania.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Utworzony komponent InputField.</dd></dl>
+
+</div>
+</div>
+<a id="a1c3b042eba3812da4f025dcf9b759ec5" name="a1c3b042eba3812da4f025dcf9b759ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c3b042eba3812da4f025dcf9b759ec5">&#9670;&#160;</a></span>CreateLobbyCanvas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LobbyUI.CreateLobbyCanvas </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy cały interfejs lobby programistycznie, w tym canvas, panele, przyciski, pola tekstowe i nagłówki. </p>
+<p>Metoda buduje kompletny interfejs użytkownika bez użycia prefabów. Tworzy następujące elementy: </p><ul>
+<li>
+Canvas z CanvasScaler i GraphicRaycaster </li>
+<li>
+Tło przyciemniające (backdrop) </li>
+<li>
+Panel główny z ramką </li>
+<li>
+Nagłówek z tytułem "ONLINE LOBBY" </li>
+<li>
+Pole nicku gracza </li>
+<li>
+Przycisk hostowania </li>
+<li>
+Pole kodu pokoju i przycisk dołączania </li>
+<li>
+Panel stanu połączenia z przyciskiem rozłączania </li>
+<li>
+EventSystem (jeśli nie istnieje) </li>
+</ul>
+
+</div>
+</div>
+<a id="a5f1d81123a0dd344c43db24e2421a9b8" name="a5f1d81123a0dd344c43db24e2421a9b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f1d81123a0dd344c43db24e2421a9b8">&#9670;&#160;</a></span>CreatePanel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject LobbyUI.CreatePanel </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchorMin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchorMax</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>pivot</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPosition</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy obiekt panelu UI z komponentem Image i skonfigurowanym RectTransform. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transform rodzica, pod którym panel zostanie utworzony.</td></tr>
+    <tr><td class="paramname">name</td><td>Nazwa obiektu panelu w hierarchii.</td></tr>
+    <tr><td class="paramname">anchorMin</td><td>Minimalny punkt zakotwiczenia RectTransform.</td></tr>
+    <tr><td class="paramname">anchorMax</td><td>Maksymalny punkt zakotwiczenia RectTransform.</td></tr>
+    <tr><td class="paramname">pivot</td><td>Punkt obrotu (pivot) RectTransform.</td></tr>
+    <tr><td class="paramname">anchoredPosition</td><td>Pozycja zakotwiczona panelu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar panelu (sizeDelta).</td></tr>
+    <tr><td class="paramname">color</td><td>Kolor tła panelu (Image).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Utworzony obiekt GameObject panelu.</dd></dl>
+
+</div>
+</div>
+<a id="a3d6102b5f078e6e04fea8d3c49af78c3" name="a3d6102b5f078e6e04fea8d3c49af78c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d6102b5f078e6e04fea8d3c49af78c3">&#9670;&#160;</a></span>CreatePanelBorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LobbyUI.CreatePanelBorder </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>panelSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>borderColor</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy ramkę (obramowanie) wokół panelu, składającą się z czterech cienkich paneli umieszczonych na górze, dole, lewej i prawej stronie. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transform rodzica (panel, wokół którego tworzona jest ramka).</td></tr>
+    <tr><td class="paramname">panelSize</td><td>Rozmiar panelu rodzica (używany do pozycjonowania ramki).</td></tr>
+    <tr><td class="paramname">borderColor</td><td>Kolor ramki.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae1b55fc63d6aaa57c0a1bfb77dfed4c9" name="ae1b55fc63d6aaa57c0a1bfb77dfed4c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1b55fc63d6aaa57c0a1bfb77dfed4c9">&#9670;&#160;</a></span>CreateStyledButton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Button LobbyUI.CreateStyledButton </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Font</td>          <td class="paramname"><span class="paramname"><em>font</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>label</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>normalColor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>hoverColor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy stylizowany przycisk UI z efektami kolorystycznymi dla różnych stanów (normalny, najechanie, naciśnięcie, wyłączony). </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transform rodzica dla przycisku.</td></tr>
+    <tr><td class="paramname">name</td><td>Nazwa obiektu przycisku w hierarchii.</td></tr>
+    <tr><td class="paramname">font</td><td>Czcionka etykiety przycisku.</td></tr>
+    <tr><td class="paramname">label</td><td>Tekst wyświetlany na przycisku.</td></tr>
+    <tr><td class="paramname">normalColor</td><td>Kolor przycisku w stanie normalnym.</td></tr>
+    <tr><td class="paramname">hoverColor</td><td>Kolor przycisku przy najechaniu kursorem.</td></tr>
+    <tr><td class="paramname">anchor</td><td>Punkt zakotwiczenia przycisku.</td></tr>
+    <tr><td class="paramname">anchoredPos</td><td>Pozycja zakotwiczona przycisku.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar przycisku.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Utworzony komponent Button.</dd></dl>
+
+</div>
+</div>
+<a id="ab9cdea6829827936b9f291a3fd6183f2" name="ab9cdea6829827936b9f291a3fd6183f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9cdea6829827936b9f291a3fd6183f2">&#9670;&#160;</a></span>CreateText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text LobbyUI.CreateText </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Font</td>          <td class="paramname"><span class="paramname"><em>font</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TextAnchor</td>          <td class="paramname"><span class="paramname"><em>alignment</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FontStyle</td>          <td class="paramname"><span class="paramname"><em>style</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy element tekstowy UI z określonym stylem, czcionką i efektem cienia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Transform rodzica dla tekstu.</td></tr>
+    <tr><td class="paramname">name</td><td>Nazwa obiektu tekstowego w hierarchii.</td></tr>
+    <tr><td class="paramname">font</td><td>Czcionka używana do renderowania tekstu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar czcionki w pikselach.</td></tr>
+    <tr><td class="paramname">alignment</td><td>Wyrównanie tekstu (np. środek, lewo, prawo).</td></tr>
+    <tr><td class="paramname">color</td><td>Kolor tekstu.</td></tr>
+    <tr><td class="paramname">style</td><td>Styl czcionki (normalny, pogrubiony, kursywa).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Utworzony komponent Text.</dd></dl>
+
+</div>
+</div>
+<a id="aafdf2a5b33a0c88943fcb04e25e9cb30" name="aafdf2a5b33a0c88943fcb04e25e9cb30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafdf2a5b33a0c88943fcb04e25e9cb30">&#9670;&#160;</a></span>HideLobby()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LobbyUI.HideLobby </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ukrywa panel lobby i blokuje kursor myszy (powrót do trybu gry). </p>
+
+</div>
+</div>
+<a id="a4463a52551b9f93bd32cb659debc1db5" name="a4463a52551b9f93bd32cb659debc1db5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4463a52551b9f93bd32cb659debc1db5">&#9670;&#160;</a></span>OnDisconnectClicked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LobbyUI.OnDisconnectClicked </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje kliknięcie przycisku rozłączania. Kończy bieżącą sesję sieciową i wyświetla komunikat potwierdzający. </p>
+
+</div>
+</div>
+<a id="a955e912c0f68f1a97fb41a502e145dff" name="a955e912c0f68f1a97fb41a502e145dff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a955e912c0f68f1a97fb41a502e145dff">&#9670;&#160;</a></span>OnHostClicked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">async void LobbyUI.OnHostClicked </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje kliknięcie przycisku tworzenia pokoju (hostowania). Tworzy nowy pokój za pomocą systemu Relay i wyświetla kod pokoju. </p>
+<p>Metoda jest asynchroniczna. Zawiera zabezpieczenie przed wielokrotnym kliknięciem (cooldown 3 sekundy). Po pomyślnym utworzeniu pokoju, kod jest wstawiany do pola tekstowego, a lobby jest automatycznie ukrywane po 2 sekundach. </p>
+
+</div>
+</div>
+<a id="ae606e85bf20673c26b6e26d01e4e5395" name="ae606e85bf20673c26b6e26d01e4e5395"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae606e85bf20673c26b6e26d01e4e5395">&#9670;&#160;</a></span>OnJoinClicked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">async void LobbyUI.OnJoinClicked </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje kliknięcie przycisku dołączania do istniejącego pokoju. Łączy się z pokojem za pomocą podanego kodu Relay. </p>
+<p>Metoda jest asynchroniczna. Waliduje kod pokoju przed próbą połączenia. Kod jest konwertowany na wielkie litery i oczyszczany z białych znaków. Po pomyślnym dołączeniu, lobby jest automatycznie ukrywane po 2 sekundach. </p>
+
+</div>
+</div>
+<a id="a417a6111b302b04247aad9b22ff6936a" name="a417a6111b302b04247aad9b22ff6936a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a417a6111b302b04247aad9b22ff6936a">&#9670;&#160;</a></span>PositionRect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LobbyUI.PositionRect </td>
+          <td>(</td>
+          <td class="paramtype">Component</td>          <td class="paramname"><span class="paramname"><em>comp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchoredPos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia pozycję i rozmiar RectTransform danego komponentu, używając pojedynczego punktu zakotwiczenia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">comp</td><td>Komponent, którego RectTransform ma zostać skonfigurowany.</td></tr>
+    <tr><td class="paramname">anchor</td><td>Punkt zakotwiczenia (anchorMin i anchorMax ustawione na tę samą wartość).</td></tr>
+    <tr><td class="paramname">anchoredPos</td><td>Pozycja zakotwiczona elementu.</td></tr>
+    <tr><td class="paramname">size</td><td>Rozmiar elementu (sizeDelta).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a92f529e8f058516657ae87dc865a8a2e" name="a92f529e8f058516657ae87dc865a8a2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92f529e8f058516657ae87dc865a8a2e">&#9670;&#160;</a></span>SaveNickname()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LobbyUI.SaveNickname </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zapisuje pseudonim gracza z pola wprowadzania do właściwości statycznej. Przycinanie białych znaków, walidacja pustego nicku (domyślnie "Gracz") oraz ograniczenie długości do 20 znaków. </p>
+
+</div>
+</div>
+<a id="a6a7be5c41ce5d29c332da9f22d75e513" name="a6a7be5c41ce5d29c332da9f22d75e513"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a7be5c41ce5d29c332da9f22d75e513">&#9670;&#160;</a></span>SetStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LobbyUI.SetStatus </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>message</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>clearAfter</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia komunikat statusu w panelu lobby. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Treść komunikatu do wyświetlenia.</td></tr>
+    <tr><td class="paramname">clearAfter</td><td>Czas w sekundach, po którym komunikat zostanie automatycznie wyczyszczony. Wartość 0 oznacza, że komunikat nie będzie automatycznie usuwany. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abdeb7aeaabf3e324c3d79d6104d7294c" name="abdeb7aeaabf3e324c3d79d6104d7294c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdeb7aeaabf3e324c3d79d6104d7294c">&#9670;&#160;</a></span>ShowLobby()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LobbyUI.ShowLobby </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyświetla panel lobby na ekranie. Odblokowuje kursor myszy, aby gracz mógł korzystać z interfejsu. </p>
+<p>Jeśli gra jest w trybie solo (<a class="el" href="class_main_menu_u_i.html#a1da249fb27ba968eb8e79f4a17aaee3e" title="Określa, czy gra jest w trybie solo. Ustawiane przy wyborze trybu gry z menu głównego.">MainMenuUI.IsSoloMode</a>), metoda zamiast tego ukrywa lobby. </p>
+
+</div>
+</div>
+<a id="aff393023d15eb47e537119e2e831c11a" name="aff393023d15eb47e537119e2e831c11a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff393023d15eb47e537119e2e831c11a">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LobbyUI.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizacja wywoływana co klatkę. Zarządza stanem połączenia, obsługuje wejście klawiszowe (F1 do przełączania lobby) oraz czyści komunikaty statusu po upływie czasu. </p>
+
+</div>
+</div>
+<a id="afc525a01304364316cce84e464331733" name="afc525a01304364316cce84e464331733"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc525a01304364316cce84e464331733">&#9670;&#160;</a></span>UpdateConnectionState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LobbyUI.UpdateConnectionState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizuje stan interfejsu w zależności od bieżącego stanu połączenia sieciowego. Włącza/wyłącza przyciski oraz aktualizuje informacje o liczbie graczy. </p>
+<p>Gdy gracz jest połączony, przyciski hostowania i dołączania zostają dezaktywowane, a panel połączenia (<a class="el" href="#a75a20367a143a9807f29fb07ba679953" title="Panel wyświetlany gdy gracz jest połączony, zawierający informacje o sesji.">connectedPanel</a>) jest wyświetlany z informacją o roli (HOST/KLIENT) oraz liczbie podłączonych graczy. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a977fe891fcfe0e2769fd5da5e6fee610" name="a977fe891fcfe0e2769fd5da5e6fee610"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a977fe891fcfe0e2769fd5da5e6fee610">&#9670;&#160;</a></span>CardBackground</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.CardBackground = new Color(0.035f, 0.045f, 0.06f, 0.76f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor tła kart i sekcji wewnątrz panelu. </p>
+
+</div>
+</div>
+<a id="a75a20367a143a9807f29fb07ba679953" name="a75a20367a143a9807f29fb07ba679953"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75a20367a143a9807f29fb07ba679953">&#9670;&#160;</a></span>connectedPanel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject LobbyUI.connectedPanel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Panel wyświetlany gdy gracz jest połączony, zawierający informacje o sesji. </p>
+
+</div>
+</div>
+<a id="a612846eec4f6b6e4ca716a4e7f7752dd" name="a612846eec4f6b6e4ca716a4e7f7752dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a612846eec4f6b6e4ca716a4e7f7752dd">&#9670;&#160;</a></span>disconnectButton</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Button LobbyUI.disconnectButton</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przycisk do rozłączania się z aktualną sesją sieciowej. </p>
+
+</div>
+</div>
+<a id="ac2ab35d8416f6ecb75bd100fd50e2827" name="ac2ab35d8416f6ecb75bd100fd50e2827"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2ab35d8416f6ecb75bd100fd50e2827">&#9670;&#160;</a></span>DisconnectColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.DisconnectColor = new Color(0.48f, 0.08f, 0.07f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor przycisku rozłączania. </p>
+
+</div>
+</div>
+<a id="ae1f803efc683a22d6d870849b2fe2905" name="ae1f803efc683a22d6d870849b2fe2905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1f803efc683a22d6d870849b2fe2905">&#9670;&#160;</a></span>FrameColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.FrameColor = new Color(0.16f, 0.17f, 0.19f, 0.95f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor ramki otaczającej panel lobby. </p>
+
+</div>
+</div>
+<a id="a98cb1f6de5fcad26986e628169fe19e2" name="a98cb1f6de5fcad26986e628169fe19e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98cb1f6de5fcad26986e628169fe19e2">&#9670;&#160;</a></span>GoldText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.GoldText = new Color(0.86f, 0.68f, 0.28f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor złotego tekstu używany dla tytułów i komunikatów statusu. </p>
+
+</div>
+</div>
+<a id="a2bd5412381ebbc369494cbf0a7e4bcc0" name="a2bd5412381ebbc369494cbf0a7e4bcc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bd5412381ebbc369494cbf0a7e4bcc0">&#9670;&#160;</a></span>HeaderColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.HeaderColor = new Color(0.032f, 0.038f, 0.052f, 0.94f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor tła nagłówka panelu. </p>
+
+</div>
+</div>
+<a id="a39797a79009c824a788bc3de42f7d96f" name="a39797a79009c824a788bc3de42f7d96f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39797a79009c824a788bc3de42f7d96f">&#9670;&#160;</a></span>hostButton</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Button LobbyUI.hostButton</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przycisk do tworzenia nowego pokoju (hostowania). </p>
+
+</div>
+</div>
+<a id="abe4da2072c004d355c5f73b8d16eef5d" name="abe4da2072c004d355c5f73b8d16eef5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe4da2072c004d355c5f73b8d16eef5d">&#9670;&#160;</a></span>HostButtonColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.HostButtonColor = new Color(0.05f, 0.34f, 0.16f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor przycisku "Utwórz pokój" w stanie normalnym. </p>
+
+</div>
+</div>
+<a id="a2cd95c35e90b950e8d3a2264506cb739" name="a2cd95c35e90b950e8d3a2264506cb739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cd95c35e90b950e8d3a2264506cb739">&#9670;&#160;</a></span>HostButtonHover</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.HostButtonHover = new Color(0.08f, 0.46f, 0.22f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor przycisku "Utwórz pokój" przy najechaniu kursorem. </p>
+
+</div>
+</div>
+<a id="acc4f3a9ea1a9dbf038295893703de2f0" name="acc4f3a9ea1a9dbf038295893703de2f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc4f3a9ea1a9dbf038295893703de2f0">&#9670;&#160;</a></span>InputFieldBg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.InputFieldBg = new Color(0.035f, 0.045f, 0.06f, 0.95f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor tła pól wprowadzania tekstu. </p>
+
+</div>
+</div>
+<a id="a6fde275fc7a24500a4d53b6618628866" name="a6fde275fc7a24500a4d53b6618628866"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fde275fc7a24500a4d53b6618628866">&#9670;&#160;</a></span>ipInputField</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">InputField LobbyUI.ipInputField</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pole wprowadzania kodu pokoju (adresu IP lub kodu Relay). </p>
+
+</div>
+</div>
+<a id="ae667cf45849d758c6e5c421418d80eb9" name="ae667cf45849d758c6e5c421418d80eb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae667cf45849d758c6e5c421418d80eb9">&#9670;&#160;</a></span>isLobbyVisible</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LobbyUI.isLobbyVisible</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flaga określająca czy panel lobby jest aktualnie widoczny. </p>
+
+</div>
+</div>
+<a id="a51e3175a1c1aee7e785c599051beca79" name="a51e3175a1c1aee7e785c599051beca79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e3175a1c1aee7e785c599051beca79">&#9670;&#160;</a></span>joinButton</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Button LobbyUI.joinButton</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przycisk do dołączania do istniejącego pokoju. </p>
+
+</div>
+</div>
+<a id="a4f99c2ef4f49d61e70013e53c673af69" name="a4f99c2ef4f49d61e70013e53c673af69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f99c2ef4f49d61e70013e53c673af69">&#9670;&#160;</a></span>JoinButtonColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.JoinButtonColor = new Color(0.06f, 0.19f, 0.42f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor przycisku "Dołącz" w stanie normalnym. </p>
+
+</div>
+</div>
+<a id="abfaeb1c16f2cca6bbfac6370c5636d50" name="abfaeb1c16f2cca6bbfac6370c5636d50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfaeb1c16f2cca6bbfac6370c5636d50">&#9670;&#160;</a></span>JoinButtonHover</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.JoinButtonHover = new Color(0.09f, 0.28f, 0.58f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor przycisku "Dołącz" przy najechaniu kursorem. </p>
+
+</div>
+</div>
+<a id="a52f39aec56ab256f7143f63a35e8a339" name="a52f39aec56ab256f7143f63a35e8a339"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52f39aec56ab256f7143f63a35e8a339">&#9670;&#160;</a></span>lastActionTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float LobbyUI.lastActionTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czas ostatniej akcji sieciowej (host/join), używany do zapobiegania spamowaniu przycisków. </p>
+
+</div>
+</div>
+<a id="ad14fde83a9b70f36bf9a4300419689ba" name="ad14fde83a9b70f36bf9a4300419689ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad14fde83a9b70f36bf9a4300419689ba">&#9670;&#160;</a></span>lobbyCanvas</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Canvas LobbyUI.lobbyCanvas</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Komponent Canvas używany do renderowania interfejsu lobby. </p>
+
+</div>
+</div>
+<a id="ac7527926b6076b81856e9ea74b7fb4ae" name="ac7527926b6076b81856e9ea74b7fb4ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7527926b6076b81856e9ea74b7fb4ae">&#9670;&#160;</a></span>lobbyPanel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject LobbyUI.lobbyPanel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Główny obiekt panelu lobby zawierający wszystkie elementy interfejsu. </p>
+
+</div>
+</div>
+<a id="ad213e64302caff75fb7bb8844b37ccc0" name="ad213e64302caff75fb7bb8844b37ccc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad213e64302caff75fb7bb8844b37ccc0">&#9670;&#160;</a></span>nicknameInputField</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">InputField LobbyUI.nicknameInputField</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pole wprowadzania pseudonimu gracza. </p>
+
+</div>
+</div>
+<a id="aa58ad6e152b8587a441d262d5a8060d5" name="aa58ad6e152b8587a441d262d5a8060d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa58ad6e152b8587a441d262d5a8060d5">&#9670;&#160;</a></span>PanelBackground</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.PanelBackground = new Color(0.012f, 0.014f, 0.018f, 0.95f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor tła głównego panelu lobby. </p>
+
+</div>
+</div>
+<a id="a07c188d5cded6bef40d37786312d87f1" name="a07c188d5cded6bef40d37786312d87f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07c188d5cded6bef40d37786312d87f1">&#9670;&#160;</a></span>playerCountText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text LobbyUI.playerCountText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst wyświetlający liczbę połączonych graczy i rolę (HOST/KLIENT). </p>
+
+</div>
+</div>
+<a id="afeece3aaddcbba8749d484eac2a9a374" name="afeece3aaddcbba8749d484eac2a9a374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeece3aaddcbba8749d484eac2a9a374">&#9670;&#160;</a></span>statusClearTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float LobbyUI.statusClearTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czas (w skali nieskalowanej), po którym komunikat statusu powinien zostać wyczyszczony. Wartość 0 oznacza brak automatycznego czyszczenia. </p>
+
+</div>
+</div>
+<a id="a26456f1f56c63b77f087b1f1d2b63956" name="a26456f1f56c63b77f087b1f1d2b63956"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26456f1f56c63b77f087b1f1d2b63956">&#9670;&#160;</a></span>statusText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text LobbyUI.statusText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekst wyświetlający komunikaty statusu (np. błędy, potwierdzenia). </p>
+
+</div>
+</div>
+<a id="a3d7aac3461ef3a34ad78dbbccce9f3d9" name="a3d7aac3461ef3a34ad78dbbccce9f3d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d7aac3461ef3a34ad78dbbccce9f3d9">&#9670;&#160;</a></span>SubText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.SubText = new Color(0.58f, 0.62f, 0.69f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor tekstu drugorzędnego (podpisy, wskazówki). </p>
+
+</div>
+</div>
+<a id="a9e58a27819df3e78f304b92a034f4b8d" name="a9e58a27819df3e78f304b92a034f4b8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e58a27819df3e78f304b92a034f4b8d">&#9670;&#160;</a></span>WhiteText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color LobbyUI.WhiteText = new Color(0.9f, 0.91f, 0.93f, 0.92f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor białego tekstu używany dla etykiet i zawartości przycisków. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="a6ce45465a5a161065ac61ec7b6a736a2" name="a6ce45465a5a161065ac61ec7b6a736a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ce45465a5a161065ac61ec7b6a736a2">&#9670;&#160;</a></span>IsLobbyOpen</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LobbyUI.IsLobbyOpen</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprawdza czy panel lobby jest aktualnie otwarty i widoczny. </p>
+<p><code>true</code> jeśli lobby jest widoczne, panel istnieje i jest aktywny; w przeciwnym razie <code>false</code>. </p>
+
+</div>
+</div>
+<a id="a1050401dcd7f18c815db01dde859f872" name="a1050401dcd7f18c815db01dde859f872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1050401dcd7f18c815db01dde859f872">&#9670;&#160;</a></span>LocalPlayerNickname</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string LobbyUI.LocalPlayerNickname = &quot;Gracz&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pseudonim lokalnego gracza używany w sesji sieciowej. Domyślna wartość to "Gracz". </p>
+<p>Aktualny pseudonim gracza jako ciąg znaków.</p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_lobby_u_i_8cs.html">LobbyUI.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

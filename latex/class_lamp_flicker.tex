@@ -1,0 +1,124 @@
+\doxysection{Dokumentacja klasy Lamp\+Flicker}
+\hypertarget{class_lamp_flicker}{}\label{class_lamp_flicker}\index{LampFlicker@{LampFlicker}}
+
+
+Adds subtle flickering to kitchen lights for a warm, natural ambiance. Simulates realistic lamp behavior with slow intensity oscillation and occasional micro-\/flickers.  
+
+
+Diagram dziedziczenia dla Lamp\+Flicker\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_lamp_flicker}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_lamp_flicker_a6826b1c309fce3b9cbad5adfaebbf2be}{Configure}} (Light light, float \mbox{\hyperlink{class_lamp_flicker_a0a580eba85170955cd3a7ec7557a4a16}{base\+Intensity}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_lamp_flicker_a763bce41b47d9002a74159acaa15a112}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_lamp_flicker_a7687b170fc2dd7547c75ed13c615508e}{Update}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_lamp_flicker_a0a580eba85170955cd3a7ec7557a4a16}{base\+Intensity}} = 5.\+5f
+\item 
+float \mbox{\hyperlink{class_lamp_flicker_ab2c59c285904fa14ae740ae05270711a}{flicker\+Amplitude}} = 0.\+25f
+\item 
+float \mbox{\hyperlink{class_lamp_flicker_a5e4ce6e4a9c278ad3590e4abc96dfa2b}{flicker\+Speed}} = 2.\+2f
+\item 
+float \mbox{\hyperlink{class_lamp_flicker_a1207bf751f37cd00713cb38647373706}{micro\+Flicker\+Chance}} = 0.\+008f
+\item 
+float \mbox{\hyperlink{class_lamp_flicker_a9ea7a387cc7fe74af7c174bd85e4711f}{micro\+Flicker\+Drop}} = 0.\+4f
+\item 
+Light \mbox{\hyperlink{class_lamp_flicker_ac8b6797adecee1d7ce8436e3482688dc}{target\+Light}}
+\item 
+float \mbox{\hyperlink{class_lamp_flicker_a2bdfff8cb41d385ad8aa72f28441f19f}{phase\+Offset}}
+\item 
+float \mbox{\hyperlink{class_lamp_flicker_a07938db4964cddd1d3fc1575f4e35a65}{micro\+Flicker\+Timer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Adds subtle flickering to kitchen lights for a warm, natural ambiance. Simulates realistic lamp behavior with slow intensity oscillation and occasional micro-\/flickers. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_lamp_flicker_a6826b1c309fce3b9cbad5adfaebbf2be}\index{LampFlicker@{LampFlicker}!Configure@{Configure}}
+\index{Configure@{Configure}!LampFlicker@{LampFlicker}}
+\doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
+{\footnotesize\ttfamily \label{class_lamp_flicker_a6826b1c309fce3b9cbad5adfaebbf2be} 
+void Lamp\+Flicker.\+Configure (\begin{DoxyParamCaption}\item[{Light}]{light}{, }\item[{float}]{base\+Intensity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_lamp_flicker_a763bce41b47d9002a74159acaa15a112}\index{LampFlicker@{LampFlicker}!Start@{Start}}
+\index{Start@{Start}!LampFlicker@{LampFlicker}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_lamp_flicker_a763bce41b47d9002a74159acaa15a112} 
+void Lamp\+Flicker.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_lamp_flicker_a7687b170fc2dd7547c75ed13c615508e}\index{LampFlicker@{LampFlicker}!Update@{Update}}
+\index{Update@{Update}!LampFlicker@{LampFlicker}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_lamp_flicker_a7687b170fc2dd7547c75ed13c615508e} 
+void Lamp\+Flicker.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_lamp_flicker_a0a580eba85170955cd3a7ec7557a4a16}\index{LampFlicker@{LampFlicker}!baseIntensity@{baseIntensity}}
+\index{baseIntensity@{baseIntensity}!LampFlicker@{LampFlicker}}
+\doxysubsubsection{\texorpdfstring{baseIntensity}{baseIntensity}}
+{\footnotesize\ttfamily \label{class_lamp_flicker_a0a580eba85170955cd3a7ec7557a4a16} 
+float Lamp\+Flicker.\+base\+Intensity = 5.\+5f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_flicker_ab2c59c285904fa14ae740ae05270711a}\index{LampFlicker@{LampFlicker}!flickerAmplitude@{flickerAmplitude}}
+\index{flickerAmplitude@{flickerAmplitude}!LampFlicker@{LampFlicker}}
+\doxysubsubsection{\texorpdfstring{flickerAmplitude}{flickerAmplitude}}
+{\footnotesize\ttfamily \label{class_lamp_flicker_ab2c59c285904fa14ae740ae05270711a} 
+float Lamp\+Flicker.\+flicker\+Amplitude = 0.\+25f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_flicker_a5e4ce6e4a9c278ad3590e4abc96dfa2b}\index{LampFlicker@{LampFlicker}!flickerSpeed@{flickerSpeed}}
+\index{flickerSpeed@{flickerSpeed}!LampFlicker@{LampFlicker}}
+\doxysubsubsection{\texorpdfstring{flickerSpeed}{flickerSpeed}}
+{\footnotesize\ttfamily \label{class_lamp_flicker_a5e4ce6e4a9c278ad3590e4abc96dfa2b} 
+float Lamp\+Flicker.\+flicker\+Speed = 2.\+2f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_flicker_a1207bf751f37cd00713cb38647373706}\index{LampFlicker@{LampFlicker}!microFlickerChance@{microFlickerChance}}
+\index{microFlickerChance@{microFlickerChance}!LampFlicker@{LampFlicker}}
+\doxysubsubsection{\texorpdfstring{microFlickerChance}{microFlickerChance}}
+{\footnotesize\ttfamily \label{class_lamp_flicker_a1207bf751f37cd00713cb38647373706} 
+float Lamp\+Flicker.\+micro\+Flicker\+Chance = 0.\+008f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_flicker_a9ea7a387cc7fe74af7c174bd85e4711f}\index{LampFlicker@{LampFlicker}!microFlickerDrop@{microFlickerDrop}}
+\index{microFlickerDrop@{microFlickerDrop}!LampFlicker@{LampFlicker}}
+\doxysubsubsection{\texorpdfstring{microFlickerDrop}{microFlickerDrop}}
+{\footnotesize\ttfamily \label{class_lamp_flicker_a9ea7a387cc7fe74af7c174bd85e4711f} 
+float Lamp\+Flicker.\+micro\+Flicker\+Drop = 0.\+4f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_flicker_a07938db4964cddd1d3fc1575f4e35a65}\index{LampFlicker@{LampFlicker}!microFlickerTimer@{microFlickerTimer}}
+\index{microFlickerTimer@{microFlickerTimer}!LampFlicker@{LampFlicker}}
+\doxysubsubsection{\texorpdfstring{microFlickerTimer}{microFlickerTimer}}
+{\footnotesize\ttfamily \label{class_lamp_flicker_a07938db4964cddd1d3fc1575f4e35a65} 
+float Lamp\+Flicker.\+micro\+Flicker\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_flicker_a2bdfff8cb41d385ad8aa72f28441f19f}\index{LampFlicker@{LampFlicker}!phaseOffset@{phaseOffset}}
+\index{phaseOffset@{phaseOffset}!LampFlicker@{LampFlicker}}
+\doxysubsubsection{\texorpdfstring{phaseOffset}{phaseOffset}}
+{\footnotesize\ttfamily \label{class_lamp_flicker_a2bdfff8cb41d385ad8aa72f28441f19f} 
+float Lamp\+Flicker.\+phase\+Offset\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lamp_flicker_ac8b6797adecee1d7ce8436e3482688dc}\index{LampFlicker@{LampFlicker}!targetLight@{targetLight}}
+\index{targetLight@{targetLight}!LampFlicker@{LampFlicker}}
+\doxysubsubsection{\texorpdfstring{targetLight}{targetLight}}
+{\footnotesize\ttfamily \label{class_lamp_flicker_ac8b6797adecee1d7ce8436e3482688dc} 
+Light Lamp\+Flicker.\+target\+Light\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Effects/\mbox{\hyperlink{_lamp_flicker_8cs}{Lamp\+Flicker.\+cs}}\end{DoxyCompactItemize}

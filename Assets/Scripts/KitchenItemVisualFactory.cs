@@ -1,14 +1,71 @@
+/// \file KitchenItemVisualFactory.cs
+/// \brief Plik zawierający statyczną klasę fabryki wizualnych reprezentacji
+/// składników i dań kuchennych.
+/// \details Klasa KitchenItemVisualFactory odpowiada za tworzenie obiektów 3D
+/// reprezentujących składniki w grze. Obsługuje ładowanie modeli z zasobów
+/// (Resources), tworzenie zastępczych prymitywów geometrycznych gdy model
+/// nie jest dostępny, oraz generowanie rozproszonych wizualizacji składników
+/// (np. posiekanych warzyw). Wykorzystuje buforowanie shaderów i materiałów
+/// dla optymalizacji wydajności.
+
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Statyczna klasa fabryki tworząca wizualne reprezentacje 3D składników
+/// i dań kuchennych w grze Kebab Chef Symulator.
+/// </summary>
+/// <remarks>
+/// Klasa pełni rolę centralnej fabryki do tworzenia obiektów wizualnych
+/// dla systemu kuchni. Obsługuje:
+/// - Ładowanie modeli 3D z katalogu Resources/Models/ z buforowaniem,
+/// - Tworzenie prymitywów zastępczych (kula, cylinder) gdy model nie jest dostępny,
+/// - Generowanie rozproszonych wizualizacji składników (posiekane warzywa, sos),
+/// - Buforowanie materiałów i shaderów dla optymalizacji wydajności,
+/// - Automatyczne skalowanie modeli do pożądanego rozmiaru,
+/// - Integrację z systemem animacji pojawiania się (<see cref="ItemAnimator"/>).
+/// </remarks>
 public static class KitchenItemVisualFactory
 {
+    /// <summary>
+    /// Ścieżka bazowa do katalogu modeli w zasobach Unity (Resources).
+    /// </summary>
     private const string ModelPath = "Models/";
 
+    /// <summary>
+    /// Buforowany shader używany do tworzenia materiałów.
+    /// Preferuje URP Lit, awaryjnie Standard, ostatecznie Diffuse.
+    /// </summary>
     private static Shader cachedShader;
+
+    /// <summary>
+    /// Słownik buforujący materiały po kolorze, aby uniknąć tworzenia
+    /// duplikatów materiałów o tym samym kolorze.
+    /// </summary>
     private static readonly Dictionary<Color, Material> materialCache = new Dictionary<Color, Material>();
+
+    /// <summary>
+    /// Słownik buforujący załadowane modele 3D (prefaby) po ścieżce zasobu,
+    /// aby uniknąć wielokrotnego ładowania tego samego modelu z Resources.
+    /// </summary>
     private static readonly Dictionary<string, GameObject> modelCache = new Dictionary<string, GameObject>();
 
+    /// <summary>
+    /// Zwraca nazwę pliku modelu 3D odpowiadającego danemu rodzajowi składnika
+    /// i jego stanowi przetworzenia.
+    /// </summary>
+    /// <param name="kind">Rodzaj składnika (mięso, pomidor, cebula itp.).</param>
+    /// <param name="state">Stan przetworzenia składnika (surowy, posiekany, ugotowany).</param>
+    /// <param name="isDish">Czy obiekt jest gotowym daniem (kebabem).</param>
+    /// <returns>
+    /// Nazwa pliku modelu (bez ścieżki i rozszerzenia), lub <c>null</c>
+    /// jeśli nie istnieje odpowiedni model dla danego rodzaju składnika.
+    /// </returns>
+    /// <remarks>
+    /// Dla gotowych dań i kebabów zawsze zwraca "kebab_wrap".
+    /// Pomidory i cebule mają warianty w zależności od stanu przetworzenia
+    /// (cały vs posiekany). Pozostałe składniki mają stały model.
+    /// </remarks>
     public static string GetModelName(IngredientKind kind, IngredientProcessState state, bool isDish)
     {
         if (isDish || kind == IngredientKind.Kebab)
@@ -35,6 +92,27 @@ public static class KitchenItemVisualFactory
         }
     }
 
+    /// <summary>
+    /// Tworzy wizualną reprezentację 3D składnika lub dania jako obiekt potomny
+    /// podanego rodzica.
+    /// </summary>
+    /// <param name="kind">Rodzaj składnika do zwizualizowania.</param>
+    /// <param name="state">Stan przetworzenia składnika.</param>
+    /// <param name="isDish">Czy obiekt jest gotowym daniem.</param>
+    /// <param name="parent">Transformata rodzica, do którego zostanie dołączony model.</param>
+    /// <param name="localPosition">Lokalna pozycja modelu względem rodzica.</param>
+    /// <param name="localRotation">Lokalna rotacja modelu w stopniach (Euler).</param>
+    /// <param name="targetSize">Docelowy rozmiar obiektu (największy wymiar zostanie dopasowany).</param>
+    /// <returns>
+    /// Utworzony obiekt wizualny, lub <c>null</c> jeśli nie można określić modelu.
+    /// Jeśli prefab nie zostanie znaleziony, tworzona jest zastępcza wizualizacja
+    /// za pomocą <see cref="CreateFallbackVisual"/>.
+    /// </returns>
+    /// <remarks>
+    /// Model jest skalowany za pomocą <see cref="ScaleToSize"/> do podanego rozmiaru.
+    /// Wszystkie kollidery w modelu i jego dzieciach są wyłączane.
+    /// Jeśli dostępny jest <see cref="ItemAnimator"/>, uruchamiana jest animacja pojawiania.
+    /// </remarks>
     public static GameObject CreateItemVisual(
         IngredientKind kind,
         IngredientProcessState state,
@@ -76,6 +154,11 @@ public static class KitchenItemVisualFactory
         return model;
     }
 
+    /// <summary>
+    /// Pobiera buforowany shader do tworzenia materiałów.
+    /// Próbuje kolejno: URP Lit, Standard, Diffuse.
+    /// </summary>
+    /// <returns>Znaleziony shader, lub <c>null</c> jeśli żaden nie jest dostępny.</returns>
     private static Shader GetCachedShader()
     {
         if (cachedShader == null)
@@ -87,6 +170,13 @@ public static class KitchenItemVisualFactory
         return cachedShader;
     }
 
+    /// <summary>
+    /// Pobiera lub tworzy buforowany materiał o podanym kolorze.
+    /// Jeśli materiał o danym kolorze już istnieje w cache, zwraca go;
+    /// w przeciwnym razie tworzy nowy.
+    /// </summary>
+    /// <param name="color">Kolor materiału do pobrania lub utworzenia.</param>
+    /// <returns>Materiał o podanym kolorze z odpowiednim shaderem.</returns>
     public static Material GetCachedMaterial(Color color)
     {
         if (!materialCache.TryGetValue(color, out var mat) || mat == null)
@@ -97,6 +187,12 @@ public static class KitchenItemVisualFactory
         return mat;
     }
 
+    /// <summary>
+    /// Ładuje model 3D z Resources i buforuje go w słowniku.
+    /// Przy kolejnych wywołaniach z tą samą ścieżką zwraca buforowany wynik.
+    /// </summary>
+    /// <param name="path">Ścieżka zasobu modelu (względem katalogu Resources).</param>
+    /// <returns>Załadowany prefab modelu, lub <c>null</c> jeśli zasób nie istnieje.</returns>
     private static GameObject LoadCachedModel(string path)
     {
         if (!modelCache.TryGetValue(path, out var model))
@@ -107,6 +203,23 @@ public static class KitchenItemVisualFactory
         return model;
     }
 
+    /// <summary>
+    /// Tworzy zastępczą wizualizację składnika używając prymitywów geometrycznych
+    /// (kula lub cylinder), gdy model 3D nie jest dostępny w zasobach.
+    /// </summary>
+    /// <param name="kind">Rodzaj składnika.</param>
+    /// <param name="state">Stan przetworzenia składnika.</param>
+    /// <param name="isDish">Czy obiekt jest gotowym daniem (kebabem) — jeśli tak, używany jest cylinder.</param>
+    /// <param name="parent">Transformata rodzica.</param>
+    /// <param name="localPosition">Lokalna pozycja obiektu względem rodzica.</param>
+    /// <param name="targetSize">Docelowy rozmiar obiektu.</param>
+    /// <returns>Utworzony obiekt zastępczy z odpowiednim materiałem i kolorem.</returns>
+    /// <remarks>
+    /// Dania i kebaby reprezentowane są jako cylindry (0.4 × 0.7 × 0.4 targetSize),
+    /// pozostałe składniki jako kule. Kolider jest wyłączany.
+    /// Kolor jest automatycznie dobierany na podstawie rodzaju składnika
+    /// za pomocą <see cref="GetIngredientColor"/>.
+    /// </remarks>
     private static GameObject CreateFallbackVisual(
         IngredientKind kind,
         IngredientProcessState state,
@@ -149,6 +262,25 @@ public static class KitchenItemVisualFactory
         return obj;
     }
 
+    /// <summary>
+    /// Tworzy wizualizację rozproszonych kawałków składnika (np. posiekane warzywa
+    /// lub krople sosu), losowo rozmieszczonych w obrębie kontenera.
+    /// </summary>
+    /// <param name="kind">Rodzaj składnika do zwizualizowania.</param>
+    /// <param name="state">Stan przetworzenia składnika.</param>
+    /// <param name="parent">Transformata rodzica.</param>
+    /// <param name="localPosition">Lokalna pozycja kontenera względem rodzica.</param>
+    /// <param name="count">Liczba kawałków do wygenerowania.</param>
+    /// <param name="spread">Maksymalny zasięg rozproszenia kawałków na osiach X i Z.</param>
+    /// <param name="pieceSize">Bazowy rozmiar pojedynczego kawałka.</param>
+    /// <returns>Kontener GameObject zawierający wszystkie wygenerowane kawałki.</returns>
+    /// <remarks>
+    /// Sos czosnkowy (<see cref="IngredientKind.GarlicSauce"/>) jest reprezentowany
+    /// jako spłaszczone kule, pozostałe składniki jako spłaszczone kostki.
+    /// Każdy kawałek ma losową pozycję, rotację i lekki offset na osi Y.
+    /// Kollidery kawałków są usuwane. Używany jest współdzielony materiał
+    /// z cache dla optymalizacji.
+    /// </remarks>
     public static GameObject CreateScatteredVisual(
         IngredientKind kind,
         IngredientProcessState state,
@@ -207,6 +339,23 @@ public static class KitchenItemVisualFactory
         return container;
     }
 
+    /// <summary>
+    /// Zwraca kolor reprezentujący dany rodzaj składnika i jego stan przetworzenia.
+    /// Używany do kolorowania prymitywów zastępczych i rozproszonych wizualizacji.
+    /// </summary>
+    /// <param name="kind">Rodzaj składnika.</param>
+    /// <param name="state">Stan przetworzenia składnika.</param>
+    /// <returns>
+    /// Kolor charakterystyczny dla danego składnika:
+    /// - Mięso: brązowy (ugotowane) lub czerwonawy (surowe),
+    /// - Pomidor: czerwony,
+    /// - Cebula: kremowy,
+    /// - Sałata: zielony,
+    /// - Sos czosnkowy: jasny beżowy,
+    /// - Lawasz: ciepły beżowy,
+    /// - Kebab: brązowo-złoty,
+    /// - Domyślny: szary.
+    /// </returns>
     public static Color GetIngredientColor(IngredientKind kind, IngredientProcessState state)
     {
         switch (kind)
@@ -232,6 +381,16 @@ public static class KitchenItemVisualFactory
         }
     }
 
+    /// <summary>
+    /// Skaluje model 3D tak, aby jego największy wymiar odpowiadał podanemu rozmiarowi docelowemu.
+    /// </summary>
+    /// <param name="modelRoot">Transformata korzenia modelu do przeskalowania.</param>
+    /// <param name="targetSize">Docelowy rozmiar największego wymiaru modelu.</param>
+    /// <remarks>
+    /// Oblicza otoczkę (bounding box) ze wszystkich rendererów w modelu i jego dzieciach,
+    /// wyznacza największy wymiar, a następnie skaluje cały model jednorodnie.
+    /// Pomija modele o wymiarze mniejszym niż 0.001, aby uniknąć dzielenia przez zero.
+    /// </remarks>
     private static void ScaleToSize(Transform modelRoot, float targetSize)
     {
         Renderer[] renderers = modelRoot.GetComponentsInChildren<Renderer>();

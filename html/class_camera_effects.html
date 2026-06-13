@@ -1,0 +1,938 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy CameraEffects</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-attribs">Atrybuty publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="class_camera_effects-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy CameraEffects</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Zestaw efektów kamery: kołysanie głowy podczas chodzenia, trzęsienie ekranu przy zdarzeniach, kolorowa nakładka błyskowa na ekranie oraz efekt lądowania po skoku. Dołączyć do obiektu kamery gracza.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla CameraEffects</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_camera_effects.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a74143abbcb5faf73e5fd1dcd098c79c5" id="r_a74143abbcb5faf73e5fd1dcd098c79c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74143abbcb5faf73e5fd1dcd098c79c5">SetTrackedController</a> (CharacterController controller)</td></tr>
+<tr class="memdesc:a74143abbcb5faf73e5fd1dcd098c79c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia śledzony kontroler postaci, z którego odczytywane są dane ruchu. Wywoływać z klasy <a class="el" href="class_simple_player_controller.html" title="Prosty kontroler ruchu gracza w trybie pierwszoosobowym. Obsługuje poruszanie się postaci za pomocą k...">SimplePlayerController</a>, aby dostarczyć dane o prędkości i stanie gracza.  <br /></td></tr>
+<tr class="separator:a74143abbcb5faf73e5fd1dcd098c79c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc6d0a34f64bc93fc461796067cabd10" id="r_afc6d0a34f64bc93fc461796067cabd10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc6d0a34f64bc93fc461796067cabd10">ShakeCamera</a> (float intensity, float duration)</td></tr>
+<tr class="memdesc:afc6d0a34f64bc93fc461796067cabd10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyzwala efekt trzęsienia ekranu o podanej intensywności i czasie trwania. Przydatne przy zdarzeniach takich jak dostarczenie zamówienia lub krojenie składnika.  <br /></td></tr>
+<tr class="separator:afc6d0a34f64bc93fc461796067cabd10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30856863e61ad34ac84a0ea3402d6f31" id="r_a30856863e61ad34ac84a0ea3402d6f31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30856863e61ad34ac84a0ea3402d6f31">FlashScreen</a> (Color color, float duration=0.3f)</td></tr>
+<tr class="memdesc:a30856863e61ad34ac84a0ea3402d6f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyzwala błysk ekranu z podanym kolorem nakładki. Zielony = sukces dostarczenia, czerwony = porażka. Nakładka stopniowo zanika od przezroczystości 25% do pełnej przezroczystości.  <br /></td></tr>
+<tr class="separator:a30856863e61ad34ac84a0ea3402d6f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atrybuty publiczne</h2></td></tr>
+<tr class="memitem:a9ee043e4205746452adffec88fec799e" id="r_a9ee043e4205746452adffec88fec799e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ee043e4205746452adffec88fec799e">bobFrequency</a> = 8f</td></tr>
+<tr class="memdesc:a9ee043e4205746452adffec88fec799e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Częstotliwość kołysania głowy podczas chodzenia (w Hz). Wyższe wartości powodują szybsze kołysanie.  <br /></td></tr>
+<tr class="separator:a9ee043e4205746452adffec88fec799e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68696409901f0d0315c5e4fcb14c4211" id="r_a68696409901f0d0315c5e4fcb14c4211"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68696409901f0d0315c5e4fcb14c4211">bobAmplitudeY</a> = 0.035f</td></tr>
+<tr class="memdesc:a68696409901f0d0315c5e4fcb14c4211"><td class="mdescLeft">&#160;</td><td class="mdescRight">Amplituda pionowego kołysania głowy (w jednostkach świata). Kontroluje wysokość ruchu kamery w górę i w dół podczas chodzenia.  <br /></td></tr>
+<tr class="separator:a68696409901f0d0315c5e4fcb14c4211"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac73ed3e4439632a6aaabf7fccec7d86" id="r_aac73ed3e4439632a6aaabf7fccec7d86"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac73ed3e4439632a6aaabf7fccec7d86">bobAmplitudeX</a> = 0.015f</td></tr>
+<tr class="memdesc:aac73ed3e4439632a6aaabf7fccec7d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Amplituda poziomego kołysania głowy (w jednostkach świata). Kontroluje ruch kamery w lewo i w prawo podczas chodzenia (połowa częstotliwości pionowej).  <br /></td></tr>
+<tr class="separator:aac73ed3e4439632a6aaabf7fccec7d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:a982415977695c702be44755e588a9165" id="r_a982415977695c702be44755e588a9165"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_camera_effects.html">CameraEffects</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a982415977695c702be44755e588a9165">Instance</a><code> [get, private set]</code></td></tr>
+<tr class="memdesc:a982415977695c702be44755e588a9165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statyczna instancja Singletona klasy <a class="el" href="class_camera_effects.html" title="Zestaw efektów kamery: kołysanie głowy podczas chodzenia, trzęsienie ekranu przy zdarzeniach,...">CameraEffects</a>. Umożliwia globalny dostęp do efektów kamery z dowolnego miejsca w kodzie.  <br /></td></tr>
+<tr class="separator:a982415977695c702be44755e588a9165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:a142081fd5af0eb82ce59bd1d809709c6" id="r_a142081fd5af0eb82ce59bd1d809709c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a142081fd5af0eb82ce59bd1d809709c6">Awake</a> ()</td></tr>
+<tr class="memdesc:a142081fd5af0eb82ce59bd1d809709c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton i zapamiętuje bazową pozycję lokalną kamery.  <br /></td></tr>
+<tr class="separator:a142081fd5af0eb82ce59bd1d809709c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad208ecfcf6a7a0a5edfd3af3b999e174" id="r_ad208ecfcf6a7a0a5edfd3af3b999e174"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad208ecfcf6a7a0a5edfd3af3b999e174">Start</a> ()</td></tr>
+<tr class="memdesc:ad208ecfcf6a7a0a5edfd3af3b999e174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda startowa Unity wywoływana przy pierwszej klatce. Tworzy nakładkę błyskową (flash overlay) na istniejącym Canvas.  <br /></td></tr>
+<tr class="separator:ad208ecfcf6a7a0a5edfd3af3b999e174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dff8d4620ec3292b2ab69dbc8e84ee0" id="r_a5dff8d4620ec3292b2ab69dbc8e84ee0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dff8d4620ec3292b2ab69dbc8e84ee0">LateUpdate</a> ()</td></tr>
+<tr class="memdesc:a5dff8d4620ec3292b2ab69dbc8e84ee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda Unity wywoływana po wszystkich metodach Update. Oblicza sumaryczny offset kamery z trzech źródeł (kołysanie, trzęsienie, lądowanie) i stosuje go do pozycji lokalnej. Aktualizuje także nakładkę błyskową.  <br /></td></tr>
+<tr class="separator:a5dff8d4620ec3292b2ab69dbc8e84ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab26105eeb82fba20dc9017f894bb88b" id="r_aab26105eeb82fba20dc9017f894bb88b"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab26105eeb82fba20dc9017f894bb88b">CalculateHeadBob</a> ()</td></tr>
+<tr class="memdesc:aab26105eeb82fba20dc9017f894bb88b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oblicza przesunięcie kamery wynikające z kołysania głowy podczas chodzenia. Kołysanie aktywuje się tylko gdy prędkość pozioma postaci przekracza 0.5 jednostki/s. Używa sinusoidy z różnymi częstotliwościami dla osi X (połowa) i Y.  <br /></td></tr>
+<tr class="separator:aab26105eeb82fba20dc9017f894bb88b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf67dd8036bfe9f1a47e8f87b7bea4e7" id="r_aaf67dd8036bfe9f1a47e8f87b7bea4e7"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf67dd8036bfe9f1a47e8f87b7bea4e7">CalculateShake</a> ()</td></tr>
+<tr class="memdesc:aaf67dd8036bfe9f1a47e8f87b7bea4e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oblicza przesunięcie kamery wynikające z trzęsienia ekranu. Intensywność trzęsienia maleje liniowo w czasie. Losowe przesunięcia generowane są w osiach X i Y.  <br /></td></tr>
+<tr class="separator:aaf67dd8036bfe9f1a47e8f87b7bea4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2983723f89c526010bf8ffed0c53219c" id="r_a2983723f89c526010bf8ffed0c53219c"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2983723f89c526010bf8ffed0c53219c">CalculateLandingBob</a> ()</td></tr>
+<tr class="memdesc:a2983723f89c526010bf8ffed0c53219c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oblicza przesunięcie kamery wynikające z efektu lądowania po skoku. Wykrywa moment przejścia z stanu "w powietrzu" do "na ziemi" i wyzwala krótki ruch kamery w dół (dip), symulujący wstrząs przy lądowaniu.  <br /></td></tr>
+<tr class="separator:a2983723f89c526010bf8ffed0c53219c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b05524a05123fa6b9b70ab678a4c433" id="r_a2b05524a05123fa6b9b70ab678a4c433"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b05524a05123fa6b9b70ab678a4c433">CreateFlashOverlay</a> ()</td></tr>
+<tr class="memdesc:a2b05524a05123fa6b9b70ab678a4c433"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy pełnoekranową nakładkę obrazu (Image) do efektu błysku ekranowego. Wyszukuje istniejący Canvas typu ScreenSpaceOverlay i dodaje do niego rozciągnięty na cały ekran obiekt Image z wyłączonym raycastem.  <br /></td></tr>
+<tr class="separator:a2b05524a05123fa6b9b70ab678a4c433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9fcc91bd0023975eca0f68ad00f193f" id="r_af9fcc91bd0023975eca0f68ad00f193f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9fcc91bd0023975eca0f68ad00f193f">UpdateFlashOverlay</a> ()</td></tr>
+<tr class="memdesc:af9fcc91bd0023975eca0f68ad00f193f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje przezroczystość nakładki błyskowej ekranowej. Przezroczystość maleje od 25% do 0% w trakcie trwania błysku. Po zakończeniu błysku nakładka staje się w pełni przezroczysta.  <br /></td></tr>
+<tr class="separator:af9fcc91bd0023975eca0f68ad00f193f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d177c60dac898628ba7e21e0c892b0d" id="r_a2d177c60dac898628ba7e21e0c892b0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d177c60dac898628ba7e21e0c892b0d">OnDestroy</a> ()</td></tr>
+<tr class="memdesc:a2d177c60dac898628ba7e21e0c892b0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda Unity wywoływana przy niszczeniu obiektu. Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników.  <br /></td></tr>
+<tr class="separator:a2d177c60dac898628ba7e21e0c892b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a138d7754de09bf591016cc45beb57cee" id="r_a138d7754de09bf591016cc45beb57cee"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a138d7754de09bf591016cc45beb57cee">shakeIntensity</a></td></tr>
+<tr class="memdesc:a138d7754de09bf591016cc45beb57cee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualna intensywność trzęsienia ekranu. Wartość maleje w czasie, aż trzęsienie się zakończy.  <br /></td></tr>
+<tr class="separator:a138d7754de09bf591016cc45beb57cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae81e9db0f68d75fe2486b010448d1205" id="r_ae81e9db0f68d75fe2486b010448d1205"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae81e9db0f68d75fe2486b010448d1205">shakeDuration</a></td></tr>
+<tr class="memdesc:ae81e9db0f68d75fe2486b010448d1205"><td class="mdescLeft">&#160;</td><td class="mdescRight">Całkowity czas trwania bieżącego trzęsienia ekranu (w sekundach). Używany do obliczania postępu zanikania trzęsienia.  <br /></td></tr>
+<tr class="separator:ae81e9db0f68d75fe2486b010448d1205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97cf8791e6e26e416af52a71f2eb31c0" id="r_a97cf8791e6e26e416af52a71f2eb31c0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97cf8791e6e26e416af52a71f2eb31c0">shakeTimer</a></td></tr>
+<tr class="memdesc:a97cf8791e6e26e416af52a71f2eb31c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pozostały czas bieżącego trzęsienia ekranu (w sekundach). Odliczany w każdej klatce — gdy osiągnie 0, trzęsienie się kończy.  <br /></td></tr>
+<tr class="separator:a97cf8791e6e26e416af52a71f2eb31c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e82c8c3bd7599f32ffa4902a14339c1" id="r_a7e82c8c3bd7599f32ffa4902a14339c1"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e82c8c3bd7599f32ffa4902a14339c1">flashOverlay</a></td></tr>
+<tr class="memdesc:a7e82c8c3bd7599f32ffa4902a14339c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Referencja do komponentu Image używanego jako pełnoekranowa nakładka błyskowa. Tworzona dynamicznie w metodzie <a class="el" href="#a2b05524a05123fa6b9b70ab678a4c433" title="Tworzy pełnoekranową nakładkę obrazu (Image) do efektu błysku ekranowego. Wyszukuje istniejący Canvas...">CreateFlashOverlay</a>.  <br /></td></tr>
+<tr class="separator:a7e82c8c3bd7599f32ffa4902a14339c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad09d32a8a1b6d71d9f518ad74cf030bb" id="r_ad09d32a8a1b6d71d9f518ad74cf030bb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad09d32a8a1b6d71d9f518ad74cf030bb">flashTimer</a></td></tr>
+<tr class="memdesc:ad09d32a8a1b6d71d9f518ad74cf030bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pozostały czas wyświetlania bieżącego błysku ekranowego (w sekundach).  <br /></td></tr>
+<tr class="separator:ad09d32a8a1b6d71d9f518ad74cf030bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9e205c2d1781dd384e292fb803a6516" id="r_ac9e205c2d1781dd384e292fb803a6516"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9e205c2d1781dd384e292fb803a6516">flashDuration</a></td></tr>
+<tr class="memdesc:ac9e205c2d1781dd384e292fb803a6516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Całkowity czas trwania bieżącego błysku ekranowego (w sekundach).  <br /></td></tr>
+<tr class="separator:ac9e205c2d1781dd384e292fb803a6516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0284d39fdbe2d48b71506adef5b8e586" id="r_a0284d39fdbe2d48b71506adef5b8e586"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0284d39fdbe2d48b71506adef5b8e586">flashColor</a></td></tr>
+<tr class="memdesc:a0284d39fdbe2d48b71506adef5b8e586"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor bieżącego błysku ekranowego (np. zielony = sukces, czerwony = porażka).  <br /></td></tr>
+<tr class="separator:a0284d39fdbe2d48b71506adef5b8e586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3d78343b596c7985663d47ffaf1fdc5" id="r_ad3d78343b596c7985663d47ffaf1fdc5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3d78343b596c7985663d47ffaf1fdc5">wasGrounded</a> = true</td></tr>
+<tr class="memdesc:ad3d78343b596c7985663d47ffaf1fdc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flaga określająca, czy gracz stał na ziemi w poprzedniej klatce. Używana do wykrywania momentu lądowania po skoku.  <br /></td></tr>
+<tr class="separator:ad3d78343b596c7985663d47ffaf1fdc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3451ee0829222f60f1232c23b9bd9294" id="r_a3451ee0829222f60f1232c23b9bd9294"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3451ee0829222f60f1232c23b9bd9294">landingBobTimer</a></td></tr>
+<tr class="memdesc:a3451ee0829222f60f1232c23b9bd9294"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pozostały czas animacji efektu lądowania (w sekundach). Ustawiany na 0.2s po wykryciu lądowania.  <br /></td></tr>
+<tr class="separator:a3451ee0829222f60f1232c23b9bd9294"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af998fbeda73b8595145233df470240f5" id="r_af998fbeda73b8595145233df470240f5"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af998fbeda73b8595145233df470240f5">baseLocalPosition</a></td></tr>
+<tr class="memdesc:af998fbeda73b8595145233df470240f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bazowa pozycja lokalna kamery zapamiętana przy inicjalizacji. Wszystkie efekty kamery są stosowane jako offset od tej pozycji.  <br /></td></tr>
+<tr class="separator:af998fbeda73b8595145233df470240f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5490b7f4c9a7060a119d4e6de1ebba52" id="r_a5490b7f4c9a7060a119d4e6de1ebba52"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5490b7f4c9a7060a119d4e6de1ebba52">bobTimer</a></td></tr>
+<tr class="memdesc:a5490b7f4c9a7060a119d4e6de1ebba52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Akumulator czasu kołysania głowy (fazy sinusoidy). Rośnie proporcjonalnie do czasu i częstotliwości kołysania.  <br /></td></tr>
+<tr class="separator:a5490b7f4c9a7060a119d4e6de1ebba52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add0e9b75f6dceb1a4eb605c7eafb337c" id="r_add0e9b75f6dceb1a4eb605c7eafb337c"><td class="memItemLeft" align="right" valign="top">CharacterController&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add0e9b75f6dceb1a4eb605c7eafb337c">trackedController</a></td></tr>
+<tr class="memdesc:add0e9b75f6dceb1a4eb605c7eafb337c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Referencja do śledzionego kontrolera postaci gracza. Używana do odczytu prędkości ruchu i stanu przyziemienia.  <br /></td></tr>
+<tr class="separator:add0e9b75f6dceb1a4eb605c7eafb337c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Zestaw efektów kamery: kołysanie głowy podczas chodzenia, trzęsienie ekranu przy zdarzeniach, kolorowa nakładka błyskowa na ekranie oraz efekt lądowania po skoku. Dołączyć do obiektu kamery gracza. </p>
+<p>Klasa implementuje wzorzec Singleton. Efekty obliczane są w LateUpdate, aby nadpisać ewentualne wcześniejsze zmiany pozycji kamery. Wszystkie przesunięcia (bob, shake, landing) są sumowane i stosowane jako offset od bazowej pozycji lokalnej kamery. Nakładka błyskowa (flash overlay) tworzona jest dynamicznie na istniejącym Canvas ScreenSpaceOverlay. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a142081fd5af0eb82ce59bd1d809709c6" name="a142081fd5af0eb82ce59bd1d809709c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a142081fd5af0eb82ce59bd1d809709c6">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraEffects.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton i zapamiętuje bazową pozycję lokalną kamery. </p>
+
+</div>
+</div>
+<a id="aab26105eeb82fba20dc9017f894bb88b" name="aab26105eeb82fba20dc9017f894bb88b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab26105eeb82fba20dc9017f894bb88b">&#9670;&#160;</a></span>CalculateHeadBob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 CameraEffects.CalculateHeadBob </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oblicza przesunięcie kamery wynikające z kołysania głowy podczas chodzenia. Kołysanie aktywuje się tylko gdy prędkość pozioma postaci przekracza 0.5 jednostki/s. Używa sinusoidy z różnymi częstotliwościami dla osi X (połowa) i Y. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wektor przesunięcia kamery w osiach X i Y (Z zawsze 0).</dd></dl>
+
+</div>
+</div>
+<a id="a2983723f89c526010bf8ffed0c53219c" name="a2983723f89c526010bf8ffed0c53219c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2983723f89c526010bf8ffed0c53219c">&#9670;&#160;</a></span>CalculateLandingBob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 CameraEffects.CalculateLandingBob </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oblicza przesunięcie kamery wynikające z efektu lądowania po skoku. Wykrywa moment przejścia z stanu "w powietrzu" do "na ziemi" i wyzwala krótki ruch kamery w dół (dip), symulujący wstrząs przy lądowaniu. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wektor przesunięcia kamery w dół (oś Y), zanikający sinusoidalnie w ciągu 0.2s.</dd></dl>
+
+</div>
+</div>
+<a id="aaf67dd8036bfe9f1a47e8f87b7bea4e7" name="aaf67dd8036bfe9f1a47e8f87b7bea4e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf67dd8036bfe9f1a47e8f87b7bea4e7">&#9670;&#160;</a></span>CalculateShake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 CameraEffects.CalculateShake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oblicza przesunięcie kamery wynikające z trzęsienia ekranu. Intensywność trzęsienia maleje liniowo w czasie. Losowe przesunięcia generowane są w osiach X i Y. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wektor losowego przesunięcia kamery z zanikającą intensywnością.</dd></dl>
+
+</div>
+</div>
+<a id="a2b05524a05123fa6b9b70ab678a4c433" name="a2b05524a05123fa6b9b70ab678a4c433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b05524a05123fa6b9b70ab678a4c433">&#9670;&#160;</a></span>CreateFlashOverlay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraEffects.CreateFlashOverlay </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy pełnoekranową nakładkę obrazu (Image) do efektu błysku ekranowego. Wyszukuje istniejący Canvas typu ScreenSpaceOverlay i dodaje do niego rozciągnięty na cały ekran obiekt Image z wyłączonym raycastem. </p>
+<p>Jeśli nie zostanie znaleziony odpowiedni Canvas, metoda kończy się bez tworzenia nakładki i efekty błysku ekranowego nie będą działać. </p>
+
+</div>
+</div>
+<a id="a30856863e61ad34ac84a0ea3402d6f31" name="a30856863e61ad34ac84a0ea3402d6f31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30856863e61ad34ac84a0ea3402d6f31">&#9670;&#160;</a></span>FlashScreen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraEffects.FlashScreen </td>
+          <td>(</td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>duration</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0::3f</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyzwala błysk ekranu z podanym kolorem nakładki. Zielony = sukces dostarczenia, czerwony = porażka. Nakładka stopniowo zanika od przezroczystości 25% do pełnej przezroczystości. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">color</td><td>Kolor błysku ekranowego.</td></tr>
+    <tr><td class="paramname">duration</td><td>Czas trwania błysku w sekundach (domyślnie 0.3s).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5dff8d4620ec3292b2ab69dbc8e84ee0" name="a5dff8d4620ec3292b2ab69dbc8e84ee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dff8d4620ec3292b2ab69dbc8e84ee0">&#9670;&#160;</a></span>LateUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraEffects.LateUpdate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda Unity wywoływana po wszystkich metodach Update. Oblicza sumaryczny offset kamery z trzech źródeł (kołysanie, trzęsienie, lądowanie) i stosuje go do pozycji lokalnej. Aktualizuje także nakładkę błyskową. </p>
+
+</div>
+</div>
+<a id="a2d177c60dac898628ba7e21e0c892b0d" name="a2d177c60dac898628ba7e21e0c892b0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d177c60dac898628ba7e21e0c892b0d">&#9670;&#160;</a></span>OnDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraEffects.OnDestroy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda Unity wywoływana przy niszczeniu obiektu. Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników. </p>
+
+</div>
+</div>
+<a id="a74143abbcb5faf73e5fd1dcd098c79c5" name="a74143abbcb5faf73e5fd1dcd098c79c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74143abbcb5faf73e5fd1dcd098c79c5">&#9670;&#160;</a></span>SetTrackedController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraEffects.SetTrackedController </td>
+          <td>(</td>
+          <td class="paramtype">CharacterController</td>          <td class="paramname"><span class="paramname"><em>controller</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia śledzony kontroler postaci, z którego odczytywane są dane ruchu. Wywoływać z klasy <a class="el" href="class_simple_player_controller.html" title="Prosty kontroler ruchu gracza w trybie pierwszoosobowym. Obsługuje poruszanie się postaci za pomocą k...">SimplePlayerController</a>, aby dostarczyć dane o prędkości i stanie gracza. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Kontroler postaci gracza do śledzenia.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afc6d0a34f64bc93fc461796067cabd10" name="afc6d0a34f64bc93fc461796067cabd10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc6d0a34f64bc93fc461796067cabd10">&#9670;&#160;</a></span>ShakeCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraEffects.ShakeCamera </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>intensity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>duration</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyzwala efekt trzęsienia ekranu o podanej intensywności i czasie trwania. Przydatne przy zdarzeniach takich jak dostarczenie zamówienia lub krojenie składnika. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">intensity</td><td>Maksymalna intensywność trzęsienia (amplituda losowego przesunięcia).</td></tr>
+    <tr><td class="paramname">duration</td><td>Czas trwania trzęsienia w sekundach (intensywność zanika liniowo).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad208ecfcf6a7a0a5edfd3af3b999e174" name="ad208ecfcf6a7a0a5edfd3af3b999e174"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad208ecfcf6a7a0a5edfd3af3b999e174">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraEffects.Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda startowa Unity wywoływana przy pierwszej klatce. Tworzy nakładkę błyskową (flash overlay) na istniejącym Canvas. </p>
+
+</div>
+</div>
+<a id="af9fcc91bd0023975eca0f68ad00f193f" name="af9fcc91bd0023975eca0f68ad00f193f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9fcc91bd0023975eca0f68ad00f193f">&#9670;&#160;</a></span>UpdateFlashOverlay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraEffects.UpdateFlashOverlay </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizuje przezroczystość nakładki błyskowej ekranowej. Przezroczystość maleje od 25% do 0% w trakcie trwania błysku. Po zakończeniu błysku nakładka staje się w pełni przezroczysta. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="af998fbeda73b8595145233df470240f5" name="af998fbeda73b8595145233df470240f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af998fbeda73b8595145233df470240f5">&#9670;&#160;</a></span>baseLocalPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 CameraEffects.baseLocalPosition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bazowa pozycja lokalna kamery zapamiętana przy inicjalizacji. Wszystkie efekty kamery są stosowane jako offset od tej pozycji. </p>
+
+</div>
+</div>
+<a id="aac73ed3e4439632a6aaabf7fccec7d86" name="aac73ed3e4439632a6aaabf7fccec7d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac73ed3e4439632a6aaabf7fccec7d86">&#9670;&#160;</a></span>bobAmplitudeX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CameraEffects.bobAmplitudeX = 0.015f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Amplituda poziomego kołysania głowy (w jednostkach świata). Kontroluje ruch kamery w lewo i w prawo podczas chodzenia (połowa częstotliwości pionowej). </p>
+
+</div>
+</div>
+<a id="a68696409901f0d0315c5e4fcb14c4211" name="a68696409901f0d0315c5e4fcb14c4211"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68696409901f0d0315c5e4fcb14c4211">&#9670;&#160;</a></span>bobAmplitudeY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CameraEffects.bobAmplitudeY = 0.035f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Amplituda pionowego kołysania głowy (w jednostkach świata). Kontroluje wysokość ruchu kamery w górę i w dół podczas chodzenia. </p>
+
+</div>
+</div>
+<a id="a9ee043e4205746452adffec88fec799e" name="a9ee043e4205746452adffec88fec799e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee043e4205746452adffec88fec799e">&#9670;&#160;</a></span>bobFrequency</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CameraEffects.bobFrequency = 8f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Częstotliwość kołysania głowy podczas chodzenia (w Hz). Wyższe wartości powodują szybsze kołysanie. </p>
+
+</div>
+</div>
+<a id="a5490b7f4c9a7060a119d4e6de1ebba52" name="a5490b7f4c9a7060a119d4e6de1ebba52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5490b7f4c9a7060a119d4e6de1ebba52">&#9670;&#160;</a></span>bobTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CameraEffects.bobTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Akumulator czasu kołysania głowy (fazy sinusoidy). Rośnie proporcjonalnie do czasu i częstotliwości kołysania. </p>
+
+</div>
+</div>
+<a id="a0284d39fdbe2d48b71506adef5b8e586" name="a0284d39fdbe2d48b71506adef5b8e586"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0284d39fdbe2d48b71506adef5b8e586">&#9670;&#160;</a></span>flashColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color CameraEffects.flashColor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor bieżącego błysku ekranowego (np. zielony = sukces, czerwony = porażka). </p>
+
+</div>
+</div>
+<a id="ac9e205c2d1781dd384e292fb803a6516" name="ac9e205c2d1781dd384e292fb803a6516"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9e205c2d1781dd384e292fb803a6516">&#9670;&#160;</a></span>flashDuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CameraEffects.flashDuration</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Całkowity czas trwania bieżącego błysku ekranowego (w sekundach). </p>
+
+</div>
+</div>
+<a id="a7e82c8c3bd7599f32ffa4902a14339c1" name="a7e82c8c3bd7599f32ffa4902a14339c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e82c8c3bd7599f32ffa4902a14339c1">&#9670;&#160;</a></span>flashOverlay</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image CameraEffects.flashOverlay</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Referencja do komponentu Image używanego jako pełnoekranowa nakładka błyskowa. Tworzona dynamicznie w metodzie <a class="el" href="#a2b05524a05123fa6b9b70ab678a4c433" title="Tworzy pełnoekranową nakładkę obrazu (Image) do efektu błysku ekranowego. Wyszukuje istniejący Canvas...">CreateFlashOverlay</a>. </p>
+
+</div>
+</div>
+<a id="ad09d32a8a1b6d71d9f518ad74cf030bb" name="ad09d32a8a1b6d71d9f518ad74cf030bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad09d32a8a1b6d71d9f518ad74cf030bb">&#9670;&#160;</a></span>flashTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CameraEffects.flashTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pozostały czas wyświetlania bieżącego błysku ekranowego (w sekundach). </p>
+
+</div>
+</div>
+<a id="a3451ee0829222f60f1232c23b9bd9294" name="a3451ee0829222f60f1232c23b9bd9294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3451ee0829222f60f1232c23b9bd9294">&#9670;&#160;</a></span>landingBobTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CameraEffects.landingBobTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pozostały czas animacji efektu lądowania (w sekundach). Ustawiany na 0.2s po wykryciu lądowania. </p>
+
+</div>
+</div>
+<a id="ae81e9db0f68d75fe2486b010448d1205" name="ae81e9db0f68d75fe2486b010448d1205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae81e9db0f68d75fe2486b010448d1205">&#9670;&#160;</a></span>shakeDuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CameraEffects.shakeDuration</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Całkowity czas trwania bieżącego trzęsienia ekranu (w sekundach). Używany do obliczania postępu zanikania trzęsienia. </p>
+
+</div>
+</div>
+<a id="a138d7754de09bf591016cc45beb57cee" name="a138d7754de09bf591016cc45beb57cee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a138d7754de09bf591016cc45beb57cee">&#9670;&#160;</a></span>shakeIntensity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CameraEffects.shakeIntensity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualna intensywność trzęsienia ekranu. Wartość maleje w czasie, aż trzęsienie się zakończy. </p>
+
+</div>
+</div>
+<a id="a97cf8791e6e26e416af52a71f2eb31c0" name="a97cf8791e6e26e416af52a71f2eb31c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97cf8791e6e26e416af52a71f2eb31c0">&#9670;&#160;</a></span>shakeTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CameraEffects.shakeTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pozostały czas bieżącego trzęsienia ekranu (w sekundach). Odliczany w każdej klatce — gdy osiągnie 0, trzęsienie się kończy. </p>
+
+</div>
+</div>
+<a id="add0e9b75f6dceb1a4eb605c7eafb337c" name="add0e9b75f6dceb1a4eb605c7eafb337c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add0e9b75f6dceb1a4eb605c7eafb337c">&#9670;&#160;</a></span>trackedController</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CharacterController CameraEffects.trackedController</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Referencja do śledzionego kontrolera postaci gracza. Używana do odczytu prędkości ruchu i stanu przyziemienia. </p>
+
+</div>
+</div>
+<a id="ad3d78343b596c7985663d47ffaf1fdc5" name="ad3d78343b596c7985663d47ffaf1fdc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3d78343b596c7985663d47ffaf1fdc5">&#9670;&#160;</a></span>wasGrounded</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CameraEffects.wasGrounded = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flaga określająca, czy gracz stał na ziemi w poprzedniej klatce. Używana do wykrywania momentu lądowania po skoku. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="a982415977695c702be44755e588a9165" name="a982415977695c702be44755e588a9165"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a982415977695c702be44755e588a9165">&#9670;&#160;</a></span>Instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_camera_effects.html">CameraEffects</a> CameraEffects.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Statyczna instancja Singletona klasy <a class="el" href="class_camera_effects.html" title="Zestaw efektów kamery: kołysanie głowy podczas chodzenia, trzęsienie ekranu przy zdarzeniach,...">CameraEffects</a>. Umożliwia globalny dostęp do efektów kamery z dowolnego miejsca w kodzie. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/Effects/<a class="el" href="_camera_effects_8cs.html">CameraEffects.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

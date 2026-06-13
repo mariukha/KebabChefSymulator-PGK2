@@ -1,0 +1,571 @@
+\doxysection{Dokumentacja klasy Kitchen\+Game\+Tests}
+\hypertarget{class_kitchen_game_tests}{}\label{class_kitchen_game_tests}\index{KitchenGameTests@{KitchenGameTests}}
+
+
+Klasa testów jednostkowych Edit\+Mode dla systemu kuchni w grze Kebab Chef Symulator.  
+
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a9c152111db7586a9fbd1a25db1c8098f}{Validator\+Accepts\+Dish\+With\+Exact\+Ingredients}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że walidator akceptuje danie zawierające dokładnie wymagane składniki. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_af5912ae3ea2d43fd5a88a42d582b9160}{Validator\+Rejects\+Wrong\+Preparation\+State}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że walidator odrzuca danie ze składnikiem w nieprawidłowym stanie przygotowania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_aafc3e0458bc7423098949e423ea9e914}{Save\+Data\+Round\+Trip\+Preserves\+Progress}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że dane zapisu gry zachowują postęp po serializacji i deserializacji JSON. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_ad38e701f6a365c4a1c870486732ee97a}{Shop\+Save\+Data\+Round\+Trip\+Preserves\+Upgrades}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że dane zapisu sklepu zachowują informacje o ulepszeniach po serializacji i deserializacji. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a6d4d6fc96c1f9eb7cc5fd00aad4cbcd8}{Game\+Save\+Data\+Includes\+Shop\+Field}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że obiekt {\ttfamily \doxylink{class_game_save_data}{Game\+Save\+Data}} zawiera pole sklepu z poprawną inicjalizacją. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a83b08378de196c3f5669fdf77e12b816}{Upgrade\+Definition\+Cost\+Scales\+Correctly}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że koszt ulepszenia skaluje się poprawnie według wzoru wykładniczego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a1f224e9573ec28c1274bcaeca33800b5}{Upgrade\+Type\+Enum\+Has\+Five\+Values}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że typ wyliczeniowy {\ttfamily Upgrade\+Type} posiada dokładnie pięć wartości. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a3337a26337af090c6bfbfdcdc7acfdbd}{Shop\+Upgrade\+Cost\+Scales\+Exponentially}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że koszt ulepszenia w sklepie skaluje się wykładniczo z niestandardowym współczynnikiem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a57b97b868961972a9ab0ad6898aaecb3}{Shop\+Effect\+Description\+Returns\+Correct\+Text}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że opis efektu ulepszenia w sklepie zwraca poprawny tekst. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a1bc575513900321dab8108ec88f92644}{Shop\+Max\+Level\+Blocks\+Further\+Upgrade\+Check}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że osiągnięcie maksymalnego poziomu ulepszenia blokuje dalsze ulepszanie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a1c4bf33be48b71652a7b8b74b20bc184}{Economy\+Save\+Data\+Round\+Trip}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje poprawność cyklu serializacji i deserializacji danych ekonomicznych. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a6a3d4471a78fb0a6775c68940ccb1fc3}{Network\+Item\+State\+Empty\+Round\+Trip}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że pusty stan elementu sieciowego poprawnie przechodzi cykl serializacji. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_ae3f6ac7adcb2e0925b742f7217172c94}{Network\+Item\+State\+Dish\+Round\+Trip}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje poprawność konwersji dania do stanu sieciowego i z powrotem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_ac31c8aaa8e7dcc83aaadd188a563c8e4}{Validator\+Rejects\+Extra\+Ingredients}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że walidator odrzuca danie zawierające nadmiarowe składniki. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_ac3e2edda4d51269eef16fdbe41d2c2d2}{Validator\+Rejects\+Non\+Dish\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że walidator odrzuca element kuchenny, który nie jest daniem (nie jest złożony). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a55f4b8784b1416852e03317b1751bc8c}{Order\+Clone\+Preserves\+All\+Fields}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że klonowanie zamówienia zachowuje wszystkie pola i tworzy głęboką kopię. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a55fbd2ad0747419bb28f02ed00894897}{Kitchen\+Item\+From\+Ingredient\+Creates\+Correct\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że metoda {\ttfamily \doxylink{class_kitchen_item_aac748ff8356cf60147db8b6159e4e235}{Kitchen\+Item.\+From\+Ingredient}} poprawnie obsługuje wartość null. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a15a8fc06196d59d8d786bb3c7ef16653}{Kitchen\+Item\+Clone\+Preserves\+Contents}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że klonowanie obiektu {\ttfamily \doxylink{class_kitchen_item}{Kitchen\+Item}} zachowuje zawartość dania i tworzy głęboką kopię. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a8a7c44d6f99e765aa69363ae42881fcc}{Dish\+Build\+Summary\+Lists\+All\+Ingredients}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że podsumowanie dania zawiera listę wszystkich składników. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a92f33b8baa7ffea24c0d1dae5ed5f654}{Raw\+Ingredient\+Build\+Summary\+Shows\+State}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że podsumowanie surowego składnika wyświetla jego stan przetworzenia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a9103f156cc0d63aea9361ada734ed677}{Validator\+Accepts\+Complete\+Classic\+Kebab}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje pełną integrację walidatora dla kompletnego klasycznego kebaba. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_acf96b1b84f0ed3c30cec82881ae6787b}{Validator\+Rejects\+Missing\+Ingredient}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że walidator odrzuca danie z brakującym wymaganym składnikiem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a69046510a85b47268871f75b348ca7a8}{Validator\+Rejects\+Double\+Quantity\+When\+Single\+Required}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że walidator odrzuca danie z podwójną ilością składnika, gdy wymagana jest pojedyncza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_ad0bd2ed8c9f19061743e976f5e7bdb50}{Kitchen\+Naming\+Returns\+Polish\+Labels}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że klasa {\ttfamily \doxylink{class_kitchen_naming}{Kitchen\+Naming}} zwraca poprawne polskie etykiety składników i stanów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a078134614b925b18e81a9646b5871310}{Ingredient\+Requirement\+Display\+String\+Contains\+Name\+And\+State}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że ciąg wyświetlania wymagania składnika zawiera nazwę i stan przetworzenia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_aa3347bafe7412a4e7b7fddf2aa3cae90}{Ingredient\+Requirement\+Quantity\+Shows\+Multiplier}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że wymaganie składnika z ilością większą niż 1 wyświetla mnożnik. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_ab43925f374e957cec089a5dab40089c3}{Order\+Build\+Description\+Contains\+Client\+And\+Dish\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że opis zamówienia zawiera imię klienta oraz nazwę dania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a78e77d8b6ec35bf18645ade469e2061b}{Prepared\+Ingredient\+Display\+String\+Correct}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że ciąg wyświetlania przygotowanego składnika jest poprawny. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_af205d0214509b24616d79d082d5d70a8}{Kitchen\+Station\+Type\+Enum\+Has\+Five\+Values}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że typ wyliczeniowy {\ttfamily Kitchen\+Station\+Type} posiada dokładnie pięć wartości. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_a2e294fcddbf1d120e33d435ab227038f}{Ingredient\+Kind\+Enum\+Has\+Seven\+Values}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że typ wyliczeniowy {\ttfamily Ingredient\+Kind} posiada dokładnie siedem wartości. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_tests_adbf7df253bfb3b1144ac879340d0cab9}{Process\+State\+Enum\+Has\+Four\+Values}} ()
+\begin{DoxyCompactList}\small\item\em Weryfikuje, że typ wyliczeniowy {\ttfamily Ingredient\+Process\+State} posiada dokładnie cztery wartości. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static object \mbox{\hyperlink{class_kitchen_game_tests_aecca01f7d8502ffaaf0dc0cdbde68727}{Create\+Dish}} (params object\mbox{[}$\,$\mbox{]} ingredients)
+\begin{DoxyCompactList}\small\item\em Tworzy obiekt dania (\doxylink{class_kitchen_item}{Kitchen\+Item}) z podanymi przygotowanymi składnikami. \end{DoxyCompactList}\item 
+static object \mbox{\hyperlink{class_kitchen_game_tests_aed56087ac492dd6095766bb99c064fb3}{Create\+Ingredient\+Requirement}} (string ingredient\+Kind, string process\+State, int quantity=1)
+\begin{DoxyCompactList}\small\item\em Tworzy obiekt wymagania składnika z określonym typem, stanem i ilością. \end{DoxyCompactList}\item 
+static object \mbox{\hyperlink{class_kitchen_game_tests_a3cda6e348e580508b9299335dbacec4e}{Create\+Prepared\+Ingredient}} (string ingredient\+Kind, string process\+State)
+\begin{DoxyCompactList}\small\item\em Tworzy obiekt przygotowanego składnika z określonym typem i stanem przetworzenia. \end{DoxyCompactList}\item 
+static object \mbox{\hyperlink{class_kitchen_game_tests_a8b95514322889f1999cf4eef5b562926}{Parse\+Enum}} (string type\+Name, string value)
+\begin{DoxyCompactList}\small\item\em Parsuje wartość tekstową na odpowiadający jej element typu wyliczeniowego. \end{DoxyCompactList}\item 
+static object \mbox{\hyperlink{class_kitchen_game_tests_ad025d1cb912ed52a1f61a133a8d1939c}{Create}} (string type\+Name)
+\begin{DoxyCompactList}\small\item\em Tworzy nową instancję typu o podanej nazwie z assembly głównego projektu. \end{DoxyCompactList}\item 
+static object \mbox{\hyperlink{class_kitchen_game_tests_a4ee117789ca30a323ea4cbb2071c968f}{Get\+Field}} (object instance, string field\+Name)
+\begin{DoxyCompactList}\small\item\em Pobiera wartość pola publicznego z podanej instancji obiektu za pomocą refleksji. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_kitchen_game_tests_a7b9d40e40e13ab55a06b65938ae5cac7}{Set\+Field}} (object instance, string field\+Name, object value)
+\begin{DoxyCompactList}\small\item\em Ustawia wartość pola publicznego w podanej instancji obiektu za pomocą refleksji. \end{DoxyCompactList}\item 
+static Type \mbox{\hyperlink{class_kitchen_game_tests_a156b35057c9d6f90757cff3e0debc93a}{Get\+Type\+By\+Name}} (string type\+Name)
+\begin{DoxyCompactList}\small\item\em Wyszukuje i zwraca typ o podanej nazwie z assembly {\ttfamily Assembly-\/\+CSharp}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa testów jednostkowych Edit\+Mode dla systemu kuchni w grze Kebab Chef Symulator. 
+
+Testy wykorzystują refleksję do dynamicznego tworzenia i manipulowania obiektami z głównego assembly gry (Assembly-\/\+CSharp). Dzięki temu testy mogą weryfikować logikę biznesową bez bezpośredniej zależności kompilacyjnej od testowanych typów. Klasa zawiera testy walidatora zamówień, serializacji danych zapisu, systemu ulepszeń, nazewnictwa po polsku oraz integralności typów wyliczeniowych. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_kitchen_game_tests_ad025d1cb912ed52a1f61a133a8d1939c}\index{KitchenGameTests@{KitchenGameTests}!Create@{Create}}
+\index{Create@{Create}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_ad025d1cb912ed52a1f61a133a8d1939c} 
+static object Kitchen\+Game\+Tests.\+Create (\begin{DoxyParamCaption}\item[{string}]{type\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Tworzy nową instancję typu o podanej nazwie z assembly głównego projektu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type\+Name} & Nazwa typu do utworzenia (np. "{}\+Order"{}, "{}\+Kitchen\+Item"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Nowo utworzona instancja podanego typu.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_tests_aecca01f7d8502ffaaf0dc0cdbde68727}\index{KitchenGameTests@{KitchenGameTests}!CreateDish@{CreateDish}}
+\index{CreateDish@{CreateDish}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{CreateDish()}{CreateDish()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_aecca01f7d8502ffaaf0dc0cdbde68727} 
+static object Kitchen\+Game\+Tests.\+Create\+Dish (\begin{DoxyParamCaption}\item[{params object\mbox{[}$\,$\mbox{]}}]{ingredients}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Tworzy obiekt dania (\doxylink{class_kitchen_item}{Kitchen\+Item}) z podanymi przygotowanymi składnikami. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ingredients} & Tablica przygotowanych składników do umieszczenia w daniu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Obiekt dania typu {\ttfamily \doxylink{class_kitchen_item}{Kitchen\+Item}} z flagą {\ttfamily is\+Dish} ustawioną na {\ttfamily true}, typem składnika Kebab, stanem Assembled i podanymi składnikami w polu {\ttfamily contents}.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_tests_aed56087ac492dd6095766bb99c064fb3}\index{KitchenGameTests@{KitchenGameTests}!CreateIngredientRequirement@{CreateIngredientRequirement}}
+\index{CreateIngredientRequirement@{CreateIngredientRequirement}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{CreateIngredientRequirement()}{CreateIngredientRequirement()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_aed56087ac492dd6095766bb99c064fb3} 
+static object Kitchen\+Game\+Tests.\+Create\+Ingredient\+Requirement (\begin{DoxyParamCaption}\item[{string}]{ingredient\+Kind}{, }\item[{string}]{process\+State}{, }\item[{int}]{quantity}{ = {\ttfamily 1}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Tworzy obiekt wymagania składnika z określonym typem, stanem i ilością. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ingredient\+Kind} & Nazwa typu składnika (np. "{}\+Meat"{}, "{}\+Tomato"{}).\\
+\hline
+{\em process\+State} & Nazwa wymaganego stanu przetworzenia (np. "{}\+Cooked"{}, "{}\+Chopped"{}).\\
+\hline
+{\em quantity} & Wymagana ilość składnika. Domyślnie 1.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Obiekt {\ttfamily \doxylink{class_ingredient_requirement}{Ingredient\+Requirement}} z ustawionymi polami typu, stanu i ilości.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_tests_a3cda6e348e580508b9299335dbacec4e}\index{KitchenGameTests@{KitchenGameTests}!CreatePreparedIngredient@{CreatePreparedIngredient}}
+\index{CreatePreparedIngredient@{CreatePreparedIngredient}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{CreatePreparedIngredient()}{CreatePreparedIngredient()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a3cda6e348e580508b9299335dbacec4e} 
+static object Kitchen\+Game\+Tests.\+Create\+Prepared\+Ingredient (\begin{DoxyParamCaption}\item[{string}]{ingredient\+Kind}{, }\item[{string}]{process\+State}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Tworzy obiekt przygotowanego składnika z określonym typem i stanem przetworzenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ingredient\+Kind} & Nazwa typu składnika (np. "{}\+Meat"{}, "{}\+Lavash"{}).\\
+\hline
+{\em process\+State} & Nazwa stanu przetworzenia (np. "{}\+Raw"{}, "{}\+Cooked"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Obiekt {\ttfamily \doxylink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}} z ustawionymi polami typu i stanu.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_tests_a8a7c44d6f99e765aa69363ae42881fcc}\index{KitchenGameTests@{KitchenGameTests}!DishBuildSummaryListsAllIngredients@{DishBuildSummaryListsAllIngredients}}
+\index{DishBuildSummaryListsAllIngredients@{DishBuildSummaryListsAllIngredients}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{DishBuildSummaryListsAllIngredients()}{DishBuildSummaryListsAllIngredients()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a8a7c44d6f99e765aa69363ae42881fcc} 
+void Kitchen\+Game\+Tests.\+Dish\+Build\+Summary\+Lists\+All\+Ingredients (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że podsumowanie dania zawiera listę wszystkich składników. 
+
+Tworzy danie z nazwą "{}\+Kebab testowy"{} zawierające Lavash i mięso. Sprawdza, czy metoda {\ttfamily Build\+Summary} zwraca tekst zawierający nazwę dania oraz polskie nazwy składników ("{}\+Lawasz"{}, "{}\+Mieso"{}). \Hypertarget{class_kitchen_game_tests_a1c4bf33be48b71652a7b8b74b20bc184}\index{KitchenGameTests@{KitchenGameTests}!EconomySaveDataRoundTrip@{EconomySaveDataRoundTrip}}
+\index{EconomySaveDataRoundTrip@{EconomySaveDataRoundTrip}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{EconomySaveDataRoundTrip()}{EconomySaveDataRoundTrip()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a1c4bf33be48b71652a7b8b74b20bc184} 
+void Kitchen\+Game\+Tests.\+Economy\+Save\+Data\+Round\+Trip (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje poprawność cyklu serializacji i deserializacji danych ekonomicznych. 
+
+Tworzy obiekt {\ttfamily \doxylink{class_economy_save_data}{Economy\+Save\+Data}} z ustawionym saldem (999.\+5), łącznymi zarobkami (1500) oraz łącznymi wydatkami (500.\+5). Po serializacji JSON i deserializacji sprawdza, czy wszystkie wartości zmiennoprzecinkowe zostały zachowane z dokładnością do 0.\+01. \Hypertarget{class_kitchen_game_tests_a6d4d6fc96c1f9eb7cc5fd00aad4cbcd8}\index{KitchenGameTests@{KitchenGameTests}!GameSaveDataIncludesShopField@{GameSaveDataIncludesShopField}}
+\index{GameSaveDataIncludesShopField@{GameSaveDataIncludesShopField}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{GameSaveDataIncludesShopField()}{GameSaveDataIncludesShopField()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a6d4d6fc96c1f9eb7cc5fd00aad4cbcd8} 
+void Kitchen\+Game\+Tests.\+Game\+Save\+Data\+Includes\+Shop\+Field (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że obiekt {\ttfamily \doxylink{class_game_save_data}{Game\+Save\+Data}} zawiera pole sklepu z poprawną inicjalizacją. 
+
+Sprawdza, czy nowo utworzony obiekt {\ttfamily \doxylink{class_game_save_data}{Game\+Save\+Data}} posiada niezerowe pole {\ttfamily shop} z pustą listą poziomów ulepszeń ({\ttfamily upgrade\+Levels}). \Hypertarget{class_kitchen_game_tests_a4ee117789ca30a323ea4cbb2071c968f}\index{KitchenGameTests@{KitchenGameTests}!GetField@{GetField}}
+\index{GetField@{GetField}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{GetField()}{GetField()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a4ee117789ca30a323ea4cbb2071c968f} 
+static object Kitchen\+Game\+Tests.\+Get\+Field (\begin{DoxyParamCaption}\item[{object}]{instance}{, }\item[{string}]{field\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Pobiera wartość pola publicznego z podanej instancji obiektu za pomocą refleksji. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em instance} & Instancja obiektu, z której pobieramy wartość pola.\\
+\hline
+{\em field\+Name} & Nazwa pola do odczytania.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Wartość pola jako {\ttfamily object}.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_tests_a156b35057c9d6f90757cff3e0debc93a}\index{KitchenGameTests@{KitchenGameTests}!GetTypeByName@{GetTypeByName}}
+\index{GetTypeByName@{GetTypeByName}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{GetTypeByName()}{GetTypeByName()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a156b35057c9d6f90757cff3e0debc93a} 
+static Type Kitchen\+Game\+Tests.\+Get\+Type\+By\+Name (\begin{DoxyParamCaption}\item[{string}]{type\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Wyszukuje i zwraca typ o podanej nazwie z assembly {\ttfamily Assembly-\/\+CSharp}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type\+Name} & Nazwa typu do wyszukania.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Obiekt Type odpowiadający podanej nazwie.
+\end{DoxyReturn}
+
+
+Metoda iteruje po wszystkich załadowanych assembly w bieżącej domenie aplikacji, szukając assembly o nazwie "{}\+Assembly-\/\+CSharp"{}. Jeśli assembly nie jest załadowane lub typ nie zostanie znaleziony, test kończy się niepowodzeniem z odpowiednim komunikatem. \Hypertarget{class_kitchen_game_tests_a2e294fcddbf1d120e33d435ab227038f}\index{KitchenGameTests@{KitchenGameTests}!IngredientKindEnumHasSevenValues@{IngredientKindEnumHasSevenValues}}
+\index{IngredientKindEnumHasSevenValues@{IngredientKindEnumHasSevenValues}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{IngredientKindEnumHasSevenValues()}{IngredientKindEnumHasSevenValues()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a2e294fcddbf1d120e33d435ab227038f} 
+void Kitchen\+Game\+Tests.\+Ingredient\+Kind\+Enum\+Has\+Seven\+Values (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że typ wyliczeniowy {\ttfamily Ingredient\+Kind} posiada dokładnie siedem wartości. 
+
+Sprawdza, czy enum {\ttfamily Ingredient\+Kind} zawiera wartości\+: Meat, Tomato, Onion, Lettuce, Garlic\+Sauce, Lavash oraz Kebab. \Hypertarget{class_kitchen_game_tests_a078134614b925b18e81a9646b5871310}\index{KitchenGameTests@{KitchenGameTests}!IngredientRequirementDisplayStringContainsNameAndState@{IngredientRequirementDisplayStringContainsNameAndState}}
+\index{IngredientRequirementDisplayStringContainsNameAndState@{IngredientRequirementDisplayStringContainsNameAndState}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{IngredientRequirementDisplayStringContainsNameAndState()}{IngredientRequirementDisplayStringContainsNameAndState()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a078134614b925b18e81a9646b5871310} 
+void Kitchen\+Game\+Tests.\+Ingredient\+Requirement\+Display\+String\+Contains\+Name\+And\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że ciąg wyświetlania wymagania składnika zawiera nazwę i stan przetworzenia. 
+
+Tworzy wymaganie dotyczące upieczonego mięsa i sprawdza, czy metoda {\ttfamily To\+Display\+String} zwraca tekst zawierający "{}\+Mieso"{} i "{}upieczony"{}. \Hypertarget{class_kitchen_game_tests_aa3347bafe7412a4e7b7fddf2aa3cae90}\index{KitchenGameTests@{KitchenGameTests}!IngredientRequirementQuantityShowsMultiplier@{IngredientRequirementQuantityShowsMultiplier}}
+\index{IngredientRequirementQuantityShowsMultiplier@{IngredientRequirementQuantityShowsMultiplier}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{IngredientRequirementQuantityShowsMultiplier()}{IngredientRequirementQuantityShowsMultiplier()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_aa3347bafe7412a4e7b7fddf2aa3cae90} 
+void Kitchen\+Game\+Tests.\+Ingredient\+Requirement\+Quantity\+Shows\+Multiplier (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że wymaganie składnika z ilością większą niż 1 wyświetla mnożnik. 
+
+Tworzy wymaganie na 3 sztuki upieczonego mięsa i sprawdza, czy metoda {\ttfamily To\+Display\+String} zawiera tekst "{}3x"{} oraz "{}\+Mieso"{}. \Hypertarget{class_kitchen_game_tests_a15a8fc06196d59d8d786bb3c7ef16653}\index{KitchenGameTests@{KitchenGameTests}!KitchenItemClonePreservesContents@{KitchenItemClonePreservesContents}}
+\index{KitchenItemClonePreservesContents@{KitchenItemClonePreservesContents}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{KitchenItemClonePreservesContents()}{KitchenItemClonePreservesContents()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a15a8fc06196d59d8d786bb3c7ef16653} 
+void Kitchen\+Game\+Tests.\+Kitchen\+Item\+Clone\+Preserves\+Contents (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że klonowanie obiektu {\ttfamily \doxylink{class_kitchen_item}{Kitchen\+Item}} zachowuje zawartość dania i tworzy głęboką kopię. 
+
+Tworzy danie z trzema składnikami i klonuje je. Sprawdza, czy klon jest daniem z trzema składnikami. Następnie dodaje nowy składnik do oryginału i weryfikuje, że klon nie został zmodyfikowany (głęboka kopia). \Hypertarget{class_kitchen_game_tests_a55fbd2ad0747419bb28f02ed00894897}\index{KitchenGameTests@{KitchenGameTests}!KitchenItemFromIngredientCreatesCorrectItem@{KitchenItemFromIngredientCreatesCorrectItem}}
+\index{KitchenItemFromIngredientCreatesCorrectItem@{KitchenItemFromIngredientCreatesCorrectItem}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{KitchenItemFromIngredientCreatesCorrectItem()}{KitchenItemFromIngredientCreatesCorrectItem()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a55fbd2ad0747419bb28f02ed00894897} 
+void Kitchen\+Game\+Tests.\+Kitchen\+Item\+From\+Ingredient\+Creates\+Correct\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że metoda {\ttfamily \doxylink{class_kitchen_item_aac748ff8356cf60147db8b6159e4e235}{Kitchen\+Item.\+From\+Ingredient}} poprawnie obsługuje wartość null. 
+
+Ponieważ {\ttfamily \doxylink{class_ingredient_data}{Ingredient\+Data}} jest obiektem Scriptable\+Object i nie można go bezpośrednio utworzyć w testach Edit\+Mode, test sprawdza ścieżkę null — oczekuje się, że metoda zwróci nowy obiekt {\ttfamily \doxylink{class_kitchen_item}{Kitchen\+Item}} z domyślną nazwą "{}\+Skladnik"{} i flagą {\ttfamily is\+Dish} ustawioną na {\ttfamily false}. \Hypertarget{class_kitchen_game_tests_ad0bd2ed8c9f19061743e976f5e7bdb50}\index{KitchenGameTests@{KitchenGameTests}!KitchenNamingReturnsPolishLabels@{KitchenNamingReturnsPolishLabels}}
+\index{KitchenNamingReturnsPolishLabels@{KitchenNamingReturnsPolishLabels}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{KitchenNamingReturnsPolishLabels()}{KitchenNamingReturnsPolishLabels()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_ad0bd2ed8c9f19061743e976f5e7bdb50} 
+void Kitchen\+Game\+Tests.\+Kitchen\+Naming\+Returns\+Polish\+Labels (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że klasa {\ttfamily \doxylink{class_kitchen_naming}{Kitchen\+Naming}} zwraca poprawne polskie etykiety składników i stanów. 
+
+Sprawdza tłumaczenia wszystkich typów składników (Meat → "{}\+Mieso"{}, Tomato → "{}\+Pomidor"{}, Onion → "{}\+Cebula"{}, Lettuce → "{}\+Salata"{}, Garlic\+Sauce → "{}\+Sos czosnkowy"{}, Lavash → "{}\+Lawasz"{}, Kebab → "{}\+Kebab"{}) oraz stanów przetworzenia (Raw → "{}surowy"{}, Chopped → "{}pokrojony"{}, Cooked → "{}upieczony"{}, Assembled → "{}zlozony"{}). \Hypertarget{class_kitchen_game_tests_af205d0214509b24616d79d082d5d70a8}\index{KitchenGameTests@{KitchenGameTests}!KitchenStationTypeEnumHasFiveValues@{KitchenStationTypeEnumHasFiveValues}}
+\index{KitchenStationTypeEnumHasFiveValues@{KitchenStationTypeEnumHasFiveValues}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{KitchenStationTypeEnumHasFiveValues()}{KitchenStationTypeEnumHasFiveValues()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_af205d0214509b24616d79d082d5d70a8} 
+void Kitchen\+Game\+Tests.\+Kitchen\+Station\+Type\+Enum\+Has\+Five\+Values (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że typ wyliczeniowy {\ttfamily Kitchen\+Station\+Type} posiada dokładnie pięć wartości. 
+
+Sprawdza, czy enum {\ttfamily Kitchen\+Station\+Type} zawiera wartości\+: Ingredient\+Source, Cutting\+Board, Grill, Assembly oraz Delivery. \Hypertarget{class_kitchen_game_tests_ae3f6ac7adcb2e0925b742f7217172c94}\index{KitchenGameTests@{KitchenGameTests}!NetworkItemStateDishRoundTrip@{NetworkItemStateDishRoundTrip}}
+\index{NetworkItemStateDishRoundTrip@{NetworkItemStateDishRoundTrip}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{NetworkItemStateDishRoundTrip()}{NetworkItemStateDishRoundTrip()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_ae3f6ac7adcb2e0925b742f7217172c94} 
+void Kitchen\+Game\+Tests.\+Network\+Item\+State\+Dish\+Round\+Trip (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje poprawność konwersji dania do stanu sieciowego i z powrotem. 
+
+Tworzy danie z czterema składnikami (Lavash, Meat, Tomato, Garlic\+Sauce) i konwertuje je do obiektu {\ttfamily \doxylink{struct_network_item_state}{Network\+Item\+State}} za pomocą {\ttfamily From\+Kitchen\+Item}. Sprawdza, że pole {\ttfamily exists} jest {\ttfamily true}, {\ttfamily content\+Count} wynosi 4, a konwersja z powrotem przez {\ttfamily To\+Kitchen\+Item} daje danie z 4 składnikami i flagą {\ttfamily is\+Dish} ustawioną na {\ttfamily true}. \Hypertarget{class_kitchen_game_tests_a6a3d4471a78fb0a6775c68940ccb1fc3}\index{KitchenGameTests@{KitchenGameTests}!NetworkItemStateEmptyRoundTrip@{NetworkItemStateEmptyRoundTrip}}
+\index{NetworkItemStateEmptyRoundTrip@{NetworkItemStateEmptyRoundTrip}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{NetworkItemStateEmptyRoundTrip()}{NetworkItemStateEmptyRoundTrip()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a6a3d4471a78fb0a6775c68940ccb1fc3} 
+void Kitchen\+Game\+Tests.\+Network\+Item\+State\+Empty\+Round\+Trip (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że pusty stan elementu sieciowego poprawnie przechodzi cykl serializacji. 
+
+Tworzy pusty obiekt {\ttfamily \doxylink{struct_network_item_state}{Network\+Item\+State}} za pomocą metody fabrycznej {\ttfamily Empty()}. Sprawdza, że pole {\ttfamily exists} jest ustawione na {\ttfamily false} oraz że metoda {\ttfamily To\+Kitchen\+Item()} zwraca {\ttfamily null} dla pustego stanu. \Hypertarget{class_kitchen_game_tests_ab43925f374e957cec089a5dab40089c3}\index{KitchenGameTests@{KitchenGameTests}!OrderBuildDescriptionContainsClientAndDishName@{OrderBuildDescriptionContainsClientAndDishName}}
+\index{OrderBuildDescriptionContainsClientAndDishName@{OrderBuildDescriptionContainsClientAndDishName}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{OrderBuildDescriptionContainsClientAndDishName()}{OrderBuildDescriptionContainsClientAndDishName()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_ab43925f374e957cec089a5dab40089c3} 
+void Kitchen\+Game\+Tests.\+Order\+Build\+Description\+Contains\+Client\+And\+Dish\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że opis zamówienia zawiera imię klienta oraz nazwę dania. 
+
+Tworzy zamówienie dla klienta "{}\+Marek"{} na "{}\+Testowy kebab"{} z wymaganiami na mięso i pomidora. Sprawdza, czy metoda {\ttfamily Build\+Description} generuje tekst zawierający imię klienta, nazwę zamówienia oraz polskie nazwy składników. \Hypertarget{class_kitchen_game_tests_a55f4b8784b1416852e03317b1751bc8c}\index{KitchenGameTests@{KitchenGameTests}!OrderClonePreservesAllFields@{OrderClonePreservesAllFields}}
+\index{OrderClonePreservesAllFields@{OrderClonePreservesAllFields}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{OrderClonePreservesAllFields()}{OrderClonePreservesAllFields()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a55f4b8784b1416852e03317b1751bc8c} 
+void Kitchen\+Game\+Tests.\+Order\+Clone\+Preserves\+All\+Fields (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że klonowanie zamówienia zachowuje wszystkie pola i tworzy głęboką kopię. 
+
+Tworzy zamówienie z ustawionymi polami (id, klient, nazwa, czas, nagroda) oraz dwiema pozycjami wymaganych składników. Po klonowaniu sprawdza, czy wszystkie wartości zostały skopiowane poprawnie. Dodatkowo weryfikuje, że modyfikacja oryginalnych wymagań nie wpływa na klon (głęboka kopia). \Hypertarget{class_kitchen_game_tests_a8b95514322889f1999cf4eef5b562926}\index{KitchenGameTests@{KitchenGameTests}!ParseEnum@{ParseEnum}}
+\index{ParseEnum@{ParseEnum}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ParseEnum()}{ParseEnum()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a8b95514322889f1999cf4eef5b562926} 
+static object Kitchen\+Game\+Tests.\+Parse\+Enum (\begin{DoxyParamCaption}\item[{string}]{type\+Name}{, }\item[{string}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Parsuje wartość tekstową na odpowiadający jej element typu wyliczeniowego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type\+Name} & Nazwa typu wyliczeniowego do wyszukania w assembly.\\
+\hline
+{\em value} & Wartość tekstowa do sparsowania (np. "{}\+Meat"{}, "{}\+Cooked"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Sparsowana wartość enumeracji jako {\ttfamily object}.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_tests_a78e77d8b6ec35bf18645ade469e2061b}\index{KitchenGameTests@{KitchenGameTests}!PreparedIngredientDisplayStringCorrect@{PreparedIngredientDisplayStringCorrect}}
+\index{PreparedIngredientDisplayStringCorrect@{PreparedIngredientDisplayStringCorrect}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{PreparedIngredientDisplayStringCorrect()}{PreparedIngredientDisplayStringCorrect()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a78e77d8b6ec35bf18645ade469e2061b} 
+void Kitchen\+Game\+Tests.\+Prepared\+Ingredient\+Display\+String\+Correct (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że ciąg wyświetlania przygotowanego składnika jest poprawny. 
+
+Tworzy obiekt {\ttfamily \doxylink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}} reprezentujący pokrojony pomidor i sprawdza, czy metoda {\ttfamily To\+Display\+String} zwraca tekst zawierający "{}\+Pomidor"{} i "{}pokrojony"{}. \Hypertarget{class_kitchen_game_tests_adbf7df253bfb3b1144ac879340d0cab9}\index{KitchenGameTests@{KitchenGameTests}!ProcessStateEnumHasFourValues@{ProcessStateEnumHasFourValues}}
+\index{ProcessStateEnumHasFourValues@{ProcessStateEnumHasFourValues}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ProcessStateEnumHasFourValues()}{ProcessStateEnumHasFourValues()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_adbf7df253bfb3b1144ac879340d0cab9} 
+void Kitchen\+Game\+Tests.\+Process\+State\+Enum\+Has\+Four\+Values (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że typ wyliczeniowy {\ttfamily Ingredient\+Process\+State} posiada dokładnie cztery wartości. 
+
+Sprawdza, czy enum {\ttfamily Ingredient\+Process\+State} zawiera wartości\+: Raw, Chopped, Cooked oraz Assembled. \Hypertarget{class_kitchen_game_tests_a92f33b8baa7ffea24c0d1dae5ed5f654}\index{KitchenGameTests@{KitchenGameTests}!RawIngredientBuildSummaryShowsState@{RawIngredientBuildSummaryShowsState}}
+\index{RawIngredientBuildSummaryShowsState@{RawIngredientBuildSummaryShowsState}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{RawIngredientBuildSummaryShowsState()}{RawIngredientBuildSummaryShowsState()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a92f33b8baa7ffea24c0d1dae5ed5f654} 
+void Kitchen\+Game\+Tests.\+Raw\+Ingredient\+Build\+Summary\+Shows\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że podsumowanie surowego składnika wyświetla jego stan przetworzenia. 
+
+Tworzy surowy pomidor (nie danie) i wywołuje metodę {\ttfamily Build\+Summary}. Sprawdza, czy zwrócony tekst zawiera polskie nazwy\+: "{}\+Pomidor"{} i "{}surowy"{}. \Hypertarget{class_kitchen_game_tests_aafc3e0458bc7423098949e423ea9e914}\index{KitchenGameTests@{KitchenGameTests}!SaveDataRoundTripPreservesProgress@{SaveDataRoundTripPreservesProgress}}
+\index{SaveDataRoundTripPreservesProgress@{SaveDataRoundTripPreservesProgress}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{SaveDataRoundTripPreservesProgress()}{SaveDataRoundTripPreservesProgress()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_aafc3e0458bc7423098949e423ea9e914} 
+void Kitchen\+Game\+Tests.\+Save\+Data\+Round\+Trip\+Preserves\+Progress (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że dane zapisu gry zachowują postęp po serializacji i deserializacji JSON. 
+
+Tworzy obiekt {\ttfamily \doxylink{class_game_save_data}{Game\+Save\+Data}} z ustawionymi wartościami ekonomii (saldo, zarobki) oraz postępem zamówień (ukończone, nieudane, pozostały czas, aktywne zamówienie). Serializuje do JSON za pomocą {\ttfamily Json\+Utility}, a następnie deserializuje i porównuje przywrócone wartości z oryginalnymi. \Hypertarget{class_kitchen_game_tests_a7b9d40e40e13ab55a06b65938ae5cac7}\index{KitchenGameTests@{KitchenGameTests}!SetField@{SetField}}
+\index{SetField@{SetField}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{SetField()}{SetField()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a7b9d40e40e13ab55a06b65938ae5cac7} 
+static void Kitchen\+Game\+Tests.\+Set\+Field (\begin{DoxyParamCaption}\item[{object}]{instance}{, }\item[{string}]{field\+Name}{, }\item[{object}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Ustawia wartość pola publicznego w podanej instancji obiektu za pomocą refleksji. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em instance} & Instancja obiektu, w której ustawiamy wartość pola.\\
+\hline
+{\em field\+Name} & Nazwa pola do zapisania.\\
+\hline
+{\em value} & Nowa wartość do przypisania do pola.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_game_tests_a57b97b868961972a9ab0ad6898aaecb3}\index{KitchenGameTests@{KitchenGameTests}!ShopEffectDescriptionReturnsCorrectText@{ShopEffectDescriptionReturnsCorrectText}}
+\index{ShopEffectDescriptionReturnsCorrectText@{ShopEffectDescriptionReturnsCorrectText}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ShopEffectDescriptionReturnsCorrectText()}{ShopEffectDescriptionReturnsCorrectText()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a57b97b868961972a9ab0ad6898aaecb3} 
+void Kitchen\+Game\+Tests.\+Shop\+Effect\+Description\+Returns\+Correct\+Text (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że opis efektu ulepszenia w sklepie zwraca poprawny tekst. 
+
+Dla ulepszenia typu Reward\+Bonus z tablicą wartości efektów sprawdza, czy opis na poziomie 0 zawiera znak procentu, a na maksymalnym poziomie zwraca tekst "{}\+MAX"{}. \Hypertarget{class_kitchen_game_tests_a1bc575513900321dab8108ec88f92644}\index{KitchenGameTests@{KitchenGameTests}!ShopMaxLevelBlocksFurtherUpgradeCheck@{ShopMaxLevelBlocksFurtherUpgradeCheck}}
+\index{ShopMaxLevelBlocksFurtherUpgradeCheck@{ShopMaxLevelBlocksFurtherUpgradeCheck}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ShopMaxLevelBlocksFurtherUpgradeCheck()}{ShopMaxLevelBlocksFurtherUpgradeCheck()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a1bc575513900321dab8108ec88f92644} 
+void Kitchen\+Game\+Tests.\+Shop\+Max\+Level\+Blocks\+Further\+Upgrade\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że osiągnięcie maksymalnego poziomu ulepszenia blokuje dalsze ulepszanie. 
+
+Tworzy definicję ulepszenia typu Grill\+Speed z maksymalnym poziomem 2. Sprawdza, czy metoda {\ttfamily Get\+Effect\+Description} dla poziomu maksymalnego zwraca tekst "{}\+MAX"{}, sygnalizując brak dalszych ulepszeń. \Hypertarget{class_kitchen_game_tests_ad38e701f6a365c4a1c870486732ee97a}\index{KitchenGameTests@{KitchenGameTests}!ShopSaveDataRoundTripPreservesUpgrades@{ShopSaveDataRoundTripPreservesUpgrades}}
+\index{ShopSaveDataRoundTripPreservesUpgrades@{ShopSaveDataRoundTripPreservesUpgrades}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ShopSaveDataRoundTripPreservesUpgrades()}{ShopSaveDataRoundTripPreservesUpgrades()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_ad38e701f6a365c4a1c870486732ee97a} 
+void Kitchen\+Game\+Tests.\+Shop\+Save\+Data\+Round\+Trip\+Preserves\+Upgrades (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że dane zapisu sklepu zachowują informacje o ulepszeniach po serializacji i deserializacji. 
+
+Tworzy obiekt {\ttfamily \doxylink{class_shop_save_data}{Shop\+Save\+Data}} z dwiema pozycjami ulepszeń (Grill\+Speed i Reward\+Bonus) o różnych poziomach. Sprawdza, czy po cyklu JSON round-\/trip wszystkie pola są poprawnie zachowane, w tym liczba zakupionych ulepszeń, typy i poziomy poszczególnych wpisów. \Hypertarget{class_kitchen_game_tests_a3337a26337af090c6bfbfdcdc7acfdbd}\index{KitchenGameTests@{KitchenGameTests}!ShopUpgradeCostScalesExponentially@{ShopUpgradeCostScalesExponentially}}
+\index{ShopUpgradeCostScalesExponentially@{ShopUpgradeCostScalesExponentially}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ShopUpgradeCostScalesExponentially()}{ShopUpgradeCostScalesExponentially()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a3337a26337af090c6bfbfdcdc7acfdbd} 
+void Kitchen\+Game\+Tests.\+Shop\+Upgrade\+Cost\+Scales\+Exponentially (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że koszt ulepszenia w sklepie skaluje się wykładniczo z niestandardowym współczynnikiem. 
+
+Tworzy definicję ulepszenia z kosztem bazowym 40 i współczynnikiem skalowania 1,8. Sprawdza, że koszty rosną w sposób wykładniczy — stosunek kosztów kolejnych poziomów powinien być stały i równy współczynnikowi skalowania. \Hypertarget{class_kitchen_game_tests_a83b08378de196c3f5669fdf77e12b816}\index{KitchenGameTests@{KitchenGameTests}!UpgradeDefinitionCostScalesCorrectly@{UpgradeDefinitionCostScalesCorrectly}}
+\index{UpgradeDefinitionCostScalesCorrectly@{UpgradeDefinitionCostScalesCorrectly}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{UpgradeDefinitionCostScalesCorrectly()}{UpgradeDefinitionCostScalesCorrectly()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a83b08378de196c3f5669fdf77e12b816} 
+void Kitchen\+Game\+Tests.\+Upgrade\+Definition\+Cost\+Scales\+Correctly (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że koszt ulepszenia skaluje się poprawnie według wzoru wykładniczego. 
+
+Tworzy definicję ulepszenia z kosztem bazowym 50 i współczynnikiem skalowania 2. Sprawdza, czy koszt dla poziomu 0 wynosi 50, dla poziomu 1 wynosi 100, a dla poziomu 2 wynosi 200 (każdy kolejny poziom podwaja koszt). \Hypertarget{class_kitchen_game_tests_a1f224e9573ec28c1274bcaeca33800b5}\index{KitchenGameTests@{KitchenGameTests}!UpgradeTypeEnumHasFiveValues@{UpgradeTypeEnumHasFiveValues}}
+\index{UpgradeTypeEnumHasFiveValues@{UpgradeTypeEnumHasFiveValues}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{UpgradeTypeEnumHasFiveValues()}{UpgradeTypeEnumHasFiveValues()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a1f224e9573ec28c1274bcaeca33800b5} 
+void Kitchen\+Game\+Tests.\+Upgrade\+Type\+Enum\+Has\+Five\+Values (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że typ wyliczeniowy {\ttfamily Upgrade\+Type} posiada dokładnie pięć wartości. 
+
+Sprawdza, czy enum {\ttfamily Upgrade\+Type} zawiera wartości\+: Grill\+Speed, Cutting\+Speed, Reward\+Bonus, Order\+Time oraz Meat\+Batch\+Size. \Hypertarget{class_kitchen_game_tests_a9103f156cc0d63aea9361ada734ed677}\index{KitchenGameTests@{KitchenGameTests}!ValidatorAcceptsCompleteClassicKebab@{ValidatorAcceptsCompleteClassicKebab}}
+\index{ValidatorAcceptsCompleteClassicKebab@{ValidatorAcceptsCompleteClassicKebab}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ValidatorAcceptsCompleteClassicKebab()}{ValidatorAcceptsCompleteClassicKebab()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a9103f156cc0d63aea9361ada734ed677} 
+void Kitchen\+Game\+Tests.\+Validator\+Accepts\+Complete\+Classic\+Kebab (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje pełną integrację walidatora dla kompletnego klasycznego kebaba. 
+
+Tworzy zamówienie na klasyczny kebab z pięcioma wymaganiami (Lavash, Meat, Tomato, Onion, Garlic\+Sauce) oraz danie z dokładnie tymi samymi składnikami. Sprawdza, czy walidator akceptuje takie danie jako prawidłowe. \Hypertarget{class_kitchen_game_tests_a9c152111db7586a9fbd1a25db1c8098f}\index{KitchenGameTests@{KitchenGameTests}!ValidatorAcceptsDishWithExactIngredients@{ValidatorAcceptsDishWithExactIngredients}}
+\index{ValidatorAcceptsDishWithExactIngredients@{ValidatorAcceptsDishWithExactIngredients}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ValidatorAcceptsDishWithExactIngredients()}{ValidatorAcceptsDishWithExactIngredients()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a9c152111db7586a9fbd1a25db1c8098f} 
+void Kitchen\+Game\+Tests.\+Validator\+Accepts\+Dish\+With\+Exact\+Ingredients (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że walidator akceptuje danie zawierające dokładnie wymagane składniki. 
+
+Tworzy zamówienie z trzema wymaganiami (Lavash surowy, Mięso upieczone, Pomidor pokrojony) i danie z dokładnie tymi samymi składnikami. Oczekuje, że metoda {\ttfamily \doxylink{class_kitchen_order_validator_a30f7d5f58dc24dd87b090189956ecc6d}{Kitchen\+Order\+Validator.\+Matches\+Order}} zwróci {\ttfamily true}. \Hypertarget{class_kitchen_game_tests_a69046510a85b47268871f75b348ca7a8}\index{KitchenGameTests@{KitchenGameTests}!ValidatorRejectsDoubleQuantityWhenSingleRequired@{ValidatorRejectsDoubleQuantityWhenSingleRequired}}
+\index{ValidatorRejectsDoubleQuantityWhenSingleRequired@{ValidatorRejectsDoubleQuantityWhenSingleRequired}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ValidatorRejectsDoubleQuantityWhenSingleRequired()}{ValidatorRejectsDoubleQuantityWhenSingleRequired()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_a69046510a85b47268871f75b348ca7a8} 
+void Kitchen\+Game\+Tests.\+Validator\+Rejects\+Double\+Quantity\+When\+Single\+Required (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że walidator odrzuca danie z podwójną ilością składnika, gdy wymagana jest pojedyncza. 
+
+Zamówienie wymaga 1 sztuki mięsa, ale danie zawiera 2 sztuki mięsa. Oczekuje się, że walidator zwróci {\ttfamily false}, a komunikat błędu będzie zawierał słowo "{}nadmiarowe"{}. \Hypertarget{class_kitchen_game_tests_ac31c8aaa8e7dcc83aaadd188a563c8e4}\index{KitchenGameTests@{KitchenGameTests}!ValidatorRejectsExtraIngredients@{ValidatorRejectsExtraIngredients}}
+\index{ValidatorRejectsExtraIngredients@{ValidatorRejectsExtraIngredients}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ValidatorRejectsExtraIngredients()}{ValidatorRejectsExtraIngredients()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_ac31c8aaa8e7dcc83aaadd188a563c8e4} 
+void Kitchen\+Game\+Tests.\+Validator\+Rejects\+Extra\+Ingredients (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że walidator odrzuca danie zawierające nadmiarowe składniki. 
+
+Zamówienie wymaga tylko mięsa, ale danie zawiera mięso i dodatkowo pomidora. Oczekuje się, że walidator zwróci {\ttfamily false}, a komunikat błędu będzie zawierał słowo "{}nadmiarowe"{}. \Hypertarget{class_kitchen_game_tests_acf96b1b84f0ed3c30cec82881ae6787b}\index{KitchenGameTests@{KitchenGameTests}!ValidatorRejectsMissingIngredient@{ValidatorRejectsMissingIngredient}}
+\index{ValidatorRejectsMissingIngredient@{ValidatorRejectsMissingIngredient}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ValidatorRejectsMissingIngredient()}{ValidatorRejectsMissingIngredient()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_acf96b1b84f0ed3c30cec82881ae6787b} 
+void Kitchen\+Game\+Tests.\+Validator\+Rejects\+Missing\+Ingredient (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że walidator odrzuca danie z brakującym wymaganym składnikiem. 
+
+Zamówienie wymaga mięsa i pomidora, ale danie zawiera tylko mięso. Oczekuje się, że walidator zwróci {\ttfamily false}, a komunikat błędu będzie zawierał słowo "{}\+Brakuje"{}. \Hypertarget{class_kitchen_game_tests_ac3e2edda4d51269eef16fdbe41d2c2d2}\index{KitchenGameTests@{KitchenGameTests}!ValidatorRejectsNonDishItem@{ValidatorRejectsNonDishItem}}
+\index{ValidatorRejectsNonDishItem@{ValidatorRejectsNonDishItem}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ValidatorRejectsNonDishItem()}{ValidatorRejectsNonDishItem()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_ac3e2edda4d51269eef16fdbe41d2c2d2} 
+void Kitchen\+Game\+Tests.\+Validator\+Rejects\+Non\+Dish\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że walidator odrzuca element kuchenny, który nie jest daniem (nie jest złożony). 
+
+Tworzy pojedynczy surowy składnik (mięso) zamiast złożonego dania. Oczekuje się, że walidator zwróci {\ttfamily false}, ponieważ zamówienie wymaga złożonego dania, a nie pojedynczego składnika. \Hypertarget{class_kitchen_game_tests_af5912ae3ea2d43fd5a88a42d582b9160}\index{KitchenGameTests@{KitchenGameTests}!ValidatorRejectsWrongPreparationState@{ValidatorRejectsWrongPreparationState}}
+\index{ValidatorRejectsWrongPreparationState@{ValidatorRejectsWrongPreparationState}!KitchenGameTests@{KitchenGameTests}}
+\doxysubsubsection{\texorpdfstring{ValidatorRejectsWrongPreparationState()}{ValidatorRejectsWrongPreparationState()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_tests_af5912ae3ea2d43fd5a88a42d582b9160} 
+void Kitchen\+Game\+Tests.\+Validator\+Rejects\+Wrong\+Preparation\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Weryfikuje, że walidator odrzuca danie ze składnikiem w nieprawidłowym stanie przygotowania. 
+
+Zamówienie wymaga pokrojonego pomidora, ale danie zawiera surowy pomidor. Oczekuje się, że walidator zwróci {\ttfamily false}, a komunikat błędu będzie zawierał słowo "{}\+Brakuje"{}. 
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Tests/\+Edit\+Mode/\mbox{\hyperlink{_kitchen_game_tests_8cs}{Kitchen\+Game\+Tests.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,631 @@
+\doxysection{Dokumentacja klasy Order\+Manager}
+\hypertarget{class_order_manager}{}\label{class_order_manager}\index{OrderManager@{OrderManager}}
+
+
+Menedżer systemu zamówień w grze Kebab Chef Symulator. Zarządza generowaniem nowych zamówień z predefiniowanych szablonów, śledzeniem czasu na realizację, walidacją dostarczonych dań, obliczaniem nagród pieniężnych oraz skalowaniem trudności gry. Implementuje wzorzec Singleton — dostępny globalnie przez \doxylink{class_order_manager_a67356b19725ec1fd06f71dde1c172dc6}{Instance}.  
+
+
+Diagram dziedziczenia dla Order\+Manager\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_order_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_order_manager_a8e23cf78a52fc5bf998a19009014ab22}{Sync\+Network\+State}} (int template\+Index, string desc, float time, int comp, int fail)
+\begin{DoxyCompactList}\small\item\em Synchronizuje stan zamówienia z serwera sieciowego. Ustawia aktywne zamówienie na podstawie indeksu szablonu oraz aktualizuje opis, czas, liczbę zrealizowanych i nieudanych zamówień. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_manager_a2f69bd51a04a1b8d344683f0f83bdf66}{Initialize\+Catalog\+If\+Needed}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje katalog składników, jeśli nie został jeszcze zbudowany. Przetwarza ręcznie przypisane składniki z listy \doxylink{class_order_manager_ab37ca2e523867558803f980a8e3fb059}{dostepne\+Skladniki} oraz dodaje brakujące składniki domyślne (mięso, pomidor, cebula, sałata, sos, ławasz, kebab). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} \mbox{\hyperlink{class_order_manager_aa18079c10e79d6f4a0cc8ff273d851ca}{Get\+Ingredient\+Definition}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind)
+\begin{DoxyCompactList}\small\item\em Pobiera definicję danych składnika na podstawie jego typu. Automatycznie inicjalizuje katalog, jeśli jeszcze nie został zbudowany. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_order_manager_a96fa824300c3f4fea397ba2709e7844b}{Try\+Deliver\+Dish}} (\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} item, out string message)
+\begin{DoxyCompactList}\small\item\em Próbuje dostarczyć przygotowane danie i zwalidować je względem aktywnego zamówienia. W przypadku sukcesu nalicza nagrodę pieniężną, generuje nowe zamówienie i zapisuje grę. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_manager_a42b33bdfd9b08d3f626226965a74fe56}{Nowe\+Zamowienie}} ()
+\begin{DoxyCompactList}\small\item\em Generuje nowe losowe zamówienie z dostępnych szablonów. Uwzględnia progresję trudności (więcej szablonów w miarę ukończonych zamówień), oblicza nagrodę pieniężną, stosuje bonus czasowy ze sklepu i mnożnik trudności do czasu realizacji. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_manager_afd824ac392c6ca69082c509cd4ef7b89}{Set\+Order\+State\+From\+Network}} (string description, float time, int completed, int failed, string message)
+\begin{DoxyCompactList}\small\item\em Ustawia stan zamówienia na podstawie danych otrzymanych z sieci (dla klientów). Używane do synchronizacji stanu zamówienia w trybie wieloosobowym. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_order_progress_save_data}{Order\+Progress\+Save\+Data}} \mbox{\hyperlink{class_order_manager_ad9bb353f2106d8906254166897d565e2}{Capture\+Progress}} ()
+\begin{DoxyCompactList}\small\item\em Przechwytuje bieżący postęp zamówień do struktury danych przeznaczonej do zapisu. Obejmuje statystyki ukończonych/nieudanych zamówień, czas i dane aktywnego zamówienia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_manager_acb3ab348bfa6f299fffa95abee42590f}{Restore\+Progress}} (\mbox{\hyperlink{class_order_progress_save_data}{Order\+Progress\+Save\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Przywraca postęp zamówień z wcześniej zapisanych danych. Odtwarza statystyki, aktywne zamówienie z wymaganiami składników oraz pozostały czas realizacji (minimum 5 sekund). Jeśli dane nie zawierają aktywnego zamówienia, generowane jest nowe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} $>$ \mbox{\hyperlink{class_order_manager_ab37ca2e523867558803f980a8e3fb059}{dostepne\+Skladniki}} = new List$<$\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}}$>$()
+\begin{DoxyCompactList}\small\item\em Lista dostępnych danych składników w grze. Może być konfigurowana z poziomu inspektora Unity lub uzupełniana automatycznie w czasie wykonywania. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_order_manager}{Order\+Manager}} \mbox{\hyperlink{class_order_manager_a67356b19725ec1fd06f71dde1c172dc6}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna instancja Singletona menedżera zamówień, dostępna globalnie. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_order_manager_a40b6411a694a1a7e289982d1512ed29c}{Active\+Template\+Index}} = -\/1\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Indeks aktualnego szablonu zamówienia w liście \doxylink{class_order_manager_a9fa2c6279d8f5fc2cf11a374ef558332}{order\+Templates}. Wartość -\/1 oznacza, że żadne zamówienie nie zostało jeszcze wygenerowane. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_order}{Order}} \mbox{\hyperlink{class_order_manager_a2cf3111cd49936a69182535be487817e}{Active\+Order}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Aktualnie aktywne zamówienie. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_order_manager_ab20e15c7276331e4578522b1be0c17dc}{Remaining\+Order\+Time}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pozostały czas na realizację zamówienia w sekundach (alias dla \doxylink{class_order_manager_a070315df77fcde4ae341a1c77d9f881d}{Remaining\+Time}). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_order_manager_a3bc02494a2f9d73e96c6af3c056fc6ec}{Completed\+Orders}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Liczba zrealizowanych zamówień. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_order_manager_a7de30ecddf21289538895ddee4dcba1f}{Failed\+Orders}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Liczba nieudanych zamówień. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_order_manager_a5d91eb1bfea8ac1a1474aa5c43d7589e}{Last\+Order\+Message}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Ostatni komunikat dotyczący statusu zamówienia. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_order_manager_aa5a5e4631eed4582133aad973b9808b6}{Active\+Order\+Description}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Tekstowy opis aktywnego zamówienia. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_order_manager_a75c01af4fa7b37ec82bdfa496ddb561d}{Has\+Active\+Order}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Określa, czy istnieje aktywne zamówienie do realizacji. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_order_manager_a070315df77fcde4ae341a1c77d9f881d}{Remaining\+Time}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pozostały czas na realizację zamówienia w sekundach. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_order_manager_ae37d7b99b00bd0c4db4b1eca8d6954b2}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizacja Singletona oraz katalogu składników i szablonów zamówień. Jeśli istnieje już instancja, niszczy duplikat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_manager_ad495180fa97e427dcdbf19fa7d5c5950}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływana po inicjalizacji. Generuje pierwsze zamówienie, chyba że gra działa w trybie wieloosobowym jako klient (nie serwer). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_manager_aa49e4926d41a0e7def3c94f01d93be22}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizacja wywoływana co klatkę. Odlicza czas na realizację aktywnego zamówienia. Jeśli czas się skończy, zamówienie jest oznaczane jako nieudane, odtwarzany jest efekt zwrotny i generowane jest nowe zamówienie. Działa tylko po stronie serwera w trybie wieloosobowym. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_manager_a964ba0119968d7896f62b902db0aedba}{Play\+Timeout\+Feedback}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekty zwrotne po przekroczeniu czasu zamówienia. Obejmuje dźwięk porażki, efekt wizualny timeout oraz wstrząs i błysk kamery. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_order_manager_a63e33d4fa4460795b47f920b55c146dd}{Get\+Difficulty\+Time\+Multiplier}} ()
+\begin{DoxyCompactList}\small\item\em Oblicza mnożnik czasu trudności na podstawie liczby ukończonych zamówień. Im więcej zamówień ukończono, tym mniej czasu gracz otrzymuje (minimum 30\% oryginalnego czasu). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_order_manager_af71417dd94b39e181f27850e75995252}{Get\+Available\+Template\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca liczbę dostępnych szablonów zamówień na podstawie postępu gracza. Na początku dostępne są 3 szablony, po 3 zamówieniach — 6, a po 6 — wszystkie. Implementuje progresywne odblokowanie trudniejszych zamówień. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_manager_a4752ca087514457510b26be339755f1c}{Ensure\+Runtime\+Ingredient}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind, string ingredient\+Name, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} default\+State, Color debug\+Color, float purchase\+Price, float sale\+Value)
+\begin{DoxyCompactList}\small\item\em Tworzy składnik w czasie wykonywania, jeśli nie istnieje jeszcze w katalogu. Tworzy instancję Scriptable\+Object z podanymi parametrami i dodaje ją do katalogu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_manager_ab072185128748ae18f3e99bd5b8ea7d8}{Normalize\+Assigned\+Ingredient}} (\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} ingredient)
+\begin{DoxyCompactList}\small\item\em Normalizuje ręcznie przypisany składnik, wykrywając jego typ na podstawie nazwy. Rozpoznaje mięso i pomidor po polskich nazwach (z uwzględnieniem znaków diakrytycznych). Ustawia odpowiedni kolor debugowania, wartość sprzedaży oraz stan początkowy. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_order_manager_aa3b516935de6dabe1d93703706ff5a14}{Remove\+Diacritics}} (string value)
+\begin{DoxyCompactList}\small\item\em Usuwa znaki diakrytyczne (akcenty, ogonki) z podanego tekstu. Używa normalizacji Unicode FormD, aby rozłożyć znaki na części składowe, a następnie odfiltrować znaki niebędące spacjami (Non\+Spacing\+Mark). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_manager_a68352f78a41f6c9c7887e1f4c26a86d4}{Build\+Default\+Templates\+If\+Needed}} ()
+\begin{DoxyCompactList}\small\item\em Buduje domyślne szablony zamówień, jeśli lista szablonów jest pusta. Tworzy 8 predefiniowanych zamówień o rosnącej złożoności\+: klasyczny, mięsny, fresh, warzywny, czosnkowy, ekspresowy, podwójny deluxe i królewski. Każdy szablon ma unikalny identyfikator, nazwę klienta, wymagane składniki i limit czasu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_order}{Order}} \mbox{\hyperlink{class_order_manager_a134f3cd97c3dccf31a1925e895a19250}{Create\+Template}} (string id, string client\+Name, string order\+Name, float time\+Limit, params \mbox{\hyperlink{class_ingredient_requirement}{Ingredient\+Requirement}}\mbox{[}$\,$\mbox{]} requirements)
+\begin{DoxyCompactList}\small\item\em Tworzy szablon zamówienia z podanymi parametrami. Automatycznie oblicza nagrodę pieniężną na podstawie wymaganych składników. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_order_manager_af0ed49ff2b8dc36140d33c7c8f42b6de}{Calculate\+Reward}} (List$<$ \mbox{\hyperlink{class_ingredient_requirement}{Ingredient\+Requirement}} $>$ requirements)
+\begin{DoxyCompactList}\small\item\em Oblicza nagrodę pieniężną za realizację zamówienia na podstawie listy wymaganych składników. Bazowa nagroda wynosi 10 zł, do której dodawane są wartości sprzedaży każdego składnika pomnożone przez ilość. Przetworzenie składnika (stan inny niż surowy) dodaje bonus 1.\+5 zł za sztukę. Wynik jest mnożony przez mnożnik nagrody ze sklepu i zaokrąglany. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_order}{Order}} $>$ \mbox{\hyperlink{class_order_manager_a9fa2c6279d8f5fc2cf11a374ef558332}{order\+Templates}} = new List$<$\mbox{\hyperlink{class_order}{Order}}$>$()
+\begin{DoxyCompactList}\small\item\em Lista szablonów zamówień, z których losowane są nowe zamówienia. Szablony definiują wymagane składniki, czas realizacji i inne parametry zamówienia. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_order}{Order}} \mbox{\hyperlink{class_order_manager_a685b7843d87de8fc606f96f3989b1669}{active\+Order}}
+\begin{DoxyCompactList}\small\item\em Aktualnie aktywne zamówienie, które gracz musi zrealizować. Wartość null oznacza brak aktywnego zamówienia. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_order_manager_ab52b2e3e3eaff6598e3304075aa827ef}{active\+Order\+Description}} = "{}"{}
+\begin{DoxyCompactList}\small\item\em Tekstowy opis aktywnego zamówienia wyświetlany graczowi. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_order_manager_a5b399268e256350ee38f404813a199db}{remaining\+Time}}
+\begin{DoxyCompactList}\small\item\em Pozostały czas na realizację aktywnego zamówienia w sekundach. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_order_manager_a324e6bc341314e5c89c204c2ace27235}{completed\+Orders}}
+\begin{DoxyCompactList}\small\item\em Licznik pomyślnie zrealizowanych zamówień od początku sesji gry. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_order_manager_ae722c26ff4ba18362b1e74d91b91e0c1}{failed\+Orders}}
+\begin{DoxyCompactList}\small\item\em Licznik nieudanych zamówień (przeterminowanych) od początku sesji gry. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_order_manager_ab10233d01541f41aeafedd89f9410462}{last\+Message}} = "{}Przygotuj pierwszy kebab."{}
+\begin{DoxyCompactList}\small\item\em Ostatni komunikat statusowy dotyczący zamówień, wyświetlany w interfejsie użytkownika. \end{DoxyCompactList}\item 
+readonly Dictionary$<$ \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}, \mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} $>$ \mbox{\hyperlink{class_order_manager_a299baf8857e692c966efb1f85dba3e84}{ingredient\+Lookup}}
+\begin{DoxyCompactList}\small\item\em Słownik mapujący typ składnika na jego dane, umożliwiający szybkie wyszukiwanie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Menedżer systemu zamówień w grze Kebab Chef Symulator. Zarządza generowaniem nowych zamówień z predefiniowanych szablonów, śledzeniem czasu na realizację, walidacją dostarczonych dań, obliczaniem nagród pieniężnych oraz skalowaniem trudności gry. Implementuje wzorzec Singleton — dostępny globalnie przez \doxylink{class_order_manager_a67356b19725ec1fd06f71dde1c172dc6}{Instance}. 
+
+Menedżer automatycznie inicjalizuje katalog składników i domyślne szablony zamówień, jeśli nie zostały one skonfigurowane w inspektorze Unity. Obsługuje tryb wieloosobowy, w którym tylko serwer zarządza czasem i generowaniem zamówień. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_order_manager_ae37d7b99b00bd0c4db4b1eca8d6954b2}\index{OrderManager@{OrderManager}!Awake@{Awake}}
+\index{Awake@{Awake}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_order_manager_ae37d7b99b00bd0c4db4b1eca8d6954b2} 
+void Order\+Manager.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizacja Singletona oraz katalogu składników i szablonów zamówień. Jeśli istnieje już instancja, niszczy duplikat. 
+
+\Hypertarget{class_order_manager_a68352f78a41f6c9c7887e1f4c26a86d4}\index{OrderManager@{OrderManager}!BuildDefaultTemplatesIfNeeded@{BuildDefaultTemplatesIfNeeded}}
+\index{BuildDefaultTemplatesIfNeeded@{BuildDefaultTemplatesIfNeeded}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{BuildDefaultTemplatesIfNeeded()}{BuildDefaultTemplatesIfNeeded()}}
+{\footnotesize\ttfamily \label{class_order_manager_a68352f78a41f6c9c7887e1f4c26a86d4} 
+void Order\+Manager.\+Build\+Default\+Templates\+If\+Needed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Buduje domyślne szablony zamówień, jeśli lista szablonów jest pusta. Tworzy 8 predefiniowanych zamówień o rosnącej złożoności\+: klasyczny, mięsny, fresh, warzywny, czosnkowy, ekspresowy, podwójny deluxe i królewski. Każdy szablon ma unikalny identyfikator, nazwę klienta, wymagane składniki i limit czasu. 
+
+\Hypertarget{class_order_manager_af0ed49ff2b8dc36140d33c7c8f42b6de}\index{OrderManager@{OrderManager}!CalculateReward@{CalculateReward}}
+\index{CalculateReward@{CalculateReward}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{CalculateReward()}{CalculateReward()}}
+{\footnotesize\ttfamily \label{class_order_manager_af0ed49ff2b8dc36140d33c7c8f42b6de} 
+float Order\+Manager.\+Calculate\+Reward (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_ingredient_requirement}{Ingredient\+Requirement}} $>$}]{requirements}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Oblicza nagrodę pieniężną za realizację zamówienia na podstawie listy wymaganych składników. Bazowa nagroda wynosi 10 zł, do której dodawane są wartości sprzedaży każdego składnika pomnożone przez ilość. Przetworzenie składnika (stan inny niż surowy) dodaje bonus 1.\+5 zł za sztukę. Wynik jest mnożony przez mnożnik nagrody ze sklepu i zaokrąglany. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em requirements} & Lista wymagań składnikowych zamówienia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Obliczona nagroda pieniężna zaokrąglona do pełnej kwoty.
+\end{DoxyReturn}
+\Hypertarget{class_order_manager_ad9bb353f2106d8906254166897d565e2}\index{OrderManager@{OrderManager}!CaptureProgress@{CaptureProgress}}
+\index{CaptureProgress@{CaptureProgress}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{CaptureProgress()}{CaptureProgress()}}
+{\footnotesize\ttfamily \label{class_order_manager_ad9bb353f2106d8906254166897d565e2} 
+\mbox{\hyperlink{class_order_progress_save_data}{Order\+Progress\+Save\+Data}} Order\+Manager.\+Capture\+Progress (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Przechwytuje bieżący postęp zamówień do struktury danych przeznaczonej do zapisu. Obejmuje statystyki ukończonych/nieudanych zamówień, czas i dane aktywnego zamówienia. 
+
+\begin{DoxyReturn}{Zwraca}
+Obiekt \doxylink{class_order_progress_save_data}{Order\+Progress\+Save\+Data} zawierający aktualny stan postępu.
+\end{DoxyReturn}
+\Hypertarget{class_order_manager_a134f3cd97c3dccf31a1925e895a19250}\index{OrderManager@{OrderManager}!CreateTemplate@{CreateTemplate}}
+\index{CreateTemplate@{CreateTemplate}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{CreateTemplate()}{CreateTemplate()}}
+{\footnotesize\ttfamily \label{class_order_manager_a134f3cd97c3dccf31a1925e895a19250} 
+\mbox{\hyperlink{class_order}{Order}} Order\+Manager.\+Create\+Template (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{client\+Name}{, }\item[{string}]{order\+Name}{, }\item[{float}]{time\+Limit}{, }\item[{params \mbox{\hyperlink{class_ingredient_requirement}{Ingredient\+Requirement}}\mbox{[}$\,$\mbox{]}}]{requirements}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy szablon zamówienia z podanymi parametrami. Automatycznie oblicza nagrodę pieniężną na podstawie wymaganych składników. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em id} & Unikalny identyfikator szablonu zamówienia.\\
+\hline
+{\em client\+Name} & Nazwa klienta składającego zamówienie.\\
+\hline
+{\em order\+Name} & Nazwa zamówienia wyświetlana graczowi.\\
+\hline
+{\em time\+Limit} & Limit czasu na realizację zamówienia w sekundach.\\
+\hline
+{\em requirements} & Tablica wymaganych składników z ich stanami przetworzenia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Nowy obiekt \doxylink{class_order}{Order} skonfigurowany jako szablon zamówienia.
+\end{DoxyReturn}
+\Hypertarget{class_order_manager_a4752ca087514457510b26be339755f1c}\index{OrderManager@{OrderManager}!EnsureRuntimeIngredient@{EnsureRuntimeIngredient}}
+\index{EnsureRuntimeIngredient@{EnsureRuntimeIngredient}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{EnsureRuntimeIngredient()}{EnsureRuntimeIngredient()}}
+{\footnotesize\ttfamily \label{class_order_manager_a4752ca087514457510b26be339755f1c} 
+void Order\+Manager.\+Ensure\+Runtime\+Ingredient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{, }\item[{string}]{ingredient\+Name}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{default\+State}{, }\item[{Color}]{debug\+Color}{, }\item[{float}]{purchase\+Price}{, }\item[{float}]{sale\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy składnik w czasie wykonywania, jeśli nie istnieje jeszcze w katalogu. Tworzy instancję Scriptable\+Object z podanymi parametrami i dodaje ją do katalogu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em kind} & Typ składnika do utworzenia.\\
+\hline
+{\em ingredient\+Name} & Wyświetlana nazwa składnika.\\
+\hline
+{\em default\+State} & Domyślny stan przetworzenia składnika.\\
+\hline
+{\em debug\+Color} & Kolor debugowania używany do wizualizacji.\\
+\hline
+{\em purchase\+Price} & Cena zakupu składnika.\\
+\hline
+{\em sale\+Value} & Wartość sprzedaży składnika.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_order_manager_af71417dd94b39e181f27850e75995252}\index{OrderManager@{OrderManager}!GetAvailableTemplateCount@{GetAvailableTemplateCount}}
+\index{GetAvailableTemplateCount@{GetAvailableTemplateCount}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{GetAvailableTemplateCount()}{GetAvailableTemplateCount()}}
+{\footnotesize\ttfamily \label{class_order_manager_af71417dd94b39e181f27850e75995252} 
+int Order\+Manager.\+Get\+Available\+Template\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Zwraca liczbę dostępnych szablonów zamówień na podstawie postępu gracza. Na początku dostępne są 3 szablony, po 3 zamówieniach — 6, a po 6 — wszystkie. Implementuje progresywne odblokowanie trudniejszych zamówień. 
+
+\begin{DoxyReturn}{Zwraca}
+Liczba dostępnych szablonów zamówień.
+\end{DoxyReturn}
+\Hypertarget{class_order_manager_a63e33d4fa4460795b47f920b55c146dd}\index{OrderManager@{OrderManager}!GetDifficultyTimeMultiplier@{GetDifficultyTimeMultiplier}}
+\index{GetDifficultyTimeMultiplier@{GetDifficultyTimeMultiplier}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{GetDifficultyTimeMultiplier()}{GetDifficultyTimeMultiplier()}}
+{\footnotesize\ttfamily \label{class_order_manager_a63e33d4fa4460795b47f920b55c146dd} 
+float Order\+Manager.\+Get\+Difficulty\+Time\+Multiplier (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Oblicza mnożnik czasu trudności na podstawie liczby ukończonych zamówień. Im więcej zamówień ukończono, tym mniej czasu gracz otrzymuje (minimum 30\% oryginalnego czasu). 
+
+\begin{DoxyReturn}{Zwraca}
+Mnożnik czasu w zakresie \mbox{[}0.\+3, 1.\+0\mbox{]}.
+\end{DoxyReturn}
+\Hypertarget{class_order_manager_aa18079c10e79d6f4a0cc8ff273d851ca}\index{OrderManager@{OrderManager}!GetIngredientDefinition@{GetIngredientDefinition}}
+\index{GetIngredientDefinition@{GetIngredientDefinition}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{GetIngredientDefinition()}{GetIngredientDefinition()}}
+{\footnotesize\ttfamily \label{class_order_manager_aa18079c10e79d6f4a0cc8ff273d851ca} 
+\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} Order\+Manager.\+Get\+Ingredient\+Definition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pobiera definicję danych składnika na podstawie jego typu. Automatycznie inicjalizuje katalog, jeśli jeszcze nie został zbudowany. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em kind} & Typ składnika do wyszukania.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Dane składnika \doxylink{class_ingredient_data}{Ingredient\+Data} lub {\ttfamily null}, jeśli nie znaleziono.
+\end{DoxyReturn}
+\Hypertarget{class_order_manager_a2f69bd51a04a1b8d344683f0f83bdf66}\index{OrderManager@{OrderManager}!InitializeCatalogIfNeeded@{InitializeCatalogIfNeeded}}
+\index{InitializeCatalogIfNeeded@{InitializeCatalogIfNeeded}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{InitializeCatalogIfNeeded()}{InitializeCatalogIfNeeded()}}
+{\footnotesize\ttfamily \label{class_order_manager_a2f69bd51a04a1b8d344683f0f83bdf66} 
+void Order\+Manager.\+Initialize\+Catalog\+If\+Needed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inicjalizuje katalog składników, jeśli nie został jeszcze zbudowany. Przetwarza ręcznie przypisane składniki z listy \doxylink{class_order_manager_ab37ca2e523867558803f980a8e3fb059}{dostepne\+Skladniki} oraz dodaje brakujące składniki domyślne (mięso, pomidor, cebula, sałata, sos, ławasz, kebab). 
+
+\Hypertarget{class_order_manager_ab072185128748ae18f3e99bd5b8ea7d8}\index{OrderManager@{OrderManager}!NormalizeAssignedIngredient@{NormalizeAssignedIngredient}}
+\index{NormalizeAssignedIngredient@{NormalizeAssignedIngredient}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{NormalizeAssignedIngredient()}{NormalizeAssignedIngredient()}}
+{\footnotesize\ttfamily \label{class_order_manager_ab072185128748ae18f3e99bd5b8ea7d8} 
+void Order\+Manager.\+Normalize\+Assigned\+Ingredient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}}}]{ingredient}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Normalizuje ręcznie przypisany składnik, wykrywając jego typ na podstawie nazwy. Rozpoznaje mięso i pomidor po polskich nazwach (z uwzględnieniem znaków diakrytycznych). Ustawia odpowiedni kolor debugowania, wartość sprzedaży oraz stan początkowy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ingredient} & Dane składnika do znormalizowania.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_order_manager_a42b33bdfd9b08d3f626226965a74fe56}\index{OrderManager@{OrderManager}!NoweZamowienie@{NoweZamowienie}}
+\index{NoweZamowienie@{NoweZamowienie}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{NoweZamowienie()}{NoweZamowienie()}}
+{\footnotesize\ttfamily \label{class_order_manager_a42b33bdfd9b08d3f626226965a74fe56} 
+void Order\+Manager.\+Nowe\+Zamowienie (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generuje nowe losowe zamówienie z dostępnych szablonów. Uwzględnia progresję trudności (więcej szablonów w miarę ukończonych zamówień), oblicza nagrodę pieniężną, stosuje bonus czasowy ze sklepu i mnożnik trudności do czasu realizacji. 
+
+\Hypertarget{class_order_manager_a964ba0119968d7896f62b902db0aedba}\index{OrderManager@{OrderManager}!PlayTimeoutFeedback@{PlayTimeoutFeedback}}
+\index{PlayTimeoutFeedback@{PlayTimeoutFeedback}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{PlayTimeoutFeedback()}{PlayTimeoutFeedback()}}
+{\footnotesize\ttfamily \label{class_order_manager_a964ba0119968d7896f62b902db0aedba} 
+void Order\+Manager.\+Play\+Timeout\+Feedback (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Odtwarza efekty zwrotne po przekroczeniu czasu zamówienia. Obejmuje dźwięk porażki, efekt wizualny timeout oraz wstrząs i błysk kamery. 
+
+\Hypertarget{class_order_manager_aa3b516935de6dabe1d93703706ff5a14}\index{OrderManager@{OrderManager}!RemoveDiacritics@{RemoveDiacritics}}
+\index{RemoveDiacritics@{RemoveDiacritics}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{RemoveDiacritics()}{RemoveDiacritics()}}
+{\footnotesize\ttfamily \label{class_order_manager_aa3b516935de6dabe1d93703706ff5a14} 
+string Order\+Manager.\+Remove\+Diacritics (\begin{DoxyParamCaption}\item[{string}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Usuwa znaki diakrytyczne (akcenty, ogonki) z podanego tekstu. Używa normalizacji Unicode FormD, aby rozłożyć znaki na części składowe, a następnie odfiltrować znaki niebędące spacjami (Non\+Spacing\+Mark). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em value} & Tekst, z którego mają zostać usunięte znaki diakrytyczne.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Tekst bez znaków diakrytycznych lub pusty ciąg, jeśli wejście jest puste.
+\end{DoxyReturn}
+\Hypertarget{class_order_manager_acb3ab348bfa6f299fffa95abee42590f}\index{OrderManager@{OrderManager}!RestoreProgress@{RestoreProgress}}
+\index{RestoreProgress@{RestoreProgress}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{RestoreProgress()}{RestoreProgress()}}
+{\footnotesize\ttfamily \label{class_order_manager_acb3ab348bfa6f299fffa95abee42590f} 
+void Order\+Manager.\+Restore\+Progress (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_order_progress_save_data}{Order\+Progress\+Save\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Przywraca postęp zamówień z wcześniej zapisanych danych. Odtwarza statystyki, aktywne zamówienie z wymaganiami składników oraz pozostały czas realizacji (minimum 5 sekund). Jeśli dane nie zawierają aktywnego zamówienia, generowane jest nowe. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em data} & Dane zapisu postępu zamówień do przywrócenia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_order_manager_afd824ac392c6ca69082c509cd4ef7b89}\index{OrderManager@{OrderManager}!SetOrderStateFromNetwork@{SetOrderStateFromNetwork}}
+\index{SetOrderStateFromNetwork@{SetOrderStateFromNetwork}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{SetOrderStateFromNetwork()}{SetOrderStateFromNetwork()}}
+{\footnotesize\ttfamily \label{class_order_manager_afd824ac392c6ca69082c509cd4ef7b89} 
+void Order\+Manager.\+Set\+Order\+State\+From\+Network (\begin{DoxyParamCaption}\item[{string}]{description}{, }\item[{float}]{time}{, }\item[{int}]{completed}{, }\item[{int}]{failed}{, }\item[{string}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia stan zamówienia na podstawie danych otrzymanych z sieci (dla klientów). Używane do synchronizacji stanu zamówienia w trybie wieloosobowym. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em description} & Opis aktywnego zamówienia.\\
+\hline
+{\em time} & Pozostały czas na realizację.\\
+\hline
+{\em completed} & Liczba ukończonych zamówień.\\
+\hline
+{\em failed} & Liczba nieudanych zamówień.\\
+\hline
+{\em message} & Ostatni komunikat statusowy.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_order_manager_ad495180fa97e427dcdbf19fa7d5c5950}\index{OrderManager@{OrderManager}!Start@{Start}}
+\index{Start@{Start}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_order_manager_ad495180fa97e427dcdbf19fa7d5c5950} 
+void Order\+Manager.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wywoływana po inicjalizacji. Generuje pierwsze zamówienie, chyba że gra działa w trybie wieloosobowym jako klient (nie serwer). 
+
+\Hypertarget{class_order_manager_a8e23cf78a52fc5bf998a19009014ab22}\index{OrderManager@{OrderManager}!SyncNetworkState@{SyncNetworkState}}
+\index{SyncNetworkState@{SyncNetworkState}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{SyncNetworkState()}{SyncNetworkState()}}
+{\footnotesize\ttfamily \label{class_order_manager_a8e23cf78a52fc5bf998a19009014ab22} 
+void Order\+Manager.\+Sync\+Network\+State (\begin{DoxyParamCaption}\item[{int}]{template\+Index}{, }\item[{string}]{desc}{, }\item[{float}]{time}{, }\item[{int}]{comp}{, }\item[{int}]{fail}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Synchronizuje stan zamówienia z serwera sieciowego. Ustawia aktywne zamówienie na podstawie indeksu szablonu oraz aktualizuje opis, czas, liczbę zrealizowanych i nieudanych zamówień. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em template\+Index} & Indeks szablonu zamówienia na serwerze.\\
+\hline
+{\em desc} & Opis aktywnego zamówienia.\\
+\hline
+{\em time} & Pozostały czas na realizację w sekundach.\\
+\hline
+{\em comp} & Liczba zrealizowanych zamówień.\\
+\hline
+{\em fail} & Liczba nieudanych zamówień.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_order_manager_a96fa824300c3f4fea397ba2709e7844b}\index{OrderManager@{OrderManager}!TryDeliverDish@{TryDeliverDish}}
+\index{TryDeliverDish@{TryDeliverDish}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{TryDeliverDish()}{TryDeliverDish()}}
+{\footnotesize\ttfamily \label{class_order_manager_a96fa824300c3f4fea397ba2709e7844b} 
+bool Order\+Manager.\+Try\+Deliver\+Dish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}}}]{item}{, }\item[{out string}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Próbuje dostarczyć przygotowane danie i zwalidować je względem aktywnego zamówienia. W przypadku sukcesu nalicza nagrodę pieniężną, generuje nowe zamówienie i zapisuje grę. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em item} & Przedmiot kuchenny (danie) do dostarczenia.\\
+\hline
+{\em message} & Komunikat wyjściowy opisujący wynik operacji.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli danie pasuje do zamówienia; {\ttfamily false} w przeciwnym razie.
+\end{DoxyReturn}
+\Hypertarget{class_order_manager_aa49e4926d41a0e7def3c94f01d93be22}\index{OrderManager@{OrderManager}!Update@{Update}}
+\index{Update@{Update}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_order_manager_aa49e4926d41a0e7def3c94f01d93be22} 
+void Order\+Manager.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizacja wywoływana co klatkę. Odlicza czas na realizację aktywnego zamówienia. Jeśli czas się skończy, zamówienie jest oznaczane jako nieudane, odtwarzany jest efekt zwrotny i generowane jest nowe zamówienie. Działa tylko po stronie serwera w trybie wieloosobowym. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_order_manager_a685b7843d87de8fc606f96f3989b1669}\index{OrderManager@{OrderManager}!activeOrder@{activeOrder}}
+\index{activeOrder@{activeOrder}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{activeOrder}{activeOrder}}
+{\footnotesize\ttfamily \label{class_order_manager_a685b7843d87de8fc606f96f3989b1669} 
+\mbox{\hyperlink{class_order}{Order}} Order\+Manager.\+active\+Order\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualnie aktywne zamówienie, które gracz musi zrealizować. Wartość null oznacza brak aktywnego zamówienia. 
+
+\Hypertarget{class_order_manager_ab52b2e3e3eaff6598e3304075aa827ef}\index{OrderManager@{OrderManager}!activeOrderDescription@{activeOrderDescription}}
+\index{activeOrderDescription@{activeOrderDescription}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{activeOrderDescription}{activeOrderDescription}}
+{\footnotesize\ttfamily \label{class_order_manager_ab52b2e3e3eaff6598e3304075aa827ef} 
+string Order\+Manager.\+active\+Order\+Description = "{}"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekstowy opis aktywnego zamówienia wyświetlany graczowi. 
+
+\Hypertarget{class_order_manager_a324e6bc341314e5c89c204c2ace27235}\index{OrderManager@{OrderManager}!completedOrders@{completedOrders}}
+\index{completedOrders@{completedOrders}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{completedOrders}{completedOrders}}
+{\footnotesize\ttfamily \label{class_order_manager_a324e6bc341314e5c89c204c2ace27235} 
+int Order\+Manager.\+completed\+Orders\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Licznik pomyślnie zrealizowanych zamówień od początku sesji gry. 
+
+\Hypertarget{class_order_manager_ab37ca2e523867558803f980a8e3fb059}\index{OrderManager@{OrderManager}!dostepneSkladniki@{dostepneSkladniki}}
+\index{dostepneSkladniki@{dostepneSkladniki}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{dostepneSkladniki}{dostepneSkladniki}}
+{\footnotesize\ttfamily \label{class_order_manager_ab37ca2e523867558803f980a8e3fb059} 
+List$<$\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}}$>$ Order\+Manager.\+dostepne\+Skladniki = new List$<$\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}}$>$()}
+
+
+
+Lista dostępnych danych składników w grze. Może być konfigurowana z poziomu inspektora Unity lub uzupełniana automatycznie w czasie wykonywania. 
+
+\Hypertarget{class_order_manager_ae722c26ff4ba18362b1e74d91b91e0c1}\index{OrderManager@{OrderManager}!failedOrders@{failedOrders}}
+\index{failedOrders@{failedOrders}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{failedOrders}{failedOrders}}
+{\footnotesize\ttfamily \label{class_order_manager_ae722c26ff4ba18362b1e74d91b91e0c1} 
+int Order\+Manager.\+failed\+Orders\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Licznik nieudanych zamówień (przeterminowanych) od początku sesji gry. 
+
+\Hypertarget{class_order_manager_a299baf8857e692c966efb1f85dba3e84}\index{OrderManager@{OrderManager}!ingredientLookup@{ingredientLookup}}
+\index{ingredientLookup@{ingredientLookup}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{ingredientLookup}{ingredientLookup}}
+{\footnotesize\ttfamily \label{class_order_manager_a299baf8857e692c966efb1f85dba3e84} 
+readonly Dictionary$<$\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}, \mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}}$>$ Order\+Manager.\+ingredient\+Lookup\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Wartość początkowa\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Dictionary<IngredientKind,\ IngredientData>()}
+
+\end{DoxyCode}
+
+
+Słownik mapujący typ składnika na jego dane, umożliwiający szybkie wyszukiwanie. 
+
+\Hypertarget{class_order_manager_ab10233d01541f41aeafedd89f9410462}\index{OrderManager@{OrderManager}!lastMessage@{lastMessage}}
+\index{lastMessage@{lastMessage}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{lastMessage}{lastMessage}}
+{\footnotesize\ttfamily \label{class_order_manager_ab10233d01541f41aeafedd89f9410462} 
+string Order\+Manager.\+last\+Message = "{}Przygotuj pierwszy kebab."{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatni komunikat statusowy dotyczący zamówień, wyświetlany w interfejsie użytkownika. 
+
+\Hypertarget{class_order_manager_a9fa2c6279d8f5fc2cf11a374ef558332}\index{OrderManager@{OrderManager}!orderTemplates@{orderTemplates}}
+\index{orderTemplates@{orderTemplates}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{orderTemplates}{orderTemplates}}
+{\footnotesize\ttfamily \label{class_order_manager_a9fa2c6279d8f5fc2cf11a374ef558332} 
+List$<$\mbox{\hyperlink{class_order}{Order}}$>$ Order\+Manager.\+order\+Templates = new List$<$\mbox{\hyperlink{class_order}{Order}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista szablonów zamówień, z których losowane są nowe zamówienia. Szablony definiują wymagane składniki, czas realizacji i inne parametry zamówienia. 
+
+\Hypertarget{class_order_manager_a5b399268e256350ee38f404813a199db}\index{OrderManager@{OrderManager}!remainingTime@{remainingTime}}
+\index{remainingTime@{remainingTime}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{remainingTime}{remainingTime}}
+{\footnotesize\ttfamily \label{class_order_manager_a5b399268e256350ee38f404813a199db} 
+float Order\+Manager.\+remaining\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pozostały czas na realizację aktywnego zamówienia w sekundach. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_order_manager_a2cf3111cd49936a69182535be487817e}\index{OrderManager@{OrderManager}!ActiveOrder@{ActiveOrder}}
+\index{ActiveOrder@{ActiveOrder}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{ActiveOrder}{ActiveOrder}}
+{\footnotesize\ttfamily \label{class_order_manager_a2cf3111cd49936a69182535be487817e} 
+\mbox{\hyperlink{class_order}{Order}} Order\+Manager.\+Active\+Order\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Aktualnie aktywne zamówienie. 
+
+Obiekt \doxylink{class_order}{Order} lub {\ttfamily null}, gdy brak aktywnego zamówienia.\Hypertarget{class_order_manager_aa5a5e4631eed4582133aad973b9808b6}\index{OrderManager@{OrderManager}!ActiveOrderDescription@{ActiveOrderDescription}}
+\index{ActiveOrderDescription@{ActiveOrderDescription}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{ActiveOrderDescription}{ActiveOrderDescription}}
+{\footnotesize\ttfamily \label{class_order_manager_aa5a5e4631eed4582133aad973b9808b6} 
+string Order\+Manager.\+Active\+Order\+Description\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Tekstowy opis aktywnego zamówienia. 
+
+\Hypertarget{class_order_manager_a40b6411a694a1a7e289982d1512ed29c}\index{OrderManager@{OrderManager}!ActiveTemplateIndex@{ActiveTemplateIndex}}
+\index{ActiveTemplateIndex@{ActiveTemplateIndex}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{ActiveTemplateIndex}{ActiveTemplateIndex}}
+{\footnotesize\ttfamily \label{class_order_manager_a40b6411a694a1a7e289982d1512ed29c} 
+int Order\+Manager.\+Active\+Template\+Index = -\/1\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Indeks aktualnego szablonu zamówienia w liście \doxylink{class_order_manager_a9fa2c6279d8f5fc2cf11a374ef558332}{order\+Templates}. Wartość -\/1 oznacza, że żadne zamówienie nie zostało jeszcze wygenerowane. 
+
+\Hypertarget{class_order_manager_a3bc02494a2f9d73e96c6af3c056fc6ec}\index{OrderManager@{OrderManager}!CompletedOrders@{CompletedOrders}}
+\index{CompletedOrders@{CompletedOrders}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{CompletedOrders}{CompletedOrders}}
+{\footnotesize\ttfamily \label{class_order_manager_a3bc02494a2f9d73e96c6af3c056fc6ec} 
+int Order\+Manager.\+Completed\+Orders\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Liczba zrealizowanych zamówień. 
+
+\Hypertarget{class_order_manager_a7de30ecddf21289538895ddee4dcba1f}\index{OrderManager@{OrderManager}!FailedOrders@{FailedOrders}}
+\index{FailedOrders@{FailedOrders}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{FailedOrders}{FailedOrders}}
+{\footnotesize\ttfamily \label{class_order_manager_a7de30ecddf21289538895ddee4dcba1f} 
+int Order\+Manager.\+Failed\+Orders\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Liczba nieudanych zamówień. 
+
+\Hypertarget{class_order_manager_a75c01af4fa7b37ec82bdfa496ddb561d}\index{OrderManager@{OrderManager}!HasActiveOrder@{HasActiveOrder}}
+\index{HasActiveOrder@{HasActiveOrder}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{HasActiveOrder}{HasActiveOrder}}
+{\footnotesize\ttfamily \label{class_order_manager_a75c01af4fa7b37ec82bdfa496ddb561d} 
+bool Order\+Manager.\+Has\+Active\+Order\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Określa, czy istnieje aktywne zamówienie do realizacji. 
+
+{\ttfamily true} jeśli istnieje aktywne zamówienie; w przeciwnym razie {\ttfamily false}.\Hypertarget{class_order_manager_a67356b19725ec1fd06f71dde1c172dc6}\index{OrderManager@{OrderManager}!Instance@{Instance}}
+\index{Instance@{Instance}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_order_manager_a67356b19725ec1fd06f71dde1c172dc6} 
+\mbox{\hyperlink{class_order_manager}{Order\+Manager}} Order\+Manager.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna instancja Singletona menedżera zamówień, dostępna globalnie. 
+
+\Hypertarget{class_order_manager_a5d91eb1bfea8ac1a1474aa5c43d7589e}\index{OrderManager@{OrderManager}!LastOrderMessage@{LastOrderMessage}}
+\index{LastOrderMessage@{LastOrderMessage}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{LastOrderMessage}{LastOrderMessage}}
+{\footnotesize\ttfamily \label{class_order_manager_a5d91eb1bfea8ac1a1474aa5c43d7589e} 
+string Order\+Manager.\+Last\+Order\+Message\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Ostatni komunikat dotyczący statusu zamówienia. 
+
+\Hypertarget{class_order_manager_ab20e15c7276331e4578522b1be0c17dc}\index{OrderManager@{OrderManager}!RemainingOrderTime@{RemainingOrderTime}}
+\index{RemainingOrderTime@{RemainingOrderTime}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{RemainingOrderTime}{RemainingOrderTime}}
+{\footnotesize\ttfamily \label{class_order_manager_ab20e15c7276331e4578522b1be0c17dc} 
+float Order\+Manager.\+Remaining\+Order\+Time\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Pozostały czas na realizację zamówienia w sekundach (alias dla \doxylink{class_order_manager_a070315df77fcde4ae341a1c77d9f881d}{Remaining\+Time}). 
+
+\Hypertarget{class_order_manager_a070315df77fcde4ae341a1c77d9f881d}\index{OrderManager@{OrderManager}!RemainingTime@{RemainingTime}}
+\index{RemainingTime@{RemainingTime}!OrderManager@{OrderManager}}
+\doxysubsubsection{\texorpdfstring{RemainingTime}{RemainingTime}}
+{\footnotesize\ttfamily \label{class_order_manager_a070315df77fcde4ae341a1c77d9f881d} 
+float Order\+Manager.\+Remaining\+Time\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Pozostały czas na realizację zamówienia w sekundach. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_order_manager_8cs}{Order\+Manager.\+cs}}\end{DoxyCompactItemize}

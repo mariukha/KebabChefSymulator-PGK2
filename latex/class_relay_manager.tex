@@ -1,0 +1,108 @@
+\doxysection{Dokumentacja klasy Relay\+Manager}
+\hypertarget{class_relay_manager}{}\label{class_relay_manager}\index{RelayManager@{RelayManager}}
+Diagram dziedziczenia dla Relay\+Manager\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_relay_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+async Task \mbox{\hyperlink{class_relay_manager_ab7c37d0a965588a89d8886d464f99eeb}{Initialize\+Services}} ()
+\item 
+async Task$<$ string $>$ \mbox{\hyperlink{class_relay_manager_a9f9604e7a831fecf237f4f995a6b506f}{Create\+Relay}} (int max\+Players=3)
+\item 
+async Task$<$ bool $>$ \mbox{\hyperlink{class_relay_manager_acb1afd8d1a8be12ab2722569dd15cb44}{Join\+Relay}} (string join\+Code)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_relay_manager}{Relay\+Manager}} \mbox{\hyperlink{class_relay_manager_ab09839ff234baa08578fe711984fe42f}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_relay_manager_ab67ef803af753c316ef36adcdb285bc1}{Join\+Code}} = string.\+Empty\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_relay_manager_a734c48deff59e1ca4e39128da56d42e3}{Is\+Services\+Initialized}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_relay_manager_a9f7c071ff26b5c64332095c31d879655}{Last\+Error}} = string.\+Empty\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_relay_manager_a8e81bb74e3fef9070a88d898c7ee2ffb}{Awake}} ()
+\item 
+Unity\+Transport \mbox{\hyperlink{class_relay_manager_a9410eda3641223f8248bb86189c8c288}{Get\+Transport}} ()
+\item 
+void \mbox{\hyperlink{class_relay_manager_a37e282a02acbfba0a9435e67f430feaf}{On\+Destroy}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_relay_manager_a8e81bb74e3fef9070a88d898c7ee2ffb}\index{RelayManager@{RelayManager}!Awake@{Awake}}
+\index{Awake@{Awake}!RelayManager@{RelayManager}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_relay_manager_a8e81bb74e3fef9070a88d898c7ee2ffb} 
+void Relay\+Manager.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_relay_manager_a9f9604e7a831fecf237f4f995a6b506f}\index{RelayManager@{RelayManager}!CreateRelay@{CreateRelay}}
+\index{CreateRelay@{CreateRelay}!RelayManager@{RelayManager}}
+\doxysubsubsection{\texorpdfstring{CreateRelay()}{CreateRelay()}}
+{\footnotesize\ttfamily \label{class_relay_manager_a9f9604e7a831fecf237f4f995a6b506f} 
+async Task$<$ string $>$ Relay\+Manager.\+Create\+Relay (\begin{DoxyParamCaption}\item[{int}]{max\+Players}{ = {\ttfamily 3}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_relay_manager_a9410eda3641223f8248bb86189c8c288}\index{RelayManager@{RelayManager}!GetTransport@{GetTransport}}
+\index{GetTransport@{GetTransport}!RelayManager@{RelayManager}}
+\doxysubsubsection{\texorpdfstring{GetTransport()}{GetTransport()}}
+{\footnotesize\ttfamily \label{class_relay_manager_a9410eda3641223f8248bb86189c8c288} 
+Unity\+Transport Relay\+Manager.\+Get\+Transport (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_relay_manager_ab7c37d0a965588a89d8886d464f99eeb}\index{RelayManager@{RelayManager}!InitializeServices@{InitializeServices}}
+\index{InitializeServices@{InitializeServices}!RelayManager@{RelayManager}}
+\doxysubsubsection{\texorpdfstring{InitializeServices()}{InitializeServices()}}
+{\footnotesize\ttfamily \label{class_relay_manager_ab7c37d0a965588a89d8886d464f99eeb} 
+async Task Relay\+Manager.\+Initialize\+Services (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_relay_manager_acb1afd8d1a8be12ab2722569dd15cb44}\index{RelayManager@{RelayManager}!JoinRelay@{JoinRelay}}
+\index{JoinRelay@{JoinRelay}!RelayManager@{RelayManager}}
+\doxysubsubsection{\texorpdfstring{JoinRelay()}{JoinRelay()}}
+{\footnotesize\ttfamily \label{class_relay_manager_acb1afd8d1a8be12ab2722569dd15cb44} 
+async Task$<$ bool $>$ Relay\+Manager.\+Join\+Relay (\begin{DoxyParamCaption}\item[{string}]{join\+Code}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_relay_manager_a37e282a02acbfba0a9435e67f430feaf}\index{RelayManager@{RelayManager}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!RelayManager@{RelayManager}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_relay_manager_a37e282a02acbfba0a9435e67f430feaf} 
+void Relay\+Manager.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_relay_manager_ab09839ff234baa08578fe711984fe42f}\index{RelayManager@{RelayManager}!Instance@{Instance}}
+\index{Instance@{Instance}!RelayManager@{RelayManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_relay_manager_ab09839ff234baa08578fe711984fe42f} 
+\mbox{\hyperlink{class_relay_manager}{Relay\+Manager}} Relay\+Manager.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+\Hypertarget{class_relay_manager_a734c48deff59e1ca4e39128da56d42e3}\index{RelayManager@{RelayManager}!IsServicesInitialized@{IsServicesInitialized}}
+\index{IsServicesInitialized@{IsServicesInitialized}!RelayManager@{RelayManager}}
+\doxysubsubsection{\texorpdfstring{IsServicesInitialized}{IsServicesInitialized}}
+{\footnotesize\ttfamily \label{class_relay_manager_a734c48deff59e1ca4e39128da56d42e3} 
+bool Relay\+Manager.\+Is\+Services\+Initialized\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private set]}}
+
+\Hypertarget{class_relay_manager_ab67ef803af753c316ef36adcdb285bc1}\index{RelayManager@{RelayManager}!JoinCode@{JoinCode}}
+\index{JoinCode@{JoinCode}!RelayManager@{RelayManager}}
+\doxysubsubsection{\texorpdfstring{JoinCode}{JoinCode}}
+{\footnotesize\ttfamily \label{class_relay_manager_ab67ef803af753c316ef36adcdb285bc1} 
+string Relay\+Manager.\+Join\+Code = string.\+Empty\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private set]}}
+
+\Hypertarget{class_relay_manager_a9f7c071ff26b5c64332095c31d879655}\index{RelayManager@{RelayManager}!LastError@{LastError}}
+\index{LastError@{LastError}!RelayManager@{RelayManager}}
+\doxysubsubsection{\texorpdfstring{LastError}{LastError}}
+{\footnotesize\ttfamily \label{class_relay_manager_a9f7c071ff26b5c64332095c31d879655} 
+string Relay\+Manager.\+Last\+Error = string.\+Empty\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_relay_manager_8cs}{Relay\+Manager.\+cs}}\end{DoxyCompactItemize}

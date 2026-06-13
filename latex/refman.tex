@@ -1,0 +1,356 @@
+  % Handle batch mode
+  % to overcome problems with too many open files
+  \let\mypdfximage\pdfximage\def\pdfximage{\immediate\mypdfximage}
+  \RequirePackage{iftex}
+  \ifLuaTeX
+    \directlua{pdf.setminorversion(7)}
+  \fi
+  \ifXeTeX
+    \special{pdf:minorversion 7}
+  \fi
+  \ifPDFTeX
+    \pdfminorversion=7
+  \fi
+  % Set document class depending on configuration
+  \documentclass[twoside]{book}
+  %% moved from doxygen.sty due to workaround for LaTex 2019 version and unmaintained tabu package
+  \usepackage{ifthen}
+  \ifx\requestedLaTeXdate\undefined
+    \usepackage{array}
+  \else
+    \usepackage{array}[=2016-10-06]
+  \fi
+  %%
+  % Packages required by doxygen
+  \makeatletter
+  \providecommand\IfFormatAtLeastTF{\@ifl@t@r\fmtversion}
+  % suppress package identification of infwarerr as it contains the word "warning"
+  \let\@@protected@wlog\protected@wlog
+  \def\protected@wlog#1{\wlog{package info suppressed}}
+  \RequirePackage{infwarerr}
+  \let\protected@wlog\@@protected@wlog
+  \makeatother
+  \IfFormatAtLeastTF{2016/01/01}{}{\usepackage{fixltx2e}} % for \textsubscript
+  \ifPDFTeX
+    \IfFormatAtLeastTF{2015/01/01}{\pdfsuppresswarningpagegroup=1}{}
+  \fi
+  \usepackage{doxygen}
+  \usepackage{graphicx}
+  \iftutex
+    \usepackage{fontspec}
+    \defaultfontfeatures{Ligatures={TeX}}
+    \usepackage{unicode-math}
+  \else
+    \usepackage[utf8]{inputenc}
+  \fi
+  \usepackage{makeidx}
+  \PassOptionsToPackage{warn}{textcomp}
+  \usepackage{textcomp}
+  \usepackage[nointegrals]{wasysym}
+  \usepackage{ifxetex}
+  % NLS support packages
+  \usepackage[polish]{babel}
+\let\lll\undefined
+  % Define default fonts
+  % Font selection
+  \iftutex
+  \else
+    \usepackage[T1]{fontenc}
+  \fi
+  % set main and monospaced font
+  \usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\renewcommand{\familydefault}{\sfdefault}
+  \doxyallsectionsfont{%
+    \fontseries{bc}\selectfont%
+    \color{darkgray}%
+  }
+  \renewcommand{\DoxyLabelFont}{%
+    \fontseries{bc}\selectfont%
+    \color{darkgray}%
+  }
+  \newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+   % Arguments of doxygenemoji:
+   % 1) ':<text>:' form of the emoji, already LaTeX-escaped
+   % 2) file with the name of the emoji without the .png extension
+   % in case image exist use this otherwise use the ':<text>:' form
+   \newcommand{\doxygenemoji}[2]{%
+     \IfFileExists{./#2.png}{\raisebox{-0.1em}{\includegraphics[height=0.9em]{./#2.png}}}{#1}%
+   }
+  % Page & text layout
+  \usepackage{geometry}
+  \geometry{%
+    a4paper,%
+    top=2.5cm,%
+    bottom=2.5cm,%
+    left=2.5cm,%
+    right=2.5cm%
+  }
+  \usepackage{changepage}
+  % Allow a bit of overflow to go unnoticed by other means
+  \tolerance=750
+  \hfuzz=15pt
+  \hbadness=750
+  \setlength{\emergencystretch}{15pt}
+  \setlength{\parindent}{0cm}
+  \newcommand{\doxynormalparskip}{\setlength{\parskip}{3ex plus 2ex minus 2ex}}
+  \newcommand{\doxytocparskip}{\setlength{\parskip}{1ex plus 0ex minus 0ex}}
+  \doxynormalparskip
+  % Redefine paragraph/subparagraph environments, using sectsty fonts
+  \makeatletter
+  \renewcommand{\paragraph}{%
+    \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+      \normalfont\normalsize\bfseries\SS@parafont%
+    }%
+  }
+  \renewcommand{\subparagraph}{%
+    \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+      \normalfont\normalsize\bfseries\SS@subparafont%
+    }%
+  }
+  \makeatother
+  \makeatletter
+  \newcommand\hrulefilll{\leavevmode\leaders\hrule\hskip 0pt plus 1filll\kern\z@}
+  \makeatother
+  % Headers & footers
+  \usepackage{fancyhdr}
+  \pagestyle{fancyplain}
+  \renewcommand{\footrulewidth}{0.4pt}
+  \fancypagestyle{fancyplain}{
+    \fancyhf{}
+    \fancyhead[LE, RO]{\bfseries\thepage}
+    \fancyhead[LO]{\bfseries\rightmark}
+    \fancyhead[RE]{\bfseries\leftmark}
+    \fancyfoot[LO, RE]{\bfseries\scriptsize Wygenerowano za pomocą Doxygen }
+  }
+  \fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[LO, RE]{\bfseries\scriptsize Wygenerowano za pomocą Doxygen }
+    \renewcommand{\headrulewidth}{0pt}
+  }
+  \pagestyle{fancyplain}
+  \renewcommand{\chaptermark}[1]{%
+    \markboth{#1}{}%
+  }
+  \renewcommand{\sectionmark}[1]{%
+    \markright{\thesection\ #1}%
+  }
+  % ToC, LoF, LoT, bibliography, and index
+  % Indices & bibliography
+  \usepackage{natbib}
+  \usepackage[titles]{tocloft}
+  \setcounter{tocdepth}{3}
+  \setcounter{secnumdepth}{5}
+  % creating indexes
+  \makeindex
+  \ifPDFTeX
+\usepackage{newunicodechar}
+  \makeatletter
+    \def\doxynewunicodechar#1#2{%
+    \@tempswafalse
+    \edef\nuc@tempa{\detokenize{#1}}%
+    \if\relax\nuc@tempa\relax
+      \nuc@emptyargerr
+    \else
+      \edef\@tempb{\expandafter\@car\nuc@tempa\@nil}%
+      \nuc@check
+      \if@tempswa
+        \@namedef{u8:\nuc@tempa}{#2}%
+      \fi
+    \fi
+  }
+  \makeatother
+  \doxynewunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \doxynewunicodechar{²}{${}^{2}$}% Superscript two
+  \doxynewunicodechar{³}{${}^{3}$}% Superscript three
+\fi
+  % Hyperlinks
+    % Hyperlinks (required, but should be loaded last)
+    \ifPDFTeX
+      \usepackage[pdftex,pagebackref=true]{hyperref}
+    \else
+      \ifXeTeX
+        \usepackage[xetex,pagebackref=true]{hyperref}
+      \else
+        \ifLuaTeX
+          \usepackage[luatex,pagebackref=true]{hyperref}
+        \else
+          \usepackage[ps2pdf,pagebackref=true]{hyperref}
+        \fi
+      \fi
+    \fi
+    \hypersetup{%
+      colorlinks=true,%
+      linkcolor=blue,%
+      citecolor=blue,%
+      unicode,%
+      pdftitle={Kebab Chef Symulator},%
+      pdfsubject={}%
+    }
+  % Custom commands used by the header
+  % Custom commands
+  \newcommand{\clearemptydoublepage}{%
+    \newpage{\pagestyle{empty}\cleardoublepage}%
+  }
+  % caption style definition
+  \usepackage{caption}
+  \captionsetup{labelsep=space,justification=centering,font={bf},singlelinecheck=off,skip=4pt,position=top}
+  % in page table of contents
+  \IfFormatAtLeastTF{2023/05/01}{\usepackage[deeplevels]{etoc}}{\usepackage[deeplevels]{etoc_doxygen}}
+  \etocsettocstyle{\doxytocparskip}{\doxynormalparskip}
+  \etocsetlevel{subsubsubsection}{4}
+  \etocsetlevel{subsubsubsubsection}{5}
+  \etocsetlevel{subsubsubsubsubsection}{6}
+  \etocsetlevel{subsubsubsubsubsubsection}{7}
+  \etocsetlevel{paragraph}{8}
+  \etocsetlevel{subparagraph}{9}
+  % prevent numbers overlap the titles in toc
+  \renewcommand{\numberline}[1]{#1~}
+% End of preamble, now comes the document contents
+%===== C O N T E N T S =====
+\begin{document}
+  \raggedbottom
+  % Titlepage & ToC
+    % To avoid duplicate page anchors due to reuse of same numbers for
+    % the index (be it as roman numbers)
+    \hypersetup{pageanchor=false,
+                bookmarksnumbered=true,
+                pdfencoding=unicode
+               }
+  \pagenumbering{alph}
+  \begin{titlepage}
+  \vspace*{7cm}
+  \begin{center}%
+  {\Large Kebab Chef Symulator}\\
+  \vspace*{1cm}
+  {\large Wygenerowano za pomocą Doxygen 1.11.0}\\
+  \end{center}
+  \end{titlepage}
+  \clearemptydoublepage
+  \pagenumbering{roman}
+  \tableofcontents
+  \clearemptydoublepage
+  \pagenumbering{arabic}
+  % re-enable anchors again
+  \hypersetup{pageanchor=true}
+%--- Begin generated contents ---
+\chapter{Indeks hierarchiczny}
+\input{hierarchy}
+\chapter{Indeks klas}
+\input{annotated}
+\chapter{Indeks plików}
+\input{files}
+\chapter{Dokumentacja klas}
+\input{class_achievement_popup}
+\input{class_ambient_particles}
+\input{class_audio_manager}
+\input{class_billboard_label}
+\input{class_camera_effects}
+\input{class_client_network_transform}
+\input{class_customer_animator}
+\input{class_delivery_tray_display}
+\input{class_dump_hierarchy}
+\input{class_economy_manager}
+\input{class_economy_save_data}
+\input{class_game_save_data}
+\input{class_game_settings_manager}
+\input{class_held_item_bob}
+\input{class_ingredient_data}
+\input{class_ingredient_requirement}
+\input{class_interactable}
+\input{class_interaction_highlight}
+\input{class_item_animator}
+\input{class_kitchen_game_bootstrap}
+\input{class_kitchen_game_tests}
+\input{class_kitchen_h_u_d}
+\input{class_kitchen_item}
+\input{class_kitchen_item_visual_factory}
+\input{class_kitchen_naming}
+\input{class_kitchen_order_board}
+\input{class_kitchen_order_validator}
+\input{class_kitchen_station}
+\input{class_lamp_emission_pulse}
+\input{class_lamp_flicker}
+\input{class_loading_screen}
+\input{class_lobby_u_i}
+\input{class_main_menu_u_i}
+\input{class_menu_button_hover}
+\input{struct_network_item_state}
+\input{class_network_kitchen_station}
+\input{class_network_player}
+\input{class_network_setup}
+\input{class_order}
+\input{class_order_manager}
+\input{class_order_progress_save_data}
+\input{class_order_save_data}
+\input{class_pause_menu_u_i}
+\input{class_player_interaction}
+\input{class_player_list_u_i}
+\input{class_network_setup_1_1_player_prefab_handler}
+\input{class_post_process_setup}
+\input{class_prepared_ingredient_data}
+\input{class_relay_manager}
+\input{class_remote_player_animator}
+\input{struct_game_settings_manager_1_1_resolution_preset}
+\input{class_save_manager}
+\input{class_settings_menu_u_i}
+\input{class_shop_manager}
+\input{class_shop_save_data}
+\input{class_shop_u_i}
+\input{class_shop_u_i_1_1_shop_upgrade_row}
+\input{class_simple_player_controller}
+\input{struct_station_state_snapshot}
+\input{class_upgrade_definition}
+\input{class_upgrade_level_entry}
+\input{class_v_f_x_manager}
+\chapter{Dokumentacja plików}
+\input{_audio_manager_8cs}
+\input{_client_network_transform_8cs}
+\input{_dump_hierarchy_8cs}
+\input{_economy_manager_8cs}
+\input{_ambient_particles_8cs}
+\input{_camera_effects_8cs}
+\input{_interaction_highlight_8cs}
+\input{_item_animator_8cs}
+\input{_lamp_flicker_8cs}
+\input{_post_process_setup_8cs}
+\input{_game_settings_manager_8cs}
+\input{_ingredient_data_8cs}
+\input{_interactable_8cs}
+\input{_kitchen_game_bootstrap_8cs}
+\input{_kitchen_game_models_8cs}
+\input{_kitchen_h_u_d_8cs}
+\input{_kitchen_item_visual_factory_8cs}
+\input{_kitchen_order_board_8cs}
+\input{_kitchen_station_8cs}
+\input{_lobby_u_i_8cs}
+\input{_network_item_serializer_8cs}
+\input{_network_kitchen_station_8cs}
+\input{_network_player_8cs}
+\input{_network_setup_8cs}
+\input{_order_8cs}
+\input{_order_manager_8cs}
+\input{_player_interaction_8cs}
+\input{_player_list_u_i_8cs}
+\input{_relay_manager_8cs}
+\input{_save_manager_8cs}
+\input{_shop_manager_8cs}
+\input{_shop_u_i_8cs}
+\input{_simple_player_controller_8cs}
+\input{_achievement_popup_8cs}
+\input{_loading_screen_8cs}
+\input{_main_menu_u_i_8cs}
+\input{_pause_menu_u_i_8cs}
+\input{_settings_menu_u_i_8cs}
+\input{_v_f_x_manager_8cs}
+\input{_kitchen_game_tests_8cs}
+%--- End generated contents ---
+% Index
+  \backmatter
+  \newpage
+  \phantomsection
+  \clearemptydoublepage
+  \addcontentsline{toc}{chapter}{\indexname}
+  \printindex
+% Required for some languages (in combination with latexdocumentpre from the header)
+\end{document}

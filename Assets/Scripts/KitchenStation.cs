@@ -1,45 +1,213 @@
+/// \file KitchenStation.cs
+/// \brief Plik zawierający implementację klasy KitchenStation, która zarządza
+/// logiką stanowisk kuchennych w symulatorze kebaba.
+/// \details Klasa obsługuje różne typy stanowisk kuchennych: źródła składników,
+/// deski do krojenia, grille, stanowiska montażu kebaba oraz punkty wydania.
+/// Każde stanowisko posiada własną logikę przetwarzania, wizualizację stanu
+/// oraz integrację z systemami sieciowymi, efektami dźwiękowymi i wizualnymi.
+
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Klasa reprezentująca stanowisko kuchenne w symulatorze kebaba.
+/// Dziedziczy po klasie <see cref="Interactable"/> i obsługuje interakcje gracza
+/// z różnymi typami stanowisk kuchennych.
+/// </summary>
+/// <remarks>
+/// Stanowisko kuchenne może pełnić jedną z pięciu ról:
+/// <list type="bullet">
+/// <item><description><c>IngredientSource</c> — źródło surowych składników (w tym taca z mięsem)</description></item>
+/// <item><description><c>CuttingBoard</c> — deska do krojenia warzyw</description></item>
+/// <item><description><c>Grill</c> — grill do pieczenia mięsa lub doner kebab</description></item>
+/// <item><description><c>Assembly</c> — stanowisko montażu gotowego kebaba</description></item>
+/// <item><description><c>Delivery</c> — punkt wydania gotowego dania klientowi</description></item>
+/// </list>
+/// Klasa zarządza stanem przetwarzania składników, wizualizacją dynamicznych obiektów
+/// na stanowisku oraz synchronizacją stanu przez sieć.
+/// </remarks>
 public class KitchenStation : Interactable
 {
+    /// <summary>
+    /// Nazwa wyświetlana stanowiska kuchennego, używana w komunikatach dla gracza.
+    /// </summary>
     [SerializeField] private string stationName = "Stacja";
+
+    /// <summary>
+    /// Typ stanowiska kuchennego określający jego funkcję i zachowanie.
+    /// </summary>
+    /// <seealso cref="KitchenStationType"/>
     [SerializeField] private KitchenStationType stationType = KitchenStationType.IngredientSource;
+
+    /// <summary>
+    /// Dane składnika źródłowego dostarczanego przez to stanowisko.
+    /// Używane tylko dla stanowisk typu <see cref="KitchenStationType.IngredientSource"/>.
+    /// </summary>
     [SerializeField] private IngredientData sourceIngredient;
+
+    /// <summary>
+    /// Bazowy czas trwania przetwarzania składnika na stanowisku (w sekundach).
+    /// Może być modyfikowany przez mnożnik prędkości ze sklepu.
+    /// </summary>
     [SerializeField] private float processingDuration = 2.5f;
+
+    /// <summary>
+    /// Renderer wizualny stanowiska, którego kolor zmienia się w zależności od stanu.
+    /// </summary>
     [SerializeField] private Renderer visualRenderer;
+
+    /// <summary>
+    /// Kolor stanowiska w stanie bezczynności (brak przetwarzania, brak przedmiotu).
+    /// </summary>
     [SerializeField] private Color idleColor = new Color(0.35f, 0.35f, 0.35f);
+
+    /// <summary>
+    /// Kolor stanowiska podczas aktywnego przetwarzania składnika.
+    /// </summary>
     [SerializeField] private Color busyColor = new Color(0.95f, 0.65f, 0.2f);
+
+    /// <summary>
+    /// Kolor stanowiska gdy składnik jest gotowy do odebrania.
+    /// </summary>
     [SerializeField] private Color readyColor = new Color(0.35f, 0.8f, 0.35f);
 
+    /// <summary>
+    /// Przedmiot kuchenny aktualnie znajdujący się na stanowisku (przetwarzany lub gotowy).
+    /// </summary>
     [SerializeField] private KitchenItem stationItem;
+
+    /// <summary>
+    /// Flaga określająca, czy na stanowisku montażu znajduje się ławasz.
+    /// </summary>
     [SerializeField] private bool hasLavash;
+
+    /// <summary>
+    /// Lista przygotowanych składników dodanych do montażu kebaba na stanowisku Assembly.
+    /// </summary>
     [SerializeField] private List<PreparedIngredientData> assemblyIngredients = new List<PreparedIngredientData>();
+
+    /// <summary>
+    /// Liczba przygotowanych porcji mięsa dostępnych na tacy z mięsem.
+    /// </summary>
     [SerializeField] private int preparedMeatServings;
+
+    /// <summary>
+    /// Domyślna wielkość partii mięsa wytwarzanej przy jednorazowym ścięciu z donera.
+    /// Może być nadpisana przez wartość z <see cref="ShopManager"/>.
+    /// </summary>
     [SerializeField] private int preparedMeatBatchSize = 3;
 
+    /// <summary>
+    /// Flaga wskazująca, czy stanowisko aktualnie przetwarza składnik.
+    /// </summary>
     private bool isProcessing;
+
+    /// <summary>
+    /// Czas zakończenia bieżącego procesu przetwarzania (w <c>Time.time</c>).
+    /// </summary>
     private float processEndTime;
+
+    /// <summary>
+    /// Powiązane stanowisko tacy z mięsem, na którą trafia mięso ścięte z donera.
+    /// Używane przez stanowiska typu grill-doner.
+    /// </summary>
     private KitchenStation linkedMeatTray;
+
+    /// <summary>
+    /// Transform wizualizacji mięsa na tacy, wyszukiwany jako obiekt potomny "MeatVisual".
+    /// </summary>
     private Transform meatVisual;
 
+    /// <summary>
+    /// Dynamicznie tworzony obiekt wizualny reprezentujący przedmiot na stanowisku.
+    /// </summary>
     private GameObject dynamicStationItemVisual;
+
+    /// <summary>
+    /// Dynamicznie tworzony obiekt wizualny reprezentujący ławasz na stanowisku montażu.
+    /// </summary>
     private GameObject dynamicLavashVisual;
+
+    /// <summary>
+    /// Lista dynamicznie tworzonych obiektów wizualnych reprezentujących składniki montażu kebaba.
+    /// </summary>
     private List<GameObject> dynamicAssemblyVisuals = new List<GameObject>();
 
+    /// <summary>
+    /// Bieżąca faza animacji pulsowania stanowiska, przyrastająca w czasie.
+    /// </summary>
     private float pulsePhase;
+
+    /// <summary>
+    /// Bazowa skala stanowiska zapamiętana przed rozpoczęciem efektu pulsowania.
+    /// </summary>
     private Vector3 baseScale;
+
+    /// <summary>
+    /// Hash ostatniego stanu wizualnego, używany do optymalizacji odświeżania wizualizacji.
+    /// Jeśli hash się nie zmienił, wizualizacja nie jest przerysowywana.
+    /// </summary>
     private int lastVisualHash;
 
+    /// <summary>
+    /// Informuje, czy stanowisko aktualnie przetwarza składnik.
+    /// </summary>
+    /// <value><c>true</c> jeśli trwa przetwarzanie; w przeciwnym razie <c>false</c>.</value>
     public bool IsProcessing => isProcessing;
+
+    /// <summary>
+    /// Czas (<c>Time.time</c>) zakończenia bieżącego przetwarzania.
+    /// </summary>
+    /// <value>Moment zakończenia procesu lub 0 jeśli nic nie jest przetwarzane.</value>
     public float ProcessEndTime => processEndTime;
+
+    /// <summary>
+    /// Liczba gotowych porcji mięsa na tacy.
+    /// </summary>
+    /// <value>Nieujemna liczba dostępnych porcji mięsa.</value>
     public int PreparedMeatServings => preparedMeatServings;
+
+    /// <summary>
+    /// Informuje, czy na stanowisku montażu leży ławasz.
+    /// </summary>
+    /// <value><c>true</c> jeśli ławasz jest obecny; w przeciwnym razie <c>false</c>.</value>
     public bool HasLavash => hasLavash;
+
+    /// <summary>
+    /// Liczba składników dodanych do montażu kebaba.
+    /// </summary>
+    /// <value>Liczba elementów na liście składników montażu.</value>
     public int AssemblyCount => assemblyIngredients.Count;
+
+    /// <summary>
+    /// Przedmiot kuchenny aktualnie znajdujący się na stanowisku.
+    /// </summary>
+    /// <value>Instancja <see cref="KitchenItem"/> lub <c>null</c> jeśli stanowisko jest puste.</value>
     public KitchenItem StationItem => stationItem;
+
+    /// <summary>
+    /// Typ tego stanowiska kuchennego.
+    /// </summary>
+    /// <value>Wartość enumeracji <see cref="KitchenStationType"/>.</value>
     public KitchenStationType StationType => stationType;
+
+    /// <summary>
+    /// Lista przygotowanych składników na stanowisku montażu.
+    /// </summary>
+    /// <value>Lista obiektów <see cref="PreparedIngredientData"/> zawierających rodzaj i stan składników.</value>
     public List<PreparedIngredientData> AssemblyIngredients => assemblyIngredients;
 
+    /// <summary>
+    /// Synchronizuje stan stanowiska na podstawie migawki sieciowej (snapshot).
+    /// Nadpisuje bieżący stan lokalny wartościami otrzymanymi z serwera.
+    /// </summary>
+    /// <param name="snapshot">Migawka stanu stanowiska otrzymana z serwera, zawierająca
+    /// informacje o przetwarzaniu, mięsie, ławaszu, przedmiocie i składnikach montażu.</param>
+    /// <remarks>
+    /// Metoda konwertuje pozostały czas przetwarzania z migawki na bezwzględny czas zakończenia
+    /// względem <c>Time.time</c>. Składniki montażu są ograniczone do maksymalnie 8 slotów.
+    /// Po synchronizacji odświeża wizualizację stanowiska.
+    /// </remarks>
     public void SyncNetworkState(StationStateSnapshot snapshot)
     {
         isProcessing = snapshot.isProcessing;
@@ -61,6 +229,11 @@ public class KitchenStation : Interactable
         RefreshVisualState();
     }
 
+    /// <summary>
+    /// Zapisuje aktualny stan składników montażu do migawki sieciowej.
+    /// </summary>
+    /// <param name="snapshot">Referencja do migawki stanu stanowiska, do której zostaną
+    /// zapisane dane o składnikach montażu (maksymalnie 8 slotów).</param>
     public void WriteAssemblyToSnapshot(ref StationStateSnapshot snapshot)
     {
         int count = Mathf.Min(assemblyIngredients.Count, 8);
@@ -71,6 +244,15 @@ public class KitchenStation : Interactable
         }
     }
 
+    /// <summary>
+    /// Konfiguruje stanowisko kuchenne z podanymi parametrami.
+    /// Ustawia nazwę, typ, składnik źródłowy, czas przetwarzania i renderer wizualny.
+    /// </summary>
+    /// <param name="stationName">Nazwa wyświetlana stanowiska.</param>
+    /// <param name="stationType">Typ stanowiska kuchennego.</param>
+    /// <param name="sourceIngredient">Dane składnika źródłowego (może być <c>null</c> dla stanowisk nie będących źródłami).</param>
+    /// <param name="processingDuration">Bazowy czas przetwarzania w sekundach.</param>
+    /// <param name="visualRenderer">Renderer wizualny do zmiany koloru stanowiska.</param>
     public void Configure(
         string stationName,
         KitchenStationType stationType,
@@ -87,18 +269,31 @@ public class KitchenStation : Interactable
         RefreshVisualState();
     }
 
+    /// <summary>
+    /// Ustawia powiązane stanowisko tacy z mięsem dla donera.
+    /// Grill-doner po zakończeniu procesu przesyła gotowe mięso na powiązaną tacę.
+    /// </summary>
+    /// <param name="trayStation">Stanowisko tacy z mięsem do powiązania.</param>
     public void SetLinkedMeatTray(KitchenStation trayStation)
     {
         linkedMeatTray = trayStation;
         RefreshVisualState();
     }
 
+    /// <summary>
+    /// Odświeża kompletny stan wizualny stanowiska, w tym kolor i dynamiczne obiekty 3D.
+    /// </summary>
     public void RefreshVisualState()
     {
         ApplyCurrentColor();
         UpdateDynamicVisuals();
     }
 
+    /// <summary>
+    /// Metoda Update wywoływana w każdej klatce przez Unity.
+    /// Na kliencie sieciowym aktualizuje jedynie efekt pulsowania.
+    /// Na serwerze sprawdza, czy przetwarzanie dobiegło końca i je finalizuje.
+    /// </summary>
     private void Update()
     {
         if (Unity.Netcode.NetworkManager.Singleton != null &&
@@ -118,6 +313,15 @@ public class KitchenStation : Interactable
         FinishProcessing();
     }
 
+    /// <summary>
+    /// Aktualizuje efekt pulsowania skali stanowiska.
+    /// Pulsowanie jest aktywne gdy stanowisko posiada gotowy przedmiot do odebrania
+    /// lub tacę z przygotowanym mięsem.
+    /// </summary>
+    /// <remarks>
+    /// Efekt pulsowania polega na cyklicznej zmianie skali obiektu w oparciu o funkcję sinus.
+    /// Gdy pulsowanie nie jest potrzebne, skala jest płynnie przywracana do wartości bazowej.
+    /// </remarks>
     private void UpdatePulseEffect()
     {
         bool shouldPulse = !isProcessing && (
@@ -143,6 +347,19 @@ public class KitchenStation : Interactable
         transform.localScale = baseScale * pulse;
     }
 
+    /// <summary>
+    /// Zwraca komunikat podpowiedzi wyświetlany graczowi w zależności od typu stanowiska
+    /// i bieżącego stanu przetwarzania.
+    /// </summary>
+    /// <param name="player">Gracz, dla którego generowany jest komunikat podpowiedzi.</param>
+    /// <returns>
+    /// Tekst podpowiedzi opisujący dostępną akcję lub aktualny stan stanowiska.
+    /// </returns>
+    /// <remarks>
+    /// Komunikaty różnią się w zależności od typu stanowiska:
+    /// źródła składników, deski do krojenia, grilla/donera, montażu i wydania.
+    /// Dla stanowisk przetwarzających wyświetlany jest pozostały czas.
+    /// </remarks>
     public override string GetPrompt(PlayerInteraction player)
     {
         switch (stationType)
@@ -211,6 +428,17 @@ public class KitchenStation : Interactable
         }
     }
 
+    /// <summary>
+    /// Obsługuje interakcję gracza ze stanowiskiem kuchennym.
+    /// Deleguje logikę do odpowiedniej metody w zależności od typu stanowiska.
+    /// </summary>
+    /// <param name="player">Gracz wykonujący interakcję ze stanowiskiem.</param>
+    /// <remarks>
+    /// Jeśli <paramref name="player"/> jest <c>null</c>, wywołuje implementację bazową.
+    /// W przeciwnym razie rozdziela logikę między:
+    /// <see cref="HandleIngredientSource"/>, <see cref="HandleProcessingStation"/>,
+    /// <see cref="HandleAssembly"/> oraz <see cref="HandleDelivery"/>.
+    /// </remarks>
     public override void Interact(PlayerInteraction player)
     {
         if (player == null)
@@ -239,6 +467,16 @@ public class KitchenStation : Interactable
         }
     }
 
+    /// <summary>
+    /// Obsługuje interakcję ze stanowiskiem źródła składników.
+    /// Pozwala graczowi pobrać surowy składnik lub mięso z tacy.
+    /// </summary>
+    /// <param name="player">Gracz próbujący pobrać składnik ze stanowiska.</param>
+    /// <remarks>
+    /// Jeśli stanowisko jest tacą z mięsem, deleguje do <see cref="HandleMeatTraySource"/>.
+    /// W przeciwnym razie tworzy nowy przedmiot kuchenny na podstawie <see cref="sourceIngredient"/>
+    /// i przekazuje go graczowi. Gracz musi mieć puste ręce.
+    /// </remarks>
     private void HandleIngredientSource(PlayerInteraction player)
     {
         if (IsMeatTrayStation())
@@ -262,6 +500,26 @@ public class KitchenStation : Interactable
         }
     }
 
+    /// <summary>
+    /// Obsługuje interakcję ze stanowiskiem przetwarzającym (deska do krojenia lub grill).
+    /// Umożliwia położenie składnika do przetworzenia, odebranie gotowego produktu
+    /// lub wyświetlenie komunikatu o zajętości stanowiska.
+    /// </summary>
+    /// <param name="player">Gracz wchodzący w interakcję ze stanowiskiem.</param>
+    /// <param name="outputState">Docelowy stan przetworzenia składnika
+    /// (<see cref="IngredientProcessState.Chopped"/> dla deski,
+    /// <see cref="IngredientProcessState.Cooked"/> dla grilla).</param>
+    /// <remarks>
+    /// Logika działania:
+    /// <list type="number">
+    /// <item><description>Jeśli stanowisko jest donerem — deleguje do <see cref="HandleDonerStation"/>.</description></item>
+    /// <item><description>Jeśli trwa przetwarzanie — informuje gracza o zajętości.</description></item>
+    /// <item><description>Jeśli gotowy produkt czeka — pozwala go odebrać.</description></item>
+    /// <item><description>Jeśli gracz trzyma odpowiedni składnik — rozpoczyna przetwarzanie.</description></item>
+    /// </list>
+    /// Czas przetwarzania jest modyfikowany przez mnożnik prędkości ze sklepu.
+    /// Uruchamiane są odpowiednie efekty wizualne i dźwiękowe.
+    /// </remarks>
     private void HandleProcessingStation(PlayerInteraction player, IngredientProcessState outputState)
     {
         if (stationType == KitchenStationType.Grill && IsDonerStation())
@@ -340,6 +598,16 @@ public class KitchenStation : Interactable
         }
     }
 
+    /// <summary>
+    /// Obsługuje pobieranie mięsa z tacy (stanowisko źródła mięsa powiązane z donerem).
+    /// Gracz może pobrać jedną porcję gotowego mięsa, jeśli taca nie jest pusta.
+    /// </summary>
+    /// <param name="player">Gracz próbujący pobrać mięso z tacy.</param>
+    /// <remarks>
+    /// Wymaga, aby na tacy były dostępne porcje mięsa (<see cref="preparedMeatServings"/> > 0)
+    /// oraz aby gracz miał puste ręce. Pobrane mięso ma stan <see cref="IngredientProcessState.Cooked"/>.
+    /// Po pobraniu zmniejsza licznik porcji i odświeża wizualizację tacy i powiązanego donera.
+    /// </remarks>
     private void HandleMeatTraySource(PlayerInteraction player)
     {
         if (preparedMeatServings <= 0)
@@ -371,6 +639,21 @@ public class KitchenStation : Interactable
         linkedMeatTray?.ApplyCurrentColor();
     }
 
+    /// <summary>
+    /// Obsługuje interakcję ze stanowiskiem doner kebab (grill powiązany z tacą na mięso).
+    /// Rozpoczyna proces ścinania mięsa z szpikulca donera.
+    /// </summary>
+    /// <param name="player">Gracz inicjujący ścinanie mięsa z donera.</param>
+    /// <remarks>
+    /// Wymagania rozpoczęcia procesu:
+    /// <list type="bullet">
+    /// <item><description>Stanowisko nie jest zajęte przetwarzaniem.</description></item>
+    /// <item><description>Gracz ma puste ręce.</description></item>
+    /// <item><description>Istnieje powiązana taca na mięso.</description></item>
+    /// <item><description>Powiązana taca nie jest już pełna.</description></item>
+    /// </list>
+    /// Po rozpoczęciu uruchamia efekt dymu donera oraz dźwięk krojenia.
+    /// </remarks>
     private void HandleDonerStation(PlayerInteraction player)
     {
         if (isProcessing)
@@ -415,6 +698,21 @@ public class KitchenStation : Interactable
         }
     }
 
+    /// <summary>
+    /// Obsługuje interakcję ze stanowiskiem montażu kebaba.
+    /// Pozwala dodawać składniki, kłaść ławasz lub zawinąć gotowego kebaba.
+    /// </summary>
+    /// <param name="player">Gracz montujący kebaba na stanowisku.</param>
+    /// <remarks>
+    /// Jeśli gracz trzyma przedmiot:
+    /// <list type="bullet">
+    /// <item><description>Gotowy kebab — informuje, że jest już złożony.</description></item>
+    /// <item><description>Ławasz — kładzie go na stanowisku (max 1 ławasz).</description></item>
+    /// <item><description>Składnik — dodaje do listy montażu jeśli jest odpowiednio przygotowany.</description></item>
+    /// </list>
+    /// Jeśli gracz nie trzyma przedmiotu i warunki są spełnione — tworzy gotowego kebaba
+    /// z ławasza i zebranych składników, a następnie resetuje stanowisko montażu.
+    /// </remarks>
     private void HandleAssembly(PlayerInteraction player)
     {
         if (player.HasItemInHand)
@@ -481,6 +779,21 @@ public class KitchenStation : Interactable
         if (AudioManager.Instance != null) AudioManager.Instance.PlayWrapSound();
     }
 
+    /// <summary>
+    /// Obsługuje wydawanie gotowego kebaba klientowi na stanowisku dostawy.
+    /// Próbuje dostarczyć danie do systemu zamówień i uruchamia odpowiednie efekty.
+    /// </summary>
+    /// <param name="player">Gracz próbujący wydać kebaba klientowi.</param>
+    /// <remarks>
+    /// Wymaga, aby gracz trzymał gotowy kebab (przedmiot z flagą <c>isDish</c>).
+    /// Przy udanym wydaniu:
+    /// <list type="bullet">
+    /// <item><description>Czyści ręce gracza.</description></item>
+    /// <item><description>Wyświetla animację wydanego kebaba na tacy.</description></item>
+    /// <item><description>Odtwarza efekty sukcesu (pieniądze, bloom, trzęsienie kamery, zielony błysk).</description></item>
+    /// </list>
+    /// Przy nieudanym wydaniu uruchamiane są efekty porażki (czerwony błysk, trzęsienie kamery).
+    /// </remarks>
     private void HandleDelivery(PlayerInteraction player)
     {
         if (!player.HasItemInHand)
@@ -545,6 +858,16 @@ public class KitchenStation : Interactable
         player.SetFeedback(message, 3.5f);
     }
 
+    /// <summary>
+    /// Sprawdza, czy dany przedmiot kuchenny może być przetworzony na tym stanowisku.
+    /// </summary>
+    /// <param name="item">Przedmiot kuchenny do sprawdzenia.</param>
+    /// <param name="outputState">Oczekiwany stan wyjściowy przetwarzania.</param>
+    /// <returns>
+    /// <c>true</c> jeśli przedmiot jest surowy i pasuje do typu stanowiska:
+    /// mięso na grill, warzywa (pomidor, cebula, sałata) na deskę do krojenia.
+    /// W przeciwnym razie <c>false</c>.
+    /// </returns>
     private bool CanBeProcessedHere(KitchenItem item, IngredientProcessState outputState)
     {
         if (item == null || item.isDish || item.state != IngredientProcessState.Raw)
@@ -567,6 +890,19 @@ public class KitchenStation : Interactable
         return false;
     }
 
+    /// <summary>
+    /// Sprawdza, czy dany przedmiot kuchenny może zostać dodany do montażu kebaba.
+    /// </summary>
+    /// <param name="item">Przedmiot kuchenny do weryfikacji.</param>
+    /// <returns>
+    /// <c>true</c> jeśli przedmiot spełnia wymagania montażu:
+    /// <list type="bullet">
+    /// <item><description>Mięso — musi być upieczone (<see cref="IngredientProcessState.Cooked"/>).</description></item>
+    /// <item><description>Pomidor, cebula, sałata — muszą być pokrojone (<see cref="IngredientProcessState.Chopped"/>).</description></item>
+    /// <item><description>Sos czosnkowy — może być surowy (<see cref="IngredientProcessState.Raw"/>).</description></item>
+    /// </list>
+    /// W przeciwnym razie <c>false</c>.
+    /// </returns>
     private bool CanBeAddedToAssembly(KitchenItem item)
     {
         if (item == null || item.isDish)
@@ -594,6 +930,14 @@ public class KitchenStation : Interactable
         return false;
     }
 
+    /// <summary>
+    /// Sprawdza, czy na stanowisku montażu zebrano wystarczającą liczbę składników
+    /// do utworzenia gotowego kebaba.
+    /// </summary>
+    /// <returns>
+    /// <c>true</c> jeśli stanowisko posiada ławasz oraz co najmniej jedno upieczone mięso
+    /// wśród składników montażu. W przeciwnym razie <c>false</c>.
+    /// </returns>
     private bool CanCreateDish()
     {
         if (!hasLavash || assemblyIngredients.Count == 0)
@@ -615,6 +959,13 @@ public class KitchenStation : Interactable
         return hasCookedMeat;
     }
 
+    /// <summary>
+    /// Tworzy gotowy kebab (danie) na podstawie ławasza i zebranych składników montażu.
+    /// </summary>
+    /// <returns>
+    /// Nowy obiekt <see cref="KitchenItem"/> reprezentujący zawinięty kebab z flagą
+    /// <c>isDish = true</c>, zawierający ławasz oraz wszystkie dodane składniki.
+    /// </returns>
     private KitchenItem BuildDish()
     {
         KitchenItem dish = new KitchenItem
@@ -634,6 +985,20 @@ public class KitchenStation : Interactable
         return dish;
     }
 
+    /// <summary>
+    /// Finalizuje proces przetwarzania składnika na stanowisku.
+    /// Zmienia stan przedmiotu, odświeża wizualizację i uruchamia efekty gotowości.
+    /// </summary>
+    /// <remarks>
+    /// Dla stanowiska doner:
+    /// <list type="bullet">
+    /// <item><description>Zatrzymuje efekt dymu i dźwięk grilla.</description></item>
+    /// <item><description>Przesyła partię mięsa na powiązaną tacę.</description></item>
+    /// </list>
+    /// Dla deski do krojenia — ustawia stan na <see cref="IngredientProcessState.Chopped"/>.
+    /// Dla grilla — ustawia stan na <see cref="IngredientProcessState.Cooked"/>
+    /// i zatrzymuje efekt pary oraz dźwięk grilla.
+    /// </remarks>
     private void FinishProcessing()
     {
         isProcessing = false;
@@ -696,23 +1061,40 @@ public class KitchenStation : Interactable
         PlayStationPulse(1.035f);
     }
 
+    /// <summary>
+    /// Resetuje stanowisko montażu do stanu początkowego.
+    /// Usuwa ławasz i czyści listę składników montażu.
+    /// </summary>
     private void ResetAssembly()
     {
         hasLavash = false;
         assemblyIngredients.Clear();
     }
 
+    /// <summary>
+    /// Przyjmuje gotowe porcje mięsa na tacę.
+    /// Wywoływane przez stanowisko donera po zakończeniu procesu ścinania.
+    /// </summary>
+    /// <param name="servings">Liczba porcji mięsa do dodania (ujemne wartości są zerowane).</param>
     private void ReceivePreparedMeat(int servings)
     {
         preparedMeatServings = Mathf.Max(0, servings);
         RefreshVisualState();
     }
 
+    /// <summary>
+    /// Sprawdza, czy na tacy z mięsem są dostępne gotowe porcje.
+    /// </summary>
+    /// <returns><c>true</c> jeśli liczba porcji jest większa od zera; w przeciwnym razie <c>false</c>.</returns>
     private bool HasPreparedMeat()
     {
         return preparedMeatServings > 0;
     }
 
+    /// <summary>
+    /// Odtwarza efekt wizualny i kamerowy związany z pobraniem przedmiotu ze stanowiska.
+    /// </summary>
+    /// <param name="item">Pobrany przedmiot kuchenny, na podstawie którego dobierany jest kolor efektu.</param>
     private void PlayPickupFeedback(KitchenItem item)
     {
         if (VFXManager.Instance == null || item == null)
@@ -725,6 +1107,10 @@ public class KitchenStation : Interactable
         PlayStationPulse(1.018f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt wizualny i dźwiękowy związany z położeniem przedmiotu na stanowisku.
+    /// </summary>
+    /// <param name="item">Położony przedmiot kuchenny (może być <c>null</c>).</param>
     private void PlayPlaceFeedback(KitchenItem item)
     {
         if (VFXManager.Instance != null)
@@ -745,6 +1131,10 @@ public class KitchenStation : Interactable
         PlayStationPulse(1.015f);
     }
 
+    /// <summary>
+    /// Odtwarza efekt wizualny i dźwiękowy sygnalizujący gotowość przedmiotu na stanowisku.
+    /// </summary>
+    /// <param name="item">Gotowy przedmiot kuchenny, na podstawie którego dobierany jest kolor efektu.</param>
     private void PlayReadyFeedback(KitchenItem item)
     {
         if (item == null)
@@ -765,6 +1155,10 @@ public class KitchenStation : Interactable
         PlayMicroCameraFeedback(0.018f, 0.10f);
     }
 
+    /// <summary>
+    /// Uruchamia krótki efekt pulsowania (powiększenia) stanowiska za pomocą animatora przedmiotów.
+    /// </summary>
+    /// <param name="intensity">Intensywność pulsowania (np. 1.035 = powiększenie o 3.5%).</param>
     private void PlayStationPulse(float intensity)
     {
         if (ItemAnimator.Instance != null)
@@ -773,6 +1167,11 @@ public class KitchenStation : Interactable
         }
     }
 
+    /// <summary>
+    /// Uruchamia subtelne trzęsienie kamery jako informację zwrotną dla gracza.
+    /// </summary>
+    /// <param name="intensity">Siła trzęsienia kamery.</param>
+    /// <param name="duration">Czas trwania trzęsienia w sekundach.</param>
     private void PlayMicroCameraFeedback(float intensity, float duration)
     {
         if (CameraEffects.Instance != null)
@@ -781,6 +1180,14 @@ public class KitchenStation : Interactable
         }
     }
 
+    /// <summary>
+    /// Pobiera kolor odpowiadający danemu przedmiotowi kuchennemu do użycia w efektach wizualnych.
+    /// </summary>
+    /// <param name="item">Przedmiot kuchenny, dla którego pobierany jest kolor.</param>
+    /// <returns>
+    /// Kolor odpowiadający rodzajowi i stanowi składnika.
+    /// Zwraca <c>Color.white</c> jeśli przedmiot jest <c>null</c>.
+    /// </returns>
     private Color GetItemFeedbackColor(KitchenItem item)
     {
         if (item == null)
@@ -791,6 +1198,13 @@ public class KitchenStation : Interactable
         return KitchenItemVisualFactory.GetIngredientColor(item.ingredientKind, item.state);
     }
 
+    /// <summary>
+    /// Sprawdza, czy to stanowisko jest tacą z mięsem (źródło składnika typu mięso).
+    /// </summary>
+    /// <returns>
+    /// <c>true</c> jeśli stanowisko jest typu <see cref="KitchenStationType.IngredientSource"/>,
+    /// posiada ustawiony składnik źródłowy i jest to mięso. W przeciwnym razie <c>false</c>.
+    /// </returns>
     private bool IsMeatTrayStation()
     {
         return stationType == KitchenStationType.IngredientSource &&
@@ -798,11 +1212,32 @@ public class KitchenStation : Interactable
             sourceIngredient.typSkladnika == IngredientKind.Meat;
     }
 
+    /// <summary>
+    /// Sprawdza, czy to stanowisko jest donerem (grill powiązany z tacą na mięso).
+    /// </summary>
+    /// <returns>
+    /// <c>true</c> jeśli stanowisko jest typu <see cref="KitchenStationType.Grill"/>
+    /// i posiada powiązaną tacę z mięsem. W przeciwnym razie <c>false</c>.
+    /// </returns>
     private bool IsDonerStation()
     {
         return stationType == KitchenStationType.Grill && linkedMeatTray != null;
     }
 
+    /// <summary>
+    /// Ustala i nakłada odpowiedni kolor materiału na renderer stanowiska
+    /// w zależności od bieżącego stanu (przetwarzanie, gotowość, bezczynność).
+    /// </summary>
+    /// <remarks>
+    /// Priorytet kolorów:
+    /// <list type="number">
+    /// <item><description><see cref="busyColor"/> — stanowisko przetwarza składnik.</description></item>
+    /// <item><description><see cref="readyColor"/> — gotowy produkt, mięso na tacy, ławasz lub składniki montażu.</description></item>
+    /// <item><description>Kolor debugowy składnika źródłowego — jeśli istnieje składnik źródłowy.</description></item>
+    /// <item><description><see cref="idleColor"/> — domyślny kolor bezczynności.</description></item>
+    /// </list>
+    /// Wywołuje również <see cref="RefreshSpecialVisuals"/> do aktualizacji wizualizacji tacy z mięsem.
+    /// </remarks>
     private void ApplyCurrentColor()
     {
         RefreshSpecialVisuals();
@@ -837,6 +1272,14 @@ public class KitchenStation : Interactable
         visualRenderer.material.color = color;
     }
 
+    /// <summary>
+    /// Oblicza hash bieżącego stanu wizualnego stanowiska.
+    /// Używany do optymalizacji — wizualizacja jest odświeżana tylko gdy hash się zmieni.
+    /// </summary>
+    /// <returns>
+    /// Wartość hash obliczona na podstawie stanu przetwarzania, przedmiotu na stanowisku,
+    /// flagi ławasza oraz listy składników montażu.
+    /// </returns>
     private int ComputeVisualHash()
     {
         int hash = 17;
@@ -857,6 +1300,16 @@ public class KitchenStation : Interactable
         return hash;
     }
 
+    /// <summary>
+    /// Aktualizuje dynamiczne obiekty wizualne 3D na stanowisku (przedmioty, ławasz, składniki montażu).
+    /// Używa systemu hashowania do unikania niepotrzebnych odświeżeń.
+    /// </summary>
+    /// <remarks>
+    /// Metoda niszczy poprzednie obiekty wizualne i tworzy nowe za pomocą <see cref="KitchenItemVisualFactory"/>.
+    /// Dla stanowiska montażu tworzy wizualizacje ławasza oraz poszczególnych składników
+    /// rozmieszczonych w predefiniowanych slotach z offsetami i rotacjami.
+    /// Składniki typu sałata i sos czosnkowy są renderowane jako rozsypane kawałki.
+    /// </remarks>
     private void UpdateDynamicVisuals()
     {
         int currentHash = ComputeVisualHash();
@@ -981,6 +1434,13 @@ public class KitchenStation : Interactable
         }
     }
 
+    /// <summary>
+    /// Odświeża specjalne wizualizacje stanowiska, w szczególności widoczność mięsa na tacy.
+    /// </summary>
+    /// <remarks>
+    /// Dotyczy wyłącznie stanowisk typu taca z mięsem. Wyszukuje obiekt potomny "MeatVisual"
+    /// i ustawia jego aktywność w zależności od liczby dostępnych porcji mięsa.
+    /// </remarks>
     private void RefreshSpecialVisuals()
     {
         if (!IsMeatTrayStation())
@@ -999,6 +1459,13 @@ public class KitchenStation : Interactable
         }
     }
 
+    /// <summary>
+    /// Pobiera mnożnik prędkości przetwarzania ze sklepu dla aktualnego typu stanowiska.
+    /// </summary>
+    /// <returns>
+    /// Mnożnik prędkości z <see cref="ShopManager"/>, lub <c>1.0f</c> jeśli
+    /// <see cref="ShopManager"/> nie jest dostępny.
+    /// </returns>
     private float GetShopSpeedMultiplier()
     {
         if (ShopManager.Instance == null)

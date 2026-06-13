@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy IngredientData</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Atrybuty publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="class_ingredient_data-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy IngredientData</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa ScriptableObject reprezentująca dane pojedynczego składnika w grze. Przechowuje informacje o nazwie, cenie, ikonie, modelu 3D oraz parametrach gameplayowych składnika, takich jak typ, stan początkowy i wartość sprzedaży.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla IngredientData</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_ingredient_data.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atrybuty publiczne</h2></td></tr>
+<tr class="memitem:ae5bd8c83cd53f0b66a7177ce770feca8" id="r_ae5bd8c83cd53f0b66a7177ce770feca8"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5bd8c83cd53f0b66a7177ce770feca8">nazwaSkladnika</a></td></tr>
+<tr class="memdesc:ae5bd8c83cd53f0b66a7177ce770feca8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nazwa składnika wyświetlana w interfejsie użytkownika.  <br /></td></tr>
+<tr class="separator:ae5bd8c83cd53f0b66a7177ce770feca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6defbc3bfcb5113adacf67e4e0dcbd0a" id="r_a6defbc3bfcb5113adacf67e4e0dcbd0a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6defbc3bfcb5113adacf67e4e0dcbd0a">cenaZakupu</a></td></tr>
+<tr class="memdesc:a6defbc3bfcb5113adacf67e4e0dcbd0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cena zakupu składnika w walucie gry. Określa, ile gracz musi zapłacić za nabycie tego składnika.  <br /></td></tr>
+<tr class="separator:a6defbc3bfcb5113adacf67e4e0dcbd0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4f0412a37eb42a6d0311bc258451db3" id="r_aa4f0412a37eb42a6d0311bc258451db3"><td class="memItemLeft" align="right" valign="top">Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4f0412a37eb42a6d0311bc258451db3">ikona</a></td></tr>
+<tr class="memdesc:aa4f0412a37eb42a6d0311bc258451db3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ikona sprite'a składnika używana w interfejsie użytkownika. Wyświetlana m.in. w menu zamówień i panelu ekwipunku.  <br /></td></tr>
+<tr class="separator:aa4f0412a37eb42a6d0311bc258451db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8495b2df6373f03e2a5c76e32531fa2" id="r_af8495b2df6373f03e2a5c76e32531fa2"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8495b2df6373f03e2a5c76e32531fa2">model3D</a></td></tr>
+<tr class="memdesc:af8495b2df6373f03e2a5c76e32531fa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prefab modelu 3D składnika używany do wizualizacji w scenie gry. Instancjonowany na stacjach kuchennych i w trakcie przygotowywania potraw.  <br /></td></tr>
+<tr class="separator:af8495b2df6373f03e2a5c76e32531fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69cd8e7302c773e995cb782059fc7430" id="r_a69cd8e7302c773e995cb782059fc7430"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69cd8e7302c773e995cb782059fc7430">typSkladnika</a> = <a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5a77bd79b3dca1f49815655b6f2df760ba">IngredientKind.Tomato</a></td></tr>
+<tr class="memdesc:a69cd8e7302c773e995cb782059fc7430"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typ (rodzaj) składnika określający jego kategorię w systemie kuchni.  <br /></td></tr>
+<tr class="separator:a69cd8e7302c773e995cb782059fc7430"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91865cbf9132d023dcfbc880d03cff71" id="r_a91865cbf9132d023dcfbc880d03cff71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91865cbf9132d023dcfbc880d03cff71">stanPoczatkowy</a> = <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00">IngredientProcessState.Raw</a></td></tr>
+<tr class="memdesc:a91865cbf9132d023dcfbc880d03cff71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Początkowy stan przetworzenia składnika po jego pobraniu ze źródła. Określa, w jakim stanie składnik zaczyna swoją „drogę" w kuchni.  <br /></td></tr>
+<tr class="separator:a91865cbf9132d023dcfbc880d03cff71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e449f99b5b8943a5187c2e2fada1444" id="r_a7e449f99b5b8943a5187c2e2fada1444"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e449f99b5b8943a5187c2e2fada1444">wartoscSprzedazy</a> = 5f</td></tr>
+<tr class="memdesc:a7e449f99b5b8943a5187c2e2fada1444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wartość sprzedaży składnika w walucie gry. Wpływa na końcową wartość potrawy zawierającej ten składnik.  <br /></td></tr>
+<tr class="separator:a7e449f99b5b8943a5187c2e2fada1444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fbf37a0e898219d74fefab0736f75a8" id="r_a0fbf37a0e898219d74fefab0736f75a8"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fbf37a0e898219d74fefab0736f75a8">kolorDebug</a> = Color.white</td></tr>
+<tr class="memdesc:a0fbf37a0e898219d74fefab0736f75a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor debugowania używany do wizualizacji składnika w trybie deweloperskim. Domyślnie ustawiony na biały.  <br /></td></tr>
+<tr class="separator:a0fbf37a0e898219d74fefab0736f75a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:a29a6ac6c4c549ec26e01de65369e13fd" id="r_a29a6ac6c4c549ec26e01de65369e13fd"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29a6ac6c4c549ec26e01de65369e13fd">DisplayName</a><code> [get]</code></td></tr>
+<tr class="memdesc:a29a6ac6c4c549ec26e01de65369e13fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca nazwę wyświetlaną składnika. Jeśli pole <a class="el" href="#ae5bd8c83cd53f0b66a7177ce770feca8" title="Nazwa składnika wyświetlana w interfejsie użytkownika.">nazwaSkladnika</a> jest puste lub zawiera same białe znaki, zwracana jest nazwa obiektu ScriptableObject (właściwość <code>name</code>).  <br /></td></tr>
+<tr class="separator:a29a6ac6c4c549ec26e01de65369e13fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa ScriptableObject reprezentująca dane pojedynczego składnika w grze. Przechowuje informacje o nazwie, cenie, ikonie, modelu 3D oraz parametrach gameplayowych składnika, takich jak typ, stan początkowy i wartość sprzedaży. </p>
+<p>Nowe instancje można tworzyć z poziomu menu Unity: <code>Assets → Create → KebabGame → Skladnik</code>. Każdy składnik posiada zarówno dane prezentacyjne (ikona, model 3D), jak i dane logiki gry (typ, stan, wartość). </p>
+</div><h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a6defbc3bfcb5113adacf67e4e0dcbd0a" name="a6defbc3bfcb5113adacf67e4e0dcbd0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6defbc3bfcb5113adacf67e4e0dcbd0a">&#9670;&#160;</a></span>cenaZakupu</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float IngredientData.cenaZakupu</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cena zakupu składnika w walucie gry. Określa, ile gracz musi zapłacić za nabycie tego składnika. </p>
+
+</div>
+</div>
+<a id="aa4f0412a37eb42a6d0311bc258451db3" name="aa4f0412a37eb42a6d0311bc258451db3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4f0412a37eb42a6d0311bc258451db3">&#9670;&#160;</a></span>ikona</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sprite IngredientData.ikona</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ikona sprite'a składnika używana w interfejsie użytkownika. Wyświetlana m.in. w menu zamówień i panelu ekwipunku. </p>
+
+</div>
+</div>
+<a id="a0fbf37a0e898219d74fefab0736f75a8" name="a0fbf37a0e898219d74fefab0736f75a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fbf37a0e898219d74fefab0736f75a8">&#9670;&#160;</a></span>kolorDebug</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color IngredientData.kolorDebug = Color.white</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Kolor debugowania używany do wizualizacji składnika w trybie deweloperskim. Domyślnie ustawiony na biały. </p>
+
+</div>
+</div>
+<a id="af8495b2df6373f03e2a5c76e32531fa2" name="af8495b2df6373f03e2a5c76e32531fa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8495b2df6373f03e2a5c76e32531fa2">&#9670;&#160;</a></span>model3D</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject IngredientData.model3D</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prefab modelu 3D składnika używany do wizualizacji w scenie gry. Instancjonowany na stacjach kuchennych i w trakcie przygotowywania potraw. </p>
+
+</div>
+</div>
+<a id="ae5bd8c83cd53f0b66a7177ce770feca8" name="ae5bd8c83cd53f0b66a7177ce770feca8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5bd8c83cd53f0b66a7177ce770feca8">&#9670;&#160;</a></span>nazwaSkladnika</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string IngredientData.nazwaSkladnika</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nazwa składnika wyświetlana w interfejsie użytkownika. </p>
+
+</div>
+</div>
+<a id="a91865cbf9132d023dcfbc880d03cff71" name="a91865cbf9132d023dcfbc880d03cff71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91865cbf9132d023dcfbc880d03cff71">&#9670;&#160;</a></span>stanPoczatkowy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> IngredientData.stanPoczatkowy = <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00">IngredientProcessState.Raw</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Początkowy stan przetworzenia składnika po jego pobraniu ze źródła. Określa, w jakim stanie składnik zaczyna swoją „drogę" w kuchni. </p>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e" title="Typ wyliczeniowy określający stan przetworzenia składnika. Reprezentuje etapy przygotowania,...">IngredientProcessState</a></dd></dl>
+
+</div>
+</div>
+<a id="a69cd8e7302c773e995cb782059fc7430" name="a69cd8e7302c773e995cb782059fc7430"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69cd8e7302c773e995cb782059fc7430">&#9670;&#160;</a></span>typSkladnika</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> IngredientData.typSkladnika = <a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5a77bd79b3dca1f49815655b6f2df760ba">IngredientKind.Tomato</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Typ (rodzaj) składnika określający jego kategorię w systemie kuchni. </p>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5" title="Typ wyliczeniowy określający rodzaj składnika w systemie kuchni. Każda wartość odpowiada konkretnemu ...">IngredientKind</a></dd></dl>
+
+</div>
+</div>
+<a id="a7e449f99b5b8943a5187c2e2fada1444" name="a7e449f99b5b8943a5187c2e2fada1444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e449f99b5b8943a5187c2e2fada1444">&#9670;&#160;</a></span>wartoscSprzedazy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float IngredientData.wartoscSprzedazy = 5f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wartość sprzedaży składnika w walucie gry. Wpływa na końcową wartość potrawy zawierającej ten składnik. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="a29a6ac6c4c549ec26e01de65369e13fd" name="a29a6ac6c4c549ec26e01de65369e13fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29a6ac6c4c549ec26e01de65369e13fd">&#9670;&#160;</a></span>DisplayName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string IngredientData.DisplayName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zwraca nazwę wyświetlaną składnika. Jeśli pole <a class="el" href="#ae5bd8c83cd53f0b66a7177ce770feca8" title="Nazwa składnika wyświetlana w interfejsie użytkownika.">nazwaSkladnika</a> jest puste lub zawiera same białe znaki, zwracana jest nazwa obiektu ScriptableObject (właściwość <code>name</code>). </p>
+<p>Nazwa składnika przeznaczona do wyświetlenia w interfejsie użytkownika.</p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_ingredient_data_8cs.html">IngredientData.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

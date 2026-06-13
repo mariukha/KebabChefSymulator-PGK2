@@ -1,0 +1,1137 @@
+\doxysection{Dokumentacja klasy Kitchen\+HUD}
+\hypertarget{class_kitchen_h_u_d}{}\label{class_kitchen_h_u_d}\index{KitchenHUD@{KitchenHUD}}
+
+
+Klasa zarządzająca interfejsem HUD w scenie kuchni. Odpowiada za tworzenie i aktualizowanie wszystkich elementów UI widocznych podczas rozgrywki, w tym\+: paska salda, informacji o trzymanym przedmiocie, licznika zamówień, celownika, powiadomień oraz timera pilności zamówienia.  
+
+
+Diagram dziedziczenia dla Kitchen\+HUD\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_kitchen_h_u_d}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_a146739bde4b65b5d745fed99f7b88871}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Unity wywoływana podczas inicjalizacji obiektu. Tworzy cały interfejs HUD wywołując \doxylink{class_kitchen_h_u_d_a88fb03720ff95df03edf2f230a81cb5c}{Create\+Canvas}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_ae202f3fd38d71b8ec9635e6efda8a097}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Unity wywoływana co klatkę. Wyszukuje gracza sieciowego, buforuje referencje do UI sklepu i lobby, a następnie odświeża wszystkie elementy HUD jeśli lobby nie jest otwarte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_a88fb03720ff95df03edf2f230a81cb5c}{Create\+Canvas}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy programowo cały interfejs HUD, w tym Canvas, górny pasek statusu, pasek ulepszeń, panel podpowiedzi, powiadomienie toast, celownik, pływający tekst pieniędzy, panel timera zamówienia oraz tekst combo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_a0c7242fd7c8d751e837b2b81bbd41bf6}{Create\+Modern\+Crosshair}} (Transform parent)
+\begin{DoxyCompactList}\small\item\em Tworzy nowoczesny celownik składający się z czterech linii (góra, dół, lewo, prawo) oraz centralnej kropki. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_kitchen_h_u_d_ac8fc1b14c58ca349ff8f1598a278c4d1}{Create\+Crosshair\+Line}} (Rect\+Transform parent, string name, Vector2 position, Vector2 size)
+\begin{DoxyCompactList}\small\item\em Tworzy pojedynczą linię (element) celownika jako prostokątny obraz UI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_aa5d827f0ea5b4c6d14bdf5feab8e4d67}{Update\+Crosshair}} (bool has\+Target, bool shop\+Open)
+\begin{DoxyCompactList}\small\item\em Aktualizuje wygląd celownika w zależności od tego czy gracz celuje w interaktywny obiekt oraz czy sklep jest otwarty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_a4d13233f27ee9174503e542fea65ab86}{Update\+Streak}} (int completed, int failed)
+\begin{DoxyCompactList}\small\item\em Aktualizuje wyświetlanie serii (combo) zamówień ukończonych z rzędu. Zwiększa serię przy nowych ukończeniach, resetuje przy niepowodzeniu, i animuje tekst z efektem pulsowania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_aa1509ef4e8a0eb40360c34223ffb21f7}{Update\+Urgency\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje timer pilności aktualnego zamówienia. Wyświetla pozostały czas i zmienia kolor w zależności od pilności\+: zielony (\texorpdfstring{$>$}{>}20s), złoty (10-\/20s), migający czerwony (\texorpdfstring{$<$}{<}10s). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_aafce49ecfc1e77d6c355d059e4589bc1}{Update\+Control\+Hint\+Text}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje tekst podpowiedzi sterowania w zależności od trybu gry. W trybie solo wyświetla mniej opcji (bez F1\+: Lobby). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_a38d2745701e9f619db528125b10b766b}{Refresh\+Texts}} ()
+\begin{DoxyCompactList}\small\item\em Odświeża wszystkie teksty i elementy HUD, w tym saldo, trzymany przedmiot, statystyki sesji, podpowiedzi, celownik, ulepszenia oraz efekty wizualne. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_ad27dccd1a4737d1f2e94ac3d78f62cf1}{Show\+Floating\+Money}} (float amount)
+\begin{DoxyCompactList}\small\item\em Wyświetla pływający tekst z informacją o zdobytej kwocie pieniędzy. Tekst unosi się w górę i zanika w ciągu 1.\+6 sekundy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_a9200639616eed80c884eadd0e6c8dc33}{Show\+Feedback\+Toast}} (string message)
+\begin{DoxyCompactList}\small\item\em Wyświetla powiadomienie toast z podanym komunikatem. Ignoruje duplikaty tego samego komunikatu. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_kitchen_h_u_d_aa2e011be5055631894c479836477dc2d}{Get\+Toast\+Color}} (string message)
+\begin{DoxyCompactList}\small\item\em Określa kolor akcentu powiadomienia toast na podstawie treści komunikatu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_a9b297a8817021732757f0a34c1a21f0e}{Update\+Toast\+Animation}} ()
+\begin{DoxyCompactList}\small\item\em Animuje pojawianie i zanikanie powiadomienia toast. Obsługuje interpolację przezroczystości, pozycji i skali panelu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_a9452cf05951796a5e31b02be2f6bd3c2}{Update\+Floating\+Money}} ()
+\begin{DoxyCompactList}\small\item\em Animuje pływający tekst pieniędzy\+: unosi go w górę, skaluje rozmiar czcionki sinusoidalnie i stopniowo zanika. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_a019f0e45c3855e48286bd6fbd7fe0077}{Update\+Upgrade\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje pasek statusu ulepszeń, wyświetlając aktywne bonusy zakupione w sklepie (szybkość grilla, szybkość krojenia, bonus nagrody, dodatkowy czas, wielkość porcji mięsa). \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_kitchen_h_u_d_a7765621e10da6253c2be5a79b3797607}{Truncate}} (string value, int max\+Length)
+\begin{DoxyCompactList}\small\item\em Obcina tekst do podanej maksymalnej długości, dodając wielokropek ("{}..."{}) jeśli tekst jest dłuższy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_af84c0cee6cdd0c4c668810a5985a079b}{Add\+Text\+Shadow}} (Text source\+Text)
+\begin{DoxyCompactList}\small\item\em Dodaje komponent cienia (Shadow) do elementu tekstowego dla lepszej czytelności na różnych tłach. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_h_u_d_a66b8797f5fd5a947911746303801dff4}{Create\+Section\+Divider}} (Transform parent, string object\+Name, Vector2 anchor)
+\begin{DoxyCompactList}\small\item\em Tworzy pionowy separator sekcji w pasku statusu. \end{DoxyCompactList}\item 
+Rect\+Transform \mbox{\hyperlink{class_kitchen_h_u_d_a74a1fca0f23020a29538aa56fd3596ea}{Create\+Rounded\+Pill}} (Transform parent, string object\+Name, Vector2 anchor\+Min, Vector2 anchor\+Max, Vector2 pivot, Vector2 anchored\+Position, Vector2 size, Color background\+Color)
+\begin{DoxyCompactList}\small\item\em Tworzy zaokrąglony panel "{}pigułkowy"{} (pill). W aktualnej implementacji deleguje do \doxylink{class_kitchen_h_u_d_ad3ac3546caffd26802f07596dc928773}{Create\+Panel} bez dodatkowej stylizacji. \end{DoxyCompactList}\item 
+Rect\+Transform \mbox{\hyperlink{class_kitchen_h_u_d_ad3ac3546caffd26802f07596dc928773}{Create\+Panel}} (Transform parent, string object\+Name, Vector2 anchor\+Min, Vector2 anchor\+Max, Vector2 pivot, Vector2 anchored\+Position, Vector2 size, Color background\+Color)
+\begin{DoxyCompactList}\small\item\em Tworzy prostokątny panel UI z obrazem tła. Podstawowa metoda budowania elementów interfejsu HUD. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_a2d76fa3ecea1e24ab8a4262f377cbfaf}{Create\+Text}} (Transform parent, string object\+Name, Font font, int font\+Size, Text\+Anchor alignment, Vector2 anchored\+Position, Vector2 size, Font\+Style font\+Style, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy element tekstowy UI z domyślnym zakotwiczeniem w lewym górnym rogu. Uproszczona wersja pełnej metody \doxylink{class_kitchen_h_u_d_ab16e025b860dac663cd096d9a6723442}{Create\+Text(\+Transform, string, Font, int, Text\+Anchor, Vector2, Vector2, Vector2, Vector2, Vector2, Font\+Style, Color)}. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_ab16e025b860dac663cd096d9a6723442}{Create\+Text}} (Transform parent, string object\+Name, Font font, int font\+Size, Text\+Anchor alignment, Vector2 anchor\+Min, Vector2 anchor\+Max, Vector2 pivot, Vector2 anchored\+Position, Vector2 size, Font\+Style font\+Style, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy element tekstowy UI z pełną kontrolą nad zakotwiczeniem i pozycjonowaniem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} \mbox{\hyperlink{class_kitchen_h_u_d_afb4983f1365d0ba9ad261b399ba3ddce}{player\+Interaction}}
+\begin{DoxyCompactList}\small\item\em Referencja do komponentu interakcji gracza, używana do pobierania informacji o trzymanym przedmiocie i aktualnych podpowiedziach. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_shop_u_i}{Shop\+UI}} \mbox{\hyperlink{class_kitchen_h_u_d_a6d0823107f543b65c0eea9ac461283bf}{cached\+Shop\+UI}}
+\begin{DoxyCompactList}\small\item\em Buforowana referencja do interfejsu sklepu, wykorzystywana do sprawdzania czy sklep jest aktualnie otwarty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_lobby_u_i}{Lobby\+UI}} \mbox{\hyperlink{class_kitchen_h_u_d_ac00c0472deed39afb600a75c57b22f3c}{cached\+Lobby\+UI}}
+\begin{DoxyCompactList}\small\item\em Buforowana referencja do interfejsu lobby, wykorzystywana do sprawdzania czy widok lobby jest aktualnie otwarty. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_h_u_d_aff0484605b9e6b7c7e7ff02a8cc4f378}{last\+Player\+Search\+Time}}
+\begin{DoxyCompactList}\small\item\em Znacznik czasowy ostatniego wyszukiwania gracza w scenie. Zapobiega wyszukiwaniu co klatkę, ograniczając je do co 1 sekundy. \end{DoxyCompactList}\item 
+Canvas \mbox{\hyperlink{class_kitchen_h_u_d_ae171dc43d5c5ab34bed8c8ca76c44929}{hud\+Canvas}}
+\begin{DoxyCompactList}\small\item\em Główny Canvas HUD na którym umieszczone są wszystkie elementy interfejsu. Renderowany jako Screen\+Space\+Overlay z sorting\+Order 10. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_a2e5ec619938d29c5ccb0b99b90a84245}{balance\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst wyświetlający aktualne saldo gracza w złotówkach. Umieszczony w lewej części górnego paska. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_ab167cc5afeb6ec427514ffc97f439908}{held\+Item\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst wyświetlający opis aktualnie trzymanego przez gracza przedmiotu. Umieszczony centralnie w górnym pasku. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_a3245c0f6b0aa8bd765bb2f0bb111bf6b}{session\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst wyświetlający statystyki sesji (ukończone/nieudane zamówienia). Umieszczony w prawej części górnego paska. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_a7e4cd6ab7965236b1ab80a4fa16e949a}{prompt\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst podpowiedzi interakcji wyświetlany w dolnej części ekranu. Pokazuje akcję dostępną do wykonania (np. "{}\+Podnieś"{}, "{}\+Odłóż"{}). \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_a5f4c594f19b516bbf583a09ae75207d8}{feedback\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst komunikatu zwrotnego wyświetlany w powiadomieniu toast. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_ae56614266dff2732cb961833d969b37d}{shop\+Hint\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst podpowiedzi skrótów klawiszowych (B\+: Sklep, TAB\+: Gracze itp.). Umieszczony w prawym dolnym rogu ekranu. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_abbf2fa41af78515107a754dc1c196ac5}{upgrade\+Status\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst wyświetlający aktualnie aktywne bonusy z ulepszeń sklepu. Widoczny tylko gdy gracz zakupił co najmniej jedno ulepszenie. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_kitchen_h_u_d_a6a5d7d5a8875d26de9d31e2c15c7e149}{prompt\+Background}}
+\begin{DoxyCompactList}\small\item\em Obraz tła panelu podpowiedzi interakcji. Ukrywany gdy nie ma aktywnej podpowiedzi do wyświetlenia. \end{DoxyCompactList}\item 
+Rect\+Transform \mbox{\hyperlink{class_kitchen_h_u_d_a45a059076c0402d5c4abfce0f0186a20}{upgrade\+Bar}}
+\begin{DoxyCompactList}\small\item\em Rect\+Transform paska ulepszeń, pozwalający na pokazywanie/ukrywanie całego panelu statusu ulepszeń. \end{DoxyCompactList}\item 
+Rect\+Transform \mbox{\hyperlink{class_kitchen_h_u_d_aa7e0be6b1651c029c61ad6c0647e2ddd}{toast\+Panel}}
+\begin{DoxyCompactList}\small\item\em Rect\+Transform panelu powiadomień toast, używany do animacji pozycji i skali podczas pojawiania się i zanikania. \end{DoxyCompactList}\item 
+Canvas\+Group \mbox{\hyperlink{class_kitchen_h_u_d_af9ad434d3a0fe79eb03588b052f7cdd7}{toast\+Canvas\+Group}}
+\begin{DoxyCompactList}\small\item\em Grupa Canvas panelu toast, kontrolująca przezroczystość całego powiadomienia podczas animacji pojawiania/zanikania. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_kitchen_h_u_d_a2ea81ce1f20c0c37f26e89f10ae0875f}{toast\+Accent\+Image}}
+\begin{DoxyCompactList}\small\item\em Obraz akcentowej linii z boku powiadomienia toast. Jego kolor zmienia się w zależności od typu komunikatu. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_h_u_d_ac69e9d856e8cf1945f7f141d99edd9c9}{toast\+Timer}}
+\begin{DoxyCompactList}\small\item\em Timer odliczający czas wyświetlania powiadomienia toast. Gdy spadnie do zera, powiadomienie zaczyna zanikać. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_kitchen_h_u_d_a1a0ccd66b50383f700cc4647b495911f}{last\+Toast\+Message}} = string.\+Empty
+\begin{DoxyCompactList}\small\item\em Ostatni wyświetlony komunikat toast. Zapobiega wielokrotnemu wyświetlaniu tego samego komunikatu. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_kitchen_h_u_d_a9f72efa329818e9d30c0285af5c695ae}{toast\+Accent\+Color}} = \mbox{\hyperlink{class_kitchen_h_u_d_aa0448ef360ba67a68c627d8405e68748}{Accent\+Gold}}
+\begin{DoxyCompactList}\small\item\em Aktualny kolor akcentu powiadomienia toast, ustalany na podstawie treści komunikatu (czerwony dla błędów, zielony dla sukcesów itp.). \end{DoxyCompactList}\item 
+Rect\+Transform \mbox{\hyperlink{class_kitchen_h_u_d_a426d7e4bb6190b9f5394197a0e14a780}{crosshair\+Container}}
+\begin{DoxyCompactList}\small\item\em Kontener Rect\+Transform celownika, zawierający wszystkie linie i kropkę. Ukrywany gdy sklep jest otwarty. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_kitchen_h_u_d_a62f7393b698e3c3405526902d367e183}{crosshair\+Top}}
+\begin{DoxyCompactList}\small\item\em Górna linia celownika. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_kitchen_h_u_d_a9fc8ded1658bccd471ad0c894ed751cd}{crosshair\+Bottom}}
+\begin{DoxyCompactList}\small\item\em Dolna linia celownika. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_kitchen_h_u_d_afe0b15e74417ac01048ce7d0e737675d}{crosshair\+Left}}
+\begin{DoxyCompactList}\small\item\em Lewa linia celownika. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_kitchen_h_u_d_a270ef8615faac1c47b0681f7088d152c}{crosshair\+Right}}
+\begin{DoxyCompactList}\small\item\em Prawa linia celownika. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_kitchen_h_u_d_ab6d20ca2d8e29d6cc957cf1777fc425c}{crosshair\+Dot}}
+\begin{DoxyCompactList}\small\item\em Centralna kropka celownika. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_a9c335f22233207e3180b4dae06253f1e}{floating\+Money\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst pływającego komunikatu o zdobytych pieniądzach. Unosi się w górę i zanika po otrzymaniu nagrody. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_h_u_d_ae7c35cae33f33d68ed7b32c2c39a17ef}{floating\+Money\+Timer}}
+\begin{DoxyCompactList}\small\item\em Timer animacji pływającego tekstu pieniędzy. Odlicza czas trwania animacji (1.\+6s). \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_h_u_d_ab08998a49d3c0ab33b30a1194b59f9ba}{floating\+Money\+StartY}}
+\begin{DoxyCompactList}\small\item\em Pozycja początkowa Y pływającego tekstu pieniędzy, od której zaczyna się animacja unoszenia. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_h_u_d_a86d077ad37aab4c0bccf8a1ce61a24b5}{last\+Known\+Balance}}
+\begin{DoxyCompactList}\small\item\em Ostatnia znana wartość salda gracza, używana do wykrywania zmian i uruchamiania animacji pływającego tekstu pieniędzy. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_h_u_d_a073cdf714314f4fb8c45e749a94b7dd5}{balance\+Pulse\+Timer}}
+\begin{DoxyCompactList}\small\item\em Timer animacji pulsowania koloru tekstu salda po otrzymaniu nagrody. Efekt przejścia z zielonego z powrotem do złotego. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_h_u_d_a8f664bb664b9c9954ef8b6c83a338cbe}{displayed\+Balance}}
+\begin{DoxyCompactList}\small\item\em Wyświetlana wartość salda, interpolowana do aktualnej wartości dla uzyskania płynnej animacji zmiany liczby. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_af0eb7b649c94f01cc05a56604def7780}{streak\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst wyświetlający aktualną serię (combo) ukończonych zamówień. Widoczny gdy gracz ukończył co najmniej 2 zamówienia z rzędu. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_h_u_d_a7d08a8ecd9a04e32712cacf395845b3e}{timer\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst timera pilności aktualnego zamówienia. Wyświetla pozostały czas w sekundach. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_kitchen_h_u_d_a925ca9f9d0dde57a4aa0ef0408be6582}{timer\+Panel\+Image}}
+\begin{DoxyCompactList}\small\item\em Obraz tła panelu timera, którego kolor zmienia się w zależności od pozostałego czasu (normalny/ostrzegawczy/krytyczny). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_kitchen_h_u_d_aa9b6c6ce3b6c548f0c35a74aca13af08}{current\+Streak}}
+\begin{DoxyCompactList}\small\item\em Aktualna wartość serii (combo) zamówień ukończonych z rzędu. Resetowana do zera po nieudanym zamówieniu. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_h_u_d_aaec53bafa123f951f431677ee635d552}{streak\+Display\+Timer}}
+\begin{DoxyCompactList}\small\item\em Timer wyświetlania tekstu serii (combo). Po osiągnięciu zera tekst zanika. \end{DoxyCompactList}\item 
+Font \mbox{\hyperlink{class_kitchen_h_u_d_a10f9ff15c71768f3c01fb45415fad247}{hud\+Font}}
+\begin{DoxyCompactList}\small\item\em Czcionka używana we wszystkich elementach tekstowych HUD. Preferuje Legacy\+Runtime.\+ttf, awaryjnie Arial.\+ttf. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_kitchen_h_u_d_aecceebd6fc9e9a5c0a9af88e062dedf6}{last\+Completed\+Count}}
+\begin{DoxyCompactList}\small\item\em Ostatnia zapamiętana liczba ukończonych zamówień, używana do wykrywania nowych ukończonych zamówień i aktualizacji serii combo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_kitchen_h_u_d_ad4ddd1e9e2f8f7d2a2c8cbf86fffcdd3}{last\+Failed\+Count}}
+\begin{DoxyCompactList}\small\item\em Ostatnia zapamiętana liczba nieudanych zamówień, używana do wykrywania nowych nieudanych zamówień i resetowania serii combo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_a60fefe210b84e0c5ea5c27543d6de809}{Panel\+Dark}} = new Color(0.\+025f, 0.\+03f, 0.\+04f, 0.\+58f)
+\begin{DoxyCompactList}\small\item\em Ciemny kolor panelu tła, używany w głównym pasku górnym i panelach. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_a9f8f184fb3bcd4b83237fe8cace4c12f}{Panel\+Medium}} = new Color(0.\+035f, 0.\+043f, 0.\+058f, 0.\+48f)
+\begin{DoxyCompactList}\small\item\em Średni kolor panelu tła, używany w pasku ulepszeń. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_af2632f44419404df4877f341ecde8402}{Panel\+Light}} = new Color(0.\+045f, 0.\+052f, 0.\+068f, 0.\+48f)
+\begin{DoxyCompactList}\small\item\em Jasny kolor panelu tła, używany w panelu podpowiedzi sterowania. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_aa0448ef360ba67a68c627d8405e68748}{Accent\+Gold}} = new Color(0.\+86f, 0.\+68f, 0.\+28f, 1f)
+\begin{DoxyCompactList}\small\item\em Złoty kolor akcentu, używany m.\+in. w tekście salda, timerze i domyślnym akcencie powiadomień toast. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_a929c821b6ee031f095374301d34efb50}{Text\+Primary}} = new Color(0.\+92f, 0.\+93f, 0.\+95f, 0.\+95f)
+\begin{DoxyCompactList}\small\item\em Główny kolor tekstu, wysoki kontrast z lekkim odcieniem niebieskiego. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_ae6f2990bd3083173f7c283acbf7df163}{Text\+Secondary}} = new Color(0.\+68f, 0.\+72f, 0.\+78f, 0.\+85f)
+\begin{DoxyCompactList}\small\item\em Drugorzędny kolor tekstu, nieco ciemniejszy i bardziej przezroczysty. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_a528484103e590ce76820985b871c84f3}{Text\+Muted}} = new Color(0.\+55f, 0.\+58f, 0.\+65f, 0.\+70f)
+\begin{DoxyCompactList}\small\item\em Wyciszony kolor tekstu, używany w podpowiedziach sterowania. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_ac5c85f2f675b48a5685ced57440b2d44}{Green\+Accent}} = new Color(0.\+35f, 0.\+85f, 0.\+50f, 1f)
+\begin{DoxyCompactList}\small\item\em Zielony kolor akcentu, używany w efekcie pulsowania salda po nagrodzie. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_a37b1251d91ed99f4a32483ecbf18567d}{Red\+Accent}} = new Color(0.\+95f, 0.\+35f, 0.\+30f, 1f)
+\begin{DoxyCompactList}\small\item\em Czerwony kolor akcentu, używany w timerze gdy czas jest krytycznie niski. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_adddafbcfbce1d2c433d9cdcb9b9007c4}{Divider\+Color}} = new Color(1f, 1f, 1f, 0.\+08f)
+\begin{DoxyCompactList}\small\item\em Kolor separatorów sekcji w górnym pasku statusu. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_afb06b3162ed5596c42358e2badce986c}{Crosshair\+Default}} = new Color(0.\+85f, 0.\+87f, 0.\+90f, 0.\+32f)
+\begin{DoxyCompactList}\small\item\em Domyślny kolor celownika gdy gracz nie celuje w żaden interaktywny obiekt. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_a9d7be4472e693bc934e4e13a9752bb61}{Crosshair\+Active}} = new Color(0.\+95f, 0.\+78f, 0.\+30f, 0.\+72f)
+\begin{DoxyCompactList}\small\item\em Aktywny kolor celownika gdy gracz celuje w interaktywny obiekt. \end{DoxyCompactList}\item 
+static readonly Color \mbox{\hyperlink{class_kitchen_h_u_d_a41b005acb5d3ae46f41007415b348b52}{Toast\+Background}} = new Color(0.\+012f, 0.\+014f, 0.\+018f, 0.\+74f)
+\begin{DoxyCompactList}\small\item\em Kolor tła powiadomienia toast. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa zarządzająca interfejsem HUD w scenie kuchni. Odpowiada za tworzenie i aktualizowanie wszystkich elementów UI widocznych podczas rozgrywki, w tym\+: paska salda, informacji o trzymanym przedmiocie, licznika zamówień, celownika, powiadomień oraz timera pilności zamówienia. 
+
+Cały interfejs jest tworzony programowo w metodzie \doxylink{class_kitchen_h_u_d_a88fb03720ff95df03edf2f230a81cb5c}{Create\+Canvas} wywoływanej w {\ttfamily Awake}. Klasa wyszukuje gracza sieciowego w scenie, aby uzyskać informacje o interakcji (trzymany przedmiot, podpowiedzi). HUD jest automatycznie ukrywany, gdy widok lobby jest otwarty. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_kitchen_h_u_d_af84c0cee6cdd0c4c668810a5985a079b}\index{KitchenHUD@{KitchenHUD}!AddTextShadow@{AddTextShadow}}
+\index{AddTextShadow@{AddTextShadow}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{AddTextShadow()}{AddTextShadow()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_af84c0cee6cdd0c4c668810a5985a079b} 
+void Kitchen\+HUD.\+Add\+Text\+Shadow (\begin{DoxyParamCaption}\item[{Text}]{source\+Text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Dodaje komponent cienia (Shadow) do elementu tekstowego dla lepszej czytelności na różnych tłach. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em source\+Text} & Komponent Text, do którego zostanie dodany cień.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_h_u_d_a146739bde4b65b5d745fed99f7b88871}\index{KitchenHUD@{KitchenHUD}!Awake@{Awake}}
+\index{Awake@{Awake}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a146739bde4b65b5d745fed99f7b88871} 
+void Kitchen\+HUD.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Unity wywoływana podczas inicjalizacji obiektu. Tworzy cały interfejs HUD wywołując \doxylink{class_kitchen_h_u_d_a88fb03720ff95df03edf2f230a81cb5c}{Create\+Canvas}. 
+
+\Hypertarget{class_kitchen_h_u_d_a88fb03720ff95df03edf2f230a81cb5c}\index{KitchenHUD@{KitchenHUD}!CreateCanvas@{CreateCanvas}}
+\index{CreateCanvas@{CreateCanvas}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{CreateCanvas()}{CreateCanvas()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a88fb03720ff95df03edf2f230a81cb5c} 
+void Kitchen\+HUD.\+Create\+Canvas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy programowo cały interfejs HUD, w tym Canvas, górny pasek statusu, pasek ulepszeń, panel podpowiedzi, powiadomienie toast, celownik, pływający tekst pieniędzy, panel timera zamówienia oraz tekst combo. 
+
+Metoda jest wywoływana raz w \doxylink{class_kitchen_h_u_d_a146739bde4b65b5d745fed99f7b88871}{Awake}. Sprawdza czy Canvas już istnieje, aby zapobiec duplikacji. Używa wbudowanej czcionki Legacy\+Runtime.\+ttf (lub Arial.\+ttf jako awaryjnej). Wszystkie elementy UI tworzone są ręcznie za pomocą metod pomocniczych \doxylink{class_kitchen_h_u_d_ad3ac3546caffd26802f07596dc928773}{Create\+Panel}, \doxylink{class_kitchen_h_u_d_a2d76fa3ecea1e24ab8a4262f377cbfaf}{Create\+Text} i \doxylink{class_kitchen_h_u_d_a74a1fca0f23020a29538aa56fd3596ea}{Create\+Rounded\+Pill}. \Hypertarget{class_kitchen_h_u_d_ac8fc1b14c58ca349ff8f1598a278c4d1}\index{KitchenHUD@{KitchenHUD}!CreateCrosshairLine@{CreateCrosshairLine}}
+\index{CreateCrosshairLine@{CreateCrosshairLine}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{CreateCrosshairLine()}{CreateCrosshairLine()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ac8fc1b14c58ca349ff8f1598a278c4d1} 
+Image Kitchen\+HUD.\+Create\+Crosshair\+Line (\begin{DoxyParamCaption}\item[{Rect\+Transform}]{parent}{, }\item[{string}]{name}{, }\item[{Vector2}]{position}{, }\item[{Vector2}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy pojedynczą linię (element) celownika jako prostokątny obraz UI. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Rect\+Transform rodzica (kontener celownika).\\
+\hline
+{\em name} & Nazwa elementu celownika (np. "{}\+Top"{}, "{}\+Dot"{}).\\
+\hline
+{\em position} & Pozycja zakotwiczona elementu względem środka kontenera.\\
+\hline
+{\em size} & Rozmiar elementu (szerokość x wysokość) w pikselach.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Komponent Image utworzonej linii celownika.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_h_u_d_a0c7242fd7c8d751e837b2b81bbd41bf6}\index{KitchenHUD@{KitchenHUD}!CreateModernCrosshair@{CreateModernCrosshair}}
+\index{CreateModernCrosshair@{CreateModernCrosshair}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{CreateModernCrosshair()}{CreateModernCrosshair()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a0c7242fd7c8d751e837b2b81bbd41bf6} 
+void Kitchen\+HUD.\+Create\+Modern\+Crosshair (\begin{DoxyParamCaption}\item[{Transform}]{parent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy nowoczesny celownik składający się z czterech linii (góra, dół, lewo, prawo) oraz centralnej kropki. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transformata rodzica, do którego zostanie dołączony kontener celownika.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_h_u_d_ad3ac3546caffd26802f07596dc928773}\index{KitchenHUD@{KitchenHUD}!CreatePanel@{CreatePanel}}
+\index{CreatePanel@{CreatePanel}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{CreatePanel()}{CreatePanel()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ad3ac3546caffd26802f07596dc928773} 
+Rect\+Transform Kitchen\+HUD.\+Create\+Panel (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{Vector2}]{anchor\+Min}{, }\item[{Vector2}]{anchor\+Max}{, }\item[{Vector2}]{pivot}{, }\item[{Vector2}]{anchored\+Position}{, }\item[{Vector2}]{size}{, }\item[{Color}]{background\+Color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy prostokątny panel UI z obrazem tła. Podstawowa metoda budowania elementów interfejsu HUD. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transformata rodzica.\\
+\hline
+{\em object\+Name} & Nazwa obiektu panelu.\\
+\hline
+{\em anchor\+Min} & Minimalny punkt zakotwiczenia (0-\/1).\\
+\hline
+{\em anchor\+Max} & Maksymalny punkt zakotwiczenia (0-\/1).\\
+\hline
+{\em pivot} & Punkt obrotu elementu.\\
+\hline
+{\em anchored\+Position} & Pozycja zakotwiczona względem punktu obrotu.\\
+\hline
+{\em size} & Rozmiar panelu w pikselach.\\
+\hline
+{\em background\+Color} & Kolor tła panelu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Rect\+Transform utworzonego panelu.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_h_u_d_a74a1fca0f23020a29538aa56fd3596ea}\index{KitchenHUD@{KitchenHUD}!CreateRoundedPill@{CreateRoundedPill}}
+\index{CreateRoundedPill@{CreateRoundedPill}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{CreateRoundedPill()}{CreateRoundedPill()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a74a1fca0f23020a29538aa56fd3596ea} 
+Rect\+Transform Kitchen\+HUD.\+Create\+Rounded\+Pill (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{Vector2}]{anchor\+Min}{, }\item[{Vector2}]{anchor\+Max}{, }\item[{Vector2}]{pivot}{, }\item[{Vector2}]{anchored\+Position}{, }\item[{Vector2}]{size}{, }\item[{Color}]{background\+Color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy zaokrąglony panel "{}pigułkowy"{} (pill). W aktualnej implementacji deleguje do \doxylink{class_kitchen_h_u_d_ad3ac3546caffd26802f07596dc928773}{Create\+Panel} bez dodatkowej stylizacji. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transformata rodzica.\\
+\hline
+{\em object\+Name} & Nazwa obiektu panelu.\\
+\hline
+{\em anchor\+Min} & Minimalny punkt zakotwiczenia.\\
+\hline
+{\em anchor\+Max} & Maksymalny punkt zakotwiczenia.\\
+\hline
+{\em pivot} & Punkt obrotu panelu.\\
+\hline
+{\em anchored\+Position} & Pozycja zakotwiczona panelu.\\
+\hline
+{\em size} & Rozmiar panelu (szerokość x wysokość).\\
+\hline
+{\em background\+Color} & Kolor tła panelu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Rect\+Transform utworzonego panelu.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_h_u_d_a66b8797f5fd5a947911746303801dff4}\index{KitchenHUD@{KitchenHUD}!CreateSectionDivider@{CreateSectionDivider}}
+\index{CreateSectionDivider@{CreateSectionDivider}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{CreateSectionDivider()}{CreateSectionDivider()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a66b8797f5fd5a947911746303801dff4} 
+void Kitchen\+HUD.\+Create\+Section\+Divider (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{Vector2}]{anchor}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy pionowy separator sekcji w pasku statusu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transformata rodzica (pasek statusu).\\
+\hline
+{\em object\+Name} & Nazwa obiektu separatora.\\
+\hline
+{\em anchor} & Pozycja zakotwiczenia separatora w rodzicu.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_h_u_d_a2d76fa3ecea1e24ab8a4262f377cbfaf}\index{KitchenHUD@{KitchenHUD}!CreateText@{CreateText}}
+\index{CreateText@{CreateText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{CreateText()}{CreateText()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a2d76fa3ecea1e24ab8a4262f377cbfaf} 
+Text Kitchen\+HUD.\+Create\+Text (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{Font}]{font}{, }\item[{int}]{font\+Size}{, }\item[{Text\+Anchor}]{alignment}{, }\item[{Vector2}]{anchored\+Position}{, }\item[{Vector2}]{size}{, }\item[{Font\+Style}]{font\+Style}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy element tekstowy UI z domyślnym zakotwiczeniem w lewym górnym rogu. Uproszczona wersja pełnej metody \doxylink{class_kitchen_h_u_d_ab16e025b860dac663cd096d9a6723442}{Create\+Text(\+Transform, string, Font, int, Text\+Anchor, Vector2, Vector2, Vector2, Vector2, Vector2, Font\+Style, Color)}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transformata rodzica.\\
+\hline
+{\em object\+Name} & Nazwa obiektu tekstowego.\\
+\hline
+{\em font} & Czcionka do użycia.\\
+\hline
+{\em font\+Size} & Rozmiar czcionki w pikselach.\\
+\hline
+{\em alignment} & Wyrównanie tekstu.\\
+\hline
+{\em anchored\+Position} & Pozycja zakotwiczona elementu.\\
+\hline
+{\em size} & Rozmiar elementu tekstowego.\\
+\hline
+{\em font\+Style} & Styl czcionki (normalny, pogrubiony itp.).\\
+\hline
+{\em color} & Kolor tekstu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Komponent Text utworzonego elementu tekstowego.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_h_u_d_ab16e025b860dac663cd096d9a6723442}\index{KitchenHUD@{KitchenHUD}!CreateText@{CreateText}}
+\index{CreateText@{CreateText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{CreateText()}{CreateText()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ab16e025b860dac663cd096d9a6723442} 
+Text Kitchen\+HUD.\+Create\+Text (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{Font}]{font}{, }\item[{int}]{font\+Size}{, }\item[{Text\+Anchor}]{alignment}{, }\item[{Vector2}]{anchor\+Min}{, }\item[{Vector2}]{anchor\+Max}{, }\item[{Vector2}]{pivot}{, }\item[{Vector2}]{anchored\+Position}{, }\item[{Vector2}]{size}{, }\item[{Font\+Style}]{font\+Style}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy element tekstowy UI z pełną kontrolą nad zakotwiczeniem i pozycjonowaniem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transformata rodzica.\\
+\hline
+{\em object\+Name} & Nazwa obiektu tekstowego.\\
+\hline
+{\em font} & Czcionka do użycia.\\
+\hline
+{\em font\+Size} & Rozmiar czcionki w pikselach.\\
+\hline
+{\em alignment} & Wyrównanie tekstu (lewo, środek, prawo itp.).\\
+\hline
+{\em anchor\+Min} & Minimalny punkt zakotwiczenia.\\
+\hline
+{\em anchor\+Max} & Maksymalny punkt zakotwiczenia.\\
+\hline
+{\em pivot} & Punkt obrotu elementu.\\
+\hline
+{\em anchored\+Position} & Pozycja zakotwiczona elementu.\\
+\hline
+{\em size} & Rozmiar elementu tekstowego.\\
+\hline
+{\em font\+Style} & Styl czcionki (normalny, pogrubiony itp.).\\
+\hline
+{\em color} & Kolor tekstu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Komponent Text utworzonego elementu tekstowego.
+\end{DoxyReturn}
+
+
+Tekst jest konfigurowany z zawijaniem poziomym ({\ttfamily Horizontal\+Wrap\+Mode.\+Wrap}) i przepełnieniem pionowym ({\ttfamily Vertical\+Wrap\+Mode.\+Overflow}). Raycast target jest wyłączony, aby tekst nie przechwytywał zdarzeń UI. \Hypertarget{class_kitchen_h_u_d_aa2e011be5055631894c479836477dc2d}\index{KitchenHUD@{KitchenHUD}!GetToastColor@{GetToastColor}}
+\index{GetToastColor@{GetToastColor}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{GetToastColor()}{GetToastColor()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_aa2e011be5055631894c479836477dc2d} 
+Color Kitchen\+HUD.\+Get\+Toast\+Color (\begin{DoxyParamCaption}\item[{string}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Określa kolor akcentu powiadomienia toast na podstawie treści komunikatu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em message} & Treść komunikatu do analizy.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Kolor akcentu\+:
+\begin{DoxyItemize}
+\item Czerwony dla komunikatów o błędach (zawierających "{}zly"{}, "{}brak"{}, "{}nie "{} itp.),
+\item Zielony dla komunikatów o sukcesie ("{}zamowienie zrealizowane"{}, "{}nagroda"{} itp.),
+\item Złoty dla komunikatów informacyjnych ("{}zawiniety"{}, "{}dodano"{} itp.),
+\item Szary dla pozostałych komunikatów. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_h_u_d_a38d2745701e9f619db528125b10b766b}\index{KitchenHUD@{KitchenHUD}!RefreshTexts@{RefreshTexts}}
+\index{RefreshTexts@{RefreshTexts}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{RefreshTexts()}{RefreshTexts()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a38d2745701e9f619db528125b10b766b} 
+void Kitchen\+HUD.\+Refresh\+Texts (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Odświeża wszystkie teksty i elementy HUD, w tym saldo, trzymany przedmiot, statystyki sesji, podpowiedzi, celownik, ulepszenia oraz efekty wizualne. 
+
+Wywoływana co klatkę z \doxylink{class_kitchen_h_u_d_ae202f3fd38d71b8ec9635e6efda8a097}{Update}. Sprawdza czy kluczowe komponenty tekstowe istnieją przed aktualizacją. Obsługuje interpolację wyświetlanego salda, wykrywanie zmian salda (dla pływającego tekstu) oraz ukrywanie podpowiedzi gdy sklep, menu, pauza lub ustawienia są otwarte. \Hypertarget{class_kitchen_h_u_d_a9200639616eed80c884eadd0e6c8dc33}\index{KitchenHUD@{KitchenHUD}!ShowFeedbackToast@{ShowFeedbackToast}}
+\index{ShowFeedbackToast@{ShowFeedbackToast}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{ShowFeedbackToast()}{ShowFeedbackToast()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a9200639616eed80c884eadd0e6c8dc33} 
+void Kitchen\+HUD.\+Show\+Feedback\+Toast (\begin{DoxyParamCaption}\item[{string}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wyświetla powiadomienie toast z podanym komunikatem. Ignoruje duplikaty tego samego komunikatu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em message} & Treść komunikatu do wyświetlenia.\\
+\hline
+\end{DoxyParams}
+
+
+Kolor akcentu jest automatycznie dobierany na podstawie zawartości komunikatu za pomocą \doxylink{class_kitchen_h_u_d_aa2e011be5055631894c479836477dc2d}{Get\+Toast\+Color}. Czas wyświetlania wynosi 2.\+25 sekundy. \Hypertarget{class_kitchen_h_u_d_ad27dccd1a4737d1f2e94ac3d78f62cf1}\index{KitchenHUD@{KitchenHUD}!ShowFloatingMoney@{ShowFloatingMoney}}
+\index{ShowFloatingMoney@{ShowFloatingMoney}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{ShowFloatingMoney()}{ShowFloatingMoney()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ad27dccd1a4737d1f2e94ac3d78f62cf1} 
+void Kitchen\+HUD.\+Show\+Floating\+Money (\begin{DoxyParamCaption}\item[{float}]{amount}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wyświetla pływający tekst z informacją o zdobytej kwocie pieniędzy. Tekst unosi się w górę i zanika w ciągu 1.\+6 sekundy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em amount} & Kwota do wyświetlenia (w złotówkach).\\
+\hline
+\end{DoxyParams}
+
+
+Ustawia również timer pulsowania koloru tekstu salda (\doxylink{class_kitchen_h_u_d_a073cdf714314f4fb8c45e749a94b7dd5}{balance\+Pulse\+Timer}), dając efekt wizualnego potwierdzenia otrzymania nagrody. \Hypertarget{class_kitchen_h_u_d_a7765621e10da6253c2be5a79b3797607}\index{KitchenHUD@{KitchenHUD}!Truncate@{Truncate}}
+\index{Truncate@{Truncate}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{Truncate()}{Truncate()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a7765621e10da6253c2be5a79b3797607} 
+string Kitchen\+HUD.\+Truncate (\begin{DoxyParamCaption}\item[{string}]{value}{, }\item[{int}]{max\+Length}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obcina tekst do podanej maksymalnej długości, dodając wielokropek ("{}..."{}) jeśli tekst jest dłuższy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em value} & Tekst do obcięcia.\\
+\hline
+{\em max\+Length} & Maksymalna dozwolona długość tekstu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Oryginalny tekst jeśli mieści się w limicie, lub obcięty tekst z wielokropkiem.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_h_u_d_ae202f3fd38d71b8ec9635e6efda8a097}\index{KitchenHUD@{KitchenHUD}!Update@{Update}}
+\index{Update@{Update}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ae202f3fd38d71b8ec9635e6efda8a097} 
+void Kitchen\+HUD.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Unity wywoływana co klatkę. Wyszukuje gracza sieciowego, buforuje referencje do UI sklepu i lobby, a następnie odświeża wszystkie elementy HUD jeśli lobby nie jest otwarte. 
+
+\Hypertarget{class_kitchen_h_u_d_aafce49ecfc1e77d6c355d059e4589bc1}\index{KitchenHUD@{KitchenHUD}!UpdateControlHintText@{UpdateControlHintText}}
+\index{UpdateControlHintText@{UpdateControlHintText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{UpdateControlHintText()}{UpdateControlHintText()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_aafce49ecfc1e77d6c355d059e4589bc1} 
+void Kitchen\+HUD.\+Update\+Control\+Hint\+Text (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje tekst podpowiedzi sterowania w zależności od trybu gry. W trybie solo wyświetla mniej opcji (bez F1\+: Lobby). 
+
+\Hypertarget{class_kitchen_h_u_d_aa5d827f0ea5b4c6d14bdf5feab8e4d67}\index{KitchenHUD@{KitchenHUD}!UpdateCrosshair@{UpdateCrosshair}}
+\index{UpdateCrosshair@{UpdateCrosshair}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{UpdateCrosshair()}{UpdateCrosshair()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_aa5d827f0ea5b4c6d14bdf5feab8e4d67} 
+void Kitchen\+HUD.\+Update\+Crosshair (\begin{DoxyParamCaption}\item[{bool}]{has\+Target}{, }\item[{bool}]{shop\+Open}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje wygląd celownika w zależności od tego czy gracz celuje w interaktywny obiekt oraz czy sklep jest otwarty. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em has\+Target} & Czy gracz aktualnie celuje w interaktywny obiekt.\\
+\hline
+{\em shop\+Open} & Czy interfejs sklepu jest otwarty (celownik będzie ukryty).\\
+\hline
+\end{DoxyParams}
+
+
+Kolor celownika i odstęp między liniami interpolowane są płynnie za pomocą {\ttfamily Color.\+Lerp} i {\ttfamily Mathf.\+Lerp} z prędkością zależną od delta\+Time, dając efekt płynnej animacji. \Hypertarget{class_kitchen_h_u_d_a9452cf05951796a5e31b02be2f6bd3c2}\index{KitchenHUD@{KitchenHUD}!UpdateFloatingMoney@{UpdateFloatingMoney}}
+\index{UpdateFloatingMoney@{UpdateFloatingMoney}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{UpdateFloatingMoney()}{UpdateFloatingMoney()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a9452cf05951796a5e31b02be2f6bd3c2} 
+void Kitchen\+HUD.\+Update\+Floating\+Money (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Animuje pływający tekst pieniędzy\+: unosi go w górę, skaluje rozmiar czcionki sinusoidalnie i stopniowo zanika. 
+
+Animacja trwa 1.\+6 sekundy. Tekst przesuwa się o 60 pikseli w górę, rozmiar czcionki pulsuje z amplitudą 15\%, a przezroczystość zanika w drugiej połowie animacji. \Hypertarget{class_kitchen_h_u_d_a4d13233f27ee9174503e542fea65ab86}\index{KitchenHUD@{KitchenHUD}!UpdateStreak@{UpdateStreak}}
+\index{UpdateStreak@{UpdateStreak}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{UpdateStreak()}{UpdateStreak()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a4d13233f27ee9174503e542fea65ab86} 
+void Kitchen\+HUD.\+Update\+Streak (\begin{DoxyParamCaption}\item[{int}]{completed}{, }\item[{int}]{failed}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje wyświetlanie serii (combo) zamówień ukończonych z rzędu. Zwiększa serię przy nowych ukończeniach, resetuje przy niepowodzeniu, i animuje tekst z efektem pulsowania. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em completed} & Aktualna łączna liczba ukończonych zamówień.\\
+\hline
+{\em failed} & Aktualna łączna liczba nieudanych zamówień.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_h_u_d_a9b297a8817021732757f0a34c1a21f0e}\index{KitchenHUD@{KitchenHUD}!UpdateToastAnimation@{UpdateToastAnimation}}
+\index{UpdateToastAnimation@{UpdateToastAnimation}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{UpdateToastAnimation()}{UpdateToastAnimation()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a9b297a8817021732757f0a34c1a21f0e} 
+void Kitchen\+HUD.\+Update\+Toast\+Animation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Animuje pojawianie i zanikanie powiadomienia toast. Obsługuje interpolację przezroczystości, pozycji i skali panelu. 
+
+Animacja jest sterowana timerem \doxylink{class_kitchen_h_u_d_ac69e9d856e8cf1945f7f141d99edd9c9}{toast\+Timer}. Gdy timer spadnie do zera, panel płynnie zanika. Po całkowitym zaniku panel jest dezaktywowany. Używa {\ttfamily Mathf.\+Smooth\+Step} do uzyskania płynnej krzywej animacji. \Hypertarget{class_kitchen_h_u_d_a019f0e45c3855e48286bd6fbd7fe0077}\index{KitchenHUD@{KitchenHUD}!UpdateUpgradeStatus@{UpdateUpgradeStatus}}
+\index{UpdateUpgradeStatus@{UpdateUpgradeStatus}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{UpdateUpgradeStatus()}{UpdateUpgradeStatus()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a019f0e45c3855e48286bd6fbd7fe0077} 
+void Kitchen\+HUD.\+Update\+Upgrade\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje pasek statusu ulepszeń, wyświetlając aktywne bonusy zakupione w sklepie (szybkość grilla, szybkość krojenia, bonus nagrody, dodatkowy czas, wielkość porcji mięsa). 
+
+Pasek jest ukrywany gdy nie zakupiono żadnych ulepszeń. Poszczególne bonusy są oddzielone separatorem "{}\texorpdfstring{$\vert$}{|}"{}. Wartości procentowe obliczane są na podstawie mnożników z {\ttfamily \doxylink{class_shop_manager}{Shop\+Manager}}. \Hypertarget{class_kitchen_h_u_d_aa1509ef4e8a0eb40360c34223ffb21f7}\index{KitchenHUD@{KitchenHUD}!UpdateUrgencyTimer@{UpdateUrgencyTimer}}
+\index{UpdateUrgencyTimer@{UpdateUrgencyTimer}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{UpdateUrgencyTimer()}{UpdateUrgencyTimer()}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_aa1509ef4e8a0eb40360c34223ffb21f7} 
+void Kitchen\+HUD.\+Update\+Urgency\+Timer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje timer pilności aktualnego zamówienia. Wyświetla pozostały czas i zmienia kolor w zależności od pilności\+: zielony (\texorpdfstring{$>$}{>}20s), złoty (10-\/20s), migający czerwony (\texorpdfstring{$<$}{<}10s). 
+
+Gdy nie ma aktywnego zamówienia, timer jest ukrywany. Przy krytycznie niskim czasie (\texorpdfstring{$<$}{<}10s) tło panelu również zmienia kolor na czerwonawy z efektem pulsowania. 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_kitchen_h_u_d_aa0448ef360ba67a68c627d8405e68748}\index{KitchenHUD@{KitchenHUD}!AccentGold@{AccentGold}}
+\index{AccentGold@{AccentGold}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{AccentGold}{AccentGold}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_aa0448ef360ba67a68c627d8405e68748} 
+readonly Color Kitchen\+HUD.\+Accent\+Gold = new Color(0.\+86f, 0.\+68f, 0.\+28f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Złoty kolor akcentu, używany m.\+in. w tekście salda, timerze i domyślnym akcencie powiadomień toast. 
+
+\Hypertarget{class_kitchen_h_u_d_a073cdf714314f4fb8c45e749a94b7dd5}\index{KitchenHUD@{KitchenHUD}!balancePulseTimer@{balancePulseTimer}}
+\index{balancePulseTimer@{balancePulseTimer}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{balancePulseTimer}{balancePulseTimer}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a073cdf714314f4fb8c45e749a94b7dd5} 
+float Kitchen\+HUD.\+balance\+Pulse\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Timer animacji pulsowania koloru tekstu salda po otrzymaniu nagrody. Efekt przejścia z zielonego z powrotem do złotego. 
+
+\Hypertarget{class_kitchen_h_u_d_a2e5ec619938d29c5ccb0b99b90a84245}\index{KitchenHUD@{KitchenHUD}!balanceText@{balanceText}}
+\index{balanceText@{balanceText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{balanceText}{balanceText}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a2e5ec619938d29c5ccb0b99b90a84245} 
+Text Kitchen\+HUD.\+balance\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst wyświetlający aktualne saldo gracza w złotówkach. Umieszczony w lewej części górnego paska. 
+
+\Hypertarget{class_kitchen_h_u_d_ac00c0472deed39afb600a75c57b22f3c}\index{KitchenHUD@{KitchenHUD}!cachedLobbyUI@{cachedLobbyUI}}
+\index{cachedLobbyUI@{cachedLobbyUI}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{cachedLobbyUI}{cachedLobbyUI}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ac00c0472deed39afb600a75c57b22f3c} 
+\mbox{\hyperlink{class_lobby_u_i}{Lobby\+UI}} Kitchen\+HUD.\+cached\+Lobby\+UI\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowana referencja do interfejsu lobby, wykorzystywana do sprawdzania czy widok lobby jest aktualnie otwarty. 
+
+\Hypertarget{class_kitchen_h_u_d_a6d0823107f543b65c0eea9ac461283bf}\index{KitchenHUD@{KitchenHUD}!cachedShopUI@{cachedShopUI}}
+\index{cachedShopUI@{cachedShopUI}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{cachedShopUI}{cachedShopUI}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a6d0823107f543b65c0eea9ac461283bf} 
+\mbox{\hyperlink{class_shop_u_i}{Shop\+UI}} Kitchen\+HUD.\+cached\+Shop\+UI\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowana referencja do interfejsu sklepu, wykorzystywana do sprawdzania czy sklep jest aktualnie otwarty. 
+
+\Hypertarget{class_kitchen_h_u_d_a9d7be4472e693bc934e4e13a9752bb61}\index{KitchenHUD@{KitchenHUD}!CrosshairActive@{CrosshairActive}}
+\index{CrosshairActive@{CrosshairActive}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{CrosshairActive}{CrosshairActive}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a9d7be4472e693bc934e4e13a9752bb61} 
+readonly Color Kitchen\+HUD.\+Crosshair\+Active = new Color(0.\+95f, 0.\+78f, 0.\+30f, 0.\+72f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Aktywny kolor celownika gdy gracz celuje w interaktywny obiekt. 
+
+\Hypertarget{class_kitchen_h_u_d_a9fc8ded1658bccd471ad0c894ed751cd}\index{KitchenHUD@{KitchenHUD}!crosshairBottom@{crosshairBottom}}
+\index{crosshairBottom@{crosshairBottom}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{crosshairBottom}{crosshairBottom}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a9fc8ded1658bccd471ad0c894ed751cd} 
+Image Kitchen\+HUD.\+crosshair\+Bottom\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dolna linia celownika. 
+
+\Hypertarget{class_kitchen_h_u_d_a426d7e4bb6190b9f5394197a0e14a780}\index{KitchenHUD@{KitchenHUD}!crosshairContainer@{crosshairContainer}}
+\index{crosshairContainer@{crosshairContainer}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{crosshairContainer}{crosshairContainer}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a426d7e4bb6190b9f5394197a0e14a780} 
+Rect\+Transform Kitchen\+HUD.\+crosshair\+Container\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Kontener Rect\+Transform celownika, zawierający wszystkie linie i kropkę. Ukrywany gdy sklep jest otwarty. 
+
+\Hypertarget{class_kitchen_h_u_d_afb06b3162ed5596c42358e2badce986c}\index{KitchenHUD@{KitchenHUD}!CrosshairDefault@{CrosshairDefault}}
+\index{CrosshairDefault@{CrosshairDefault}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{CrosshairDefault}{CrosshairDefault}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_afb06b3162ed5596c42358e2badce986c} 
+readonly Color Kitchen\+HUD.\+Crosshair\+Default = new Color(0.\+85f, 0.\+87f, 0.\+90f, 0.\+32f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Domyślny kolor celownika gdy gracz nie celuje w żaden interaktywny obiekt. 
+
+\Hypertarget{class_kitchen_h_u_d_ab6d20ca2d8e29d6cc957cf1777fc425c}\index{KitchenHUD@{KitchenHUD}!crosshairDot@{crosshairDot}}
+\index{crosshairDot@{crosshairDot}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{crosshairDot}{crosshairDot}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ab6d20ca2d8e29d6cc957cf1777fc425c} 
+Image Kitchen\+HUD.\+crosshair\+Dot\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Centralna kropka celownika. 
+
+\Hypertarget{class_kitchen_h_u_d_afe0b15e74417ac01048ce7d0e737675d}\index{KitchenHUD@{KitchenHUD}!crosshairLeft@{crosshairLeft}}
+\index{crosshairLeft@{crosshairLeft}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{crosshairLeft}{crosshairLeft}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_afe0b15e74417ac01048ce7d0e737675d} 
+Image Kitchen\+HUD.\+crosshair\+Left\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lewa linia celownika. 
+
+\Hypertarget{class_kitchen_h_u_d_a270ef8615faac1c47b0681f7088d152c}\index{KitchenHUD@{KitchenHUD}!crosshairRight@{crosshairRight}}
+\index{crosshairRight@{crosshairRight}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{crosshairRight}{crosshairRight}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a270ef8615faac1c47b0681f7088d152c} 
+Image Kitchen\+HUD.\+crosshair\+Right\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Prawa linia celownika. 
+
+\Hypertarget{class_kitchen_h_u_d_a62f7393b698e3c3405526902d367e183}\index{KitchenHUD@{KitchenHUD}!crosshairTop@{crosshairTop}}
+\index{crosshairTop@{crosshairTop}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{crosshairTop}{crosshairTop}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a62f7393b698e3c3405526902d367e183} 
+Image Kitchen\+HUD.\+crosshair\+Top\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Górna linia celownika. 
+
+\Hypertarget{class_kitchen_h_u_d_aa9b6c6ce3b6c548f0c35a74aca13af08}\index{KitchenHUD@{KitchenHUD}!currentStreak@{currentStreak}}
+\index{currentStreak@{currentStreak}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{currentStreak}{currentStreak}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_aa9b6c6ce3b6c548f0c35a74aca13af08} 
+int Kitchen\+HUD.\+current\+Streak\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualna wartość serii (combo) zamówień ukończonych z rzędu. Resetowana do zera po nieudanym zamówieniu. 
+
+\Hypertarget{class_kitchen_h_u_d_a8f664bb664b9c9954ef8b6c83a338cbe}\index{KitchenHUD@{KitchenHUD}!displayedBalance@{displayedBalance}}
+\index{displayedBalance@{displayedBalance}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{displayedBalance}{displayedBalance}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a8f664bb664b9c9954ef8b6c83a338cbe} 
+float Kitchen\+HUD.\+displayed\+Balance\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Wyświetlana wartość salda, interpolowana do aktualnej wartości dla uzyskania płynnej animacji zmiany liczby. 
+
+\Hypertarget{class_kitchen_h_u_d_adddafbcfbce1d2c433d9cdcb9b9007c4}\index{KitchenHUD@{KitchenHUD}!DividerColor@{DividerColor}}
+\index{DividerColor@{DividerColor}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{DividerColor}{DividerColor}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_adddafbcfbce1d2c433d9cdcb9b9007c4} 
+readonly Color Kitchen\+HUD.\+Divider\+Color = new Color(1f, 1f, 1f, 0.\+08f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor separatorów sekcji w górnym pasku statusu. 
+
+\Hypertarget{class_kitchen_h_u_d_a5f4c594f19b516bbf583a09ae75207d8}\index{KitchenHUD@{KitchenHUD}!feedbackText@{feedbackText}}
+\index{feedbackText@{feedbackText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{feedbackText}{feedbackText}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a5f4c594f19b516bbf583a09ae75207d8} 
+Text Kitchen\+HUD.\+feedback\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst komunikatu zwrotnego wyświetlany w powiadomieniu toast. 
+
+\Hypertarget{class_kitchen_h_u_d_ab08998a49d3c0ab33b30a1194b59f9ba}\index{KitchenHUD@{KitchenHUD}!floatingMoneyStartY@{floatingMoneyStartY}}
+\index{floatingMoneyStartY@{floatingMoneyStartY}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{floatingMoneyStartY}{floatingMoneyStartY}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ab08998a49d3c0ab33b30a1194b59f9ba} 
+float Kitchen\+HUD.\+floating\+Money\+StartY\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pozycja początkowa Y pływającego tekstu pieniędzy, od której zaczyna się animacja unoszenia. 
+
+\Hypertarget{class_kitchen_h_u_d_a9c335f22233207e3180b4dae06253f1e}\index{KitchenHUD@{KitchenHUD}!floatingMoneyText@{floatingMoneyText}}
+\index{floatingMoneyText@{floatingMoneyText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{floatingMoneyText}{floatingMoneyText}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a9c335f22233207e3180b4dae06253f1e} 
+Text Kitchen\+HUD.\+floating\+Money\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst pływającego komunikatu o zdobytych pieniądzach. Unosi się w górę i zanika po otrzymaniu nagrody. 
+
+\Hypertarget{class_kitchen_h_u_d_ae7c35cae33f33d68ed7b32c2c39a17ef}\index{KitchenHUD@{KitchenHUD}!floatingMoneyTimer@{floatingMoneyTimer}}
+\index{floatingMoneyTimer@{floatingMoneyTimer}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{floatingMoneyTimer}{floatingMoneyTimer}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ae7c35cae33f33d68ed7b32c2c39a17ef} 
+float Kitchen\+HUD.\+floating\+Money\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Timer animacji pływającego tekstu pieniędzy. Odlicza czas trwania animacji (1.\+6s). 
+
+\Hypertarget{class_kitchen_h_u_d_ac5c85f2f675b48a5685ced57440b2d44}\index{KitchenHUD@{KitchenHUD}!GreenAccent@{GreenAccent}}
+\index{GreenAccent@{GreenAccent}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{GreenAccent}{GreenAccent}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ac5c85f2f675b48a5685ced57440b2d44} 
+readonly Color Kitchen\+HUD.\+Green\+Accent = new Color(0.\+35f, 0.\+85f, 0.\+50f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Zielony kolor akcentu, używany w efekcie pulsowania salda po nagrodzie. 
+
+\Hypertarget{class_kitchen_h_u_d_ab167cc5afeb6ec427514ffc97f439908}\index{KitchenHUD@{KitchenHUD}!heldItemText@{heldItemText}}
+\index{heldItemText@{heldItemText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{heldItemText}{heldItemText}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ab167cc5afeb6ec427514ffc97f439908} 
+Text Kitchen\+HUD.\+held\+Item\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst wyświetlający opis aktualnie trzymanego przez gracza przedmiotu. Umieszczony centralnie w górnym pasku. 
+
+\Hypertarget{class_kitchen_h_u_d_ae171dc43d5c5ab34bed8c8ca76c44929}\index{KitchenHUD@{KitchenHUD}!hudCanvas@{hudCanvas}}
+\index{hudCanvas@{hudCanvas}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{hudCanvas}{hudCanvas}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ae171dc43d5c5ab34bed8c8ca76c44929} 
+Canvas Kitchen\+HUD.\+hud\+Canvas\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Główny Canvas HUD na którym umieszczone są wszystkie elementy interfejsu. Renderowany jako Screen\+Space\+Overlay z sorting\+Order 10. 
+
+\Hypertarget{class_kitchen_h_u_d_a10f9ff15c71768f3c01fb45415fad247}\index{KitchenHUD@{KitchenHUD}!hudFont@{hudFont}}
+\index{hudFont@{hudFont}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{hudFont}{hudFont}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a10f9ff15c71768f3c01fb45415fad247} 
+Font Kitchen\+HUD.\+hud\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Czcionka używana we wszystkich elementach tekstowych HUD. Preferuje Legacy\+Runtime.\+ttf, awaryjnie Arial.\+ttf. 
+
+\Hypertarget{class_kitchen_h_u_d_aecceebd6fc9e9a5c0a9af88e062dedf6}\index{KitchenHUD@{KitchenHUD}!lastCompletedCount@{lastCompletedCount}}
+\index{lastCompletedCount@{lastCompletedCount}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{lastCompletedCount}{lastCompletedCount}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_aecceebd6fc9e9a5c0a9af88e062dedf6} 
+int Kitchen\+HUD.\+last\+Completed\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatnia zapamiętana liczba ukończonych zamówień, używana do wykrywania nowych ukończonych zamówień i aktualizacji serii combo. 
+
+\Hypertarget{class_kitchen_h_u_d_ad4ddd1e9e2f8f7d2a2c8cbf86fffcdd3}\index{KitchenHUD@{KitchenHUD}!lastFailedCount@{lastFailedCount}}
+\index{lastFailedCount@{lastFailedCount}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{lastFailedCount}{lastFailedCount}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ad4ddd1e9e2f8f7d2a2c8cbf86fffcdd3} 
+int Kitchen\+HUD.\+last\+Failed\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatnia zapamiętana liczba nieudanych zamówień, używana do wykrywania nowych nieudanych zamówień i resetowania serii combo. 
+
+\Hypertarget{class_kitchen_h_u_d_a86d077ad37aab4c0bccf8a1ce61a24b5}\index{KitchenHUD@{KitchenHUD}!lastKnownBalance@{lastKnownBalance}}
+\index{lastKnownBalance@{lastKnownBalance}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{lastKnownBalance}{lastKnownBalance}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a86d077ad37aab4c0bccf8a1ce61a24b5} 
+float Kitchen\+HUD.\+last\+Known\+Balance\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatnia znana wartość salda gracza, używana do wykrywania zmian i uruchamiania animacji pływającego tekstu pieniędzy. 
+
+\Hypertarget{class_kitchen_h_u_d_aff0484605b9e6b7c7e7ff02a8cc4f378}\index{KitchenHUD@{KitchenHUD}!lastPlayerSearchTime@{lastPlayerSearchTime}}
+\index{lastPlayerSearchTime@{lastPlayerSearchTime}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{lastPlayerSearchTime}{lastPlayerSearchTime}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_aff0484605b9e6b7c7e7ff02a8cc4f378} 
+float Kitchen\+HUD.\+last\+Player\+Search\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Znacznik czasowy ostatniego wyszukiwania gracza w scenie. Zapobiega wyszukiwaniu co klatkę, ograniczając je do co 1 sekundy. 
+
+\Hypertarget{class_kitchen_h_u_d_a1a0ccd66b50383f700cc4647b495911f}\index{KitchenHUD@{KitchenHUD}!lastToastMessage@{lastToastMessage}}
+\index{lastToastMessage@{lastToastMessage}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{lastToastMessage}{lastToastMessage}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a1a0ccd66b50383f700cc4647b495911f} 
+string Kitchen\+HUD.\+last\+Toast\+Message = string.\+Empty\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ostatni wyświetlony komunikat toast. Zapobiega wielokrotnemu wyświetlaniu tego samego komunikatu. 
+
+\Hypertarget{class_kitchen_h_u_d_a60fefe210b84e0c5ea5c27543d6de809}\index{KitchenHUD@{KitchenHUD}!PanelDark@{PanelDark}}
+\index{PanelDark@{PanelDark}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{PanelDark}{PanelDark}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a60fefe210b84e0c5ea5c27543d6de809} 
+readonly Color Kitchen\+HUD.\+Panel\+Dark = new Color(0.\+025f, 0.\+03f, 0.\+04f, 0.\+58f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Ciemny kolor panelu tła, używany w głównym pasku górnym i panelach. 
+
+\Hypertarget{class_kitchen_h_u_d_af2632f44419404df4877f341ecde8402}\index{KitchenHUD@{KitchenHUD}!PanelLight@{PanelLight}}
+\index{PanelLight@{PanelLight}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{PanelLight}{PanelLight}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_af2632f44419404df4877f341ecde8402} 
+readonly Color Kitchen\+HUD.\+Panel\+Light = new Color(0.\+045f, 0.\+052f, 0.\+068f, 0.\+48f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Jasny kolor panelu tła, używany w panelu podpowiedzi sterowania. 
+
+\Hypertarget{class_kitchen_h_u_d_a9f8f184fb3bcd4b83237fe8cace4c12f}\index{KitchenHUD@{KitchenHUD}!PanelMedium@{PanelMedium}}
+\index{PanelMedium@{PanelMedium}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{PanelMedium}{PanelMedium}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a9f8f184fb3bcd4b83237fe8cace4c12f} 
+readonly Color Kitchen\+HUD.\+Panel\+Medium = new Color(0.\+035f, 0.\+043f, 0.\+058f, 0.\+48f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Średni kolor panelu tła, używany w pasku ulepszeń. 
+
+\Hypertarget{class_kitchen_h_u_d_afb4983f1365d0ba9ad261b399ba3ddce}\index{KitchenHUD@{KitchenHUD}!playerInteraction@{playerInteraction}}
+\index{playerInteraction@{playerInteraction}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{playerInteraction}{playerInteraction}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_afb4983f1365d0ba9ad261b399ba3ddce} 
+\mbox{\hyperlink{class_player_interaction}{Player\+Interaction}} Kitchen\+HUD.\+player\+Interaction\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referencja do komponentu interakcji gracza, używana do pobierania informacji o trzymanym przedmiocie i aktualnych podpowiedziach. 
+
+\Hypertarget{class_kitchen_h_u_d_a6a5d7d5a8875d26de9d31e2c15c7e149}\index{KitchenHUD@{KitchenHUD}!promptBackground@{promptBackground}}
+\index{promptBackground@{promptBackground}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{promptBackground}{promptBackground}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a6a5d7d5a8875d26de9d31e2c15c7e149} 
+Image Kitchen\+HUD.\+prompt\+Background\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obraz tła panelu podpowiedzi interakcji. Ukrywany gdy nie ma aktywnej podpowiedzi do wyświetlenia. 
+
+\Hypertarget{class_kitchen_h_u_d_a7e4cd6ab7965236b1ab80a4fa16e949a}\index{KitchenHUD@{KitchenHUD}!promptText@{promptText}}
+\index{promptText@{promptText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{promptText}{promptText}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a7e4cd6ab7965236b1ab80a4fa16e949a} 
+Text Kitchen\+HUD.\+prompt\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst podpowiedzi interakcji wyświetlany w dolnej części ekranu. Pokazuje akcję dostępną do wykonania (np. "{}\+Podnieś"{}, "{}\+Odłóż"{}). 
+
+\Hypertarget{class_kitchen_h_u_d_a37b1251d91ed99f4a32483ecbf18567d}\index{KitchenHUD@{KitchenHUD}!RedAccent@{RedAccent}}
+\index{RedAccent@{RedAccent}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{RedAccent}{RedAccent}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a37b1251d91ed99f4a32483ecbf18567d} 
+readonly Color Kitchen\+HUD.\+Red\+Accent = new Color(0.\+95f, 0.\+35f, 0.\+30f, 1f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Czerwony kolor akcentu, używany w timerze gdy czas jest krytycznie niski. 
+
+\Hypertarget{class_kitchen_h_u_d_a3245c0f6b0aa8bd765bb2f0bb111bf6b}\index{KitchenHUD@{KitchenHUD}!sessionText@{sessionText}}
+\index{sessionText@{sessionText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{sessionText}{sessionText}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a3245c0f6b0aa8bd765bb2f0bb111bf6b} 
+Text Kitchen\+HUD.\+session\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst wyświetlający statystyki sesji (ukończone/nieudane zamówienia). Umieszczony w prawej części górnego paska. 
+
+\Hypertarget{class_kitchen_h_u_d_ae56614266dff2732cb961833d969b37d}\index{KitchenHUD@{KitchenHUD}!shopHintText@{shopHintText}}
+\index{shopHintText@{shopHintText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{shopHintText}{shopHintText}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ae56614266dff2732cb961833d969b37d} 
+Text Kitchen\+HUD.\+shop\+Hint\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst podpowiedzi skrótów klawiszowych (B\+: Sklep, TAB\+: Gracze itp.). Umieszczony w prawym dolnym rogu ekranu. 
+
+\Hypertarget{class_kitchen_h_u_d_aaec53bafa123f951f431677ee635d552}\index{KitchenHUD@{KitchenHUD}!streakDisplayTimer@{streakDisplayTimer}}
+\index{streakDisplayTimer@{streakDisplayTimer}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{streakDisplayTimer}{streakDisplayTimer}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_aaec53bafa123f951f431677ee635d552} 
+float Kitchen\+HUD.\+streak\+Display\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Timer wyświetlania tekstu serii (combo). Po osiągnięciu zera tekst zanika. 
+
+\Hypertarget{class_kitchen_h_u_d_af0eb7b649c94f01cc05a56604def7780}\index{KitchenHUD@{KitchenHUD}!streakText@{streakText}}
+\index{streakText@{streakText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{streakText}{streakText}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_af0eb7b649c94f01cc05a56604def7780} 
+Text Kitchen\+HUD.\+streak\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst wyświetlający aktualną serię (combo) ukończonych zamówień. Widoczny gdy gracz ukończył co najmniej 2 zamówienia z rzędu. 
+
+\Hypertarget{class_kitchen_h_u_d_a528484103e590ce76820985b871c84f3}\index{KitchenHUD@{KitchenHUD}!TextMuted@{TextMuted}}
+\index{TextMuted@{TextMuted}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{TextMuted}{TextMuted}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a528484103e590ce76820985b871c84f3} 
+readonly Color Kitchen\+HUD.\+Text\+Muted = new Color(0.\+55f, 0.\+58f, 0.\+65f, 0.\+70f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Wyciszony kolor tekstu, używany w podpowiedziach sterowania. 
+
+\Hypertarget{class_kitchen_h_u_d_a929c821b6ee031f095374301d34efb50}\index{KitchenHUD@{KitchenHUD}!TextPrimary@{TextPrimary}}
+\index{TextPrimary@{TextPrimary}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{TextPrimary}{TextPrimary}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a929c821b6ee031f095374301d34efb50} 
+readonly Color Kitchen\+HUD.\+Text\+Primary = new Color(0.\+92f, 0.\+93f, 0.\+95f, 0.\+95f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Główny kolor tekstu, wysoki kontrast z lekkim odcieniem niebieskiego. 
+
+\Hypertarget{class_kitchen_h_u_d_ae6f2990bd3083173f7c283acbf7df163}\index{KitchenHUD@{KitchenHUD}!TextSecondary@{TextSecondary}}
+\index{TextSecondary@{TextSecondary}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{TextSecondary}{TextSecondary}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ae6f2990bd3083173f7c283acbf7df163} 
+readonly Color Kitchen\+HUD.\+Text\+Secondary = new Color(0.\+68f, 0.\+72f, 0.\+78f, 0.\+85f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Drugorzędny kolor tekstu, nieco ciemniejszy i bardziej przezroczysty. 
+
+\Hypertarget{class_kitchen_h_u_d_a925ca9f9d0dde57a4aa0ef0408be6582}\index{KitchenHUD@{KitchenHUD}!timerPanelImage@{timerPanelImage}}
+\index{timerPanelImage@{timerPanelImage}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{timerPanelImage}{timerPanelImage}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a925ca9f9d0dde57a4aa0ef0408be6582} 
+Image Kitchen\+HUD.\+timer\+Panel\+Image\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obraz tła panelu timera, którego kolor zmienia się w zależności od pozostałego czasu (normalny/ostrzegawczy/krytyczny). 
+
+\Hypertarget{class_kitchen_h_u_d_a7d08a8ecd9a04e32712cacf395845b3e}\index{KitchenHUD@{KitchenHUD}!timerText@{timerText}}
+\index{timerText@{timerText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{timerText}{timerText}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a7d08a8ecd9a04e32712cacf395845b3e} 
+Text Kitchen\+HUD.\+timer\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst timera pilności aktualnego zamówienia. Wyświetla pozostały czas w sekundach. 
+
+\Hypertarget{class_kitchen_h_u_d_a9f72efa329818e9d30c0285af5c695ae}\index{KitchenHUD@{KitchenHUD}!toastAccentColor@{toastAccentColor}}
+\index{toastAccentColor@{toastAccentColor}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{toastAccentColor}{toastAccentColor}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a9f72efa329818e9d30c0285af5c695ae} 
+Color Kitchen\+HUD.\+toast\+Accent\+Color = \mbox{\hyperlink{class_kitchen_h_u_d_aa0448ef360ba67a68c627d8405e68748}{Accent\+Gold}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualny kolor akcentu powiadomienia toast, ustalany na podstawie treści komunikatu (czerwony dla błędów, zielony dla sukcesów itp.). 
+
+\Hypertarget{class_kitchen_h_u_d_a2ea81ce1f20c0c37f26e89f10ae0875f}\index{KitchenHUD@{KitchenHUD}!toastAccentImage@{toastAccentImage}}
+\index{toastAccentImage@{toastAccentImage}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{toastAccentImage}{toastAccentImage}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a2ea81ce1f20c0c37f26e89f10ae0875f} 
+Image Kitchen\+HUD.\+toast\+Accent\+Image\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obraz akcentowej linii z boku powiadomienia toast. Jego kolor zmienia się w zależności od typu komunikatu. 
+
+\Hypertarget{class_kitchen_h_u_d_a41b005acb5d3ae46f41007415b348b52}\index{KitchenHUD@{KitchenHUD}!ToastBackground@{ToastBackground}}
+\index{ToastBackground@{ToastBackground}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{ToastBackground}{ToastBackground}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a41b005acb5d3ae46f41007415b348b52} 
+readonly Color Kitchen\+HUD.\+Toast\+Background = new Color(0.\+012f, 0.\+014f, 0.\+018f, 0.\+74f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Kolor tła powiadomienia toast. 
+
+\Hypertarget{class_kitchen_h_u_d_af9ad434d3a0fe79eb03588b052f7cdd7}\index{KitchenHUD@{KitchenHUD}!toastCanvasGroup@{toastCanvasGroup}}
+\index{toastCanvasGroup@{toastCanvasGroup}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{toastCanvasGroup}{toastCanvasGroup}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_af9ad434d3a0fe79eb03588b052f7cdd7} 
+Canvas\+Group Kitchen\+HUD.\+toast\+Canvas\+Group\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Grupa Canvas panelu toast, kontrolująca przezroczystość całego powiadomienia podczas animacji pojawiania/zanikania. 
+
+\Hypertarget{class_kitchen_h_u_d_aa7e0be6b1651c029c61ad6c0647e2ddd}\index{KitchenHUD@{KitchenHUD}!toastPanel@{toastPanel}}
+\index{toastPanel@{toastPanel}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{toastPanel}{toastPanel}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_aa7e0be6b1651c029c61ad6c0647e2ddd} 
+Rect\+Transform Kitchen\+HUD.\+toast\+Panel\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Rect\+Transform panelu powiadomień toast, używany do animacji pozycji i skali podczas pojawiania się i zanikania. 
+
+\Hypertarget{class_kitchen_h_u_d_ac69e9d856e8cf1945f7f141d99edd9c9}\index{KitchenHUD@{KitchenHUD}!toastTimer@{toastTimer}}
+\index{toastTimer@{toastTimer}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{toastTimer}{toastTimer}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_ac69e9d856e8cf1945f7f141d99edd9c9} 
+float Kitchen\+HUD.\+toast\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Timer odliczający czas wyświetlania powiadomienia toast. Gdy spadnie do zera, powiadomienie zaczyna zanikać. 
+
+\Hypertarget{class_kitchen_h_u_d_a45a059076c0402d5c4abfce0f0186a20}\index{KitchenHUD@{KitchenHUD}!upgradeBar@{upgradeBar}}
+\index{upgradeBar@{upgradeBar}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{upgradeBar}{upgradeBar}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_a45a059076c0402d5c4abfce0f0186a20} 
+Rect\+Transform Kitchen\+HUD.\+upgrade\+Bar\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Rect\+Transform paska ulepszeń, pozwalający na pokazywanie/ukrywanie całego panelu statusu ulepszeń. 
+
+\Hypertarget{class_kitchen_h_u_d_abbf2fa41af78515107a754dc1c196ac5}\index{KitchenHUD@{KitchenHUD}!upgradeStatusText@{upgradeStatusText}}
+\index{upgradeStatusText@{upgradeStatusText}!KitchenHUD@{KitchenHUD}}
+\doxysubsubsection{\texorpdfstring{upgradeStatusText}{upgradeStatusText}}
+{\footnotesize\ttfamily \label{class_kitchen_h_u_d_abbf2fa41af78515107a754dc1c196ac5} 
+Text Kitchen\+HUD.\+upgrade\+Status\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst wyświetlający aktualnie aktywne bonusy z ulepszeń sklepu. Widoczny tylko gdy gracz zakupił co najmniej jedno ulepszenie. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_h_u_d_8cs}{Kitchen\+HUD.\+cs}}\end{DoxyCompactItemize}

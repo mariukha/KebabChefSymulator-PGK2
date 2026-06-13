@@ -1,0 +1,796 @@
+\doxysection{Dokumentacja klasy Game\+Settings\+Manager}
+\hypertarget{class_game_settings_manager}{}\label{class_game_settings_manager}\index{GameSettingsManager@{GameSettingsManager}}
+
+
+Menedżer ustawień gry implementujący wzorzec Singleton. Zarządza wszystkimi konfigurowalnymi ustawieniami gry\+: grafiką, dźwiękiem i sterowaniem. Ustawienia są automatycznie ładowane z Player\+Prefs przy inicjalizacji i zapisywane po każdej zmianie.  
+
+
+Diagram dziedziczenia dla Game\+Settings\+Manager\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_settings_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_game_settings_manager_1_1_resolution_preset}{Resolution\+Preset}}
+\begin{DoxyCompactList}\small\item\em Struktura przechowująca predefiniowany preset rozdzielczości ekranu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_settings_manager_aae1fe0734a5dee1e71e105c62c4223b2}{Load}} ()
+\begin{DoxyCompactList}\small\item\em Ładuje wszystkie ustawienia z Player\+Prefs. Dla każdego ustawienia stosuje wartości domyślne, jeśli zapis nie istnieje, i ogranicza wartości do prawidłowych zakresów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a79c11f11eaca3ed21d5657d6feff5887}{Save}} ()
+\begin{DoxyCompactList}\small\item\em Zapisuje wszystkie bieżące ustawienia do Player\+Prefs i wymusza ich trwały zapis na dysk. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a4ade3f105e3d25bee496328baedf9a79}{Apply\+All}} ()
+\begin{DoxyCompactList}\small\item\em Stosuje wszystkie kategorie ustawień\+: wyświetlanie, dźwięk i sterowanie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a9e0acd3f355b9b354cf7abfe0bcf40cb}{Apply\+Display\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em Stosuje ustawienia wyświetlania\+: jakość grafiki, VSync, limit FPS, rozdzielczość i tryb okna. Gdy VSync jest włączony, limit FPS jest ignorowany (ustawiony na -\/1). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a2f4624aa4eaed78382075d585ffc2060}{Apply\+Audio\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em Stosuje ustawienia dźwięku, przekazując wartości głośności do \doxylink{class_audio_manager}{Audio\+Manager}. Metoda nie wykonuje niczego, jeśli \doxylink{class_audio_manager}{Audio\+Manager} nie jest dostępny. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a89899b5d15ecbe3fa81df10e86572103}{Apply\+Control\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em Stosuje ustawienia sterowania, aktualizując czułość myszy we wszystkich aktywnych kontrolerach gracza. Wyszukuje wszystkie instancje \doxylink{class_simple_player_controller}{Simple\+Player\+Controller} na scenie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_acb050c6e956302ea03f3d27e874e58f0}{Cycle\+Resolution}} (int direction)
+\begin{DoxyCompactList}\small\item\em Cyklicznie przełącza rozdzielczość ekranu w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_aa5ab8d7154ea8a1af938e753a574324c}{Cycle\+Window\+Mode}} (int direction)
+\begin{DoxyCompactList}\small\item\em Cyklicznie przełącza tryb okna (pełny ekran / okno) w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a582a77904b153b51e7deecd1cbafa121}{Toggle\+Window\+Mode\+Shortcut}} ()
+\begin{DoxyCompactList}\small\item\em Przełącza tryb okna jako skrót klawiszowy (toggle). Zmienia pełny ekran na okno i odwrotnie, po czym zapisuje i stosuje ustawienia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a4739b44a45960bee715367096d8222ac}{Toggle\+VSync}} ()
+\begin{DoxyCompactList}\small\item\em Przełącza stan synchronizacji pionowej (VSync). Po zmianie automatycznie zapisuje ustawienia i stosuje je. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a3e0f942d0fcbec2c3ed01f164b8c1c5e}{Cycle\+Fps\+Limit}} (int direction)
+\begin{DoxyCompactList}\small\item\em Cyklicznie przełącza limit FPS w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a030a4e54cf96bbdfcddda275a240c3dd}{Cycle\+Quality}} (int direction)
+\begin{DoxyCompactList}\small\item\em Cyklicznie przełącza poziom jakości grafiki w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a1ef1128737e0f9b8151aaec1806a3f61}{Set\+Master\+Volume}} (float value)
+\begin{DoxyCompactList}\small\item\em Ustawia poziom głośności głównej. Wartość jest ograniczana do zakresu \mbox{[}0, 1\mbox{]}. Po zmianie automatycznie zapisuje ustawienia i stosuje je. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a734fbaab89467602e0bb94907cc9a6f3}{Set\+Music\+Volume}} (float value)
+\begin{DoxyCompactList}\small\item\em Ustawia poziom głośności muzyki. Wartość jest ograniczana do zakresu \mbox{[}0, 1\mbox{]}. Po zmianie automatycznie zapisuje ustawienia i stosuje je. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_a62ae006b72afb4e56aabaa5eba759007}{Set\+SFXVolume}} (float value)
+\begin{DoxyCompactList}\small\item\em Ustawia poziom głośności efektów dźwiękowych. Wartość jest ograniczana do zakresu \mbox{[}0, 1\mbox{]}. Po zmianie automatycznie zapisuje ustawienia i stosuje je. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_af7bc11f06da26069aca40a4d67d32e29}{Set\+Mouse\+Sensitivity}} (float value)
+\begin{DoxyCompactList}\small\item\em Ustawia czułość myszy. Wartość jest ograniczana do zakresu \mbox{[}0.\+5, 5.\+0\mbox{]}. Po zmianie automatycznie zapisuje ustawienia i stosuje je do wszystkich kontrolerów gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_game_settings_manager}{Game\+Settings\+Manager}} \mbox{\hyperlink{class_game_settings_manager_a1df146395f67877b0745fcc6d8becc60}{Ensure\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Zapewnia istnienie instancji menedżera ustawień. Jeśli instancja nie istnieje, wyszukuje obiekt "{}\+Game\+Manager"{} na scenie lub tworzy nowy i dodaje do niego komponent \doxylink{class_game_settings_manager}{Game\+Settings\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_game_settings_manager}{Game\+Settings\+Manager}} \mbox{\hyperlink{class_game_settings_manager_a4456fa5e75bfcac9e71c8fdc2286fda5}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna instancja Singletona menedżera ustawień, dostępna globalnie. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_settings_manager_aced9036cfafa2bf7bb1236fb9d3e57d5}{Resolution\+Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Liczba dostępnych presetów rozdzielczości. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_settings_manager_a518da1073d50c96e53ac106386b5d183}{Fps\+Limit\+Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Liczba dostępnych opcji limitu FPS. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_settings_manager_a2cb0661ae48a5c6e0e0bdf222d6259f7}{Quality\+Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Liczba dostępnych poziomów jakości grafiki. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_settings_manager_aef69d1aed54a62f412e39b9af1fa3884}{Window\+Mode\+Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Liczba dostępnych trybów okna (pełny ekran i okno). \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_game_settings_manager_ab0f970c416fb1e5c4fa89cf53f7cc4a0}{Master\+Volume}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Bieżący poziom głośności głównej. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_game_settings_manager_a01b6f119970b021a1795176a9cb70c32}{Music\+Volume}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Bieżący poziom głośności muzyki. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_game_settings_manager_a63b39682c81c0aba7b86bcb3926598b8}{SFXVolume}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Bieżący poziom głośności efektów dźwiękowych. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_game_settings_manager_a4a5a439ca93fefd5b4c11d0fcfd48adb}{Mouse\+Sensitivity}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Bieżąca czułość myszy. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_settings_manager_a2dc9d86d5e85eeb6e479bcc2a2a3315c}{VSync\+Enabled}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Określa, czy synchronizacja pionowa (VSync) jest włączona. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_game_settings_manager_abc36b7154a71a17ef9fb392cf9ba5c9c}{Resolution\+Label}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Etykieta tekstowa aktualnej rozdzielczości do wyświetlenia w interfejsie (np. "{}1920 x 1080"{}). \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_game_settings_manager_a403002a258ac01976f8acfaddcd273dd}{Window\+Mode\+Label}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Etykieta tekstowa aktualnego trybu okna do wyświetlenia w interfejsie. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_game_settings_manager_ae990cea519c7160ecb9625f07a07290c}{VSync\+Label}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Etykieta tekstowa stanu VSync do wyświetlenia w interfejsie. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_game_settings_manager_a4708c4961701b026ae8593a86adf14cd}{Fps\+Limit\+Label}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Etykieta tekstowa aktualnego limitu FPS do wyświetlenia w interfejsie. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_game_settings_manager_a8ed5c9e7b0007f894ae655903eaa1779}{Quality\+Label}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Etykieta tekstowa aktualnego poziomu jakości grafiki do wyświetlenia w interfejsie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_settings_manager_a43aa4aa79a15c5c7e0b81dea1161351a}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizacja Singletona w metodzie Awake. Jeśli instancja już istnieje, niszczy duplikat. W przeciwnym razie ładuje ustawienia z Player\+Prefs i stosuje je. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_settings_manager_a3a67c08adf2127de2f629b20154386c5}{Cycle\+Index}} (int value, int count, int direction)
+\begin{DoxyCompactList}\small\item\em Cyklicznie przełącza indeks w podanym zakresie z zawijaniem (wrap-\/around). Umożliwia nawigację w obu kierunkach, np. po osiągnięciu ostatniej opcji wraca do pierwszej. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_settings_manager_aec0d5c08f84ced7d8a3bdbd863fc2b26}{Get\+Default\+Resolution\+Index}} ()
+\begin{DoxyCompactList}\small\item\em Wyznacza domyślny indeks rozdzielczości najlepiej dopasowany do aktualnej rozdzielczości monitora. Porównuje dostępne presety z rozdzielczością ekranu i wybiera najbliższą (minimalna odległość Manhattan). Domyślnie zwraca indeks 2 (1920x1080), jeśli nie udało się ustalić rozdzielczości monitora. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_settings_manager_af8e1fca679b077d1904fc11233aafb1a}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Wywoływana przy niszczeniu obiektu. Czyści referencję Singletona, jeśli niszczony obiekt jest aktualną instancją. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_game_settings_manager_a378369c7e4cf35917655b04693124436}{resolution\+Index}}
+\begin{DoxyCompactList}\small\item\em Bieżący indeks wybranej rozdzielczości w tablicy \doxylink{class_game_settings_manager_a8c37b8546d66198ea124ae0324fe4013}{Resolution\+Presets}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_settings_manager_a8233780cad2e4ca0789583117765c1d5}{window\+Mode\+Index}}
+\begin{DoxyCompactList}\small\item\em Bieżący indeks trybu okna (0 = pełny ekran, 1 = okno). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_settings_manager_a8a87a03282a756e88d176c9d437272c6}{v\+Sync\+Enabled}}
+\begin{DoxyCompactList}\small\item\em Flaga określająca, czy synchronizacja pionowa (VSync) jest włączona. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_settings_manager_a075e6e0c4e3bd4e06b307522b9eb7eba}{fps\+Limit\+Index}}
+\begin{DoxyCompactList}\small\item\em Bieżący indeks limitu FPS w tablicy \doxylink{class_game_settings_manager_a0a7ffc477633b17924d4e2f32771243b}{Fps\+Limits}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_settings_manager_aaad931fc7a14666053594755db76cb69}{quality\+Index}}
+\begin{DoxyCompactList}\small\item\em Bieżący indeks poziomu jakości grafiki w ustawieniach Unity Quality. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_game_settings_manager_a38de57fcac48fd3cb328edd8379a8f5b}{master\+Volume}}
+\begin{DoxyCompactList}\small\item\em Poziom głośności głównej w zakresie \mbox{[}0, 1\mbox{]}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_game_settings_manager_a6a2c9ef438e6db95dda207e025b246e9}{music\+Volume}}
+\begin{DoxyCompactList}\small\item\em Poziom głośności muzyki w zakresie \mbox{[}0, 1\mbox{]}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_game_settings_manager_adf542ae20da3937ec4955db4f8feac4f}{sfx\+Volume}}
+\begin{DoxyCompactList}\small\item\em Poziom głośności efektów dźwiękowych w zakresie \mbox{[}0, 1\mbox{]}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_game_settings_manager_a579c2c4a879abe33a0945231f47e7f6a}{mouse\+Sensitivity}}
+\begin{DoxyCompactList}\small\item\em Wartość czułości myszy w zakresie \mbox{[}0.\+5, 5.\+0\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static readonly \mbox{\hyperlink{struct_game_settings_manager_1_1_resolution_preset}{Resolution\+Preset}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_game_settings_manager_a8c37b8546d66198ea124ae0324fe4013}{Resolution\+Presets}}
+\begin{DoxyCompactList}\small\item\em Tablica predefiniowanych presetów rozdzielczości dostępnych w ustawieniach gry. Obejmuje rozdzielczości\+: 1280x720 (HD), 1600x900 (HD+), 1920x1080 (Full HD), 2560x1440 (QHD). \end{DoxyCompactList}\item 
+static readonly int\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_game_settings_manager_a0a7ffc477633b17924d4e2f32771243b}{Fps\+Limits}} = \{ 0, 30, 60, 120, 144 \}
+\begin{DoxyCompactList}\small\item\em Tablica dostępnych limitów klatek na sekundę (FPS). Wartość 0 oznacza brak limitu. Dostępne opcje\+: brak limitu, 30, 60, 120, 144 FPS. \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{class_game_settings_manager_a16e44a4c5534415cc1ff05c953fee498}{Resolution\+Key}} = "{}Settings.\+Resolution\+Index"{}
+\begin{DoxyCompactList}\small\item\em Klucz Player\+Prefs do zapisu indeksu wybranej rozdzielczości. \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{class_game_settings_manager_a6aa678b7ac3313058a19d958ede252d9}{Window\+Mode\+Key}} = "{}Settings.\+Window\+Mode\+Index"{}
+\begin{DoxyCompactList}\small\item\em Klucz Player\+Prefs do zapisu indeksu trybu okna (pełny ekran / okno). \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{class_game_settings_manager_a05063cac25c55e470912184b6f01ee96}{VSync\+Key}} = "{}Settings.\+VSync"{}
+\begin{DoxyCompactList}\small\item\em Klucz Player\+Prefs do zapisu stanu synchronizacji pionowej (VSync). \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{class_game_settings_manager_a881af81f501cb1ce196ab0fdd1715029}{Fps\+Limit\+Key}} = "{}Settings.\+Fps\+Limit\+Index"{}
+\begin{DoxyCompactList}\small\item\em Klucz Player\+Prefs do zapisu indeksu limitu FPS. \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{class_game_settings_manager_adcaa6de895644357f9cd3c83519a6a21}{Quality\+Key}} = "{}Settings.\+Quality\+Index"{}
+\begin{DoxyCompactList}\small\item\em Klucz Player\+Prefs do zapisu indeksu poziomu jakości grafiki. \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{class_game_settings_manager_ab184a882a69a505012001f62a20aabba}{Master\+Volume\+Key}} = "{}Master\+Volume"{}
+\begin{DoxyCompactList}\small\item\em Klucz Player\+Prefs do zapisu poziomu głośności głównej. \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{class_game_settings_manager_aa7ccc75452edc42e5a2866d0910cb407}{Music\+Volume\+Key}} = "{}Music\+Volume"{}
+\begin{DoxyCompactList}\small\item\em Klucz Player\+Prefs do zapisu poziomu głośności muzyki. \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{class_game_settings_manager_a79e9a795ea999de5d4a037f1cd9d4b15}{Sfx\+Volume\+Key}} = "{}SFXVolume"{}
+\begin{DoxyCompactList}\small\item\em Klucz Player\+Prefs do zapisu poziomu głośności efektów dźwiękowych. \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{class_game_settings_manager_a8e186f71dcaf5a0107752b8e23065003}{Mouse\+Sensitivity\+Key}} = "{}Mouse\+Sensitivity"{}
+\begin{DoxyCompactList}\small\item\em Klucz Player\+Prefs do zapisu wartości czułości myszy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Menedżer ustawień gry implementujący wzorzec Singleton. Zarządza wszystkimi konfigurowalnymi ustawieniami gry\+: grafiką, dźwiękiem i sterowaniem. Ustawienia są automatycznie ładowane z Player\+Prefs przy inicjalizacji i zapisywane po każdej zmianie. 
+
+Klasa zapewnia zestaw predefiniowanych rozdzielczości i limitów FPS. Obsługuje przełączanie między trybem pełnoekranowym a okienkowym, cykliczne przełączanie ustawień oraz bezpośrednie ustawianie wartości suwakowych. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_game_settings_manager_a4ade3f105e3d25bee496328baedf9a79}\index{GameSettingsManager@{GameSettingsManager}!ApplyAll@{ApplyAll}}
+\index{ApplyAll@{ApplyAll}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{ApplyAll()}{ApplyAll()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a4ade3f105e3d25bee496328baedf9a79} 
+void Game\+Settings\+Manager.\+Apply\+All (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stosuje wszystkie kategorie ustawień\+: wyświetlanie, dźwięk i sterowanie. 
+
+\Hypertarget{class_game_settings_manager_a2f4624aa4eaed78382075d585ffc2060}\index{GameSettingsManager@{GameSettingsManager}!ApplyAudioSettings@{ApplyAudioSettings}}
+\index{ApplyAudioSettings@{ApplyAudioSettings}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{ApplyAudioSettings()}{ApplyAudioSettings()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a2f4624aa4eaed78382075d585ffc2060} 
+void Game\+Settings\+Manager.\+Apply\+Audio\+Settings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stosuje ustawienia dźwięku, przekazując wartości głośności do \doxylink{class_audio_manager}{Audio\+Manager}. Metoda nie wykonuje niczego, jeśli \doxylink{class_audio_manager}{Audio\+Manager} nie jest dostępny. 
+
+\Hypertarget{class_game_settings_manager_a89899b5d15ecbe3fa81df10e86572103}\index{GameSettingsManager@{GameSettingsManager}!ApplyControlSettings@{ApplyControlSettings}}
+\index{ApplyControlSettings@{ApplyControlSettings}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{ApplyControlSettings()}{ApplyControlSettings()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a89899b5d15ecbe3fa81df10e86572103} 
+void Game\+Settings\+Manager.\+Apply\+Control\+Settings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stosuje ustawienia sterowania, aktualizując czułość myszy we wszystkich aktywnych kontrolerach gracza. Wyszukuje wszystkie instancje \doxylink{class_simple_player_controller}{Simple\+Player\+Controller} na scenie. 
+
+\Hypertarget{class_game_settings_manager_a9e0acd3f355b9b354cf7abfe0bcf40cb}\index{GameSettingsManager@{GameSettingsManager}!ApplyDisplaySettings@{ApplyDisplaySettings}}
+\index{ApplyDisplaySettings@{ApplyDisplaySettings}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{ApplyDisplaySettings()}{ApplyDisplaySettings()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a9e0acd3f355b9b354cf7abfe0bcf40cb} 
+void Game\+Settings\+Manager.\+Apply\+Display\+Settings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stosuje ustawienia wyświetlania\+: jakość grafiki, VSync, limit FPS, rozdzielczość i tryb okna. Gdy VSync jest włączony, limit FPS jest ignorowany (ustawiony na -\/1). 
+
+\Hypertarget{class_game_settings_manager_a43aa4aa79a15c5c7e0b81dea1161351a}\index{GameSettingsManager@{GameSettingsManager}!Awake@{Awake}}
+\index{Awake@{Awake}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a43aa4aa79a15c5c7e0b81dea1161351a} 
+void Game\+Settings\+Manager.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizacja Singletona w metodzie Awake. Jeśli instancja już istnieje, niszczy duplikat. W przeciwnym razie ładuje ustawienia z Player\+Prefs i stosuje je. 
+
+\Hypertarget{class_game_settings_manager_a3e0f942d0fcbec2c3ed01f164b8c1c5e}\index{GameSettingsManager@{GameSettingsManager}!CycleFpsLimit@{CycleFpsLimit}}
+\index{CycleFpsLimit@{CycleFpsLimit}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{CycleFpsLimit()}{CycleFpsLimit()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a3e0f942d0fcbec2c3ed01f164b8c1c5e} 
+void Game\+Settings\+Manager.\+Cycle\+Fps\+Limit (\begin{DoxyParamCaption}\item[{int}]{direction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cyklicznie przełącza limit FPS w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em direction} & Kierunek przełączania\+: 1 — następny, -\/1 — poprzedni.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_settings_manager_a3a67c08adf2127de2f629b20154386c5}\index{GameSettingsManager@{GameSettingsManager}!CycleIndex@{CycleIndex}}
+\index{CycleIndex@{CycleIndex}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{CycleIndex()}{CycleIndex()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a3a67c08adf2127de2f629b20154386c5} 
+int Game\+Settings\+Manager.\+Cycle\+Index (\begin{DoxyParamCaption}\item[{int}]{value}{, }\item[{int}]{count}{, }\item[{int}]{direction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Cyklicznie przełącza indeks w podanym zakresie z zawijaniem (wrap-\/around). Umożliwia nawigację w obu kierunkach, np. po osiągnięciu ostatniej opcji wraca do pierwszej. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em value} & Bieżący indeks.\\
+\hline
+{\em count} & Łączna liczba dostępnych opcji.\\
+\hline
+{\em direction} & Kierunek przesunięcia (1 = następny, -\/1 = poprzedni).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Nowy indeks po przesunięciu z zawijaniem.
+\end{DoxyReturn}
+\Hypertarget{class_game_settings_manager_a030a4e54cf96bbdfcddda275a240c3dd}\index{GameSettingsManager@{GameSettingsManager}!CycleQuality@{CycleQuality}}
+\index{CycleQuality@{CycleQuality}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{CycleQuality()}{CycleQuality()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a030a4e54cf96bbdfcddda275a240c3dd} 
+void Game\+Settings\+Manager.\+Cycle\+Quality (\begin{DoxyParamCaption}\item[{int}]{direction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cyklicznie przełącza poziom jakości grafiki w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em direction} & Kierunek przełączania\+: 1 — następny, -\/1 — poprzedni.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_settings_manager_acb050c6e956302ea03f3d27e874e58f0}\index{GameSettingsManager@{GameSettingsManager}!CycleResolution@{CycleResolution}}
+\index{CycleResolution@{CycleResolution}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{CycleResolution()}{CycleResolution()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_acb050c6e956302ea03f3d27e874e58f0} 
+void Game\+Settings\+Manager.\+Cycle\+Resolution (\begin{DoxyParamCaption}\item[{int}]{direction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cyklicznie przełącza rozdzielczość ekranu w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em direction} & Kierunek przełączania\+: 1 — następna, -\/1 — poprzednia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_settings_manager_aa5ab8d7154ea8a1af938e753a574324c}\index{GameSettingsManager@{GameSettingsManager}!CycleWindowMode@{CycleWindowMode}}
+\index{CycleWindowMode@{CycleWindowMode}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{CycleWindowMode()}{CycleWindowMode()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_aa5ab8d7154ea8a1af938e753a574324c} 
+void Game\+Settings\+Manager.\+Cycle\+Window\+Mode (\begin{DoxyParamCaption}\item[{int}]{direction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cyklicznie przełącza tryb okna (pełny ekran / okno) w zadanym kierunku. Po zmianie automatycznie zapisuje ustawienia i stosuje je. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em direction} & Kierunek przełączania\+: 1 — następny, -\/1 — poprzedni.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_settings_manager_a1df146395f67877b0745fcc6d8becc60}\index{GameSettingsManager@{GameSettingsManager}!EnsureInstance@{EnsureInstance}}
+\index{EnsureInstance@{EnsureInstance}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{EnsureInstance()}{EnsureInstance()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a1df146395f67877b0745fcc6d8becc60} 
+static \mbox{\hyperlink{class_game_settings_manager}{Game\+Settings\+Manager}} Game\+Settings\+Manager.\+Ensure\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Zapewnia istnienie instancji menedżera ustawień. Jeśli instancja nie istnieje, wyszukuje obiekt "{}\+Game\+Manager"{} na scenie lub tworzy nowy i dodaje do niego komponent \doxylink{class_game_settings_manager}{Game\+Settings\+Manager}. 
+
+\begin{DoxyReturn}{Zwraca}
+Istniejąca lub nowo utworzona instancja \doxylink{class_game_settings_manager}{Game\+Settings\+Manager}.
+\end{DoxyReturn}
+\Hypertarget{class_game_settings_manager_aec0d5c08f84ced7d8a3bdbd863fc2b26}\index{GameSettingsManager@{GameSettingsManager}!GetDefaultResolutionIndex@{GetDefaultResolutionIndex}}
+\index{GetDefaultResolutionIndex@{GetDefaultResolutionIndex}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{GetDefaultResolutionIndex()}{GetDefaultResolutionIndex()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_aec0d5c08f84ced7d8a3bdbd863fc2b26} 
+int Game\+Settings\+Manager.\+Get\+Default\+Resolution\+Index (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wyznacza domyślny indeks rozdzielczości najlepiej dopasowany do aktualnej rozdzielczości monitora. Porównuje dostępne presety z rozdzielczością ekranu i wybiera najbliższą (minimalna odległość Manhattan). Domyślnie zwraca indeks 2 (1920x1080), jeśli nie udało się ustalić rozdzielczości monitora. 
+
+\begin{DoxyReturn}{Zwraca}
+Indeks najlepiej dopasowanego presetu rozdzielczości.
+\end{DoxyReturn}
+\Hypertarget{class_game_settings_manager_aae1fe0734a5dee1e71e105c62c4223b2}\index{GameSettingsManager@{GameSettingsManager}!Load@{Load}}
+\index{Load@{Load}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_aae1fe0734a5dee1e71e105c62c4223b2} 
+void Game\+Settings\+Manager.\+Load (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ładuje wszystkie ustawienia z Player\+Prefs. Dla każdego ustawienia stosuje wartości domyślne, jeśli zapis nie istnieje, i ogranicza wartości do prawidłowych zakresów. 
+
+\Hypertarget{class_game_settings_manager_af8e1fca679b077d1904fc11233aafb1a}\index{GameSettingsManager@{GameSettingsManager}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_af8e1fca679b077d1904fc11233aafb1a} 
+void Game\+Settings\+Manager.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wywoływana przy niszczeniu obiektu. Czyści referencję Singletona, jeśli niszczony obiekt jest aktualną instancją. 
+
+\Hypertarget{class_game_settings_manager_a79c11f11eaca3ed21d5657d6feff5887}\index{GameSettingsManager@{GameSettingsManager}!Save@{Save}}
+\index{Save@{Save}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a79c11f11eaca3ed21d5657d6feff5887} 
+void Game\+Settings\+Manager.\+Save (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zapisuje wszystkie bieżące ustawienia do Player\+Prefs i wymusza ich trwały zapis na dysk. 
+
+\Hypertarget{class_game_settings_manager_a1ef1128737e0f9b8151aaec1806a3f61}\index{GameSettingsManager@{GameSettingsManager}!SetMasterVolume@{SetMasterVolume}}
+\index{SetMasterVolume@{SetMasterVolume}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{SetMasterVolume()}{SetMasterVolume()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a1ef1128737e0f9b8151aaec1806a3f61} 
+void Game\+Settings\+Manager.\+Set\+Master\+Volume (\begin{DoxyParamCaption}\item[{float}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia poziom głośności głównej. Wartość jest ograniczana do zakresu \mbox{[}0, 1\mbox{]}. Po zmianie automatycznie zapisuje ustawienia i stosuje je. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em value} & Nowy poziom głośności głównej.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_settings_manager_af7bc11f06da26069aca40a4d67d32e29}\index{GameSettingsManager@{GameSettingsManager}!SetMouseSensitivity@{SetMouseSensitivity}}
+\index{SetMouseSensitivity@{SetMouseSensitivity}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{SetMouseSensitivity()}{SetMouseSensitivity()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_af7bc11f06da26069aca40a4d67d32e29} 
+void Game\+Settings\+Manager.\+Set\+Mouse\+Sensitivity (\begin{DoxyParamCaption}\item[{float}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia czułość myszy. Wartość jest ograniczana do zakresu \mbox{[}0.\+5, 5.\+0\mbox{]}. Po zmianie automatycznie zapisuje ustawienia i stosuje je do wszystkich kontrolerów gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em value} & Nowa wartość czułości myszy.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_settings_manager_a734fbaab89467602e0bb94907cc9a6f3}\index{GameSettingsManager@{GameSettingsManager}!SetMusicVolume@{SetMusicVolume}}
+\index{SetMusicVolume@{SetMusicVolume}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{SetMusicVolume()}{SetMusicVolume()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a734fbaab89467602e0bb94907cc9a6f3} 
+void Game\+Settings\+Manager.\+Set\+Music\+Volume (\begin{DoxyParamCaption}\item[{float}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia poziom głośności muzyki. Wartość jest ograniczana do zakresu \mbox{[}0, 1\mbox{]}. Po zmianie automatycznie zapisuje ustawienia i stosuje je. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em value} & Nowy poziom głośności muzyki.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_settings_manager_a62ae006b72afb4e56aabaa5eba759007}\index{GameSettingsManager@{GameSettingsManager}!SetSFXVolume@{SetSFXVolume}}
+\index{SetSFXVolume@{SetSFXVolume}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{SetSFXVolume()}{SetSFXVolume()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a62ae006b72afb4e56aabaa5eba759007} 
+void Game\+Settings\+Manager.\+Set\+SFXVolume (\begin{DoxyParamCaption}\item[{float}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia poziom głośności efektów dźwiękowych. Wartość jest ograniczana do zakresu \mbox{[}0, 1\mbox{]}. Po zmianie automatycznie zapisuje ustawienia i stosuje je. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em value} & Nowy poziom głośności efektów dźwiękowych.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_settings_manager_a4739b44a45960bee715367096d8222ac}\index{GameSettingsManager@{GameSettingsManager}!ToggleVSync@{ToggleVSync}}
+\index{ToggleVSync@{ToggleVSync}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{ToggleVSync()}{ToggleVSync()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a4739b44a45960bee715367096d8222ac} 
+void Game\+Settings\+Manager.\+Toggle\+VSync (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Przełącza stan synchronizacji pionowej (VSync). Po zmianie automatycznie zapisuje ustawienia i stosuje je. 
+
+\Hypertarget{class_game_settings_manager_a582a77904b153b51e7deecd1cbafa121}\index{GameSettingsManager@{GameSettingsManager}!ToggleWindowModeShortcut@{ToggleWindowModeShortcut}}
+\index{ToggleWindowModeShortcut@{ToggleWindowModeShortcut}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{ToggleWindowModeShortcut()}{ToggleWindowModeShortcut()}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a582a77904b153b51e7deecd1cbafa121} 
+void Game\+Settings\+Manager.\+Toggle\+Window\+Mode\+Shortcut (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Przełącza tryb okna jako skrót klawiszowy (toggle). Zmienia pełny ekran na okno i odwrotnie, po czym zapisuje i stosuje ustawienia. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_game_settings_manager_a075e6e0c4e3bd4e06b307522b9eb7eba}\index{GameSettingsManager@{GameSettingsManager}!fpsLimitIndex@{fpsLimitIndex}}
+\index{fpsLimitIndex@{fpsLimitIndex}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{fpsLimitIndex}{fpsLimitIndex}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a075e6e0c4e3bd4e06b307522b9eb7eba} 
+int Game\+Settings\+Manager.\+fps\+Limit\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bieżący indeks limitu FPS w tablicy \doxylink{class_game_settings_manager_a0a7ffc477633b17924d4e2f32771243b}{Fps\+Limits}. 
+
+\Hypertarget{class_game_settings_manager_a881af81f501cb1ce196ab0fdd1715029}\index{GameSettingsManager@{GameSettingsManager}!FpsLimitKey@{FpsLimitKey}}
+\index{FpsLimitKey@{FpsLimitKey}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{FpsLimitKey}{FpsLimitKey}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a881af81f501cb1ce196ab0fdd1715029} 
+const string Game\+Settings\+Manager.\+Fps\+Limit\+Key = "{}Settings.\+Fps\+Limit\+Index"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Klucz Player\+Prefs do zapisu indeksu limitu FPS. 
+
+\Hypertarget{class_game_settings_manager_a0a7ffc477633b17924d4e2f32771243b}\index{GameSettingsManager@{GameSettingsManager}!FpsLimits@{FpsLimits}}
+\index{FpsLimits@{FpsLimits}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{FpsLimits}{FpsLimits}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a0a7ffc477633b17924d4e2f32771243b} 
+readonly int \mbox{[}$\,$\mbox{]} Game\+Settings\+Manager.\+Fps\+Limits = \{ 0, 30, 60, 120, 144 \}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Tablica dostępnych limitów klatek na sekundę (FPS). Wartość 0 oznacza brak limitu. Dostępne opcje\+: brak limitu, 30, 60, 120, 144 FPS. 
+
+\Hypertarget{class_game_settings_manager_a38de57fcac48fd3cb328edd8379a8f5b}\index{GameSettingsManager@{GameSettingsManager}!masterVolume@{masterVolume}}
+\index{masterVolume@{masterVolume}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{masterVolume}{masterVolume}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a38de57fcac48fd3cb328edd8379a8f5b} 
+float Game\+Settings\+Manager.\+master\+Volume\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Poziom głośności głównej w zakresie \mbox{[}0, 1\mbox{]}. 
+
+\Hypertarget{class_game_settings_manager_ab184a882a69a505012001f62a20aabba}\index{GameSettingsManager@{GameSettingsManager}!MasterVolumeKey@{MasterVolumeKey}}
+\index{MasterVolumeKey@{MasterVolumeKey}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{MasterVolumeKey}{MasterVolumeKey}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_ab184a882a69a505012001f62a20aabba} 
+const string Game\+Settings\+Manager.\+Master\+Volume\+Key = "{}Master\+Volume"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Klucz Player\+Prefs do zapisu poziomu głośności głównej. 
+
+\Hypertarget{class_game_settings_manager_a579c2c4a879abe33a0945231f47e7f6a}\index{GameSettingsManager@{GameSettingsManager}!mouseSensitivity@{mouseSensitivity}}
+\index{mouseSensitivity@{mouseSensitivity}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{mouseSensitivity}{mouseSensitivity}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a579c2c4a879abe33a0945231f47e7f6a} 
+float Game\+Settings\+Manager.\+mouse\+Sensitivity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Wartość czułości myszy w zakresie \mbox{[}0.\+5, 5.\+0\mbox{]}. 
+
+\Hypertarget{class_game_settings_manager_a8e186f71dcaf5a0107752b8e23065003}\index{GameSettingsManager@{GameSettingsManager}!MouseSensitivityKey@{MouseSensitivityKey}}
+\index{MouseSensitivityKey@{MouseSensitivityKey}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{MouseSensitivityKey}{MouseSensitivityKey}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a8e186f71dcaf5a0107752b8e23065003} 
+const string Game\+Settings\+Manager.\+Mouse\+Sensitivity\+Key = "{}Mouse\+Sensitivity"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Klucz Player\+Prefs do zapisu wartości czułości myszy. 
+
+\Hypertarget{class_game_settings_manager_a6a2c9ef438e6db95dda207e025b246e9}\index{GameSettingsManager@{GameSettingsManager}!musicVolume@{musicVolume}}
+\index{musicVolume@{musicVolume}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{musicVolume}{musicVolume}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a6a2c9ef438e6db95dda207e025b246e9} 
+float Game\+Settings\+Manager.\+music\+Volume\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Poziom głośności muzyki w zakresie \mbox{[}0, 1\mbox{]}. 
+
+\Hypertarget{class_game_settings_manager_aa7ccc75452edc42e5a2866d0910cb407}\index{GameSettingsManager@{GameSettingsManager}!MusicVolumeKey@{MusicVolumeKey}}
+\index{MusicVolumeKey@{MusicVolumeKey}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{MusicVolumeKey}{MusicVolumeKey}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_aa7ccc75452edc42e5a2866d0910cb407} 
+const string Game\+Settings\+Manager.\+Music\+Volume\+Key = "{}Music\+Volume"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Klucz Player\+Prefs do zapisu poziomu głośności muzyki. 
+
+\Hypertarget{class_game_settings_manager_aaad931fc7a14666053594755db76cb69}\index{GameSettingsManager@{GameSettingsManager}!qualityIndex@{qualityIndex}}
+\index{qualityIndex@{qualityIndex}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{qualityIndex}{qualityIndex}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_aaad931fc7a14666053594755db76cb69} 
+int Game\+Settings\+Manager.\+quality\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bieżący indeks poziomu jakości grafiki w ustawieniach Unity Quality. 
+
+\Hypertarget{class_game_settings_manager_adcaa6de895644357f9cd3c83519a6a21}\index{GameSettingsManager@{GameSettingsManager}!QualityKey@{QualityKey}}
+\index{QualityKey@{QualityKey}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{QualityKey}{QualityKey}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_adcaa6de895644357f9cd3c83519a6a21} 
+const string Game\+Settings\+Manager.\+Quality\+Key = "{}Settings.\+Quality\+Index"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Klucz Player\+Prefs do zapisu indeksu poziomu jakości grafiki. 
+
+\Hypertarget{class_game_settings_manager_a378369c7e4cf35917655b04693124436}\index{GameSettingsManager@{GameSettingsManager}!resolutionIndex@{resolutionIndex}}
+\index{resolutionIndex@{resolutionIndex}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{resolutionIndex}{resolutionIndex}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a378369c7e4cf35917655b04693124436} 
+int Game\+Settings\+Manager.\+resolution\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bieżący indeks wybranej rozdzielczości w tablicy \doxylink{class_game_settings_manager_a8c37b8546d66198ea124ae0324fe4013}{Resolution\+Presets}. 
+
+\Hypertarget{class_game_settings_manager_a16e44a4c5534415cc1ff05c953fee498}\index{GameSettingsManager@{GameSettingsManager}!ResolutionKey@{ResolutionKey}}
+\index{ResolutionKey@{ResolutionKey}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{ResolutionKey}{ResolutionKey}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a16e44a4c5534415cc1ff05c953fee498} 
+const string Game\+Settings\+Manager.\+Resolution\+Key = "{}Settings.\+Resolution\+Index"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Klucz Player\+Prefs do zapisu indeksu wybranej rozdzielczości. 
+
+\Hypertarget{class_game_settings_manager_a8c37b8546d66198ea124ae0324fe4013}\index{GameSettingsManager@{GameSettingsManager}!ResolutionPresets@{ResolutionPresets}}
+\index{ResolutionPresets@{ResolutionPresets}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{ResolutionPresets}{ResolutionPresets}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a8c37b8546d66198ea124ae0324fe4013} 
+readonly \mbox{\hyperlink{struct_game_settings_manager_1_1_resolution_preset}{Resolution\+Preset}} \mbox{[}$\,$\mbox{]} Game\+Settings\+Manager.\+Resolution\+Presets\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Wartość początkowa\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ ResolutionPreset(1280,\ 720),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ ResolutionPreset(1600,\ 900),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ ResolutionPreset(1920,\ 1080),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ ResolutionPreset(2560,\ 1440)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Tablica predefiniowanych presetów rozdzielczości dostępnych w ustawieniach gry. Obejmuje rozdzielczości\+: 1280x720 (HD), 1600x900 (HD+), 1920x1080 (Full HD), 2560x1440 (QHD). 
+
+\Hypertarget{class_game_settings_manager_adf542ae20da3937ec4955db4f8feac4f}\index{GameSettingsManager@{GameSettingsManager}!sfxVolume@{sfxVolume}}
+\index{sfxVolume@{sfxVolume}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{sfxVolume}{sfxVolume}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_adf542ae20da3937ec4955db4f8feac4f} 
+float Game\+Settings\+Manager.\+sfx\+Volume\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Poziom głośności efektów dźwiękowych w zakresie \mbox{[}0, 1\mbox{]}. 
+
+\Hypertarget{class_game_settings_manager_a79e9a795ea999de5d4a037f1cd9d4b15}\index{GameSettingsManager@{GameSettingsManager}!SfxVolumeKey@{SfxVolumeKey}}
+\index{SfxVolumeKey@{SfxVolumeKey}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{SfxVolumeKey}{SfxVolumeKey}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a79e9a795ea999de5d4a037f1cd9d4b15} 
+const string Game\+Settings\+Manager.\+Sfx\+Volume\+Key = "{}SFXVolume"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Klucz Player\+Prefs do zapisu poziomu głośności efektów dźwiękowych. 
+
+\Hypertarget{class_game_settings_manager_a8a87a03282a756e88d176c9d437272c6}\index{GameSettingsManager@{GameSettingsManager}!vSyncEnabled@{vSyncEnabled}}
+\index{vSyncEnabled@{vSyncEnabled}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{vSyncEnabled}{vSyncEnabled}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a8a87a03282a756e88d176c9d437272c6} 
+bool Game\+Settings\+Manager.\+v\+Sync\+Enabled\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga określająca, czy synchronizacja pionowa (VSync) jest włączona. 
+
+\Hypertarget{class_game_settings_manager_a05063cac25c55e470912184b6f01ee96}\index{GameSettingsManager@{GameSettingsManager}!VSyncKey@{VSyncKey}}
+\index{VSyncKey@{VSyncKey}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{VSyncKey}{VSyncKey}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a05063cac25c55e470912184b6f01ee96} 
+const string Game\+Settings\+Manager.\+VSync\+Key = "{}Settings.\+VSync"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Klucz Player\+Prefs do zapisu stanu synchronizacji pionowej (VSync). 
+
+\Hypertarget{class_game_settings_manager_a8233780cad2e4ca0789583117765c1d5}\index{GameSettingsManager@{GameSettingsManager}!windowModeIndex@{windowModeIndex}}
+\index{windowModeIndex@{windowModeIndex}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{windowModeIndex}{windowModeIndex}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a8233780cad2e4ca0789583117765c1d5} 
+int Game\+Settings\+Manager.\+window\+Mode\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bieżący indeks trybu okna (0 = pełny ekran, 1 = okno). 
+
+\Hypertarget{class_game_settings_manager_a6aa678b7ac3313058a19d958ede252d9}\index{GameSettingsManager@{GameSettingsManager}!WindowModeKey@{WindowModeKey}}
+\index{WindowModeKey@{WindowModeKey}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{WindowModeKey}{WindowModeKey}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a6aa678b7ac3313058a19d958ede252d9} 
+const string Game\+Settings\+Manager.\+Window\+Mode\+Key = "{}Settings.\+Window\+Mode\+Index"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Klucz Player\+Prefs do zapisu indeksu trybu okna (pełny ekran / okno). 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_game_settings_manager_a518da1073d50c96e53ac106386b5d183}\index{GameSettingsManager@{GameSettingsManager}!FpsLimitCount@{FpsLimitCount}}
+\index{FpsLimitCount@{FpsLimitCount}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{FpsLimitCount}{FpsLimitCount}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a518da1073d50c96e53ac106386b5d183} 
+int Game\+Settings\+Manager.\+Fps\+Limit\+Count\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Liczba dostępnych opcji limitu FPS. 
+
+\Hypertarget{class_game_settings_manager_a4708c4961701b026ae8593a86adf14cd}\index{GameSettingsManager@{GameSettingsManager}!FpsLimitLabel@{FpsLimitLabel}}
+\index{FpsLimitLabel@{FpsLimitLabel}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{FpsLimitLabel}{FpsLimitLabel}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a4708c4961701b026ae8593a86adf14cd} 
+string Game\+Settings\+Manager.\+Fps\+Limit\+Label\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Etykieta tekstowa aktualnego limitu FPS do wyświetlenia w interfejsie. 
+
+"{}\+Bez limitu"{} lub liczba FPS (np. "{}60 FPS"{}).\Hypertarget{class_game_settings_manager_a4456fa5e75bfcac9e71c8fdc2286fda5}\index{GameSettingsManager@{GameSettingsManager}!Instance@{Instance}}
+\index{Instance@{Instance}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a4456fa5e75bfcac9e71c8fdc2286fda5} 
+\mbox{\hyperlink{class_game_settings_manager}{Game\+Settings\+Manager}} Game\+Settings\+Manager.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna instancja Singletona menedżera ustawień, dostępna globalnie. 
+
+\Hypertarget{class_game_settings_manager_ab0f970c416fb1e5c4fa89cf53f7cc4a0}\index{GameSettingsManager@{GameSettingsManager}!MasterVolume@{MasterVolume}}
+\index{MasterVolume@{MasterVolume}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{MasterVolume}{MasterVolume}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_ab0f970c416fb1e5c4fa89cf53f7cc4a0} 
+float Game\+Settings\+Manager.\+Master\+Volume\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Bieżący poziom głośności głównej. 
+
+Wartość w zakresie \mbox{[}0, 1\mbox{]}.\Hypertarget{class_game_settings_manager_a4a5a439ca93fefd5b4c11d0fcfd48adb}\index{GameSettingsManager@{GameSettingsManager}!MouseSensitivity@{MouseSensitivity}}
+\index{MouseSensitivity@{MouseSensitivity}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{MouseSensitivity}{MouseSensitivity}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a4a5a439ca93fefd5b4c11d0fcfd48adb} 
+float Game\+Settings\+Manager.\+Mouse\+Sensitivity\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Bieżąca czułość myszy. 
+
+Wartość w zakresie \mbox{[}0.\+5, 5.\+0\mbox{]}.\Hypertarget{class_game_settings_manager_a01b6f119970b021a1795176a9cb70c32}\index{GameSettingsManager@{GameSettingsManager}!MusicVolume@{MusicVolume}}
+\index{MusicVolume@{MusicVolume}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{MusicVolume}{MusicVolume}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a01b6f119970b021a1795176a9cb70c32} 
+float Game\+Settings\+Manager.\+Music\+Volume\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Bieżący poziom głośności muzyki. 
+
+Wartość w zakresie \mbox{[}0, 1\mbox{]}.\Hypertarget{class_game_settings_manager_a2cb0661ae48a5c6e0e0bdf222d6259f7}\index{GameSettingsManager@{GameSettingsManager}!QualityCount@{QualityCount}}
+\index{QualityCount@{QualityCount}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{QualityCount}{QualityCount}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a2cb0661ae48a5c6e0e0bdf222d6259f7} 
+int Game\+Settings\+Manager.\+Quality\+Count\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Liczba dostępnych poziomów jakości grafiki. 
+
+\Hypertarget{class_game_settings_manager_a8ed5c9e7b0007f894ae655903eaa1779}\index{GameSettingsManager@{GameSettingsManager}!QualityLabel@{QualityLabel}}
+\index{QualityLabel@{QualityLabel}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{QualityLabel}{QualityLabel}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a8ed5c9e7b0007f894ae655903eaa1779} 
+string Game\+Settings\+Manager.\+Quality\+Label\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Etykieta tekstowa aktualnego poziomu jakości grafiki do wyświetlenia w interfejsie. 
+
+Nazwa poziomu jakości z ustawień Unity lub "{}\+Domyslna"{} jako wartość domyślna.\Hypertarget{class_game_settings_manager_aced9036cfafa2bf7bb1236fb9d3e57d5}\index{GameSettingsManager@{GameSettingsManager}!ResolutionCount@{ResolutionCount}}
+\index{ResolutionCount@{ResolutionCount}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{ResolutionCount}{ResolutionCount}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_aced9036cfafa2bf7bb1236fb9d3e57d5} 
+int Game\+Settings\+Manager.\+Resolution\+Count\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Liczba dostępnych presetów rozdzielczości. 
+
+\Hypertarget{class_game_settings_manager_abc36b7154a71a17ef9fb392cf9ba5c9c}\index{GameSettingsManager@{GameSettingsManager}!ResolutionLabel@{ResolutionLabel}}
+\index{ResolutionLabel@{ResolutionLabel}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{ResolutionLabel}{ResolutionLabel}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_abc36b7154a71a17ef9fb392cf9ba5c9c} 
+string Game\+Settings\+Manager.\+Resolution\+Label\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Etykieta tekstowa aktualnej rozdzielczości do wyświetlenia w interfejsie (np. "{}1920 x 1080"{}). 
+
+\Hypertarget{class_game_settings_manager_a63b39682c81c0aba7b86bcb3926598b8}\index{GameSettingsManager@{GameSettingsManager}!SFXVolume@{SFXVolume}}
+\index{SFXVolume@{SFXVolume}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{SFXVolume}{SFXVolume}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a63b39682c81c0aba7b86bcb3926598b8} 
+float Game\+Settings\+Manager.\+SFXVolume\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Bieżący poziom głośności efektów dźwiękowych. 
+
+Wartość w zakresie \mbox{[}0, 1\mbox{]}.\Hypertarget{class_game_settings_manager_a2dc9d86d5e85eeb6e479bcc2a2a3315c}\index{GameSettingsManager@{GameSettingsManager}!VSyncEnabled@{VSyncEnabled}}
+\index{VSyncEnabled@{VSyncEnabled}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{VSyncEnabled}{VSyncEnabled}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a2dc9d86d5e85eeb6e479bcc2a2a3315c} 
+bool Game\+Settings\+Manager.\+VSync\+Enabled\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Określa, czy synchronizacja pionowa (VSync) jest włączona. 
+
+{\ttfamily true} jeśli VSync jest włączony; w przeciwnym razie {\ttfamily false}.\Hypertarget{class_game_settings_manager_ae990cea519c7160ecb9625f07a07290c}\index{GameSettingsManager@{GameSettingsManager}!VSyncLabel@{VSyncLabel}}
+\index{VSyncLabel@{VSyncLabel}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{VSyncLabel}{VSyncLabel}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_ae990cea519c7160ecb9625f07a07290c} 
+string Game\+Settings\+Manager.\+VSync\+Label\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Etykieta tekstowa stanu VSync do wyświetlenia w interfejsie. 
+
+"{}\+Wlaczone"{} lub "{}\+Wylaczone"{}.\Hypertarget{class_game_settings_manager_aef69d1aed54a62f412e39b9af1fa3884}\index{GameSettingsManager@{GameSettingsManager}!WindowModeCount@{WindowModeCount}}
+\index{WindowModeCount@{WindowModeCount}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{WindowModeCount}{WindowModeCount}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_aef69d1aed54a62f412e39b9af1fa3884} 
+int Game\+Settings\+Manager.\+Window\+Mode\+Count\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Liczba dostępnych trybów okna (pełny ekran i okno). 
+
+\Hypertarget{class_game_settings_manager_a403002a258ac01976f8acfaddcd273dd}\index{GameSettingsManager@{GameSettingsManager}!WindowModeLabel@{WindowModeLabel}}
+\index{WindowModeLabel@{WindowModeLabel}!GameSettingsManager@{GameSettingsManager}}
+\doxysubsubsection{\texorpdfstring{WindowModeLabel}{WindowModeLabel}}
+{\footnotesize\ttfamily \label{class_game_settings_manager_a403002a258ac01976f8acfaddcd273dd} 
+string Game\+Settings\+Manager.\+Window\+Mode\+Label\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Etykieta tekstowa aktualnego trybu okna do wyświetlenia w interfejsie. 
+
+"{}\+Pelny ekran"{} lub "{}\+Okno"{}.
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_game_settings_manager_8cs}{Game\+Settings\+Manager.\+cs}}\end{DoxyCompactItemize}

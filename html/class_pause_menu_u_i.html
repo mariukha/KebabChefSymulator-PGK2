@@ -1,0 +1,1226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy PauseMenuUI</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="#pri-static-attribs">Statyczne atrybuty prywatne</a> &#124;
+<a href="class_pause_menu_u_i-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy PauseMenuUI</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Professional pause menu. Esc to toggle. Settings live in the dedicated <a class="el" href="class_settings_menu_u_i.html">SettingsMenuUI</a> panel.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla PauseMenuUI</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_pause_menu_u_i.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:af2efdcd94bb5550400f6e38f30d3ba96" id="r_af2efdcd94bb5550400f6e38f30d3ba96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2efdcd94bb5550400f6e38f30d3ba96">Pause</a> ()</td></tr>
+<tr class="separator:af2efdcd94bb5550400f6e38f30d3ba96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7b94ef693794b2338e21755e38475e5" id="r_af7b94ef693794b2338e21755e38475e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7b94ef693794b2338e21755e38475e5">Resume</a> ()</td></tr>
+<tr class="separator:af7b94ef693794b2338e21755e38475e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:a7273bc8ee94e9396ed91106d786a088b" id="r_a7273bc8ee94e9396ed91106d786a088b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_pause_menu_u_i.html">PauseMenuUI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7273bc8ee94e9396ed91106d786a088b">Instance</a><code> [get, private set]</code></td></tr>
+<tr class="separator:a7273bc8ee94e9396ed91106d786a088b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6149cd13e39ce6c1b69fd20a39039f1" id="r_ae6149cd13e39ce6c1b69fd20a39039f1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6149cd13e39ce6c1b69fd20a39039f1">IsPaused</a><code> [get]</code></td></tr>
+<tr class="separator:ae6149cd13e39ce6c1b69fd20a39039f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:ac3ef0c34198e493f4d0aab5b0a4f41c3" id="r_ac3ef0c34198e493f4d0aab5b0a4f41c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3ef0c34198e493f4d0aab5b0a4f41c3">Awake</a> ()</td></tr>
+<tr class="separator:ac3ef0c34198e493f4d0aab5b0a4f41c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a281d361f61fa99860f6e51fd0f994812" id="r_a281d361f61fa99860f6e51fd0f994812"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a281d361f61fa99860f6e51fd0f994812">Start</a> ()</td></tr>
+<tr class="separator:a281d361f61fa99860f6e51fd0f994812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38a9a0a3b77d302165c2b1e88eb3aa70" id="r_a38a9a0a3b77d302165c2b1e88eb3aa70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38a9a0a3b77d302165c2b1e88eb3aa70">Update</a> ()</td></tr>
+<tr class="separator:a38a9a0a3b77d302165c2b1e88eb3aa70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae33ddef026d0588c386d1c180c0b4f1d" id="r_ae33ddef026d0588c386d1c180c0b4f1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae33ddef026d0588c386d1c180c0b4f1d">ReturnToMainMenu</a> ()</td></tr>
+<tr class="separator:ae33ddef026d0588c386d1c180c0b4f1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a904e534d824fc249b53e407beb21fd1a" id="r_a904e534d824fc249b53e407beb21fd1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a904e534d824fc249b53e407beb21fd1a">SaveSettings</a> ()</td></tr>
+<tr class="separator:a904e534d824fc249b53e407beb21fd1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3312d292cf9fe9c8da9469a56ebb860" id="r_aa3312d292cf9fe9c8da9469a56ebb860"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3312d292cf9fe9c8da9469a56ebb860">OpenSettings</a> ()</td></tr>
+<tr class="separator:aa3312d292cf9fe9c8da9469a56ebb860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8335b225dce88090fb69bffe9b18110" id="r_af8335b225dce88090fb69bffe9b18110"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8335b225dce88090fb69bffe9b18110">CreateUI</a> ()</td></tr>
+<tr class="separator:af8335b225dce88090fb69bffe9b18110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f9fe719ab882f6c94e00014d9f84b3" id="r_a20f9fe719ab882f6c94e00014d9f84b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20f9fe719ab882f6c94e00014d9f84b3">MakeButton</a> (Transform parent, string label, Color bg, Color hover, Vector2 anchor, Vector2 pos, Vector2 size, UnityEngine.Events.UnityAction action)</td></tr>
+<tr class="separator:a20f9fe719ab882f6c94e00014d9f84b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf08d8ac3f3278d16a986491f1744f1f" id="r_abf08d8ac3f3278d16a986491f1744f1f"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf08d8ac3f3278d16a986491f1744f1f">MakeFullRect</a> (Transform parent, string name, Color color)</td></tr>
+<tr class="separator:abf08d8ac3f3278d16a986491f1744f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6d8c64654c3b55a83153ea1080e1b6a" id="r_ac6d8c64654c3b55a83153ea1080e1b6a"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6d8c64654c3b55a83153ea1080e1b6a">MakePanel</a> (Transform parent, string name, Color color, Vector2 anchor, Vector2 pos, Vector2 size)</td></tr>
+<tr class="separator:ac6d8c64654c3b55a83153ea1080e1b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2cbeb6e51012f7ab0c2e2e422abfd95" id="r_ad2cbeb6e51012f7ab0c2e2e422abfd95"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2cbeb6e51012f7ab0c2e2e422abfd95">MakeRectImage</a> (Transform parent, string name, Color color)</td></tr>
+<tr class="separator:ad2cbeb6e51012f7ab0c2e2e422abfd95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76e95a8585388a96e68e8b30c4c2f011" id="r_a76e95a8585388a96e68e8b30c4c2f011"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76e95a8585388a96e68e8b30c4c2f011">Txt</a> (Transform parent, string content, int size, FontStyle style, Color color, TextAnchor anchor)</td></tr>
+<tr class="separator:a76e95a8585388a96e68e8b30c4c2f011"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28796296b0bc074ea09c6b24780e46e3" id="r_a28796296b0bc074ea09c6b24780e46e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28796296b0bc074ea09c6b24780e46e3">SetRect</a> (Component c, float anchorX, float anchorY, float posX, float posY, float w, float h)</td></tr>
+<tr class="separator:a28796296b0bc074ea09c6b24780e46e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebc30256dca22a224ff5db23ce10c953" id="r_aebc30256dca22a224ff5db23ce10c953"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aebc30256dca22a224ff5db23ce10c953">OnDestroy</a> ()</td></tr>
+<tr class="separator:aebc30256dca22a224ff5db23ce10c953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a23ce17142298d81eca9002c4def97246" id="r_a23ce17142298d81eca9002c4def97246"><td class="memItemLeft" align="right" valign="top">Canvas&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23ce17142298d81eca9002c4def97246">pauseCanvas</a></td></tr>
+<tr class="separator:a23ce17142298d81eca9002c4def97246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8deb2e2220895ae7b36c3308138c3f2f" id="r_a8deb2e2220895ae7b36c3308138c3f2f"><td class="memItemLeft" align="right" valign="top">CanvasGroup&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8deb2e2220895ae7b36c3308138c3f2f">canvasGroup</a></td></tr>
+<tr class="separator:a8deb2e2220895ae7b36c3308138c3f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7b3784c21c7688ed875276ac0b58f79" id="r_af7b3784c21c7688ed875276ac0b58f79"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7b3784c21c7688ed875276ac0b58f79">isOpen</a></td></tr>
+<tr class="separator:af7b3784c21c7688ed875276ac0b58f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56870d3523d5e48ce7335b750e01e79a" id="r_a56870d3523d5e48ce7335b750e01e79a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56870d3523d5e48ce7335b750e01e79a">animProgress</a></td></tr>
+<tr class="separator:a56870d3523d5e48ce7335b750e01e79a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab10f5c72e4bc494b85b26e8d49653c03" id="r_ab10f5c72e4bc494b85b26e8d49653c03"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab10f5c72e4bc494b85b26e8d49653c03">wasTimeScaleZero</a></td></tr>
+<tr class="separator:ab10f5c72e4bc494b85b26e8d49653c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f475e943aa994864d30bf4d607fcb8b" id="r_a1f475e943aa994864d30bf4d607fcb8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_main_menu_u_i.html">MainMenuUI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f475e943aa994864d30bf4d607fcb8b">cachedMainMenuUI</a></td></tr>
+<tr class="separator:a1f475e943aa994864d30bf4d607fcb8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f3fb96d9c33b5767eb3b5b354708395" id="r_a8f3fb96d9c33b5767eb3b5b354708395"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_lobby_u_i.html">LobbyUI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f3fb96d9c33b5767eb3b5b354708395">cachedLobbyUI</a></td></tr>
+<tr class="separator:a8f3fb96d9c33b5767eb3b5b354708395"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade0478ad9e9364c8e440e4923871bd0a" id="r_ade0478ad9e9364c8e440e4923871bd0a"><td class="memItemLeft" align="right" valign="top">Font&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade0478ad9e9364c8e440e4923871bd0a">cachedFont</a></td></tr>
+<tr class="separator:ade0478ad9e9364c8e440e4923871bd0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Statyczne atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a131517e13a0c0b11d005f91457861773" id="r_a131517e13a0c0b11d005f91457861773"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a131517e13a0c0b11d005f91457861773">OverlayColor</a> = new Color(0.008f, 0.01f, 0.018f, 0.88f)</td></tr>
+<tr class="separator:a131517e13a0c0b11d005f91457861773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d737e691811f00cb6f4c21a98e75a14" id="r_a6d737e691811f00cb6f4c21a98e75a14"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d737e691811f00cb6f4c21a98e75a14">PanelBg</a> = new Color(0.03f, 0.035f, 0.055f, 0.97f)</td></tr>
+<tr class="separator:a6d737e691811f00cb6f4c21a98e75a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19a1e85a18fb3833a38dc91d65bc7527" id="r_a19a1e85a18fb3833a38dc91d65bc7527"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19a1e85a18fb3833a38dc91d65bc7527">PanelBorder</a> = new Color(0.08f, 0.09f, 0.12f)</td></tr>
+<tr class="separator:a19a1e85a18fb3833a38dc91d65bc7527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab473a320da8859e6fa2f0b599ebbbf98" id="r_ab473a320da8859e6fa2f0b599ebbbf98"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab473a320da8859e6fa2f0b599ebbbf98">AccentGold</a> = new Color(0.875f, 0.725f, 0.32f)</td></tr>
+<tr class="separator:ab473a320da8859e6fa2f0b599ebbbf98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6982a1ae462d7561bf3413d9d6d1a2c2" id="r_a6982a1ae462d7561bf3413d9d6d1a2c2"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6982a1ae462d7561bf3413d9d6d1a2c2">TextPrimary</a> = new Color(0.9f, 0.91f, 0.93f)</td></tr>
+<tr class="separator:a6982a1ae462d7561bf3413d9d6d1a2c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a609b585b129463a71e940e55508778cd" id="r_a609b585b129463a71e940e55508778cd"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a609b585b129463a71e940e55508778cd">BtnResumeBg</a> = new Color(0.06f, 0.36f, 0.17f)</td></tr>
+<tr class="separator:a609b585b129463a71e940e55508778cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eb6a08d348ae5cea9f54b302481b9f7" id="r_a1eb6a08d348ae5cea9f54b302481b9f7"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1eb6a08d348ae5cea9f54b302481b9f7">BtnResumeHover</a> = new Color(0.08f, 0.48f, 0.23f)</td></tr>
+<tr class="separator:a1eb6a08d348ae5cea9f54b302481b9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59dd4eb88a45a197c19ff515c1bf7d63" id="r_a59dd4eb88a45a197c19ff515c1bf7d63"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59dd4eb88a45a197c19ff515c1bf7d63">BtnSettingsBg</a> = new Color(0.055f, 0.12f, 0.22f)</td></tr>
+<tr class="separator:a59dd4eb88a45a197c19ff515c1bf7d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a058779330230ae6d1bf58257977bcfe7" id="r_a058779330230ae6d1bf58257977bcfe7"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a058779330230ae6d1bf58257977bcfe7">BtnSettingsHover</a> = new Color(0.08f, 0.18f, 0.32f)</td></tr>
+<tr class="separator:a058779330230ae6d1bf58257977bcfe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfd5b4b442e5af67bd006f3db6f3914b" id="r_acfd5b4b442e5af67bd006f3db6f3914b"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfd5b4b442e5af67bd006f3db6f3914b">BtnQuitBg</a> = new Color(0.44f, 0.075f, 0.065f)</td></tr>
+<tr class="separator:acfd5b4b442e5af67bd006f3db6f3914b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ff26082f1621adb380aef8dce1df368" id="r_a4ff26082f1621adb380aef8dce1df368"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ff26082f1621adb380aef8dce1df368">BtnQuitHover</a> = new Color(0.58f, 0.11f, 0.095f)</td></tr>
+<tr class="separator:a4ff26082f1621adb380aef8dce1df368"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2b3b5e8cf82dfbed439e9318347d65d" id="r_ab2b3b5e8cf82dfbed439e9318347d65d"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2b3b5e8cf82dfbed439e9318347d65d">DividerColor</a> = new Color(0.12f, 0.13f, 0.17f)</td></tr>
+<tr class="separator:ab2b3b5e8cf82dfbed439e9318347d65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Professional pause menu. Esc to toggle. Settings live in the dedicated <a class="el" href="class_settings_menu_u_i.html">SettingsMenuUI</a> panel. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ac3ef0c34198e493f4d0aab5b0a4f41c3" name="ac3ef0c34198e493f4d0aab5b0a4f41c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3ef0c34198e493f4d0aab5b0a4f41c3">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af8335b225dce88090fb69bffe9b18110" name="af8335b225dce88090fb69bffe9b18110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8335b225dce88090fb69bffe9b18110">&#9670;&#160;</a></span>CreateUI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.CreateUI </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a20f9fe719ab882f6c94e00014d9f84b3" name="a20f9fe719ab882f6c94e00014d9f84b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20f9fe719ab882f6c94e00014d9f84b3">&#9670;&#160;</a></span>MakeButton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.MakeButton </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>label</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>bg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>hover</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UnityEngine.Events.UnityAction</td>          <td class="paramname"><span class="paramname"><em>action</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abf08d8ac3f3278d16a986491f1744f1f" name="abf08d8ac3f3278d16a986491f1744f1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf08d8ac3f3278d16a986491f1744f1f">&#9670;&#160;</a></span>MakeFullRect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image PauseMenuUI.MakeFullRect </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6d8c64654c3b55a83153ea1080e1b6a" name="ac6d8c64654c3b55a83153ea1080e1b6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6d8c64654c3b55a83153ea1080e1b6a">&#9670;&#160;</a></span>MakePanel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject PauseMenuUI.MakePanel </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>anchor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2cbeb6e51012f7ab0c2e2e422abfd95" name="ad2cbeb6e51012f7ab0c2e2e422abfd95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2cbeb6e51012f7ab0c2e2e422abfd95">&#9670;&#160;</a></span>MakeRectImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Image PauseMenuUI.MakeRectImage </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aebc30256dca22a224ff5db23ce10c953" name="aebc30256dca22a224ff5db23ce10c953"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebc30256dca22a224ff5db23ce10c953">&#9670;&#160;</a></span>OnDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.OnDestroy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa3312d292cf9fe9c8da9469a56ebb860" name="aa3312d292cf9fe9c8da9469a56ebb860"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3312d292cf9fe9c8da9469a56ebb860">&#9670;&#160;</a></span>OpenSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.OpenSettings </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af2efdcd94bb5550400f6e38f30d3ba96" name="af2efdcd94bb5550400f6e38f30d3ba96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2efdcd94bb5550400f6e38f30d3ba96">&#9670;&#160;</a></span>Pause()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.Pause </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7b94ef693794b2338e21755e38475e5" name="af7b94ef693794b2338e21755e38475e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7b94ef693794b2338e21755e38475e5">&#9670;&#160;</a></span>Resume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.Resume </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae33ddef026d0588c386d1c180c0b4f1d" name="ae33ddef026d0588c386d1c180c0b4f1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae33ddef026d0588c386d1c180c0b4f1d">&#9670;&#160;</a></span>ReturnToMainMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.ReturnToMainMenu </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a904e534d824fc249b53e407beb21fd1a" name="a904e534d824fc249b53e407beb21fd1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a904e534d824fc249b53e407beb21fd1a">&#9670;&#160;</a></span>SaveSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.SaveSettings </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28796296b0bc074ea09c6b24780e46e3" name="a28796296b0bc074ea09c6b24780e46e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28796296b0bc074ea09c6b24780e46e3">&#9670;&#160;</a></span>SetRect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.SetRect </td>
+          <td>(</td>
+          <td class="paramtype">Component</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>anchorX</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>anchorY</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>posX</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>posY</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>w</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>h</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a281d361f61fa99860f6e51fd0f994812" name="a281d361f61fa99860f6e51fd0f994812"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a281d361f61fa99860f6e51fd0f994812">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76e95a8585388a96e68e8b30c4c2f011" name="a76e95a8585388a96e68e8b30c4c2f011"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76e95a8585388a96e68e8b30c4c2f011">&#9670;&#160;</a></span>Txt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text PauseMenuUI.Txt </td>
+          <td>(</td>
+          <td class="paramtype">Transform</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>content</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FontStyle</td>          <td class="paramname"><span class="paramname"><em>style</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TextAnchor</td>          <td class="paramname"><span class="paramname"><em>anchor</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a38a9a0a3b77d302165c2b1e88eb3aa70" name="a38a9a0a3b77d302165c2b1e88eb3aa70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38a9a0a3b77d302165c2b1e88eb3aa70">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PauseMenuUI.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="ab473a320da8859e6fa2f0b599ebbbf98" name="ab473a320da8859e6fa2f0b599ebbbf98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab473a320da8859e6fa2f0b599ebbbf98">&#9670;&#160;</a></span>AccentGold</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.AccentGold = new Color(0.875f, 0.725f, 0.32f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a56870d3523d5e48ce7335b750e01e79a" name="a56870d3523d5e48ce7335b750e01e79a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56870d3523d5e48ce7335b750e01e79a">&#9670;&#160;</a></span>animProgress</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PauseMenuUI.animProgress</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acfd5b4b442e5af67bd006f3db6f3914b" name="acfd5b4b442e5af67bd006f3db6f3914b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfd5b4b442e5af67bd006f3db6f3914b">&#9670;&#160;</a></span>BtnQuitBg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.BtnQuitBg = new Color(0.44f, 0.075f, 0.065f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ff26082f1621adb380aef8dce1df368" name="a4ff26082f1621adb380aef8dce1df368"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ff26082f1621adb380aef8dce1df368">&#9670;&#160;</a></span>BtnQuitHover</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.BtnQuitHover = new Color(0.58f, 0.11f, 0.095f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a609b585b129463a71e940e55508778cd" name="a609b585b129463a71e940e55508778cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a609b585b129463a71e940e55508778cd">&#9670;&#160;</a></span>BtnResumeBg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.BtnResumeBg = new Color(0.06f, 0.36f, 0.17f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1eb6a08d348ae5cea9f54b302481b9f7" name="a1eb6a08d348ae5cea9f54b302481b9f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eb6a08d348ae5cea9f54b302481b9f7">&#9670;&#160;</a></span>BtnResumeHover</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.BtnResumeHover = new Color(0.08f, 0.48f, 0.23f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a59dd4eb88a45a197c19ff515c1bf7d63" name="a59dd4eb88a45a197c19ff515c1bf7d63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59dd4eb88a45a197c19ff515c1bf7d63">&#9670;&#160;</a></span>BtnSettingsBg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.BtnSettingsBg = new Color(0.055f, 0.12f, 0.22f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a058779330230ae6d1bf58257977bcfe7" name="a058779330230ae6d1bf58257977bcfe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a058779330230ae6d1bf58257977bcfe7">&#9670;&#160;</a></span>BtnSettingsHover</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.BtnSettingsHover = new Color(0.08f, 0.18f, 0.32f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade0478ad9e9364c8e440e4923871bd0a" name="ade0478ad9e9364c8e440e4923871bd0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade0478ad9e9364c8e440e4923871bd0a">&#9670;&#160;</a></span>cachedFont</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Font PauseMenuUI.cachedFont</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f3fb96d9c33b5767eb3b5b354708395" name="a8f3fb96d9c33b5767eb3b5b354708395"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f3fb96d9c33b5767eb3b5b354708395">&#9670;&#160;</a></span>cachedLobbyUI</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_lobby_u_i.html">LobbyUI</a> PauseMenuUI.cachedLobbyUI</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f475e943aa994864d30bf4d607fcb8b" name="a1f475e943aa994864d30bf4d607fcb8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f475e943aa994864d30bf4d607fcb8b">&#9670;&#160;</a></span>cachedMainMenuUI</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_main_menu_u_i.html">MainMenuUI</a> PauseMenuUI.cachedMainMenuUI</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8deb2e2220895ae7b36c3308138c3f2f" name="a8deb2e2220895ae7b36c3308138c3f2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8deb2e2220895ae7b36c3308138c3f2f">&#9670;&#160;</a></span>canvasGroup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CanvasGroup PauseMenuUI.canvasGroup</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab2b3b5e8cf82dfbed439e9318347d65d" name="ab2b3b5e8cf82dfbed439e9318347d65d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2b3b5e8cf82dfbed439e9318347d65d">&#9670;&#160;</a></span>DividerColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.DividerColor = new Color(0.12f, 0.13f, 0.17f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7b3784c21c7688ed875276ac0b58f79" name="af7b3784c21c7688ed875276ac0b58f79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7b3784c21c7688ed875276ac0b58f79">&#9670;&#160;</a></span>isOpen</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PauseMenuUI.isOpen</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a131517e13a0c0b11d005f91457861773" name="a131517e13a0c0b11d005f91457861773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a131517e13a0c0b11d005f91457861773">&#9670;&#160;</a></span>OverlayColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.OverlayColor = new Color(0.008f, 0.01f, 0.018f, 0.88f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6d737e691811f00cb6f4c21a98e75a14" name="a6d737e691811f00cb6f4c21a98e75a14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d737e691811f00cb6f4c21a98e75a14">&#9670;&#160;</a></span>PanelBg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.PanelBg = new Color(0.03f, 0.035f, 0.055f, 0.97f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a19a1e85a18fb3833a38dc91d65bc7527" name="a19a1e85a18fb3833a38dc91d65bc7527"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19a1e85a18fb3833a38dc91d65bc7527">&#9670;&#160;</a></span>PanelBorder</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.PanelBorder = new Color(0.08f, 0.09f, 0.12f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23ce17142298d81eca9002c4def97246" name="a23ce17142298d81eca9002c4def97246"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ce17142298d81eca9002c4def97246">&#9670;&#160;</a></span>pauseCanvas</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Canvas PauseMenuUI.pauseCanvas</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6982a1ae462d7561bf3413d9d6d1a2c2" name="a6982a1ae462d7561bf3413d9d6d1a2c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6982a1ae462d7561bf3413d9d6d1a2c2">&#9670;&#160;</a></span>TextPrimary</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color PauseMenuUI.TextPrimary = new Color(0.9f, 0.91f, 0.93f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab10f5c72e4bc494b85b26e8d49653c03" name="ab10f5c72e4bc494b85b26e8d49653c03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab10f5c72e4bc494b85b26e8d49653c03">&#9670;&#160;</a></span>wasTimeScaleZero</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PauseMenuUI.wasTimeScaleZero</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="a7273bc8ee94e9396ed91106d786a088b" name="a7273bc8ee94e9396ed91106d786a088b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7273bc8ee94e9396ed91106d786a088b">&#9670;&#160;</a></span>Instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_pause_menu_u_i.html">PauseMenuUI</a> PauseMenuUI.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6149cd13e39ce6c1b69fd20a39039f1" name="ae6149cd13e39ce6c1b69fd20a39039f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6149cd13e39ce6c1b69fd20a39039f1">&#9670;&#160;</a></span>IsPaused</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PauseMenuUI.IsPaused</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/UI/<a class="el" href="_pause_menu_u_i_8cs.html">PauseMenuUI.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

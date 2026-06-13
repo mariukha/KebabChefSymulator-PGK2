@@ -1,0 +1,51 @@
+\doxysection{Dokumentacja klasy Client\+Network\+Transform}
+\hypertarget{class_client_network_transform}{}\label{class_client_network_transform}\index{ClientNetworkTransform@{ClientNetworkTransform}}
+
+
+Komponent sieciowej transformacji sterowanej po stronie klienta. Nadpisuje domyślne zachowanie Network\+Transform, wyłączając autorytatywność serwera, dzięki czemu każdy klient samodzielnie kontroluje i synchronizuje swoją transformację w sieci.  
+
+
+Diagram dziedziczenia dla Client\+Network\+Transform\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_client_network_transform}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody chronione}
+\begin{DoxyCompactItemize}
+\item 
+override bool \mbox{\hyperlink{class_client_network_transform_a845fa311a1f4a297a3565f432a8b396d}{On\+Is\+Server\+Authoritative}} ()
+\begin{DoxyCompactList}\small\item\em Określa, czy transformacja jest autorytatywna po stronie serwera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Komponent sieciowej transformacji sterowanej po stronie klienta. Nadpisuje domyślne zachowanie Network\+Transform, wyłączając autorytatywność serwera, dzięki czemu każdy klient samodzielnie kontroluje i synchronizuje swoją transformację w sieci. 
+
+W standardowym modelu Unity Netcode, Network\+Transform jest autorytatywny po stronie serwera — serwer decyduje o pozycji obiektów. Ta klasa odwraca ten model, umożliwiając klientowi przesyłanie własnych danych transformacji do pozostałych graczy. Jest to typowe rozwiązanie stosowane dla obiektów gracza w grach multiplayer, gdzie responsywność sterowania jest priorytetem. 
+
+\begin{DoxySeeAlso}{Zobacz również}
+Network\+Transform
+
+
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_client_network_transform_a845fa311a1f4a297a3565f432a8b396d}\index{ClientNetworkTransform@{ClientNetworkTransform}!OnIsServerAuthoritative@{OnIsServerAuthoritative}}
+\index{OnIsServerAuthoritative@{OnIsServerAuthoritative}!ClientNetworkTransform@{ClientNetworkTransform}}
+\doxysubsubsection{\texorpdfstring{OnIsServerAuthoritative()}{OnIsServerAuthoritative()}}
+{\footnotesize\ttfamily \label{class_client_network_transform_a845fa311a1f4a297a3565f432a8b396d} 
+override bool Client\+Network\+Transform.\+On\+Is\+Server\+Authoritative (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Określa, czy transformacja jest autorytatywna po stronie serwera. 
+
+\begin{DoxyReturn}{Zwraca}
+Zawsze zwraca {\ttfamily false}, co oznacza, że klient jest źródłem prawdy dla danych transformacji tego obiektu sieciowego. 
+\end{DoxyReturn}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_client_network_transform_8cs}{Client\+Network\+Transform.\+cs}}\end{DoxyCompactItemize}

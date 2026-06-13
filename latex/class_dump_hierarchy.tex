@@ -1,0 +1,23 @@
+\doxysection{Dokumentacja klasy Dump\+Hierarchy}
+\hypertarget{class_dump_hierarchy}{}\label{class_dump_hierarchy}\index{DumpHierarchy@{DumpHierarchy}}
+
+
+Narzędzie debugowania do zrzutu hierarchii obiektów na scenie Unity. Wyłączone w kompilacjach produkcyjnych — aktywne wyłącznie w edytorze Unity.  
+
+
+Diagram dziedziczenia dla Dump\+Hierarchy\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_dump_hierarchy}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Opis szczegółowy}
+Narzędzie debugowania do zrzutu hierarchii obiektów na scenie Unity. Wyłączone w kompilacjach produkcyjnych — aktywne wyłącznie w edytorze Unity. 
+
+Po upływie 5 sekund od uruchomienia gry, komponent przeszukuje wszystkie obiekty na scenie (włącznie z nieaktywnymi) i zapisuje ich hierarchię do pliku {\ttfamily hierarchy.\+txt} w katalogu Application.\+persistent\+Data\+Path. Zrzut jest wykonywany jednokrotnie — po zapisie komponent nie podejmuje dalszych działań. Aby ponownie włączyć tę funkcjonalność, należy aktywować symbol kompilacji {\ttfamily UNITY\+\_\+\+EDITOR} (aktywny domyślnie w edytorze). 
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_dump_hierarchy_8cs}{Dump\+Hierarchy.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,1418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy OrderManager</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-attribs">Atrybuty publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="class_order_manager-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy OrderManager</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Menedżer systemu zamówień w grze Kebab Chef Symulator. Zarządza generowaniem nowych zamówień z predefiniowanych szablonów, śledzeniem czasu na realizację, walidacją dostarczonych dań, obliczaniem nagród pieniężnych oraz skalowaniem trudności gry. Implementuje wzorzec Singleton — dostępny globalnie przez <a class="el" href="#a67356b19725ec1fd06f71dde1c172dc6" title="Statyczna instancja Singletona menedżera zamówień, dostępna globalnie.">Instance</a>.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla OrderManager</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_order_manager.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a8e23cf78a52fc5bf998a19009014ab22" id="r_a8e23cf78a52fc5bf998a19009014ab22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e23cf78a52fc5bf998a19009014ab22">SyncNetworkState</a> (int templateIndex, string desc, float time, int comp, int fail)</td></tr>
+<tr class="memdesc:a8e23cf78a52fc5bf998a19009014ab22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizuje stan zamówienia z serwera sieciowego. Ustawia aktywne zamówienie na podstawie indeksu szablonu oraz aktualizuje opis, czas, liczbę zrealizowanych i nieudanych zamówień.  <br /></td></tr>
+<tr class="separator:a8e23cf78a52fc5bf998a19009014ab22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f69bd51a04a1b8d344683f0f83bdf66" id="r_a2f69bd51a04a1b8d344683f0f83bdf66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f69bd51a04a1b8d344683f0f83bdf66">InitializeCatalogIfNeeded</a> ()</td></tr>
+<tr class="memdesc:a2f69bd51a04a1b8d344683f0f83bdf66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizuje katalog składników, jeśli nie został jeszcze zbudowany. Przetwarza ręcznie przypisane składniki z listy <a class="el" href="#ab37ca2e523867558803f980a8e3fb059" title="Lista dostępnych danych składników w grze. Może być konfigurowana z poziomu inspektora Unity lub uzup...">dostepneSkladniki</a> oraz dodaje brakujące składniki domyślne (mięso, pomidor, cebula, sałata, sos, ławasz, kebab).  <br /></td></tr>
+<tr class="separator:a2f69bd51a04a1b8d344683f0f83bdf66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa18079c10e79d6f4a0cc8ff273d851ca" id="r_aa18079c10e79d6f4a0cc8ff273d851ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ingredient_data.html">IngredientData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa18079c10e79d6f4a0cc8ff273d851ca">GetIngredientDefinition</a> (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind)</td></tr>
+<tr class="memdesc:aa18079c10e79d6f4a0cc8ff273d851ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera definicję danych składnika na podstawie jego typu. Automatycznie inicjalizuje katalog, jeśli jeszcze nie został zbudowany.  <br /></td></tr>
+<tr class="separator:aa18079c10e79d6f4a0cc8ff273d851ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96fa824300c3f4fea397ba2709e7844b" id="r_a96fa824300c3f4fea397ba2709e7844b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96fa824300c3f4fea397ba2709e7844b">TryDeliverDish</a> (<a class="el" href="class_kitchen_item.html">KitchenItem</a> item, out string message)</td></tr>
+<tr class="memdesc:a96fa824300c3f4fea397ba2709e7844b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Próbuje dostarczyć przygotowane danie i zwalidować je względem aktywnego zamówienia. W przypadku sukcesu nalicza nagrodę pieniężną, generuje nowe zamówienie i zapisuje grę.  <br /></td></tr>
+<tr class="separator:a96fa824300c3f4fea397ba2709e7844b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42b33bdfd9b08d3f626226965a74fe56" id="r_a42b33bdfd9b08d3f626226965a74fe56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42b33bdfd9b08d3f626226965a74fe56">NoweZamowienie</a> ()</td></tr>
+<tr class="memdesc:a42b33bdfd9b08d3f626226965a74fe56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generuje nowe losowe zamówienie z dostępnych szablonów. Uwzględnia progresję trudności (więcej szablonów w miarę ukończonych zamówień), oblicza nagrodę pieniężną, stosuje bonus czasowy ze sklepu i mnożnik trudności do czasu realizacji.  <br /></td></tr>
+<tr class="separator:a42b33bdfd9b08d3f626226965a74fe56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd824ac392c6ca69082c509cd4ef7b89" id="r_afd824ac392c6ca69082c509cd4ef7b89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd824ac392c6ca69082c509cd4ef7b89">SetOrderStateFromNetwork</a> (string description, float time, int completed, int failed, string message)</td></tr>
+<tr class="memdesc:afd824ac392c6ca69082c509cd4ef7b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia stan zamówienia na podstawie danych otrzymanych z sieci (dla klientów). Używane do synchronizacji stanu zamówienia w trybie wieloosobowym.  <br /></td></tr>
+<tr class="separator:afd824ac392c6ca69082c509cd4ef7b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9bb353f2106d8906254166897d565e2" id="r_ad9bb353f2106d8906254166897d565e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_order_progress_save_data.html">OrderProgressSaveData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9bb353f2106d8906254166897d565e2">CaptureProgress</a> ()</td></tr>
+<tr class="memdesc:ad9bb353f2106d8906254166897d565e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przechwytuje bieżący postęp zamówień do struktury danych przeznaczonej do zapisu. Obejmuje statystyki ukończonych/nieudanych zamówień, czas i dane aktywnego zamówienia.  <br /></td></tr>
+<tr class="separator:ad9bb353f2106d8906254166897d565e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb3ab348bfa6f299fffa95abee42590f" id="r_acb3ab348bfa6f299fffa95abee42590f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb3ab348bfa6f299fffa95abee42590f">RestoreProgress</a> (<a class="el" href="class_order_progress_save_data.html">OrderProgressSaveData</a> data)</td></tr>
+<tr class="memdesc:acb3ab348bfa6f299fffa95abee42590f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przywraca postęp zamówień z wcześniej zapisanych danych. Odtwarza statystyki, aktywne zamówienie z wymaganiami składników oraz pozostały czas realizacji (minimum 5 sekund). Jeśli dane nie zawierają aktywnego zamówienia, generowane jest nowe.  <br /></td></tr>
+<tr class="separator:acb3ab348bfa6f299fffa95abee42590f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atrybuty publiczne</h2></td></tr>
+<tr class="memitem:ab37ca2e523867558803f980a8e3fb059" id="r_ab37ca2e523867558803f980a8e3fb059"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_ingredient_data.html">IngredientData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab37ca2e523867558803f980a8e3fb059">dostepneSkladniki</a> = new List&lt;<a class="el" href="class_ingredient_data.html">IngredientData</a>&gt;()</td></tr>
+<tr class="memdesc:ab37ca2e523867558803f980a8e3fb059"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista dostępnych danych składników w grze. Może być konfigurowana z poziomu inspektora Unity lub uzupełniana automatycznie w czasie wykonywania.  <br /></td></tr>
+<tr class="separator:ab37ca2e523867558803f980a8e3fb059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:a67356b19725ec1fd06f71dde1c172dc6" id="r_a67356b19725ec1fd06f71dde1c172dc6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_order_manager.html">OrderManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67356b19725ec1fd06f71dde1c172dc6">Instance</a><code> [get, private set]</code></td></tr>
+<tr class="memdesc:a67356b19725ec1fd06f71dde1c172dc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statyczna instancja Singletona menedżera zamówień, dostępna globalnie.  <br /></td></tr>
+<tr class="separator:a67356b19725ec1fd06f71dde1c172dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40b6411a694a1a7e289982d1512ed29c" id="r_a40b6411a694a1a7e289982d1512ed29c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40b6411a694a1a7e289982d1512ed29c">ActiveTemplateIndex</a> = -1<code> [get, private set]</code></td></tr>
+<tr class="memdesc:a40b6411a694a1a7e289982d1512ed29c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indeks aktualnego szablonu zamówienia w liście <a class="el" href="#a9fa2c6279d8f5fc2cf11a374ef558332" title="Lista szablonów zamówień, z których losowane są nowe zamówienia. Szablony definiują wymagane składnik...">orderTemplates</a>. Wartość -1 oznacza, że żadne zamówienie nie zostało jeszcze wygenerowane.  <br /></td></tr>
+<tr class="separator:a40b6411a694a1a7e289982d1512ed29c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cf3111cd49936a69182535be487817e" id="r_a2cf3111cd49936a69182535be487817e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_order.html">Order</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cf3111cd49936a69182535be487817e">ActiveOrder</a><code> [get]</code></td></tr>
+<tr class="memdesc:a2cf3111cd49936a69182535be487817e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualnie aktywne zamówienie.  <br /></td></tr>
+<tr class="separator:a2cf3111cd49936a69182535be487817e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab20e15c7276331e4578522b1be0c17dc" id="r_ab20e15c7276331e4578522b1be0c17dc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab20e15c7276331e4578522b1be0c17dc">RemainingOrderTime</a><code> [get]</code></td></tr>
+<tr class="memdesc:ab20e15c7276331e4578522b1be0c17dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pozostały czas na realizację zamówienia w sekundach (alias dla <a class="el" href="#a070315df77fcde4ae341a1c77d9f881d" title="Pozostały czas na realizację zamówienia w sekundach.">RemainingTime</a>).  <br /></td></tr>
+<tr class="separator:ab20e15c7276331e4578522b1be0c17dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bc02494a2f9d73e96c6af3c056fc6ec" id="r_a3bc02494a2f9d73e96c6af3c056fc6ec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bc02494a2f9d73e96c6af3c056fc6ec">CompletedOrders</a><code> [get]</code></td></tr>
+<tr class="memdesc:a3bc02494a2f9d73e96c6af3c056fc6ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba zrealizowanych zamówień.  <br /></td></tr>
+<tr class="separator:a3bc02494a2f9d73e96c6af3c056fc6ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7de30ecddf21289538895ddee4dcba1f" id="r_a7de30ecddf21289538895ddee4dcba1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7de30ecddf21289538895ddee4dcba1f">FailedOrders</a><code> [get]</code></td></tr>
+<tr class="memdesc:a7de30ecddf21289538895ddee4dcba1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba nieudanych zamówień.  <br /></td></tr>
+<tr class="separator:a7de30ecddf21289538895ddee4dcba1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d91eb1bfea8ac1a1474aa5c43d7589e" id="r_a5d91eb1bfea8ac1a1474aa5c43d7589e"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d91eb1bfea8ac1a1474aa5c43d7589e">LastOrderMessage</a><code> [get]</code></td></tr>
+<tr class="memdesc:a5d91eb1bfea8ac1a1474aa5c43d7589e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ostatni komunikat dotyczący statusu zamówienia.  <br /></td></tr>
+<tr class="separator:a5d91eb1bfea8ac1a1474aa5c43d7589e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5a5e4631eed4582133aad973b9808b6" id="r_aa5a5e4631eed4582133aad973b9808b6"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5a5e4631eed4582133aad973b9808b6">ActiveOrderDescription</a><code> [get]</code></td></tr>
+<tr class="memdesc:aa5a5e4631eed4582133aad973b9808b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekstowy opis aktywnego zamówienia.  <br /></td></tr>
+<tr class="separator:aa5a5e4631eed4582133aad973b9808b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75c01af4fa7b37ec82bdfa496ddb561d" id="r_a75c01af4fa7b37ec82bdfa496ddb561d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75c01af4fa7b37ec82bdfa496ddb561d">HasActiveOrder</a><code> [get]</code></td></tr>
+<tr class="memdesc:a75c01af4fa7b37ec82bdfa496ddb561d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Określa, czy istnieje aktywne zamówienie do realizacji.  <br /></td></tr>
+<tr class="separator:a75c01af4fa7b37ec82bdfa496ddb561d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a070315df77fcde4ae341a1c77d9f881d" id="r_a070315df77fcde4ae341a1c77d9f881d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a070315df77fcde4ae341a1c77d9f881d">RemainingTime</a><code> [get]</code></td></tr>
+<tr class="memdesc:a070315df77fcde4ae341a1c77d9f881d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pozostały czas na realizację zamówienia w sekundach.  <br /></td></tr>
+<tr class="separator:a070315df77fcde4ae341a1c77d9f881d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:ae37d7b99b00bd0c4db4b1eca8d6954b2" id="r_ae37d7b99b00bd0c4db4b1eca8d6954b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae37d7b99b00bd0c4db4b1eca8d6954b2">Awake</a> ()</td></tr>
+<tr class="memdesc:ae37d7b99b00bd0c4db4b1eca8d6954b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizacja Singletona oraz katalogu składników i szablonów zamówień. Jeśli istnieje już instancja, niszczy duplikat.  <br /></td></tr>
+<tr class="separator:ae37d7b99b00bd0c4db4b1eca8d6954b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad495180fa97e427dcdbf19fa7d5c5950" id="r_ad495180fa97e427dcdbf19fa7d5c5950"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad495180fa97e427dcdbf19fa7d5c5950">Start</a> ()</td></tr>
+<tr class="memdesc:ad495180fa97e427dcdbf19fa7d5c5950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wywoływana po inicjalizacji. Generuje pierwsze zamówienie, chyba że gra działa w trybie wieloosobowym jako klient (nie serwer).  <br /></td></tr>
+<tr class="separator:ad495180fa97e427dcdbf19fa7d5c5950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa49e4926d41a0e7def3c94f01d93be22" id="r_aa49e4926d41a0e7def3c94f01d93be22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa49e4926d41a0e7def3c94f01d93be22">Update</a> ()</td></tr>
+<tr class="memdesc:aa49e4926d41a0e7def3c94f01d93be22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizacja wywoływana co klatkę. Odlicza czas na realizację aktywnego zamówienia. Jeśli czas się skończy, zamówienie jest oznaczane jako nieudane, odtwarzany jest efekt zwrotny i generowane jest nowe zamówienie. Działa tylko po stronie serwera w trybie wieloosobowym.  <br /></td></tr>
+<tr class="separator:aa49e4926d41a0e7def3c94f01d93be22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a964ba0119968d7896f62b902db0aedba" id="r_a964ba0119968d7896f62b902db0aedba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a964ba0119968d7896f62b902db0aedba">PlayTimeoutFeedback</a> ()</td></tr>
+<tr class="memdesc:a964ba0119968d7896f62b902db0aedba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekty zwrotne po przekroczeniu czasu zamówienia. Obejmuje dźwięk porażki, efekt wizualny timeout oraz wstrząs i błysk kamery.  <br /></td></tr>
+<tr class="separator:a964ba0119968d7896f62b902db0aedba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63e33d4fa4460795b47f920b55c146dd" id="r_a63e33d4fa4460795b47f920b55c146dd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63e33d4fa4460795b47f920b55c146dd">GetDifficultyTimeMultiplier</a> ()</td></tr>
+<tr class="memdesc:a63e33d4fa4460795b47f920b55c146dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oblicza mnożnik czasu trudności na podstawie liczby ukończonych zamówień. Im więcej zamówień ukończono, tym mniej czasu gracz otrzymuje (minimum 30% oryginalnego czasu).  <br /></td></tr>
+<tr class="separator:a63e33d4fa4460795b47f920b55c146dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af71417dd94b39e181f27850e75995252" id="r_af71417dd94b39e181f27850e75995252"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af71417dd94b39e181f27850e75995252">GetAvailableTemplateCount</a> ()</td></tr>
+<tr class="memdesc:af71417dd94b39e181f27850e75995252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca liczbę dostępnych szablonów zamówień na podstawie postępu gracza. Na początku dostępne są 3 szablony, po 3 zamówieniach — 6, a po 6 — wszystkie. Implementuje progresywne odblokowanie trudniejszych zamówień.  <br /></td></tr>
+<tr class="separator:af71417dd94b39e181f27850e75995252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4752ca087514457510b26be339755f1c" id="r_a4752ca087514457510b26be339755f1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4752ca087514457510b26be339755f1c">EnsureRuntimeIngredient</a> (<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind, string ingredientName, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> defaultState, Color debugColor, float purchasePrice, float saleValue)</td></tr>
+<tr class="memdesc:a4752ca087514457510b26be339755f1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy składnik w czasie wykonywania, jeśli nie istnieje jeszcze w katalogu. Tworzy instancję ScriptableObject z podanymi parametrami i dodaje ją do katalogu.  <br /></td></tr>
+<tr class="separator:a4752ca087514457510b26be339755f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab072185128748ae18f3e99bd5b8ea7d8" id="r_ab072185128748ae18f3e99bd5b8ea7d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab072185128748ae18f3e99bd5b8ea7d8">NormalizeAssignedIngredient</a> (<a class="el" href="class_ingredient_data.html">IngredientData</a> ingredient)</td></tr>
+<tr class="memdesc:ab072185128748ae18f3e99bd5b8ea7d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalizuje ręcznie przypisany składnik, wykrywając jego typ na podstawie nazwy. Rozpoznaje mięso i pomidor po polskich nazwach (z uwzględnieniem znaków diakrytycznych). Ustawia odpowiedni kolor debugowania, wartość sprzedaży oraz stan początkowy.  <br /></td></tr>
+<tr class="separator:ab072185128748ae18f3e99bd5b8ea7d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3b516935de6dabe1d93703706ff5a14" id="r_aa3b516935de6dabe1d93703706ff5a14"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3b516935de6dabe1d93703706ff5a14">RemoveDiacritics</a> (string value)</td></tr>
+<tr class="memdesc:aa3b516935de6dabe1d93703706ff5a14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Usuwa znaki diakrytyczne (akcenty, ogonki) z podanego tekstu. Używa normalizacji Unicode FormD, aby rozłożyć znaki na części składowe, a następnie odfiltrować znaki niebędące spacjami (NonSpacingMark).  <br /></td></tr>
+<tr class="separator:aa3b516935de6dabe1d93703706ff5a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68352f78a41f6c9c7887e1f4c26a86d4" id="r_a68352f78a41f6c9c7887e1f4c26a86d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68352f78a41f6c9c7887e1f4c26a86d4">BuildDefaultTemplatesIfNeeded</a> ()</td></tr>
+<tr class="memdesc:a68352f78a41f6c9c7887e1f4c26a86d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buduje domyślne szablony zamówień, jeśli lista szablonów jest pusta. Tworzy 8 predefiniowanych zamówień o rosnącej złożoności: klasyczny, mięsny, fresh, warzywny, czosnkowy, ekspresowy, podwójny deluxe i królewski. Każdy szablon ma unikalny identyfikator, nazwę klienta, wymagane składniki i limit czasu.  <br /></td></tr>
+<tr class="separator:a68352f78a41f6c9c7887e1f4c26a86d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a134f3cd97c3dccf31a1925e895a19250" id="r_a134f3cd97c3dccf31a1925e895a19250"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_order.html">Order</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a134f3cd97c3dccf31a1925e895a19250">CreateTemplate</a> (string id, string clientName, string orderName, float timeLimit, params <a class="el" href="class_ingredient_requirement.html">IngredientRequirement</a>[] requirements)</td></tr>
+<tr class="memdesc:a134f3cd97c3dccf31a1925e895a19250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy szablon zamówienia z podanymi parametrami. Automatycznie oblicza nagrodę pieniężną na podstawie wymaganych składników.  <br /></td></tr>
+<tr class="separator:a134f3cd97c3dccf31a1925e895a19250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0ed49ff2b8dc36140d33c7c8f42b6de" id="r_af0ed49ff2b8dc36140d33c7c8f42b6de"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0ed49ff2b8dc36140d33c7c8f42b6de">CalculateReward</a> (List&lt; <a class="el" href="class_ingredient_requirement.html">IngredientRequirement</a> &gt; requirements)</td></tr>
+<tr class="memdesc:af0ed49ff2b8dc36140d33c7c8f42b6de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oblicza nagrodę pieniężną za realizację zamówienia na podstawie listy wymaganych składników. Bazowa nagroda wynosi 10 zł, do której dodawane są wartości sprzedaży każdego składnika pomnożone przez ilość. Przetworzenie składnika (stan inny niż surowy) dodaje bonus 1.5 zł za sztukę. Wynik jest mnożony przez mnożnik nagrody ze sklepu i zaokrąglany.  <br /></td></tr>
+<tr class="separator:af0ed49ff2b8dc36140d33c7c8f42b6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a9fa2c6279d8f5fc2cf11a374ef558332" id="r_a9fa2c6279d8f5fc2cf11a374ef558332"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_order.html">Order</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fa2c6279d8f5fc2cf11a374ef558332">orderTemplates</a> = new List&lt;<a class="el" href="class_order.html">Order</a>&gt;()</td></tr>
+<tr class="memdesc:a9fa2c6279d8f5fc2cf11a374ef558332"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista szablonów zamówień, z których losowane są nowe zamówienia. Szablony definiują wymagane składniki, czas realizacji i inne parametry zamówienia.  <br /></td></tr>
+<tr class="separator:a9fa2c6279d8f5fc2cf11a374ef558332"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a685b7843d87de8fc606f96f3989b1669" id="r_a685b7843d87de8fc606f96f3989b1669"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_order.html">Order</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a685b7843d87de8fc606f96f3989b1669">activeOrder</a></td></tr>
+<tr class="memdesc:a685b7843d87de8fc606f96f3989b1669"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualnie aktywne zamówienie, które gracz musi zrealizować. Wartość null oznacza brak aktywnego zamówienia.  <br /></td></tr>
+<tr class="separator:a685b7843d87de8fc606f96f3989b1669"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab52b2e3e3eaff6598e3304075aa827ef" id="r_ab52b2e3e3eaff6598e3304075aa827ef"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab52b2e3e3eaff6598e3304075aa827ef">activeOrderDescription</a> = &quot;&quot;</td></tr>
+<tr class="memdesc:ab52b2e3e3eaff6598e3304075aa827ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tekstowy opis aktywnego zamówienia wyświetlany graczowi.  <br /></td></tr>
+<tr class="separator:ab52b2e3e3eaff6598e3304075aa827ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b399268e256350ee38f404813a199db" id="r_a5b399268e256350ee38f404813a199db"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b399268e256350ee38f404813a199db">remainingTime</a></td></tr>
+<tr class="memdesc:a5b399268e256350ee38f404813a199db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pozostały czas na realizację aktywnego zamówienia w sekundach.  <br /></td></tr>
+<tr class="separator:a5b399268e256350ee38f404813a199db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a324e6bc341314e5c89c204c2ace27235" id="r_a324e6bc341314e5c89c204c2ace27235"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a324e6bc341314e5c89c204c2ace27235">completedOrders</a></td></tr>
+<tr class="memdesc:a324e6bc341314e5c89c204c2ace27235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Licznik pomyślnie zrealizowanych zamówień od początku sesji gry.  <br /></td></tr>
+<tr class="separator:a324e6bc341314e5c89c204c2ace27235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae722c26ff4ba18362b1e74d91b91e0c1" id="r_ae722c26ff4ba18362b1e74d91b91e0c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae722c26ff4ba18362b1e74d91b91e0c1">failedOrders</a></td></tr>
+<tr class="memdesc:ae722c26ff4ba18362b1e74d91b91e0c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Licznik nieudanych zamówień (przeterminowanych) od początku sesji gry.  <br /></td></tr>
+<tr class="separator:ae722c26ff4ba18362b1e74d91b91e0c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab10233d01541f41aeafedd89f9410462" id="r_ab10233d01541f41aeafedd89f9410462"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab10233d01541f41aeafedd89f9410462">lastMessage</a> = &quot;Przygotuj pierwszy kebab.&quot;</td></tr>
+<tr class="memdesc:ab10233d01541f41aeafedd89f9410462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ostatni komunikat statusowy dotyczący zamówień, wyświetlany w interfejsie użytkownika.  <br /></td></tr>
+<tr class="separator:ab10233d01541f41aeafedd89f9410462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a299baf8857e692c966efb1f85dba3e84" id="r_a299baf8857e692c966efb1f85dba3e84"><td class="memItemLeft" align="right" valign="top">readonly Dictionary&lt; <a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>, <a class="el" href="class_ingredient_data.html">IngredientData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a299baf8857e692c966efb1f85dba3e84">ingredientLookup</a></td></tr>
+<tr class="memdesc:a299baf8857e692c966efb1f85dba3e84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Słownik mapujący typ składnika na jego dane, umożliwiający szybkie wyszukiwanie.  <br /></td></tr>
+<tr class="separator:a299baf8857e692c966efb1f85dba3e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Menedżer systemu zamówień w grze Kebab Chef Symulator. Zarządza generowaniem nowych zamówień z predefiniowanych szablonów, śledzeniem czasu na realizację, walidacją dostarczonych dań, obliczaniem nagród pieniężnych oraz skalowaniem trudności gry. Implementuje wzorzec Singleton — dostępny globalnie przez <a class="el" href="#a67356b19725ec1fd06f71dde1c172dc6" title="Statyczna instancja Singletona menedżera zamówień, dostępna globalnie.">Instance</a>. </p>
+<p>Menedżer automatycznie inicjalizuje katalog składników i domyślne szablony zamówień, jeśli nie zostały one skonfigurowane w inspektorze Unity. Obsługuje tryb wieloosobowy, w którym tylko serwer zarządza czasem i generowaniem zamówień. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ae37d7b99b00bd0c4db4b1eca8d6954b2" name="ae37d7b99b00bd0c4db4b1eca8d6954b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae37d7b99b00bd0c4db4b1eca8d6954b2">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicjalizacja Singletona oraz katalogu składników i szablonów zamówień. Jeśli istnieje już instancja, niszczy duplikat. </p>
+
+</div>
+</div>
+<a id="a68352f78a41f6c9c7887e1f4c26a86d4" name="a68352f78a41f6c9c7887e1f4c26a86d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68352f78a41f6c9c7887e1f4c26a86d4">&#9670;&#160;</a></span>BuildDefaultTemplatesIfNeeded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.BuildDefaultTemplatesIfNeeded </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buduje domyślne szablony zamówień, jeśli lista szablonów jest pusta. Tworzy 8 predefiniowanych zamówień o rosnącej złożoności: klasyczny, mięsny, fresh, warzywny, czosnkowy, ekspresowy, podwójny deluxe i królewski. Każdy szablon ma unikalny identyfikator, nazwę klienta, wymagane składniki i limit czasu. </p>
+
+</div>
+</div>
+<a id="af0ed49ff2b8dc36140d33c7c8f42b6de" name="af0ed49ff2b8dc36140d33c7c8f42b6de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0ed49ff2b8dc36140d33c7c8f42b6de">&#9670;&#160;</a></span>CalculateReward()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float OrderManager.CalculateReward </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; <a class="el" href="class_ingredient_requirement.html">IngredientRequirement</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>requirements</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oblicza nagrodę pieniężną za realizację zamówienia na podstawie listy wymaganych składników. Bazowa nagroda wynosi 10 zł, do której dodawane są wartości sprzedaży każdego składnika pomnożone przez ilość. Przetworzenie składnika (stan inny niż surowy) dodaje bonus 1.5 zł za sztukę. Wynik jest mnożony przez mnożnik nagrody ze sklepu i zaokrąglany. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requirements</td><td>Lista wymagań składnikowych zamówienia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Obliczona nagroda pieniężna zaokrąglona do pełnej kwoty.</dd></dl>
+
+</div>
+</div>
+<a id="ad9bb353f2106d8906254166897d565e2" name="ad9bb353f2106d8906254166897d565e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9bb353f2106d8906254166897d565e2">&#9670;&#160;</a></span>CaptureProgress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_order_progress_save_data.html">OrderProgressSaveData</a> OrderManager.CaptureProgress </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przechwytuje bieżący postęp zamówień do struktury danych przeznaczonej do zapisu. Obejmuje statystyki ukończonych/nieudanych zamówień, czas i dane aktywnego zamówienia. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Obiekt <a class="el" href="class_order_progress_save_data.html">OrderProgressSaveData</a> zawierający aktualny stan postępu.</dd></dl>
+
+</div>
+</div>
+<a id="a134f3cd97c3dccf31a1925e895a19250" name="a134f3cd97c3dccf31a1925e895a19250"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a134f3cd97c3dccf31a1925e895a19250">&#9670;&#160;</a></span>CreateTemplate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_order.html">Order</a> OrderManager.CreateTemplate </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>clientName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>orderName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>timeLimit</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">params <a class="el" href="class_ingredient_requirement.html">IngredientRequirement</a>[]</td>          <td class="paramname"><span class="paramname"><em>requirements</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy szablon zamówienia z podanymi parametrami. Automatycznie oblicza nagrodę pieniężną na podstawie wymaganych składników. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Unikalny identyfikator szablonu zamówienia.</td></tr>
+    <tr><td class="paramname">clientName</td><td>Nazwa klienta składającego zamówienie.</td></tr>
+    <tr><td class="paramname">orderName</td><td>Nazwa zamówienia wyświetlana graczowi.</td></tr>
+    <tr><td class="paramname">timeLimit</td><td>Limit czasu na realizację zamówienia w sekundach.</td></tr>
+    <tr><td class="paramname">requirements</td><td>Tablica wymaganych składników z ich stanami przetworzenia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Nowy obiekt <a class="el" href="class_order.html" title="Klasa reprezentująca zamówienie klienta w grze. Zawiera informacje o wymaganych składnikach,...">Order</a> skonfigurowany jako szablon zamówienia.</dd></dl>
+
+</div>
+</div>
+<a id="a4752ca087514457510b26be339755f1c" name="a4752ca087514457510b26be339755f1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4752ca087514457510b26be339755f1c">&#9670;&#160;</a></span>EnsureRuntimeIngredient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.EnsureRuntimeIngredient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>ingredientName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>defaultState</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>debugColor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>purchasePrice</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>saleValue</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy składnik w czasie wykonywania, jeśli nie istnieje jeszcze w katalogu. Tworzy instancję ScriptableObject z podanymi parametrami i dodaje ją do katalogu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kind</td><td>Typ składnika do utworzenia.</td></tr>
+    <tr><td class="paramname">ingredientName</td><td>Wyświetlana nazwa składnika.</td></tr>
+    <tr><td class="paramname">defaultState</td><td>Domyślny stan przetworzenia składnika.</td></tr>
+    <tr><td class="paramname">debugColor</td><td>Kolor debugowania używany do wizualizacji.</td></tr>
+    <tr><td class="paramname">purchasePrice</td><td>Cena zakupu składnika.</td></tr>
+    <tr><td class="paramname">saleValue</td><td>Wartość sprzedaży składnika.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af71417dd94b39e181f27850e75995252" name="af71417dd94b39e181f27850e75995252"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af71417dd94b39e181f27850e75995252">&#9670;&#160;</a></span>GetAvailableTemplateCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OrderManager.GetAvailableTemplateCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zwraca liczbę dostępnych szablonów zamówień na podstawie postępu gracza. Na początku dostępne są 3 szablony, po 3 zamówieniach — 6, a po 6 — wszystkie. Implementuje progresywne odblokowanie trudniejszych zamówień. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Liczba dostępnych szablonów zamówień.</dd></dl>
+
+</div>
+</div>
+<a id="a63e33d4fa4460795b47f920b55c146dd" name="a63e33d4fa4460795b47f920b55c146dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63e33d4fa4460795b47f920b55c146dd">&#9670;&#160;</a></span>GetDifficultyTimeMultiplier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float OrderManager.GetDifficultyTimeMultiplier </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oblicza mnożnik czasu trudności na podstawie liczby ukończonych zamówień. Im więcej zamówień ukończono, tym mniej czasu gracz otrzymuje (minimum 30% oryginalnego czasu). </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Mnożnik czasu w zakresie [0.3, 1.0].</dd></dl>
+
+</div>
+</div>
+<a id="aa18079c10e79d6f4a0cc8ff273d851ca" name="aa18079c10e79d6f4a0cc8ff273d851ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa18079c10e79d6f4a0cc8ff273d851ca">&#9670;&#160;</a></span>GetIngredientDefinition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_ingredient_data.html">IngredientData</a> OrderManager.GetIngredientDefinition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera definicję danych składnika na podstawie jego typu. Automatycznie inicjalizuje katalog, jeśli jeszcze nie został zbudowany. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kind</td><td>Typ składnika do wyszukania.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Dane składnika <a class="el" href="class_ingredient_data.html" title="Klasa ScriptableObject reprezentująca dane pojedynczego składnika w grze. Przechowuje informacje o na...">IngredientData</a> lub <code>null</code>, jeśli nie znaleziono.</dd></dl>
+
+</div>
+</div>
+<a id="a2f69bd51a04a1b8d344683f0f83bdf66" name="a2f69bd51a04a1b8d344683f0f83bdf66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f69bd51a04a1b8d344683f0f83bdf66">&#9670;&#160;</a></span>InitializeCatalogIfNeeded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.InitializeCatalogIfNeeded </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicjalizuje katalog składników, jeśli nie został jeszcze zbudowany. Przetwarza ręcznie przypisane składniki z listy <a class="el" href="#ab37ca2e523867558803f980a8e3fb059" title="Lista dostępnych danych składników w grze. Może być konfigurowana z poziomu inspektora Unity lub uzup...">dostepneSkladniki</a> oraz dodaje brakujące składniki domyślne (mięso, pomidor, cebula, sałata, sos, ławasz, kebab). </p>
+
+</div>
+</div>
+<a id="ab072185128748ae18f3e99bd5b8ea7d8" name="ab072185128748ae18f3e99bd5b8ea7d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab072185128748ae18f3e99bd5b8ea7d8">&#9670;&#160;</a></span>NormalizeAssignedIngredient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.NormalizeAssignedIngredient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_ingredient_data.html">IngredientData</a></td>          <td class="paramname"><span class="paramname"><em>ingredient</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Normalizuje ręcznie przypisany składnik, wykrywając jego typ na podstawie nazwy. Rozpoznaje mięso i pomidor po polskich nazwach (z uwzględnieniem znaków diakrytycznych). Ustawia odpowiedni kolor debugowania, wartość sprzedaży oraz stan początkowy. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ingredient</td><td>Dane składnika do znormalizowania.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a42b33bdfd9b08d3f626226965a74fe56" name="a42b33bdfd9b08d3f626226965a74fe56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b33bdfd9b08d3f626226965a74fe56">&#9670;&#160;</a></span>NoweZamowienie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.NoweZamowienie </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generuje nowe losowe zamówienie z dostępnych szablonów. Uwzględnia progresję trudności (więcej szablonów w miarę ukończonych zamówień), oblicza nagrodę pieniężną, stosuje bonus czasowy ze sklepu i mnożnik trudności do czasu realizacji. </p>
+
+</div>
+</div>
+<a id="a964ba0119968d7896f62b902db0aedba" name="a964ba0119968d7896f62b902db0aedba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a964ba0119968d7896f62b902db0aedba">&#9670;&#160;</a></span>PlayTimeoutFeedback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.PlayTimeoutFeedback </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekty zwrotne po przekroczeniu czasu zamówienia. Obejmuje dźwięk porażki, efekt wizualny timeout oraz wstrząs i błysk kamery. </p>
+
+</div>
+</div>
+<a id="aa3b516935de6dabe1d93703706ff5a14" name="aa3b516935de6dabe1d93703706ff5a14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3b516935de6dabe1d93703706ff5a14">&#9670;&#160;</a></span>RemoveDiacritics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string OrderManager.RemoveDiacritics </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Usuwa znaki diakrytyczne (akcenty, ogonki) z podanego tekstu. Używa normalizacji Unicode FormD, aby rozłożyć znaki na części składowe, a następnie odfiltrować znaki niebędące spacjami (NonSpacingMark). </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Tekst, z którego mają zostać usunięte znaki diakrytyczne.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Tekst bez znaków diakrytycznych lub pusty ciąg, jeśli wejście jest puste.</dd></dl>
+
+</div>
+</div>
+<a id="acb3ab348bfa6f299fffa95abee42590f" name="acb3ab348bfa6f299fffa95abee42590f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb3ab348bfa6f299fffa95abee42590f">&#9670;&#160;</a></span>RestoreProgress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.RestoreProgress </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_order_progress_save_data.html">OrderProgressSaveData</a></td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przywraca postęp zamówień z wcześniej zapisanych danych. Odtwarza statystyki, aktywne zamówienie z wymaganiami składników oraz pozostały czas realizacji (minimum 5 sekund). Jeśli dane nie zawierają aktywnego zamówienia, generowane jest nowe. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Dane zapisu postępu zamówień do przywrócenia.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afd824ac392c6ca69082c509cd4ef7b89" name="afd824ac392c6ca69082c509cd4ef7b89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd824ac392c6ca69082c509cd4ef7b89">&#9670;&#160;</a></span>SetOrderStateFromNetwork()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.SetOrderStateFromNetwork </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>description</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>time</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>completed</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>failed</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>message</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia stan zamówienia na podstawie danych otrzymanych z sieci (dla klientów). Używane do synchronizacji stanu zamówienia w trybie wieloosobowym. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">description</td><td>Opis aktywnego zamówienia.</td></tr>
+    <tr><td class="paramname">time</td><td>Pozostały czas na realizację.</td></tr>
+    <tr><td class="paramname">completed</td><td>Liczba ukończonych zamówień.</td></tr>
+    <tr><td class="paramname">failed</td><td>Liczba nieudanych zamówień.</td></tr>
+    <tr><td class="paramname">message</td><td>Ostatni komunikat statusowy.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad495180fa97e427dcdbf19fa7d5c5950" name="ad495180fa97e427dcdbf19fa7d5c5950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad495180fa97e427dcdbf19fa7d5c5950">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wywoływana po inicjalizacji. Generuje pierwsze zamówienie, chyba że gra działa w trybie wieloosobowym jako klient (nie serwer). </p>
+
+</div>
+</div>
+<a id="a8e23cf78a52fc5bf998a19009014ab22" name="a8e23cf78a52fc5bf998a19009014ab22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e23cf78a52fc5bf998a19009014ab22">&#9670;&#160;</a></span>SyncNetworkState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.SyncNetworkState </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>templateIndex</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>desc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>time</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>comp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fail</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Synchronizuje stan zamówienia z serwera sieciowego. Ustawia aktywne zamówienie na podstawie indeksu szablonu oraz aktualizuje opis, czas, liczbę zrealizowanych i nieudanych zamówień. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">templateIndex</td><td>Indeks szablonu zamówienia na serwerze.</td></tr>
+    <tr><td class="paramname">desc</td><td>Opis aktywnego zamówienia.</td></tr>
+    <tr><td class="paramname">time</td><td>Pozostały czas na realizację w sekundach.</td></tr>
+    <tr><td class="paramname">comp</td><td>Liczba zrealizowanych zamówień.</td></tr>
+    <tr><td class="paramname">fail</td><td>Liczba nieudanych zamówień.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a96fa824300c3f4fea397ba2709e7844b" name="a96fa824300c3f4fea397ba2709e7844b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96fa824300c3f4fea397ba2709e7844b">&#9670;&#160;</a></span>TryDeliverDish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool OrderManager.TryDeliverDish </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kitchen_item.html">KitchenItem</a></td>          <td class="paramname"><span class="paramname"><em>item</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out string</td>          <td class="paramname"><span class="paramname"><em>message</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Próbuje dostarczyć przygotowane danie i zwalidować je względem aktywnego zamówienia. W przypadku sukcesu nalicza nagrodę pieniężną, generuje nowe zamówienie i zapisuje grę. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>Przedmiot kuchenny (danie) do dostarczenia.</td></tr>
+    <tr><td class="paramname">message</td><td>Komunikat wyjściowy opisujący wynik operacji.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd><code>true</code> jeśli danie pasuje do zamówienia; <code>false</code> w przeciwnym razie.</dd></dl>
+
+</div>
+</div>
+<a id="aa49e4926d41a0e7def3c94f01d93be22" name="aa49e4926d41a0e7def3c94f01d93be22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa49e4926d41a0e7def3c94f01d93be22">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderManager.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizacja wywoływana co klatkę. Odlicza czas na realizację aktywnego zamówienia. Jeśli czas się skończy, zamówienie jest oznaczane jako nieudane, odtwarzany jest efekt zwrotny i generowane jest nowe zamówienie. Działa tylko po stronie serwera w trybie wieloosobowym. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a685b7843d87de8fc606f96f3989b1669" name="a685b7843d87de8fc606f96f3989b1669"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a685b7843d87de8fc606f96f3989b1669">&#9670;&#160;</a></span>activeOrder</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_order.html">Order</a> OrderManager.activeOrder</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualnie aktywne zamówienie, które gracz musi zrealizować. Wartość null oznacza brak aktywnego zamówienia. </p>
+
+</div>
+</div>
+<a id="ab52b2e3e3eaff6598e3304075aa827ef" name="ab52b2e3e3eaff6598e3304075aa827ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab52b2e3e3eaff6598e3304075aa827ef">&#9670;&#160;</a></span>activeOrderDescription</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string OrderManager.activeOrderDescription = &quot;&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekstowy opis aktywnego zamówienia wyświetlany graczowi. </p>
+
+</div>
+</div>
+<a id="a324e6bc341314e5c89c204c2ace27235" name="a324e6bc341314e5c89c204c2ace27235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a324e6bc341314e5c89c204c2ace27235">&#9670;&#160;</a></span>completedOrders</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OrderManager.completedOrders</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Licznik pomyślnie zrealizowanych zamówień od początku sesji gry. </p>
+
+</div>
+</div>
+<a id="ab37ca2e523867558803f980a8e3fb059" name="ab37ca2e523867558803f980a8e3fb059"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37ca2e523867558803f980a8e3fb059">&#9670;&#160;</a></span>dostepneSkladniki</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_ingredient_data.html">IngredientData</a>&gt; OrderManager.dostepneSkladniki = new List&lt;<a class="el" href="class_ingredient_data.html">IngredientData</a>&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lista dostępnych danych składników w grze. Może być konfigurowana z poziomu inspektora Unity lub uzupełniana automatycznie w czasie wykonywania. </p>
+
+</div>
+</div>
+<a id="ae722c26ff4ba18362b1e74d91b91e0c1" name="ae722c26ff4ba18362b1e74d91b91e0c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae722c26ff4ba18362b1e74d91b91e0c1">&#9670;&#160;</a></span>failedOrders</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OrderManager.failedOrders</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Licznik nieudanych zamówień (przeterminowanych) od początku sesji gry. </p>
+
+</div>
+</div>
+<a id="a299baf8857e692c966efb1f85dba3e84" name="a299baf8857e692c966efb1f85dba3e84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a299baf8857e692c966efb1f85dba3e84">&#9670;&#160;</a></span>ingredientLookup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Dictionary&lt;<a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>, <a class="el" href="class_ingredient_data.html">IngredientData</a>&gt; OrderManager.ingredientLookup</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Wartość początkowa:</b><div class="fragment"><div class="line">=</div>
+<div class="line">        <span class="keyword">new</span> Dictionary&lt;IngredientKind, IngredientData&gt;()</div>
+</div><!-- fragment -->
+<p>Słownik mapujący typ składnika na jego dane, umożliwiający szybkie wyszukiwanie. </p>
+
+</div>
+</div>
+<a id="ab10233d01541f41aeafedd89f9410462" name="ab10233d01541f41aeafedd89f9410462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab10233d01541f41aeafedd89f9410462">&#9670;&#160;</a></span>lastMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string OrderManager.lastMessage = &quot;Przygotuj pierwszy kebab.&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ostatni komunikat statusowy dotyczący zamówień, wyświetlany w interfejsie użytkownika. </p>
+
+</div>
+</div>
+<a id="a9fa2c6279d8f5fc2cf11a374ef558332" name="a9fa2c6279d8f5fc2cf11a374ef558332"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fa2c6279d8f5fc2cf11a374ef558332">&#9670;&#160;</a></span>orderTemplates</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_order.html">Order</a>&gt; OrderManager.orderTemplates = new List&lt;<a class="el" href="class_order.html">Order</a>&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lista szablonów zamówień, z których losowane są nowe zamówienia. Szablony definiują wymagane składniki, czas realizacji i inne parametry zamówienia. </p>
+
+</div>
+</div>
+<a id="a5b399268e256350ee38f404813a199db" name="a5b399268e256350ee38f404813a199db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b399268e256350ee38f404813a199db">&#9670;&#160;</a></span>remainingTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float OrderManager.remainingTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pozostały czas na realizację aktywnego zamówienia w sekundach. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="a2cf3111cd49936a69182535be487817e" name="a2cf3111cd49936a69182535be487817e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cf3111cd49936a69182535be487817e">&#9670;&#160;</a></span>ActiveOrder</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_order.html">Order</a> OrderManager.ActiveOrder</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualnie aktywne zamówienie. </p>
+<p>Obiekt <a class="el" href="class_order.html" title="Klasa reprezentująca zamówienie klienta w grze. Zawiera informacje o wymaganych składnikach,...">Order</a> lub <code>null</code>, gdy brak aktywnego zamówienia.</p>
+
+</div>
+</div>
+<a id="aa5a5e4631eed4582133aad973b9808b6" name="aa5a5e4631eed4582133aad973b9808b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5a5e4631eed4582133aad973b9808b6">&#9670;&#160;</a></span>ActiveOrderDescription</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string OrderManager.ActiveOrderDescription</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tekstowy opis aktywnego zamówienia. </p>
+
+</div>
+</div>
+<a id="a40b6411a694a1a7e289982d1512ed29c" name="a40b6411a694a1a7e289982d1512ed29c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40b6411a694a1a7e289982d1512ed29c">&#9670;&#160;</a></span>ActiveTemplateIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OrderManager.ActiveTemplateIndex = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indeks aktualnego szablonu zamówienia w liście <a class="el" href="#a9fa2c6279d8f5fc2cf11a374ef558332" title="Lista szablonów zamówień, z których losowane są nowe zamówienia. Szablony definiują wymagane składnik...">orderTemplates</a>. Wartość -1 oznacza, że żadne zamówienie nie zostało jeszcze wygenerowane. </p>
+
+</div>
+</div>
+<a id="a3bc02494a2f9d73e96c6af3c056fc6ec" name="a3bc02494a2f9d73e96c6af3c056fc6ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bc02494a2f9d73e96c6af3c056fc6ec">&#9670;&#160;</a></span>CompletedOrders</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OrderManager.CompletedOrders</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liczba zrealizowanych zamówień. </p>
+
+</div>
+</div>
+<a id="a7de30ecddf21289538895ddee4dcba1f" name="a7de30ecddf21289538895ddee4dcba1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7de30ecddf21289538895ddee4dcba1f">&#9670;&#160;</a></span>FailedOrders</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OrderManager.FailedOrders</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liczba nieudanych zamówień. </p>
+
+</div>
+</div>
+<a id="a75c01af4fa7b37ec82bdfa496ddb561d" name="a75c01af4fa7b37ec82bdfa496ddb561d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75c01af4fa7b37ec82bdfa496ddb561d">&#9670;&#160;</a></span>HasActiveOrder</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool OrderManager.HasActiveOrder</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Określa, czy istnieje aktywne zamówienie do realizacji. </p>
+<p><code>true</code> jeśli istnieje aktywne zamówienie; w przeciwnym razie <code>false</code>.</p>
+
+</div>
+</div>
+<a id="a67356b19725ec1fd06f71dde1c172dc6" name="a67356b19725ec1fd06f71dde1c172dc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67356b19725ec1fd06f71dde1c172dc6">&#9670;&#160;</a></span>Instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_order_manager.html">OrderManager</a> OrderManager.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Statyczna instancja Singletona menedżera zamówień, dostępna globalnie. </p>
+
+</div>
+</div>
+<a id="a5d91eb1bfea8ac1a1474aa5c43d7589e" name="a5d91eb1bfea8ac1a1474aa5c43d7589e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d91eb1bfea8ac1a1474aa5c43d7589e">&#9670;&#160;</a></span>LastOrderMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string OrderManager.LastOrderMessage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ostatni komunikat dotyczący statusu zamówienia. </p>
+
+</div>
+</div>
+<a id="ab20e15c7276331e4578522b1be0c17dc" name="ab20e15c7276331e4578522b1be0c17dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab20e15c7276331e4578522b1be0c17dc">&#9670;&#160;</a></span>RemainingOrderTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float OrderManager.RemainingOrderTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pozostały czas na realizację zamówienia w sekundach (alias dla <a class="el" href="#a070315df77fcde4ae341a1c77d9f881d" title="Pozostały czas na realizację zamówienia w sekundach.">RemainingTime</a>). </p>
+
+</div>
+</div>
+<a id="a070315df77fcde4ae341a1c77d9f881d" name="a070315df77fcde4ae341a1c77d9f881d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a070315df77fcde4ae341a1c77d9f881d">&#9670;&#160;</a></span>RemainingTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float OrderManager.RemainingTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pozostały czas na realizację zamówienia w sekundach. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_order_manager_8cs.html">OrderManager.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

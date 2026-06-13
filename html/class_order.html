@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy Order</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-attribs">Atrybuty publiczne</a> &#124;
+<a href="class_order-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy Order</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa reprezentująca zamówienie klienta w grze. Zawiera informacje o wymaganych składnikach, nazwie zamówienia, danych klienta, limicie czasu na realizację oraz nagrodzie pieniężnej.  
+ <a href="#details">Więcej...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a8770cc496e205c71f773cd6cc322edfd" id="r_a8770cc496e205c71f773cd6cc322edfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_order.html">Order</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8770cc496e205c71f773cd6cc322edfd">Clone</a> ()</td></tr>
+<tr class="memdesc:a8770cc496e205c71f773cd6cc322edfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy głęboką kopię zamówienia wraz ze wszystkimi wymaganymi składnikami. Nowy obiekt jest niezależny od oryginału — modyfikacje kopii nie wpływają na oryginalne zamówienie.  <br /></td></tr>
+<tr class="separator:a8770cc496e205c71f773cd6cc322edfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a309695e9d885d9edd276df9d257f85be" id="r_a309695e9d885d9edd276df9d257f85be"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a309695e9d885d9edd276df9d257f85be">BuildDescription</a> ()</td></tr>
+<tr class="memdesc:a309695e9d885d9edd276df9d257f85be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buduje czytelny dla człowieka opis zamówienia w języku polskim. Format: "{nazwaZamowienia} dla {nazwaKlienta}: {lista składników}".  <br /></td></tr>
+<tr class="separator:a309695e9d885d9edd276df9d257f85be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atrybuty publiczne</h2></td></tr>
+<tr class="memitem:a8d989f56c2bca84c902953eba3b1028d" id="r_a8d989f56c2bca84c902953eba3b1028d"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d989f56c2bca84c902953eba3b1028d">orderId</a> = &quot;classic-kebab&quot;</td></tr>
+<tr class="memdesc:a8d989f56c2bca84c902953eba3b1028d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unikalny identyfikator zamówienia. Używany do rozróżniania zamówień w systemie zarządzania.  <br /></td></tr>
+<tr class="separator:a8d989f56c2bca84c902953eba3b1028d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add3f5699c3eadc769b20185d935e3835" id="r_add3f5699c3eadc769b20185d935e3835"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add3f5699c3eadc769b20185d935e3835">nazwaKlienta</a> = &quot;Klient&quot;</td></tr>
+<tr class="memdesc:add3f5699c3eadc769b20185d935e3835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nazwa klienta składającego zamówienie. Wyświetlana w interfejsie użytkownika przy opisie zamówienia.  <br /></td></tr>
+<tr class="separator:add3f5699c3eadc769b20185d935e3835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab88d2087a6453b3f080f13f9ed56a142" id="r_ab88d2087a6453b3f080f13f9ed56a142"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab88d2087a6453b3f080f13f9ed56a142">nazwaZamowienia</a> = &quot;Klasyczny kebab&quot;</td></tr>
+<tr class="memdesc:ab88d2087a6453b3f080f13f9ed56a142"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nazwa zamówienia (np. "Klasyczny kebab"). Określa typ potrawy zamówionej przez klienta.  <br /></td></tr>
+<tr class="separator:ab88d2087a6453b3f080f13f9ed56a142"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dc823e81b193d4dbaa76c50aced16ac" id="r_a1dc823e81b193d4dbaa76c50aced16ac"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_ingredient_requirement.html">IngredientRequirement</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1dc823e81b193d4dbaa76c50aced16ac">wymaganeSkladniki</a> = new List&lt;<a class="el" href="class_ingredient_requirement.html">IngredientRequirement</a>&gt;()</td></tr>
+<tr class="memdesc:a1dc823e81b193d4dbaa76c50aced16ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista wymaganych składników zamówienia. Każdy element określa rodzaj składnika, wymagany stan przetworzenia oraz ilość. Zamówienie jest uznane za zrealizowane, gdy dostarczona potrawa zawiera dokładnie te składniki.  <br /></td></tr>
+<tr class="separator:a1dc823e81b193d4dbaa76c50aced16ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dfa0f1a81647bea476986beca952585" id="r_a9dfa0f1a81647bea476986beca952585"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dfa0f1a81647bea476986beca952585">czasNaRealizacje</a> = 90f</td></tr>
+<tr class="memdesc:a9dfa0f1a81647bea476986beca952585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maksymalny czas na realizację zamówienia, wyrażony w sekundach. Po upływie tego czasu zamówienie może zostać anulowane lub gracz traci punkty.  <br /></td></tr>
+<tr class="separator:a9dfa0f1a81647bea476986beca952585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1a5ca3e65c709c97655ab19fc7a0a08" id="r_aa1a5ca3e65c709c97655ab19fc7a0a08"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1a5ca3e65c709c97655ab19fc7a0a08">nagrodaPieniezna</a> = 30f</td></tr>
+<tr class="memdesc:aa1a5ca3e65c709c97655ab19fc7a0a08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nagroda pieniężna przyznawana graczowi za poprawne zrealizowanie zamówienia. Wyrażona w walucie gry.  <br /></td></tr>
+<tr class="separator:aa1a5ca3e65c709c97655ab19fc7a0a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa reprezentująca zamówienie klienta w grze. Zawiera informacje o wymaganych składnikach, nazwie zamówienia, danych klienta, limicie czasu na realizację oraz nagrodzie pieniężnej. </p>
+<p>Zamówienie jest serializowalne, co umożliwia jego przechowywanie w edytorze Unity oraz przesyłanie przez sieć. Lista wymaganych składników (<a class="el" href="#a1dc823e81b193d4dbaa76c50aced16ac" title="Lista wymaganych składników zamówienia. Każdy element określa rodzaj składnika, wymagany stan przetwo...">wymaganeSkladniki</a>) definiuje, jakie składniki i w jakim stanie przetworzenia muszą znaleźć się w gotowej potrawie, aby zamówienie zostało uznane za zrealizowane. </p>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_ingredient_requirement.html" title="Klasa reprezentująca wymaganie dotyczące pojedynczego składnika w zamówieniu. Określa,...">IngredientRequirement</a>, <a class="el" href="class_kitchen_order_validator.html" title="Klasa statyczna odpowiedzialna za walidację zgodności przygotowanej potrawy z zamówieniem klienta....">KitchenOrderValidator</a></dd></dl>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a309695e9d885d9edd276df9d257f85be" name="a309695e9d885d9edd276df9d257f85be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a309695e9d885d9edd276df9d257f85be">&#9670;&#160;</a></span>BuildDescription()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Order.BuildDescription </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Buduje czytelny dla człowieka opis zamówienia w języku polskim. Format: "{nazwaZamowienia} dla {nazwaKlienta}: {lista składników}". </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Sformatowany tekst opisu zamówienia zawierający nazwę, klienta i listę składników.</dd></dl>
+<p>Przykładowy wynik: "Klasyczny kebab dla Jan: Mieso (upieczony), Pomidor, Cebula (pokrojony)" </p>
+
+</div>
+</div>
+<a id="a8770cc496e205c71f773cd6cc322edfd" name="a8770cc496e205c71f773cd6cc322edfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8770cc496e205c71f773cd6cc322edfd">&#9670;&#160;</a></span>Clone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_order.html">Order</a> Order.Clone </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy głęboką kopię zamówienia wraz ze wszystkimi wymaganymi składnikami. Nowy obiekt jest niezależny od oryginału — modyfikacje kopii nie wpływają na oryginalne zamówienie. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Nowa instancja <a class="el" href="class_order.html" title="Klasa reprezentująca zamówienie klienta w grze. Zawiera informacje o wymaganych składnikach,...">Order</a> będąca pełną kopią bieżącego zamówienia.</dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a9dfa0f1a81647bea476986beca952585" name="a9dfa0f1a81647bea476986beca952585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dfa0f1a81647bea476986beca952585">&#9670;&#160;</a></span>czasNaRealizacje</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Order.czasNaRealizacje = 90f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maksymalny czas na realizację zamówienia, wyrażony w sekundach. Po upływie tego czasu zamówienie może zostać anulowane lub gracz traci punkty. </p>
+
+</div>
+</div>
+<a id="aa1a5ca3e65c709c97655ab19fc7a0a08" name="aa1a5ca3e65c709c97655ab19fc7a0a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1a5ca3e65c709c97655ab19fc7a0a08">&#9670;&#160;</a></span>nagrodaPieniezna</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Order.nagrodaPieniezna = 30f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nagroda pieniężna przyznawana graczowi za poprawne zrealizowanie zamówienia. Wyrażona w walucie gry. </p>
+
+</div>
+</div>
+<a id="add3f5699c3eadc769b20185d935e3835" name="add3f5699c3eadc769b20185d935e3835"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add3f5699c3eadc769b20185d935e3835">&#9670;&#160;</a></span>nazwaKlienta</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Order.nazwaKlienta = &quot;Klient&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nazwa klienta składającego zamówienie. Wyświetlana w interfejsie użytkownika przy opisie zamówienia. </p>
+
+</div>
+</div>
+<a id="ab88d2087a6453b3f080f13f9ed56a142" name="ab88d2087a6453b3f080f13f9ed56a142"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab88d2087a6453b3f080f13f9ed56a142">&#9670;&#160;</a></span>nazwaZamowienia</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Order.nazwaZamowienia = &quot;Klasyczny kebab&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nazwa zamówienia (np. "Klasyczny kebab"). Określa typ potrawy zamówionej przez klienta. </p>
+
+</div>
+</div>
+<a id="a8d989f56c2bca84c902953eba3b1028d" name="a8d989f56c2bca84c902953eba3b1028d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d989f56c2bca84c902953eba3b1028d">&#9670;&#160;</a></span>orderId</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Order.orderId = &quot;classic-kebab&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unikalny identyfikator zamówienia. Używany do rozróżniania zamówień w systemie zarządzania. </p>
+
+</div>
+</div>
+<a id="a1dc823e81b193d4dbaa76c50aced16ac" name="a1dc823e81b193d4dbaa76c50aced16ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dc823e81b193d4dbaa76c50aced16ac">&#9670;&#160;</a></span>wymaganeSkladniki</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_ingredient_requirement.html">IngredientRequirement</a>&gt; Order.wymaganeSkladniki = new List&lt;<a class="el" href="class_ingredient_requirement.html">IngredientRequirement</a>&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lista wymaganych składników zamówienia. Każdy element określa rodzaj składnika, wymagany stan przetworzenia oraz ilość. Zamówienie jest uznane za zrealizowane, gdy dostarczona potrawa zawiera dokładnie te składniki. </p>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_ingredient_requirement.html" title="Klasa reprezentująca wymaganie dotyczące pojedynczego składnika w zamówieniu. Określa,...">IngredientRequirement</a></dd></dl>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_order_8cs.html">Order.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

@@ -1,0 +1,1073 @@
+\doxysection{Dokumentacja klasy Kitchen\+Game\+Bootstrap}
+\hypertarget{class_kitchen_game_bootstrap}{}\label{class_kitchen_game_bootstrap}\index{KitchenGameBootstrap@{KitchenGameBootstrap}}
+
+
+Główna klasa bootstrapowa gry kuchennej. Odpowiada za proceduralne generowanie całej sceny kuchni kebabowej w czasie wykonania, włączając w to środowisko (podłoga, ściany, sufit), stacje kuchenne, oświetlenie, modele 3D, konfigurację sieciową oraz inicjalizację wszystkich menedżerów gry.  
+
+
+Diagram dziedziczenia dla Kitchen\+Game\+Bootstrap\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_kitchen_game_bootstrap}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Shader \mbox{\hyperlink{class_kitchen_game_bootstrap_a676099f46549840ca548f812ea53f8ad}{Get\+Lit\+Shader}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera buforowany shader URP Lit, a w razie jego braku — shader Standard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a09906d4a4958de467852e113523ce9a2}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Główna metoda inicjalizacyjna wywoływana przez Unity w momencie startu komponentu. Sekwencyjnie uruchamia wszystkie etapy budowania sceny kuchni. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a604e566f9422b077a82da81d88c16397}{Ensure\+Network\+Setup}} ()
+\begin{DoxyCompactList}\small\item\em Zapewnia istnienie obiektu konfiguracji sieciowej na scenie. Tworzy komponent \doxylink{class_network_setup}{Network\+Setup} oraz \doxylink{class_lobby_u_i}{Lobby\+UI}, jeśli nie istnieją. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a62ed4c4947c5ed07f1cace4c8d03a49b}{Ensure\+Managers}} ()
+\begin{DoxyCompactList}\small\item\em Zapewnia istnienie wszystkich menedżerów gry na scenie. Tworzy obiekt "{}\+Game\+Manager"{} i dołącza do niego brakujące komponenty menedżerów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a28d240b7d4b767b7c1e04aee204cc8e6}{Ensure\+Effects}} ()
+\begin{DoxyCompactList}\small\item\em Zapewnia istnienie efektów wizualnych, dźwiękowych i dodatkowych komponentów UI na scenie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a4f8b816d66a6db5d95be0e8043058e34}{Build\+Kitchen\+If\+Needed}} ()
+\begin{DoxyCompactList}\small\item\em Buduje wszystkie stacje kuchenne, jeśli jeszcze nie istnieją na scenie. Tworzy pełne wyposażenie kuchni kebabowej\+: grill, pojemniki na składniki, deskę do krojenia, stanowisko montażu oraz punkt wydawania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_afe8e4d061169e21772a1b351437207ab}{Build\+Environment\+If\+Needed}} ()
+\begin{DoxyCompactList}\small\item\em Buduje środowisko 3D kuchni, jeśli jeszcze nie istnieje na scenie. Tworzy podłogę, ściany, sufit, panele ścienne, listwy sufitowe, blaty robocze oraz importowane detale wizualne (modele 3D). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a124fea1deb7ba621de439c2b1f9ac6fa}{Build\+Order\+Board\+If\+Needed}} ()
+\begin{DoxyCompactList}\small\item\em Buduje tablicę zamówień kuchennych, jeśli jeszcze nie istnieje na scenie. Tablica jest umieszczana na tylnej ścianie kuchni i wyświetla aktualne zamówienia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_ac11101f850bc6989b1204bad818fcebd}{Configure\+Lighting}} ()
+\begin{DoxyCompactList}\small\item\em Konfiguruje oświetlenie sceny kuchni — światło otoczenia, kierunkowe i reflektory punktowe. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kitchen_station}{Kitchen\+Station}} \mbox{\hyperlink{class_kitchen_game_bootstrap_ad601ab8362f6013359d71b94c45e4003}{Create\+Station}} (Transform parent, string station\+Name, \mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}} station\+Type, Vector3 position, Color color, \mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} source\+Ingredient, float processing\+Duration)
+\begin{DoxyCompactList}\small\item\em Tworzy pojedynczą stację kuchenną z prymitywu, konfiguruje ją i dodaje znacznik wizualny oraz komponenty sieciowe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a0b7e8f09fb5c7b3d9d93109b0f145344}{Create\+Customer}} (Transform parent, Vector3 position)
+\begin{DoxyCompactList}\small\item\em Tworzy model klienta oczekującego przy okienku wydawania. Próbuje załadować importowany model 3D klienta, a w razie niepowodzenia tworzy zastępczą reprezentację z prymitywów (kapsuła + kula). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_ab8262ff019287c242a257e11679f1e41}{Create\+Counter}} (Transform parent, string object\+Name, Vector3 position, Vector3 scale, bool visible=true)
+\begin{DoxyCompactList}\small\item\em Tworzy blat roboczy (stół) składający się z bloku bazowego i bloku wierzchniego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_af4285a08b765f573bbf1b64fef28b2a9}{Create\+Corner\+Counter\+Blockers}} (Transform parent)
+\begin{DoxyCompactList}\small\item\em Tworzy grupę niewidocznych koliderów blokujących narożnik prawego górnego rogu kuchni. Zapobiega przechodzeniu gracza przez narożne blaty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a4fdf69892f0d76b2519b014a0c0f2698}{Create\+Invisible\+Collider}} (Transform parent, string object\+Name, Vector3 local\+Position, Vector3 local\+Scale)
+\begin{DoxyCompactList}\small\item\em Tworzy niewidoczny obiekt z koliderem Box\+Collider — używany jako bloker kolizji. \end{DoxyCompactList}\item 
+Light \mbox{\hyperlink{class_kitchen_game_bootstrap_a43ce33448f6eff4d3d6f88f64671f158}{Find\+Directional\+Light}} ()
+\begin{DoxyCompactList}\small\item\em Wyszukuje istniejące na scenie światło kierunkowe (Directional Light). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_aa226b6a5a1218cf56947f714a1b51926}{Create\+Spot\+Light}} (Transform parent, string light\+Name, Vector3 local\+Position, Vector3 local\+Rotation, Color color, float intensity, float range, float spot\+Angle)
+\begin{DoxyCompactList}\small\item\em Tworzy lub konfiguruje istniejący reflektor punktowy (spot light) z efektem migotania lampy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a2359a7fe7dcb1a2f752b67807e95aa22}{Create\+Ceiling\+Lamp}} (Transform parent, Vector3 position)
+\begin{DoxyCompactList}\small\item\em Tworzy dekoracyjną lampę sufitową składającą się z cylindrycznego uchwytu i sferycznego klosza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a9d03399cea6f099abaad392d3ed0afd6}{Create\+Imported\+Environment\+Details}} (Transform parent)
+\begin{DoxyCompactList}\small\item\em Tworzy wszystkie importowane detale wizualne środowiska kuchni\+: lampy, półki, stoły, narożny blat, stół użytkowy, kasę fiskalną i wystawę z tacą. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a798b22b764dbff75e761aea1737d7eb4}{Create\+Delivery\+Tray\+Display}} (Transform parent)
+\begin{DoxyCompactList}\small\item\em Tworzy wystawę z tacą do serwowania i modelem kebaba przy wejściu. Kebab jest początkowo ukryty i pokazywany po wydaniu zamówienia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a5fdf585a1888eb7d0398b1677db5ee60}{Create\+Imported\+Station\+Details}} (Transform parent, string station\+Name, \mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}} station\+Type, \mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} source\+Ingredient)
+\begin{DoxyCompactList}\small\item\em Tworzy importowane detale wizualne specyficzne dla danego typu stacji kuchennej. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a66e366f55b0ddf4a6975afa32dc4ecb8}{Create\+Cutting\+Board\+Details}} (Transform parent)
+\begin{DoxyCompactList}\small\item\em Tworzy detale wizualne stacji deski do krojenia — deskę, pokrojone warzywa i nóż szefa kuchni. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a7b8ba7b0deea4abc97b1ee9d50b1a948}{Create\+Ingredient\+Visual}} (Transform parent, \mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}} source\+Ingredient)
+\begin{DoxyCompactList}\small\item\em Tworzy wizualne reprezentacje składników na stacji źródłowej — kilka instancji modeli 3D rozmieszczonych na tackce z różnymi rotacjami. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_abf95316f0c17d52eeb86e4724b5c83ca}{Create\+Lavash\+Visual}} (Transform parent, float surfaceY)
+\begin{DoxyCompactList}\small\item\em Tworzy wizualną reprezentację chlebka ławasz na stacji źródłowej. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_kitchen_game_bootstrap_a9ac5077b0b02bf662b4d097239cb5c97}{Create\+Imported\+Model}} (Transform parent, string resource\+Name, string object\+Name, Vector3 local\+Position, Vector3 local\+Rotation, float target\+Max\+Size)
+\begin{DoxyCompactList}\small\item\em Ładuje i tworzy instancję importowanego modelu 3D z folderu Resources. Przeciążenie bez mnożnika skali — deleguje do pełnej wersji z mnożnikiem Vector3.\+one. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_kitchen_game_bootstrap_a68a3b977aa56960f8786d33e8afb4c2d}{Create\+Imported\+Model}} (Transform parent, string resource\+Name, string object\+Name, Vector3 local\+Position, Vector3 local\+Rotation, float target\+Max\+Size, Vector3 scale\+Multiplier)
+\begin{DoxyCompactList}\small\item\em Ładuje i tworzy instancję importowanego modelu 3D z folderu Resources z pełną kontrolą nad skalowaniem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_ab051e34a9f4a16953570e4587616e261}{Align\+Model\+Bottom\+To\+LocalY}} (Transform model\+Root, float target\+Bottom\+LocalY)
+\begin{DoxyCompactList}\small\item\em Wyrównuje spód modelu (najniższy punkt bounding box) do zadanej wysokości Y w przestrzeni lokalnej rodzica. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_ae7f0385ca565a2726bdb7cfa12777ae7}{Apply\+Fallback\+Materials\+If\+Missing}} (Game\+Object model, string resource\+Name)
+\begin{DoxyCompactList}\small\item\em Stosuje materiały zastępcze (fallback) do rendererów importowanego modelu, które nie posiadają poprawnie przypisanych materiałów. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_game_bootstrap_a8e759c35ee55bdd0c0e076147a28229c}{Has\+Imported\+Material}} (Renderer renderer)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy renderer posiada poprawnie zaimportowany materiał (z teksturą lub niestandardową nazwą). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kitchen_game_bootstrap_a7ddbb570c911d818a604d2a8297cc7c4}{Has\+Material\+Texture}} (Material material)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy materiał posiada przypisaną teksturę w jednym ze standardowych slotów. \end{DoxyCompactList}\item 
+Material \mbox{\hyperlink{class_kitchen_game_bootstrap_ac2052f75b38c1aa0f2306a75ce8feaed}{Create\+Imported\+Material}} (string resource\+Name, string renderer\+Name, int index)
+\begin{DoxyCompactList}\small\item\em Tworzy nowy materiał zastępczy z odpowiednim kolorem, metalicznością i gładkością dobranym na podstawie nazwy zasobu modelu. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_kitchen_game_bootstrap_a5e2ac365b4acb63c07d389a724355e92}{Get\+Imported\+Model\+Color}} (string resource\+Name, string renderer\+Name, int index)
+\begin{DoxyCompactList}\small\item\em Zwraca odpowiedni kolor zastępczy dla importowanego modelu na podstawie jego nazwy. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_game_bootstrap_a2368197c908606160fb89b2b2804a592}{Get\+Imported\+Model\+Metallic}} (string resource\+Name, string renderer\+Name)
+\begin{DoxyCompactList}\small\item\em Zwraca wartość metaliczności materiału zastępczego na podstawie nazwy modelu. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_kitchen_game_bootstrap_a9e571c7dae03f538bddda74c9ede5e8e}{Get\+Imported\+Model\+Smoothness}} (string resource\+Name, string renderer\+Name)
+\begin{DoxyCompactList}\small\item\em Zwraca wartość gładkości materiału zastępczego na podstawie nazwy modelu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_a1cf51d63048f0473778a6297fa485774}{Scale\+Model\+To\+Size}} (Transform model\+Root, float target\+Max\+Size)
+\begin{DoxyCompactList}\small\item\em Skaluje model uniformnie tak, aby jego największy wymiar (bounding box) odpowiadał zadanemu rozmiarowi docelowemu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_aad1ce6ca0445cfdbeb11fb63a01c857d}{Disable\+Imported\+Colliders}} (Game\+Object model)
+\begin{DoxyCompactList}\small\item\em Wyłącza wszystkie kolidery w hierarchii importowanego modelu. Zapobiega interferencji koliderów modelu z systemem fizyki gry. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_aeac83dd3c07767bfb3004a7188b74aa8}{Set\+Renderer\+Visible}} (Transform root, bool visible)
+\begin{DoxyCompactList}\small\item\em Ustawia widoczność wszystkich rendererów w hierarchii danego transformu. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{class_kitchen_game_bootstrap_a9acdefa7e78ec37e8ede1bb932a0e9f5}{Create\+Block}} (Transform parent, string object\+Name, Primitive\+Type primitive\+Type, Vector3 local\+Position, Vector3 local\+Scale, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy blok geometryczny z prymitywu Unity z nadanym materiałem i kolorem. Uniwersalna metoda pomocnicza do budowania elementów środowiska. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_game_bootstrap_ad53e2540333a7a372a563dd7136a07ea}{Create\+Label}} (Transform parent, string label\+Text, Vector3 local\+Position)
+\begin{DoxyCompactList}\small\item\em Tworzy etykietę tekstową 3D (Text\+Mesh) z komponentem billboard, która zawsze jest zwrócona przodem do kamery. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_kitchen_game_bootstrap_a2ab5caffb2d253e0d0e592333abd79f4}{Bootstrap\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em Statyczna metoda wywoływana automatycznie po załadowaniu sceny. Tworzy obiekt bootstrapowy, jeśli jeszcze nie istnieje na scenie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_kitchen_game_bootstrap_a21ee6ac6ea5233cb110aea587e27e8b7}{station\+Index\+Counter}} = 0
+\begin{DoxyCompactList}\small\item\em Licznik indeksów stacji kuchennych, inkrementowany przy tworzeniu każdej nowej stacji. Zapewnia unikalny identyfikator sieciowy dla każdej stacji. \end{DoxyCompactList}\item 
+Shader \mbox{\hyperlink{class_kitchen_game_bootstrap_ab17b3ab6be19f53f19345d55a7d7beb1}{cached\+Lit\+Shader}}
+\begin{DoxyCompactList}\small\item\em Buforowany shader Lit, aby uniknąć wielokrotnego wyszukiwania go w każdym wywołaniu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{class_kitchen_game_bootstrap_afe958a94365764c1158ca452be213789}{Interactable\+Layer}} = 6
+\begin{DoxyCompactList}\small\item\em Numer warstwy (layer) przypisywany obiektom interaktywnym w kuchni. Służy do filtrowania raycastów przy interakcji gracza ze stacjami. \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{class_kitchen_game_bootstrap_a787c9aa3aec44c1af08716346f657b51}{Model\+Path}} = "{}Models/"{}
+\begin{DoxyCompactList}\small\item\em Ścieżka do katalogu z modelami 3D w folderze Resources. Używana przy ładowaniu prefabrykatów modeli za pomocą Resources.\+Load. \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_kitchen_game_bootstrap_aac3154b7b888ed7c82be5f2254a7c4df}{Player\+Eye\+Height}} = 1.\+75f
+\begin{DoxyCompactList}\small\item\em Wysokość oczu gracza nad podłogą w metrach. Używana do pozycjonowania kamery i punktów patrzenia. \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_kitchen_game_bootstrap_afe5bbc4cf45299a642c15be07ec95d99}{Worktop\+LocalY}} = 0.\+34f
+\begin{DoxyCompactList}\small\item\em Lokalna pozycja Y blatu roboczego stacji kuchennych. Określa wysokość, na której umieszczane są elementy wizualne na stacjach. \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_kitchen_game_bootstrap_a7d115fcaa38c4531b644a8fc5f0c5872}{Table\+Visual\+Size}} = 2.\+35f
+\begin{DoxyCompactList}\small\item\em Bazowy rozmiar wizualny modeli stołów przygotowawczych. Stosowany jako parametr target\+Max\+Size przy skalowaniu modeli stołów. \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_kitchen_game_bootstrap_a4683fa6997b82884d40cfabca9c679a4}{Table\+Depth\+Scale}} = 1.\+6f
+\begin{DoxyCompactList}\small\item\em Mnożnik skali głębokości stołów przygotowawczych. Stosowany do rozciągnięcia modelu stołu wzdłuż osi Z. \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_kitchen_game_bootstrap_a169b8d09bd86e27e2208b5f53b9ff706}{Entrance\+TableX}} = 2.\+75f
+\begin{DoxyCompactList}\small\item\em Pozycja X stołu przy wejściu (stół z kasą fiskalną i tacą do wydawania). \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_kitchen_game_bootstrap_accbb1db4939af913ae1c1ac48e49acb1}{Entrance\+TableZ}} = -\/4.\+58f
+\begin{DoxyCompactList}\small\item\em Pozycja Z stołu przy wejściu (stół z kasą fiskalną i tacą do wydawania). \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{class_kitchen_game_bootstrap_a99fc45bb17749dacd33b6cc1b1dc48dd}{Entrance\+Table\+TopY}} = 1.\+20f
+\begin{DoxyCompactList}\small\item\em Wysokość Y blatu stołu przy wejściu. Określa pozycję pionową, na której umieszczane są obiekty na stole wejściowym. \end{DoxyCompactList}\item 
+static readonly Vector3 \mbox{\hyperlink{class_kitchen_game_bootstrap_a4334f260c5b660354f4bc0a43154771e}{Player\+Spawn\+Position}} = new Vector3(0f, 0f, -\/1.\+9f)
+\begin{DoxyCompactList}\small\item\em Domyślna pozycja spawnu gracza na scenie. \end{DoxyCompactList}\item 
+static readonly Vector3 \mbox{\hyperlink{class_kitchen_game_bootstrap_adc89573bb712509a791f67795c7390f3}{Customer\+Position}} = new Vector3(0f, 0f, -\/4.\+8f)
+\begin{DoxyCompactList}\small\item\em Pozycja klienta oczekującego na zamówienie. \end{DoxyCompactList}\item 
+static readonly Vector3 \mbox{\hyperlink{class_kitchen_game_bootstrap_a267382f94685f671ee5a5b996863eb47}{Customer\+Look\+Target}} = new Vector3(0f, 1.\+55f, -\/4.\+8f)
+\begin{DoxyCompactList}\small\item\em Punkt, na który klient patrzy — używany do orientacji modelu klienta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Główna klasa bootstrapowa gry kuchennej. Odpowiada za proceduralne generowanie całej sceny kuchni kebabowej w czasie wykonania, włączając w to środowisko (podłoga, ściany, sufit), stacje kuchenne, oświetlenie, modele 3D, konfigurację sieciową oraz inicjalizację wszystkich menedżerów gry. 
+
+Klasa automatycznie uruchamia się po załadowaniu sceny dzięki atrybutowi Runtime\+Initialize\+On\+Load\+Method\+Attribute. Jeśli instancja bootstrapa nie istnieje w scenie, zostanie utworzona automatycznie. Wszystkie elementy kuchni są budowane proceduralnie z prymitywów oraz importowanych modeli 3D. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_kitchen_game_bootstrap_ab051e34a9f4a16953570e4587616e261}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!AlignModelBottomToLocalY@{AlignModelBottomToLocalY}}
+\index{AlignModelBottomToLocalY@{AlignModelBottomToLocalY}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{AlignModelBottomToLocalY()}{AlignModelBottomToLocalY()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_ab051e34a9f4a16953570e4587616e261} 
+void Kitchen\+Game\+Bootstrap.\+Align\+Model\+Bottom\+To\+LocalY (\begin{DoxyParamCaption}\item[{Transform}]{model\+Root}{, }\item[{float}]{target\+Bottom\+LocalY}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wyrównuje spód modelu (najniższy punkt bounding box) do zadanej wysokości Y w przestrzeni lokalnej rodzica. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em model\+Root} & Transform korzenia modelu do wyrównania.\\
+\hline
+{\em target\+Bottom\+LocalY} & Docelowa lokalna pozycja Y spodu modelu.\\
+\hline
+\end{DoxyParams}
+
+
+Oblicza łączny bounding box wszystkich rendererów w modelu, przekształca najniższy punkt do przestrzeni lokalnej rodzica i przesuwa model pionowo tak, aby jego spód znajdował się dokładnie na żądanej wysokości. \Hypertarget{class_kitchen_game_bootstrap_ae7f0385ca565a2726bdb7cfa12777ae7}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!ApplyFallbackMaterialsIfMissing@{ApplyFallbackMaterialsIfMissing}}
+\index{ApplyFallbackMaterialsIfMissing@{ApplyFallbackMaterialsIfMissing}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{ApplyFallbackMaterialsIfMissing()}{ApplyFallbackMaterialsIfMissing()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_ae7f0385ca565a2726bdb7cfa12777ae7} 
+void Kitchen\+Game\+Bootstrap.\+Apply\+Fallback\+Materials\+If\+Missing (\begin{DoxyParamCaption}\item[{Game\+Object}]{model}{, }\item[{string}]{resource\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Stosuje materiały zastępcze (fallback) do rendererów importowanego modelu, które nie posiadają poprawnie przypisanych materiałów. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em model} & Obiekt modelu do przetworzenia.\\
+\hline
+{\em resource\+Name} & Nazwa zasobu modelu — używana do doboru odpowiedniego koloru zastępczego.\\
+\hline
+\end{DoxyParams}
+
+
+Iteruje po wszystkich rendererach w hierarchii modelu i dla tych, które nie mają importowanego materiału (brak tekstur, domyślna nazwa), tworzy nowy materiał z odpowiednim kolorem za pomocą \doxylink{class_kitchen_game_bootstrap_ac2052f75b38c1aa0f2306a75ce8feaed}{Create\+Imported\+Material}. \Hypertarget{class_kitchen_game_bootstrap_a2ab5caffb2d253e0d0e592333abd79f4}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!BootstrapScene@{BootstrapScene}}
+\index{BootstrapScene@{BootstrapScene}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{BootstrapScene()}{BootstrapScene()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a2ab5caffb2d253e0d0e592333abd79f4} 
+static void Kitchen\+Game\+Bootstrap.\+Bootstrap\+Scene (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Statyczna metoda wywoływana automatycznie po załadowaniu sceny. Tworzy obiekt bootstrapowy, jeśli jeszcze nie istnieje na scenie. 
+
+Oznaczona atrybutem Runtime\+Initialize\+On\+Load\+Method\+Attribute z trybem Runtime\+Initialize\+Load\+Type.\+After\+Scene\+Load, co zapewnia wywołanie po pełnym załadowaniu sceny. Zapobiega duplikacji sprawdzając obecność istniejącej instancji. \Hypertarget{class_kitchen_game_bootstrap_afe8e4d061169e21772a1b351437207ab}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!BuildEnvironmentIfNeeded@{BuildEnvironmentIfNeeded}}
+\index{BuildEnvironmentIfNeeded@{BuildEnvironmentIfNeeded}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{BuildEnvironmentIfNeeded()}{BuildEnvironmentIfNeeded()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_afe8e4d061169e21772a1b351437207ab} 
+void Kitchen\+Game\+Bootstrap.\+Build\+Environment\+If\+Needed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Buduje środowisko 3D kuchni, jeśli jeszcze nie istnieje na scenie. Tworzy podłogę, ściany, sufit, panele ścienne, listwy sufitowe, blaty robocze oraz importowane detale wizualne (modele 3D). 
+
+Metoda sprawdza obecność obiektu "{}\+Runtime\+Environment"{} — jeśli istnieje, budowa środowiska jest pomijana. Środowisko składa się z\+: 
+\begin{DoxyItemize}
+\item Podłoga bazowa i wkładka podłogi kuchennej 
+\item Sufit 
+\item Cztery ściany (tylna, lewa, prawa, przednia) 
+\item Panele ścienne dekoracyjne 
+\item Listwy sufitowe 
+\item Blaty/stoły robocze wzdłuż lewej ściany i tylnej ściany 
+\item Narożne blokery kolizji (prawy górny róg) 
+\item Stół użytkowy przy wejściu 
+\item Importowane detale wizualne (lampy, półki, modele stołów, kasa fiskalna itp.) 
+\end{DoxyItemize}\Hypertarget{class_kitchen_game_bootstrap_a4f8b816d66a6db5d95be0e8043058e34}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!BuildKitchenIfNeeded@{BuildKitchenIfNeeded}}
+\index{BuildKitchenIfNeeded@{BuildKitchenIfNeeded}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{BuildKitchenIfNeeded()}{BuildKitchenIfNeeded()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a4f8b816d66a6db5d95be0e8043058e34} 
+void Kitchen\+Game\+Bootstrap.\+Build\+Kitchen\+If\+Needed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Buduje wszystkie stacje kuchenne, jeśli jeszcze nie istnieją na scenie. Tworzy pełne wyposażenie kuchni kebabowej\+: grill, pojemniki na składniki, deskę do krojenia, stanowisko montażu oraz punkt wydawania. 
+
+Stacje kuchenne tworzone w kolejności\+: 
+\begin{DoxyItemize}
+\item Grill — grillowanie mięsa (z maszyną döner) 
+\item Mięso — źródło składnika mięsnego (powiązane z grillem) 
+\item Pomidor — źródło pomidorów 
+\item Cebula — źródło cebuli 
+\item Sałata — źródło sałaty 
+\item Sos — źródło sosu czosnkowego 
+\item Ławasz — źródło chlebka ławasz 
+\item Deska — stacja do krojenia składników 
+\item Zwijanie — stanowisko montażu/zawijania kebaba 
+\item Wydanie — punkt wydawania gotowego zamówienia klientowi 
+\end{DoxyItemize}Po utworzeniu stacji, grill jest łączony z tacą na mięso, a na końcu tworzony jest model klienta przy okienku. \Hypertarget{class_kitchen_game_bootstrap_a124fea1deb7ba621de439c2b1f9ac6fa}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!BuildOrderBoardIfNeeded@{BuildOrderBoardIfNeeded}}
+\index{BuildOrderBoardIfNeeded@{BuildOrderBoardIfNeeded}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{BuildOrderBoardIfNeeded()}{BuildOrderBoardIfNeeded()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a124fea1deb7ba621de439c2b1f9ac6fa} 
+void Kitchen\+Game\+Bootstrap.\+Build\+Order\+Board\+If\+Needed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Buduje tablicę zamówień kuchennych, jeśli jeszcze nie istnieje na scenie. Tablica jest umieszczana na tylnej ścianie kuchni i wyświetla aktualne zamówienia. 
+
+\Hypertarget{class_kitchen_game_bootstrap_ac11101f850bc6989b1204bad818fcebd}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!ConfigureLighting@{ConfigureLighting}}
+\index{ConfigureLighting@{ConfigureLighting}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{ConfigureLighting()}{ConfigureLighting()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_ac11101f850bc6989b1204bad818fcebd} 
+void Kitchen\+Game\+Bootstrap.\+Configure\+Lighting (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Konfiguruje oświetlenie sceny kuchni — światło otoczenia, kierunkowe i reflektory punktowe. 
+
+Ustawia tryb oświetlenia otoczenia na Trilight (trzy kolory\+: niebo, równik, podłoże). Tworzy lub konfiguruje istniejące światło kierunkowe z miękkimi cieniami. Dodaje trzy reflektory punktowe (spot light) z efektem migotania lampy\+: 
+\begin{DoxyItemize}
+\item Prep\+Task\+Light\+Left — nad lewym stanowiskiem przygotowawczym 
+\item Prep\+Task\+Light\+Right — nad prawym stanowiskiem przygotowawczym 
+\item Assembly\+Task\+Light — nad stanowiskiem montażu kebaba 
+\end{DoxyItemize}\Hypertarget{class_kitchen_game_bootstrap_a9acdefa7e78ec37e8ede1bb932a0e9f5}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateBlock@{CreateBlock}}
+\index{CreateBlock@{CreateBlock}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateBlock()}{CreateBlock()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a9acdefa7e78ec37e8ede1bb932a0e9f5} 
+Transform Kitchen\+Game\+Bootstrap.\+Create\+Block (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{Primitive\+Type}]{primitive\+Type}{, }\item[{Vector3}]{local\+Position}{, }\item[{Vector3}]{local\+Scale}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy blok geometryczny z prymitywu Unity z nadanym materiałem i kolorem. Uniwersalna metoda pomocnicza do budowania elementów środowiska. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla bloku.\\
+\hline
+{\em object\+Name} & Nazwa obiektu bloku.\\
+\hline
+{\em primitive\+Type} & Typ prymitywu Unity (sześcian, kula, cylinder itp.).\\
+\hline
+{\em local\+Position} & Lokalna pozycja bloku.\\
+\hline
+{\em local\+Scale} & Lokalna skala bloku.\\
+\hline
+{\em color} & Kolor materiału bloku.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Transform utworzonego bloku.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_bootstrap_a2359a7fe7dcb1a2f752b67807e95aa22}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateCeilingLamp@{CreateCeilingLamp}}
+\index{CreateCeilingLamp@{CreateCeilingLamp}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateCeilingLamp()}{CreateCeilingLamp()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a2359a7fe7dcb1a2f752b67807e95aa22} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Ceiling\+Lamp (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{Vector3}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy dekoracyjną lampę sufitową składającą się z cylindrycznego uchwytu i sferycznego klosza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla lampy.\\
+\hline
+{\em position} & Pozycja lampy w przestrzeni lokalnej rodzica.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_game_bootstrap_af4285a08b765f573bbf1b64fef28b2a9}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateCornerCounterBlockers@{CreateCornerCounterBlockers}}
+\index{CreateCornerCounterBlockers@{CreateCornerCounterBlockers}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateCornerCounterBlockers()}{CreateCornerCounterBlockers()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_af4285a08b765f573bbf1b64fef28b2a9} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Corner\+Counter\+Blockers (\begin{DoxyParamCaption}\item[{Transform}]{parent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy grupę niewidocznych koliderów blokujących narożnik prawego górnego rogu kuchni. Zapobiega przechodzeniu gracza przez narożne blaty. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla grupy blokerów.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_game_bootstrap_ab8262ff019287c242a257e11679f1e41}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateCounter@{CreateCounter}}
+\index{CreateCounter@{CreateCounter}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateCounter()}{CreateCounter()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_ab8262ff019287c242a257e11679f1e41} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Counter (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{Vector3}]{position}{, }\item[{Vector3}]{scale}{, }\item[{bool}]{visible}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy blat roboczy (stół) składający się z bloku bazowego i bloku wierzchniego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla blatu.\\
+\hline
+{\em object\+Name} & Nazwa obiektu blatu.\\
+\hline
+{\em position} & Pozycja lokalna blatu.\\
+\hline
+{\em scale} & Skala bazowego bloku blatu.\\
+\hline
+{\em visible} & Czy blat ma być widoczny. Jeśli false, renderery są wyłączone, a blok bazowy jest powiększony do roli niewidocznego blokera kolizji.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_game_bootstrap_a0b7e8f09fb5c7b3d9d93109b0f145344}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateCustomer@{CreateCustomer}}
+\index{CreateCustomer@{CreateCustomer}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateCustomer()}{CreateCustomer()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a0b7e8f09fb5c7b3d9d93109b0f145344} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Customer (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{Vector3}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy model klienta oczekującego przy okienku wydawania. Próbuje załadować importowany model 3D klienta, a w razie niepowodzenia tworzy zastępczą reprezentację z prymitywów (kapsuła + kula). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla obiektu klienta.\\
+\hline
+{\em position} & Pozycja klienta w przestrzeni świata.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_game_bootstrap_a66e366f55b0ddf4a6975afa32dc4ecb8}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateCuttingBoardDetails@{CreateCuttingBoardDetails}}
+\index{CreateCuttingBoardDetails@{CreateCuttingBoardDetails}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateCuttingBoardDetails()}{CreateCuttingBoardDetails()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a66e366f55b0ddf4a6975afa32dc4ecb8} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Cutting\+Board\+Details (\begin{DoxyParamCaption}\item[{Transform}]{parent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy detale wizualne stacji deski do krojenia — deskę, pokrojone warzywa i nóż szefa kuchni. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform stacji deski do krojenia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_game_bootstrap_a798b22b764dbff75e761aea1737d7eb4}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateDeliveryTrayDisplay@{CreateDeliveryTrayDisplay}}
+\index{CreateDeliveryTrayDisplay@{CreateDeliveryTrayDisplay}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateDeliveryTrayDisplay()}{CreateDeliveryTrayDisplay()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a798b22b764dbff75e761aea1737d7eb4} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Delivery\+Tray\+Display (\begin{DoxyParamCaption}\item[{Transform}]{parent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy wystawę z tacą do serwowania i modelem kebaba przy wejściu. Kebab jest początkowo ukryty i pokazywany po wydaniu zamówienia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla wystawy.\\
+\hline
+\end{DoxyParams}
+
+
+Wystawa składa się z modelu tacy serwującej oraz modelu kebaba w zawinięciu. Komponent \doxylink{class_delivery_tray_display}{Delivery\+Tray\+Display} zarządza widocznością kebaba — jest on pokazywany na określony czas po każdym wydaniu zamówienia. \Hypertarget{class_kitchen_game_bootstrap_a9d03399cea6f099abaad392d3ed0afd6}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateImportedEnvironmentDetails@{CreateImportedEnvironmentDetails}}
+\index{CreateImportedEnvironmentDetails@{CreateImportedEnvironmentDetails}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateImportedEnvironmentDetails()}{CreateImportedEnvironmentDetails()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a9d03399cea6f099abaad392d3ed0afd6} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Imported\+Environment\+Details (\begin{DoxyParamCaption}\item[{Transform}]{parent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy wszystkie importowane detale wizualne środowiska kuchni\+: lampy, półki, stoły, narożny blat, stół użytkowy, kasę fiskalną i wystawę z tacą. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla detali środowiska.\\
+\hline
+\end{DoxyParams}
+
+
+Lampy otrzymują komponent \doxylink{class_lamp_emission_pulse}{Lamp\+Emission\+Pulse} do animacji emisji świetlnej. Stoły przygotowawcze są skalowane z mnożnikiem głębokości \doxylink{class_kitchen_game_bootstrap_a4683fa6997b82884d40cfabca9c679a4}{Table\+Depth\+Scale}. Na końcu tworzona jest wystawa z tacą do serwowania za pomocą \doxylink{class_kitchen_game_bootstrap_a798b22b764dbff75e761aea1737d7eb4}{Create\+Delivery\+Tray\+Display}. \Hypertarget{class_kitchen_game_bootstrap_ac2052f75b38c1aa0f2306a75ce8feaed}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateImportedMaterial@{CreateImportedMaterial}}
+\index{CreateImportedMaterial@{CreateImportedMaterial}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateImportedMaterial()}{CreateImportedMaterial()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_ac2052f75b38c1aa0f2306a75ce8feaed} 
+Material Kitchen\+Game\+Bootstrap.\+Create\+Imported\+Material (\begin{DoxyParamCaption}\item[{string}]{resource\+Name}{, }\item[{string}]{renderer\+Name}{, }\item[{int}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy nowy materiał zastępczy z odpowiednim kolorem, metalicznością i gładkością dobranym na podstawie nazwy zasobu modelu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em resource\+Name} & Nazwa zasobu modelu — determinuje kolor i właściwości materiału.\\
+\hline
+{\em renderer\+Name} & Nazwa renderera — używana w połączeniu z resource\+Name do identyfikacji.\\
+\hline
+{\em index} & Indeks renderera w modelu — wprowadza delikatną wariacę odcienia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Nowo utworzony materiał z ustawionym kolorem, metalicznością i gładkością.
+\end{DoxyReturn}
+
+
+Dla modeli lamp materiał otrzymuje dodatkowo włączoną emisję świetlną o ciepłym odcieniu. Indeks renderera jest wykorzystywany do subtelnego przyciemniania kolejnych rendererów, co dodaje głębi wizualnej modelom wieloczęściowym. \Hypertarget{class_kitchen_game_bootstrap_a9ac5077b0b02bf662b4d097239cb5c97}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateImportedModel@{CreateImportedModel}}
+\index{CreateImportedModel@{CreateImportedModel}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateImportedModel()}{CreateImportedModel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a9ac5077b0b02bf662b4d097239cb5c97} 
+Game\+Object Kitchen\+Game\+Bootstrap.\+Create\+Imported\+Model (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{resource\+Name}{, }\item[{string}]{object\+Name}{, }\item[{Vector3}]{local\+Position}{, }\item[{Vector3}]{local\+Rotation}{, }\item[{float}]{target\+Max\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ładuje i tworzy instancję importowanego modelu 3D z folderu Resources. Przeciążenie bez mnożnika skali — deleguje do pełnej wersji z mnożnikiem Vector3.\+one. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica, pod którym model zostanie umieszczony.\\
+\hline
+{\em resource\+Name} & Nazwa zasobu modelu w katalogu Resources/\+Models/.\\
+\hline
+{\em object\+Name} & Nazwa nadawana instancji obiektu na scenie.\\
+\hline
+{\em local\+Position} & Lokalna pozycja modelu względem rodzica.\\
+\hline
+{\em local\+Rotation} & Lokalna rotacja modelu w stopniach Eulera.\\
+\hline
+{\em target\+Max\+Size} & Docelowy maksymalny rozmiar modelu (największy wymiar bounding box).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony obiekt modelu lub null, jeśli prefabrykat nie został znaleziony.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_bootstrap_a68a3b977aa56960f8786d33e8afb4c2d}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateImportedModel@{CreateImportedModel}}
+\index{CreateImportedModel@{CreateImportedModel}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateImportedModel()}{CreateImportedModel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a68a3b977aa56960f8786d33e8afb4c2d} 
+Game\+Object Kitchen\+Game\+Bootstrap.\+Create\+Imported\+Model (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{resource\+Name}{, }\item[{string}]{object\+Name}{, }\item[{Vector3}]{local\+Position}{, }\item[{Vector3}]{local\+Rotation}{, }\item[{float}]{target\+Max\+Size}{, }\item[{Vector3}]{scale\+Multiplier}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ładuje i tworzy instancję importowanego modelu 3D z folderu Resources z pełną kontrolą nad skalowaniem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica, pod którym model zostanie umieszczony.\\
+\hline
+{\em resource\+Name} & Nazwa zasobu modelu w katalogu Resources/\+Models/.\\
+\hline
+{\em object\+Name} & Nazwa nadawana instancji obiektu na scenie.\\
+\hline
+{\em local\+Position} & Lokalna pozycja modelu względem rodzica.\\
+\hline
+{\em local\+Rotation} & Lokalna rotacja modelu w stopniach Eulera.\\
+\hline
+{\em target\+Max\+Size} & Docelowy maksymalny rozmiar modelu (największy wymiar bounding box).\\
+\hline
+{\em scale\+Multiplier} & Dodatkowy mnożnik skali stosowany po normalizacji rozmiaru.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony obiekt modelu lub null, jeśli prefabrykat nie został znaleziony.
+\end{DoxyReturn}
+
+
+Model jest najpierw skalowany uniformnie do docelowego rozmiaru za pomocą \doxylink{class_kitchen_game_bootstrap_a1cf51d63048f0473778a6297fa485774}{Scale\+Model\+To\+Size}, następnie stosowany jest mnożnik skali, wyrównywany jest spód modelu do żądanej wysokości Y, stosowane są materiały zastępcze tam gdzie brakuje, a kolidery importowane z modelu są wyłączane. \Hypertarget{class_kitchen_game_bootstrap_a5fdf585a1888eb7d0398b1677db5ee60}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateImportedStationDetails@{CreateImportedStationDetails}}
+\index{CreateImportedStationDetails@{CreateImportedStationDetails}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateImportedStationDetails()}{CreateImportedStationDetails()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a5fdf585a1888eb7d0398b1677db5ee60} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Imported\+Station\+Details (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{station\+Name}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}}}]{station\+Type}{, }\item[{\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}}}]{source\+Ingredient}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy importowane detale wizualne specyficzne dla danego typu stacji kuchennej. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform stacji, do którego dołączane są modele.\\
+\hline
+{\em station\+Name} & Nazwa stacji.\\
+\hline
+{\em station\+Type} & Typ stacji kuchennej determinujący, jakie modele zostaną utworzone.\\
+\hline
+{\em source\+Ingredient} & Dane składnika źródłowego (używane dla stacji typu Ingredient\+Source).\\
+\hline
+\end{DoxyParams}
+
+
+W zależności od typu stacji tworzone są odpowiednie modele 3D\+: 
+\begin{DoxyItemize}
+\item Cutting\+Board — deska do krojenia z pokrojonymi warzywami i nożem 
+\item Grill — maszyna döner do grillowania mięsa 
+\item Delivery — brak dodatkowych modeli 
+\item Assembly — deska z chlebkiem ławasz do zawijania 
+\item Ingredient\+Source — tacka ze składnikami lub dozownik sosu 
+\end{DoxyItemize}\Hypertarget{class_kitchen_game_bootstrap_a7b8ba7b0deea4abc97b1ee9d50b1a948}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateIngredientVisual@{CreateIngredientVisual}}
+\index{CreateIngredientVisual@{CreateIngredientVisual}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateIngredientVisual()}{CreateIngredientVisual()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a7b8ba7b0deea4abc97b1ee9d50b1a948} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Ingredient\+Visual (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}}}]{source\+Ingredient}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy wizualne reprezentacje składników na stacji źródłowej — kilka instancji modeli 3D rozmieszczonych na tackce z różnymi rotacjami. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform stacji źródłowej składników.\\
+\hline
+{\em source\+Ingredient} & Dane składnika określające, jaki model zostanie załadowany.\\
+\hline
+\end{DoxyParams}
+
+
+Dla każdego typu składnika tworzone są inne modele\+: 
+\begin{DoxyItemize}
+\item Mięso — pojedynczy kawałek ugotowanego mięsa 
+\item Pomidor — 5 całych pomidorów w różnych pozycjach 
+\item Cebula — 5 całych cebul w różnych pozycjach 
+\item Sałata — 3 główki sałaty 
+\item Ławasz — chlebek ławasz (delegowane do \doxylink{class_kitchen_game_bootstrap_abf95316f0c17d52eeb86e4724b5c83ca}{Create\+Lavash\+Visual}) 
+\end{DoxyItemize}\Hypertarget{class_kitchen_game_bootstrap_a4fdf69892f0d76b2519b014a0c0f2698}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateInvisibleCollider@{CreateInvisibleCollider}}
+\index{CreateInvisibleCollider@{CreateInvisibleCollider}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateInvisibleCollider()}{CreateInvisibleCollider()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a4fdf69892f0d76b2519b014a0c0f2698} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Invisible\+Collider (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{Vector3}]{local\+Position}{, }\item[{Vector3}]{local\+Scale}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy niewidoczny obiekt z koliderem Box\+Collider — używany jako bloker kolizji. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla kolidera.\\
+\hline
+{\em object\+Name} & Nazwa obiektu kolidera.\\
+\hline
+{\em local\+Position} & Lokalna pozycja kolidera.\\
+\hline
+{\em local\+Scale} & Rozmiar kolidera (ustawiany jako Box\+Collider.\+size).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_game_bootstrap_ad53e2540333a7a372a563dd7136a07ea}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateLabel@{CreateLabel}}
+\index{CreateLabel@{CreateLabel}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateLabel()}{CreateLabel()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_ad53e2540333a7a372a563dd7136a07ea} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Label (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{label\+Text}{, }\item[{Vector3}]{local\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy etykietę tekstową 3D (Text\+Mesh) z komponentem billboard, która zawsze jest zwrócona przodem do kamery. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla etykiety.\\
+\hline
+{\em label\+Text} & Tekst wyświetlany na etykiecie.\\
+\hline
+{\em local\+Position} & Lokalna pozycja etykiety.\\
+\hline
+\end{DoxyParams}
+
+
+Etykieta używa komponentu \doxylink{class_billboard_label}{Billboard\+Label} do automatycznego obracania się w kierunku kamery w każdej klatce. Tekst jest półprzezroczysty (alpha 0.\+55). \Hypertarget{class_kitchen_game_bootstrap_abf95316f0c17d52eeb86e4724b5c83ca}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateLavashVisual@{CreateLavashVisual}}
+\index{CreateLavashVisual@{CreateLavashVisual}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateLavashVisual()}{CreateLavashVisual()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_abf95316f0c17d52eeb86e4724b5c83ca} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Lavash\+Visual (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{float}]{surfaceY}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy wizualną reprezentację chlebka ławasz na stacji źródłowej. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform stacji źródłowej ławasza.\\
+\hline
+{\em surfaceY} & Pozycja Y powierzchni blatu, na której umieszczany jest ławasz.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_game_bootstrap_aa226b6a5a1218cf56947f714a1b51926}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateSpotLight@{CreateSpotLight}}
+\index{CreateSpotLight@{CreateSpotLight}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateSpotLight()}{CreateSpotLight()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_aa226b6a5a1218cf56947f714a1b51926} 
+void Kitchen\+Game\+Bootstrap.\+Create\+Spot\+Light (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{light\+Name}{, }\item[{Vector3}]{local\+Position}{, }\item[{Vector3}]{local\+Rotation}{, }\item[{Color}]{color}{, }\item[{float}]{intensity}{, }\item[{float}]{range}{, }\item[{float}]{spot\+Angle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy lub konfiguruje istniejący reflektor punktowy (spot light) z efektem migotania lampy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica dla światła.\\
+\hline
+{\em light\+Name} & Unikalna nazwa obiektu światła.\\
+\hline
+{\em local\+Position} & Lokalna pozycja światła względem rodzica.\\
+\hline
+{\em local\+Rotation} & Lokalna rotacja światła w stopniach Eulera.\\
+\hline
+{\em color} & Kolor światła.\\
+\hline
+{\em intensity} & Intensywność światła.\\
+\hline
+{\em range} & Zasięg światła w jednostkach sceny.\\
+\hline
+{\em spot\+Angle} & Kąt stożka świetlnego w stopniach.\\
+\hline
+\end{DoxyParams}
+
+
+Jeśli światło o podanej nazwie już istnieje jako dziecko rodzica, jest rekonfigurowane. Każde światło otrzymuje komponent \doxylink{class_lamp_flicker}{Lamp\+Flicker} symulujący delikatne migotanie lampy. \Hypertarget{class_kitchen_game_bootstrap_ad601ab8362f6013359d71b94c45e4003}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CreateStation@{CreateStation}}
+\index{CreateStation@{CreateStation}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CreateStation()}{CreateStation()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_ad601ab8362f6013359d71b94c45e4003} 
+\mbox{\hyperlink{class_kitchen_station}{Kitchen\+Station}} Kitchen\+Game\+Bootstrap.\+Create\+Station (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{station\+Name}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}}}]{station\+Type}{, }\item[{Vector3}]{position}{, }\item[{Color}]{color}{, }\item[{\mbox{\hyperlink{class_ingredient_data}{Ingredient\+Data}}}]{source\+Ingredient}{, }\item[{float}]{processing\+Duration}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy pojedynczą stację kuchenną z prymitywu, konfiguruje ją i dodaje znacznik wizualny oraz komponenty sieciowe. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transform rodzica, pod którym stacja zostanie umieszczona.\\
+\hline
+{\em station\+Name} & Nazwa stacji (np. "{}\+Grill"{}, "{}\+Pomidor"{}).\\
+\hline
+{\em station\+Type} & Typ stacji kuchennej definiujący jej zachowanie.\\
+\hline
+{\em position} & Pozycja stacji w przestrzeni świata.\\
+\hline
+{\em color} & Kolor bazowy materiału stacji.\\
+\hline
+{\em source\+Ingredient} & Dane składnika źródłowego (null dla stacji niebędących źródłem składników).\\
+\hline
+{\em processing\+Duration} & Czas przetwarzania w sekundach (0 dla natychmiastowych operacji).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony komponent \doxylink{class_kitchen_station}{Kitchen\+Station}.
+\end{DoxyReturn}
+
+
+Stacja składa się z\+: 
+\begin{DoxyItemize}
+\item Sześcianu bazowego z koliderem i materiałem 
+\item Znacznika sferycznego nad stacją (wizualny wskaźnik) 
+\item Komponentu \doxylink{class_kitchen_station}{Kitchen\+Station} z konfiguracją logiki 
+\item Komponentu \doxylink{class_network_kitchen_station}{Network\+Kitchen\+Station} do synchronizacji sieciowej 
+\item Importowanych detali wizualnych specyficznych dla typu stacji 
+\end{DoxyItemize}Bazowe renderery prymitywów są ukrywane na rzecz importowanych modeli 3D. \Hypertarget{class_kitchen_game_bootstrap_aad1ce6ca0445cfdbeb11fb63a01c857d}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!DisableImportedColliders@{DisableImportedColliders}}
+\index{DisableImportedColliders@{DisableImportedColliders}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{DisableImportedColliders()}{DisableImportedColliders()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_aad1ce6ca0445cfdbeb11fb63a01c857d} 
+void Kitchen\+Game\+Bootstrap.\+Disable\+Imported\+Colliders (\begin{DoxyParamCaption}\item[{Game\+Object}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wyłącza wszystkie kolidery w hierarchii importowanego modelu. Zapobiega interferencji koliderów modelu z systemem fizyki gry. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em model} & Obiekt modelu, w którym kolidery zostaną wyłączone.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_game_bootstrap_a28d240b7d4b767b7c1e04aee204cc8e6}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!EnsureEffects@{EnsureEffects}}
+\index{EnsureEffects@{EnsureEffects}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{EnsureEffects()}{EnsureEffects()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a28d240b7d4b767b7c1e04aee204cc8e6} 
+void Kitchen\+Game\+Bootstrap.\+Ensure\+Effects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Zapewnia istnienie efektów wizualnych, dźwiękowych i dodatkowych komponentów UI na scenie. 
+
+Tworzy następujące komponenty, jeśli jeszcze nie istnieją\+: 
+\begin{DoxyItemize}
+\item \doxylink{class_post_process_setup}{Post\+Process\+Setup} — konfiguracja post-\/processingu 
+\item \doxylink{class_ambient_particles}{Ambient\+Particles} — cząsteczki otoczenia (pył, para) 
+\item \doxylink{class_audio_manager}{Audio\+Manager} — zarządzanie dźwiękiem i muzyką 
+\item \doxylink{class_item_animator}{Item\+Animator} — animacja przedmiotów w kuchni 
+\item \doxylink{class_pause_menu_u_i}{Pause\+Menu\+UI} — interfejs menu pauzy 
+\item \doxylink{class_loading_screen}{Loading\+Screen} — ekran ładowania 
+\item \doxylink{class_achievement_popup}{Achievement\+Popup} — wyskakujące powiadomienia o osiągnięciach 
+\end{DoxyItemize}\Hypertarget{class_kitchen_game_bootstrap_a62ed4c4947c5ed07f1cace4c8d03a49b}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!EnsureManagers@{EnsureManagers}}
+\index{EnsureManagers@{EnsureManagers}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{EnsureManagers()}{EnsureManagers()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a62ed4c4947c5ed07f1cace4c8d03a49b} 
+void Kitchen\+Game\+Bootstrap.\+Ensure\+Managers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Zapewnia istnienie wszystkich menedżerów gry na scenie. Tworzy obiekt "{}\+Game\+Manager"{} i dołącza do niego brakujące komponenty menedżerów. 
+
+Menedżerowie inicjalizowani przez tę metodę\+: 
+\begin{DoxyItemize}
+\item \doxylink{class_economy_manager}{Economy\+Manager} — system ekonomii i salda gracza 
+\item \doxylink{class_order_manager}{Order\+Manager} — system zamówień i katalogu składników 
+\item \doxylink{class_save_manager}{Save\+Manager} — system zapisu i wczytywania stanu gry 
+\item \doxylink{class_game_settings_manager}{Game\+Settings\+Manager} — zarządzanie ustawieniami gry 
+\item \doxylink{class_shop_manager}{Shop\+Manager} — system sklepu z ulepszeniami 
+\item \doxylink{class_v_f_x_manager}{VFXManager} — zarządzanie efektami wizualnymi 
+\item \doxylink{class_relay_manager}{Relay\+Manager} — menedżer połączeń relay dla gry wieloosobowej 
+\end{DoxyItemize}Na końcu wywołuje inicjalizację katalogu zamówień. \Hypertarget{class_kitchen_game_bootstrap_a604e566f9422b077a82da81d88c16397}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!EnsureNetworkSetup@{EnsureNetworkSetup}}
+\index{EnsureNetworkSetup@{EnsureNetworkSetup}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{EnsureNetworkSetup()}{EnsureNetworkSetup()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a604e566f9422b077a82da81d88c16397} 
+void Kitchen\+Game\+Bootstrap.\+Ensure\+Network\+Setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Zapewnia istnienie obiektu konfiguracji sieciowej na scenie. Tworzy komponent \doxylink{class_network_setup}{Network\+Setup} oraz \doxylink{class_lobby_u_i}{Lobby\+UI}, jeśli nie istnieją. 
+
+\Hypertarget{class_kitchen_game_bootstrap_a43ce33448f6eff4d3d6f88f64671f158}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!FindDirectionalLight@{FindDirectionalLight}}
+\index{FindDirectionalLight@{FindDirectionalLight}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{FindDirectionalLight()}{FindDirectionalLight()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a43ce33448f6eff4d3d6f88f64671f158} 
+Light Kitchen\+Game\+Bootstrap.\+Find\+Directional\+Light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wyszukuje istniejące na scenie światło kierunkowe (Directional Light). 
+
+\begin{DoxyReturn}{Zwraca}
+Znalezione światło kierunkowe lub null, jeśli żadne nie istnieje na scenie. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_bootstrap_a5e2ac365b4acb63c07d389a724355e92}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!GetImportedModelColor@{GetImportedModelColor}}
+\index{GetImportedModelColor@{GetImportedModelColor}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{GetImportedModelColor()}{GetImportedModelColor()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a5e2ac365b4acb63c07d389a724355e92} 
+Color Kitchen\+Game\+Bootstrap.\+Get\+Imported\+Model\+Color (\begin{DoxyParamCaption}\item[{string}]{resource\+Name}{, }\item[{string}]{renderer\+Name}{, }\item[{int}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Zwraca odpowiedni kolor zastępczy dla importowanego modelu na podstawie jego nazwy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em resource\+Name} & Nazwa zasobu modelu.\\
+\hline
+{\em renderer\+Name} & Nazwa renderera wewnątrz modelu.\\
+\hline
+{\em index} & Indeks renderera — używany do delikatnego przyciemniania (max 4 poziomy).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Kolor zastępczy dopasowany do typu modelu, z uwzględnieniem przyciemniania indeksem.
+\end{DoxyReturn}
+
+
+Mapowanie kolorów odbywa się na podstawie wyszukiwania słów kluczowych w połączonej nazwie zasobu i renderera (np. "{}meat"{}, "{}doner\+\_\+machine"{}, "{}cutting\+\_\+board"{} itp.). Domyślny kolor to neutralny szary w razie braku dopasowania. \Hypertarget{class_kitchen_game_bootstrap_a2368197c908606160fb89b2b2804a592}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!GetImportedModelMetallic@{GetImportedModelMetallic}}
+\index{GetImportedModelMetallic@{GetImportedModelMetallic}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{GetImportedModelMetallic()}{GetImportedModelMetallic()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a2368197c908606160fb89b2b2804a592} 
+float Kitchen\+Game\+Bootstrap.\+Get\+Imported\+Model\+Metallic (\begin{DoxyParamCaption}\item[{string}]{resource\+Name}{, }\item[{string}]{renderer\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Zwraca wartość metaliczności materiału zastępczego na podstawie nazwy modelu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em resource\+Name} & Nazwa zasobu modelu.\\
+\hline
+{\em renderer\+Name} & Nazwa renderera wewnątrz modelu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Wartość metaliczności\+: 0.\+45 dla metalowych obiektów (nóż, maszyna, kasa, stoły, tace, półki), 0.\+0 dla pozostałych. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_bootstrap_a9e571c7dae03f538bddda74c9ede5e8e}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!GetImportedModelSmoothness@{GetImportedModelSmoothness}}
+\index{GetImportedModelSmoothness@{GetImportedModelSmoothness}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{GetImportedModelSmoothness()}{GetImportedModelSmoothness()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a9e571c7dae03f538bddda74c9ede5e8e} 
+float Kitchen\+Game\+Bootstrap.\+Get\+Imported\+Model\+Smoothness (\begin{DoxyParamCaption}\item[{string}]{resource\+Name}{, }\item[{string}]{renderer\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Zwraca wartość gładkości materiału zastępczego na podstawie nazwy modelu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em resource\+Name} & Nazwa zasobu modelu.\\
+\hline
+{\em renderer\+Name} & Nazwa renderera wewnątrz modelu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Wartość gładkości\+: 0.\+55 dla metalowych obiektów, 0.\+25 dla mięsa i desek, 0.\+35 jako wartość domyślna dla pozostałych materiałów. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_bootstrap_a676099f46549840ca548f812ea53f8ad}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!GetLitShader@{GetLitShader}}
+\index{GetLitShader@{GetLitShader}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{GetLitShader()}{GetLitShader()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a676099f46549840ca548f812ea53f8ad} 
+Shader Kitchen\+Game\+Bootstrap.\+Get\+Lit\+Shader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Pobiera buforowany shader URP Lit, a w razie jego braku — shader Standard. 
+
+\begin{DoxyReturn}{Zwraca}
+Shader Lit z Universal Render Pipeline lub Standard jako fallback.
+\end{DoxyReturn}
+
+
+Wynik jest buforowany w polu \doxylink{class_kitchen_game_bootstrap_ab17b3ab6be19f53f19345d55a7d7beb1}{cached\+Lit\+Shader}, aby uniknąć kosztownego wyszukiwania shadera przy każdym wywołaniu. \Hypertarget{class_kitchen_game_bootstrap_a8e759c35ee55bdd0c0e076147a28229c}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!HasImportedMaterial@{HasImportedMaterial}}
+\index{HasImportedMaterial@{HasImportedMaterial}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{HasImportedMaterial()}{HasImportedMaterial()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a8e759c35ee55bdd0c0e076147a28229c} 
+bool Kitchen\+Game\+Bootstrap.\+Has\+Imported\+Material (\begin{DoxyParamCaption}\item[{Renderer}]{renderer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sprawdza, czy renderer posiada poprawnie zaimportowany materiał (z teksturą lub niestandardową nazwą). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em renderer} & Renderer do sprawdzenia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+True, jeśli renderer ma poprawny importowany materiał; false w przeciwnym razie.
+\end{DoxyReturn}
+
+
+Materiał jest uznawany za "{}importowany"{}, jeśli\+: 
+\begin{DoxyItemize}
+\item Posiada przypisaną teksturę (Base\+Map, Main\+Tex lub main\+Texture) 
+\item Jego nazwa nie zawiera "{}default"{} ani "{}no name"{} 
+\end{DoxyItemize}\Hypertarget{class_kitchen_game_bootstrap_a7ddbb570c911d818a604d2a8297cc7c4}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!HasMaterialTexture@{HasMaterialTexture}}
+\index{HasMaterialTexture@{HasMaterialTexture}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{HasMaterialTexture()}{HasMaterialTexture()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a7ddbb570c911d818a604d2a8297cc7c4} 
+bool Kitchen\+Game\+Bootstrap.\+Has\+Material\+Texture (\begin{DoxyParamCaption}\item[{Material}]{material}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sprawdza, czy materiał posiada przypisaną teksturę w jednym ze standardowych slotów. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em material} & Materiał do sprawdzenia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+True, jeśli materiał posiada teksturę w slocie \+\_\+\+Base\+Map, \+\_\+\+Main\+Tex lub main\+Texture.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_game_bootstrap_a1cf51d63048f0473778a6297fa485774}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!ScaleModelToSize@{ScaleModelToSize}}
+\index{ScaleModelToSize@{ScaleModelToSize}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{ScaleModelToSize()}{ScaleModelToSize()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a1cf51d63048f0473778a6297fa485774} 
+void Kitchen\+Game\+Bootstrap.\+Scale\+Model\+To\+Size (\begin{DoxyParamCaption}\item[{Transform}]{model\+Root}{, }\item[{float}]{target\+Max\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Skaluje model uniformnie tak, aby jego największy wymiar (bounding box) odpowiadał zadanemu rozmiarowi docelowemu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em model\+Root} & Transform korzenia modelu do przeskalowania.\\
+\hline
+{\em target\+Max\+Size} & Docelowy rozmiar maksymalnego wymiaru bounding box. Wartość 0 lub ujemna powoduje pominięcie skalowania.\\
+\hline
+\end{DoxyParams}
+
+
+Oblicza łączny bounding box wszystkich rendererów, znajduje największy wymiar, a następnie mnoży skalę lokalną przez współczynnik (target\+Max\+Size / max\+Size). Chroni przed dzieleniem przez zero dla modeli o minimalnym rozmiarze. \Hypertarget{class_kitchen_game_bootstrap_aeac83dd3c07767bfb3004a7188b74aa8}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!SetRendererVisible@{SetRendererVisible}}
+\index{SetRendererVisible@{SetRendererVisible}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{SetRendererVisible()}{SetRendererVisible()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_aeac83dd3c07767bfb3004a7188b74aa8} 
+void Kitchen\+Game\+Bootstrap.\+Set\+Renderer\+Visible (\begin{DoxyParamCaption}\item[{Transform}]{root}{, }\item[{bool}]{visible}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ustawia widoczność wszystkich rendererów w hierarchii danego transformu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em root} & Transform korzenia hierarchii do modyfikacji.\\
+\hline
+{\em visible} & Czy renderery mają być widoczne (true) czy ukryte (false).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_game_bootstrap_a09906d4a4958de467852e113523ce9a2}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!Start@{Start}}
+\index{Start@{Start}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a09906d4a4958de467852e113523ce9a2} 
+void Kitchen\+Game\+Bootstrap.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Główna metoda inicjalizacyjna wywoływana przez Unity w momencie startu komponentu. Sekwencyjnie uruchamia wszystkie etapy budowania sceny kuchni. 
+
+Każdy etap inicjalizacji jest otoczony blokiem try-\/catch, aby awaria jednego podsystemu nie blokowała inicjalizacji pozostałych. W przypadku braku aktywnej sesji sieciowej, tworzy również system zdarzeń UI i menu główne. Kolejność inicjalizacji\+:
+\begin{DoxyEnumerate}
+\item Konfiguracja sieci (\doxylink{class_network_setup}{Network\+Setup})
+\item Menedżerowie gry (ekonomia, zamówienia, zapis, ustawienia, sklep, VFX, relay)
+\item Budowa środowiska 3D (podłoga, ściany, sufit, stoły)
+\item Budowa stacji kuchennych (grill, składniki, deska, montaż, wydanie)
+\item Tablica zamówień
+\item Konfiguracja oświetlenia
+\item Efekty wizualne i dodatkowe systemy UI 
+\end{DoxyEnumerate}
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_kitchen_game_bootstrap_ab17b3ab6be19f53f19345d55a7d7beb1}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!cachedLitShader@{cachedLitShader}}
+\index{cachedLitShader@{cachedLitShader}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{cachedLitShader}{cachedLitShader}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_ab17b3ab6be19f53f19345d55a7d7beb1} 
+Shader Kitchen\+Game\+Bootstrap.\+cached\+Lit\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowany shader Lit, aby uniknąć wielokrotnego wyszukiwania go w każdym wywołaniu. 
+
+\Hypertarget{class_kitchen_game_bootstrap_a267382f94685f671ee5a5b996863eb47}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CustomerLookTarget@{CustomerLookTarget}}
+\index{CustomerLookTarget@{CustomerLookTarget}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CustomerLookTarget}{CustomerLookTarget}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a267382f94685f671ee5a5b996863eb47} 
+readonly Vector3 Kitchen\+Game\+Bootstrap.\+Customer\+Look\+Target = new Vector3(0f, 1.\+55f, -\/4.\+8f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Punkt, na który klient patrzy — używany do orientacji modelu klienta. 
+
+\Hypertarget{class_kitchen_game_bootstrap_adc89573bb712509a791f67795c7390f3}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!CustomerPosition@{CustomerPosition}}
+\index{CustomerPosition@{CustomerPosition}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{CustomerPosition}{CustomerPosition}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_adc89573bb712509a791f67795c7390f3} 
+readonly Vector3 Kitchen\+Game\+Bootstrap.\+Customer\+Position = new Vector3(0f, 0f, -\/4.\+8f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Pozycja klienta oczekującego na zamówienie. 
+
+\Hypertarget{class_kitchen_game_bootstrap_a99fc45bb17749dacd33b6cc1b1dc48dd}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!EntranceTableTopY@{EntranceTableTopY}}
+\index{EntranceTableTopY@{EntranceTableTopY}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{EntranceTableTopY}{EntranceTableTopY}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a99fc45bb17749dacd33b6cc1b1dc48dd} 
+const float Kitchen\+Game\+Bootstrap.\+Entrance\+Table\+TopY = 1.\+20f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Wysokość Y blatu stołu przy wejściu. Określa pozycję pionową, na której umieszczane są obiekty na stole wejściowym. 
+
+\Hypertarget{class_kitchen_game_bootstrap_a169b8d09bd86e27e2208b5f53b9ff706}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!EntranceTableX@{EntranceTableX}}
+\index{EntranceTableX@{EntranceTableX}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{EntranceTableX}{EntranceTableX}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a169b8d09bd86e27e2208b5f53b9ff706} 
+const float Kitchen\+Game\+Bootstrap.\+Entrance\+TableX = 2.\+75f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Pozycja X stołu przy wejściu (stół z kasą fiskalną i tacą do wydawania). 
+
+\Hypertarget{class_kitchen_game_bootstrap_accbb1db4939af913ae1c1ac48e49acb1}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!EntranceTableZ@{EntranceTableZ}}
+\index{EntranceTableZ@{EntranceTableZ}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{EntranceTableZ}{EntranceTableZ}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_accbb1db4939af913ae1c1ac48e49acb1} 
+const float Kitchen\+Game\+Bootstrap.\+Entrance\+TableZ = -\/4.\+58f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Pozycja Z stołu przy wejściu (stół z kasą fiskalną i tacą do wydawania). 
+
+\Hypertarget{class_kitchen_game_bootstrap_afe958a94365764c1158ca452be213789}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!InteractableLayer@{InteractableLayer}}
+\index{InteractableLayer@{InteractableLayer}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{InteractableLayer}{InteractableLayer}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_afe958a94365764c1158ca452be213789} 
+const int Kitchen\+Game\+Bootstrap.\+Interactable\+Layer = 6\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Numer warstwy (layer) przypisywany obiektom interaktywnym w kuchni. Służy do filtrowania raycastów przy interakcji gracza ze stacjami. 
+
+\Hypertarget{class_kitchen_game_bootstrap_a787c9aa3aec44c1af08716346f657b51}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!ModelPath@{ModelPath}}
+\index{ModelPath@{ModelPath}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{ModelPath}{ModelPath}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a787c9aa3aec44c1af08716346f657b51} 
+const string Kitchen\+Game\+Bootstrap.\+Model\+Path = "{}Models/"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Ścieżka do katalogu z modelami 3D w folderze Resources. Używana przy ładowaniu prefabrykatów modeli za pomocą Resources.\+Load. 
+
+\Hypertarget{class_kitchen_game_bootstrap_aac3154b7b888ed7c82be5f2254a7c4df}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!PlayerEyeHeight@{PlayerEyeHeight}}
+\index{PlayerEyeHeight@{PlayerEyeHeight}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{PlayerEyeHeight}{PlayerEyeHeight}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_aac3154b7b888ed7c82be5f2254a7c4df} 
+const float Kitchen\+Game\+Bootstrap.\+Player\+Eye\+Height = 1.\+75f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Wysokość oczu gracza nad podłogą w metrach. Używana do pozycjonowania kamery i punktów patrzenia. 
+
+\Hypertarget{class_kitchen_game_bootstrap_a4334f260c5b660354f4bc0a43154771e}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!PlayerSpawnPosition@{PlayerSpawnPosition}}
+\index{PlayerSpawnPosition@{PlayerSpawnPosition}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{PlayerSpawnPosition}{PlayerSpawnPosition}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a4334f260c5b660354f4bc0a43154771e} 
+readonly Vector3 Kitchen\+Game\+Bootstrap.\+Player\+Spawn\+Position = new Vector3(0f, 0f, -\/1.\+9f)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Domyślna pozycja spawnu gracza na scenie. 
+
+\Hypertarget{class_kitchen_game_bootstrap_a21ee6ac6ea5233cb110aea587e27e8b7}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!stationIndexCounter@{stationIndexCounter}}
+\index{stationIndexCounter@{stationIndexCounter}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{stationIndexCounter}{stationIndexCounter}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a21ee6ac6ea5233cb110aea587e27e8b7} 
+int Kitchen\+Game\+Bootstrap.\+station\+Index\+Counter = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Licznik indeksów stacji kuchennych, inkrementowany przy tworzeniu każdej nowej stacji. Zapewnia unikalny identyfikator sieciowy dla każdej stacji. 
+
+\Hypertarget{class_kitchen_game_bootstrap_a4683fa6997b82884d40cfabca9c679a4}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!TableDepthScale@{TableDepthScale}}
+\index{TableDepthScale@{TableDepthScale}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{TableDepthScale}{TableDepthScale}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a4683fa6997b82884d40cfabca9c679a4} 
+const float Kitchen\+Game\+Bootstrap.\+Table\+Depth\+Scale = 1.\+6f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Mnożnik skali głębokości stołów przygotowawczych. Stosowany do rozciągnięcia modelu stołu wzdłuż osi Z. 
+
+\Hypertarget{class_kitchen_game_bootstrap_a7d115fcaa38c4531b644a8fc5f0c5872}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!TableVisualSize@{TableVisualSize}}
+\index{TableVisualSize@{TableVisualSize}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{TableVisualSize}{TableVisualSize}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_a7d115fcaa38c4531b644a8fc5f0c5872} 
+const float Kitchen\+Game\+Bootstrap.\+Table\+Visual\+Size = 2.\+35f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Bazowy rozmiar wizualny modeli stołów przygotowawczych. Stosowany jako parametr target\+Max\+Size przy skalowaniu modeli stołów. 
+
+\Hypertarget{class_kitchen_game_bootstrap_afe5bbc4cf45299a642c15be07ec95d99}\index{KitchenGameBootstrap@{KitchenGameBootstrap}!WorktopLocalY@{WorktopLocalY}}
+\index{WorktopLocalY@{WorktopLocalY}!KitchenGameBootstrap@{KitchenGameBootstrap}}
+\doxysubsubsection{\texorpdfstring{WorktopLocalY}{WorktopLocalY}}
+{\footnotesize\ttfamily \label{class_kitchen_game_bootstrap_afe5bbc4cf45299a642c15be07ec95d99} 
+const float Kitchen\+Game\+Bootstrap.\+Worktop\+LocalY = 0.\+34f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Lokalna pozycja Y blatu roboczego stacji kuchennych. Określa wysokość, na której umieszczane są elementy wizualne na stacjach. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_game_bootstrap_8cs}{Kitchen\+Game\+Bootstrap.\+cs}}\end{DoxyCompactItemize}

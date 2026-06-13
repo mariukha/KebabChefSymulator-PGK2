@@ -1,0 +1,137 @@
+\doxysection{Dokumentacja klasy Ambient\+Particles}
+\hypertarget{class_ambient_particles}{}\label{class_ambient_particles}\index{AmbientParticles@{AmbientParticles}}
+
+
+Tworzy subtelne, unoszące się cząsteczki kurzu w kuchni dla atmosfery otoczenia. Cząsteczki powoli dryfują w powietrzu, odbijając światło i tworząc ciepły, przytulny klimat.  
+
+
+Diagram dziedziczenia dla Ambient\+Particles\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ambient_particles}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_ambient_particles}{Ambient\+Particles}} \mbox{\hyperlink{class_ambient_particles_acaf63c7128284ee843c3951db70241d9}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna instancja Singletona klasy \doxylink{class_ambient_particles}{Ambient\+Particles}. Umożliwia globalny dostęp do generatora cząsteczek atmosferycznych. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_ambient_particles_a8af25b01bad6977e4734275b3d9d6fa6}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton — ustawia instancję lub niszczy duplikat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ambient_particles_a2188122e86e636c76e8ec9794eabf543}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Metoda startowa Unity wywoływana przy pierwszej klatce. Inicjalizuje system cząsteczkowy kurzu atmosferycznego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ambient_particles_a89d62150f33a905e1d2028a4110c8dd4}{Create\+Dust\+Particles}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy i konfiguruje system cząsteczkowy kurzu atmosferycznego. System emituje drobne, ciepłe cząsteczki z długim czasem życia (6-\/14s), powoli dryfujące w losowych kierunkach z delikatną rotacją. \end{DoxyCompactList}\item 
+Material \mbox{\hyperlink{class_ambient_particles_a9debd23fb1cd29e15490306eb9fd8c3f}{Create\+Dust\+Material}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy materiał dla cząsteczek kurzu atmosferycznego. Próbuje użyć shadera "{}\+Particles/\+Standard Unlit"{}, a w przypadku jego braku wybiera alternatywne shadery (URP, Legacy, Standard). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ambient_particles_abd7d0aacff185ec36f08b7fb5d54c140}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Unity wywoływana przy niszczeniu obiektu. Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Particle\+System \mbox{\hyperlink{class_ambient_particles_ae15b4314880de9148ace977a24c7df09}{dust\+System}}
+\begin{DoxyCompactList}\small\item\em Referencja do systemu cząsteczkowego kurzu atmosferycznego. Tworzony proceduralnie w metodzie \doxylink{class_ambient_particles_a89d62150f33a905e1d2028a4110c8dd4}{Create\+Dust\+Particles}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Tworzy subtelne, unoszące się cząsteczki kurzu w kuchni dla atmosfery otoczenia. Cząsteczki powoli dryfują w powietrzu, odbijając światło i tworząc ciepły, przytulny klimat. 
+
+Klasa implementuje wzorzec Singleton, zapewniając jedną globalną instancję generatora cząsteczek atmosferycznych. System cząsteczkowy jest tworzony proceduralnie w metodzie Start bez potrzeby użycia prefabrykatów — materiał i konfiguracja generowane są programowo. Cząsteczki emitowane są z dużego pudełkowego kształtu (10x4x10), co zapewnia równomierne pokrycie przestrzeni kuchni. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_ambient_particles_a8af25b01bad6977e4734275b3d9d6fa6}\index{AmbientParticles@{AmbientParticles}!Awake@{Awake}}
+\index{Awake@{Awake}!AmbientParticles@{AmbientParticles}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_ambient_particles_a8af25b01bad6977e4734275b3d9d6fa6} 
+void Ambient\+Particles.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton — ustawia instancję lub niszczy duplikat. 
+
+\Hypertarget{class_ambient_particles_a9debd23fb1cd29e15490306eb9fd8c3f}\index{AmbientParticles@{AmbientParticles}!CreateDustMaterial@{CreateDustMaterial}}
+\index{CreateDustMaterial@{CreateDustMaterial}!AmbientParticles@{AmbientParticles}}
+\doxysubsubsection{\texorpdfstring{CreateDustMaterial()}{CreateDustMaterial()}}
+{\footnotesize\ttfamily \label{class_ambient_particles_a9debd23fb1cd29e15490306eb9fd8c3f} 
+Material Ambient\+Particles.\+Create\+Dust\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy materiał dla cząsteczek kurzu atmosferycznego. Próbuje użyć shadera "{}\+Particles/\+Standard Unlit"{}, a w przypadku jego braku wybiera alternatywne shadery (URP, Legacy, Standard). 
+
+Materiał jest konfigurowany z ciepłym, kremowym kolorem o niskiej przezroczystości (0.\+25). Ustawiony w trybie transparentnym z addytywnym mieszaniem i kolejką renderowania 3050. 
+
+\begin{DoxyReturn}{Zwraca}
+Nowy materiał skonfigurowany dla cząsteczek kurzu.
+\end{DoxyReturn}
+\Hypertarget{class_ambient_particles_a89d62150f33a905e1d2028a4110c8dd4}\index{AmbientParticles@{AmbientParticles}!CreateDustParticles@{CreateDustParticles}}
+\index{CreateDustParticles@{CreateDustParticles}!AmbientParticles@{AmbientParticles}}
+\doxysubsubsection{\texorpdfstring{CreateDustParticles()}{CreateDustParticles()}}
+{\footnotesize\ttfamily \label{class_ambient_particles_a89d62150f33a905e1d2028a4110c8dd4} 
+void Ambient\+Particles.\+Create\+Dust\+Particles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy i konfiguruje system cząsteczkowy kurzu atmosferycznego. System emituje drobne, ciepłe cząsteczki z długim czasem życia (6-\/14s), powoli dryfujące w losowych kierunkach z delikatną rotacją. 
+
+Konfiguracja obejmuje\+:
+\begin{DoxyItemize}
+\item Kształt emisji\+: pudełko 10x4x10 jednostek (pokrywa całą kuchnię)
+\item Prędkość losowa w zakresie X/Z z lekkim unoszeniem się w górę
+\item Gradient koloru\+: ciepły, kremowy odcień zanikający na krawędziach życia cząsteczki
+\item Krzywa rozmiaru\+: powiększanie do połowy życia, następnie zmniejszanie
+\item Delikatna rotacja cząsteczek dla naturalnego wyglądu 
+\end{DoxyItemize}\Hypertarget{class_ambient_particles_abd7d0aacff185ec36f08b7fb5d54c140}\index{AmbientParticles@{AmbientParticles}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!AmbientParticles@{AmbientParticles}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_ambient_particles_abd7d0aacff185ec36f08b7fb5d54c140} 
+void Ambient\+Particles.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Unity wywoływana przy niszczeniu obiektu. Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników. 
+
+\Hypertarget{class_ambient_particles_a2188122e86e636c76e8ec9794eabf543}\index{AmbientParticles@{AmbientParticles}!Start@{Start}}
+\index{Start@{Start}!AmbientParticles@{AmbientParticles}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_ambient_particles_a2188122e86e636c76e8ec9794eabf543} 
+void Ambient\+Particles.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda startowa Unity wywoływana przy pierwszej klatce. Inicjalizuje system cząsteczkowy kurzu atmosferycznego. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_ambient_particles_ae15b4314880de9148ace977a24c7df09}\index{AmbientParticles@{AmbientParticles}!dustSystem@{dustSystem}}
+\index{dustSystem@{dustSystem}!AmbientParticles@{AmbientParticles}}
+\doxysubsubsection{\texorpdfstring{dustSystem}{dustSystem}}
+{\footnotesize\ttfamily \label{class_ambient_particles_ae15b4314880de9148ace977a24c7df09} 
+Particle\+System Ambient\+Particles.\+dust\+System\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referencja do systemu cząsteczkowego kurzu atmosferycznego. Tworzony proceduralnie w metodzie \doxylink{class_ambient_particles_a89d62150f33a905e1d2028a4110c8dd4}{Create\+Dust\+Particles}. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_ambient_particles_acaf63c7128284ee843c3951db70241d9}\index{AmbientParticles@{AmbientParticles}!Instance@{Instance}}
+\index{Instance@{Instance}!AmbientParticles@{AmbientParticles}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_ambient_particles_acaf63c7128284ee843c3951db70241d9} 
+\mbox{\hyperlink{class_ambient_particles}{Ambient\+Particles}} Ambient\+Particles.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna instancja Singletona klasy \doxylink{class_ambient_particles}{Ambient\+Particles}. Umożliwia globalny dostęp do generatora cząsteczek atmosferycznych. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Effects/\mbox{\hyperlink{_ambient_particles_8cs}{Ambient\+Particles.\+cs}}\end{DoxyCompactItemize}

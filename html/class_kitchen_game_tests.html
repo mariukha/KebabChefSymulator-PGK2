@@ -1,0 +1,1412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy KitchenGameTests</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pri-static-methods">Statyczne metody prywatne</a> &#124;
+<a href="class_kitchen_game_tests-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy KitchenGameTests</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa testów jednostkowych EditMode dla systemu kuchni w grze Kebab Chef Symulator.  
+ <a href="#details">Więcej...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a9c152111db7586a9fbd1a25db1c8098f" id="r_a9c152111db7586a9fbd1a25db1c8098f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c152111db7586a9fbd1a25db1c8098f">ValidatorAcceptsDishWithExactIngredients</a> ()</td></tr>
+<tr class="memdesc:a9c152111db7586a9fbd1a25db1c8098f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że walidator akceptuje danie zawierające dokładnie wymagane składniki.  <br /></td></tr>
+<tr class="separator:a9c152111db7586a9fbd1a25db1c8098f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5912ae3ea2d43fd5a88a42d582b9160" id="r_af5912ae3ea2d43fd5a88a42d582b9160"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5912ae3ea2d43fd5a88a42d582b9160">ValidatorRejectsWrongPreparationState</a> ()</td></tr>
+<tr class="memdesc:af5912ae3ea2d43fd5a88a42d582b9160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że walidator odrzuca danie ze składnikiem w nieprawidłowym stanie przygotowania.  <br /></td></tr>
+<tr class="separator:af5912ae3ea2d43fd5a88a42d582b9160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafc3e0458bc7423098949e423ea9e914" id="r_aafc3e0458bc7423098949e423ea9e914"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafc3e0458bc7423098949e423ea9e914">SaveDataRoundTripPreservesProgress</a> ()</td></tr>
+<tr class="memdesc:aafc3e0458bc7423098949e423ea9e914"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że dane zapisu gry zachowują postęp po serializacji i deserializacji JSON.  <br /></td></tr>
+<tr class="separator:aafc3e0458bc7423098949e423ea9e914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad38e701f6a365c4a1c870486732ee97a" id="r_ad38e701f6a365c4a1c870486732ee97a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad38e701f6a365c4a1c870486732ee97a">ShopSaveDataRoundTripPreservesUpgrades</a> ()</td></tr>
+<tr class="memdesc:ad38e701f6a365c4a1c870486732ee97a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że dane zapisu sklepu zachowują informacje o ulepszeniach po serializacji i deserializacji.  <br /></td></tr>
+<tr class="separator:ad38e701f6a365c4a1c870486732ee97a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d4d6fc96c1f9eb7cc5fd00aad4cbcd8" id="r_a6d4d6fc96c1f9eb7cc5fd00aad4cbcd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d4d6fc96c1f9eb7cc5fd00aad4cbcd8">GameSaveDataIncludesShopField</a> ()</td></tr>
+<tr class="memdesc:a6d4d6fc96c1f9eb7cc5fd00aad4cbcd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że obiekt <code><a class="el" href="class_game_save_data.html">GameSaveData</a></code> zawiera pole sklepu z poprawną inicjalizacją.  <br /></td></tr>
+<tr class="separator:a6d4d6fc96c1f9eb7cc5fd00aad4cbcd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83b08378de196c3f5669fdf77e12b816" id="r_a83b08378de196c3f5669fdf77e12b816"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83b08378de196c3f5669fdf77e12b816">UpgradeDefinitionCostScalesCorrectly</a> ()</td></tr>
+<tr class="memdesc:a83b08378de196c3f5669fdf77e12b816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że koszt ulepszenia skaluje się poprawnie według wzoru wykładniczego.  <br /></td></tr>
+<tr class="separator:a83b08378de196c3f5669fdf77e12b816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f224e9573ec28c1274bcaeca33800b5" id="r_a1f224e9573ec28c1274bcaeca33800b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f224e9573ec28c1274bcaeca33800b5">UpgradeTypeEnumHasFiveValues</a> ()</td></tr>
+<tr class="memdesc:a1f224e9573ec28c1274bcaeca33800b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że typ wyliczeniowy <code>UpgradeType</code> posiada dokładnie pięć wartości.  <br /></td></tr>
+<tr class="separator:a1f224e9573ec28c1274bcaeca33800b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3337a26337af090c6bfbfdcdc7acfdbd" id="r_a3337a26337af090c6bfbfdcdc7acfdbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3337a26337af090c6bfbfdcdc7acfdbd">ShopUpgradeCostScalesExponentially</a> ()</td></tr>
+<tr class="memdesc:a3337a26337af090c6bfbfdcdc7acfdbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że koszt ulepszenia w sklepie skaluje się wykładniczo z niestandardowym współczynnikiem.  <br /></td></tr>
+<tr class="separator:a3337a26337af090c6bfbfdcdc7acfdbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57b97b868961972a9ab0ad6898aaecb3" id="r_a57b97b868961972a9ab0ad6898aaecb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57b97b868961972a9ab0ad6898aaecb3">ShopEffectDescriptionReturnsCorrectText</a> ()</td></tr>
+<tr class="memdesc:a57b97b868961972a9ab0ad6898aaecb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że opis efektu ulepszenia w sklepie zwraca poprawny tekst.  <br /></td></tr>
+<tr class="separator:a57b97b868961972a9ab0ad6898aaecb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bc575513900321dab8108ec88f92644" id="r_a1bc575513900321dab8108ec88f92644"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bc575513900321dab8108ec88f92644">ShopMaxLevelBlocksFurtherUpgradeCheck</a> ()</td></tr>
+<tr class="memdesc:a1bc575513900321dab8108ec88f92644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że osiągnięcie maksymalnego poziomu ulepszenia blokuje dalsze ulepszanie.  <br /></td></tr>
+<tr class="separator:a1bc575513900321dab8108ec88f92644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c4bf33be48b71652a7b8b74b20bc184" id="r_a1c4bf33be48b71652a7b8b74b20bc184"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c4bf33be48b71652a7b8b74b20bc184">EconomySaveDataRoundTrip</a> ()</td></tr>
+<tr class="memdesc:a1c4bf33be48b71652a7b8b74b20bc184"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje poprawność cyklu serializacji i deserializacji danych ekonomicznych.  <br /></td></tr>
+<tr class="separator:a1c4bf33be48b71652a7b8b74b20bc184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a3d4471a78fb0a6775c68940ccb1fc3" id="r_a6a3d4471a78fb0a6775c68940ccb1fc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a3d4471a78fb0a6775c68940ccb1fc3">NetworkItemStateEmptyRoundTrip</a> ()</td></tr>
+<tr class="memdesc:a6a3d4471a78fb0a6775c68940ccb1fc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że pusty stan elementu sieciowego poprawnie przechodzi cykl serializacji.  <br /></td></tr>
+<tr class="separator:a6a3d4471a78fb0a6775c68940ccb1fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3f6ac7adcb2e0925b742f7217172c94" id="r_ae3f6ac7adcb2e0925b742f7217172c94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3f6ac7adcb2e0925b742f7217172c94">NetworkItemStateDishRoundTrip</a> ()</td></tr>
+<tr class="memdesc:ae3f6ac7adcb2e0925b742f7217172c94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje poprawność konwersji dania do stanu sieciowego i z powrotem.  <br /></td></tr>
+<tr class="separator:ae3f6ac7adcb2e0925b742f7217172c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac31c8aaa8e7dcc83aaadd188a563c8e4" id="r_ac31c8aaa8e7dcc83aaadd188a563c8e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac31c8aaa8e7dcc83aaadd188a563c8e4">ValidatorRejectsExtraIngredients</a> ()</td></tr>
+<tr class="memdesc:ac31c8aaa8e7dcc83aaadd188a563c8e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że walidator odrzuca danie zawierające nadmiarowe składniki.  <br /></td></tr>
+<tr class="separator:ac31c8aaa8e7dcc83aaadd188a563c8e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3e2edda4d51269eef16fdbe41d2c2d2" id="r_ac3e2edda4d51269eef16fdbe41d2c2d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3e2edda4d51269eef16fdbe41d2c2d2">ValidatorRejectsNonDishItem</a> ()</td></tr>
+<tr class="memdesc:ac3e2edda4d51269eef16fdbe41d2c2d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że walidator odrzuca element kuchenny, który nie jest daniem (nie jest złożony).  <br /></td></tr>
+<tr class="separator:ac3e2edda4d51269eef16fdbe41d2c2d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55f4b8784b1416852e03317b1751bc8c" id="r_a55f4b8784b1416852e03317b1751bc8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55f4b8784b1416852e03317b1751bc8c">OrderClonePreservesAllFields</a> ()</td></tr>
+<tr class="memdesc:a55f4b8784b1416852e03317b1751bc8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że klonowanie zamówienia zachowuje wszystkie pola i tworzy głęboką kopię.  <br /></td></tr>
+<tr class="separator:a55f4b8784b1416852e03317b1751bc8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55fbd2ad0747419bb28f02ed00894897" id="r_a55fbd2ad0747419bb28f02ed00894897"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55fbd2ad0747419bb28f02ed00894897">KitchenItemFromIngredientCreatesCorrectItem</a> ()</td></tr>
+<tr class="memdesc:a55fbd2ad0747419bb28f02ed00894897"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że metoda <code><a class="el" href="class_kitchen_item.html#aac748ff8356cf60147db8b6159e4e235" title="Tworzy nowy przedmiot kuchenny na podstawie danych składnika z assetu IngredientData....">KitchenItem.FromIngredient</a></code> poprawnie obsługuje wartość null.  <br /></td></tr>
+<tr class="separator:a55fbd2ad0747419bb28f02ed00894897"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15a8fc06196d59d8d786bb3c7ef16653" id="r_a15a8fc06196d59d8d786bb3c7ef16653"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15a8fc06196d59d8d786bb3c7ef16653">KitchenItemClonePreservesContents</a> ()</td></tr>
+<tr class="memdesc:a15a8fc06196d59d8d786bb3c7ef16653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że klonowanie obiektu <code><a class="el" href="class_kitchen_item.html" title="Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać l...">KitchenItem</a></code> zachowuje zawartość dania i tworzy głęboką kopię.  <br /></td></tr>
+<tr class="separator:a15a8fc06196d59d8d786bb3c7ef16653"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a7c44d6f99e765aa69363ae42881fcc" id="r_a8a7c44d6f99e765aa69363ae42881fcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a7c44d6f99e765aa69363ae42881fcc">DishBuildSummaryListsAllIngredients</a> ()</td></tr>
+<tr class="memdesc:a8a7c44d6f99e765aa69363ae42881fcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że podsumowanie dania zawiera listę wszystkich składników.  <br /></td></tr>
+<tr class="separator:a8a7c44d6f99e765aa69363ae42881fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92f33b8baa7ffea24c0d1dae5ed5f654" id="r_a92f33b8baa7ffea24c0d1dae5ed5f654"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92f33b8baa7ffea24c0d1dae5ed5f654">RawIngredientBuildSummaryShowsState</a> ()</td></tr>
+<tr class="memdesc:a92f33b8baa7ffea24c0d1dae5ed5f654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że podsumowanie surowego składnika wyświetla jego stan przetworzenia.  <br /></td></tr>
+<tr class="separator:a92f33b8baa7ffea24c0d1dae5ed5f654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9103f156cc0d63aea9361ada734ed677" id="r_a9103f156cc0d63aea9361ada734ed677"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9103f156cc0d63aea9361ada734ed677">ValidatorAcceptsCompleteClassicKebab</a> ()</td></tr>
+<tr class="memdesc:a9103f156cc0d63aea9361ada734ed677"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje pełną integrację walidatora dla kompletnego klasycznego kebaba.  <br /></td></tr>
+<tr class="separator:a9103f156cc0d63aea9361ada734ed677"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf96b1b84f0ed3c30cec82881ae6787b" id="r_acf96b1b84f0ed3c30cec82881ae6787b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf96b1b84f0ed3c30cec82881ae6787b">ValidatorRejectsMissingIngredient</a> ()</td></tr>
+<tr class="memdesc:acf96b1b84f0ed3c30cec82881ae6787b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że walidator odrzuca danie z brakującym wymaganym składnikiem.  <br /></td></tr>
+<tr class="separator:acf96b1b84f0ed3c30cec82881ae6787b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69046510a85b47268871f75b348ca7a8" id="r_a69046510a85b47268871f75b348ca7a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69046510a85b47268871f75b348ca7a8">ValidatorRejectsDoubleQuantityWhenSingleRequired</a> ()</td></tr>
+<tr class="memdesc:a69046510a85b47268871f75b348ca7a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że walidator odrzuca danie z podwójną ilością składnika, gdy wymagana jest pojedyncza.  <br /></td></tr>
+<tr class="separator:a69046510a85b47268871f75b348ca7a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0bd2ed8c9f19061743e976f5e7bdb50" id="r_ad0bd2ed8c9f19061743e976f5e7bdb50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0bd2ed8c9f19061743e976f5e7bdb50">KitchenNamingReturnsPolishLabels</a> ()</td></tr>
+<tr class="memdesc:ad0bd2ed8c9f19061743e976f5e7bdb50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że klasa <code><a class="el" href="class_kitchen_naming.html" title="Klasa statyczna zapewniająca polskie nazwy dla składników i ich stanów przetworzenia....">KitchenNaming</a></code> zwraca poprawne polskie etykiety składników i stanów.  <br /></td></tr>
+<tr class="separator:ad0bd2ed8c9f19061743e976f5e7bdb50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a078134614b925b18e81a9646b5871310" id="r_a078134614b925b18e81a9646b5871310"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a078134614b925b18e81a9646b5871310">IngredientRequirementDisplayStringContainsNameAndState</a> ()</td></tr>
+<tr class="memdesc:a078134614b925b18e81a9646b5871310"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że ciąg wyświetlania wymagania składnika zawiera nazwę i stan przetworzenia.  <br /></td></tr>
+<tr class="separator:a078134614b925b18e81a9646b5871310"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3347bafe7412a4e7b7fddf2aa3cae90" id="r_aa3347bafe7412a4e7b7fddf2aa3cae90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3347bafe7412a4e7b7fddf2aa3cae90">IngredientRequirementQuantityShowsMultiplier</a> ()</td></tr>
+<tr class="memdesc:aa3347bafe7412a4e7b7fddf2aa3cae90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że wymaganie składnika z ilością większą niż 1 wyświetla mnożnik.  <br /></td></tr>
+<tr class="separator:aa3347bafe7412a4e7b7fddf2aa3cae90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab43925f374e957cec089a5dab40089c3" id="r_ab43925f374e957cec089a5dab40089c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab43925f374e957cec089a5dab40089c3">OrderBuildDescriptionContainsClientAndDishName</a> ()</td></tr>
+<tr class="memdesc:ab43925f374e957cec089a5dab40089c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że opis zamówienia zawiera imię klienta oraz nazwę dania.  <br /></td></tr>
+<tr class="separator:ab43925f374e957cec089a5dab40089c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78e77d8b6ec35bf18645ade469e2061b" id="r_a78e77d8b6ec35bf18645ade469e2061b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78e77d8b6ec35bf18645ade469e2061b">PreparedIngredientDisplayStringCorrect</a> ()</td></tr>
+<tr class="memdesc:a78e77d8b6ec35bf18645ade469e2061b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że ciąg wyświetlania przygotowanego składnika jest poprawny.  <br /></td></tr>
+<tr class="separator:a78e77d8b6ec35bf18645ade469e2061b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af205d0214509b24616d79d082d5d70a8" id="r_af205d0214509b24616d79d082d5d70a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af205d0214509b24616d79d082d5d70a8">KitchenStationTypeEnumHasFiveValues</a> ()</td></tr>
+<tr class="memdesc:af205d0214509b24616d79d082d5d70a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że typ wyliczeniowy <code>KitchenStationType</code> posiada dokładnie pięć wartości.  <br /></td></tr>
+<tr class="separator:af205d0214509b24616d79d082d5d70a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e294fcddbf1d120e33d435ab227038f" id="r_a2e294fcddbf1d120e33d435ab227038f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e294fcddbf1d120e33d435ab227038f">IngredientKindEnumHasSevenValues</a> ()</td></tr>
+<tr class="memdesc:a2e294fcddbf1d120e33d435ab227038f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że typ wyliczeniowy <code>IngredientKind</code> posiada dokładnie siedem wartości.  <br /></td></tr>
+<tr class="separator:a2e294fcddbf1d120e33d435ab227038f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbf7df253bfb3b1144ac879340d0cab9" id="r_adbf7df253bfb3b1144ac879340d0cab9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbf7df253bfb3b1144ac879340d0cab9">ProcessStateEnumHasFourValues</a> ()</td></tr>
+<tr class="memdesc:adbf7df253bfb3b1144ac879340d0cab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weryfikuje, że typ wyliczeniowy <code>IngredientProcessState</code> posiada dokładnie cztery wartości.  <br /></td></tr>
+<tr class="separator:adbf7df253bfb3b1144ac879340d0cab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Statyczne metody prywatne</h2></td></tr>
+<tr class="memitem:aecca01f7d8502ffaaf0dc0cdbde68727" id="r_aecca01f7d8502ffaaf0dc0cdbde68727"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecca01f7d8502ffaaf0dc0cdbde68727">CreateDish</a> (params object[] ingredients)</td></tr>
+<tr class="memdesc:aecca01f7d8502ffaaf0dc0cdbde68727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy obiekt dania (<a class="el" href="class_kitchen_item.html" title="Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać l...">KitchenItem</a>) z podanymi przygotowanymi składnikami.  <br /></td></tr>
+<tr class="separator:aecca01f7d8502ffaaf0dc0cdbde68727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed56087ac492dd6095766bb99c064fb3" id="r_aed56087ac492dd6095766bb99c064fb3"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed56087ac492dd6095766bb99c064fb3">CreateIngredientRequirement</a> (string ingredientKind, string processState, int quantity=1)</td></tr>
+<tr class="memdesc:aed56087ac492dd6095766bb99c064fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy obiekt wymagania składnika z określonym typem, stanem i ilością.  <br /></td></tr>
+<tr class="separator:aed56087ac492dd6095766bb99c064fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cda6e348e580508b9299335dbacec4e" id="r_a3cda6e348e580508b9299335dbacec4e"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cda6e348e580508b9299335dbacec4e">CreatePreparedIngredient</a> (string ingredientKind, string processState)</td></tr>
+<tr class="memdesc:a3cda6e348e580508b9299335dbacec4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy obiekt przygotowanego składnika z określonym typem i stanem przetworzenia.  <br /></td></tr>
+<tr class="separator:a3cda6e348e580508b9299335dbacec4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b95514322889f1999cf4eef5b562926" id="r_a8b95514322889f1999cf4eef5b562926"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b95514322889f1999cf4eef5b562926">ParseEnum</a> (string typeName, string value)</td></tr>
+<tr class="memdesc:a8b95514322889f1999cf4eef5b562926"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parsuje wartość tekstową na odpowiadający jej element typu wyliczeniowego.  <br /></td></tr>
+<tr class="separator:a8b95514322889f1999cf4eef5b562926"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad025d1cb912ed52a1f61a133a8d1939c" id="r_ad025d1cb912ed52a1f61a133a8d1939c"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad025d1cb912ed52a1f61a133a8d1939c">Create</a> (string typeName)</td></tr>
+<tr class="memdesc:ad025d1cb912ed52a1f61a133a8d1939c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy nową instancję typu o podanej nazwie z assembly głównego projektu.  <br /></td></tr>
+<tr class="separator:ad025d1cb912ed52a1f61a133a8d1939c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ee117789ca30a323ea4cbb2071c968f" id="r_a4ee117789ca30a323ea4cbb2071c968f"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ee117789ca30a323ea4cbb2071c968f">GetField</a> (object instance, string fieldName)</td></tr>
+<tr class="memdesc:a4ee117789ca30a323ea4cbb2071c968f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera wartość pola publicznego z podanej instancji obiektu za pomocą refleksji.  <br /></td></tr>
+<tr class="separator:a4ee117789ca30a323ea4cbb2071c968f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b9d40e40e13ab55a06b65938ae5cac7" id="r_a7b9d40e40e13ab55a06b65938ae5cac7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b9d40e40e13ab55a06b65938ae5cac7">SetField</a> (object instance, string fieldName, object value)</td></tr>
+<tr class="memdesc:a7b9d40e40e13ab55a06b65938ae5cac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia wartość pola publicznego w podanej instancji obiektu za pomocą refleksji.  <br /></td></tr>
+<tr class="separator:a7b9d40e40e13ab55a06b65938ae5cac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a156b35057c9d6f90757cff3e0debc93a" id="r_a156b35057c9d6f90757cff3e0debc93a"><td class="memItemLeft" align="right" valign="top">static Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a156b35057c9d6f90757cff3e0debc93a">GetTypeByName</a> (string typeName)</td></tr>
+<tr class="memdesc:a156b35057c9d6f90757cff3e0debc93a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyszukuje i zwraca typ o podanej nazwie z assembly <code>Assembly-CSharp</code>.  <br /></td></tr>
+<tr class="separator:a156b35057c9d6f90757cff3e0debc93a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa testów jednostkowych EditMode dla systemu kuchni w grze Kebab Chef Symulator. </p>
+<p>Testy wykorzystują refleksję do dynamicznego tworzenia i manipulowania obiektami z głównego assembly gry (Assembly-CSharp). Dzięki temu testy mogą weryfikować logikę biznesową bez bezpośredniej zależności kompilacyjnej od testowanych typów. Klasa zawiera testy walidatora zamówień, serializacji danych zapisu, systemu ulepszeń, nazewnictwa po polsku oraz integralności typów wyliczeniowych. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ad025d1cb912ed52a1f61a133a8d1939c" name="ad025d1cb912ed52a1f61a133a8d1939c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad025d1cb912ed52a1f61a133a8d1939c">&#9670;&#160;</a></span>Create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static object KitchenGameTests.Create </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>typeName</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy nową instancję typu o podanej nazwie z assembly głównego projektu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">typeName</td><td>Nazwa typu do utworzenia (np. "Order", "KitchenItem").</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Nowo utworzona instancja podanego typu.</dd></dl>
+
+</div>
+</div>
+<a id="aecca01f7d8502ffaaf0dc0cdbde68727" name="aecca01f7d8502ffaaf0dc0cdbde68727"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecca01f7d8502ffaaf0dc0cdbde68727">&#9670;&#160;</a></span>CreateDish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static object KitchenGameTests.CreateDish </td>
+          <td>(</td>
+          <td class="paramtype">params object[]</td>          <td class="paramname"><span class="paramname"><em>ingredients</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy obiekt dania (<a class="el" href="class_kitchen_item.html" title="Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać l...">KitchenItem</a>) z podanymi przygotowanymi składnikami. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ingredients</td><td>Tablica przygotowanych składników do umieszczenia w daniu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Obiekt dania typu <code><a class="el" href="class_kitchen_item.html" title="Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać l...">KitchenItem</a></code> z flagą <code>isDish</code> ustawioną na <code>true</code>, typem składnika Kebab, stanem Assembled i podanymi składnikami w polu <code>contents</code>.</dd></dl>
+
+</div>
+</div>
+<a id="aed56087ac492dd6095766bb99c064fb3" name="aed56087ac492dd6095766bb99c064fb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed56087ac492dd6095766bb99c064fb3">&#9670;&#160;</a></span>CreateIngredientRequirement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static object KitchenGameTests.CreateIngredientRequirement </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>ingredientKind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>processState</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>quantity</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy obiekt wymagania składnika z określonym typem, stanem i ilością. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ingredientKind</td><td>Nazwa typu składnika (np. "Meat", "Tomato").</td></tr>
+    <tr><td class="paramname">processState</td><td>Nazwa wymaganego stanu przetworzenia (np. "Cooked", "Chopped").</td></tr>
+    <tr><td class="paramname">quantity</td><td>Wymagana ilość składnika. Domyślnie 1.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Obiekt <code><a class="el" href="class_ingredient_requirement.html" title="Klasa reprezentująca wymaganie dotyczące pojedynczego składnika w zamówieniu. Określa,...">IngredientRequirement</a></code> z ustawionymi polami typu, stanu i ilości.</dd></dl>
+
+</div>
+</div>
+<a id="a3cda6e348e580508b9299335dbacec4e" name="a3cda6e348e580508b9299335dbacec4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cda6e348e580508b9299335dbacec4e">&#9670;&#160;</a></span>CreatePreparedIngredient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static object KitchenGameTests.CreatePreparedIngredient </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>ingredientKind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>processState</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy obiekt przygotowanego składnika z określonym typem i stanem przetworzenia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ingredientKind</td><td>Nazwa typu składnika (np. "Meat", "Lavash").</td></tr>
+    <tr><td class="paramname">processState</td><td>Nazwa stanu przetworzenia (np. "Raw", "Cooked").</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Obiekt <code><a class="el" href="class_prepared_ingredient_data.html" title="Klasa reprezentująca dane przygotowanego składnika. Przechowuje informację o rodzaju składnika oraz j...">PreparedIngredientData</a></code> z ustawionymi polami typu i stanu.</dd></dl>
+
+</div>
+</div>
+<a id="a8a7c44d6f99e765aa69363ae42881fcc" name="a8a7c44d6f99e765aa69363ae42881fcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a7c44d6f99e765aa69363ae42881fcc">&#9670;&#160;</a></span>DishBuildSummaryListsAllIngredients()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.DishBuildSummaryListsAllIngredients </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że podsumowanie dania zawiera listę wszystkich składników. </p>
+<p>Tworzy danie z nazwą "Kebab testowy" zawierające Lavash i mięso. Sprawdza, czy metoda <code>BuildSummary</code> zwraca tekst zawierający nazwę dania oraz polskie nazwy składników ("Lawasz", "Mieso"). </p>
+
+</div>
+</div>
+<a id="a1c4bf33be48b71652a7b8b74b20bc184" name="a1c4bf33be48b71652a7b8b74b20bc184"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c4bf33be48b71652a7b8b74b20bc184">&#9670;&#160;</a></span>EconomySaveDataRoundTrip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.EconomySaveDataRoundTrip </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje poprawność cyklu serializacji i deserializacji danych ekonomicznych. </p>
+<p>Tworzy obiekt <code><a class="el" href="class_economy_save_data.html">EconomySaveData</a></code> z ustawionym saldem (999.5), łącznymi zarobkami (1500) oraz łącznymi wydatkami (500.5). Po serializacji JSON i deserializacji sprawdza, czy wszystkie wartości zmiennoprzecinkowe zostały zachowane z dokładnością do 0.01. </p>
+
+</div>
+</div>
+<a id="a6d4d6fc96c1f9eb7cc5fd00aad4cbcd8" name="a6d4d6fc96c1f9eb7cc5fd00aad4cbcd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d4d6fc96c1f9eb7cc5fd00aad4cbcd8">&#9670;&#160;</a></span>GameSaveDataIncludesShopField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.GameSaveDataIncludesShopField </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że obiekt <code><a class="el" href="class_game_save_data.html">GameSaveData</a></code> zawiera pole sklepu z poprawną inicjalizacją. </p>
+<p>Sprawdza, czy nowo utworzony obiekt <code><a class="el" href="class_game_save_data.html">GameSaveData</a></code> posiada niezerowe pole <code>shop</code> z pustą listą poziomów ulepszeń (<code>upgradeLevels</code>). </p>
+
+</div>
+</div>
+<a id="a4ee117789ca30a323ea4cbb2071c968f" name="a4ee117789ca30a323ea4cbb2071c968f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ee117789ca30a323ea4cbb2071c968f">&#9670;&#160;</a></span>GetField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static object KitchenGameTests.GetField </td>
+          <td>(</td>
+          <td class="paramtype">object</td>          <td class="paramname"><span class="paramname"><em>instance</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>fieldName</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera wartość pola publicznego z podanej instancji obiektu za pomocą refleksji. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instancja obiektu, z której pobieramy wartość pola.</td></tr>
+    <tr><td class="paramname">fieldName</td><td>Nazwa pola do odczytania.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Wartość pola jako <code>object</code>.</dd></dl>
+
+</div>
+</div>
+<a id="a156b35057c9d6f90757cff3e0debc93a" name="a156b35057c9d6f90757cff3e0debc93a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a156b35057c9d6f90757cff3e0debc93a">&#9670;&#160;</a></span>GetTypeByName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Type KitchenGameTests.GetTypeByName </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>typeName</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wyszukuje i zwraca typ o podanej nazwie z assembly <code>Assembly-CSharp</code>. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">typeName</td><td>Nazwa typu do wyszukania.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Obiekt Type odpowiadający podanej nazwie.</dd></dl>
+<p>Metoda iteruje po wszystkich załadowanych assembly w bieżącej domenie aplikacji, szukając assembly o nazwie "Assembly-CSharp". Jeśli assembly nie jest załadowane lub typ nie zostanie znaleziony, test kończy się niepowodzeniem z odpowiednim komunikatem. </p>
+
+</div>
+</div>
+<a id="a2e294fcddbf1d120e33d435ab227038f" name="a2e294fcddbf1d120e33d435ab227038f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e294fcddbf1d120e33d435ab227038f">&#9670;&#160;</a></span>IngredientKindEnumHasSevenValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.IngredientKindEnumHasSevenValues </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że typ wyliczeniowy <code>IngredientKind</code> posiada dokładnie siedem wartości. </p>
+<p>Sprawdza, czy enum <code>IngredientKind</code> zawiera wartości: Meat, Tomato, Onion, Lettuce, GarlicSauce, Lavash oraz Kebab. </p>
+
+</div>
+</div>
+<a id="a078134614b925b18e81a9646b5871310" name="a078134614b925b18e81a9646b5871310"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a078134614b925b18e81a9646b5871310">&#9670;&#160;</a></span>IngredientRequirementDisplayStringContainsNameAndState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.IngredientRequirementDisplayStringContainsNameAndState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że ciąg wyświetlania wymagania składnika zawiera nazwę i stan przetworzenia. </p>
+<p>Tworzy wymaganie dotyczące upieczonego mięsa i sprawdza, czy metoda <code>ToDisplayString</code> zwraca tekst zawierający "Mieso" i "upieczony". </p>
+
+</div>
+</div>
+<a id="aa3347bafe7412a4e7b7fddf2aa3cae90" name="aa3347bafe7412a4e7b7fddf2aa3cae90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3347bafe7412a4e7b7fddf2aa3cae90">&#9670;&#160;</a></span>IngredientRequirementQuantityShowsMultiplier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.IngredientRequirementQuantityShowsMultiplier </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że wymaganie składnika z ilością większą niż 1 wyświetla mnożnik. </p>
+<p>Tworzy wymaganie na 3 sztuki upieczonego mięsa i sprawdza, czy metoda <code>ToDisplayString</code> zawiera tekst "3x" oraz "Mieso". </p>
+
+</div>
+</div>
+<a id="a15a8fc06196d59d8d786bb3c7ef16653" name="a15a8fc06196d59d8d786bb3c7ef16653"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15a8fc06196d59d8d786bb3c7ef16653">&#9670;&#160;</a></span>KitchenItemClonePreservesContents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.KitchenItemClonePreservesContents </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że klonowanie obiektu <code><a class="el" href="class_kitchen_item.html" title="Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać l...">KitchenItem</a></code> zachowuje zawartość dania i tworzy głęboką kopię. </p>
+<p>Tworzy danie z trzema składnikami i klonuje je. Sprawdza, czy klon jest daniem z trzema składnikami. Następnie dodaje nowy składnik do oryginału i weryfikuje, że klon nie został zmodyfikowany (głęboka kopia). </p>
+
+</div>
+</div>
+<a id="a55fbd2ad0747419bb28f02ed00894897" name="a55fbd2ad0747419bb28f02ed00894897"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55fbd2ad0747419bb28f02ed00894897">&#9670;&#160;</a></span>KitchenItemFromIngredientCreatesCorrectItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.KitchenItemFromIngredientCreatesCorrectItem </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że metoda <code><a class="el" href="class_kitchen_item.html#aac748ff8356cf60147db8b6159e4e235" title="Tworzy nowy przedmiot kuchenny na podstawie danych składnika z assetu IngredientData....">KitchenItem.FromIngredient</a></code> poprawnie obsługuje wartość null. </p>
+<p>Ponieważ <code><a class="el" href="class_ingredient_data.html" title="Klasa ScriptableObject reprezentująca dane pojedynczego składnika w grze. Przechowuje informacje o na...">IngredientData</a></code> jest obiektem ScriptableObject i nie można go bezpośrednio utworzyć w testach EditMode, test sprawdza ścieżkę null — oczekuje się, że metoda zwróci nowy obiekt <code><a class="el" href="class_kitchen_item.html" title="Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać l...">KitchenItem</a></code> z domyślną nazwą "Skladnik" i flagą <code>isDish</code> ustawioną na <code>false</code>. </p>
+
+</div>
+</div>
+<a id="ad0bd2ed8c9f19061743e976f5e7bdb50" name="ad0bd2ed8c9f19061743e976f5e7bdb50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0bd2ed8c9f19061743e976f5e7bdb50">&#9670;&#160;</a></span>KitchenNamingReturnsPolishLabels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.KitchenNamingReturnsPolishLabels </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że klasa <code><a class="el" href="class_kitchen_naming.html" title="Klasa statyczna zapewniająca polskie nazwy dla składników i ich stanów przetworzenia....">KitchenNaming</a></code> zwraca poprawne polskie etykiety składników i stanów. </p>
+<p>Sprawdza tłumaczenia wszystkich typów składników (Meat → "Mieso", Tomato → "Pomidor", Onion → "Cebula", Lettuce → "Salata", GarlicSauce → "Sos czosnkowy", Lavash → "Lawasz", Kebab → "Kebab") oraz stanów przetworzenia (Raw → "surowy", Chopped → "pokrojony", Cooked → "upieczony", Assembled → "zlozony"). </p>
+
+</div>
+</div>
+<a id="af205d0214509b24616d79d082d5d70a8" name="af205d0214509b24616d79d082d5d70a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af205d0214509b24616d79d082d5d70a8">&#9670;&#160;</a></span>KitchenStationTypeEnumHasFiveValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.KitchenStationTypeEnumHasFiveValues </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że typ wyliczeniowy <code>KitchenStationType</code> posiada dokładnie pięć wartości. </p>
+<p>Sprawdza, czy enum <code>KitchenStationType</code> zawiera wartości: IngredientSource, CuttingBoard, Grill, Assembly oraz Delivery. </p>
+
+</div>
+</div>
+<a id="ae3f6ac7adcb2e0925b742f7217172c94" name="ae3f6ac7adcb2e0925b742f7217172c94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3f6ac7adcb2e0925b742f7217172c94">&#9670;&#160;</a></span>NetworkItemStateDishRoundTrip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.NetworkItemStateDishRoundTrip </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje poprawność konwersji dania do stanu sieciowego i z powrotem. </p>
+<p>Tworzy danie z czterema składnikami (Lavash, Meat, Tomato, GarlicSauce) i konwertuje je do obiektu <code><a class="el" href="struct_network_item_state.html">NetworkItemState</a></code> za pomocą <code>FromKitchenItem</code>. Sprawdza, że pole <code>exists</code> jest <code>true</code>, <code>contentCount</code> wynosi 4, a konwersja z powrotem przez <code>ToKitchenItem</code> daje danie z 4 składnikami i flagą <code>isDish</code> ustawioną na <code>true</code>. </p>
+
+</div>
+</div>
+<a id="a6a3d4471a78fb0a6775c68940ccb1fc3" name="a6a3d4471a78fb0a6775c68940ccb1fc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a3d4471a78fb0a6775c68940ccb1fc3">&#9670;&#160;</a></span>NetworkItemStateEmptyRoundTrip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.NetworkItemStateEmptyRoundTrip </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że pusty stan elementu sieciowego poprawnie przechodzi cykl serializacji. </p>
+<p>Tworzy pusty obiekt <code><a class="el" href="struct_network_item_state.html">NetworkItemState</a></code> za pomocą metody fabrycznej <code>Empty()</code>. Sprawdza, że pole <code>exists</code> jest ustawione na <code>false</code> oraz że metoda <code>ToKitchenItem()</code> zwraca <code>null</code> dla pustego stanu. </p>
+
+</div>
+</div>
+<a id="ab43925f374e957cec089a5dab40089c3" name="ab43925f374e957cec089a5dab40089c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab43925f374e957cec089a5dab40089c3">&#9670;&#160;</a></span>OrderBuildDescriptionContainsClientAndDishName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.OrderBuildDescriptionContainsClientAndDishName </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że opis zamówienia zawiera imię klienta oraz nazwę dania. </p>
+<p>Tworzy zamówienie dla klienta "Marek" na "Testowy kebab" z wymaganiami na mięso i pomidora. Sprawdza, czy metoda <code>BuildDescription</code> generuje tekst zawierający imię klienta, nazwę zamówienia oraz polskie nazwy składników. </p>
+
+</div>
+</div>
+<a id="a55f4b8784b1416852e03317b1751bc8c" name="a55f4b8784b1416852e03317b1751bc8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55f4b8784b1416852e03317b1751bc8c">&#9670;&#160;</a></span>OrderClonePreservesAllFields()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.OrderClonePreservesAllFields </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że klonowanie zamówienia zachowuje wszystkie pola i tworzy głęboką kopię. </p>
+<p>Tworzy zamówienie z ustawionymi polami (id, klient, nazwa, czas, nagroda) oraz dwiema pozycjami wymaganych składników. Po klonowaniu sprawdza, czy wszystkie wartości zostały skopiowane poprawnie. Dodatkowo weryfikuje, że modyfikacja oryginalnych wymagań nie wpływa na klon (głęboka kopia). </p>
+
+</div>
+</div>
+<a id="a8b95514322889f1999cf4eef5b562926" name="a8b95514322889f1999cf4eef5b562926"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b95514322889f1999cf4eef5b562926">&#9670;&#160;</a></span>ParseEnum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static object KitchenGameTests.ParseEnum </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>typeName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parsuje wartość tekstową na odpowiadający jej element typu wyliczeniowego. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">typeName</td><td>Nazwa typu wyliczeniowego do wyszukania w assembly.</td></tr>
+    <tr><td class="paramname">value</td><td>Wartość tekstowa do sparsowania (np. "Meat", "Cooked").</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Sparsowana wartość enumeracji jako <code>object</code>.</dd></dl>
+
+</div>
+</div>
+<a id="a78e77d8b6ec35bf18645ade469e2061b" name="a78e77d8b6ec35bf18645ade469e2061b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78e77d8b6ec35bf18645ade469e2061b">&#9670;&#160;</a></span>PreparedIngredientDisplayStringCorrect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.PreparedIngredientDisplayStringCorrect </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że ciąg wyświetlania przygotowanego składnika jest poprawny. </p>
+<p>Tworzy obiekt <code><a class="el" href="class_prepared_ingredient_data.html" title="Klasa reprezentująca dane przygotowanego składnika. Przechowuje informację o rodzaju składnika oraz j...">PreparedIngredientData</a></code> reprezentujący pokrojony pomidor i sprawdza, czy metoda <code>ToDisplayString</code> zwraca tekst zawierający "Pomidor" i "pokrojony". </p>
+
+</div>
+</div>
+<a id="adbf7df253bfb3b1144ac879340d0cab9" name="adbf7df253bfb3b1144ac879340d0cab9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbf7df253bfb3b1144ac879340d0cab9">&#9670;&#160;</a></span>ProcessStateEnumHasFourValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ProcessStateEnumHasFourValues </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że typ wyliczeniowy <code>IngredientProcessState</code> posiada dokładnie cztery wartości. </p>
+<p>Sprawdza, czy enum <code>IngredientProcessState</code> zawiera wartości: Raw, Chopped, Cooked oraz Assembled. </p>
+
+</div>
+</div>
+<a id="a92f33b8baa7ffea24c0d1dae5ed5f654" name="a92f33b8baa7ffea24c0d1dae5ed5f654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92f33b8baa7ffea24c0d1dae5ed5f654">&#9670;&#160;</a></span>RawIngredientBuildSummaryShowsState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.RawIngredientBuildSummaryShowsState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że podsumowanie surowego składnika wyświetla jego stan przetworzenia. </p>
+<p>Tworzy surowy pomidor (nie danie) i wywołuje metodę <code>BuildSummary</code>. Sprawdza, czy zwrócony tekst zawiera polskie nazwy: "Pomidor" i "surowy". </p>
+
+</div>
+</div>
+<a id="aafc3e0458bc7423098949e423ea9e914" name="aafc3e0458bc7423098949e423ea9e914"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafc3e0458bc7423098949e423ea9e914">&#9670;&#160;</a></span>SaveDataRoundTripPreservesProgress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.SaveDataRoundTripPreservesProgress </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że dane zapisu gry zachowują postęp po serializacji i deserializacji JSON. </p>
+<p>Tworzy obiekt <code><a class="el" href="class_game_save_data.html">GameSaveData</a></code> z ustawionymi wartościami ekonomii (saldo, zarobki) oraz postępem zamówień (ukończone, nieudane, pozostały czas, aktywne zamówienie). Serializuje do JSON za pomocą <code>JsonUtility</code>, a następnie deserializuje i porównuje przywrócone wartości z oryginalnymi. </p>
+
+</div>
+</div>
+<a id="a7b9d40e40e13ab55a06b65938ae5cac7" name="a7b9d40e40e13ab55a06b65938ae5cac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b9d40e40e13ab55a06b65938ae5cac7">&#9670;&#160;</a></span>SetField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void KitchenGameTests.SetField </td>
+          <td>(</td>
+          <td class="paramtype">object</td>          <td class="paramname"><span class="paramname"><em>instance</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>fieldName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">object</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia wartość pola publicznego w podanej instancji obiektu za pomocą refleksji. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>Instancja obiektu, w której ustawiamy wartość pola.</td></tr>
+    <tr><td class="paramname">fieldName</td><td>Nazwa pola do zapisania.</td></tr>
+    <tr><td class="paramname">value</td><td>Nowa wartość do przypisania do pola.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a57b97b868961972a9ab0ad6898aaecb3" name="a57b97b868961972a9ab0ad6898aaecb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57b97b868961972a9ab0ad6898aaecb3">&#9670;&#160;</a></span>ShopEffectDescriptionReturnsCorrectText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ShopEffectDescriptionReturnsCorrectText </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że opis efektu ulepszenia w sklepie zwraca poprawny tekst. </p>
+<p>Dla ulepszenia typu RewardBonus z tablicą wartości efektów sprawdza, czy opis na poziomie 0 zawiera znak procentu, a na maksymalnym poziomie zwraca tekst "MAX". </p>
+
+</div>
+</div>
+<a id="a1bc575513900321dab8108ec88f92644" name="a1bc575513900321dab8108ec88f92644"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bc575513900321dab8108ec88f92644">&#9670;&#160;</a></span>ShopMaxLevelBlocksFurtherUpgradeCheck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ShopMaxLevelBlocksFurtherUpgradeCheck </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że osiągnięcie maksymalnego poziomu ulepszenia blokuje dalsze ulepszanie. </p>
+<p>Tworzy definicję ulepszenia typu GrillSpeed z maksymalnym poziomem 2. Sprawdza, czy metoda <code>GetEffectDescription</code> dla poziomu maksymalnego zwraca tekst "MAX", sygnalizując brak dalszych ulepszeń. </p>
+
+</div>
+</div>
+<a id="ad38e701f6a365c4a1c870486732ee97a" name="ad38e701f6a365c4a1c870486732ee97a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad38e701f6a365c4a1c870486732ee97a">&#9670;&#160;</a></span>ShopSaveDataRoundTripPreservesUpgrades()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ShopSaveDataRoundTripPreservesUpgrades </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że dane zapisu sklepu zachowują informacje o ulepszeniach po serializacji i deserializacji. </p>
+<p>Tworzy obiekt <code><a class="el" href="class_shop_save_data.html" title="Klasa danych zapisu stanu sklepu z ulepszeniami.">ShopSaveData</a></code> z dwiema pozycjami ulepszeń (GrillSpeed i RewardBonus) o różnych poziomach. Sprawdza, czy po cyklu JSON round-trip wszystkie pola są poprawnie zachowane, w tym liczba zakupionych ulepszeń, typy i poziomy poszczególnych wpisów. </p>
+
+</div>
+</div>
+<a id="a3337a26337af090c6bfbfdcdc7acfdbd" name="a3337a26337af090c6bfbfdcdc7acfdbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3337a26337af090c6bfbfdcdc7acfdbd">&#9670;&#160;</a></span>ShopUpgradeCostScalesExponentially()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ShopUpgradeCostScalesExponentially </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że koszt ulepszenia w sklepie skaluje się wykładniczo z niestandardowym współczynnikiem. </p>
+<p>Tworzy definicję ulepszenia z kosztem bazowym 40 i współczynnikiem skalowania 1,8. Sprawdza, że koszty rosną w sposób wykładniczy — stosunek kosztów kolejnych poziomów powinien być stały i równy współczynnikowi skalowania. </p>
+
+</div>
+</div>
+<a id="a83b08378de196c3f5669fdf77e12b816" name="a83b08378de196c3f5669fdf77e12b816"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83b08378de196c3f5669fdf77e12b816">&#9670;&#160;</a></span>UpgradeDefinitionCostScalesCorrectly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.UpgradeDefinitionCostScalesCorrectly </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że koszt ulepszenia skaluje się poprawnie według wzoru wykładniczego. </p>
+<p>Tworzy definicję ulepszenia z kosztem bazowym 50 i współczynnikiem skalowania 2. Sprawdza, czy koszt dla poziomu 0 wynosi 50, dla poziomu 1 wynosi 100, a dla poziomu 2 wynosi 200 (każdy kolejny poziom podwaja koszt). </p>
+
+</div>
+</div>
+<a id="a1f224e9573ec28c1274bcaeca33800b5" name="a1f224e9573ec28c1274bcaeca33800b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f224e9573ec28c1274bcaeca33800b5">&#9670;&#160;</a></span>UpgradeTypeEnumHasFiveValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.UpgradeTypeEnumHasFiveValues </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że typ wyliczeniowy <code>UpgradeType</code> posiada dokładnie pięć wartości. </p>
+<p>Sprawdza, czy enum <code>UpgradeType</code> zawiera wartości: GrillSpeed, CuttingSpeed, RewardBonus, OrderTime oraz MeatBatchSize. </p>
+
+</div>
+</div>
+<a id="a9103f156cc0d63aea9361ada734ed677" name="a9103f156cc0d63aea9361ada734ed677"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9103f156cc0d63aea9361ada734ed677">&#9670;&#160;</a></span>ValidatorAcceptsCompleteClassicKebab()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ValidatorAcceptsCompleteClassicKebab </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje pełną integrację walidatora dla kompletnego klasycznego kebaba. </p>
+<p>Tworzy zamówienie na klasyczny kebab z pięcioma wymaganiami (Lavash, Meat, Tomato, Onion, GarlicSauce) oraz danie z dokładnie tymi samymi składnikami. Sprawdza, czy walidator akceptuje takie danie jako prawidłowe. </p>
+
+</div>
+</div>
+<a id="a9c152111db7586a9fbd1a25db1c8098f" name="a9c152111db7586a9fbd1a25db1c8098f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c152111db7586a9fbd1a25db1c8098f">&#9670;&#160;</a></span>ValidatorAcceptsDishWithExactIngredients()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ValidatorAcceptsDishWithExactIngredients </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że walidator akceptuje danie zawierające dokładnie wymagane składniki. </p>
+<p>Tworzy zamówienie z trzema wymaganiami (Lavash surowy, Mięso upieczone, Pomidor pokrojony) i danie z dokładnie tymi samymi składnikami. Oczekuje, że metoda <code><a class="el" href="class_kitchen_order_validator.html#a30f7d5f58dc24dd87b090189956ecc6d" title="Sprawdza, czy dostarczony przedmiot kuchenny spełnia wymagania zamówienia. Weryfikuje,...">KitchenOrderValidator.MatchesOrder</a></code> zwróci <code>true</code>. </p>
+
+</div>
+</div>
+<a id="a69046510a85b47268871f75b348ca7a8" name="a69046510a85b47268871f75b348ca7a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69046510a85b47268871f75b348ca7a8">&#9670;&#160;</a></span>ValidatorRejectsDoubleQuantityWhenSingleRequired()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ValidatorRejectsDoubleQuantityWhenSingleRequired </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że walidator odrzuca danie z podwójną ilością składnika, gdy wymagana jest pojedyncza. </p>
+<p>Zamówienie wymaga 1 sztuki mięsa, ale danie zawiera 2 sztuki mięsa. Oczekuje się, że walidator zwróci <code>false</code>, a komunikat błędu będzie zawierał słowo "nadmiarowe". </p>
+
+</div>
+</div>
+<a id="ac31c8aaa8e7dcc83aaadd188a563c8e4" name="ac31c8aaa8e7dcc83aaadd188a563c8e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac31c8aaa8e7dcc83aaadd188a563c8e4">&#9670;&#160;</a></span>ValidatorRejectsExtraIngredients()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ValidatorRejectsExtraIngredients </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że walidator odrzuca danie zawierające nadmiarowe składniki. </p>
+<p>Zamówienie wymaga tylko mięsa, ale danie zawiera mięso i dodatkowo pomidora. Oczekuje się, że walidator zwróci <code>false</code>, a komunikat błędu będzie zawierał słowo "nadmiarowe". </p>
+
+</div>
+</div>
+<a id="acf96b1b84f0ed3c30cec82881ae6787b" name="acf96b1b84f0ed3c30cec82881ae6787b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf96b1b84f0ed3c30cec82881ae6787b">&#9670;&#160;</a></span>ValidatorRejectsMissingIngredient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ValidatorRejectsMissingIngredient </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że walidator odrzuca danie z brakującym wymaganym składnikiem. </p>
+<p>Zamówienie wymaga mięsa i pomidora, ale danie zawiera tylko mięso. Oczekuje się, że walidator zwróci <code>false</code>, a komunikat błędu będzie zawierał słowo "Brakuje". </p>
+
+</div>
+</div>
+<a id="ac3e2edda4d51269eef16fdbe41d2c2d2" name="ac3e2edda4d51269eef16fdbe41d2c2d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3e2edda4d51269eef16fdbe41d2c2d2">&#9670;&#160;</a></span>ValidatorRejectsNonDishItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ValidatorRejectsNonDishItem </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że walidator odrzuca element kuchenny, który nie jest daniem (nie jest złożony). </p>
+<p>Tworzy pojedynczy surowy składnik (mięso) zamiast złożonego dania. Oczekuje się, że walidator zwróci <code>false</code>, ponieważ zamówienie wymaga złożonego dania, a nie pojedynczego składnika. </p>
+
+</div>
+</div>
+<a id="af5912ae3ea2d43fd5a88a42d582b9160" name="af5912ae3ea2d43fd5a88a42d582b9160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5912ae3ea2d43fd5a88a42d582b9160">&#9670;&#160;</a></span>ValidatorRejectsWrongPreparationState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenGameTests.ValidatorRejectsWrongPreparationState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Weryfikuje, że walidator odrzuca danie ze składnikiem w nieprawidłowym stanie przygotowania. </p>
+<p>Zamówienie wymaga pokrojonego pomidora, ale danie zawiera surowy pomidor. Oczekuje się, że walidator zwróci <code>false</code>, a komunikat błędu będzie zawierał słowo "Brakuje". </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Tests/EditMode/<a class="el" href="_kitchen_game_tests_8cs.html">KitchenGameTests.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

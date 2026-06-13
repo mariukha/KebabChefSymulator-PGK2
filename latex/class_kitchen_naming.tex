@@ -1,0 +1,87 @@
+\doxysection{Dokumentacja klasy Kitchen\+Naming}
+\hypertarget{class_kitchen_naming}{}\label{class_kitchen_naming}\index{KitchenNaming@{KitchenNaming}}
+
+
+Klasa statyczna zapewniająca polskie nazwy dla składników i ich stanów przetworzenia. Używana w całym systemie kuchni do generowania czytelnych dla gracza opisów składników w interfejsie użytkownika.  
+
+
+\doxysubsubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_kitchen_naming_a8f2f55bb410939066fb4395fb9b19870}{Get\+Ingredient\+Label}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind)
+\begin{DoxyCompactList}\small\item\em Zwraca polską etykietę nazwy składnika na podstawie jego rodzaju. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_kitchen_naming_a0f6f257655bfa1215decd9cc486b07ee}{Format\+Ingredient}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} state)
+\begin{DoxyCompactList}\small\item\em Formatuje pełną nazwę składnika z uwzględnieniem jego stanu przetworzenia. Dla składników surowych (z wyjątkiem mięsa) zwraca samą nazwę bez stanu. Dla pozostałych przypadków dodaje stan w nawiasie, np. "{}\+Mieso (upieczony)"{}. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_kitchen_naming_a29efbd8a0dd1570f41503b7feddc5e43}{Get\+Process\+Label}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} state)
+\begin{DoxyCompactList}\small\item\em Zwraca polską etykietę stanu przetworzenia składnika. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa statyczna zapewniająca polskie nazwy dla składników i ich stanów przetworzenia. Używana w całym systemie kuchni do generowania czytelnych dla gracza opisów składników w interfejsie użytkownika. 
+
+Wszystkie etykiety są zakodowane na stałe w języku polskim, co jest zgodne z polskojęzyczną wersją gry. Klasa jest wykorzystywana przez \doxylink{class_ingredient_requirement_ac104c919ebdaccbf92a7d525632708c1}{Ingredient\+Requirement.\+To\+Display\+String}, \doxylink{class_prepared_ingredient_data_a95407477b661c60f301e46e2c311c307}{Prepared\+Ingredient\+Data.\+To\+Display\+String} oraz \doxylink{class_kitchen_item_a5a148c2b2ee1bdbd623341d3b3da5cf7}{Kitchen\+Item.\+Build\+Summary}. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_kitchen_naming_a0f6f257655bfa1215decd9cc486b07ee}\index{KitchenNaming@{KitchenNaming}!FormatIngredient@{FormatIngredient}}
+\index{FormatIngredient@{FormatIngredient}!KitchenNaming@{KitchenNaming}}
+\doxysubsubsection{\texorpdfstring{FormatIngredient()}{FormatIngredient()}}
+{\footnotesize\ttfamily \label{class_kitchen_naming_a0f6f257655bfa1215decd9cc486b07ee} 
+static string Kitchen\+Naming.\+Format\+Ingredient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Formatuje pełną nazwę składnika z uwzględnieniem jego stanu przetworzenia. Dla składników surowych (z wyjątkiem mięsa) zwraca samą nazwę bez stanu. Dla pozostałych przypadków dodaje stan w nawiasie, np. "{}\+Mieso (upieczony)"{}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em kind} & Rodzaj składnika.\\
+\hline
+{\em state} & Stan przetworzenia składnika.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Sformatowana nazwa składnika, opcjonalnie z informacją o stanie przetworzenia w nawiasie. 
+\end{DoxyReturn}
+
+
+Mięso surowe zawsze wyświetla stan ("{}surowy"{}), ponieważ stan mięsa jest istotną informacją — w przeciwieństwie do warzyw, które domyślnie są surowe i nie wymagają takiego oznaczenia. \Hypertarget{class_kitchen_naming_a8f2f55bb410939066fb4395fb9b19870}\index{KitchenNaming@{KitchenNaming}!GetIngredientLabel@{GetIngredientLabel}}
+\index{GetIngredientLabel@{GetIngredientLabel}!KitchenNaming@{KitchenNaming}}
+\doxysubsubsection{\texorpdfstring{GetIngredientLabel()}{GetIngredientLabel()}}
+{\footnotesize\ttfamily \label{class_kitchen_naming_a8f2f55bb410939066fb4395fb9b19870} 
+static string Kitchen\+Naming.\+Get\+Ingredient\+Label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Zwraca polską etykietę nazwy składnika na podstawie jego rodzaju. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em kind} & Rodzaj składnika do przetłumaczenia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Polska nazwa składnika (np. "{}\+Mieso"{}, "{}\+Pomidor"{}, "{}\+Cebula"{}).
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_naming_a29efbd8a0dd1570f41503b7feddc5e43}\index{KitchenNaming@{KitchenNaming}!GetProcessLabel@{GetProcessLabel}}
+\index{GetProcessLabel@{GetProcessLabel}!KitchenNaming@{KitchenNaming}}
+\doxysubsubsection{\texorpdfstring{GetProcessLabel()}{GetProcessLabel()}}
+{\footnotesize\ttfamily \label{class_kitchen_naming_a29efbd8a0dd1570f41503b7feddc5e43} 
+static string Kitchen\+Naming.\+Get\+Process\+Label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Zwraca polską etykietę stanu przetworzenia składnika. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em state} & Stan przetworzenia do przetłumaczenia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Polska nazwa stanu przetworzenia (np. "{}surowy"{}, "{}pokrojony"{}, "{}upieczony"{}, "{}zlozony"{}).
+\end{DoxyReturn}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_game_models_8cs}{Kitchen\+Game\+Models.\+cs}}\end{DoxyCompactItemize}

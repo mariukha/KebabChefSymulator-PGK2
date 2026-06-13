@@ -1,72 +1,330 @@
+/// \file KitchenHUD.cs
+/// \brief Plik zawierający klasę KitchenHUD odpowiedzialną za wyświetlanie
+/// interfejsu HUD (Heads-Up Display) w scenie kuchni.
+/// \details Tworzy i zarządza elementami UI takimi jak: pasek statusu,
+/// celownik, powiadomienia toast, pływający tekst pieniędzy, licznik combo,
+/// timer zamówień oraz podpowiedzi sterowania. Cały interfejs tworzony jest
+/// programowo (bez prefabów) przy użyciu komponentów Unity UI.
+
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Klasa zarządzająca interfejsem HUD w scenie kuchni.
+/// Odpowiada za tworzenie i aktualizowanie wszystkich elementów UI widocznych
+/// podczas rozgrywki, w tym: paska salda, informacji o trzymanym przedmiocie,
+/// licznika zamówień, celownika, powiadomień oraz timera pilności zamówienia.
+/// </summary>
+/// <remarks>
+/// Cały interfejs jest tworzony programowo w metodzie <see cref="CreateCanvas"/>
+/// wywoływanej w <c>Awake</c>. Klasa wyszukuje gracza sieciowego w scenie,
+/// aby uzyskać informacje o interakcji (trzymany przedmiot, podpowiedzi).
+/// HUD jest automatycznie ukrywany, gdy widok lobby jest otwarty.
+/// </remarks>
 public class KitchenHUD : MonoBehaviour
 {
+    /// <summary>
+    /// Referencja do komponentu interakcji gracza, używana do pobierania
+    /// informacji o trzymanym przedmiocie i aktualnych podpowiedziach.
+    /// </summary>
     private PlayerInteraction playerInteraction;
+
+    /// <summary>
+    /// Buforowana referencja do interfejsu sklepu, wykorzystywana do sprawdzania
+    /// czy sklep jest aktualnie otwarty.
+    /// </summary>
     private ShopUI cachedShopUI;
+
+    /// <summary>
+    /// Buforowana referencja do interfejsu lobby, wykorzystywana do sprawdzania
+    /// czy widok lobby jest aktualnie otwarty.
+    /// </summary>
     private LobbyUI cachedLobbyUI;
+
+    /// <summary>
+    /// Znacznik czasowy ostatniego wyszukiwania gracza w scenie.
+    /// Zapobiega wyszukiwaniu co klatkę, ograniczając je do co 1 sekundy.
+    /// </summary>
     private float lastPlayerSearchTime;
 
+    /// <summary>
+    /// Główny Canvas HUD na którym umieszczone są wszystkie elementy interfejsu.
+    /// Renderowany jako ScreenSpaceOverlay z sortingOrder 10.
+    /// </summary>
     private Canvas hudCanvas;
+
+    /// <summary>
+    /// Tekst wyświetlający aktualne saldo gracza w złotówkach.
+    /// Umieszczony w lewej części górnego paska.
+    /// </summary>
     private Text balanceText;
+
+    /// <summary>
+    /// Tekst wyświetlający opis aktualnie trzymanego przez gracza przedmiotu.
+    /// Umieszczony centralnie w górnym pasku.
+    /// </summary>
     private Text heldItemText;
+
+    /// <summary>
+    /// Tekst wyświetlający statystyki sesji (ukończone/nieudane zamówienia).
+    /// Umieszczony w prawej części górnego paska.
+    /// </summary>
     private Text sessionText;
+
+    /// <summary>
+    /// Tekst podpowiedzi interakcji wyświetlany w dolnej części ekranu.
+    /// Pokazuje akcję dostępną do wykonania (np. "Podnieś", "Odłóż").
+    /// </summary>
     private Text promptText;
+
+    /// <summary>
+    /// Tekst komunikatu zwrotnego wyświetlany w powiadomieniu toast.
+    /// </summary>
     private Text feedbackText;
+
+    /// <summary>
+    /// Tekst podpowiedzi skrótów klawiszowych (B: Sklep, TAB: Gracze itp.).
+    /// Umieszczony w prawym dolnym rogu ekranu.
+    /// </summary>
     private Text shopHintText;
+
+    /// <summary>
+    /// Tekst wyświetlający aktualnie aktywne bonusy z ulepszeń sklepu.
+    /// Widoczny tylko gdy gracz zakupił co najmniej jedno ulepszenie.
+    /// </summary>
     private Text upgradeStatusText;
+
+    /// <summary>
+    /// Obraz tła panelu podpowiedzi interakcji. Ukrywany gdy nie ma
+    /// aktywnej podpowiedzi do wyświetlenia.
+    /// </summary>
     private Image promptBackground;
+
+    /// <summary>
+    /// RectTransform paska ulepszeń, pozwalający na pokazywanie/ukrywanie
+    /// całego panelu statusu ulepszeń.
+    /// </summary>
     private RectTransform upgradeBar;
+
+    /// <summary>
+    /// RectTransform panelu powiadomień toast, używany do animacji
+    /// pozycji i skali podczas pojawiania się i zanikania.
+    /// </summary>
     private RectTransform toastPanel;
+
+    /// <summary>
+    /// Grupa Canvas panelu toast, kontrolująca przezroczystość
+    /// całego powiadomienia podczas animacji pojawiania/zanikania.
+    /// </summary>
     private CanvasGroup toastCanvasGroup;
+
+    /// <summary>
+    /// Obraz akcentowej linii z boku powiadomienia toast.
+    /// Jego kolor zmienia się w zależności od typu komunikatu.
+    /// </summary>
     private Image toastAccentImage;
+
+    /// <summary>
+    /// Timer odliczający czas wyświetlania powiadomienia toast.
+    /// Gdy spadnie do zera, powiadomienie zaczyna zanikać.
+    /// </summary>
     private float toastTimer;
+
+    /// <summary>
+    /// Ostatni wyświetlony komunikat toast. Zapobiega wielokrotnemu
+    /// wyświetlaniu tego samego komunikatu.
+    /// </summary>
     private string lastToastMessage = string.Empty;
+
+    /// <summary>
+    /// Aktualny kolor akcentu powiadomienia toast, ustalany na podstawie
+    /// treści komunikatu (czerwony dla błędów, zielony dla sukcesów itp.).
+    /// </summary>
     private Color toastAccentColor = AccentGold;
 
+    /// <summary>
+    /// Kontener RectTransform celownika, zawierający wszystkie linie i kropkę.
+    /// Ukrywany gdy sklep jest otwarty.
+    /// </summary>
     private RectTransform crosshairContainer;
+
+    /// <summary>
+    /// Górna linia celownika.
+    /// </summary>
     private Image crosshairTop;
+
+    /// <summary>
+    /// Dolna linia celownika.
+    /// </summary>
     private Image crosshairBottom;
+
+    /// <summary>
+    /// Lewa linia celownika.
+    /// </summary>
     private Image crosshairLeft;
+
+    /// <summary>
+    /// Prawa linia celownika.
+    /// </summary>
     private Image crosshairRight;
+
+    /// <summary>
+    /// Centralna kropka celownika.
+    /// </summary>
     private Image crosshairDot;
 
+    /// <summary>
+    /// Tekst pływającego komunikatu o zdobytych pieniądzach.
+    /// Unosi się w górę i zanika po otrzymaniu nagrody.
+    /// </summary>
     private Text floatingMoneyText;
+
+    /// <summary>
+    /// Timer animacji pływającego tekstu pieniędzy.
+    /// Odlicza czas trwania animacji (1.6s).
+    /// </summary>
     private float floatingMoneyTimer;
+
+    /// <summary>
+    /// Pozycja początkowa Y pływającego tekstu pieniędzy,
+    /// od której zaczyna się animacja unoszenia.
+    /// </summary>
     private float floatingMoneyStartY;
+
+    /// <summary>
+    /// Ostatnia znana wartość salda gracza, używana do wykrywania
+    /// zmian i uruchamiania animacji pływającego tekstu pieniędzy.
+    /// </summary>
     private float lastKnownBalance;
+
+    /// <summary>
+    /// Timer animacji pulsowania koloru tekstu salda po otrzymaniu nagrody.
+    /// Efekt przejścia z zielonego z powrotem do złotego.
+    /// </summary>
     private float balancePulseTimer;
+
+    /// <summary>
+    /// Wyświetlana wartość salda, interpolowana do aktualnej wartości
+    /// dla uzyskania płynnej animacji zmiany liczby.
+    /// </summary>
     private float displayedBalance;
 
+    /// <summary>
+    /// Tekst wyświetlający aktualną serię (combo) ukończonych zamówień.
+    /// Widoczny gdy gracz ukończył co najmniej 2 zamówienia z rzędu.
+    /// </summary>
     private Text streakText;
+
+    /// <summary>
+    /// Tekst timera pilności aktualnego zamówienia.
+    /// Wyświetla pozostały czas w sekundach.
+    /// </summary>
     private Text timerText;
+
+    /// <summary>
+    /// Obraz tła panelu timera, którego kolor zmienia się
+    /// w zależności od pozostałego czasu (normalny/ostrzegawczy/krytyczny).
+    /// </summary>
     private Image timerPanelImage;
+
+    /// <summary>
+    /// Aktualna wartość serii (combo) zamówień ukończonych z rzędu.
+    /// Resetowana do zera po nieudanym zamówieniu.
+    /// </summary>
     private int currentStreak;
+
+    /// <summary>
+    /// Timer wyświetlania tekstu serii (combo).
+    /// Po osiągnięciu zera tekst zanika.
+    /// </summary>
     private float streakDisplayTimer;
 
+    /// <summary>
+    /// Czcionka używana we wszystkich elementach tekstowych HUD.
+    /// Preferuje LegacyRuntime.ttf, awaryjnie Arial.ttf.
+    /// </summary>
     private Font hudFont;
 
+    /// <summary>
+    /// Ciemny kolor panelu tła, używany w głównym pasku górnym i panelach.
+    /// </summary>
     private static readonly Color PanelDark = new Color(0.025f, 0.03f, 0.04f, 0.58f);
+
+    /// <summary>
+    /// Średni kolor panelu tła, używany w pasku ulepszeń.
+    /// </summary>
     private static readonly Color PanelMedium = new Color(0.035f, 0.043f, 0.058f, 0.48f);
+
+    /// <summary>
+    /// Jasny kolor panelu tła, używany w panelu podpowiedzi sterowania.
+    /// </summary>
     private static readonly Color PanelLight = new Color(0.045f, 0.052f, 0.068f, 0.48f);
+
+    /// <summary>
+    /// Złoty kolor akcentu, używany m.in. w tekście salda, timerze
+    /// i domyślnym akcencie powiadomień toast.
+    /// </summary>
     private static readonly Color AccentGold = new Color(0.86f, 0.68f, 0.28f, 1f);
 
+    /// <summary>
+    /// Główny kolor tekstu, wysoki kontrast z lekkim odcieniem niebieskiego.
+    /// </summary>
     private static readonly Color TextPrimary = new Color(0.92f, 0.93f, 0.95f, 0.95f);
+
+    /// <summary>
+    /// Drugorzędny kolor tekstu, nieco ciemniejszy i bardziej przezroczysty.
+    /// </summary>
     private static readonly Color TextSecondary = new Color(0.68f, 0.72f, 0.78f, 0.85f);
+
+    /// <summary>
+    /// Wyciszony kolor tekstu, używany w podpowiedziach sterowania.
+    /// </summary>
     private static readonly Color TextMuted = new Color(0.55f, 0.58f, 0.65f, 0.70f);
+
+    /// <summary>
+    /// Zielony kolor akcentu, używany w efekcie pulsowania salda po nagrodzie.
+    /// </summary>
     private static readonly Color GreenAccent = new Color(0.35f, 0.85f, 0.50f, 1f);
+
+    /// <summary>
+    /// Czerwony kolor akcentu, używany w timerze gdy czas jest krytycznie niski.
+    /// </summary>
     private static readonly Color RedAccent = new Color(0.95f, 0.35f, 0.30f, 1f);
+
+    /// <summary>
+    /// Kolor separatorów sekcji w górnym pasku statusu.
+    /// </summary>
     private static readonly Color DividerColor = new Color(1f, 1f, 1f, 0.08f);
+
+    /// <summary>
+    /// Domyślny kolor celownika gdy gracz nie celuje w żaden interaktywny obiekt.
+    /// </summary>
     private static readonly Color CrosshairDefault = new Color(0.85f, 0.87f, 0.90f, 0.32f);
+
+    /// <summary>
+    /// Aktywny kolor celownika gdy gracz celuje w interaktywny obiekt.
+    /// </summary>
     private static readonly Color CrosshairActive = new Color(0.95f, 0.78f, 0.30f, 0.72f);
+
+    /// <summary>
+    /// Kolor tła powiadomienia toast.
+    /// </summary>
     private static readonly Color ToastBackground = new Color(0.012f, 0.014f, 0.018f, 0.74f);
 
+    /// <summary>
+    /// Metoda Unity wywoływana podczas inicjalizacji obiektu.
+    /// Tworzy cały interfejs HUD wywołując <see cref="CreateCanvas"/>.
+    /// </summary>
     private void Awake()
     {
         CreateCanvas();
     }
 
+    /// <summary>
+    /// Metoda Unity wywoływana co klatkę.
+    /// Wyszukuje gracza sieciowego, buforuje referencje do UI sklepu i lobby,
+    /// a następnie odświeża wszystkie elementy HUD jeśli lobby nie jest otwarte.
+    /// </summary>
     private void Update()
     {
         if (playerInteraction == null)
@@ -111,6 +369,18 @@ public class KitchenHUD : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tworzy programowo cały interfejs HUD, w tym Canvas, górny pasek statusu,
+    /// pasek ulepszeń, panel podpowiedzi, powiadomienie toast, celownik,
+    /// pływający tekst pieniędzy, panel timera zamówienia oraz tekst combo.
+    /// </summary>
+    /// <remarks>
+    /// Metoda jest wywoływana raz w <see cref="Awake"/>. Sprawdza czy Canvas
+    /// już istnieje, aby zapobiec duplikacji. Używa wbudowanej czcionki
+    /// LegacyRuntime.ttf (lub Arial.ttf jako awaryjnej).
+    /// Wszystkie elementy UI tworzone są ręcznie za pomocą metod pomocniczych
+    /// <see cref="CreatePanel"/>, <see cref="CreateText"/> i <see cref="CreateRoundedPill"/>.
+    /// </remarks>
     private void CreateCanvas()
     {
         if (hudCanvas != null)
@@ -321,6 +591,11 @@ public class KitchenHUD : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Tworzy nowoczesny celownik składający się z czterech linii
+    /// (góra, dół, lewo, prawo) oraz centralnej kropki.
+    /// </summary>
+    /// <param name="parent">Transformata rodzica, do którego zostanie dołączony kontener celownika.</param>
     private void CreateModernCrosshair(Transform parent)
     {
         GameObject container = new GameObject("CrosshairContainer");
@@ -352,6 +627,14 @@ public class KitchenHUD : MonoBehaviour
             Vector2.zero, new Vector2(2f, 2f));
     }
 
+    /// <summary>
+    /// Tworzy pojedynczą linię (element) celownika jako prostokątny obraz UI.
+    /// </summary>
+    /// <param name="parent">RectTransform rodzica (kontener celownika).</param>
+    /// <param name="name">Nazwa elementu celownika (np. "Top", "Dot").</param>
+    /// <param name="position">Pozycja zakotwiczona elementu względem środka kontenera.</param>
+    /// <param name="size">Rozmiar elementu (szerokość x wysokość) w pikselach.</param>
+    /// <returns>Komponent Image utworzonej linii celownika.</returns>
     private Image CreateCrosshairLine(RectTransform parent, string name, Vector2 position, Vector2 size)
     {
         GameObject obj = new GameObject("Crosshair_" + name);
@@ -370,6 +653,17 @@ public class KitchenHUD : MonoBehaviour
         return img;
     }
 
+    /// <summary>
+    /// Aktualizuje wygląd celownika w zależności od tego czy gracz celuje
+    /// w interaktywny obiekt oraz czy sklep jest otwarty.
+    /// </summary>
+    /// <param name="hasTarget">Czy gracz aktualnie celuje w interaktywny obiekt.</param>
+    /// <param name="shopOpen">Czy interfejs sklepu jest otwarty (celownik będzie ukryty).</param>
+    /// <remarks>
+    /// Kolor celownika i odstęp między liniami interpolowane są płynnie
+    /// za pomocą <c>Color.Lerp</c> i <c>Mathf.Lerp</c> z prędkością zależną
+    /// od deltaTime, dając efekt płynnej animacji.
+    /// </remarks>
     private void UpdateCrosshair(bool hasTarget, bool shopOpen)
     {
         if (crosshairContainer == null)
@@ -405,9 +699,25 @@ public class KitchenHUD : MonoBehaviour
         rightRect.anchoredPosition = new Vector2(newGap + lineLength / 2f, 0f);
     }
 
+    /// <summary>
+    /// Ostatnia zapamiętana liczba ukończonych zamówień, używana do wykrywania
+    /// nowych ukończonych zamówień i aktualizacji serii combo.
+    /// </summary>
     private int lastCompletedCount;
+
+    /// <summary>
+    /// Ostatnia zapamiętana liczba nieudanych zamówień, używana do wykrywania
+    /// nowych nieudanych zamówień i resetowania serii combo.
+    /// </summary>
     private int lastFailedCount;
 
+    /// <summary>
+    /// Aktualizuje wyświetlanie serii (combo) zamówień ukończonych z rzędu.
+    /// Zwiększa serię przy nowych ukończeniach, resetuje przy niepowodzeniu,
+    /// i animuje tekst z efektem pulsowania.
+    /// </summary>
+    /// <param name="completed">Aktualna łączna liczba ukończonych zamówień.</param>
+    /// <param name="failed">Aktualna łączna liczba nieudanych zamówień.</param>
     private void UpdateStreak(int completed, int failed)
     {
         if (streakText == null) return;
@@ -442,6 +752,16 @@ public class KitchenHUD : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Aktualizuje timer pilności aktualnego zamówienia.
+    /// Wyświetla pozostały czas i zmienia kolor w zależności od pilności:
+    /// zielony (&gt;20s), złoty (10-20s), migający czerwony (&lt;10s).
+    /// </summary>
+    /// <remarks>
+    /// Gdy nie ma aktywnego zamówienia, timer jest ukrywany.
+    /// Przy krytycznie niskim czasie (&lt;10s) tło panelu również
+    /// zmienia kolor na czerwonawy z efektem pulsowania.
+    /// </remarks>
     private void UpdateUrgencyTimer()
     {
         if (timerText == null) return;
@@ -485,6 +805,10 @@ public class KitchenHUD : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Aktualizuje tekst podpowiedzi sterowania w zależności od trybu gry.
+    /// W trybie solo wyświetla mniej opcji (bez F1: Lobby).
+    /// </summary>
     private void UpdateControlHintText()
     {
         if (shopHintText == null)
@@ -497,6 +821,16 @@ public class KitchenHUD : MonoBehaviour
             : "B: Sklep  |  TAB: Gracze  |  F1: Lobby";
     }
 
+    /// <summary>
+    /// Odświeża wszystkie teksty i elementy HUD, w tym saldo, trzymany przedmiot,
+    /// statystyki sesji, podpowiedzi, celownik, ulepszenia oraz efekty wizualne.
+    /// </summary>
+    /// <remarks>
+    /// Wywoływana co klatkę z <see cref="Update"/>. Sprawdza czy kluczowe
+    /// komponenty tekstowe istnieją przed aktualizacją. Obsługuje interpolację
+    /// wyświetlanego salda, wykrywanie zmian salda (dla pływającego tekstu)
+    /// oraz ukrywanie podpowiedzi gdy sklep, menu, pauza lub ustawienia są otwarte.
+    /// </remarks>
     private void RefreshTexts()
     {
         if (balanceText == null || heldItemText == null || sessionText == null)
@@ -572,6 +906,15 @@ public class KitchenHUD : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Wyświetla pływający tekst z informacją o zdobytej kwocie pieniędzy.
+    /// Tekst unosi się w górę i zanika w ciągu 1.6 sekundy.
+    /// </summary>
+    /// <param name="amount">Kwota do wyświetlenia (w złotówkach).</param>
+    /// <remarks>
+    /// Ustawia również timer pulsowania koloru tekstu salda (<see cref="balancePulseTimer"/>),
+    /// dając efekt wizualnego potwierdzenia otrzymania nagrody.
+    /// </remarks>
     private void ShowFloatingMoney(float amount)
     {
         if (floatingMoneyText == null)
@@ -591,6 +934,16 @@ public class KitchenHUD : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Wyświetla powiadomienie toast z podanym komunikatem.
+    /// Ignoruje duplikaty tego samego komunikatu.
+    /// </summary>
+    /// <param name="message">Treść komunikatu do wyświetlenia.</param>
+    /// <remarks>
+    /// Kolor akcentu jest automatycznie dobierany na podstawie zawartości
+    /// komunikatu za pomocą <see cref="GetToastColor"/>. Czas wyświetlania
+    /// wynosi 2.25 sekundy.
+    /// </remarks>
     private void ShowFeedbackToast(string message)
     {
         if (toastPanel == null || feedbackText == null || message == lastToastMessage)
@@ -617,6 +970,17 @@ public class KitchenHUD : MonoBehaviour
         rect.localScale = Vector3.one * 0.96f;
     }
 
+    /// <summary>
+    /// Określa kolor akcentu powiadomienia toast na podstawie treści komunikatu.
+    /// </summary>
+    /// <param name="message">Treść komunikatu do analizy.</param>
+    /// <returns>
+    /// Kolor akcentu:
+    /// - Czerwony dla komunikatów o błędach (zawierających "zly", "brak", "nie " itp.),
+    /// - Zielony dla komunikatów o sukcesie ("zamowienie zrealizowane", "nagroda" itp.),
+    /// - Złoty dla komunikatów informacyjnych ("zawiniety", "dodano" itp.),
+    /// - Szary dla pozostałych komunikatów.
+    /// </returns>
     private Color GetToastColor(string message)
     {
         string lower = message.ToLowerInvariant();
@@ -641,6 +1005,15 @@ public class KitchenHUD : MonoBehaviour
         return new Color(0.42f, 0.48f, 0.56f, 0.92f);
     }
 
+    /// <summary>
+    /// Animuje pojawianie i zanikanie powiadomienia toast.
+    /// Obsługuje interpolację przezroczystości, pozycji i skali panelu.
+    /// </summary>
+    /// <remarks>
+    /// Animacja jest sterowana timerem <see cref="toastTimer"/>. Gdy timer spadnie
+    /// do zera, panel płynnie zanika. Po całkowitym zaniku panel jest dezaktywowany.
+    /// Używa <c>Mathf.SmoothStep</c> do uzyskania płynnej krzywej animacji.
+    /// </remarks>
     private void UpdateToastAnimation()
     {
         if (toastPanel == null || toastCanvasGroup == null)
@@ -679,6 +1052,15 @@ public class KitchenHUD : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Animuje pływający tekst pieniędzy: unosi go w górę, skaluje rozmiar czcionki
+    /// sinusoidalnie i stopniowo zanika.
+    /// </summary>
+    /// <remarks>
+    /// Animacja trwa 1.6 sekundy. Tekst przesuwa się o 60 pikseli w górę,
+    /// rozmiar czcionki pulsuje z amplitudą 15%, a przezroczystość zanika
+    /// w drugiej połowie animacji.
+    /// </remarks>
     private void UpdateFloatingMoney()
     {
         if (floatingMoneyText == null || floatingMoneyTimer <= 0f)
@@ -707,6 +1089,16 @@ public class KitchenHUD : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Aktualizuje pasek statusu ulepszeń, wyświetlając aktywne bonusy
+    /// zakupione w sklepie (szybkość grilla, szybkość krojenia, bonus nagrody,
+    /// dodatkowy czas, wielkość porcji mięsa).
+    /// </summary>
+    /// <remarks>
+    /// Pasek jest ukrywany gdy nie zakupiono żadnych ulepszeń.
+    /// Poszczególne bonusy są oddzielone separatorem "|".
+    /// Wartości procentowe obliczane są na podstawie mnożników z <c>ShopManager</c>.
+    /// </remarks>
     private void UpdateUpgradeStatus()
     {
         if (upgradeStatusText == null || upgradeBar == null)
@@ -771,6 +1163,13 @@ public class KitchenHUD : MonoBehaviour
         upgradeStatusText.text = sb.ToString();
     }
 
+    /// <summary>
+    /// Obcina tekst do podanej maksymalnej długości, dodając wielokropek ("...")
+    /// jeśli tekst jest dłuższy.
+    /// </summary>
+    /// <param name="value">Tekst do obcięcia.</param>
+    /// <param name="maxLength">Maksymalna dozwolona długość tekstu.</param>
+    /// <returns>Oryginalny tekst jeśli mieści się w limicie, lub obcięty tekst z wielokropkiem.</returns>
     private string Truncate(string value, int maxLength)
     {
         if (string.IsNullOrWhiteSpace(value) || value.Length <= maxLength)
@@ -781,6 +1180,11 @@ public class KitchenHUD : MonoBehaviour
         return value.Substring(0, maxLength - 1) + "...";
     }
 
+    /// <summary>
+    /// Dodaje komponent cienia (<see cref="Shadow"/>) do elementu tekstowego
+    /// dla lepszej czytelności na różnych tłach.
+    /// </summary>
+    /// <param name="sourceText">Komponent Text, do którego zostanie dodany cień.</param>
     private void AddTextShadow(Text sourceText)
     {
         if (sourceText == null) return;
@@ -790,6 +1194,12 @@ public class KitchenHUD : MonoBehaviour
         shadow.effectDistance = new Vector2(1f, -1f);
     }
 
+    /// <summary>
+    /// Tworzy pionowy separator sekcji w pasku statusu.
+    /// </summary>
+    /// <param name="parent">Transformata rodzica (pasek statusu).</param>
+    /// <param name="objectName">Nazwa obiektu separatora.</param>
+    /// <param name="anchor">Pozycja zakotwiczenia separatora w rodzicu.</param>
     private void CreateSectionDivider(Transform parent, string objectName, Vector2 anchor)
     {
         CreatePanel(
@@ -801,6 +1211,19 @@ public class KitchenHUD : MonoBehaviour
             DividerColor);
     }
 
+    /// <summary>
+    /// Tworzy zaokrąglony panel "pigułkowy" (pill). W aktualnej implementacji
+    /// deleguje do <see cref="CreatePanel"/> bez dodatkowej stylizacji.
+    /// </summary>
+    /// <param name="parent">Transformata rodzica.</param>
+    /// <param name="objectName">Nazwa obiektu panelu.</param>
+    /// <param name="anchorMin">Minimalny punkt zakotwiczenia.</param>
+    /// <param name="anchorMax">Maksymalny punkt zakotwiczenia.</param>
+    /// <param name="pivot">Punkt obrotu panelu.</param>
+    /// <param name="anchoredPosition">Pozycja zakotwiczona panelu.</param>
+    /// <param name="size">Rozmiar panelu (szerokość x wysokość).</param>
+    /// <param name="backgroundColor">Kolor tła panelu.</param>
+    /// <returns>RectTransform utworzonego panelu.</returns>
     private RectTransform CreateRoundedPill(
         Transform parent,
         string objectName,
@@ -815,6 +1238,19 @@ public class KitchenHUD : MonoBehaviour
         return CreatePanel(parent, objectName, anchorMin, anchorMax, pivot, anchoredPosition, size, backgroundColor);
     }
 
+    /// <summary>
+    /// Tworzy prostokątny panel UI z obrazem tła.
+    /// Podstawowa metoda budowania elementów interfejsu HUD.
+    /// </summary>
+    /// <param name="parent">Transformata rodzica.</param>
+    /// <param name="objectName">Nazwa obiektu panelu.</param>
+    /// <param name="anchorMin">Minimalny punkt zakotwiczenia (0-1).</param>
+    /// <param name="anchorMax">Maksymalny punkt zakotwiczenia (0-1).</param>
+    /// <param name="pivot">Punkt obrotu elementu.</param>
+    /// <param name="anchoredPosition">Pozycja zakotwiczona względem punktu obrotu.</param>
+    /// <param name="size">Rozmiar panelu w pikselach.</param>
+    /// <param name="backgroundColor">Kolor tła panelu.</param>
+    /// <returns>RectTransform utworzonego panelu.</returns>
     private RectTransform CreatePanel(
         Transform parent,
         string objectName,
@@ -841,6 +1277,20 @@ public class KitchenHUD : MonoBehaviour
         return rect;
     }
 
+    /// <summary>
+    /// Tworzy element tekstowy UI z domyślnym zakotwiczeniem w lewym górnym rogu.
+    /// Uproszczona wersja pełnej metody <see cref="CreateText(Transform, string, Font, int, TextAnchor, Vector2, Vector2, Vector2, Vector2, Vector2, FontStyle, Color)"/>.
+    /// </summary>
+    /// <param name="parent">Transformata rodzica.</param>
+    /// <param name="objectName">Nazwa obiektu tekstowego.</param>
+    /// <param name="font">Czcionka do użycia.</param>
+    /// <param name="fontSize">Rozmiar czcionki w pikselach.</param>
+    /// <param name="alignment">Wyrównanie tekstu.</param>
+    /// <param name="anchoredPosition">Pozycja zakotwiczona elementu.</param>
+    /// <param name="size">Rozmiar elementu tekstowego.</param>
+    /// <param name="fontStyle">Styl czcionki (normalny, pogrubiony itp.).</param>
+    /// <param name="color">Kolor tekstu.</param>
+    /// <returns>Komponent Text utworzonego elementu tekstowego.</returns>
     private Text CreateText(
         Transform parent,
         string objectName,
@@ -858,6 +1308,27 @@ public class KitchenHUD : MonoBehaviour
             anchoredPosition, size, fontStyle, color);
     }
 
+    /// <summary>
+    /// Tworzy element tekstowy UI z pełną kontrolą nad zakotwiczeniem i pozycjonowaniem.
+    /// </summary>
+    /// <param name="parent">Transformata rodzica.</param>
+    /// <param name="objectName">Nazwa obiektu tekstowego.</param>
+    /// <param name="font">Czcionka do użycia.</param>
+    /// <param name="fontSize">Rozmiar czcionki w pikselach.</param>
+    /// <param name="alignment">Wyrównanie tekstu (lewo, środek, prawo itp.).</param>
+    /// <param name="anchorMin">Minimalny punkt zakotwiczenia.</param>
+    /// <param name="anchorMax">Maksymalny punkt zakotwiczenia.</param>
+    /// <param name="pivot">Punkt obrotu elementu.</param>
+    /// <param name="anchoredPosition">Pozycja zakotwiczona elementu.</param>
+    /// <param name="size">Rozmiar elementu tekstowego.</param>
+    /// <param name="fontStyle">Styl czcionki (normalny, pogrubiony itp.).</param>
+    /// <param name="color">Kolor tekstu.</param>
+    /// <returns>Komponent Text utworzonego elementu tekstowego.</returns>
+    /// <remarks>
+    /// Tekst jest konfigurowany z zawijaniem poziomym (<c>HorizontalWrapMode.Wrap</c>)
+    /// i przepełnieniem pionowym (<c>VerticalWrapMode.Overflow</c>).
+    /// Raycast target jest wyłączony, aby tekst nie przechwytywał zdarzeń UI.
+    /// </remarks>
     private Text CreateText(
         Transform parent,
         string objectName,

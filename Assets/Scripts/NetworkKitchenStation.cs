@@ -1,23 +1,93 @@
+/// \file NetworkKitchenStation.cs
+/// \brief Plik zawierający klasę NetworkKitchenStation oraz strukturę StationStateSnapshot.
+/// \details Definiuje logikę sieciowej synchronizacji stanu stacji kuchennych,
+/// w tym wykrywanie zmian stanu, tworzenie migawek (snapshot) i ich aplikowanie
+/// na klientach w grze wieloosobowej.
+
 using UnityEngine;
 
+/// <summary>
+/// Komponent sieciowy opakowujący lokalną stację kuchenną (<see cref="KitchenStation"/>).
+/// </summary>
+/// <remarks>
+/// Odpowiada za:
+/// <list type="bullet">
+///   <item>Wykrywanie zmian stanu lokalnej stacji kuchennej (dirty check)</item>
+///   <item>Tworzenie migawek stanu do przesyłania przez sieć</item>
+///   <item>Aplikowanie migawek odebranych od serwera na kliencie</item>
+///   <item>Wykonywanie interakcji na serwerze w imieniu gracza</item>
+/// </list>
+/// Każda stacja kuchenna na scenie powinna posiadać ten komponent
+/// wraz z unikalnym <see cref="StationIndex"/>.
+/// </remarks>
 public class NetworkKitchenStation : MonoBehaviour
 {
+    /// <summary>
+    /// Referencja do lokalnego komponentu stacji kuchennej.
+    /// </summary>
     private KitchenStation localStation;
 
+    /// <summary>
+    /// Ostatni znany stan przetwarzania (czy stacja aktualnie przetwarza składnik).
+    /// </summary>
     private bool lastIsProcessing;
+
+    /// <summary>
+    /// Ostatni znany pozostały czas przetwarzania (w sekundach).
+    /// </summary>
     private float lastRemainingProcessTime;
+
+    /// <summary>
+    /// Ostatnia znana liczba przygotowanych porcji mięsa.
+    /// </summary>
     private int lastPreparedMeatServings;
+
+    /// <summary>
+    /// Ostatni znany stan obecności lawasza na stacji.
+    /// </summary>
     private bool lastHasLavash;
+
+    /// <summary>
+    /// Ostatnia znana liczba składników w zestawie montażowym (assembly).
+    /// </summary>
     private int lastAssemblyCount;
+
+    /// <summary>
+    /// Ostatni znany stan sieciowy przedmiotu znajdującego się na stacji.
+    /// </summary>
     private NetworkItemState lastStationItem;
 
+    /// <summary>
+    /// Unikalny indeks stacji kuchennej na scenie.
+    /// </summary>
+    /// <value>Indeks używany do identyfikacji stacji w komunikacji sieciowej.</value>
+    /// <remarks>
+    /// Musi być unikalny w obrębie sceny. Służy do dopasowania migawek
+    /// do odpowiednich stacji na klientach.
+    /// </remarks>
     public int StationIndex { get; set; }
 
+    /// <summary>
+    /// Inicjalizuje referencję do lokalnej stacji kuchennej.
+    /// </summary>
     private void Start()
     {
         localStation = GetComponent<KitchenStation>();
     }
 
+    /// <summary>
+    /// Sprawdza, czy stan stacji kuchennej zmienił się od ostatniej migawki.
+    /// </summary>
+    /// <returns>
+    /// <c>true</c> jeśli którakolwiek z właściwości stacji uległa zmianie;
+    /// w przeciwnym razie <c>false</c>.
+    /// </returns>
+    /// <remarks>
+    /// Porównuje aktualny stan stacji z ostatnio zapamiętanymi wartościami:
+    /// stan przetwarzania, obecność lawasza, liczbę porcji mięsa,
+    /// liczbę składników montażowych, pozostały czas przetwarzania (z tolerancją 0.5s)
+    /// oraz stan przedmiotu na stacji.
+    /// </remarks>
     public bool IsStateDirty()
     {
         if (localStation == null) return false;
@@ -40,6 +110,17 @@ public class NetworkKitchenStation : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Tworzy migawkę aktualnego stanu stacji kuchennej i zapamiętuje go jako ostatni znany.
+    /// </summary>
+    /// <returns>
+    /// Struktura <see cref="StationStateSnapshot"/> zawierająca pełny stan stacji
+    /// lub wartość domyślna, jeśli lokalna stacja nie jest dostępna.
+    /// </returns>
+    /// <remarks>
+    /// Aktualizuje wewnętrzne zmienne śledzące ostatni stan (dirty tracking),
+    /// a następnie deleguje zapis składników montażowych do <see cref="KitchenStation.WriteAssemblyToSnapshot"/>.
+    /// </remarks>
     public StationStateSnapshot CaptureSnapshot()
     {
         if (localStation == null) return default;
@@ -69,6 +150,14 @@ public class NetworkKitchenStation : MonoBehaviour
         return snapshot;
     }
 
+    /// <summary>
+    /// Aplikuje migawkę stanu stacji otrzymaną od serwera na lokalnej stacji kuchennej.
+    /// </summary>
+    /// <param name="snapshot">Migawka stanu do zastosowania.</param>
+    /// <remarks>
+    /// Automatycznie inicjalizuje referencję do lokalnej stacji, jeśli nie jest jeszcze dostępna.
+    /// Deleguje synchronizację do <see cref="KitchenStation.SyncNetworkState"/>.
+    /// </remarks>
     public void ApplySnapshot(StationStateSnapshot snapshot)
     {
         if (localStation == null)
@@ -82,6 +171,14 @@ public class NetworkKitchenStation : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Wykonuje interakcję na stacji kuchennej na serwerze w imieniu danego gracza.
+    /// </summary>
+    /// <param name="interaction">Komponent interakcji gracza wykonującego akcję.</param>
+    /// <remarks>
+    /// Deleguje wywołanie do <see cref="KitchenStation.Interact"/>.
+    /// Wywoływana wyłącznie na serwerze przez <see cref="NetworkPlayer.InteractWithStationServerRpc"/>.
+    /// </remarks>
     public void ServerInteract(PlayerInteraction interaction)
     {
         if (localStation != null)
@@ -91,33 +188,96 @@ public class NetworkKitchenStation : MonoBehaviour
     }
 }
 
+/// <summary>
+/// Struktura przechowująca migawkę stanu stacji kuchennej do przesyłania przez sieć.
+/// </summary>
+/// <remarks>
+/// Implementuje <see cref="Unity.Netcode.INetworkSerializable"/> do serializacji binarnej.
+/// Zawiera informacje o stanie przetwarzania, przedmiocie na stacji,
+/// obecności lawasza, przygotowanych porcjach mięsa oraz do 8 składnikach
+/// w zestawie montażowym (assembly).
+/// Serializacja składników montażowych jest optymalizowana — przesyłane są
+/// tylko te sloty, które są w użyciu (na podstawie <see cref="assemblyCount"/>).
+/// </remarks>
 public struct StationStateSnapshot : Unity.Netcode.INetworkSerializable
 {
+    /// <summary>
+    /// Indeks stacji kuchennej, do której należy ta migawka.
+    /// </summary>
     public int stationIndex;
+
+    /// <summary>
+    /// Czy stacja aktualnie przetwarza składnik.
+    /// </summary>
     public bool isProcessing;
+
+    /// <summary>
+    /// Pozostały czas przetwarzania (w sekundach).
+    /// </summary>
     public float remainingProcessTime;
+
+    /// <summary>
+    /// Liczba przygotowanych porcji mięsa na stacji.
+    /// </summary>
     public int preparedMeatServings;
+
+    /// <summary>
+    /// Czy na stacji znajduje się lawasz.
+    /// </summary>
     public bool hasLavash;
+
+    /// <summary>
+    /// Liczba składników w zestawie montażowym (assembly).
+    /// </summary>
     public int assemblyCount;
+
+    /// <summary>
+    /// Stan sieciowy przedmiotu znajdującego się na stacji.
+    /// </summary>
     public NetworkItemState stationItem;
 
+    /// <summary>Rodzaj składnika w slocie montażowym 0.</summary>
     public IngredientKind assembly0Kind;
+    /// <summary>Stan przetworzenia składnika w slocie montażowym 0.</summary>
     public IngredientProcessState assembly0State;
+    /// <summary>Rodzaj składnika w slocie montażowym 1.</summary>
     public IngredientKind assembly1Kind;
+    /// <summary>Stan przetworzenia składnika w slocie montażowym 1.</summary>
     public IngredientProcessState assembly1State;
+    /// <summary>Rodzaj składnika w slocie montażowym 2.</summary>
     public IngredientKind assembly2Kind;
+    /// <summary>Stan przetworzenia składnika w slocie montażowym 2.</summary>
     public IngredientProcessState assembly2State;
+    /// <summary>Rodzaj składnika w slocie montażowym 3.</summary>
     public IngredientKind assembly3Kind;
+    /// <summary>Stan przetworzenia składnika w slocie montażowym 3.</summary>
     public IngredientProcessState assembly3State;
+    /// <summary>Rodzaj składnika w slocie montażowym 4.</summary>
     public IngredientKind assembly4Kind;
+    /// <summary>Stan przetworzenia składnika w slocie montażowym 4.</summary>
     public IngredientProcessState assembly4State;
+    /// <summary>Rodzaj składnika w slocie montażowym 5.</summary>
     public IngredientKind assembly5Kind;
+    /// <summary>Stan przetworzenia składnika w slocie montażowym 5.</summary>
     public IngredientProcessState assembly5State;
+    /// <summary>Rodzaj składnika w slocie montażowym 6.</summary>
     public IngredientKind assembly6Kind;
+    /// <summary>Stan przetworzenia składnika w slocie montażowym 6.</summary>
     public IngredientProcessState assembly6State;
+    /// <summary>Rodzaj składnika w slocie montażowym 7.</summary>
     public IngredientKind assembly7Kind;
+    /// <summary>Stan przetworzenia składnika w slocie montażowym 7.</summary>
     public IngredientProcessState assembly7State;
 
+    /// <summary>
+    /// Ustawia rodzaj i stan przetworzenia składnika w określonym slocie montażowym.
+    /// </summary>
+    /// <param name="index">Indeks slotu (0-7).</param>
+    /// <param name="kind">Rodzaj składnika do ustawienia.</param>
+    /// <param name="state">Stan przetworzenia składnika do ustawienia.</param>
+    /// <remarks>
+    /// Indeksy spoza zakresu 0-7 są ignorowane.
+    /// </remarks>
     public void SetAssemblySlot(int index, IngredientKind kind, IngredientProcessState state)
     {
         switch (index)
@@ -133,6 +293,16 @@ public struct StationStateSnapshot : Unity.Netcode.INetworkSerializable
         }
     }
 
+    /// <summary>
+    /// Pobiera rodzaj i stan przetworzenia składnika z określonego slotu montażowego.
+    /// </summary>
+    /// <param name="index">Indeks slotu (0-7).</param>
+    /// <param name="kind">Wynikowy rodzaj składnika.</param>
+    /// <param name="state">Wynikowy stan przetworzenia składnika.</param>
+    /// <remarks>
+    /// Dla indeksów spoza zakresu 0-7 zwraca wartości domyślne:
+    /// <see cref="IngredientKind.Meat"/> i <see cref="IngredientProcessState.Raw"/>.
+    /// </remarks>
     public void GetAssemblySlot(int index, out IngredientKind kind, out IngredientProcessState state)
     {
         switch (index)
@@ -149,6 +319,16 @@ public struct StationStateSnapshot : Unity.Netcode.INetworkSerializable
         }
     }
 
+    /// <summary>
+    /// Serializuje lub deserializuje dane migawki przez bufor sieciowy.
+    /// </summary>
+    /// <typeparam name="T">Typ implementujący <see cref="Unity.Netcode.IReaderWriter"/>.</typeparam>
+    /// <param name="serializer">Serializer bufora sieciowego.</param>
+    /// <remarks>
+    /// Optymalizuje transfer danych — sloty montażowe są serializowane
+    /// tylko do wartości <see cref="assemblyCount"/> (maksymalnie 8),
+    /// co zmniejsza rozmiar pakietu sieciowego.
+    /// </remarks>
     public void NetworkSerialize<T>(Unity.Netcode.BufferSerializer<T> serializer) where T : Unity.Netcode.IReaderWriter
     {
         serializer.SerializeValue(ref stationIndex);

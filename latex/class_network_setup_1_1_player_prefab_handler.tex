@@ -1,0 +1,110 @@
+\doxysection{Dokumentacja klasy Network\+Setup.\+Player\+Prefab\+Handler}
+\hypertarget{class_network_setup_1_1_player_prefab_handler}{}\label{class_network_setup_1_1_player_prefab_handler}\index{NetworkSetup.PlayerPrefabHandler@{NetworkSetup.PlayerPrefabHandler}}
+
+
+Wewnętrzna klasa obsługująca instancjonowanie i niszczenie prefabów graczy sieciowych.  
+
+
+Diagram dziedziczenia dla Network\+Setup.\+Player\+Prefab\+Handler\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_network_setup_1_1_player_prefab_handler}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_network_setup_1_1_player_prefab_handler_abc273a2e00987c260d19984ade11b683}{Player\+Prefab\+Handler}} (Game\+Object \mbox{\hyperlink{class_network_setup_1_1_player_prefab_handler_a5d7024ea162dc15dd758d6ff450f94e8}{prefab}})
+\begin{DoxyCompactList}\small\item\em Konstruktor przyjmujący prefab gracza. \end{DoxyCompactList}\item 
+Network\+Object \mbox{\hyperlink{class_network_setup_1_1_player_prefab_handler_a7827cb9190a64a3d12bd79f1d9f83ad6}{Instantiate}} (ulong owner\+Client\+Id, Vector3 position, Quaternion rotation)
+\begin{DoxyCompactList}\small\item\em Tworzy nową instancję obiektu gracza sieciowego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_setup_1_1_player_prefab_handler_a0daa5042685001a1815af4931cf54328}{Destroy}} (Network\+Object network\+Object)
+\begin{DoxyCompactList}\small\item\em Niszczy obiekt gracza sieciowego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_network_setup_1_1_player_prefab_handler_a5d7024ea162dc15dd758d6ff450f94e8}{prefab}}
+\begin{DoxyCompactList}\small\item\em Referencja do prefabu gracza używanego do tworzenia instancji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Wewnętrzna klasa obsługująca instancjonowanie i niszczenie prefabów graczy sieciowych. 
+
+Implementuje INetwork\+Prefab\+Instance\+Handler do dynamicznego tworzenia obiektów graczy z odpowiednim hashem identyfikacyjnym. Używana przez system prefabów Netcode zamiast standardowego mechanizmu prefabów. 
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_network_setup_1_1_player_prefab_handler_abc273a2e00987c260d19984ade11b683}\index{NetworkSetup.PlayerPrefabHandler@{NetworkSetup.PlayerPrefabHandler}!PlayerPrefabHandler@{PlayerPrefabHandler}}
+\index{PlayerPrefabHandler@{PlayerPrefabHandler}!NetworkSetup.PlayerPrefabHandler@{NetworkSetup.PlayerPrefabHandler}}
+\doxysubsubsection{\texorpdfstring{PlayerPrefabHandler()}{PlayerPrefabHandler()}}
+{\footnotesize\ttfamily \label{class_network_setup_1_1_player_prefab_handler_abc273a2e00987c260d19984ade11b683} 
+Network\+Setup.\+Player\+Prefab\+Handler.\+Player\+Prefab\+Handler (\begin{DoxyParamCaption}\item[{Game\+Object}]{prefab}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor przyjmujący prefab gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em prefab} & Prefab gracza do instancjonowania.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_network_setup_1_1_player_prefab_handler_a0daa5042685001a1815af4931cf54328}\index{NetworkSetup.PlayerPrefabHandler@{NetworkSetup.PlayerPrefabHandler}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!NetworkSetup.PlayerPrefabHandler@{NetworkSetup.PlayerPrefabHandler}}
+\doxysubsubsection{\texorpdfstring{Destroy()}{Destroy()}}
+{\footnotesize\ttfamily \label{class_network_setup_1_1_player_prefab_handler_a0daa5042685001a1815af4931cf54328} 
+void Network\+Setup.\+Player\+Prefab\+Handler.\+Destroy (\begin{DoxyParamCaption}\item[{Network\+Object}]{network\+Object}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Niszczy obiekt gracza sieciowego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em network\+Object} & Obiekt sieciowy do zniszczenia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_network_setup_1_1_player_prefab_handler_a7827cb9190a64a3d12bd79f1d9f83ad6}\index{NetworkSetup.PlayerPrefabHandler@{NetworkSetup.PlayerPrefabHandler}!Instantiate@{Instantiate}}
+\index{Instantiate@{Instantiate}!NetworkSetup.PlayerPrefabHandler@{NetworkSetup.PlayerPrefabHandler}}
+\doxysubsubsection{\texorpdfstring{Instantiate()}{Instantiate()}}
+{\footnotesize\ttfamily \label{class_network_setup_1_1_player_prefab_handler_a7827cb9190a64a3d12bd79f1d9f83ad6} 
+Network\+Object Network\+Setup.\+Player\+Prefab\+Handler.\+Instantiate (\begin{DoxyParamCaption}\item[{ulong}]{owner\+Client\+Id}{, }\item[{Vector3}]{position}{, }\item[{Quaternion}]{rotation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Tworzy nową instancję obiektu gracza sieciowego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em owner\+Client\+Id} & Identyfikator klienta, który będzie właścicielem obiektu.\\
+\hline
+{\em position} & Pozycja początkowa obiektu.\\
+\hline
+{\em rotation} & Rotacja początkowa obiektu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Komponent Network\+Object nowo utworzonego obiektu gracza.
+\end{DoxyReturn}
+
+
+Ustawia hash identyfikacyjny obiektu za pomocą refleksji, aby zapewnić zgodność z systemem prefabów Netcode. 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_network_setup_1_1_player_prefab_handler_a5d7024ea162dc15dd758d6ff450f94e8}\index{NetworkSetup.PlayerPrefabHandler@{NetworkSetup.PlayerPrefabHandler}!prefab@{prefab}}
+\index{prefab@{prefab}!NetworkSetup.PlayerPrefabHandler@{NetworkSetup.PlayerPrefabHandler}}
+\doxysubsubsection{\texorpdfstring{prefab}{prefab}}
+{\footnotesize\ttfamily \label{class_network_setup_1_1_player_prefab_handler_a5d7024ea162dc15dd758d6ff450f94e8} 
+Game\+Object Network\+Setup.\+Player\+Prefab\+Handler.\+prefab\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referencja do prefabu gracza używanego do tworzenia instancji. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_network_setup_8cs}{Network\+Setup.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,239 @@
+\doxysection{Dokumentacja klasy Save\+Manager}
+\hypertarget{class_save_manager}{}\label{class_save_manager}\index{SaveManager@{SaveManager}}
+Diagram dziedziczenia dla Save\+Manager\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_save_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_save_manager_aa842e660f9f3026430b1ead8e4ebde1e}{Use\+Save\+Slot}} (bool is\+Solo)
+\item 
+void \mbox{\hyperlink{class_save_manager_a40804f6bdfc7f610b9690e0ab78d29f5}{Mark\+Session\+Ended}} ()
+\item 
+void \mbox{\hyperlink{class_save_manager_a0a150593e23ebe1a803f5d1b8846fdd7}{Mark\+Dirty}} ()
+\item 
+void \mbox{\hyperlink{class_save_manager_a854cf3a7870f1df3b23bac5fa6721ef1}{Save\+Game}} ()
+\item 
+void \mbox{\hyperlink{class_save_manager_a057fac074a6f39d5e8f4431625f206ce}{Load\+Game}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_save_manager}{Save\+Manager}} \mbox{\hyperlink{class_save_manager_a09c0f9099f5d2a7c35e0ac584114a5b0}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_save_manager_aa39c86216497044afe3524cbe80164cd}{Current\+Save\+File\+Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_save_manager_ac41138eda6b24e4b5d1aaf87a9070b46}{Current\+Save\+Slot\+Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_save_manager_ab2f6a37808bd0e18095d89b4f9ce8832}{Save\+Path}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typy prywatne}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_save_manager_a46273424b71bebd467c84b2551b32c27}{Save\+Slot}} \{ \mbox{\hyperlink{class_save_manager_a46273424b71bebd467c84b2551b32c27a26c04769d2607a2234d4329b7630ed35}{Solo}}
+, \mbox{\hyperlink{class_save_manager_a46273424b71bebd467c84b2551b32c27a54f664c70c22054ea0d8d26fc3997ce7}{Online}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_save_manager_a6bcca99415d5ba822fba332767c3e117}{Awake}} ()
+\item 
+void \mbox{\hyperlink{class_save_manager_a289f79bdfb9051430a7fb2b18bc664bd}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_save_manager_a63116beed1caef025672028ae6c029b4}{On\+Server\+Started}} ()
+\item 
+void \mbox{\hyperlink{class_save_manager_affa4050a4f1c493a5ecc7454093dcd91}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_save_manager_a1dcca08157b3c8e2829e44a4f3d1e356}{On\+Application\+Quit}} ()
+\item 
+void \mbox{\hyperlink{class_save_manager_a86572dd9055eceb555e1bc453d1d482b}{On\+Destroy}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_save_manager_a7329fd49a6d19af448e1470ade0a149f}{auto\+Save\+Interval}} = 15f
+\item 
+float \mbox{\hyperlink{class_save_manager_aa7f66deadfc4021a0acf2c430db6c48d}{auto\+Save\+Timer}}
+\item 
+bool \mbox{\hyperlink{class_save_manager_a4d3e2252921d8eefbf9cfee7273affeb}{is\+Dirty}} = false
+\item 
+bool \mbox{\hyperlink{class_save_manager_a89a9f01ca6b46b7c587ddf3853c18495}{has\+Active\+Session}}
+\item 
+\mbox{\hyperlink{class_save_manager_a46273424b71bebd467c84b2551b32c27}{Save\+Slot}} \mbox{\hyperlink{class_save_manager_ad912819701b23d032c7aea23895c08af}{current\+Save\+Slot}} = \mbox{\hyperlink{class_save_manager_a46273424b71bebd467c84b2551b32c27a54f664c70c22054ea0d8d26fc3997ce7}{Save\+Slot.\+Online}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{class_save_manager_a144d75f1d4d786c489684f3c1d7afcd6}{Solo\+Save\+File\+Name}} = "{}kebab-\/save-\/solo.\+json"{}
+\item 
+const string \mbox{\hyperlink{class_save_manager_a1a03b09d0a5bee07f7d566aea2f82fec}{Online\+Save\+File\+Name}} = "{}kebab-\/save-\/online.\+json"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja składowych wyliczanych}
+\Hypertarget{class_save_manager_a46273424b71bebd467c84b2551b32c27}\index{SaveManager@{SaveManager}!SaveSlot@{SaveSlot}}
+\index{SaveSlot@{SaveSlot}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{SaveSlot}{SaveSlot}}
+{\footnotesize\ttfamily \label{class_save_manager_a46273424b71bebd467c84b2551b32c27} 
+enum \mbox{\hyperlink{class_save_manager_a46273424b71bebd467c84b2551b32c27}{Save\+Manager.\+Save\+Slot}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{Wartości wyliczeń}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Solo@{Solo}!SaveManager@{SaveManager}}\index{SaveManager@{SaveManager}!Solo@{Solo}}}\Hypertarget{class_save_manager_a46273424b71bebd467c84b2551b32c27a26c04769d2607a2234d4329b7630ed35}\label{class_save_manager_a46273424b71bebd467c84b2551b32c27} 
+Solo&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Online@{Online}!SaveManager@{SaveManager}}\index{SaveManager@{SaveManager}!Online@{Online}}}\Hypertarget{class_save_manager_a46273424b71bebd467c84b2551b32c27a54f664c70c22054ea0d8d26fc3997ce7}\label{class_save_manager_a46273424b71bebd467c84b2551b32c27} 
+Online&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_save_manager_a6bcca99415d5ba822fba332767c3e117}\index{SaveManager@{SaveManager}!Awake@{Awake}}
+\index{Awake@{Awake}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_save_manager_a6bcca99415d5ba822fba332767c3e117} 
+void Save\+Manager.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_a057fac074a6f39d5e8f4431625f206ce}\index{SaveManager@{SaveManager}!LoadGame@{LoadGame}}
+\index{LoadGame@{LoadGame}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{LoadGame()}{LoadGame()}}
+{\footnotesize\ttfamily \label{class_save_manager_a057fac074a6f39d5e8f4431625f206ce} 
+void Save\+Manager.\+Load\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_save_manager_a0a150593e23ebe1a803f5d1b8846fdd7}\index{SaveManager@{SaveManager}!MarkDirty@{MarkDirty}}
+\index{MarkDirty@{MarkDirty}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{MarkDirty()}{MarkDirty()}}
+{\footnotesize\ttfamily \label{class_save_manager_a0a150593e23ebe1a803f5d1b8846fdd7} 
+void Save\+Manager.\+Mark\+Dirty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_save_manager_a40804f6bdfc7f610b9690e0ab78d29f5}\index{SaveManager@{SaveManager}!MarkSessionEnded@{MarkSessionEnded}}
+\index{MarkSessionEnded@{MarkSessionEnded}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{MarkSessionEnded()}{MarkSessionEnded()}}
+{\footnotesize\ttfamily \label{class_save_manager_a40804f6bdfc7f610b9690e0ab78d29f5} 
+void Save\+Manager.\+Mark\+Session\+Ended (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_save_manager_a1dcca08157b3c8e2829e44a4f3d1e356}\index{SaveManager@{SaveManager}!OnApplicationQuit@{OnApplicationQuit}}
+\index{OnApplicationQuit@{OnApplicationQuit}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{OnApplicationQuit()}{OnApplicationQuit()}}
+{\footnotesize\ttfamily \label{class_save_manager_a1dcca08157b3c8e2829e44a4f3d1e356} 
+void Save\+Manager.\+On\+Application\+Quit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_a86572dd9055eceb555e1bc453d1d482b}\index{SaveManager@{SaveManager}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_save_manager_a86572dd9055eceb555e1bc453d1d482b} 
+void Save\+Manager.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_a63116beed1caef025672028ae6c029b4}\index{SaveManager@{SaveManager}!OnServerStarted@{OnServerStarted}}
+\index{OnServerStarted@{OnServerStarted}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{OnServerStarted()}{OnServerStarted()}}
+{\footnotesize\ttfamily \label{class_save_manager_a63116beed1caef025672028ae6c029b4} 
+void Save\+Manager.\+On\+Server\+Started (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_a854cf3a7870f1df3b23bac5fa6721ef1}\index{SaveManager@{SaveManager}!SaveGame@{SaveGame}}
+\index{SaveGame@{SaveGame}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{SaveGame()}{SaveGame()}}
+{\footnotesize\ttfamily \label{class_save_manager_a854cf3a7870f1df3b23bac5fa6721ef1} 
+void Save\+Manager.\+Save\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_save_manager_a289f79bdfb9051430a7fb2b18bc664bd}\index{SaveManager@{SaveManager}!Start@{Start}}
+\index{Start@{Start}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_save_manager_a289f79bdfb9051430a7fb2b18bc664bd} 
+void Save\+Manager.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_affa4050a4f1c493a5ecc7454093dcd91}\index{SaveManager@{SaveManager}!Update@{Update}}
+\index{Update@{Update}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_save_manager_affa4050a4f1c493a5ecc7454093dcd91} 
+void Save\+Manager.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_aa842e660f9f3026430b1ead8e4ebde1e}\index{SaveManager@{SaveManager}!UseSaveSlot@{UseSaveSlot}}
+\index{UseSaveSlot@{UseSaveSlot}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{UseSaveSlot()}{UseSaveSlot()}}
+{\footnotesize\ttfamily \label{class_save_manager_aa842e660f9f3026430b1ead8e4ebde1e} 
+void Save\+Manager.\+Use\+Save\+Slot (\begin{DoxyParamCaption}\item[{bool}]{is\+Solo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_save_manager_a7329fd49a6d19af448e1470ade0a149f}\index{SaveManager@{SaveManager}!autoSaveInterval@{autoSaveInterval}}
+\index{autoSaveInterval@{autoSaveInterval}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{autoSaveInterval}{autoSaveInterval}}
+{\footnotesize\ttfamily \label{class_save_manager_a7329fd49a6d19af448e1470ade0a149f} 
+float Save\+Manager.\+auto\+Save\+Interval = 15f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_aa7f66deadfc4021a0acf2c430db6c48d}\index{SaveManager@{SaveManager}!autoSaveTimer@{autoSaveTimer}}
+\index{autoSaveTimer@{autoSaveTimer}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{autoSaveTimer}{autoSaveTimer}}
+{\footnotesize\ttfamily \label{class_save_manager_aa7f66deadfc4021a0acf2c430db6c48d} 
+float Save\+Manager.\+auto\+Save\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_ad912819701b23d032c7aea23895c08af}\index{SaveManager@{SaveManager}!currentSaveSlot@{currentSaveSlot}}
+\index{currentSaveSlot@{currentSaveSlot}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{currentSaveSlot}{currentSaveSlot}}
+{\footnotesize\ttfamily \label{class_save_manager_ad912819701b23d032c7aea23895c08af} 
+\mbox{\hyperlink{class_save_manager_a46273424b71bebd467c84b2551b32c27}{Save\+Slot}} Save\+Manager.\+current\+Save\+Slot = \mbox{\hyperlink{class_save_manager_a46273424b71bebd467c84b2551b32c27a54f664c70c22054ea0d8d26fc3997ce7}{Save\+Slot.\+Online}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_a89a9f01ca6b46b7c587ddf3853c18495}\index{SaveManager@{SaveManager}!hasActiveSession@{hasActiveSession}}
+\index{hasActiveSession@{hasActiveSession}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{hasActiveSession}{hasActiveSession}}
+{\footnotesize\ttfamily \label{class_save_manager_a89a9f01ca6b46b7c587ddf3853c18495} 
+bool Save\+Manager.\+has\+Active\+Session\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_a4d3e2252921d8eefbf9cfee7273affeb}\index{SaveManager@{SaveManager}!isDirty@{isDirty}}
+\index{isDirty@{isDirty}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{isDirty}{isDirty}}
+{\footnotesize\ttfamily \label{class_save_manager_a4d3e2252921d8eefbf9cfee7273affeb} 
+bool Save\+Manager.\+is\+Dirty = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_a1a03b09d0a5bee07f7d566aea2f82fec}\index{SaveManager@{SaveManager}!OnlineSaveFileName@{OnlineSaveFileName}}
+\index{OnlineSaveFileName@{OnlineSaveFileName}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{OnlineSaveFileName}{OnlineSaveFileName}}
+{\footnotesize\ttfamily \label{class_save_manager_a1a03b09d0a5bee07f7d566aea2f82fec} 
+const string Save\+Manager.\+Online\+Save\+File\+Name = "{}kebab-\/save-\/online.\+json"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_a144d75f1d4d786c489684f3c1d7afcd6}\index{SaveManager@{SaveManager}!SoloSaveFileName@{SoloSaveFileName}}
+\index{SoloSaveFileName@{SoloSaveFileName}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{SoloSaveFileName}{SoloSaveFileName}}
+{\footnotesize\ttfamily \label{class_save_manager_a144d75f1d4d786c489684f3c1d7afcd6} 
+const string Save\+Manager.\+Solo\+Save\+File\+Name = "{}kebab-\/save-\/solo.\+json"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_save_manager_aa39c86216497044afe3524cbe80164cd}\index{SaveManager@{SaveManager}!CurrentSaveFileName@{CurrentSaveFileName}}
+\index{CurrentSaveFileName@{CurrentSaveFileName}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{CurrentSaveFileName}{CurrentSaveFileName}}
+{\footnotesize\ttfamily \label{class_save_manager_aa39c86216497044afe3524cbe80164cd} 
+string Save\+Manager.\+Current\+Save\+File\+Name\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_ac41138eda6b24e4b5d1aaf87a9070b46}\index{SaveManager@{SaveManager}!CurrentSaveSlotName@{CurrentSaveSlotName}}
+\index{CurrentSaveSlotName@{CurrentSaveSlotName}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{CurrentSaveSlotName}{CurrentSaveSlotName}}
+{\footnotesize\ttfamily \label{class_save_manager_ac41138eda6b24e4b5d1aaf87a9070b46} 
+string Save\+Manager.\+Current\+Save\+Slot\+Name\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private]}}
+
+\Hypertarget{class_save_manager_a09c0f9099f5d2a7c35e0ac584114a5b0}\index{SaveManager@{SaveManager}!Instance@{Instance}}
+\index{Instance@{Instance}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_save_manager_a09c0f9099f5d2a7c35e0ac584114a5b0} 
+\mbox{\hyperlink{class_save_manager}{Save\+Manager}} Save\+Manager.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+\Hypertarget{class_save_manager_ab2f6a37808bd0e18095d89b4f9ce8832}\index{SaveManager@{SaveManager}!SavePath@{SavePath}}
+\index{SavePath@{SavePath}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{SavePath}{SavePath}}
+{\footnotesize\ttfamily \label{class_save_manager_ab2f6a37808bd0e18095d89b4f9ce8832} 
+string Save\+Manager.\+Save\+Path\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_save_manager_8cs}{Save\+Manager.\+cs}}\end{DoxyCompactItemize}

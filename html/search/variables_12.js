@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['readycolor_0',['readyColor',['../class_kitchen_station.html#ac60613e24ea5c5a595807b60fb69572d',1,'KitchenStation']]],
+  ['rect_1',['rect',['../class_menu_button_hover.html#a5d1ddef24262fa07fd88089be2a2f067',1,'MenuButtonHover']]],
+  ['redaccent_2',['RedAccent',['../class_kitchen_h_u_d.html#a37b1251d91ed99f4a32483ecbf18567d',1,'KitchenHUD']]],
+  ['remainingordertime_3',['remainingOrderTime',['../class_order_progress_save_data.html#a6ecf53147d0c89ed779c2305d7d6e95a',1,'OrderProgressSaveData']]],
+  ['remainingprocesstime_4',['remainingProcessTime',['../struct_station_state_snapshot.html#a73a9a52d53bf8aeae5ccddb7572dbe09',1,'StationStateSnapshot']]],
+  ['remainingtime_5',['remainingTime',['../class_order_manager.html#a5b399268e256350ee38f404813a199db',1,'OrderManager']]],
+  ['remoteplayervisual_6',['remotePlayerVisual',['../class_network_player.html#a17938aaa10b8d8fa522aef6afda1d40e',1,'NetworkPlayer']]],
+  ['requiredstate_7',['requiredState',['../class_ingredient_requirement.html#a5ae4ab8561f2d2c9fa0c82e0af48af32',1,'IngredientRequirement']]],
+  ['requirements_8',['requirements',['../class_order_save_data.html#aeee82941daf856d25c2b6693991acc74',1,'OrderSaveData']]],
+  ['resolutionindex_9',['resolutionIndex',['../class_game_settings_manager.html#a378369c7e4cf35917655b04693124436',1,'GameSettingsManager']]],
+  ['resolutionkey_10',['ResolutionKey',['../class_game_settings_manager.html#a16e44a4c5534415cc1ff05c953fee498',1,'GameSettingsManager']]],
+  ['resolutionpresets_11',['ResolutionPresets',['../class_game_settings_manager.html#a8c37b8546d66198ea124ae0324fe4013',1,'GameSettingsManager']]],
+  ['resolutionvaluetext_12',['resolutionValueText',['../class_settings_menu_u_i.html#ac04c012f4b4393cc3259cc73a8700a70',1,'SettingsMenuUI']]],
+  ['reward_13',['reward',['../class_order_save_data.html#a8d5cb8058198fbb75b259fe17f30e54d',1,'OrderSaveData']]],
+  ['rewardbonuslevel_14',['rewardBonusLevel',['../class_shop_manager.html#a70fa29c6109e948d943ec1d22cf2c5e5',1,'ShopManager']]],
+  ['righthand_15',['rightHand',['../class_player_interaction.html#a12bd0f91aa1494d0ff713edf5cd81693',1,'PlayerInteraction']]],
+  ['rotationx_16',['rotationX',['../class_simple_player_controller.html#a00594db9aba8ab6f3cd45ec78788472e',1,'SimplePlayerController']]],
+  ['rowbackgroundcolor_17',['RowBackgroundColor',['../class_shop_u_i.html#aa5afeb315c297fd0b922ec98cb090137',1,'ShopUI']]],
+  ['rowcontainer_18',['rowContainer',['../class_player_list_u_i.html#ab82b7694f48073743f54663b3a731a80',1,'PlayerListUI']]],
+  ['roweven_19',['RowEven',['../class_player_list_u_i.html#a772cf0eb1655856a2c1a1597fbff76e8',1,'PlayerListUI']]],
+  ['rowimage_20',['rowImage',['../class_shop_u_i_1_1_shop_upgrade_row.html#a574ff9e0e3429bc96e5236bd64520e48',1,'ShopUI::ShopUpgradeRow']]],
+  ['rowodd_21',['RowOdd',['../class_player_list_u_i.html#a42a44d1bdc62b1787ec901f5c74b45a4',1,'PlayerListUI']]]
+];

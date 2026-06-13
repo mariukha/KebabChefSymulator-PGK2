@@ -1,0 +1,145 @@
+\doxysection{Dokumentacja klasy Order}
+\hypertarget{class_order}{}\label{class_order}\index{Order@{Order}}
+
+
+Klasa reprezentująca zamówienie klienta w grze. Zawiera informacje o wymaganych składnikach, nazwie zamówienia, danych klienta, limicie czasu na realizację oraz nagrodzie pieniężnej.  
+
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_order}{Order}} \mbox{\hyperlink{class_order_a8770cc496e205c71f773cd6cc322edfd}{Clone}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy głęboką kopię zamówienia wraz ze wszystkimi wymaganymi składnikami. Nowy obiekt jest niezależny od oryginału — modyfikacje kopii nie wpływają na oryginalne zamówienie. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_order_a309695e9d885d9edd276df9d257f85be}{Build\+Description}} ()
+\begin{DoxyCompactList}\small\item\em Buduje czytelny dla człowieka opis zamówienia w języku polskim. Format\+: "{}\{nazwa\+Zamowienia\} dla \{nazwa\+Klienta\}\+: \{lista składników\}"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_order_a8d989f56c2bca84c902953eba3b1028d}{order\+Id}} = "{}classic-\/kebab"{}
+\begin{DoxyCompactList}\small\item\em Unikalny identyfikator zamówienia. Używany do rozróżniania zamówień w systemie zarządzania. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_order_add3f5699c3eadc769b20185d935e3835}{nazwa\+Klienta}} = "{}Klient"{}
+\begin{DoxyCompactList}\small\item\em Nazwa klienta składającego zamówienie. Wyświetlana w interfejsie użytkownika przy opisie zamówienia. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_order_ab88d2087a6453b3f080f13f9ed56a142}{nazwa\+Zamowienia}} = "{}Klasyczny kebab"{}
+\begin{DoxyCompactList}\small\item\em Nazwa zamówienia (np. "{}\+Klasyczny kebab"{}). Określa typ potrawy zamówionej przez klienta. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_ingredient_requirement}{Ingredient\+Requirement}} $>$ \mbox{\hyperlink{class_order_a1dc823e81b193d4dbaa76c50aced16ac}{wymagane\+Skladniki}} = new List$<$\mbox{\hyperlink{class_ingredient_requirement}{Ingredient\+Requirement}}$>$()
+\begin{DoxyCompactList}\small\item\em Lista wymaganych składników zamówienia. Każdy element określa rodzaj składnika, wymagany stan przetworzenia oraz ilość. Zamówienie jest uznane za zrealizowane, gdy dostarczona potrawa zawiera dokładnie te składniki. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_order_a9dfa0f1a81647bea476986beca952585}{czas\+Na\+Realizacje}} = 90f
+\begin{DoxyCompactList}\small\item\em Maksymalny czas na realizację zamówienia, wyrażony w sekundach. Po upływie tego czasu zamówienie może zostać anulowane lub gracz traci punkty. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_order_aa1a5ca3e65c709c97655ab19fc7a0a08}{nagroda\+Pieniezna}} = 30f
+\begin{DoxyCompactList}\small\item\em Nagroda pieniężna przyznawana graczowi za poprawne zrealizowanie zamówienia. Wyrażona w walucie gry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa reprezentująca zamówienie klienta w grze. Zawiera informacje o wymaganych składnikach, nazwie zamówienia, danych klienta, limicie czasu na realizację oraz nagrodzie pieniężnej. 
+
+Zamówienie jest serializowalne, co umożliwia jego przechowywanie w edytorze Unity oraz przesyłanie przez sieć. Lista wymaganych składników (\doxylink{class_order_a1dc823e81b193d4dbaa76c50aced16ac}{wymagane\+Skladniki}) definiuje, jakie składniki i w jakim stanie przetworzenia muszą znaleźć się w gotowej potrawie, aby zamówienie zostało uznane za zrealizowane. 
+
+\begin{DoxySeeAlso}{Zobacz również}
+\doxylink{class_ingredient_requirement}{Ingredient\+Requirement}, \doxylink{class_kitchen_order_validator}{Kitchen\+Order\+Validator}
+
+
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_order_a309695e9d885d9edd276df9d257f85be}\index{Order@{Order}!BuildDescription@{BuildDescription}}
+\index{BuildDescription@{BuildDescription}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{BuildDescription()}{BuildDescription()}}
+{\footnotesize\ttfamily \label{class_order_a309695e9d885d9edd276df9d257f85be} 
+string Order.\+Build\+Description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Buduje czytelny dla człowieka opis zamówienia w języku polskim. Format\+: "{}\{nazwa\+Zamowienia\} dla \{nazwa\+Klienta\}\+: \{lista składników\}"{}. 
+
+\begin{DoxyReturn}{Zwraca}
+Sformatowany tekst opisu zamówienia zawierający nazwę, klienta i listę składników.
+\end{DoxyReturn}
+
+
+Przykładowy wynik\+: "{}\+Klasyczny kebab dla Jan\+: Mieso (upieczony), Pomidor, Cebula (pokrojony)"{} \Hypertarget{class_order_a8770cc496e205c71f773cd6cc322edfd}\index{Order@{Order}!Clone@{Clone}}
+\index{Clone@{Clone}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{Clone()}{Clone()}}
+{\footnotesize\ttfamily \label{class_order_a8770cc496e205c71f773cd6cc322edfd} 
+\mbox{\hyperlink{class_order}{Order}} Order.\+Clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Tworzy głęboką kopię zamówienia wraz ze wszystkimi wymaganymi składnikami. Nowy obiekt jest niezależny od oryginału — modyfikacje kopii nie wpływają na oryginalne zamówienie. 
+
+\begin{DoxyReturn}{Zwraca}
+Nowa instancja \doxylink{class_order}{Order} będąca pełną kopią bieżącego zamówienia.
+\end{DoxyReturn}
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_order_a9dfa0f1a81647bea476986beca952585}\index{Order@{Order}!czasNaRealizacje@{czasNaRealizacje}}
+\index{czasNaRealizacje@{czasNaRealizacje}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{czasNaRealizacje}{czasNaRealizacje}}
+{\footnotesize\ttfamily \label{class_order_a9dfa0f1a81647bea476986beca952585} 
+float Order.\+czas\+Na\+Realizacje = 90f}
+
+
+
+Maksymalny czas na realizację zamówienia, wyrażony w sekundach. Po upływie tego czasu zamówienie może zostać anulowane lub gracz traci punkty. 
+
+\Hypertarget{class_order_aa1a5ca3e65c709c97655ab19fc7a0a08}\index{Order@{Order}!nagrodaPieniezna@{nagrodaPieniezna}}
+\index{nagrodaPieniezna@{nagrodaPieniezna}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{nagrodaPieniezna}{nagrodaPieniezna}}
+{\footnotesize\ttfamily \label{class_order_aa1a5ca3e65c709c97655ab19fc7a0a08} 
+float Order.\+nagroda\+Pieniezna = 30f}
+
+
+
+Nagroda pieniężna przyznawana graczowi za poprawne zrealizowanie zamówienia. Wyrażona w walucie gry. 
+
+\Hypertarget{class_order_add3f5699c3eadc769b20185d935e3835}\index{Order@{Order}!nazwaKlienta@{nazwaKlienta}}
+\index{nazwaKlienta@{nazwaKlienta}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{nazwaKlienta}{nazwaKlienta}}
+{\footnotesize\ttfamily \label{class_order_add3f5699c3eadc769b20185d935e3835} 
+string Order.\+nazwa\+Klienta = "{}Klient"{}}
+
+
+
+Nazwa klienta składającego zamówienie. Wyświetlana w interfejsie użytkownika przy opisie zamówienia. 
+
+\Hypertarget{class_order_ab88d2087a6453b3f080f13f9ed56a142}\index{Order@{Order}!nazwaZamowienia@{nazwaZamowienia}}
+\index{nazwaZamowienia@{nazwaZamowienia}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{nazwaZamowienia}{nazwaZamowienia}}
+{\footnotesize\ttfamily \label{class_order_ab88d2087a6453b3f080f13f9ed56a142} 
+string Order.\+nazwa\+Zamowienia = "{}Klasyczny kebab"{}}
+
+
+
+Nazwa zamówienia (np. "{}\+Klasyczny kebab"{}). Określa typ potrawy zamówionej przez klienta. 
+
+\Hypertarget{class_order_a8d989f56c2bca84c902953eba3b1028d}\index{Order@{Order}!orderId@{orderId}}
+\index{orderId@{orderId}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{orderId}{orderId}}
+{\footnotesize\ttfamily \label{class_order_a8d989f56c2bca84c902953eba3b1028d} 
+string Order.\+order\+Id = "{}classic-\/kebab"{}}
+
+
+
+Unikalny identyfikator zamówienia. Używany do rozróżniania zamówień w systemie zarządzania. 
+
+\Hypertarget{class_order_a1dc823e81b193d4dbaa76c50aced16ac}\index{Order@{Order}!wymaganeSkladniki@{wymaganeSkladniki}}
+\index{wymaganeSkladniki@{wymaganeSkladniki}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{wymaganeSkladniki}{wymaganeSkladniki}}
+{\footnotesize\ttfamily \label{class_order_a1dc823e81b193d4dbaa76c50aced16ac} 
+List$<$\mbox{\hyperlink{class_ingredient_requirement}{Ingredient\+Requirement}}$>$ Order.\+wymagane\+Skladniki = new List$<$\mbox{\hyperlink{class_ingredient_requirement}{Ingredient\+Requirement}}$>$()}
+
+
+
+Lista wymaganych składników zamówienia. Każdy element określa rodzaj składnika, wymagany stan przetworzenia oraz ilość. Zamówienie jest uznane za zrealizowane, gdy dostarczona potrawa zawiera dokładnie te składniki. 
+
+\begin{DoxySeeAlso}{Zobacz również}
+\doxylink{class_ingredient_requirement}{Ingredient\+Requirement}
+
+
+\end{DoxySeeAlso}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_order_8cs}{Order.\+cs}}\end{DoxyCompactItemize}

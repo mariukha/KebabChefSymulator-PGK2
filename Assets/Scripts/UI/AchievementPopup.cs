@@ -3,30 +3,95 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 /// <summary>
-/// Achievement system with toast popup notifications.
-/// Tracks milestones and displays animated popups in the corner.
+/// \file AchievementPopup.cs
+/// \brief System osiągnięć z wyskakującymi powiadomieniami typu toast.
+/// \details Śledzi kamienie milowe gracza (zrealizowane zamówienia, ulepszenia, serie sukcesów)
+/// i wyświetla animowane powiadomienia w rogu ekranu. Osiągnięcia są odblokowywane
+/// jednorazowo i kolejkowane do wyświetlenia w przypadku wielu jednoczesnych odblokować.
+/// Implementuje wzorzec Singleton, zapewniając jedną globalną instancję systemu osiągnięć.
 /// </summary>
 public class AchievementPopup : MonoBehaviour
 {
+    /// <summary>
+    /// Statyczna instancja Singletona systemu osiągnięć.
+    /// Umożliwia globalny dostęp do wyświetlania powiadomień o osiągnięciach.
+    /// </summary>
     public static AchievementPopup Instance { get; private set; }
 
+    /// <summary>
+    /// Canvas używany do renderowania powiadomień o osiągnięciach.
+    /// Wyświetlany jest w trybie Screen Space Overlay z wysokim porządkiem sortowania.
+    /// </summary>
     private Canvas achievementCanvas;
+
+    /// <summary>
+    /// Buforowana czcionka używana do renderowania tekstu w powiadomieniach.
+    /// Ładowana jest z wbudowanych zasobów Unity.
+    /// </summary>
     private Font cachedFont;
 
+    /// <summary>
+    /// Zbiór identyfikatorów już odblokowanych osiągnięć.
+    /// Zapobiega wielokrotnemu odblokowania tego samego osiągnięcia.
+    /// </summary>
     private readonly HashSet<string> unlocked = new HashSet<string>();
 
+    /// <summary>
+    /// Kolejka oczekujących powiadomień do wyświetlenia.
+    /// Każdy element to tablica dwuelementowa: [tytuł, opis].
+    /// </summary>
     private readonly Queue<string[]> pendingPopups = new Queue<string[]>();
+
+    /// <summary>
+    /// Aktualnie wyświetlany obiekt powiadomienia (popup).
+    /// Wartość null oznacza brak aktywnego powiadomienia.
+    /// </summary>
     private GameObject activePopup;
+
+    /// <summary>
+    /// Licznik czasu pozostałego do zamknięcia aktywnego powiadomienia (w sekundach).
+    /// </summary>
     private float popupTimer;
 
+    /// <summary>
+    /// Czas wyświetlania pojedynczego powiadomienia o osiągnięciu (w sekundach).
+    /// </summary>
     private const float PopupDuration = 3.5f;
+
+    /// <summary>
+    /// Szybkość animacji wsuwania powiadomienia na ekran.
+    /// Wyższa wartość oznacza szybsze wsunięcie.
+    /// </summary>
     private const float SlideSpeed = 6f;
 
+    /// <summary>
+    /// Ostatnia zapamiętana liczba zrealizowanych zamówień.
+    /// Służy do wykrywania nowych ukończonych zamówień w kolejnych klatkach.
+    /// </summary>
     private int lastCompleted;
+
+    /// <summary>
+    /// Ostatnia zapamiętana liczba nieudanych zamówień.
+    /// Służy do wykrywania nowych porażek i resetowania serii sukcesów.
+    /// </summary>
     private int lastFailed;
+
+    /// <summary>
+    /// Licznik kolejnych sukcesów bez porażki.
+    /// Resetowany przy każdym nieudanym zamówieniu.
+    /// </summary>
     private int consecutiveSuccess;
+
+    /// <summary>
+    /// Ostatnia zapamiętana łączna liczba zakupionych ulepszeń.
+    /// Służy do wykrywania nowych zakupów ulepszeń.
+    /// </summary>
     private int lastUpgradeCount;
 
+    /// <summary>
+    /// Inicjalizuje Singleton systemu osiągnięć i ładuje czcionkę.
+    /// Jeśli instancja już istnieje, niszczy duplikat obiektu.
+    /// </summary>
     private void Awake()
     {
         if (Instance != null) { Destroy(gameObject); return; }
@@ -36,17 +101,28 @@ public class AchievementPopup : MonoBehaviour
         if (cachedFont == null) cachedFont = Resources.GetBuiltinResource<Font>("Arial.ttf");
     }
 
+    /// <summary>
+    /// Tworzy Canvas do wyświetlania powiadomień o osiągnięciach.
+    /// </summary>
     private void Start()
     {
         CreateCanvas();
     }
 
+    /// <summary>
+    /// Sprawdza kamienie milowe i aktualizuje stan wyświetlanych powiadomień w każdej klatce.
+    /// </summary>
     private void Update()
     {
         CheckMilestones();
         UpdatePopup();
     }
 
+    /// <summary>
+    /// Sprawdza postęp gracza i próbuje odblokować odpowiednie osiągnięcia.
+    /// Monitoruje liczbę zrealizowanych zamówień, serie sukcesów, zakupione ulepszenia
+    /// oraz czy wszystkie ulepszenia osiągnęły maksymalny poziom.
+    /// </summary>
     private void CheckMilestones()
     {
         OrderManager om = OrderManager.Instance;
@@ -107,6 +183,13 @@ public class AchievementPopup : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Próbuje odblokować osiągnięcie o podanym identyfikatorze.
+    /// Jeśli osiągnięcie nie było jeszcze odblokowane, dodaje je do kolejki powiadomień.
+    /// </summary>
+    /// <param name="id">Unikalny identyfikator osiągnięcia.</param>
+    /// <param name="title">Tytuł osiągnięcia wyświetlany w powiadomieniu.</param>
+    /// <param name="description">Opis osiągnięcia wyświetlany pod tytułem.</param>
     private void TryUnlock(string id, string title, string description)
     {
         if (unlocked.Contains(id)) return;
@@ -114,6 +197,11 @@ public class AchievementPopup : MonoBehaviour
         pendingPopups.Enqueue(new[] { title, description });
     }
 
+    /// <summary>
+    /// Aktualizuje stan aktywnego powiadomienia — animuje wsuwanie, wygaszanie
+    /// i usuwa powiadomienie po upływie czasu. Jeśli nie ma aktywnego powiadomienia,
+    /// pobiera następne z kolejki oczekujących.
+    /// </summary>
     private void UpdatePopup()
     {
 
@@ -156,6 +244,13 @@ public class AchievementPopup : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tworzy i wyświetla wizualne powiadomienie o osiągnięciu na ekranie.
+    /// Powiadomienie składa się z tła, złotego akcentu, tytułu i opisu.
+    /// Wsuwa się z prawej strony ekranu i odtwarza dźwięk dzwonka.
+    /// </summary>
+    /// <param name="title">Tytuł osiągnięcia do wyświetlenia.</param>
+    /// <param name="description">Opis osiągnięcia do wyświetlenia.</param>
     private void ShowPopup(string title, string description)
     {
         if (achievementCanvas == null) return;
@@ -227,6 +322,11 @@ public class AchievementPopup : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tworzy dedykowany Canvas do wyświetlania powiadomień o osiągnięciach.
+    /// Canvas jest ustawiony w trybie Screen Space Overlay z wysokim porządkiem sortowania (160),
+    /// aby powiadomienia były widoczne ponad większością elementów UI.
+    /// </summary>
     private void CreateCanvas()
     {
         GameObject obj = new GameObject("AchievementCanvas");
@@ -239,6 +339,10 @@ public class AchievementPopup : MonoBehaviour
         scaler.referenceResolution = new Vector2(1920, 1080);
     }
 
+    /// <summary>
+    /// Czyści referencję Singletona przy niszczeniu obiektu,
+    /// zapobiegając odwoływaniu się do zniszczonej instancji.
+    /// </summary>
     private void OnDestroy()
     {
         if (Instance == this) Instance = null;

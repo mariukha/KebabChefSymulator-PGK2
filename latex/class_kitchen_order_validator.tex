@@ -1,0 +1,119 @@
+\doxysection{Dokumentacja klasy Kitchen\+Order\+Validator}
+\hypertarget{class_kitchen_order_validator}{}\label{class_kitchen_order_validator}\index{KitchenOrderValidator@{KitchenOrderValidator}}
+
+
+Klasa statyczna odpowiedzialna za walidację zgodności przygotowanej potrawy z zamówieniem klienta. Porównuje zawartość dostarczonego przedmiotu kuchennego z wymaganiami zamówienia, sprawdzając zarówno brakujące, jak i nadmiarowe składniki.  
+
+
+\doxysubsubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_kitchen_order_validator_a30f7d5f58dc24dd87b090189956ecc6d}{Matches\+Order}} (\mbox{\hyperlink{class_order}{Order}} order, \mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}} item, out string failure\+Reason)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy dostarczony przedmiot kuchenny spełnia wymagania zamówienia. Weryfikuje, czy przedmiot jest gotową potrawą, czy zawiera wszystkie wymagane składniki w odpowiednim stanie i ilości oraz czy nie zawiera nadmiarowych składników. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static Dictionary$<$ string, int $>$ \mbox{\hyperlink{class_kitchen_order_validator_ad2142a10219c8eb3d526b3d919acf86f}{Build\+Ingredient\+Count\+Map}} (List$<$ \mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}} $>$ ingredients)
+\begin{DoxyCompactList}\small\item\em Buduje mapę zliczającą przygotowane składniki według klucza (rodzaj + stan). Służy do porównania dostarczonych składników z wymaganiami zamówienia. \end{DoxyCompactList}\item 
+static Dictionary$<$ string, int $>$ \mbox{\hyperlink{class_kitchen_order_validator_ae63f192402621d3182811f107a1baa87}{Build\+Requirement\+Count\+Map}} (List$<$ \mbox{\hyperlink{class_ingredient_requirement}{Ingredient\+Requirement}} $>$ requirements)
+\begin{DoxyCompactList}\small\item\em Buduje mapę zliczającą wymagane składniki zamówienia według klucza (rodzaj + stan). Uwzględnia ilość (\doxylink{class_ingredient_requirement_aa05716697ad996e6790678660dbd9dec}{Ingredient\+Requirement.\+quantity}) każdego wymagania. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_kitchen_order_validator_a360afde417aab3f3cb31d004ea21fb66}{Get\+Key}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} state)
+\begin{DoxyCompactList}\small\item\em Generuje unikalny klucz tekstowy na podstawie rodzaju i stanu przetworzenia składnika. Klucz ma format "{}\+Rodzaj\+Skladnika\texorpdfstring{$\vert$}{|}\+Stan\+Przetworzenia"{} i służy do indeksowania map zliczających w procesie walidacji zamówienia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa statyczna odpowiedzialna za walidację zgodności przygotowanej potrawy z zamówieniem klienta. Porównuje zawartość dostarczonego przedmiotu kuchennego z wymaganiami zamówienia, sprawdzając zarówno brakujące, jak i nadmiarowe składniki. 
+
+Walidacja opiera się na porównaniu map zliczających składniki według klucza złożonego z rodzaju składnika i jego stanu przetworzenia. Zamówienie jest uznane za poprawnie zrealizowane tylko wtedy, gdy dostarczona potrawa zawiera dokładnie te składniki (w odpowiednim stanie i ilości), które zostały zamówione — bez nadmiarów i braków. 
+
+\begin{DoxySeeAlso}{Zobacz również}
+\doxylink{class_order}{Order}, \doxylink{class_kitchen_item}{Kitchen\+Item}
+
+
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_kitchen_order_validator_ad2142a10219c8eb3d526b3d919acf86f}\index{KitchenOrderValidator@{KitchenOrderValidator}!BuildIngredientCountMap@{BuildIngredientCountMap}}
+\index{BuildIngredientCountMap@{BuildIngredientCountMap}!KitchenOrderValidator@{KitchenOrderValidator}}
+\doxysubsubsection{\texorpdfstring{BuildIngredientCountMap()}{BuildIngredientCountMap()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_validator_ad2142a10219c8eb3d526b3d919acf86f} 
+static Dictionary$<$ string, int $>$ Kitchen\+Order\+Validator.\+Build\+Ingredient\+Count\+Map (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}} $>$}]{ingredients}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Buduje mapę zliczającą przygotowane składniki według klucza (rodzaj + stan). Służy do porównania dostarczonych składników z wymaganiami zamówienia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ingredients} & Lista przygotowanych składników do zliczenia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Słownik, w którym kluczem jest połączenie rodzaju i stanu składnika (np. "{}\+Meat\texorpdfstring{$\vert$}{|}\+Cooked"{}), a wartością — liczba wystąpień. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_order_validator_ae63f192402621d3182811f107a1baa87}\index{KitchenOrderValidator@{KitchenOrderValidator}!BuildRequirementCountMap@{BuildRequirementCountMap}}
+\index{BuildRequirementCountMap@{BuildRequirementCountMap}!KitchenOrderValidator@{KitchenOrderValidator}}
+\doxysubsubsection{\texorpdfstring{BuildRequirementCountMap()}{BuildRequirementCountMap()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_validator_ae63f192402621d3182811f107a1baa87} 
+static Dictionary$<$ string, int $>$ Kitchen\+Order\+Validator.\+Build\+Requirement\+Count\+Map (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_ingredient_requirement}{Ingredient\+Requirement}} $>$}]{requirements}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Buduje mapę zliczającą wymagane składniki zamówienia według klucza (rodzaj + stan). Uwzględnia ilość (\doxylink{class_ingredient_requirement_aa05716697ad996e6790678660dbd9dec}{Ingredient\+Requirement.\+quantity}) każdego wymagania. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em requirements} & Lista wymagań składnikowych zamówienia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Słownik, w którym kluczem jest połączenie rodzaju i stanu składnika (np. "{}\+Tomato\texorpdfstring{$\vert$}{|}\+Chopped"{}), a wartością — łączna wymagana ilość. 
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_order_validator_a360afde417aab3f3cb31d004ea21fb66}\index{KitchenOrderValidator@{KitchenOrderValidator}!GetKey@{GetKey}}
+\index{GetKey@{GetKey}!KitchenOrderValidator@{KitchenOrderValidator}}
+\doxysubsubsection{\texorpdfstring{GetKey()}{GetKey()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_validator_a360afde417aab3f3cb31d004ea21fb66} 
+static string Kitchen\+Order\+Validator.\+Get\+Key (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generuje unikalny klucz tekstowy na podstawie rodzaju i stanu przetworzenia składnika. Klucz ma format "{}\+Rodzaj\+Skladnika\texorpdfstring{$\vert$}{|}\+Stan\+Przetworzenia"{} i służy do indeksowania map zliczających w procesie walidacji zamówienia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em kind} & Rodzaj składnika.\\
+\hline
+{\em state} & Stan przetworzenia składnika.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Klucz tekstowy w formacie "{}kind\texorpdfstring{$\vert$}{|}state"{}.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_order_validator_a30f7d5f58dc24dd87b090189956ecc6d}\index{KitchenOrderValidator@{KitchenOrderValidator}!MatchesOrder@{MatchesOrder}}
+\index{MatchesOrder@{MatchesOrder}!KitchenOrderValidator@{KitchenOrderValidator}}
+\doxysubsubsection{\texorpdfstring{MatchesOrder()}{MatchesOrder()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_validator_a30f7d5f58dc24dd87b090189956ecc6d} 
+static bool Kitchen\+Order\+Validator.\+Matches\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_order}{Order}}}]{order}{, }\item[{\mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}}}]{item}{, }\item[{out string}]{failure\+Reason}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Sprawdza, czy dostarczony przedmiot kuchenny spełnia wymagania zamówienia. Weryfikuje, czy przedmiot jest gotową potrawą, czy zawiera wszystkie wymagane składniki w odpowiednim stanie i ilości oraz czy nie zawiera nadmiarowych składników. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em order} & Zamówienie do sprawdzenia. Jeśli {\ttfamily null}, walidacja kończy się niepowodzeniem.\\
+\hline
+{\em item} & Dostarczony przedmiot kuchenny. Musi mieć ustawioną flagę \doxylink{class_kitchen_item_a7fddae2de79351f32bcbb10be16386b8}{Kitchen\+Item.\+is\+Dish} na {\ttfamily true}, aby walidacja mogła zakończyć się sukcesem. \\
+\hline
+{\em failure\+Reason} & Parametr wyjściowy zawierający opis powodu niepowodzenia walidacji. Pusty ciąg znaków, jeśli walidacja zakończyła się sukcesem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true}, jeśli potrawa spełnia wszystkie wymagania zamówienia; {\ttfamily false} w przeciwnym wypadku. 
+\end{DoxyReturn}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_game_models_8cs}{Kitchen\+Game\+Models.\+cs}}\end{DoxyCompactItemize}

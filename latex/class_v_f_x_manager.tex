@@ -1,0 +1,848 @@
+\doxysection{Dokumentacja klasy VFXManager}
+\hypertarget{class_v_f_x_manager}{}\label{class_v_f_x_manager}\index{VFXManager@{VFXManager}}
+
+
+Centralny menedżer efektów wizualnych (VFX) w symulatorze szefa kuchni kebabowej. Implementuje wzorzec Singleton, zapewniając jedną globalną instancję dostępną z dowolnego miejsca.  
+
+
+Diagram dziedziczenia dla VFXManager\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_v_f_x_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a81152d56f03254b681c9312ced5d353a}{Play\+Steam\+Effect}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt pary wodnej w podanej pozycji na świecie. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza efekt do wszystkich klientów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a0283bec5f510e595acc77f1e0db09d15}{Stop\+Steam\+Effect}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Zatrzymuje efekt pary wodnej w podanej pozycji na świecie. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza zatrzymanie do wszystkich klientów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a0101a9f77832cedfa96c93dcffdfa4a6}{Play\+Doner\+Smoke\+Effect}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dymu z grilla kebabowego (doner) w podanej pozycji. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza efekt do wszystkich klientów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a3aa3f3379483bcc164d92a2761df8fff}{Stop\+Doner\+Smoke\+Effect}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Zatrzymuje efekt dymu z grilla kebabowego (doner) w podanej pozycji. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza zatrzymanie do wszystkich klientów. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a4c78f2d59441d17a975e8c1d9814022f}{Play\+Chop\+Effect}} (Vector3 world\+Position, Color ingredient\+Color)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt krojenia składnika w podanej pozycji z kolorystyką składnika. Generuje odłamki i błysk noża. Rozgłasza efekt sieciowo, jeśli jest serwerem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a4e2db75acf4748d6e875b117b5f14c3c}{Play\+Pickup\+Effect}} (Vector3 world\+Position, Color tint)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt podnoszenia przedmiotu z zabarwieniem odpowiadającym kolorowi przedmiotu. Rozgłasza efekt sieciowo, jeśli jest serwerem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a699c511b17c4a92e0c50e3eb6209d6a6}{Play\+Drop\+Effect}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt upuszczenia przedmiotu (chmurka kurzu) w podanej pozycji. Rozgłasza efekt sieciowo, jeśli jest serwerem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a389445e6f2cb4a44a92f0dce371c721b}{Play\+Ready\+Effect}} (Vector3 world\+Position, Color tint)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt gotowości potrawy (iskry i blask) z zabarwieniem koloru. Rozgłasza efekt sieciowo, jeśli jest serwerem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_adba2172f6b23e6db661ad33b245014ca}{Play\+Wrap\+Effect}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt zawijania kebaba (wirujące cząsteczki w ciepłych odcieniach). Rozgłasza efekt sieciowo, jeśli jest serwerem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_aa3041571eb2860743639f2a9f852b66c}{Play\+Upgrade\+Effect}} (Vector3 world\+Position, Color accent)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt ulepszenia stacji roboczej (eksplozja złotych iskier). Rozgłasza efekt sieciowo, jeśli jest serwerem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_ab2d4fd8681b70df01e0e627d4e944365}{Play\+Money\+Effect}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt zarobienia pieniędzy (złote, unoszące się cząsteczki). Rozgłasza efekt sieciowo, jeśli jest serwerem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a99859707eac32afa3aac03812eb577c0}{Play\+Delivery\+Success\+Effect}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt udanego dostarczenia zamówienia (zielone iskry w kształcie sfery). Rozgłasza efekt sieciowo, jeśli jest serwerem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a661cc91120beeff5be87685431dd048b}{Play\+Delivery\+Fail\+Effect}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt nieudanego dostarczenia zamówienia (czerwone cząsteczki opadające). Rozgłasza efekt sieciowo, jeśli jest serwerem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_ad3be961ff2ea3ce017f84fc55ca0cba5}{Play\+Timeout\+Effect}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt upływu czasu (timeout) — efekt nieudanego dostarczenia wyświetlany przed kamerą. Rozgłasza efekt sieciowo, jeśli jest serwerem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a0920cbd053446853523b4e43207ffea7}{Play\+Steam\+Effect\+Local}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt pary wodnej lokalnie (bez rozgłaszania sieciowego). Tworzy system cząsteczkowy symulujący unoszącą się parę z naczynia — cząsteczki powoli wznoszą się do góry, rozrastając się i zanikając. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_aac45849c3ba54463883b4aeb7a778ea4}{Stop\+Steam\+Effect\+Local}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Zatrzymuje efekt pary wodnej lokalnie w pobliżu podanej pozycji. Wyszukuje aktywne systemy cząsteczkowe o nazwie "{}\+VFX\+\_\+\+Steam"{} w promieniu 2 jednostek. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_adba4a0e2bd794919e4a23788d68c425e}{Play\+Doner\+Smoke\+Effect\+Local}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt dymu z grilla kebabowego (doner) lokalnie. Tworzy dwa systemy cząsteczkowe\+: główny ciemny dym oraz delikatną mgłę tłuszczową, które razem symulują realistyczny dym unoszący się z obracającego się mięsa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a39f1fdf4954ca868c51ecb1ce3728f2b}{Stop\+Doner\+Smoke\+Effect\+Local}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Zatrzymuje efekt dymu z donera lokalnie w pobliżu podanej pozycji. Wyszukuje i zatrzymuje zarówno główny dym ("{}\+VFX\+\_\+\+Doner\+Smoke"{}), jak i mgłę tłuszczową ("{}\+VFX\+\_\+\+Doner\+Oily\+Vapor"{}). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a6a174fc12dfc4dbe70a6685ffef0da31}{Play\+Chop\+Effect\+Local}} (Vector3 world\+Position, Color ingredient\+Color)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt krojenia składnika lokalnie. Tworzy dwa systemy cząsteczkowe\+: odłamki krojonego składnika (zabarwione kolorem składnika) oraz krótki błysk noża (jasny, szybko zanikający). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_ab4eaafc525c64555ccbc16603174909d}{Play\+Pickup\+Effect\+Local}} (Vector3 world\+Position, Color tint)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt podnoszenia przedmiotu lokalnie. Tworzy jednorazowy system cząsteczkowy z delikatnymi, unoszącymi się w górę cząsteczkami zabarwionymi kolorem podniesionego przedmiotu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_aeecdb00a9506b6479c6faee283e8d9fb}{Play\+Drop\+Effect\+Local}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt upuszczenia przedmiotu lokalnie. Tworzy jednorazowy system cząsteczkowy symulujący chmurę kurzu unoszącą się z miejsca upadku. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a657cb55ba4781e02946942397a05fe36}{Play\+Ready\+Effect\+Local}} (Vector3 world\+Position, Color tint)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt gotowości potrawy lokalnie. Tworzy system cząsteczkowy z unoszącymi się iskrami w ciepłych, złoto-\/zielonych odcieniach, sygnalizujący graczowi, że potrawa jest gotowa do wydania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a4ac94be1a5167935dc75b5cf85658042}{Play\+Wrap\+Effect\+Local}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt zawijania kebaba lokalnie. Tworzy system cząsteczkowy z wirującymi cząsteczkami w ciepłych, brązowo-\/złotych odcieniach, unoszącymi się delikatnie w górę — wizualizuje proces zawijania kebaba w tortillę. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a3c7c29a61356c12bb4f8e8c1f6a5b7d0}{Play\+Upgrade\+Effect\+Local}} (Vector3 world\+Position, Color accent)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt ulepszenia stacji roboczej lokalnie. Tworzy system cząsteczkowy z dużą liczbą złotych iskier eksplodujących ze sfery, unoszących się w górę z szumem — efektowna wizualizacja zakupu ulepszenia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_ad4a19271537050cd870b51a565a6ab2a}{Play\+Money\+Effect\+Local}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt zarobienia pieniędzy lokalnie. Tworzy system cząsteczkowy z unoszącymi się złotymi iskrami — wizualizacja zarobku gracza, np. po dostarczeniu zamówienia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a5ab5942db4d0a4aa6f6dbe712239dd57}{Play\+Delivery\+Success\+Effect\+Local}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt udanego dostarczenia zamówienia lokalnie. Tworzy system cząsteczkowy z zielonymi iskrami eksplodującymi ze sfery — pozytywna wizualizacja poprawnie zrealizowanego zamówienia klienta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_aa2b1de9e564badab8337c1db65a66eac}{Play\+Delivery\+Fail\+Effect\+Local}} (Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt nieudanego dostarczenia zamówienia lokalnie. Tworzy system cząsteczkowy z czerwonymi cząsteczkami opadającymi w dół — negatywna wizualizacja błędnie zrealizowanego zamówienia klienta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a37fb460a7d3970328e1ffa77005d86cd}{Play\+Timeout\+Effect\+Local}} ()
+\begin{DoxyCompactList}\small\item\em Odtwarza efekt upływu czasu (timeout) lokalnie. Wyświetla efekt nieudanego dostarczenia w pozycji przed kamerą gracza, sygnalizując, że czas na realizację zamówienia upłynął. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_v_f_x_manager_a8c1774874bbd409117f57346814e9394}{Get\+Camera\+Facing\+Position}} (float distance=2.\+0f, float vertical\+Offset=-\/0.\+1f)
+\begin{DoxyCompactList}\small\item\em Oblicza pozycję w przestrzeni świata znajdującą się przed główną kamerą. Używana do wyświetlania efektów wizualnych w polu widzenia gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_v_f_x_manager}{VFXManager}} \mbox{\hyperlink{class_v_f_x_manager_a730262c013cba85ea06bd3a7c39e82f7}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna instancja Singletona klasy \doxylink{class_v_f_x_manager}{VFXManager}. Umożliwia globalny dostęp do menedżera efektów wizualnych. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a2145d9370921d149a80bbbd611815ab2}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton — ustawia instancję lub niszczy duplikat. \end{DoxyCompactList}\item 
+Particle\+System \mbox{\hyperlink{class_v_f_x_manager_ad089a21363311efc9053c3693a9ac883}{Create\+Particle\+System}} (string effect\+Name, Vector3 world\+Position)
+\begin{DoxyCompactList}\small\item\em Tworzy nowy obiekt gry z systemem cząsteczkowym używając standardowego materiału cząsteczkowego. \end{DoxyCompactList}\item 
+Particle\+System \mbox{\hyperlink{class_v_f_x_manager_a2adfd00745a44f9a4d0f5c4afba850bd}{Create\+Particle\+System}} (string effect\+Name, Vector3 world\+Position, bool use\+Smoke\+Material)
+\begin{DoxyCompactList}\small\item\em Tworzy nowy obiekt gry z systemem cząsteczkowym i przypisuje odpowiedni materiał. System jest tworzony w stanie zatrzymanym z wyzerowaną emisją — wymaga dalszej konfiguracji. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a218abde17667829a14b9ae471c50bfac}{Configure\+Burst}} (Particle\+System ps, short min\+Count, short max\+Count)
+\begin{DoxyCompactList}\small\item\em Konfiguruje jednorazową emisję cząsteczek (burst) dla podanego systemu cząsteczkowego. Wyłącza ciągłą emisję i ustawia pojedynczy burst z losową liczbą cząsteczek w zadanym zakresie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_ac4a737340f514c5c08be1dce01e15990}{Apply\+Color\+Gradient}} (Particle\+System ps, Color start, Color end, float start\+Alpha, float mid\+Alpha, float end\+Alpha)
+\begin{DoxyCompactList}\small\item\em Stosuje gradient koloru i przezroczystości do systemu cząsteczkowego w trakcie ich życia. Tworzy trójpunktowy gradient koloru (początek, środek, koniec) i trójpunktowy gradient przezroczystości. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_ae8e3534b5a7d3f98fb564e2c11172d36}{Apply\+Size\+Curve}} (Particle\+System ps, params Keyframe\mbox{[}$\,$\mbox{]} keys)
+\begin{DoxyCompactList}\small\item\em Stosuje krzywą rozmiaru do systemu cząsteczkowego w trakcie ich życia. Pozwala na płynną zmianę rozmiaru cząsteczek w czasie — np. powiększanie i zmniejszanie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a576f299186e2e069e9f09e47bddd5936}{Apply\+Noise}} (Particle\+System ps, float strength, float frequency)
+\begin{DoxyCompactList}\small\item\em Stosuje moduł szumu (noise) do systemu cząsteczkowego, dodając organiczny, losowy ruch cząsteczkom. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_v_f_x_manager_a2d1411a79761d0367cff74302e27cd66}{With\+Alpha}} (Color color, float alpha)
+\begin{DoxyCompactList}\small\item\em Tworzy kopię koloru z nową wartością przezroczystości (kanał alfa). Metoda pomocnicza używana do ustawiania przezroczystości kolorów cząsteczek. \end{DoxyCompactList}\item 
+Material \mbox{\hyperlink{class_v_f_x_manager_a436c5adf82e221b9ec5669387a75a6c3}{Create\+Particle\+Material}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy lub zwraca buforowany materiał dla standardowych efektów cząsteczkowych. Próbuje użyć shadera "{}\+Particles/\+Standard Unlit"{}, a w przypadku jego braku wybiera alternatywne shadery (URP, Legacy, Standard). \end{DoxyCompactList}\item 
+Material \mbox{\hyperlink{class_v_f_x_manager_a241f15c54de39867769d580f5a957ba4}{Create\+Smoke\+Material}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy lub zwraca buforowany materiał do efektów dymnych. Używa trybu mieszania alfa (alpha blended) zamiast addytywnego, co daje bardziej realistyczny wygląd dymu. \end{DoxyCompactList}\item 
+Texture2D \mbox{\hyperlink{class_v_f_x_manager_a7cda6cc7affdbac780aad3142c1d1067}{Create\+Soft\+Particle\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy lub zwraca buforowaną proceduralną teksturę miękkich cząsteczek. Generuje okrągłą teksturę 64x64 pikseli z gładkim radialnym gradientem alfa — jasne białe centrum zanikające do pełnej przezroczystości na krawędziach. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a09e12dc5f1f203020bd54523838c232f}{Stop\+Effect\+Near}} (string effect\+Name, Vector3 position, float max\+Distance)
+\begin{DoxyCompactList}\small\item\em Wyszukuje i zatrzymuje wszystkie aktywne systemy cząsteczkowe o podanej nazwie znajdujące się w określonym promieniu od podanej pozycji. Zatrzymane systemy są niszczone po 2 sekundach (czas na zanikanie istniejących cząsteczek). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_f_x_manager_a27000dee351fed9fb6866b1bfc8c19fe}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Unity wywoływana przy niszczeniu obiektu. Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Material \mbox{\hyperlink{class_v_f_x_manager_a13e1b791178ee2258f5c0382b75ef062}{cached\+Particle\+Material}}
+\begin{DoxyCompactList}\small\item\em Buforowany materiał używany przez standardowe efekty cząsteczkowe. Tworzony przy pierwszym użyciu i ponownie wykorzystywany w celu oszczędności pamięci. \end{DoxyCompactList}\item 
+Material \mbox{\hyperlink{class_v_f_x_manager_a8021b28e1a34cb723febaa7149a1b596}{cached\+Smoke\+Material}}
+\begin{DoxyCompactList}\small\item\em Buforowany materiał używany przez efekty dymne (np. dym z donera). Wykorzystuje tryb mieszania alfa zamiast addytywnego, co daje bardziej realistyczny dym. \end{DoxyCompactList}\item 
+Texture2D \mbox{\hyperlink{class_v_f_x_manager_a8fb54494415314f23cce7a13044e3ded}{cached\+Particle\+Texture}}
+\begin{DoxyCompactList}\small\item\em Buforowana tekstura proceduralna dla miękkich cząsteczek. Generowana raz przy pierwszym użyciu — okrągły gradient z gładkim zanikaniem krawędzi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Centralny menedżer efektów wizualnych (VFX) w symulatorze szefa kuchni kebabowej. Implementuje wzorzec Singleton, zapewniając jedną globalną instancję dostępną z dowolnego miejsca. 
+
+Klasa tworzy systemy cząsteczkowe proceduralnie w czasie wykonania (bez prefabrykatów), generując materiały i tekstury programowo. Każdy efekt publiczny automatycznie rozgłasza zdarzenie przez sieć (jeśli działa jako serwer), a następnie odtwarza efekt lokalnie. Metody z sufiksem "{}\+Local"{} służą do bezpośredniego odtwarzania efektu na bieżącym kliencie. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_v_f_x_manager_ac4a737340f514c5c08be1dce01e15990}\index{VFXManager@{VFXManager}!ApplyColorGradient@{ApplyColorGradient}}
+\index{ApplyColorGradient@{ApplyColorGradient}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{ApplyColorGradient()}{ApplyColorGradient()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_ac4a737340f514c5c08be1dce01e15990} 
+void VFXManager.\+Apply\+Color\+Gradient (\begin{DoxyParamCaption}\item[{Particle\+System}]{ps}{, }\item[{Color}]{start}{, }\item[{Color}]{end}{, }\item[{float}]{start\+Alpha}{, }\item[{float}]{mid\+Alpha}{, }\item[{float}]{end\+Alpha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Stosuje gradient koloru i przezroczystości do systemu cząsteczkowego w trakcie ich życia. Tworzy trójpunktowy gradient koloru (początek, środek, koniec) i trójpunktowy gradient przezroczystości. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ps} & System cząsteczkowy, do którego stosowany jest gradient.\\
+\hline
+{\em start} & Kolor początkowy cząsteczki (przy narodzinach).\\
+\hline
+{\em end} & Kolor końcowy cząsteczki (przy śmierci).\\
+\hline
+{\em start\+Alpha} & Przezroczystość początkowa (0 = pełna przezroczystość, 1 = pełna nieprzezroczystość).\\
+\hline
+{\em mid\+Alpha} & Przezroczystość w połowie czasu życia cząsteczki.\\
+\hline
+{\em end\+Alpha} & Przezroczystość końcowa cząsteczki.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a576f299186e2e069e9f09e47bddd5936}\index{VFXManager@{VFXManager}!ApplyNoise@{ApplyNoise}}
+\index{ApplyNoise@{ApplyNoise}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{ApplyNoise()}{ApplyNoise()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a576f299186e2e069e9f09e47bddd5936} 
+void VFXManager.\+Apply\+Noise (\begin{DoxyParamCaption}\item[{Particle\+System}]{ps}{, }\item[{float}]{strength}{, }\item[{float}]{frequency}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Stosuje moduł szumu (noise) do systemu cząsteczkowego, dodając organiczny, losowy ruch cząsteczkom. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ps} & System cząsteczkowy, do którego stosowany jest szum.\\
+\hline
+{\em strength} & Siła wpływu szumu na ruch cząsteczek.\\
+\hline
+{\em frequency} & Częstotliwość szumu — wyższe wartości tworzą bardziej chaotyczny ruch.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_ae8e3534b5a7d3f98fb564e2c11172d36}\index{VFXManager@{VFXManager}!ApplySizeCurve@{ApplySizeCurve}}
+\index{ApplySizeCurve@{ApplySizeCurve}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{ApplySizeCurve()}{ApplySizeCurve()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_ae8e3534b5a7d3f98fb564e2c11172d36} 
+void VFXManager.\+Apply\+Size\+Curve (\begin{DoxyParamCaption}\item[{Particle\+System}]{ps}{, }\item[{params Keyframe\mbox{[}$\,$\mbox{]}}]{keys}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Stosuje krzywą rozmiaru do systemu cząsteczkowego w trakcie ich życia. Pozwala na płynną zmianę rozmiaru cząsteczek w czasie — np. powiększanie i zmniejszanie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ps} & System cząsteczkowy, do którego stosowana jest krzywa rozmiaru.\\
+\hline
+{\em keys} & Tablica klatek kluczowych krzywej animacji rozmiaru (czas 0-\/1, wartość mnożnika).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a2145d9370921d149a80bbbd611815ab2}\index{VFXManager@{VFXManager}!Awake@{Awake}}
+\index{Awake@{Awake}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a2145d9370921d149a80bbbd611815ab2} 
+void VFXManager.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda inicjalizacyjna Unity wywoływana przy tworzeniu obiektu. Implementuje wzorzec Singleton — ustawia instancję lub niszczy duplikat. 
+
+\Hypertarget{class_v_f_x_manager_a218abde17667829a14b9ae471c50bfac}\index{VFXManager@{VFXManager}!ConfigureBurst@{ConfigureBurst}}
+\index{ConfigureBurst@{ConfigureBurst}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{ConfigureBurst()}{ConfigureBurst()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a218abde17667829a14b9ae471c50bfac} 
+void VFXManager.\+Configure\+Burst (\begin{DoxyParamCaption}\item[{Particle\+System}]{ps}{, }\item[{short}]{min\+Count}{, }\item[{short}]{max\+Count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Konfiguruje jednorazową emisję cząsteczek (burst) dla podanego systemu cząsteczkowego. Wyłącza ciągłą emisję i ustawia pojedynczy burst z losową liczbą cząsteczek w zadanym zakresie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ps} & System cząsteczkowy, dla którego konfigurowany jest burst.\\
+\hline
+{\em min\+Count} & Minimalna liczba cząsteczek emitowanych w jednym burście.\\
+\hline
+{\em max\+Count} & Maksymalna liczba cząsteczek emitowanych w jednym burście.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a436c5adf82e221b9ec5669387a75a6c3}\index{VFXManager@{VFXManager}!CreateParticleMaterial@{CreateParticleMaterial}}
+\index{CreateParticleMaterial@{CreateParticleMaterial}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{CreateParticleMaterial()}{CreateParticleMaterial()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a436c5adf82e221b9ec5669387a75a6c3} 
+Material VFXManager.\+Create\+Particle\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy lub zwraca buforowany materiał dla standardowych efektów cząsteczkowych. Próbuje użyć shadera "{}\+Particles/\+Standard Unlit"{}, a w przypadku jego braku wybiera alternatywne shadery (URP, Legacy, Standard). 
+
+Materiał jest konfigurowany z proceduralną teksturą miękkich cząsteczek, trybem powierzchni transparentnej i addytywnym trybem mieszania. Kolejka renderowania ustawiona na 3100. 
+
+\begin{DoxyReturn}{Zwraca}
+Buforowany materiał cząsteczkowy gotowy do użycia.
+\end{DoxyReturn}
+\Hypertarget{class_v_f_x_manager_ad089a21363311efc9053c3693a9ac883}\index{VFXManager@{VFXManager}!CreateParticleSystem@{CreateParticleSystem}}
+\index{CreateParticleSystem@{CreateParticleSystem}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{CreateParticleSystem()}{CreateParticleSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_ad089a21363311efc9053c3693a9ac883} 
+Particle\+System VFXManager.\+Create\+Particle\+System (\begin{DoxyParamCaption}\item[{string}]{effect\+Name}{, }\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy nowy obiekt gry z systemem cząsteczkowym używając standardowego materiału cząsteczkowego. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em effect\+Name} & Nazwa obiektu gry dla systemu cząsteczkowego (używana do identyfikacji i wyszukiwania).\\
+\hline
+{\em world\+Position} & Pozycja w przestrzeni świata, w której zostanie umieszczony system cząsteczkowy.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Skonfigurowany komponent Particle\+System gotowy do dalszej konfiguracji i odtworzenia.
+\end{DoxyReturn}
+\Hypertarget{class_v_f_x_manager_a2adfd00745a44f9a4d0f5c4afba850bd}\index{VFXManager@{VFXManager}!CreateParticleSystem@{CreateParticleSystem}}
+\index{CreateParticleSystem@{CreateParticleSystem}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{CreateParticleSystem()}{CreateParticleSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a2adfd00745a44f9a4d0f5c4afba850bd} 
+Particle\+System VFXManager.\+Create\+Particle\+System (\begin{DoxyParamCaption}\item[{string}]{effect\+Name}{, }\item[{Vector3}]{world\+Position}{, }\item[{bool}]{use\+Smoke\+Material}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy nowy obiekt gry z systemem cząsteczkowym i przypisuje odpowiedni materiał. System jest tworzony w stanie zatrzymanym z wyzerowaną emisją — wymaga dalszej konfiguracji. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em effect\+Name} & Nazwa obiektu gry dla systemu cząsteczkowego (używana do identyfikacji i wyszukiwania).\\
+\hline
+{\em world\+Position} & Pozycja w przestrzeni świata, w której zostanie umieszczony system cząsteczkowy.\\
+\hline
+{\em use\+Smoke\+Material} & Jeśli {\ttfamily true}, używa materiału dymnego (alpha blend); w przeciwnym razie używa standardowego materiału cząsteczkowego (addytywnego).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Skonfigurowany komponent Particle\+System gotowy do dalszej konfiguracji i odtworzenia.
+\end{DoxyReturn}
+\Hypertarget{class_v_f_x_manager_a241f15c54de39867769d580f5a957ba4}\index{VFXManager@{VFXManager}!CreateSmokeMaterial@{CreateSmokeMaterial}}
+\index{CreateSmokeMaterial@{CreateSmokeMaterial}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{CreateSmokeMaterial()}{CreateSmokeMaterial()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a241f15c54de39867769d580f5a957ba4} 
+Material VFXManager.\+Create\+Smoke\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy lub zwraca buforowany materiał do efektów dymnych. Używa trybu mieszania alfa (alpha blended) zamiast addytywnego, co daje bardziej realistyczny wygląd dymu. 
+
+Kolejka renderowania ustawiona na 3000 (niższa niż standardowy materiał cząsteczkowy), dzięki czemu dym renderuje się za innymi efektami cząsteczkowymi. 
+
+\begin{DoxyReturn}{Zwraca}
+Buforowany materiał dymny gotowy do użycia.
+\end{DoxyReturn}
+\Hypertarget{class_v_f_x_manager_a7cda6cc7affdbac780aad3142c1d1067}\index{VFXManager@{VFXManager}!CreateSoftParticleTexture@{CreateSoftParticleTexture}}
+\index{CreateSoftParticleTexture@{CreateSoftParticleTexture}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{CreateSoftParticleTexture()}{CreateSoftParticleTexture()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a7cda6cc7affdbac780aad3142c1d1067} 
+Texture2D VFXManager.\+Create\+Soft\+Particle\+Texture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy lub zwraca buforowaną proceduralną teksturę miękkich cząsteczek. Generuje okrągłą teksturę 64x64 pikseli z gładkim radialnym gradientem alfa — jasne białe centrum zanikające do pełnej przezroczystości na krawędziach. 
+
+Tekstura używa kwadratowego zanikania alfa (alpha\texorpdfstring{$\ast$}{*}alpha) po zastosowaniu Smooth\+Step, co daje bardzo miękkie, naturalne krawędzie cząsteczek bez ostrych artefaktów. 
+
+\begin{DoxyReturn}{Zwraca}
+Buforowana tekstura cząsteczkowa 64x64.
+\end{DoxyReturn}
+\Hypertarget{class_v_f_x_manager_a8c1774874bbd409117f57346814e9394}\index{VFXManager@{VFXManager}!GetCameraFacingPosition@{GetCameraFacingPosition}}
+\index{GetCameraFacingPosition@{GetCameraFacingPosition}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{GetCameraFacingPosition()}{GetCameraFacingPosition()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a8c1774874bbd409117f57346814e9394} 
+Vector3 VFXManager.\+Get\+Camera\+Facing\+Position (\begin{DoxyParamCaption}\item[{float}]{distance}{ = {\ttfamily 2\+:\+:0f}, }\item[{float}]{vertical\+Offset}{ = {\ttfamily -\/0\+:\+:1f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Oblicza pozycję w przestrzeni świata znajdującą się przed główną kamerą. Używana do wyświetlania efektów wizualnych w polu widzenia gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em distance} & Odległość od kamery do pozycji efektu (domyślnie 2.\+0).\\
+\hline
+{\em vertical\+Offset} & Pionowe przesunięcie pozycji efektu (domyślnie -\/0.\+1 — lekko poniżej środka).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Pozycja w przestrzeni świata przed kamerą. Jeśli kamera nie istnieje, zwraca Vector3.\+up.
+\end{DoxyReturn}
+\Hypertarget{class_v_f_x_manager_a27000dee351fed9fb6866b1bfc8c19fe}\index{VFXManager@{VFXManager}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a27000dee351fed9fb6866b1bfc8c19fe} 
+void VFXManager.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Unity wywoływana przy niszczeniu obiektu. Czyści statyczną referencję Singletona, aby uniknąć wiszących wskaźników. 
+
+\Hypertarget{class_v_f_x_manager_a4c78f2d59441d17a975e8c1d9814022f}\index{VFXManager@{VFXManager}!PlayChopEffect@{PlayChopEffect}}
+\index{PlayChopEffect@{PlayChopEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayChopEffect()}{PlayChopEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a4c78f2d59441d17a975e8c1d9814022f} 
+void VFXManager.\+Play\+Chop\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{, }\item[{Color}]{ingredient\+Color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt krojenia składnika w podanej pozycji z kolorystyką składnika. Generuje odłamki i błysk noża. Rozgłasza efekt sieciowo, jeśli jest serwerem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której ma się pojawić efekt krojenia.\\
+\hline
+{\em ingredient\+Color} & Kolor krojonego składnika, używany do zabarwienia odłamków.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a6a174fc12dfc4dbe70a6685ffef0da31}\index{VFXManager@{VFXManager}!PlayChopEffectLocal@{PlayChopEffectLocal}}
+\index{PlayChopEffectLocal@{PlayChopEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayChopEffectLocal()}{PlayChopEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a6a174fc12dfc4dbe70a6685ffef0da31} 
+void VFXManager.\+Play\+Chop\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{, }\item[{Color}]{ingredient\+Color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt krojenia składnika lokalnie. Tworzy dwa systemy cząsteczkowe\+: odłamki krojonego składnika (zabarwione kolorem składnika) oraz krótki błysk noża (jasny, szybko zanikający). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której następuje krojenie.\\
+\hline
+{\em ingredient\+Color} & Kolor krojonego składnika używany do zabarwienia odłamków.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a661cc91120beeff5be87685431dd048b}\index{VFXManager@{VFXManager}!PlayDeliveryFailEffect@{PlayDeliveryFailEffect}}
+\index{PlayDeliveryFailEffect@{PlayDeliveryFailEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayDeliveryFailEffect()}{PlayDeliveryFailEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a661cc91120beeff5be87685431dd048b} 
+void VFXManager.\+Play\+Delivery\+Fail\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt nieudanego dostarczenia zamówienia (czerwone cząsteczki opadające). Rozgłasza efekt sieciowo, jeśli jest serwerem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której nastąpiło nieudane dostarczenie.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_aa2b1de9e564badab8337c1db65a66eac}\index{VFXManager@{VFXManager}!PlayDeliveryFailEffectLocal@{PlayDeliveryFailEffectLocal}}
+\index{PlayDeliveryFailEffectLocal@{PlayDeliveryFailEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayDeliveryFailEffectLocal()}{PlayDeliveryFailEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_aa2b1de9e564badab8337c1db65a66eac} 
+void VFXManager.\+Play\+Delivery\+Fail\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt nieudanego dostarczenia zamówienia lokalnie. Tworzy system cząsteczkowy z czerwonymi cząsteczkami opadającymi w dół — negatywna wizualizacja błędnie zrealizowanego zamówienia klienta. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której nastąpiło nieudane dostarczenie.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a99859707eac32afa3aac03812eb577c0}\index{VFXManager@{VFXManager}!PlayDeliverySuccessEffect@{PlayDeliverySuccessEffect}}
+\index{PlayDeliverySuccessEffect@{PlayDeliverySuccessEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayDeliverySuccessEffect()}{PlayDeliverySuccessEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a99859707eac32afa3aac03812eb577c0} 
+void VFXManager.\+Play\+Delivery\+Success\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt udanego dostarczenia zamówienia (zielone iskry w kształcie sfery). Rozgłasza efekt sieciowo, jeśli jest serwerem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której nastąpiło udane dostarczenie.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a5ab5942db4d0a4aa6f6dbe712239dd57}\index{VFXManager@{VFXManager}!PlayDeliverySuccessEffectLocal@{PlayDeliverySuccessEffectLocal}}
+\index{PlayDeliverySuccessEffectLocal@{PlayDeliverySuccessEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayDeliverySuccessEffectLocal()}{PlayDeliverySuccessEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a5ab5942db4d0a4aa6f6dbe712239dd57} 
+void VFXManager.\+Play\+Delivery\+Success\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt udanego dostarczenia zamówienia lokalnie. Tworzy system cząsteczkowy z zielonymi iskrami eksplodującymi ze sfery — pozytywna wizualizacja poprawnie zrealizowanego zamówienia klienta. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której nastąpiło udane dostarczenie.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a0101a9f77832cedfa96c93dcffdfa4a6}\index{VFXManager@{VFXManager}!PlayDonerSmokeEffect@{PlayDonerSmokeEffect}}
+\index{PlayDonerSmokeEffect@{PlayDonerSmokeEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayDonerSmokeEffect()}{PlayDonerSmokeEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a0101a9f77832cedfa96c93dcffdfa4a6} 
+void VFXManager.\+Play\+Doner\+Smoke\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dymu z grilla kebabowego (doner) w podanej pozycji. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza efekt do wszystkich klientów. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której ma się pojawić dym z donera.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_adba4a0e2bd794919e4a23788d68c425e}\index{VFXManager@{VFXManager}!PlayDonerSmokeEffectLocal@{PlayDonerSmokeEffectLocal}}
+\index{PlayDonerSmokeEffectLocal@{PlayDonerSmokeEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayDonerSmokeEffectLocal()}{PlayDonerSmokeEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_adba4a0e2bd794919e4a23788d68c425e} 
+void VFXManager.\+Play\+Doner\+Smoke\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt dymu z grilla kebabowego (doner) lokalnie. Tworzy dwa systemy cząsteczkowe\+: główny ciemny dym oraz delikatną mgłę tłuszczową, które razem symulują realistyczny dym unoszący się z obracającego się mięsa. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata donera. Efekt jest przesunięty 1.\+08 jednostki w górę.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a699c511b17c4a92e0c50e3eb6209d6a6}\index{VFXManager@{VFXManager}!PlayDropEffect@{PlayDropEffect}}
+\index{PlayDropEffect@{PlayDropEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayDropEffect()}{PlayDropEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a699c511b17c4a92e0c50e3eb6209d6a6} 
+void VFXManager.\+Play\+Drop\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt upuszczenia przedmiotu (chmurka kurzu) w podanej pozycji. Rozgłasza efekt sieciowo, jeśli jest serwerem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której gracz upuszcza przedmiot.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_aeecdb00a9506b6479c6faee283e8d9fb}\index{VFXManager@{VFXManager}!PlayDropEffectLocal@{PlayDropEffectLocal}}
+\index{PlayDropEffectLocal@{PlayDropEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayDropEffectLocal()}{PlayDropEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_aeecdb00a9506b6479c6faee283e8d9fb} 
+void VFXManager.\+Play\+Drop\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt upuszczenia przedmiotu lokalnie. Tworzy jednorazowy system cząsteczkowy symulujący chmurę kurzu unoszącą się z miejsca upadku. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której przedmiot jest upuszczany.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_ab2d4fd8681b70df01e0e627d4e944365}\index{VFXManager@{VFXManager}!PlayMoneyEffect@{PlayMoneyEffect}}
+\index{PlayMoneyEffect@{PlayMoneyEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayMoneyEffect()}{PlayMoneyEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_ab2d4fd8681b70df01e0e627d4e944365} 
+void VFXManager.\+Play\+Money\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt zarobienia pieniędzy (złote, unoszące się cząsteczki). Rozgłasza efekt sieciowo, jeśli jest serwerem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której gracz zarabia pieniądze.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_ad4a19271537050cd870b51a565a6ab2a}\index{VFXManager@{VFXManager}!PlayMoneyEffectLocal@{PlayMoneyEffectLocal}}
+\index{PlayMoneyEffectLocal@{PlayMoneyEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayMoneyEffectLocal()}{PlayMoneyEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_ad4a19271537050cd870b51a565a6ab2a} 
+void VFXManager.\+Play\+Money\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt zarobienia pieniędzy lokalnie. Tworzy system cząsteczkowy z unoszącymi się złotymi iskrami — wizualizacja zarobku gracza, np. po dostarczeniu zamówienia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której gracz zarabia pieniądze.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a4e2db75acf4748d6e875b117b5f14c3c}\index{VFXManager@{VFXManager}!PlayPickupEffect@{PlayPickupEffect}}
+\index{PlayPickupEffect@{PlayPickupEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayPickupEffect()}{PlayPickupEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a4e2db75acf4748d6e875b117b5f14c3c} 
+void VFXManager.\+Play\+Pickup\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{, }\item[{Color}]{tint}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt podnoszenia przedmiotu z zabarwieniem odpowiadającym kolorowi przedmiotu. Rozgłasza efekt sieciowo, jeśli jest serwerem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której gracz podnosi przedmiot.\\
+\hline
+{\em tint} & Odcień koloru efektu, dopasowany do podnoszonego przedmiotu.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_ab4eaafc525c64555ccbc16603174909d}\index{VFXManager@{VFXManager}!PlayPickupEffectLocal@{PlayPickupEffectLocal}}
+\index{PlayPickupEffectLocal@{PlayPickupEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayPickupEffectLocal()}{PlayPickupEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_ab4eaafc525c64555ccbc16603174909d} 
+void VFXManager.\+Play\+Pickup\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{, }\item[{Color}]{tint}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt podnoszenia przedmiotu lokalnie. Tworzy jednorazowy system cząsteczkowy z delikatnymi, unoszącymi się w górę cząsteczkami zabarwionymi kolorem podniesionego przedmiotu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, z której gracz podnosi przedmiot.\\
+\hline
+{\em tint} & Odcień koloru efektu, dopasowany do podnoszonego przedmiotu.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a389445e6f2cb4a44a92f0dce371c721b}\index{VFXManager@{VFXManager}!PlayReadyEffect@{PlayReadyEffect}}
+\index{PlayReadyEffect@{PlayReadyEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayReadyEffect()}{PlayReadyEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a389445e6f2cb4a44a92f0dce371c721b} 
+void VFXManager.\+Play\+Ready\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{, }\item[{Color}]{tint}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt gotowości potrawy (iskry i blask) z zabarwieniem koloru. Rozgłasza efekt sieciowo, jeśli jest serwerem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której potrawa jest gotowa.\\
+\hline
+{\em tint} & Odcień koloru efektu gotowości, dopasowany do typu potrawy.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a657cb55ba4781e02946942397a05fe36}\index{VFXManager@{VFXManager}!PlayReadyEffectLocal@{PlayReadyEffectLocal}}
+\index{PlayReadyEffectLocal@{PlayReadyEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayReadyEffectLocal()}{PlayReadyEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a657cb55ba4781e02946942397a05fe36} 
+void VFXManager.\+Play\+Ready\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{, }\item[{Color}]{tint}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt gotowości potrawy lokalnie. Tworzy system cząsteczkowy z unoszącymi się iskrami w ciepłych, złoto-\/zielonych odcieniach, sygnalizujący graczowi, że potrawa jest gotowa do wydania. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której potrawa jest gotowa.\\
+\hline
+{\em tint} & Odcień koloru efektu, dopasowany do typu gotowej potrawy.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a81152d56f03254b681c9312ced5d353a}\index{VFXManager@{VFXManager}!PlaySteamEffect@{PlaySteamEffect}}
+\index{PlaySteamEffect@{PlaySteamEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlaySteamEffect()}{PlaySteamEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a81152d56f03254b681c9312ced5d353a} 
+void VFXManager.\+Play\+Steam\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt pary wodnej w podanej pozycji na świecie. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza efekt do wszystkich klientów. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której ma się pojawić efekt pary.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a0920cbd053446853523b4e43207ffea7}\index{VFXManager@{VFXManager}!PlaySteamEffectLocal@{PlaySteamEffectLocal}}
+\index{PlaySteamEffectLocal@{PlaySteamEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlaySteamEffectLocal()}{PlaySteamEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a0920cbd053446853523b4e43207ffea7} 
+void VFXManager.\+Play\+Steam\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt pary wodnej lokalnie (bez rozgłaszania sieciowego). Tworzy system cząsteczkowy symulujący unoszącą się parę z naczynia — cząsteczki powoli wznoszą się do góry, rozrastając się i zanikając. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której ma się pojawić para. Efekt jest przesunięty 1.\+25 jednostki w górę.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_ad3be961ff2ea3ce017f84fc55ca0cba5}\index{VFXManager@{VFXManager}!PlayTimeoutEffect@{PlayTimeoutEffect}}
+\index{PlayTimeoutEffect@{PlayTimeoutEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayTimeoutEffect()}{PlayTimeoutEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_ad3be961ff2ea3ce017f84fc55ca0cba5} 
+void VFXManager.\+Play\+Timeout\+Effect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt upływu czasu (timeout) — efekt nieudanego dostarczenia wyświetlany przed kamerą. Rozgłasza efekt sieciowo, jeśli jest serwerem. 
+
+\Hypertarget{class_v_f_x_manager_a37fb460a7d3970328e1ffa77005d86cd}\index{VFXManager@{VFXManager}!PlayTimeoutEffectLocal@{PlayTimeoutEffectLocal}}
+\index{PlayTimeoutEffectLocal@{PlayTimeoutEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayTimeoutEffectLocal()}{PlayTimeoutEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a37fb460a7d3970328e1ffa77005d86cd} 
+void VFXManager.\+Play\+Timeout\+Effect\+Local (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt upływu czasu (timeout) lokalnie. Wyświetla efekt nieudanego dostarczenia w pozycji przed kamerą gracza, sygnalizując, że czas na realizację zamówienia upłynął. 
+
+\Hypertarget{class_v_f_x_manager_aa3041571eb2860743639f2a9f852b66c}\index{VFXManager@{VFXManager}!PlayUpgradeEffect@{PlayUpgradeEffect}}
+\index{PlayUpgradeEffect@{PlayUpgradeEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayUpgradeEffect()}{PlayUpgradeEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_aa3041571eb2860743639f2a9f852b66c} 
+void VFXManager.\+Play\+Upgrade\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{, }\item[{Color}]{accent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt ulepszenia stacji roboczej (eksplozja złotych iskier). Rozgłasza efekt sieciowo, jeśli jest serwerem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której następuje ulepszenie.\\
+\hline
+{\em accent} & Kolor akcentu ulepszenia, wpływający na odcień cząsteczek.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a3c7c29a61356c12bb4f8e8c1f6a5b7d0}\index{VFXManager@{VFXManager}!PlayUpgradeEffectLocal@{PlayUpgradeEffectLocal}}
+\index{PlayUpgradeEffectLocal@{PlayUpgradeEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayUpgradeEffectLocal()}{PlayUpgradeEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a3c7c29a61356c12bb4f8e8c1f6a5b7d0} 
+void VFXManager.\+Play\+Upgrade\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{, }\item[{Color}]{accent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt ulepszenia stacji roboczej lokalnie. Tworzy system cząsteczkowy z dużą liczbą złotych iskier eksplodujących ze sfery, unoszących się w górę z szumem — efektowna wizualizacja zakupu ulepszenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której następuje ulepszenie.\\
+\hline
+{\em accent} & Kolor akcentu ulepszenia, mieszany ze złotym odcieniem.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_adba2172f6b23e6db661ad33b245014ca}\index{VFXManager@{VFXManager}!PlayWrapEffect@{PlayWrapEffect}}
+\index{PlayWrapEffect@{PlayWrapEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayWrapEffect()}{PlayWrapEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_adba2172f6b23e6db661ad33b245014ca} 
+void VFXManager.\+Play\+Wrap\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt zawijania kebaba (wirujące cząsteczki w ciepłych odcieniach). Rozgłasza efekt sieciowo, jeśli jest serwerem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której następuje zawijanie kebaba.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a4ac94be1a5167935dc75b5cf85658042}\index{VFXManager@{VFXManager}!PlayWrapEffectLocal@{PlayWrapEffectLocal}}
+\index{PlayWrapEffectLocal@{PlayWrapEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{PlayWrapEffectLocal()}{PlayWrapEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a4ac94be1a5167935dc75b5cf85658042} 
+void VFXManager.\+Play\+Wrap\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Odtwarza efekt zawijania kebaba lokalnie. Tworzy system cząsteczkowy z wirującymi cząsteczkami w ciepłych, brązowo-\/złotych odcieniach, unoszącymi się delikatnie w górę — wizualizuje proces zawijania kebaba w tortillę. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której następuje zawijanie kebaba.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a3aa3f3379483bcc164d92a2761df8fff}\index{VFXManager@{VFXManager}!StopDonerSmokeEffect@{StopDonerSmokeEffect}}
+\index{StopDonerSmokeEffect@{StopDonerSmokeEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{StopDonerSmokeEffect()}{StopDonerSmokeEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a3aa3f3379483bcc164d92a2761df8fff} 
+void VFXManager.\+Stop\+Doner\+Smoke\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zatrzymuje efekt dymu z grilla kebabowego (doner) w podanej pozycji. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza zatrzymanie do wszystkich klientów. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której należy zatrzymać dym z donera.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a39f1fdf4954ca868c51ecb1ce3728f2b}\index{VFXManager@{VFXManager}!StopDonerSmokeEffectLocal@{StopDonerSmokeEffectLocal}}
+\index{StopDonerSmokeEffectLocal@{StopDonerSmokeEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{StopDonerSmokeEffectLocal()}{StopDonerSmokeEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a39f1fdf4954ca868c51ecb1ce3728f2b} 
+void VFXManager.\+Stop\+Doner\+Smoke\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zatrzymuje efekt dymu z donera lokalnie w pobliżu podanej pozycji. Wyszukuje i zatrzymuje zarówno główny dym ("{}\+VFX\+\_\+\+Doner\+Smoke"{}), jak i mgłę tłuszczową ("{}\+VFX\+\_\+\+Doner\+Oily\+Vapor"{}). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w pobliżu której należy zatrzymać efekty dymu.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a09e12dc5f1f203020bd54523838c232f}\index{VFXManager@{VFXManager}!StopEffectNear@{StopEffectNear}}
+\index{StopEffectNear@{StopEffectNear}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{StopEffectNear()}{StopEffectNear()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a09e12dc5f1f203020bd54523838c232f} 
+void VFXManager.\+Stop\+Effect\+Near (\begin{DoxyParamCaption}\item[{string}]{effect\+Name}{, }\item[{Vector3}]{position}{, }\item[{float}]{max\+Distance}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Wyszukuje i zatrzymuje wszystkie aktywne systemy cząsteczkowe o podanej nazwie znajdujące się w określonym promieniu od podanej pozycji. Zatrzymane systemy są niszczone po 2 sekundach (czas na zanikanie istniejących cząsteczek). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em effect\+Name} & Nazwa obiektu gry systemu cząsteczkowego do wyszukania.\\
+\hline
+{\em position} & Pozycja w przestrzeni świata, od której mierzona jest odległość (z przesunięciem 1.\+25 w górę).\\
+\hline
+{\em max\+Distance} & Maksymalna odległość, w jakiej efekty zostaną zatrzymane.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a0283bec5f510e595acc77f1e0db09d15}\index{VFXManager@{VFXManager}!StopSteamEffect@{StopSteamEffect}}
+\index{StopSteamEffect@{StopSteamEffect}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{StopSteamEffect()}{StopSteamEffect()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a0283bec5f510e595acc77f1e0db09d15} 
+void VFXManager.\+Stop\+Steam\+Effect (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zatrzymuje efekt pary wodnej w podanej pozycji na świecie. Jeśli gra działa w trybie sieciowym jako serwer, rozgłasza zatrzymanie do wszystkich klientów. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w której należy zatrzymać efekt pary.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_aac45849c3ba54463883b4aeb7a778ea4}\index{VFXManager@{VFXManager}!StopSteamEffectLocal@{StopSteamEffectLocal}}
+\index{StopSteamEffectLocal@{StopSteamEffectLocal}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{StopSteamEffectLocal()}{StopSteamEffectLocal()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_aac45849c3ba54463883b4aeb7a778ea4} 
+void VFXManager.\+Stop\+Steam\+Effect\+Local (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zatrzymuje efekt pary wodnej lokalnie w pobliżu podanej pozycji. Wyszukuje aktywne systemy cząsteczkowe o nazwie "{}\+VFX\+\_\+\+Steam"{} w promieniu 2 jednostek. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Position} & Pozycja w przestrzeni świata, w pobliżu której należy zatrzymać efekt pary.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_v_f_x_manager_a2d1411a79761d0367cff74302e27cd66}\index{VFXManager@{VFXManager}!WithAlpha@{WithAlpha}}
+\index{WithAlpha@{WithAlpha}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{WithAlpha()}{WithAlpha()}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a2d1411a79761d0367cff74302e27cd66} 
+Color VFXManager.\+With\+Alpha (\begin{DoxyParamCaption}\item[{Color}]{color}{, }\item[{float}]{alpha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy kopię koloru z nową wartością przezroczystości (kanał alfa). Metoda pomocnicza używana do ustawiania przezroczystości kolorów cząsteczek. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em color} & Bazowy kolor, którego składowe RGB zostaną zachowane.\\
+\hline
+{\em alpha} & Nowa wartość przezroczystości (0 = pełna przezroczystość, 1 = pełna nieprzezroczystość).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Nowy kolor z zachowanymi składowymi RGB i nową wartością alfa.
+\end{DoxyReturn}
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_v_f_x_manager_a13e1b791178ee2258f5c0382b75ef062}\index{VFXManager@{VFXManager}!cachedParticleMaterial@{cachedParticleMaterial}}
+\index{cachedParticleMaterial@{cachedParticleMaterial}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{cachedParticleMaterial}{cachedParticleMaterial}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a13e1b791178ee2258f5c0382b75ef062} 
+Material VFXManager.\+cached\+Particle\+Material\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowany materiał używany przez standardowe efekty cząsteczkowe. Tworzony przy pierwszym użyciu i ponownie wykorzystywany w celu oszczędności pamięci. 
+
+\Hypertarget{class_v_f_x_manager_a8fb54494415314f23cce7a13044e3ded}\index{VFXManager@{VFXManager}!cachedParticleTexture@{cachedParticleTexture}}
+\index{cachedParticleTexture@{cachedParticleTexture}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{cachedParticleTexture}{cachedParticleTexture}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a8fb54494415314f23cce7a13044e3ded} 
+Texture2D VFXManager.\+cached\+Particle\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowana tekstura proceduralna dla miękkich cząsteczek. Generowana raz przy pierwszym użyciu — okrągły gradient z gładkim zanikaniem krawędzi. 
+
+\Hypertarget{class_v_f_x_manager_a8021b28e1a34cb723febaa7149a1b596}\index{VFXManager@{VFXManager}!cachedSmokeMaterial@{cachedSmokeMaterial}}
+\index{cachedSmokeMaterial@{cachedSmokeMaterial}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{cachedSmokeMaterial}{cachedSmokeMaterial}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a8021b28e1a34cb723febaa7149a1b596} 
+Material VFXManager.\+cached\+Smoke\+Material\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowany materiał używany przez efekty dymne (np. dym z donera). Wykorzystuje tryb mieszania alfa zamiast addytywnego, co daje bardziej realistyczny dym. 
+
+
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_v_f_x_manager_a730262c013cba85ea06bd3a7c39e82f7}\index{VFXManager@{VFXManager}!Instance@{Instance}}
+\index{Instance@{Instance}!VFXManager@{VFXManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_v_f_x_manager_a730262c013cba85ea06bd3a7c39e82f7} 
+\mbox{\hyperlink{class_v_f_x_manager}{VFXManager}} VFXManager.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna instancja Singletona klasy \doxylink{class_v_f_x_manager}{VFXManager}. Umożliwia globalny dostęp do menedżera efektów wizualnych. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_v_f_x_manager_8cs}{VFXManager.\+cs}}\end{DoxyCompactItemize}

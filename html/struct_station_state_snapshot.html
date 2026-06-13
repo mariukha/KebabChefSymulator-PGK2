@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja struktury StationStateSnapshot</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-attribs">Atrybuty publiczne</a> &#124;
+<a href="struct_station_state_snapshot-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja struktury StationStateSnapshot</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Struktura przechowująca migawkę stanu stacji kuchennej do przesyłania przez sieć.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla StationStateSnapshot</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="struct_station_state_snapshot.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a16510c56eed1859ac844433996ea3516" id="r_a16510c56eed1859ac844433996ea3516"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16510c56eed1859ac844433996ea3516">SetAssemblySlot</a> (int index, <a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> state)</td></tr>
+<tr class="memdesc:a16510c56eed1859ac844433996ea3516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia rodzaj i stan przetworzenia składnika w określonym slocie montażowym.  <br /></td></tr>
+<tr class="separator:a16510c56eed1859ac844433996ea3516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6adf10d812aa800ca2df64c14004dcd" id="r_af6adf10d812aa800ca2df64c14004dcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6adf10d812aa800ca2df64c14004dcd">GetAssemblySlot</a> (int index, out <a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> kind, out <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> state)</td></tr>
+<tr class="memdesc:af6adf10d812aa800ca2df64c14004dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera rodzaj i stan przetworzenia składnika z określonego slotu montażowego.  <br /></td></tr>
+<tr class="separator:af6adf10d812aa800ca2df64c14004dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6384842cf10eab647af1bacf239b02e" id="r_ab6384842cf10eab647af1bacf239b02e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6384842cf10eab647af1bacf239b02e">NetworkSerialize&lt; T &gt;</a> (Unity.Netcode.BufferSerializer&lt; T &gt; serializer)</td></tr>
+<tr class="memdesc:ab6384842cf10eab647af1bacf239b02e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializuje lub deserializuje dane migawki przez bufor sieciowy.  <br /></td></tr>
+<tr class="separator:ab6384842cf10eab647af1bacf239b02e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atrybuty publiczne</h2></td></tr>
+<tr class="memitem:a6bf110eed339196270e76c94e5f770b2" id="r_a6bf110eed339196270e76c94e5f770b2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bf110eed339196270e76c94e5f770b2">stationIndex</a></td></tr>
+<tr class="memdesc:a6bf110eed339196270e76c94e5f770b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indeks stacji kuchennej, do której należy ta migawka.  <br /></td></tr>
+<tr class="separator:a6bf110eed339196270e76c94e5f770b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c82164c50ea041f61cd0c53b3636b63" id="r_a9c82164c50ea041f61cd0c53b3636b63"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c82164c50ea041f61cd0c53b3636b63">isProcessing</a></td></tr>
+<tr class="memdesc:a9c82164c50ea041f61cd0c53b3636b63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czy stacja aktualnie przetwarza składnik.  <br /></td></tr>
+<tr class="separator:a9c82164c50ea041f61cd0c53b3636b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73a9a52d53bf8aeae5ccddb7572dbe09" id="r_a73a9a52d53bf8aeae5ccddb7572dbe09"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73a9a52d53bf8aeae5ccddb7572dbe09">remainingProcessTime</a></td></tr>
+<tr class="memdesc:a73a9a52d53bf8aeae5ccddb7572dbe09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pozostały czas przetwarzania (w sekundach).  <br /></td></tr>
+<tr class="separator:a73a9a52d53bf8aeae5ccddb7572dbe09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8b6d52b0f89b39a3064c63748867b8d" id="r_ae8b6d52b0f89b39a3064c63748867b8d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8b6d52b0f89b39a3064c63748867b8d">preparedMeatServings</a></td></tr>
+<tr class="memdesc:ae8b6d52b0f89b39a3064c63748867b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba przygotowanych porcji mięsa na stacji.  <br /></td></tr>
+<tr class="separator:ae8b6d52b0f89b39a3064c63748867b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af33cba142d574e6fa89a1bc7ba337f10" id="r_af33cba142d574e6fa89a1bc7ba337f10"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af33cba142d574e6fa89a1bc7ba337f10">hasLavash</a></td></tr>
+<tr class="memdesc:af33cba142d574e6fa89a1bc7ba337f10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czy na stacji znajduje się lawasz.  <br /></td></tr>
+<tr class="separator:af33cba142d574e6fa89a1bc7ba337f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a710163b4b9d840b09fd294661958b6e5" id="r_a710163b4b9d840b09fd294661958b6e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a710163b4b9d840b09fd294661958b6e5">assemblyCount</a></td></tr>
+<tr class="memdesc:a710163b4b9d840b09fd294661958b6e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba składników w zestawie montażowym (assembly).  <br /></td></tr>
+<tr class="separator:a710163b4b9d840b09fd294661958b6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad15a43b490e2f1214702bc08dbb8e782" id="r_ad15a43b490e2f1214702bc08dbb8e782"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_network_item_state.html">NetworkItemState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad15a43b490e2f1214702bc08dbb8e782">stationItem</a></td></tr>
+<tr class="memdesc:ad15a43b490e2f1214702bc08dbb8e782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stan sieciowy przedmiotu znajdującego się na stacji.  <br /></td></tr>
+<tr class="separator:ad15a43b490e2f1214702bc08dbb8e782"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42b7614a732ba2a64af64b379d106ac2" id="r_a42b7614a732ba2a64af64b379d106ac2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42b7614a732ba2a64af64b379d106ac2">assembly0Kind</a></td></tr>
+<tr class="memdesc:a42b7614a732ba2a64af64b379d106ac2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rodzaj składnika w slocie montażowym 0.  <br /></td></tr>
+<tr class="separator:a42b7614a732ba2a64af64b379d106ac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab41383b23ae1e4e443f53ef0b3731633" id="r_ab41383b23ae1e4e443f53ef0b3731633"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab41383b23ae1e4e443f53ef0b3731633">assembly0State</a></td></tr>
+<tr class="memdesc:ab41383b23ae1e4e443f53ef0b3731633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stan przetworzenia składnika w slocie montażowym 0.  <br /></td></tr>
+<tr class="separator:ab41383b23ae1e4e443f53ef0b3731633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcac1867a037efe033bfca95ecaab887" id="r_abcac1867a037efe033bfca95ecaab887"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcac1867a037efe033bfca95ecaab887">assembly1Kind</a></td></tr>
+<tr class="memdesc:abcac1867a037efe033bfca95ecaab887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rodzaj składnika w slocie montażowym 1.  <br /></td></tr>
+<tr class="separator:abcac1867a037efe033bfca95ecaab887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bc9ace6fbcb5b06c46405db34f1c954" id="r_a4bc9ace6fbcb5b06c46405db34f1c954"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bc9ace6fbcb5b06c46405db34f1c954">assembly1State</a></td></tr>
+<tr class="memdesc:a4bc9ace6fbcb5b06c46405db34f1c954"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stan przetworzenia składnika w slocie montażowym 1.  <br /></td></tr>
+<tr class="separator:a4bc9ace6fbcb5b06c46405db34f1c954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a440d5e8e75a76ba8fab0fe8b3a25a080" id="r_a440d5e8e75a76ba8fab0fe8b3a25a080"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a440d5e8e75a76ba8fab0fe8b3a25a080">assembly2Kind</a></td></tr>
+<tr class="memdesc:a440d5e8e75a76ba8fab0fe8b3a25a080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rodzaj składnika w slocie montażowym 2.  <br /></td></tr>
+<tr class="separator:a440d5e8e75a76ba8fab0fe8b3a25a080"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00bf89fd2809d1ded783106b6a6719ba" id="r_a00bf89fd2809d1ded783106b6a6719ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00bf89fd2809d1ded783106b6a6719ba">assembly2State</a></td></tr>
+<tr class="memdesc:a00bf89fd2809d1ded783106b6a6719ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stan przetworzenia składnika w slocie montażowym 2.  <br /></td></tr>
+<tr class="separator:a00bf89fd2809d1ded783106b6a6719ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54cb163bae47354c58cd329f5b273c3a" id="r_a54cb163bae47354c58cd329f5b273c3a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54cb163bae47354c58cd329f5b273c3a">assembly3Kind</a></td></tr>
+<tr class="memdesc:a54cb163bae47354c58cd329f5b273c3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rodzaj składnika w slocie montażowym 3.  <br /></td></tr>
+<tr class="separator:a54cb163bae47354c58cd329f5b273c3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08ac653e98090f290a93f245908a15e0" id="r_a08ac653e98090f290a93f245908a15e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08ac653e98090f290a93f245908a15e0">assembly3State</a></td></tr>
+<tr class="memdesc:a08ac653e98090f290a93f245908a15e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stan przetworzenia składnika w slocie montażowym 3.  <br /></td></tr>
+<tr class="separator:a08ac653e98090f290a93f245908a15e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a421b5f9826d6bc73229a6107dc111394" id="r_a421b5f9826d6bc73229a6107dc111394"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a421b5f9826d6bc73229a6107dc111394">assembly4Kind</a></td></tr>
+<tr class="memdesc:a421b5f9826d6bc73229a6107dc111394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rodzaj składnika w slocie montażowym 4.  <br /></td></tr>
+<tr class="separator:a421b5f9826d6bc73229a6107dc111394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdf0dfc20e9dfe17372730974ba32a35" id="r_acdf0dfc20e9dfe17372730974ba32a35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdf0dfc20e9dfe17372730974ba32a35">assembly4State</a></td></tr>
+<tr class="memdesc:acdf0dfc20e9dfe17372730974ba32a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stan przetworzenia składnika w slocie montażowym 4.  <br /></td></tr>
+<tr class="separator:acdf0dfc20e9dfe17372730974ba32a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4df010f2c7b4e0cf610bc3ed5f57141" id="r_aa4df010f2c7b4e0cf610bc3ed5f57141"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4df010f2c7b4e0cf610bc3ed5f57141">assembly5Kind</a></td></tr>
+<tr class="memdesc:aa4df010f2c7b4e0cf610bc3ed5f57141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rodzaj składnika w slocie montażowym 5.  <br /></td></tr>
+<tr class="separator:aa4df010f2c7b4e0cf610bc3ed5f57141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72c38ba47e8aeaab178b4ff83b6d9c42" id="r_a72c38ba47e8aeaab178b4ff83b6d9c42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72c38ba47e8aeaab178b4ff83b6d9c42">assembly5State</a></td></tr>
+<tr class="memdesc:a72c38ba47e8aeaab178b4ff83b6d9c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stan przetworzenia składnika w slocie montażowym 5.  <br /></td></tr>
+<tr class="separator:a72c38ba47e8aeaab178b4ff83b6d9c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc15f87d7ea4a54bda8a30c371cc8827" id="r_acc15f87d7ea4a54bda8a30c371cc8827"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc15f87d7ea4a54bda8a30c371cc8827">assembly6Kind</a></td></tr>
+<tr class="memdesc:acc15f87d7ea4a54bda8a30c371cc8827"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rodzaj składnika w slocie montażowym 6.  <br /></td></tr>
+<tr class="separator:acc15f87d7ea4a54bda8a30c371cc8827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a053aeb2772b532ccad9f28dbca5c972a" id="r_a053aeb2772b532ccad9f28dbca5c972a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a053aeb2772b532ccad9f28dbca5c972a">assembly6State</a></td></tr>
+<tr class="memdesc:a053aeb2772b532ccad9f28dbca5c972a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stan przetworzenia składnika w slocie montażowym 6.  <br /></td></tr>
+<tr class="separator:a053aeb2772b532ccad9f28dbca5c972a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426ec1e3a28f89063c3ce26100fcec72" id="r_a426ec1e3a28f89063c3ce26100fcec72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a426ec1e3a28f89063c3ce26100fcec72">assembly7Kind</a></td></tr>
+<tr class="memdesc:a426ec1e3a28f89063c3ce26100fcec72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rodzaj składnika w slocie montażowym 7.  <br /></td></tr>
+<tr class="separator:a426ec1e3a28f89063c3ce26100fcec72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af29eb0a7ee687f5db76dcd493e54613a" id="r_af29eb0a7ee687f5db76dcd493e54613a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af29eb0a7ee687f5db76dcd493e54613a">assembly7State</a></td></tr>
+<tr class="memdesc:af29eb0a7ee687f5db76dcd493e54613a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stan przetworzenia składnika w slocie montażowym 7.  <br /></td></tr>
+<tr class="separator:af29eb0a7ee687f5db76dcd493e54613a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Struktura przechowująca migawkę stanu stacji kuchennej do przesyłania przez sieć. </p>
+<p>Implementuje Unity.Netcode.INetworkSerializable do serializacji binarnej. Zawiera informacje o stanie przetwarzania, przedmiocie na stacji, obecności lawasza, przygotowanych porcjach mięsa oraz do 8 składnikach w zestawie montażowym (assembly). Serializacja składników montażowych jest optymalizowana — przesyłane są tylko te sloty, które są w użyciu (na podstawie <a class="el" href="#a710163b4b9d840b09fd294661958b6e5" title="Liczba składników w zestawie montażowym (assembly).">assemblyCount</a>). </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="af6adf10d812aa800ca2df64c14004dcd" name="af6adf10d812aa800ca2df64c14004dcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6adf10d812aa800ca2df64c14004dcd">&#9670;&#160;</a></span>GetAssemblySlot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StationStateSnapshot.GetAssemblySlot </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out <a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera rodzaj i stan przetworzenia składnika z określonego slotu montażowego. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Indeks slotu (0-7).</td></tr>
+    <tr><td class="paramname">kind</td><td>Wynikowy rodzaj składnika.</td></tr>
+    <tr><td class="paramname">state</td><td>Wynikowy stan przetworzenia składnika.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Dla indeksów spoza zakresu 0-7 zwraca wartości domyślne: <a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f" title="Mięso — główny składnik białkowy kebaba.">IngredientKind.Meat</a> i <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00" title="Surowy — składnik w stanie nieprzetworzonym, bezpośrednio ze źródła.">IngredientProcessState.Raw</a>. </p>
+
+</div>
+</div>
+<a id="ab6384842cf10eab647af1bacf239b02e" name="ab6384842cf10eab647af1bacf239b02e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6384842cf10eab647af1bacf239b02e">&#9670;&#160;</a></span>NetworkSerialize&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StationStateSnapshot.NetworkSerialize&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramtype">Unity.Netcode.BufferSerializer&lt; T &gt;</td>          <td class="paramname"><span class="paramname"><em>serializer</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Serializuje lub deserializuje dane migawki przez bufor sieciowy. </p>
+<dl class="tparams"><dt>Parametry Szablonu</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Typ implementujący Unity.Netcode.IReaderWriter.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serializer</td><td>Serializer bufora sieciowego.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Optymalizuje transfer danych — sloty montażowe są serializowane tylko do wartości <a class="el" href="#a710163b4b9d840b09fd294661958b6e5" title="Liczba składników w zestawie montażowym (assembly).">assemblyCount</a> (maksymalnie 8), co zmniejsza rozmiar pakietu sieciowego. </p>
+<div class="typeconstraint">
+<dl><dt><b>Ograniczenia typów</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>Unity.Netcode.IReaderWriter</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
+<a id="a16510c56eed1859ac844433996ea3516" name="a16510c56eed1859ac844433996ea3516"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16510c56eed1859ac844433996ea3516">&#9670;&#160;</a></span>SetAssemblySlot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StationStateSnapshot.SetAssemblySlot </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a></td>          <td class="paramname"><span class="paramname"><em>kind</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia rodzaj i stan przetworzenia składnika w określonym slocie montażowym. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Indeks slotu (0-7).</td></tr>
+    <tr><td class="paramname">kind</td><td>Rodzaj składnika do ustawienia.</td></tr>
+    <tr><td class="paramname">state</td><td>Stan przetworzenia składnika do ustawienia.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Indeksy spoza zakresu 0-7 są ignorowane. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a42b7614a732ba2a64af64b379d106ac2" name="a42b7614a732ba2a64af64b379d106ac2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b7614a732ba2a64af64b379d106ac2">&#9670;&#160;</a></span>assembly0Kind</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> StationStateSnapshot.assembly0Kind</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rodzaj składnika w slocie montażowym 0. </p>
+
+</div>
+</div>
+<a id="ab41383b23ae1e4e443f53ef0b3731633" name="ab41383b23ae1e4e443f53ef0b3731633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab41383b23ae1e4e443f53ef0b3731633">&#9670;&#160;</a></span>assembly0State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> StationStateSnapshot.assembly0State</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stan przetworzenia składnika w slocie montażowym 0. </p>
+
+</div>
+</div>
+<a id="abcac1867a037efe033bfca95ecaab887" name="abcac1867a037efe033bfca95ecaab887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcac1867a037efe033bfca95ecaab887">&#9670;&#160;</a></span>assembly1Kind</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> StationStateSnapshot.assembly1Kind</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rodzaj składnika w slocie montażowym 1. </p>
+
+</div>
+</div>
+<a id="a4bc9ace6fbcb5b06c46405db34f1c954" name="a4bc9ace6fbcb5b06c46405db34f1c954"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bc9ace6fbcb5b06c46405db34f1c954">&#9670;&#160;</a></span>assembly1State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> StationStateSnapshot.assembly1State</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stan przetworzenia składnika w slocie montażowym 1. </p>
+
+</div>
+</div>
+<a id="a440d5e8e75a76ba8fab0fe8b3a25a080" name="a440d5e8e75a76ba8fab0fe8b3a25a080"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a440d5e8e75a76ba8fab0fe8b3a25a080">&#9670;&#160;</a></span>assembly2Kind</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> StationStateSnapshot.assembly2Kind</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rodzaj składnika w slocie montażowym 2. </p>
+
+</div>
+</div>
+<a id="a00bf89fd2809d1ded783106b6a6719ba" name="a00bf89fd2809d1ded783106b6a6719ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00bf89fd2809d1ded783106b6a6719ba">&#9670;&#160;</a></span>assembly2State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> StationStateSnapshot.assembly2State</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stan przetworzenia składnika w slocie montażowym 2. </p>
+
+</div>
+</div>
+<a id="a54cb163bae47354c58cd329f5b273c3a" name="a54cb163bae47354c58cd329f5b273c3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54cb163bae47354c58cd329f5b273c3a">&#9670;&#160;</a></span>assembly3Kind</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> StationStateSnapshot.assembly3Kind</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rodzaj składnika w slocie montażowym 3. </p>
+
+</div>
+</div>
+<a id="a08ac653e98090f290a93f245908a15e0" name="a08ac653e98090f290a93f245908a15e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08ac653e98090f290a93f245908a15e0">&#9670;&#160;</a></span>assembly3State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> StationStateSnapshot.assembly3State</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stan przetworzenia składnika w slocie montażowym 3. </p>
+
+</div>
+</div>
+<a id="a421b5f9826d6bc73229a6107dc111394" name="a421b5f9826d6bc73229a6107dc111394"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a421b5f9826d6bc73229a6107dc111394">&#9670;&#160;</a></span>assembly4Kind</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> StationStateSnapshot.assembly4Kind</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rodzaj składnika w slocie montażowym 4. </p>
+
+</div>
+</div>
+<a id="acdf0dfc20e9dfe17372730974ba32a35" name="acdf0dfc20e9dfe17372730974ba32a35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdf0dfc20e9dfe17372730974ba32a35">&#9670;&#160;</a></span>assembly4State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> StationStateSnapshot.assembly4State</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stan przetworzenia składnika w slocie montażowym 4. </p>
+
+</div>
+</div>
+<a id="aa4df010f2c7b4e0cf610bc3ed5f57141" name="aa4df010f2c7b4e0cf610bc3ed5f57141"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4df010f2c7b4e0cf610bc3ed5f57141">&#9670;&#160;</a></span>assembly5Kind</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> StationStateSnapshot.assembly5Kind</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rodzaj składnika w slocie montażowym 5. </p>
+
+</div>
+</div>
+<a id="a72c38ba47e8aeaab178b4ff83b6d9c42" name="a72c38ba47e8aeaab178b4ff83b6d9c42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72c38ba47e8aeaab178b4ff83b6d9c42">&#9670;&#160;</a></span>assembly5State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> StationStateSnapshot.assembly5State</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stan przetworzenia składnika w slocie montażowym 5. </p>
+
+</div>
+</div>
+<a id="acc15f87d7ea4a54bda8a30c371cc8827" name="acc15f87d7ea4a54bda8a30c371cc8827"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc15f87d7ea4a54bda8a30c371cc8827">&#9670;&#160;</a></span>assembly6Kind</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> StationStateSnapshot.assembly6Kind</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rodzaj składnika w slocie montażowym 6. </p>
+
+</div>
+</div>
+<a id="a053aeb2772b532ccad9f28dbca5c972a" name="a053aeb2772b532ccad9f28dbca5c972a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a053aeb2772b532ccad9f28dbca5c972a">&#9670;&#160;</a></span>assembly6State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> StationStateSnapshot.assembly6State</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stan przetworzenia składnika w slocie montażowym 6. </p>
+
+</div>
+</div>
+<a id="a426ec1e3a28f89063c3ce26100fcec72" name="a426ec1e3a28f89063c3ce26100fcec72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a426ec1e3a28f89063c3ce26100fcec72">&#9670;&#160;</a></span>assembly7Kind</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a214ca6bd11da127e708701211c9ff9a5">IngredientKind</a> StationStateSnapshot.assembly7Kind</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rodzaj składnika w slocie montażowym 7. </p>
+
+</div>
+</div>
+<a id="af29eb0a7ee687f5db76dcd493e54613a" name="af29eb0a7ee687f5db76dcd493e54613a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af29eb0a7ee687f5db76dcd493e54613a">&#9670;&#160;</a></span>assembly7State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> StationStateSnapshot.assembly7State</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stan przetworzenia składnika w slocie montażowym 7. </p>
+
+</div>
+</div>
+<a id="a710163b4b9d840b09fd294661958b6e5" name="a710163b4b9d840b09fd294661958b6e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a710163b4b9d840b09fd294661958b6e5">&#9670;&#160;</a></span>assemblyCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int StationStateSnapshot.assemblyCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Liczba składników w zestawie montażowym (assembly). </p>
+
+</div>
+</div>
+<a id="af33cba142d574e6fa89a1bc7ba337f10" name="af33cba142d574e6fa89a1bc7ba337f10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af33cba142d574e6fa89a1bc7ba337f10">&#9670;&#160;</a></span>hasLavash</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StationStateSnapshot.hasLavash</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Czy na stacji znajduje się lawasz. </p>
+
+</div>
+</div>
+<a id="a9c82164c50ea041f61cd0c53b3636b63" name="a9c82164c50ea041f61cd0c53b3636b63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c82164c50ea041f61cd0c53b3636b63">&#9670;&#160;</a></span>isProcessing</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StationStateSnapshot.isProcessing</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Czy stacja aktualnie przetwarza składnik. </p>
+
+</div>
+</div>
+<a id="ae8b6d52b0f89b39a3064c63748867b8d" name="ae8b6d52b0f89b39a3064c63748867b8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8b6d52b0f89b39a3064c63748867b8d">&#9670;&#160;</a></span>preparedMeatServings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int StationStateSnapshot.preparedMeatServings</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Liczba przygotowanych porcji mięsa na stacji. </p>
+
+</div>
+</div>
+<a id="a73a9a52d53bf8aeae5ccddb7572dbe09" name="a73a9a52d53bf8aeae5ccddb7572dbe09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73a9a52d53bf8aeae5ccddb7572dbe09">&#9670;&#160;</a></span>remainingProcessTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float StationStateSnapshot.remainingProcessTime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pozostały czas przetwarzania (w sekundach). </p>
+
+</div>
+</div>
+<a id="a6bf110eed339196270e76c94e5f770b2" name="a6bf110eed339196270e76c94e5f770b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bf110eed339196270e76c94e5f770b2">&#9670;&#160;</a></span>stationIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int StationStateSnapshot.stationIndex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indeks stacji kuchennej, do której należy ta migawka. </p>
+
+</div>
+</div>
+<a id="ad15a43b490e2f1214702bc08dbb8e782" name="ad15a43b490e2f1214702bc08dbb8e782"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad15a43b490e2f1214702bc08dbb8e782">&#9670;&#160;</a></span>stationItem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_network_item_state.html">NetworkItemState</a> StationStateSnapshot.stationItem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stan sieciowy przedmiotu znajdującego się na stacji. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej struktury została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_network_kitchen_station_8cs.html">NetworkKitchenStation.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

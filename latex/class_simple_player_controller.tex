@@ -1,0 +1,300 @@
+\doxysection{Dokumentacja klasy Simple\+Player\+Controller}
+\hypertarget{class_simple_player_controller}{}\label{class_simple_player_controller}\index{SimplePlayerController@{SimplePlayerController}}
+
+
+Prosty kontroler ruchu gracza w trybie pierwszoosobowym. Obsługuje poruszanie się postaci za pomocą klawiszy WASD, obrót kamery za pomocą myszy, grawitację, blokowanie/odblokowywanie kursora oraz przełączanie trybu okna (F11). Blokuje sterowanie, gdy otwarte jest menu główne, sklep, lobby, pauza lub ustawienia.  
+
+
+Diagram dziedziczenia dla Simple\+Player\+Controller\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_simple_player_controller}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_simple_player_controller_a5da25d2814a02e463d1dd530c6f6ffad}{Set\+Initial\+Look\+Target}} (Vector3 world\+Target)
+\begin{DoxyCompactList}\small\item\em Ustawia początkowy cel patrzenia, który zostanie zastosowany w metodzie \doxylink{class_simple_player_controller_af88fb95117545e038fc7bd097a77b8c9}{Start()}. Używane, gdy cel patrzenia musi być określony przed inicjalizacją kontrolera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simple_player_controller_a1b2f7c3172ef0662cc0878e5a4543324}{Set\+Look\+At}} (Vector3 world\+Target)
+\begin{DoxyCompactList}\small\item\em Natychmiast kieruje wzrok gracza na wskazany punkt w świecie. Obraca postać w osi Y, aby patrzeć w kierunku celu, i ustawia pochylenie kamery w osi X. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_simple_player_controller_a7ee78e23976c4332ae7306c61177698c}{speed}} = 4.\+5f
+\begin{DoxyCompactList}\small\item\em Prędkość poruszania się gracza (w jednostkach Unity na sekundę). \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_simple_player_controller_aae3d02d97ac5c5159c0a49a2833d71b3}{sensitivity}} = 2.\+0f
+\begin{DoxyCompactList}\small\item\em Czułość myszy wpływająca na szybkość obrotu kamery. Wartość jest pobierana z \doxylink{class_game_settings_manager}{Game\+Settings\+Manager} podczas startu. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_simple_player_controller_ae29d1cef55de3ecc416bb21d0b964d29}{gravity}} = -\/20f
+\begin{DoxyCompactList}\small\item\em Przyspieszenie grawitacyjne stosowane do gracza (ujemna wartość oznacza kierunek w dół). \end{DoxyCompactList}\item 
+Camera \mbox{\hyperlink{class_simple_player_controller_a898924cbc92ff592f0e8f619578f9553}{player\+Camera}}
+\begin{DoxyCompactList}\small\item\em Kamera gracza używana do widoku pierwszoosobowego i obrotu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_simple_player_controller_a3395300a4652ad5ee260f997c669fa94}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje Character\+Controller w metodzie Awake. Jeśli komponent nie jest obecny, tworzy go z domyślnymi parametrami (wysokość 1.\+8, środek na 0.\+9, promień 0.\+35). Konfiguruje także wysokość kroku i limit nachylenia terenu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simple_player_controller_af88fb95117545e038fc7bd097a77b8c9}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizacja gracza przy starcie sceny. Blokuje i ukrywa kursor, ładuje czułość myszy z ustawień gry, ustawia kamerę na wysokości oczu i opcjonalnie kieruje widok na cel początkowy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simple_player_controller_af0315b633de21b91349cabe41f407b6f}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Główna pętla aktualizacji wywoływana co klatkę. Sprawdza, czy interfejsy użytkownika blokują sterowanie (sklep, lobby, menu, pauza, ustawienia). Jeśli sterowanie nie jest zablokowane, obsługuje ruch i obrót kamery. Obsługuje również klawisz Escape (blokada/odblokowanie kursora) i F11 (przełączanie trybu okna). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simple_player_controller_a5e12edbe9f4561dafedc0bb15d1349a8}{Handle\+Movement}} ()
+\begin{DoxyCompactList}\small\item\em Obsługuje ruch gracza na podstawie wejścia z klawiatury (osie Vertical i Horizontal). Stosuje normalizację wektora ruchu, grawitację oraz porusza postać za pomocą Character\+Controller. Resetuje prędkość pionową do małej ujemnej wartości, gdy gracz stoi na ziemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simple_player_controller_a3900f82dd923acc3fdef270712c4e5ab}{Handle\+Rotation}} ()
+\begin{DoxyCompactList}\small\item\em Obsługuje obrót kamery i postaci na podstawie ruchu myszy. Obraca postać wokół osi Y (lewo/prawo) i kamerę wokół osi X (góra/dół). Pochylenie kamery jest ograniczone do zakresu \mbox{[}-\/85°, 85°\mbox{]}. Obrót jest aktywny tylko gdy kursor jest zablokowany. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_simple_player_controller_a4a4685b303b23ba379b4b94fef2170b6}{Normalize\+Angle}} (float angle)
+\begin{DoxyCompactList}\small\item\em Normalizuje kąt do zakresu \mbox{[}-\/180°, 180°\mbox{]}. Używane do konwersji kątów Eulera, które mogą wykraczać poza standardowy zakres. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Character\+Controller \mbox{\hyperlink{class_simple_player_controller_a981e1fe78f5043a595e4db71d67d2e20}{character\+Controller}}
+\begin{DoxyCompactList}\small\item\em Komponent Character\+Controller używany do fizycznego poruszania postaci z obsługą kolizji. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_simple_player_controller_a00594db9aba8ab6f3cd45ec78788472e}{rotationX}}
+\begin{DoxyCompactList}\small\item\em Bieżący kąt obrotu kamery w osi X (pochylenie w górę/dół). Wartość jest ograniczana do zakresu \mbox{[}-\/85°, 85°\mbox{]}, aby zapobiec odwróceniu kamery. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_simple_player_controller_a829184756e0936f25bbbefddf3176316}{vertical\+Velocity}}
+\begin{DoxyCompactList}\small\item\em Bieżąca prędkość pionowa gracza, uwzględniająca grawitację. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_simple_player_controller_a77b44229e89252a5bd39ad9e3a4f21fe}{has\+Initial\+Look\+Target}}
+\begin{DoxyCompactList}\small\item\em Flaga określająca, czy ustawiono początkowy cel patrzenia przed inicjalizacją. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_simple_player_controller_ac99f5ea827e094ac40f955a6c96f1346}{initial\+Look\+Target}}
+\begin{DoxyCompactList}\small\item\em Pozycja w świecie, na którą gracz powinien patrzeć przy starcie. Używana, gdy cel patrzenia jest ustawiany przed wywołaniem \doxylink{class_simple_player_controller_af88fb95117545e038fc7bd097a77b8c9}{Start()}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_shop_u_i}{Shop\+UI}} \mbox{\hyperlink{class_simple_player_controller_a0dc603365bb90916b05e87341c2f828f}{cached\+Shop\+UI}}
+\begin{DoxyCompactList}\small\item\em Zbuforowana referencja do interfejsu sklepu, aby uniknąć wielokrotnego wyszukiwania. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_lobby_u_i}{Lobby\+UI}} \mbox{\hyperlink{class_simple_player_controller_a28c56462665166583f4f34fcee889863}{cached\+Lobby\+UI}}
+\begin{DoxyCompactList}\small\item\em Zbuforowana referencja do interfejsu lobby, aby uniknąć wielokrotnego wyszukiwania. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+const float \mbox{\hyperlink{class_simple_player_controller_a29545964637e56283e48db376dc52805}{Eye\+Height}} = 1.\+75f
+\begin{DoxyCompactList}\small\item\em Wysokość oczu gracza nad poziomem podłoża (w jednostkach Unity). Określa pozycję kamery względem postaci. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Prosty kontroler ruchu gracza w trybie pierwszoosobowym. Obsługuje poruszanie się postaci za pomocą klawiszy WASD, obrót kamery za pomocą myszy, grawitację, blokowanie/odblokowywanie kursora oraz przełączanie trybu okna (F11). Blokuje sterowanie, gdy otwarte jest menu główne, sklep, lobby, pauza lub ustawienia. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_simple_player_controller_a3395300a4652ad5ee260f997c669fa94}\index{SimplePlayerController@{SimplePlayerController}!Awake@{Awake}}
+\index{Awake@{Awake}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a3395300a4652ad5ee260f997c669fa94} 
+void Simple\+Player\+Controller.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje Character\+Controller w metodzie Awake. Jeśli komponent nie jest obecny, tworzy go z domyślnymi parametrami (wysokość 1.\+8, środek na 0.\+9, promień 0.\+35). Konfiguruje także wysokość kroku i limit nachylenia terenu. 
+
+\Hypertarget{class_simple_player_controller_a5e12edbe9f4561dafedc0bb15d1349a8}\index{SimplePlayerController@{SimplePlayerController}!HandleMovement@{HandleMovement}}
+\index{HandleMovement@{HandleMovement}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{HandleMovement()}{HandleMovement()}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a5e12edbe9f4561dafedc0bb15d1349a8} 
+void Simple\+Player\+Controller.\+Handle\+Movement (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje ruch gracza na podstawie wejścia z klawiatury (osie Vertical i Horizontal). Stosuje normalizację wektora ruchu, grawitację oraz porusza postać za pomocą Character\+Controller. Resetuje prędkość pionową do małej ujemnej wartości, gdy gracz stoi na ziemi. 
+
+\Hypertarget{class_simple_player_controller_a3900f82dd923acc3fdef270712c4e5ab}\index{SimplePlayerController@{SimplePlayerController}!HandleRotation@{HandleRotation}}
+\index{HandleRotation@{HandleRotation}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{HandleRotation()}{HandleRotation()}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a3900f82dd923acc3fdef270712c4e5ab} 
+void Simple\+Player\+Controller.\+Handle\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje obrót kamery i postaci na podstawie ruchu myszy. Obraca postać wokół osi Y (lewo/prawo) i kamerę wokół osi X (góra/dół). Pochylenie kamery jest ograniczone do zakresu \mbox{[}-\/85°, 85°\mbox{]}. Obrót jest aktywny tylko gdy kursor jest zablokowany. 
+
+\Hypertarget{class_simple_player_controller_a4a4685b303b23ba379b4b94fef2170b6}\index{SimplePlayerController@{SimplePlayerController}!NormalizeAngle@{NormalizeAngle}}
+\index{NormalizeAngle@{NormalizeAngle}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{NormalizeAngle()}{NormalizeAngle()}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a4a4685b303b23ba379b4b94fef2170b6} 
+float Simple\+Player\+Controller.\+Normalize\+Angle (\begin{DoxyParamCaption}\item[{float}]{angle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Normalizuje kąt do zakresu \mbox{[}-\/180°, 180°\mbox{]}. Używane do konwersji kątów Eulera, które mogą wykraczać poza standardowy zakres. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em angle} & Kąt do znormalizowania w stopniach.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Znormalizowany kąt w zakresie \mbox{[}-\/180°, 180°\mbox{]}.
+\end{DoxyReturn}
+\Hypertarget{class_simple_player_controller_a5da25d2814a02e463d1dd530c6f6ffad}\index{SimplePlayerController@{SimplePlayerController}!SetInitialLookTarget@{SetInitialLookTarget}}
+\index{SetInitialLookTarget@{SetInitialLookTarget}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{SetInitialLookTarget()}{SetInitialLookTarget()}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a5da25d2814a02e463d1dd530c6f6ffad} 
+void Simple\+Player\+Controller.\+Set\+Initial\+Look\+Target (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia początkowy cel patrzenia, który zostanie zastosowany w metodzie \doxylink{class_simple_player_controller_af88fb95117545e038fc7bd097a77b8c9}{Start()}. Używane, gdy cel patrzenia musi być określony przed inicjalizacją kontrolera. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Target} & Pozycja w świecie, na którą gracz powinien patrzeć.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_simple_player_controller_a1b2f7c3172ef0662cc0878e5a4543324}\index{SimplePlayerController@{SimplePlayerController}!SetLookAt@{SetLookAt}}
+\index{SetLookAt@{SetLookAt}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{SetLookAt()}{SetLookAt()}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a1b2f7c3172ef0662cc0878e5a4543324} 
+void Simple\+Player\+Controller.\+Set\+Look\+At (\begin{DoxyParamCaption}\item[{Vector3}]{world\+Target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Natychmiast kieruje wzrok gracza na wskazany punkt w świecie. Obraca postać w osi Y, aby patrzeć w kierunku celu, i ustawia pochylenie kamery w osi X. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em world\+Target} & Pozycja w świecie, na którą gracz powinien skierować wzrok.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_simple_player_controller_af88fb95117545e038fc7bd097a77b8c9}\index{SimplePlayerController@{SimplePlayerController}!Start@{Start}}
+\index{Start@{Start}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_af88fb95117545e038fc7bd097a77b8c9} 
+void Simple\+Player\+Controller.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizacja gracza przy starcie sceny. Blokuje i ukrywa kursor, ładuje czułość myszy z ustawień gry, ustawia kamerę na wysokości oczu i opcjonalnie kieruje widok na cel początkowy. 
+
+\Hypertarget{class_simple_player_controller_af0315b633de21b91349cabe41f407b6f}\index{SimplePlayerController@{SimplePlayerController}!Update@{Update}}
+\index{Update@{Update}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_af0315b633de21b91349cabe41f407b6f} 
+void Simple\+Player\+Controller.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Główna pętla aktualizacji wywoływana co klatkę. Sprawdza, czy interfejsy użytkownika blokują sterowanie (sklep, lobby, menu, pauza, ustawienia). Jeśli sterowanie nie jest zablokowane, obsługuje ruch i obrót kamery. Obsługuje również klawisz Escape (blokada/odblokowanie kursora) i F11 (przełączanie trybu okna). 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_simple_player_controller_a28c56462665166583f4f34fcee889863}\index{SimplePlayerController@{SimplePlayerController}!cachedLobbyUI@{cachedLobbyUI}}
+\index{cachedLobbyUI@{cachedLobbyUI}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{cachedLobbyUI}{cachedLobbyUI}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a28c56462665166583f4f34fcee889863} 
+\mbox{\hyperlink{class_lobby_u_i}{Lobby\+UI}} Simple\+Player\+Controller.\+cached\+Lobby\+UI\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Zbuforowana referencja do interfejsu lobby, aby uniknąć wielokrotnego wyszukiwania. 
+
+\Hypertarget{class_simple_player_controller_a0dc603365bb90916b05e87341c2f828f}\index{SimplePlayerController@{SimplePlayerController}!cachedShopUI@{cachedShopUI}}
+\index{cachedShopUI@{cachedShopUI}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{cachedShopUI}{cachedShopUI}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a0dc603365bb90916b05e87341c2f828f} 
+\mbox{\hyperlink{class_shop_u_i}{Shop\+UI}} Simple\+Player\+Controller.\+cached\+Shop\+UI\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Zbuforowana referencja do interfejsu sklepu, aby uniknąć wielokrotnego wyszukiwania. 
+
+\Hypertarget{class_simple_player_controller_a981e1fe78f5043a595e4db71d67d2e20}\index{SimplePlayerController@{SimplePlayerController}!characterController@{characterController}}
+\index{characterController@{characterController}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{characterController}{characterController}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a981e1fe78f5043a595e4db71d67d2e20} 
+Character\+Controller Simple\+Player\+Controller.\+character\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Komponent Character\+Controller używany do fizycznego poruszania postaci z obsługą kolizji. 
+
+\Hypertarget{class_simple_player_controller_a29545964637e56283e48db376dc52805}\index{SimplePlayerController@{SimplePlayerController}!EyeHeight@{EyeHeight}}
+\index{EyeHeight@{EyeHeight}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{EyeHeight}{EyeHeight}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a29545964637e56283e48db376dc52805} 
+const float Simple\+Player\+Controller.\+Eye\+Height = 1.\+75f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Wysokość oczu gracza nad poziomem podłoża (w jednostkach Unity). Określa pozycję kamery względem postaci. 
+
+\Hypertarget{class_simple_player_controller_ae29d1cef55de3ecc416bb21d0b964d29}\index{SimplePlayerController@{SimplePlayerController}!gravity@{gravity}}
+\index{gravity@{gravity}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{gravity}{gravity}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_ae29d1cef55de3ecc416bb21d0b964d29} 
+float Simple\+Player\+Controller.\+gravity = -\/20f}
+
+
+
+Przyspieszenie grawitacyjne stosowane do gracza (ujemna wartość oznacza kierunek w dół). 
+
+\Hypertarget{class_simple_player_controller_a77b44229e89252a5bd39ad9e3a4f21fe}\index{SimplePlayerController@{SimplePlayerController}!hasInitialLookTarget@{hasInitialLookTarget}}
+\index{hasInitialLookTarget@{hasInitialLookTarget}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{hasInitialLookTarget}{hasInitialLookTarget}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a77b44229e89252a5bd39ad9e3a4f21fe} 
+bool Simple\+Player\+Controller.\+has\+Initial\+Look\+Target\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flaga określająca, czy ustawiono początkowy cel patrzenia przed inicjalizacją. 
+
+\Hypertarget{class_simple_player_controller_ac99f5ea827e094ac40f955a6c96f1346}\index{SimplePlayerController@{SimplePlayerController}!initialLookTarget@{initialLookTarget}}
+\index{initialLookTarget@{initialLookTarget}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{initialLookTarget}{initialLookTarget}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_ac99f5ea827e094ac40f955a6c96f1346} 
+Vector3 Simple\+Player\+Controller.\+initial\+Look\+Target\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pozycja w świecie, na którą gracz powinien patrzeć przy starcie. Używana, gdy cel patrzenia jest ustawiany przed wywołaniem \doxylink{class_simple_player_controller_af88fb95117545e038fc7bd097a77b8c9}{Start()}. 
+
+\Hypertarget{class_simple_player_controller_a898924cbc92ff592f0e8f619578f9553}\index{SimplePlayerController@{SimplePlayerController}!playerCamera@{playerCamera}}
+\index{playerCamera@{playerCamera}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{playerCamera}{playerCamera}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a898924cbc92ff592f0e8f619578f9553} 
+Camera Simple\+Player\+Controller.\+player\+Camera}
+
+
+
+Kamera gracza używana do widoku pierwszoosobowego i obrotu. 
+
+\Hypertarget{class_simple_player_controller_a00594db9aba8ab6f3cd45ec78788472e}\index{SimplePlayerController@{SimplePlayerController}!rotationX@{rotationX}}
+\index{rotationX@{rotationX}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{rotationX}{rotationX}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a00594db9aba8ab6f3cd45ec78788472e} 
+float Simple\+Player\+Controller.\+rotationX\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bieżący kąt obrotu kamery w osi X (pochylenie w górę/dół). Wartość jest ograniczana do zakresu \mbox{[}-\/85°, 85°\mbox{]}, aby zapobiec odwróceniu kamery. 
+
+\Hypertarget{class_simple_player_controller_aae3d02d97ac5c5159c0a49a2833d71b3}\index{SimplePlayerController@{SimplePlayerController}!sensitivity@{sensitivity}}
+\index{sensitivity@{sensitivity}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{sensitivity}{sensitivity}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_aae3d02d97ac5c5159c0a49a2833d71b3} 
+float Simple\+Player\+Controller.\+sensitivity = 2.\+0f}
+
+
+
+Czułość myszy wpływająca na szybkość obrotu kamery. Wartość jest pobierana z \doxylink{class_game_settings_manager}{Game\+Settings\+Manager} podczas startu. 
+
+\Hypertarget{class_simple_player_controller_a7ee78e23976c4332ae7306c61177698c}\index{SimplePlayerController@{SimplePlayerController}!speed@{speed}}
+\index{speed@{speed}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a7ee78e23976c4332ae7306c61177698c} 
+float Simple\+Player\+Controller.\+speed = 4.\+5f}
+
+
+
+Prędkość poruszania się gracza (w jednostkach Unity na sekundę). 
+
+\Hypertarget{class_simple_player_controller_a829184756e0936f25bbbefddf3176316}\index{SimplePlayerController@{SimplePlayerController}!verticalVelocity@{verticalVelocity}}
+\index{verticalVelocity@{verticalVelocity}!SimplePlayerController@{SimplePlayerController}}
+\doxysubsubsection{\texorpdfstring{verticalVelocity}{verticalVelocity}}
+{\footnotesize\ttfamily \label{class_simple_player_controller_a829184756e0936f25bbbefddf3176316} 
+float Simple\+Player\+Controller.\+vertical\+Velocity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bieżąca prędkość pionowa gracza, uwzględniająca grawitację. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_simple_player_controller_8cs}{Simple\+Player\+Controller.\+cs}}\end{DoxyCompactItemize}

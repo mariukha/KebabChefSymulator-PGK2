@@ -1,0 +1,2336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy KitchenStation</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#properties">Właściwości</a> &#124;
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="class_kitchen_station-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy KitchenStation</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasa reprezentująca stanowisko kuchenne w symulatorze kebaba. Dziedziczy po klasie <a class="el" href="class_interactable.html" title="Bazowa klasa dla wszystkich obiektów interaktywnych w grze. Zapewnia mechanizm wyświetlania komunikat...">Interactable</a> i obsługuje interakcje gracza z różnymi typami stanowisk kuchennych.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla KitchenStation</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_kitchen_station.png" usemap="#KitchenStation_map" alt=""/>
+  <map id="KitchenStation_map" name="KitchenStation_map">
+<area href="class_interactable.html" title="Bazowa klasa dla wszystkich obiektów interaktywnych w grze. Zapewnia mechanizm wyświetlania komunikat..." alt="Interactable" shape="rect" coords="0,56,102,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:aac88098da51643c0e05189ffff2e6d0c" id="r_aac88098da51643c0e05189ffff2e6d0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac88098da51643c0e05189ffff2e6d0c">SyncNetworkState</a> (<a class="el" href="struct_station_state_snapshot.html">StationStateSnapshot</a> snapshot)</td></tr>
+<tr class="memdesc:aac88098da51643c0e05189ffff2e6d0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizuje stan stanowiska na podstawie migawki sieciowej (snapshot). Nadpisuje bieżący stan lokalny wartościami otrzymanymi z serwera.  <br /></td></tr>
+<tr class="separator:aac88098da51643c0e05189ffff2e6d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46e9fcfd4aceabaa97ee0cf63951609b" id="r_a46e9fcfd4aceabaa97ee0cf63951609b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46e9fcfd4aceabaa97ee0cf63951609b">WriteAssemblyToSnapshot</a> (ref <a class="el" href="struct_station_state_snapshot.html">StationStateSnapshot</a> snapshot)</td></tr>
+<tr class="memdesc:a46e9fcfd4aceabaa97ee0cf63951609b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zapisuje aktualny stan składników montażu do migawki sieciowej.  <br /></td></tr>
+<tr class="separator:a46e9fcfd4aceabaa97ee0cf63951609b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae68561a9982ecc164d5160fd7ac0dab7" id="r_ae68561a9982ecc164d5160fd7ac0dab7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae68561a9982ecc164d5160fd7ac0dab7">Configure</a> (string <a class="el" href="#a67ea505e895e18564517431f7a72e3c6">stationName</a>, <a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1">KitchenStationType</a> <a class="el" href="#a5bd30761d2c3b58b629d3cbf7c4adf80">stationType</a>, <a class="el" href="class_ingredient_data.html">IngredientData</a> <a class="el" href="#a7234a3f45a0da0c094261cd5daa651d1">sourceIngredient</a>, float <a class="el" href="#ae46dd3288cc277b18efcd2eacde6f7f1">processingDuration</a>, Renderer <a class="el" href="#a5479b30e96196dacb9eb0c53c00e572f">visualRenderer</a>)</td></tr>
+<tr class="memdesc:ae68561a9982ecc164d5160fd7ac0dab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konfiguruje stanowisko kuchenne z podanymi parametrami. Ustawia nazwę, typ, składnik źródłowy, czas przetwarzania i renderer wizualny.  <br /></td></tr>
+<tr class="separator:ae68561a9982ecc164d5160fd7ac0dab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd705052e999a7c1b9873989931d737e" id="r_afd705052e999a7c1b9873989931d737e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd705052e999a7c1b9873989931d737e">SetLinkedMeatTray</a> (<a class="el" href="class_kitchen_station.html">KitchenStation</a> trayStation)</td></tr>
+<tr class="memdesc:afd705052e999a7c1b9873989931d737e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia powiązane stanowisko tacy z mięsem dla donera. Grill-doner po zakończeniu procesu przesyła gotowe mięso na powiązaną tacę.  <br /></td></tr>
+<tr class="separator:afd705052e999a7c1b9873989931d737e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa949240f2b26da4fe063761f9b046661" id="r_aa949240f2b26da4fe063761f9b046661"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa949240f2b26da4fe063761f9b046661">RefreshVisualState</a> ()</td></tr>
+<tr class="memdesc:aa949240f2b26da4fe063761f9b046661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odświeża kompletny stan wizualny stanowiska, w tym kolor i dynamiczne obiekty 3D.  <br /></td></tr>
+<tr class="separator:aa949240f2b26da4fe063761f9b046661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a006d053d065eaf3a02da8394712b7c" id="r_a5a006d053d065eaf3a02da8394712b7c"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a006d053d065eaf3a02da8394712b7c">GetPrompt</a> (<a class="el" href="class_player_interaction.html">PlayerInteraction</a> player)</td></tr>
+<tr class="memdesc:a5a006d053d065eaf3a02da8394712b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca komunikat podpowiedzi wyświetlany graczowi w zależności od typu stanowiska i bieżącego stanu przetwarzania.  <br /></td></tr>
+<tr class="separator:a5a006d053d065eaf3a02da8394712b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a913ee51c7b0f2d26adcc6ce6e70fb71c" id="r_a913ee51c7b0f2d26adcc6ce6e70fb71c"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a913ee51c7b0f2d26adcc6ce6e70fb71c">Interact</a> (<a class="el" href="class_player_interaction.html">PlayerInteraction</a> player)</td></tr>
+<tr class="memdesc:a913ee51c7b0f2d26adcc6ce6e70fb71c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje interakcję gracza ze stanowiskiem kuchennym. Deleguje logikę do odpowiedniej metody w zależności od typu stanowiska.  <br /></td></tr>
+<tr class="separator:a913ee51c7b0f2d26adcc6ce6e70fb71c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_interactable"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_interactable')"><img src="closed.png" alt="-"/>&#160;Metody publiczne dziedziczone z <a class="el" href="class_interactable.html">Interactable</a></td></tr>
+<tr class="memitem:ac2f8057416ebac677551e512cd517f27 inherit pub_methods_class_interactable" id="r_ac2f8057416ebac677551e512cd517f27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interactable.html#ac2f8057416ebac677551e512cd517f27">BaseInteract</a> ()</td></tr>
+<tr class="memdesc:ac2f8057416ebac677551e512cd517f27 inherit pub_methods_class_interactable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda pomocnicza wywołująca interakcję bez podania referencji do gracza. Przydatna do wywoływania interakcji z poziomu zdarzeń Unity lub skryptów, które nie posiadają referencji do obiektu gracza.  <br /></td></tr>
+<tr class="separator:ac2f8057416ebac677551e512cd517f27 inherit pub_methods_class_interactable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Właściwości</h2></td></tr>
+<tr class="memitem:a056a0653a9d8a10494e9b162897d92af" id="r_a056a0653a9d8a10494e9b162897d92af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a056a0653a9d8a10494e9b162897d92af">IsProcessing</a><code> [get]</code></td></tr>
+<tr class="memdesc:a056a0653a9d8a10494e9b162897d92af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informuje, czy stanowisko aktualnie przetwarza składnik.  <br /></td></tr>
+<tr class="separator:a056a0653a9d8a10494e9b162897d92af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2b02d55bd3751f50250473cfcec449a" id="r_aa2b02d55bd3751f50250473cfcec449a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2b02d55bd3751f50250473cfcec449a">ProcessEndTime</a><code> [get]</code></td></tr>
+<tr class="memdesc:aa2b02d55bd3751f50250473cfcec449a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas (<code>Time.time</code>) zakończenia bieżącego przetwarzania.  <br /></td></tr>
+<tr class="separator:aa2b02d55bd3751f50250473cfcec449a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9469cdd11ad8855297fe5eff41a32b" id="r_aff9469cdd11ad8855297fe5eff41a32b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff9469cdd11ad8855297fe5eff41a32b">PreparedMeatServings</a><code> [get]</code></td></tr>
+<tr class="memdesc:aff9469cdd11ad8855297fe5eff41a32b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba gotowych porcji mięsa na tacy.  <br /></td></tr>
+<tr class="separator:aff9469cdd11ad8855297fe5eff41a32b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac61b7c51ed058d529c61d2529383fdbf" id="r_ac61b7c51ed058d529c61d2529383fdbf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac61b7c51ed058d529c61d2529383fdbf">HasLavash</a><code> [get]</code></td></tr>
+<tr class="memdesc:ac61b7c51ed058d529c61d2529383fdbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informuje, czy na stanowisku montażu leży ławasz.  <br /></td></tr>
+<tr class="separator:ac61b7c51ed058d529c61d2529383fdbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01bdfb6e70941cedcaadd9258c3f0fc4" id="r_a01bdfb6e70941cedcaadd9258c3f0fc4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01bdfb6e70941cedcaadd9258c3f0fc4">AssemblyCount</a><code> [get]</code></td></tr>
+<tr class="memdesc:a01bdfb6e70941cedcaadd9258c3f0fc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba składników dodanych do montażu kebaba.  <br /></td></tr>
+<tr class="separator:a01bdfb6e70941cedcaadd9258c3f0fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a451dda30ac4ee9405fc752022ffba764" id="r_a451dda30ac4ee9405fc752022ffba764"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_kitchen_item.html">KitchenItem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a451dda30ac4ee9405fc752022ffba764">StationItem</a><code> [get]</code></td></tr>
+<tr class="memdesc:a451dda30ac4ee9405fc752022ffba764"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przedmiot kuchenny aktualnie znajdujący się na stanowisku.  <br /></td></tr>
+<tr class="separator:a451dda30ac4ee9405fc752022ffba764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86e6919ee81fbe571a9b223171ec01c1" id="r_a86e6919ee81fbe571a9b223171ec01c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1">KitchenStationType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86e6919ee81fbe571a9b223171ec01c1">StationType</a><code> [get]</code></td></tr>
+<tr class="memdesc:a86e6919ee81fbe571a9b223171ec01c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typ tego stanowiska kuchennego.  <br /></td></tr>
+<tr class="separator:a86e6919ee81fbe571a9b223171ec01c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e5855f782e6a1f4684d7aec398623f3" id="r_a2e5855f782e6a1f4684d7aec398623f3"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e5855f782e6a1f4684d7aec398623f3">AssemblyIngredients</a><code> [get]</code></td></tr>
+<tr class="memdesc:a2e5855f782e6a1f4684d7aec398623f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista przygotowanych składników na stanowisku montażu.  <br /></td></tr>
+<tr class="separator:a2e5855f782e6a1f4684d7aec398623f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_interactable"><td colspan="2" onclick="javascript:dynsection.toggleInherit('properties_class_interactable')"><img src="closed.png" alt="-"/>&#160;Właściwości dziedziczone z <a class="el" href="class_interactable.html">Interactable</a></td></tr>
+<tr class="memitem:a11e13c039acf943e83108cb9bea3186e inherit properties_class_interactable" id="r_a11e13c039acf943e83108cb9bea3186e"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interactable.html#a11e13c039acf943e83108cb9bea3186e">PromptMessage</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a11e13c039acf943e83108cb9bea3186e inherit properties_class_interactable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Właściwość dostępowa do komunikatu podpowiedzi interakcji. Pozwala na odczyt i zapis tekstu wyświetlanego graczowi w momencie, gdy obiekt jest w zasięgu interakcji.  <br /></td></tr>
+<tr class="separator:a11e13c039acf943e83108cb9bea3186e inherit properties_class_interactable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:ac7ee51b9e1b414d520fbaf846f052f9e" id="r_ac7ee51b9e1b414d520fbaf846f052f9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7ee51b9e1b414d520fbaf846f052f9e">Update</a> ()</td></tr>
+<tr class="memdesc:ac7ee51b9e1b414d520fbaf846f052f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda Update wywoływana w każdej klatce przez Unity. Na kliencie sieciowym aktualizuje jedynie efekt pulsowania. Na serwerze sprawdza, czy przetwarzanie dobiegło końca i je finalizuje.  <br /></td></tr>
+<tr class="separator:ac7ee51b9e1b414d520fbaf846f052f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1535ee640469ef8fb26d297cba422c22" id="r_a1535ee640469ef8fb26d297cba422c22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1535ee640469ef8fb26d297cba422c22">UpdatePulseEffect</a> ()</td></tr>
+<tr class="memdesc:a1535ee640469ef8fb26d297cba422c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje efekt pulsowania skali stanowiska. Pulsowanie jest aktywne gdy stanowisko posiada gotowy przedmiot do odebrania lub tacę z przygotowanym mięsem.  <br /></td></tr>
+<tr class="separator:a1535ee640469ef8fb26d297cba422c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a759de80b42c92da02e67e454ecfca803" id="r_a759de80b42c92da02e67e454ecfca803"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a759de80b42c92da02e67e454ecfca803">HandleIngredientSource</a> (<a class="el" href="class_player_interaction.html">PlayerInteraction</a> player)</td></tr>
+<tr class="memdesc:a759de80b42c92da02e67e454ecfca803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje interakcję ze stanowiskiem źródła składników. Pozwala graczowi pobrać surowy składnik lub mięso z tacy.  <br /></td></tr>
+<tr class="separator:a759de80b42c92da02e67e454ecfca803"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16499b2e3c088ef5d7dcbf06e6ff2932" id="r_a16499b2e3c088ef5d7dcbf06e6ff2932"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16499b2e3c088ef5d7dcbf06e6ff2932">HandleProcessingStation</a> (<a class="el" href="class_player_interaction.html">PlayerInteraction</a> player, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> outputState)</td></tr>
+<tr class="memdesc:a16499b2e3c088ef5d7dcbf06e6ff2932"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje interakcję ze stanowiskiem przetwarzającym (deska do krojenia lub grill). Umożliwia położenie składnika do przetworzenia, odebranie gotowego produktu lub wyświetlenie komunikatu o zajętości stanowiska.  <br /></td></tr>
+<tr class="separator:a16499b2e3c088ef5d7dcbf06e6ff2932"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a113a7153d7c63136f771c540761beb1a" id="r_a113a7153d7c63136f771c540761beb1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a113a7153d7c63136f771c540761beb1a">HandleMeatTraySource</a> (<a class="el" href="class_player_interaction.html">PlayerInteraction</a> player)</td></tr>
+<tr class="memdesc:a113a7153d7c63136f771c540761beb1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje pobieranie mięsa z tacy (stanowisko źródła mięsa powiązane z donerem). Gracz może pobrać jedną porcję gotowego mięsa, jeśli taca nie jest pusta.  <br /></td></tr>
+<tr class="separator:a113a7153d7c63136f771c540761beb1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41c1eb66d57b59cb9bc6c6b00135b966" id="r_a41c1eb66d57b59cb9bc6c6b00135b966"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41c1eb66d57b59cb9bc6c6b00135b966">HandleDonerStation</a> (<a class="el" href="class_player_interaction.html">PlayerInteraction</a> player)</td></tr>
+<tr class="memdesc:a41c1eb66d57b59cb9bc6c6b00135b966"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje interakcję ze stanowiskiem doner kebab (grill powiązany z tacą na mięso). Rozpoczyna proces ścinania mięsa z szpikulca donera.  <br /></td></tr>
+<tr class="separator:a41c1eb66d57b59cb9bc6c6b00135b966"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47e8295194c4993565f427a33cc57165" id="r_a47e8295194c4993565f427a33cc57165"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47e8295194c4993565f427a33cc57165">HandleAssembly</a> (<a class="el" href="class_player_interaction.html">PlayerInteraction</a> player)</td></tr>
+<tr class="memdesc:a47e8295194c4993565f427a33cc57165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje interakcję ze stanowiskiem montażu kebaba. Pozwala dodawać składniki, kłaść ławasz lub zawinąć gotowego kebaba.  <br /></td></tr>
+<tr class="separator:a47e8295194c4993565f427a33cc57165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a193e18208e07392539c85f22facdf543" id="r_a193e18208e07392539c85f22facdf543"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a193e18208e07392539c85f22facdf543">HandleDelivery</a> (<a class="el" href="class_player_interaction.html">PlayerInteraction</a> player)</td></tr>
+<tr class="memdesc:a193e18208e07392539c85f22facdf543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługuje wydawanie gotowego kebaba klientowi na stanowisku dostawy. Próbuje dostarczyć danie do systemu zamówień i uruchamia odpowiednie efekty.  <br /></td></tr>
+<tr class="separator:a193e18208e07392539c85f22facdf543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd0a4ab31d9f9ceb97cd70098e956f9e" id="r_acd0a4ab31d9f9ceb97cd70098e956f9e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd0a4ab31d9f9ceb97cd70098e956f9e">CanBeProcessedHere</a> (<a class="el" href="class_kitchen_item.html">KitchenItem</a> item, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a> outputState)</td></tr>
+<tr class="memdesc:acd0a4ab31d9f9ceb97cd70098e956f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza, czy dany przedmiot kuchenny może być przetworzony na tym stanowisku.  <br /></td></tr>
+<tr class="separator:acd0a4ab31d9f9ceb97cd70098e956f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a387a3e480abfef81f3e731e043f39f42" id="r_a387a3e480abfef81f3e731e043f39f42"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a387a3e480abfef81f3e731e043f39f42">CanBeAddedToAssembly</a> (<a class="el" href="class_kitchen_item.html">KitchenItem</a> item)</td></tr>
+<tr class="memdesc:a387a3e480abfef81f3e731e043f39f42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza, czy dany przedmiot kuchenny może zostać dodany do montażu kebaba.  <br /></td></tr>
+<tr class="separator:a387a3e480abfef81f3e731e043f39f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcbe122fed5bdf991bf0d70a69397607" id="r_abcbe122fed5bdf991bf0d70a69397607"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcbe122fed5bdf991bf0d70a69397607">CanCreateDish</a> ()</td></tr>
+<tr class="memdesc:abcbe122fed5bdf991bf0d70a69397607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza, czy na stanowisku montażu zebrano wystarczającą liczbę składników do utworzenia gotowego kebaba.  <br /></td></tr>
+<tr class="separator:abcbe122fed5bdf991bf0d70a69397607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77b7fc3a637e1b528f6ea1916b236538" id="r_a77b7fc3a637e1b528f6ea1916b236538"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_kitchen_item.html">KitchenItem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77b7fc3a637e1b528f6ea1916b236538">BuildDish</a> ()</td></tr>
+<tr class="memdesc:a77b7fc3a637e1b528f6ea1916b236538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tworzy gotowy kebab (danie) na podstawie ławasza i zebranych składników montażu.  <br /></td></tr>
+<tr class="separator:a77b7fc3a637e1b528f6ea1916b236538"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1215154323b2a04a93e07226816f0577" id="r_a1215154323b2a04a93e07226816f0577"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1215154323b2a04a93e07226816f0577">FinishProcessing</a> ()</td></tr>
+<tr class="memdesc:a1215154323b2a04a93e07226816f0577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizuje proces przetwarzania składnika na stanowisku. Zmienia stan przedmiotu, odświeża wizualizację i uruchamia efekty gotowości.  <br /></td></tr>
+<tr class="separator:a1215154323b2a04a93e07226816f0577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d80f704ada230f620860964cc6ec02" id="r_a65d80f704ada230f620860964cc6ec02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65d80f704ada230f620860964cc6ec02">ResetAssembly</a> ()</td></tr>
+<tr class="memdesc:a65d80f704ada230f620860964cc6ec02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resetuje stanowisko montażu do stanu początkowego. Usuwa ławasz i czyści listę składników montażu.  <br /></td></tr>
+<tr class="separator:a65d80f704ada230f620860964cc6ec02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a479476f53d0a2f5b6ea0e3ebbfa428db" id="r_a479476f53d0a2f5b6ea0e3ebbfa428db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a479476f53d0a2f5b6ea0e3ebbfa428db">ReceivePreparedMeat</a> (int servings)</td></tr>
+<tr class="memdesc:a479476f53d0a2f5b6ea0e3ebbfa428db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przyjmuje gotowe porcje mięsa na tacę. Wywoływane przez stanowisko donera po zakończeniu procesu ścinania.  <br /></td></tr>
+<tr class="separator:a479476f53d0a2f5b6ea0e3ebbfa428db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4c2842c2efa6f017f424beda54ba996" id="r_aa4c2842c2efa6f017f424beda54ba996"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4c2842c2efa6f017f424beda54ba996">HasPreparedMeat</a> ()</td></tr>
+<tr class="memdesc:aa4c2842c2efa6f017f424beda54ba996"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza, czy na tacy z mięsem są dostępne gotowe porcje.  <br /></td></tr>
+<tr class="separator:aa4c2842c2efa6f017f424beda54ba996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8dd769eac68b01967efcc5cec0055d9" id="r_ab8dd769eac68b01967efcc5cec0055d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8dd769eac68b01967efcc5cec0055d9">PlayPickupFeedback</a> (<a class="el" href="class_kitchen_item.html">KitchenItem</a> item)</td></tr>
+<tr class="memdesc:ab8dd769eac68b01967efcc5cec0055d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt wizualny i kamerowy związany z pobraniem przedmiotu ze stanowiska.  <br /></td></tr>
+<tr class="separator:ab8dd769eac68b01967efcc5cec0055d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cdad2ae98846dd7a7f3d5eb94445839" id="r_a4cdad2ae98846dd7a7f3d5eb94445839"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cdad2ae98846dd7a7f3d5eb94445839">PlayPlaceFeedback</a> (<a class="el" href="class_kitchen_item.html">KitchenItem</a> item)</td></tr>
+<tr class="memdesc:a4cdad2ae98846dd7a7f3d5eb94445839"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt wizualny i dźwiękowy związany z położeniem przedmiotu na stanowisku.  <br /></td></tr>
+<tr class="separator:a4cdad2ae98846dd7a7f3d5eb94445839"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bb8e56b6e6e78d6d049354b68ab4102" id="r_a3bb8e56b6e6e78d6d049354b68ab4102"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bb8e56b6e6e78d6d049354b68ab4102">PlayReadyFeedback</a> (<a class="el" href="class_kitchen_item.html">KitchenItem</a> item)</td></tr>
+<tr class="memdesc:a3bb8e56b6e6e78d6d049354b68ab4102"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odtwarza efekt wizualny i dźwiękowy sygnalizujący gotowość przedmiotu na stanowisku.  <br /></td></tr>
+<tr class="separator:a3bb8e56b6e6e78d6d049354b68ab4102"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63494a8aed8534022b64712fbddfdf6b" id="r_a63494a8aed8534022b64712fbddfdf6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63494a8aed8534022b64712fbddfdf6b">PlayStationPulse</a> (float intensity)</td></tr>
+<tr class="memdesc:a63494a8aed8534022b64712fbddfdf6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uruchamia krótki efekt pulsowania (powiększenia) stanowiska za pomocą animatora przedmiotów.  <br /></td></tr>
+<tr class="separator:a63494a8aed8534022b64712fbddfdf6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae828cc7f91a7be5bfa4cb44969b967ec" id="r_ae828cc7f91a7be5bfa4cb44969b967ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae828cc7f91a7be5bfa4cb44969b967ec">PlayMicroCameraFeedback</a> (float intensity, float duration)</td></tr>
+<tr class="memdesc:ae828cc7f91a7be5bfa4cb44969b967ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uruchamia subtelne trzęsienie kamery jako informację zwrotną dla gracza.  <br /></td></tr>
+<tr class="separator:ae828cc7f91a7be5bfa4cb44969b967ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab01914ae93c27880a16879f7a26bf60f" id="r_ab01914ae93c27880a16879f7a26bf60f"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab01914ae93c27880a16879f7a26bf60f">GetItemFeedbackColor</a> (<a class="el" href="class_kitchen_item.html">KitchenItem</a> item)</td></tr>
+<tr class="memdesc:ab01914ae93c27880a16879f7a26bf60f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera kolor odpowiadający danemu przedmiotowi kuchennemu do użycia w efektach wizualnych.  <br /></td></tr>
+<tr class="separator:ab01914ae93c27880a16879f7a26bf60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a262f4cc688ffcb13fbd42cdb8eb1d39b" id="r_a262f4cc688ffcb13fbd42cdb8eb1d39b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a262f4cc688ffcb13fbd42cdb8eb1d39b">IsMeatTrayStation</a> ()</td></tr>
+<tr class="memdesc:a262f4cc688ffcb13fbd42cdb8eb1d39b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza, czy to stanowisko jest tacą z mięsem (źródło składnika typu mięso).  <br /></td></tr>
+<tr class="separator:a262f4cc688ffcb13fbd42cdb8eb1d39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfd0054dd742f24af8305a1d5cac5cd9" id="r_adfd0054dd742f24af8305a1d5cac5cd9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfd0054dd742f24af8305a1d5cac5cd9">IsDonerStation</a> ()</td></tr>
+<tr class="memdesc:adfd0054dd742f24af8305a1d5cac5cd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprawdza, czy to stanowisko jest donerem (grill powiązany z tacą na mięso).  <br /></td></tr>
+<tr class="separator:adfd0054dd742f24af8305a1d5cac5cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a560f4d5d6d21fa20193bbe06914b9965" id="r_a560f4d5d6d21fa20193bbe06914b9965"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a560f4d5d6d21fa20193bbe06914b9965">ApplyCurrentColor</a> ()</td></tr>
+<tr class="memdesc:a560f4d5d6d21fa20193bbe06914b9965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustala i nakłada odpowiedni kolor materiału na renderer stanowiska w zależności od bieżącego stanu (przetwarzanie, gotowość, bezczynność).  <br /></td></tr>
+<tr class="separator:a560f4d5d6d21fa20193bbe06914b9965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af10362153e8d4bdfa7048dc375a3bc62" id="r_af10362153e8d4bdfa7048dc375a3bc62"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af10362153e8d4bdfa7048dc375a3bc62">ComputeVisualHash</a> ()</td></tr>
+<tr class="memdesc:af10362153e8d4bdfa7048dc375a3bc62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oblicza hash bieżącego stanu wizualnego stanowiska. Używany do optymalizacji — wizualizacja jest odświeżana tylko gdy hash się zmieni.  <br /></td></tr>
+<tr class="separator:af10362153e8d4bdfa7048dc375a3bc62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e63ae72b28a1cd4dfac530d9ec1dd9d" id="r_a7e63ae72b28a1cd4dfac530d9ec1dd9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e63ae72b28a1cd4dfac530d9ec1dd9d">UpdateDynamicVisuals</a> ()</td></tr>
+<tr class="memdesc:a7e63ae72b28a1cd4dfac530d9ec1dd9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizuje dynamiczne obiekty wizualne 3D na stanowisku (przedmioty, ławasz, składniki montażu). Używa systemu hashowania do unikania niepotrzebnych odświeżeń.  <br /></td></tr>
+<tr class="separator:a7e63ae72b28a1cd4dfac530d9ec1dd9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6d4e3521cf51eaa097a6cef44b6299a" id="r_af6d4e3521cf51eaa097a6cef44b6299a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6d4e3521cf51eaa097a6cef44b6299a">RefreshSpecialVisuals</a> ()</td></tr>
+<tr class="memdesc:af6d4e3521cf51eaa097a6cef44b6299a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odświeża specjalne wizualizacje stanowiska, w szczególności widoczność mięsa na tacy.  <br /></td></tr>
+<tr class="separator:af6d4e3521cf51eaa097a6cef44b6299a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a796818fdbe17630e41cc7e5257a75cdf" id="r_a796818fdbe17630e41cc7e5257a75cdf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a796818fdbe17630e41cc7e5257a75cdf">GetShopSpeedMultiplier</a> ()</td></tr>
+<tr class="memdesc:a796818fdbe17630e41cc7e5257a75cdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pobiera mnożnik prędkości przetwarzania ze sklepu dla aktualnego typu stanowiska.  <br /></td></tr>
+<tr class="separator:a796818fdbe17630e41cc7e5257a75cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a67ea505e895e18564517431f7a72e3c6" id="r_a67ea505e895e18564517431f7a72e3c6"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67ea505e895e18564517431f7a72e3c6">stationName</a> = &quot;Stacja&quot;</td></tr>
+<tr class="memdesc:a67ea505e895e18564517431f7a72e3c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nazwa wyświetlana stanowiska kuchennego, używana w komunikatach dla gracza.  <br /></td></tr>
+<tr class="separator:a67ea505e895e18564517431f7a72e3c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bd30761d2c3b58b629d3cbf7c4adf80" id="r_a5bd30761d2c3b58b629d3cbf7c4adf80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1">KitchenStationType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bd30761d2c3b58b629d3cbf7c4adf80">stationType</a> = <a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2">KitchenStationType.IngredientSource</a></td></tr>
+<tr class="memdesc:a5bd30761d2c3b58b629d3cbf7c4adf80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typ stanowiska kuchennego określający jego funkcję i zachowanie.  <br /></td></tr>
+<tr class="separator:a5bd30761d2c3b58b629d3cbf7c4adf80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7234a3f45a0da0c094261cd5daa651d1" id="r_a7234a3f45a0da0c094261cd5daa651d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ingredient_data.html">IngredientData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7234a3f45a0da0c094261cd5daa651d1">sourceIngredient</a></td></tr>
+<tr class="memdesc:a7234a3f45a0da0c094261cd5daa651d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dane składnika źródłowego dostarczanego przez to stanowisko. Używane tylko dla stanowisk typu <a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2" title="Źródło składników — stacja, z której gracz pobiera surowe składniki.">KitchenStationType.IngredientSource</a>.  <br /></td></tr>
+<tr class="separator:a7234a3f45a0da0c094261cd5daa651d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae46dd3288cc277b18efcd2eacde6f7f1" id="r_ae46dd3288cc277b18efcd2eacde6f7f1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae46dd3288cc277b18efcd2eacde6f7f1">processingDuration</a> = 2.5f</td></tr>
+<tr class="memdesc:ae46dd3288cc277b18efcd2eacde6f7f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bazowy czas trwania przetwarzania składnika na stanowisku (w sekundach). Może być modyfikowany przez mnożnik prędkości ze sklepu.  <br /></td></tr>
+<tr class="separator:ae46dd3288cc277b18efcd2eacde6f7f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5479b30e96196dacb9eb0c53c00e572f" id="r_a5479b30e96196dacb9eb0c53c00e572f"><td class="memItemLeft" align="right" valign="top">Renderer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5479b30e96196dacb9eb0c53c00e572f">visualRenderer</a></td></tr>
+<tr class="memdesc:a5479b30e96196dacb9eb0c53c00e572f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renderer wizualny stanowiska, którego kolor zmienia się w zależności od stanu.  <br /></td></tr>
+<tr class="separator:a5479b30e96196dacb9eb0c53c00e572f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83a8f40049ff6dab5e8afe92ba8838ff" id="r_a83a8f40049ff6dab5e8afe92ba8838ff"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83a8f40049ff6dab5e8afe92ba8838ff">idleColor</a> = new Color(0.35f, 0.35f, 0.35f)</td></tr>
+<tr class="memdesc:a83a8f40049ff6dab5e8afe92ba8838ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor stanowiska w stanie bezczynności (brak przetwarzania, brak przedmiotu).  <br /></td></tr>
+<tr class="separator:a83a8f40049ff6dab5e8afe92ba8838ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2ad95dec4b1a0842d560de0a9736b4e" id="r_af2ad95dec4b1a0842d560de0a9736b4e"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2ad95dec4b1a0842d560de0a9736b4e">busyColor</a> = new Color(0.95f, 0.65f, 0.2f)</td></tr>
+<tr class="memdesc:af2ad95dec4b1a0842d560de0a9736b4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor stanowiska podczas aktywnego przetwarzania składnika.  <br /></td></tr>
+<tr class="separator:af2ad95dec4b1a0842d560de0a9736b4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac60613e24ea5c5a595807b60fb69572d" id="r_ac60613e24ea5c5a595807b60fb69572d"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac60613e24ea5c5a595807b60fb69572d">readyColor</a> = new Color(0.35f, 0.8f, 0.35f)</td></tr>
+<tr class="memdesc:ac60613e24ea5c5a595807b60fb69572d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kolor stanowiska gdy składnik jest gotowy do odebrania.  <br /></td></tr>
+<tr class="separator:ac60613e24ea5c5a595807b60fb69572d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32991ddcf346de28946df08e56711671" id="r_a32991ddcf346de28946df08e56711671"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_kitchen_item.html">KitchenItem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32991ddcf346de28946df08e56711671">stationItem</a></td></tr>
+<tr class="memdesc:a32991ddcf346de28946df08e56711671"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przedmiot kuchenny aktualnie znajdujący się na stanowisku (przetwarzany lub gotowy).  <br /></td></tr>
+<tr class="separator:a32991ddcf346de28946df08e56711671"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecd8aaff5c09ca6a9030685ca401792a" id="r_aecd8aaff5c09ca6a9030685ca401792a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecd8aaff5c09ca6a9030685ca401792a">hasLavash</a></td></tr>
+<tr class="memdesc:aecd8aaff5c09ca6a9030685ca401792a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flaga określająca, czy na stanowisku montażu znajduje się ławasz.  <br /></td></tr>
+<tr class="separator:aecd8aaff5c09ca6a9030685ca401792a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a156230809f45ddda4ffec08fa05592a9" id="r_a156230809f45ddda4ffec08fa05592a9"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a156230809f45ddda4ffec08fa05592a9">assemblyIngredients</a> = new List&lt;<a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a>&gt;()</td></tr>
+<tr class="memdesc:a156230809f45ddda4ffec08fa05592a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista przygotowanych składników dodanych do montażu kebaba na stanowisku Assembly.  <br /></td></tr>
+<tr class="separator:a156230809f45ddda4ffec08fa05592a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa043c95ad389235aef709e2d7d4927d3" id="r_aa043c95ad389235aef709e2d7d4927d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa043c95ad389235aef709e2d7d4927d3">preparedMeatServings</a></td></tr>
+<tr class="memdesc:aa043c95ad389235aef709e2d7d4927d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba przygotowanych porcji mięsa dostępnych na tacy z mięsem.  <br /></td></tr>
+<tr class="separator:aa043c95ad389235aef709e2d7d4927d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7b2c07304ada13024c82d6149b6aaa5" id="r_ad7b2c07304ada13024c82d6149b6aaa5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7b2c07304ada13024c82d6149b6aaa5">preparedMeatBatchSize</a> = 3</td></tr>
+<tr class="memdesc:ad7b2c07304ada13024c82d6149b6aaa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Domyślna wielkość partii mięsa wytwarzanej przy jednorazowym ścięciu z donera. Może być nadpisana przez wartość z <a class="el" href="class_shop_manager.html" title="Główna klasa zarządzająca systemem sklepu z ulepszeniami.">ShopManager</a>.  <br /></td></tr>
+<tr class="separator:ad7b2c07304ada13024c82d6149b6aaa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6beec3d3183d8686dac6a98957c62900" id="r_a6beec3d3183d8686dac6a98957c62900"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6beec3d3183d8686dac6a98957c62900">isProcessing</a></td></tr>
+<tr class="memdesc:a6beec3d3183d8686dac6a98957c62900"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flaga wskazująca, czy stanowisko aktualnie przetwarza składnik.  <br /></td></tr>
+<tr class="separator:a6beec3d3183d8686dac6a98957c62900"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30e17669e732850fb85ace3a59093a16" id="r_a30e17669e732850fb85ace3a59093a16"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30e17669e732850fb85ace3a59093a16">processEndTime</a></td></tr>
+<tr class="memdesc:a30e17669e732850fb85ace3a59093a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas zakończenia bieżącego procesu przetwarzania (w <code>Time.time</code>).  <br /></td></tr>
+<tr class="separator:a30e17669e732850fb85ace3a59093a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48f2f452d63f65ce66af48c462f43750" id="r_a48f2f452d63f65ce66af48c462f43750"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_kitchen_station.html">KitchenStation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48f2f452d63f65ce66af48c462f43750">linkedMeatTray</a></td></tr>
+<tr class="memdesc:a48f2f452d63f65ce66af48c462f43750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Powiązane stanowisko tacy z mięsem, na którą trafia mięso ścięte z donera. Używane przez stanowiska typu grill-doner.  <br /></td></tr>
+<tr class="separator:a48f2f452d63f65ce66af48c462f43750"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2282e8b68aa4d018ab506bcdb428851d" id="r_a2282e8b68aa4d018ab506bcdb428851d"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2282e8b68aa4d018ab506bcdb428851d">meatVisual</a></td></tr>
+<tr class="memdesc:a2282e8b68aa4d018ab506bcdb428851d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transform wizualizacji mięsa na tacy, wyszukiwany jako obiekt potomny "MeatVisual".  <br /></td></tr>
+<tr class="separator:a2282e8b68aa4d018ab506bcdb428851d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91bef39b351b710cd613b9a3ee9cab05" id="r_a91bef39b351b710cd613b9a3ee9cab05"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91bef39b351b710cd613b9a3ee9cab05">dynamicStationItemVisual</a></td></tr>
+<tr class="memdesc:a91bef39b351b710cd613b9a3ee9cab05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dynamicznie tworzony obiekt wizualny reprezentujący przedmiot na stanowisku.  <br /></td></tr>
+<tr class="separator:a91bef39b351b710cd613b9a3ee9cab05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c25cd6fb06253cde28d5bcdfd51d7ee" id="r_a3c25cd6fb06253cde28d5bcdfd51d7ee"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c25cd6fb06253cde28d5bcdfd51d7ee">dynamicLavashVisual</a></td></tr>
+<tr class="memdesc:a3c25cd6fb06253cde28d5bcdfd51d7ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dynamicznie tworzony obiekt wizualny reprezentujący ławasz na stanowisku montażu.  <br /></td></tr>
+<tr class="separator:a3c25cd6fb06253cde28d5bcdfd51d7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2edf42a5a583301d4fa1ad05e6a2c30" id="r_ab2edf42a5a583301d4fa1ad05e6a2c30"><td class="memItemLeft" align="right" valign="top">List&lt; GameObject &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2edf42a5a583301d4fa1ad05e6a2c30">dynamicAssemblyVisuals</a> = new List&lt;GameObject&gt;()</td></tr>
+<tr class="memdesc:ab2edf42a5a583301d4fa1ad05e6a2c30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista dynamicznie tworzonych obiektów wizualnych reprezentujących składniki montażu kebaba.  <br /></td></tr>
+<tr class="separator:ab2edf42a5a583301d4fa1ad05e6a2c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3eab3d8cafaef65c80a270c5026eb59" id="r_ac3eab3d8cafaef65c80a270c5026eb59"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3eab3d8cafaef65c80a270c5026eb59">pulsePhase</a></td></tr>
+<tr class="memdesc:ac3eab3d8cafaef65c80a270c5026eb59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bieżąca faza animacji pulsowania stanowiska, przyrastająca w czasie.  <br /></td></tr>
+<tr class="separator:ac3eab3d8cafaef65c80a270c5026eb59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3251d77d59e1a81c1d4f5cc1f260033e" id="r_a3251d77d59e1a81c1d4f5cc1f260033e"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3251d77d59e1a81c1d4f5cc1f260033e">baseScale</a></td></tr>
+<tr class="memdesc:a3251d77d59e1a81c1d4f5cc1f260033e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bazowa skala stanowiska zapamiętana przed rozpoczęciem efektu pulsowania.  <br /></td></tr>
+<tr class="separator:a3251d77d59e1a81c1d4f5cc1f260033e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a118ed9d95ca9caf4f5e0808a6c6ec455" id="r_a118ed9d95ca9caf4f5e0808a6c6ec455"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a118ed9d95ca9caf4f5e0808a6c6ec455">lastVisualHash</a></td></tr>
+<tr class="memdesc:a118ed9d95ca9caf4f5e0808a6c6ec455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash ostatniego stanu wizualnego, używany do optymalizacji odświeżania wizualizacji. Jeśli hash się nie zmienił, wizualizacja nie jest przerysowywana.  <br /></td></tr>
+<tr class="separator:a118ed9d95ca9caf4f5e0808a6c6ec455"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa reprezentująca stanowisko kuchenne w symulatorze kebaba. Dziedziczy po klasie <a class="el" href="class_interactable.html" title="Bazowa klasa dla wszystkich obiektów interaktywnych w grze. Zapewnia mechanizm wyświetlania komunikat...">Interactable</a> i obsługuje interakcje gracza z różnymi typami stanowisk kuchennych. </p>
+<p>Stanowisko kuchenne może pełnić jedną z pięciu ról: </p><ul>
+<li>
+<code>IngredientSource</code> — źródło surowych składników (w tym taca z mięsem) </li>
+<li>
+<code>CuttingBoard</code> — deska do krojenia warzyw </li>
+<li>
+<code>Grill</code> — grill do pieczenia mięsa lub doner kebab </li>
+<li>
+<code>Assembly</code> — stanowisko montażu gotowego kebaba </li>
+<li>
+<code>Delivery</code> — punkt wydania gotowego dania klientowi </li>
+</ul>
+<p>Klasa zarządza stanem przetwarzania składników, wizualizacją dynamicznych obiektów na stanowisku oraz synchronizacją stanu przez sieć. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a560f4d5d6d21fa20193bbe06914b9965" name="a560f4d5d6d21fa20193bbe06914b9965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a560f4d5d6d21fa20193bbe06914b9965">&#9670;&#160;</a></span>ApplyCurrentColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.ApplyCurrentColor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustala i nakłada odpowiedni kolor materiału na renderer stanowiska w zależności od bieżącego stanu (przetwarzanie, gotowość, bezczynność). </p>
+<p>Priorytet kolorów: </p><ol>
+<li>
+<a class="el" href="#af2ad95dec4b1a0842d560de0a9736b4e" title="Kolor stanowiska podczas aktywnego przetwarzania składnika.">busyColor</a> — stanowisko przetwarza składnik. </li>
+<li>
+<a class="el" href="#ac60613e24ea5c5a595807b60fb69572d" title="Kolor stanowiska gdy składnik jest gotowy do odebrania.">readyColor</a> — gotowy produkt, mięso na tacy, ławasz lub składniki montażu. </li>
+<li>
+Kolor debugowy składnika źródłowego — jeśli istnieje składnik źródłowy. </li>
+<li>
+<a class="el" href="#a83a8f40049ff6dab5e8afe92ba8838ff" title="Kolor stanowiska w stanie bezczynności (brak przetwarzania, brak przedmiotu).">idleColor</a> — domyślny kolor bezczynności. </li>
+</ol>
+<p>Wywołuje również <a class="el" href="#af6d4e3521cf51eaa097a6cef44b6299a" title="Odświeża specjalne wizualizacje stanowiska, w szczególności widoczność mięsa na tacy.">RefreshSpecialVisuals</a> do aktualizacji wizualizacji tacy z mięsem. </p>
+
+</div>
+</div>
+<a id="a77b7fc3a637e1b528f6ea1916b236538" name="a77b7fc3a637e1b528f6ea1916b236538"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77b7fc3a637e1b528f6ea1916b236538">&#9670;&#160;</a></span>BuildDish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_kitchen_item.html">KitchenItem</a> KitchenStation.BuildDish </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tworzy gotowy kebab (danie) na podstawie ławasza i zebranych składników montażu. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Nowy obiekt <a class="el" href="class_kitchen_item.html" title="Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać l...">KitchenItem</a> reprezentujący zawinięty kebab z flagą <code>isDish = true</code>, zawierający ławasz oraz wszystkie dodane składniki. </dd></dl>
+
+</div>
+</div>
+<a id="a387a3e480abfef81f3e731e043f39f42" name="a387a3e480abfef81f3e731e043f39f42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a387a3e480abfef81f3e731e043f39f42">&#9670;&#160;</a></span>CanBeAddedToAssembly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KitchenStation.CanBeAddedToAssembly </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kitchen_item.html">KitchenItem</a></td>          <td class="paramname"><span class="paramname"><em>item</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprawdza, czy dany przedmiot kuchenny może zostać dodany do montażu kebaba. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>Przedmiot kuchenny do weryfikacji.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd><code>true</code> jeśli przedmiot spełnia wymagania montażu: <ul>
+<li>
+Mięso — musi być upieczone (<a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea603704d17e2b294629335466e6ca92bb" title="Upieczony — składnik po obróbce termicznej na grillu.">IngredientProcessState.Cooked</a>). </li>
+<li>
+Pomidor, cebula, sałata — muszą być pokrojone (<a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea984c80c3e1a5734378386e95df6b0c63" title="Pokrojony — składnik po przetworzeniu na desce do krojenia.">IngredientProcessState.Chopped</a>). </li>
+<li>
+Sos czosnkowy — może być surowy (<a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00" title="Surowy — składnik w stanie nieprzetworzonym, bezpośrednio ze źródła.">IngredientProcessState.Raw</a>). </li>
+</ul>
+W przeciwnym razie <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="acd0a4ab31d9f9ceb97cd70098e956f9e" name="acd0a4ab31d9f9ceb97cd70098e956f9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd0a4ab31d9f9ceb97cd70098e956f9e">&#9670;&#160;</a></span>CanBeProcessedHere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KitchenStation.CanBeProcessedHere </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kitchen_item.html">KitchenItem</a></td>          <td class="paramname"><span class="paramname"><em>item</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>outputState</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprawdza, czy dany przedmiot kuchenny może być przetworzony na tym stanowisku. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>Przedmiot kuchenny do sprawdzenia.</td></tr>
+    <tr><td class="paramname">outputState</td><td>Oczekiwany stan wyjściowy przetwarzania.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd><code>true</code> jeśli przedmiot jest surowy i pasuje do typu stanowiska: mięso na grill, warzywa (pomidor, cebula, sałata) na deskę do krojenia. W przeciwnym razie <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="abcbe122fed5bdf991bf0d70a69397607" name="abcbe122fed5bdf991bf0d70a69397607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcbe122fed5bdf991bf0d70a69397607">&#9670;&#160;</a></span>CanCreateDish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KitchenStation.CanCreateDish </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprawdza, czy na stanowisku montażu zebrano wystarczającą liczbę składników do utworzenia gotowego kebaba. </p>
+<dl class="section return"><dt>Zwraca</dt><dd><code>true</code> jeśli stanowisko posiada ławasz oraz co najmniej jedno upieczone mięso wśród składników montażu. W przeciwnym razie <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="af10362153e8d4bdfa7048dc375a3bc62" name="af10362153e8d4bdfa7048dc375a3bc62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af10362153e8d4bdfa7048dc375a3bc62">&#9670;&#160;</a></span>ComputeVisualHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int KitchenStation.ComputeVisualHash </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oblicza hash bieżącego stanu wizualnego stanowiska. Używany do optymalizacji — wizualizacja jest odświeżana tylko gdy hash się zmieni. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Wartość hash obliczona na podstawie stanu przetwarzania, przedmiotu na stanowisku, flagi ławasza oraz listy składników montażu. </dd></dl>
+
+</div>
+</div>
+<a id="ae68561a9982ecc164d5160fd7ac0dab7" name="ae68561a9982ecc164d5160fd7ac0dab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae68561a9982ecc164d5160fd7ac0dab7">&#9670;&#160;</a></span>Configure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.Configure </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>stationName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1">KitchenStationType</a></td>          <td class="paramname"><span class="paramname"><em>stationType</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_ingredient_data.html">IngredientData</a></td>          <td class="paramname"><span class="paramname"><em>sourceIngredient</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>processingDuration</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Renderer</td>          <td class="paramname"><span class="paramname"><em>visualRenderer</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Konfiguruje stanowisko kuchenne z podanymi parametrami. Ustawia nazwę, typ, składnik źródłowy, czas przetwarzania i renderer wizualny. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stationName</td><td>Nazwa wyświetlana stanowiska.</td></tr>
+    <tr><td class="paramname">stationType</td><td>Typ stanowiska kuchennego.</td></tr>
+    <tr><td class="paramname">sourceIngredient</td><td>Dane składnika źródłowego (może być <code>null</code> dla stanowisk nie będących źródłami).</td></tr>
+    <tr><td class="paramname">processingDuration</td><td>Bazowy czas przetwarzania w sekundach.</td></tr>
+    <tr><td class="paramname">visualRenderer</td><td>Renderer wizualny do zmiany koloru stanowiska.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1215154323b2a04a93e07226816f0577" name="a1215154323b2a04a93e07226816f0577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1215154323b2a04a93e07226816f0577">&#9670;&#160;</a></span>FinishProcessing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.FinishProcessing </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finalizuje proces przetwarzania składnika na stanowisku. Zmienia stan przedmiotu, odświeża wizualizację i uruchamia efekty gotowości. </p>
+<p>Dla stanowiska doner: </p><ul>
+<li>
+Zatrzymuje efekt dymu i dźwięk grilla. </li>
+<li>
+Przesyła partię mięsa na powiązaną tacę. </li>
+</ul>
+<p>Dla deski do krojenia — ustawia stan na <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea984c80c3e1a5734378386e95df6b0c63" title="Pokrojony — składnik po przetworzeniu na desce do krojenia.">IngredientProcessState.Chopped</a>. Dla grilla — ustawia stan na <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea603704d17e2b294629335466e6ca92bb" title="Upieczony — składnik po obróbce termicznej na grillu.">IngredientProcessState.Cooked</a> i zatrzymuje efekt pary oraz dźwięk grilla. </p>
+
+</div>
+</div>
+<a id="ab01914ae93c27880a16879f7a26bf60f" name="ab01914ae93c27880a16879f7a26bf60f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab01914ae93c27880a16879f7a26bf60f">&#9670;&#160;</a></span>GetItemFeedbackColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color KitchenStation.GetItemFeedbackColor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kitchen_item.html">KitchenItem</a></td>          <td class="paramname"><span class="paramname"><em>item</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera kolor odpowiadający danemu przedmiotowi kuchennemu do użycia w efektach wizualnych. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>Przedmiot kuchenny, dla którego pobierany jest kolor.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Kolor odpowiadający rodzajowi i stanowi składnika. Zwraca <code>Color.white</code> jeśli przedmiot jest <code>null</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a5a006d053d065eaf3a02da8394712b7c" name="a5a006d053d065eaf3a02da8394712b7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a006d053d065eaf3a02da8394712b7c">&#9670;&#160;</a></span>GetPrompt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override string KitchenStation.GetPrompt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player_interaction.html">PlayerInteraction</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zwraca komunikat podpowiedzi wyświetlany graczowi w zależności od typu stanowiska i bieżącego stanu przetwarzania. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Gracz, dla którego generowany jest komunikat podpowiedzi.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Tekst podpowiedzi opisujący dostępną akcję lub aktualny stan stanowiska. </dd></dl>
+<p>Komunikaty różnią się w zależności od typu stanowiska: źródła składników, deski do krojenia, grilla/donera, montażu i wydania. Dla stanowisk przetwarzających wyświetlany jest pozostały czas. </p>
+
+<p>Reimplementowana z <a class="el" href="class_interactable.html#a323fd56ebb72a471e459f57bfe68a186">Interactable</a>.</p>
+
+</div>
+</div>
+<a id="a796818fdbe17630e41cc7e5257a75cdf" name="a796818fdbe17630e41cc7e5257a75cdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a796818fdbe17630e41cc7e5257a75cdf">&#9670;&#160;</a></span>GetShopSpeedMultiplier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenStation.GetShopSpeedMultiplier </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pobiera mnożnik prędkości przetwarzania ze sklepu dla aktualnego typu stanowiska. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Mnożnik prędkości z <a class="el" href="class_shop_manager.html" title="Główna klasa zarządzająca systemem sklepu z ulepszeniami.">ShopManager</a>, lub <code>1.0f</code> jeśli <a class="el" href="class_shop_manager.html" title="Główna klasa zarządzająca systemem sklepu z ulepszeniami.">ShopManager</a> nie jest dostępny. </dd></dl>
+
+</div>
+</div>
+<a id="a47e8295194c4993565f427a33cc57165" name="a47e8295194c4993565f427a33cc57165"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47e8295194c4993565f427a33cc57165">&#9670;&#160;</a></span>HandleAssembly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.HandleAssembly </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player_interaction.html">PlayerInteraction</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje interakcję ze stanowiskiem montażu kebaba. Pozwala dodawać składniki, kłaść ławasz lub zawinąć gotowego kebaba. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Gracz montujący kebaba na stanowisku.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Jeśli gracz trzyma przedmiot: </p><ul>
+<li>
+Gotowy kebab — informuje, że jest już złożony. </li>
+<li>
+Ławasz — kładzie go na stanowisku (max 1 ławasz). </li>
+<li>
+Składnik — dodaje do listy montażu jeśli jest odpowiednio przygotowany. </li>
+</ul>
+<p>Jeśli gracz nie trzyma przedmiotu i warunki są spełnione — tworzy gotowego kebaba z ławasza i zebranych składników, a następnie resetuje stanowisko montażu. </p>
+
+</div>
+</div>
+<a id="a193e18208e07392539c85f22facdf543" name="a193e18208e07392539c85f22facdf543"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a193e18208e07392539c85f22facdf543">&#9670;&#160;</a></span>HandleDelivery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.HandleDelivery </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player_interaction.html">PlayerInteraction</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje wydawanie gotowego kebaba klientowi na stanowisku dostawy. Próbuje dostarczyć danie do systemu zamówień i uruchamia odpowiednie efekty. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Gracz próbujący wydać kebaba klientowi.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Wymaga, aby gracz trzymał gotowy kebab (przedmiot z flagą <code>isDish</code>). Przy udanym wydaniu: </p><ul>
+<li>
+Czyści ręce gracza. </li>
+<li>
+Wyświetla animację wydanego kebaba na tacy. </li>
+<li>
+Odtwarza efekty sukcesu (pieniądze, bloom, trzęsienie kamery, zielony błysk). </li>
+</ul>
+<p>Przy nieudanym wydaniu uruchamiane są efekty porażki (czerwony błysk, trzęsienie kamery). </p>
+
+</div>
+</div>
+<a id="a41c1eb66d57b59cb9bc6c6b00135b966" name="a41c1eb66d57b59cb9bc6c6b00135b966"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41c1eb66d57b59cb9bc6c6b00135b966">&#9670;&#160;</a></span>HandleDonerStation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.HandleDonerStation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player_interaction.html">PlayerInteraction</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje interakcję ze stanowiskiem doner kebab (grill powiązany z tacą na mięso). Rozpoczyna proces ścinania mięsa z szpikulca donera. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Gracz inicjujący ścinanie mięsa z donera.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Wymagania rozpoczęcia procesu: </p><ul>
+<li>
+Stanowisko nie jest zajęte przetwarzaniem. </li>
+<li>
+Gracz ma puste ręce. </li>
+<li>
+Istnieje powiązana taca na mięso. </li>
+<li>
+Powiązana taca nie jest już pełna. </li>
+</ul>
+<p>Po rozpoczęciu uruchamia efekt dymu donera oraz dźwięk krojenia. </p>
+
+</div>
+</div>
+<a id="a759de80b42c92da02e67e454ecfca803" name="a759de80b42c92da02e67e454ecfca803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a759de80b42c92da02e67e454ecfca803">&#9670;&#160;</a></span>HandleIngredientSource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.HandleIngredientSource </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player_interaction.html">PlayerInteraction</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje interakcję ze stanowiskiem źródła składników. Pozwala graczowi pobrać surowy składnik lub mięso z tacy. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Gracz próbujący pobrać składnik ze stanowiska.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Jeśli stanowisko jest tacą z mięsem, deleguje do <a class="el" href="#a113a7153d7c63136f771c540761beb1a" title="Obsługuje pobieranie mięsa z tacy (stanowisko źródła mięsa powiązane z donerem). Gracz może pobrać je...">HandleMeatTraySource</a>. W przeciwnym razie tworzy nowy przedmiot kuchenny na podstawie <a class="el" href="#a7234a3f45a0da0c094261cd5daa651d1" title="Dane składnika źródłowego dostarczanego przez to stanowisko. Używane tylko dla stanowisk typu Kitchen...">sourceIngredient</a> i przekazuje go graczowi. Gracz musi mieć puste ręce. </p>
+
+</div>
+</div>
+<a id="a113a7153d7c63136f771c540761beb1a" name="a113a7153d7c63136f771c540761beb1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a113a7153d7c63136f771c540761beb1a">&#9670;&#160;</a></span>HandleMeatTraySource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.HandleMeatTraySource </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player_interaction.html">PlayerInteraction</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje pobieranie mięsa z tacy (stanowisko źródła mięsa powiązane z donerem). Gracz może pobrać jedną porcję gotowego mięsa, jeśli taca nie jest pusta. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Gracz próbujący pobrać mięso z tacy.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Wymaga, aby na tacy były dostępne porcje mięsa (<a class="el" href="#aa043c95ad389235aef709e2d7d4927d3" title="Liczba przygotowanych porcji mięsa dostępnych na tacy z mięsem.">preparedMeatServings</a> &gt; 0) oraz aby gracz miał puste ręce. Pobrane mięso ma stan <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea603704d17e2b294629335466e6ca92bb" title="Upieczony — składnik po obróbce termicznej na grillu.">IngredientProcessState.Cooked</a>. Po pobraniu zmniejsza licznik porcji i odświeża wizualizację tacy i powiązanego donera. </p>
+
+</div>
+</div>
+<a id="a16499b2e3c088ef5d7dcbf06e6ff2932" name="a16499b2e3c088ef5d7dcbf06e6ff2932"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16499b2e3c088ef5d7dcbf06e6ff2932">&#9670;&#160;</a></span>HandleProcessingStation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.HandleProcessingStation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player_interaction.html">PlayerInteraction</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51e">IngredientProcessState</a></td>          <td class="paramname"><span class="paramname"><em>outputState</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje interakcję ze stanowiskiem przetwarzającym (deska do krojenia lub grill). Umożliwia położenie składnika do przetworzenia, odebranie gotowego produktu lub wyświetlenie komunikatu o zajętości stanowiska. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Gracz wchodzący w interakcję ze stanowiskiem.</td></tr>
+    <tr><td class="paramname">outputState</td><td>Docelowy stan przetworzenia składnika (<a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea984c80c3e1a5734378386e95df6b0c63" title="Pokrojony — składnik po przetworzeniu na desce do krojenia.">IngredientProcessState.Chopped</a> dla deski, <a class="el" href="_kitchen_game_models_8cs.html#a5f3665b6d51566ee7f9fb7d67acba51ea603704d17e2b294629335466e6ca92bb" title="Upieczony — składnik po obróbce termicznej na grillu.">IngredientProcessState.Cooked</a> dla grilla).</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Logika działania: </p><ol>
+<li>
+Jeśli stanowisko jest donerem — deleguje do <a class="el" href="#a41c1eb66d57b59cb9bc6c6b00135b966" title="Obsługuje interakcję ze stanowiskiem doner kebab (grill powiązany z tacą na mięso)....">HandleDonerStation</a>. </li>
+<li>
+Jeśli trwa przetwarzanie — informuje gracza o zajętości. </li>
+<li>
+Jeśli gotowy produkt czeka — pozwala go odebrać. </li>
+<li>
+Jeśli gracz trzyma odpowiedni składnik — rozpoczyna przetwarzanie. </li>
+</ol>
+<p>Czas przetwarzania jest modyfikowany przez mnożnik prędkości ze sklepu. Uruchamiane są odpowiednie efekty wizualne i dźwiękowe. </p>
+
+</div>
+</div>
+<a id="aa4c2842c2efa6f017f424beda54ba996" name="aa4c2842c2efa6f017f424beda54ba996"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4c2842c2efa6f017f424beda54ba996">&#9670;&#160;</a></span>HasPreparedMeat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KitchenStation.HasPreparedMeat </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprawdza, czy na tacy z mięsem są dostępne gotowe porcje. </p>
+<dl class="section return"><dt>Zwraca</dt><dd><code>true</code> jeśli liczba porcji jest większa od zera; w przeciwnym razie <code>false</code>.</dd></dl>
+
+</div>
+</div>
+<a id="a913ee51c7b0f2d26adcc6ce6e70fb71c" name="a913ee51c7b0f2d26adcc6ce6e70fb71c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a913ee51c7b0f2d26adcc6ce6e70fb71c">&#9670;&#160;</a></span>Interact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void KitchenStation.Interact </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player_interaction.html">PlayerInteraction</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obsługuje interakcję gracza ze stanowiskiem kuchennym. Deleguje logikę do odpowiedniej metody w zależności od typu stanowiska. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Gracz wykonujący interakcję ze stanowiskiem.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Jeśli <em>player</em>  jest <code>null</code>, wywołuje implementację bazową. W przeciwnym razie rozdziela logikę między: <a class="el" href="#a759de80b42c92da02e67e454ecfca803" title="Obsługuje interakcję ze stanowiskiem źródła składników. Pozwala graczowi pobrać surowy składnik lub m...">HandleIngredientSource</a>, <a class="el" href="#a16499b2e3c088ef5d7dcbf06e6ff2932" title="Obsługuje interakcję ze stanowiskiem przetwarzającym (deska do krojenia lub grill)....">HandleProcessingStation</a>, <a class="el" href="#a47e8295194c4993565f427a33cc57165" title="Obsługuje interakcję ze stanowiskiem montażu kebaba. Pozwala dodawać składniki, kłaść ławasz lub zawi...">HandleAssembly</a> oraz <a class="el" href="#a193e18208e07392539c85f22facdf543" title="Obsługuje wydawanie gotowego kebaba klientowi na stanowisku dostawy. Próbuje dostarczyć danie do syst...">HandleDelivery</a>. </p>
+
+<p>Reimplementowana z <a class="el" href="class_interactable.html#af5864e220ef0a89b8bf1aecb7c5d1070">Interactable</a>.</p>
+
+</div>
+</div>
+<a id="adfd0054dd742f24af8305a1d5cac5cd9" name="adfd0054dd742f24af8305a1d5cac5cd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfd0054dd742f24af8305a1d5cac5cd9">&#9670;&#160;</a></span>IsDonerStation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KitchenStation.IsDonerStation </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprawdza, czy to stanowisko jest donerem (grill powiązany z tacą na mięso). </p>
+<dl class="section return"><dt>Zwraca</dt><dd><code>true</code> jeśli stanowisko jest typu <a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1a475de6eac229ec35f1b543628c381d6b" title="Grill — stacja do pieczenia składników (zmiana stanu na IngredientProcessState.Cooked).">KitchenStationType.Grill</a> i posiada powiązaną tacę z mięsem. W przeciwnym razie <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a262f4cc688ffcb13fbd42cdb8eb1d39b" name="a262f4cc688ffcb13fbd42cdb8eb1d39b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a262f4cc688ffcb13fbd42cdb8eb1d39b">&#9670;&#160;</a></span>IsMeatTrayStation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KitchenStation.IsMeatTrayStation </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprawdza, czy to stanowisko jest tacą z mięsem (źródło składnika typu mięso). </p>
+<dl class="section return"><dt>Zwraca</dt><dd><code>true</code> jeśli stanowisko jest typu <a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2" title="Źródło składników — stacja, z której gracz pobiera surowe składniki.">KitchenStationType.IngredientSource</a>, posiada ustawiony składnik źródłowy i jest to mięso. W przeciwnym razie <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ae828cc7f91a7be5bfa4cb44969b967ec" name="ae828cc7f91a7be5bfa4cb44969b967ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae828cc7f91a7be5bfa4cb44969b967ec">&#9670;&#160;</a></span>PlayMicroCameraFeedback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.PlayMicroCameraFeedback </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>intensity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>duration</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Uruchamia subtelne trzęsienie kamery jako informację zwrotną dla gracza. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">intensity</td><td>Siła trzęsienia kamery.</td></tr>
+    <tr><td class="paramname">duration</td><td>Czas trwania trzęsienia w sekundach.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab8dd769eac68b01967efcc5cec0055d9" name="ab8dd769eac68b01967efcc5cec0055d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8dd769eac68b01967efcc5cec0055d9">&#9670;&#160;</a></span>PlayPickupFeedback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.PlayPickupFeedback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kitchen_item.html">KitchenItem</a></td>          <td class="paramname"><span class="paramname"><em>item</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt wizualny i kamerowy związany z pobraniem przedmiotu ze stanowiska. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>Pobrany przedmiot kuchenny, na podstawie którego dobierany jest kolor efektu.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4cdad2ae98846dd7a7f3d5eb94445839" name="a4cdad2ae98846dd7a7f3d5eb94445839"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cdad2ae98846dd7a7f3d5eb94445839">&#9670;&#160;</a></span>PlayPlaceFeedback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.PlayPlaceFeedback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kitchen_item.html">KitchenItem</a></td>          <td class="paramname"><span class="paramname"><em>item</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt wizualny i dźwiękowy związany z położeniem przedmiotu na stanowisku. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>Położony przedmiot kuchenny (może być <code>null</code>).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3bb8e56b6e6e78d6d049354b68ab4102" name="a3bb8e56b6e6e78d6d049354b68ab4102"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bb8e56b6e6e78d6d049354b68ab4102">&#9670;&#160;</a></span>PlayReadyFeedback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.PlayReadyFeedback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kitchen_item.html">KitchenItem</a></td>          <td class="paramname"><span class="paramname"><em>item</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odtwarza efekt wizualny i dźwiękowy sygnalizujący gotowość przedmiotu na stanowisku. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>Gotowy przedmiot kuchenny, na podstawie którego dobierany jest kolor efektu.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a63494a8aed8534022b64712fbddfdf6b" name="a63494a8aed8534022b64712fbddfdf6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63494a8aed8534022b64712fbddfdf6b">&#9670;&#160;</a></span>PlayStationPulse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.PlayStationPulse </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>intensity</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Uruchamia krótki efekt pulsowania (powiększenia) stanowiska za pomocą animatora przedmiotów. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">intensity</td><td>Intensywność pulsowania (np. 1.035 = powiększenie o 3.5%).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a479476f53d0a2f5b6ea0e3ebbfa428db" name="a479476f53d0a2f5b6ea0e3ebbfa428db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a479476f53d0a2f5b6ea0e3ebbfa428db">&#9670;&#160;</a></span>ReceivePreparedMeat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.ReceivePreparedMeat </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>servings</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przyjmuje gotowe porcje mięsa na tacę. Wywoływane przez stanowisko donera po zakończeniu procesu ścinania. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">servings</td><td>Liczba porcji mięsa do dodania (ujemne wartości są zerowane).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af6d4e3521cf51eaa097a6cef44b6299a" name="af6d4e3521cf51eaa097a6cef44b6299a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6d4e3521cf51eaa097a6cef44b6299a">&#9670;&#160;</a></span>RefreshSpecialVisuals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.RefreshSpecialVisuals </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odświeża specjalne wizualizacje stanowiska, w szczególności widoczność mięsa na tacy. </p>
+<p>Dotyczy wyłącznie stanowisk typu taca z mięsem. Wyszukuje obiekt potomny "MeatVisual" i ustawia jego aktywność w zależności od liczby dostępnych porcji mięsa. </p>
+
+</div>
+</div>
+<a id="aa949240f2b26da4fe063761f9b046661" name="aa949240f2b26da4fe063761f9b046661"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa949240f2b26da4fe063761f9b046661">&#9670;&#160;</a></span>RefreshVisualState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.RefreshVisualState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Odświeża kompletny stan wizualny stanowiska, w tym kolor i dynamiczne obiekty 3D. </p>
+
+</div>
+</div>
+<a id="a65d80f704ada230f620860964cc6ec02" name="a65d80f704ada230f620860964cc6ec02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65d80f704ada230f620860964cc6ec02">&#9670;&#160;</a></span>ResetAssembly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.ResetAssembly </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resetuje stanowisko montażu do stanu początkowego. Usuwa ławasz i czyści listę składników montażu. </p>
+
+</div>
+</div>
+<a id="afd705052e999a7c1b9873989931d737e" name="afd705052e999a7c1b9873989931d737e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd705052e999a7c1b9873989931d737e">&#9670;&#160;</a></span>SetLinkedMeatTray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.SetLinkedMeatTray </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kitchen_station.html">KitchenStation</a></td>          <td class="paramname"><span class="paramname"><em>trayStation</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ustawia powiązane stanowisko tacy z mięsem dla donera. Grill-doner po zakończeniu procesu przesyła gotowe mięso na powiązaną tacę. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">trayStation</td><td>Stanowisko tacy z mięsem do powiązania.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aac88098da51643c0e05189ffff2e6d0c" name="aac88098da51643c0e05189ffff2e6d0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac88098da51643c0e05189ffff2e6d0c">&#9670;&#160;</a></span>SyncNetworkState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.SyncNetworkState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_station_state_snapshot.html">StationStateSnapshot</a></td>          <td class="paramname"><span class="paramname"><em>snapshot</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Synchronizuje stan stanowiska na podstawie migawki sieciowej (snapshot). Nadpisuje bieżący stan lokalny wartościami otrzymanymi z serwera. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">snapshot</td><td>Migawka stanu stanowiska otrzymana z serwera, zawierająca informacje o przetwarzaniu, mięsie, ławaszu, przedmiocie i składnikach montażu.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Metoda konwertuje pozostały czas przetwarzania z migawki na bezwzględny czas zakończenia względem <code>Time.time</code>. Składniki montażu są ograniczone do maksymalnie 8 slotów. Po synchronizacji odświeża wizualizację stanowiska. </p>
+
+</div>
+</div>
+<a id="ac7ee51b9e1b414d520fbaf846f052f9e" name="ac7ee51b9e1b414d520fbaf846f052f9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7ee51b9e1b414d520fbaf846f052f9e">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metoda Update wywoływana w każdej klatce przez Unity. Na kliencie sieciowym aktualizuje jedynie efekt pulsowania. Na serwerze sprawdza, czy przetwarzanie dobiegło końca i je finalizuje. </p>
+
+</div>
+</div>
+<a id="a7e63ae72b28a1cd4dfac530d9ec1dd9d" name="a7e63ae72b28a1cd4dfac530d9ec1dd9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e63ae72b28a1cd4dfac530d9ec1dd9d">&#9670;&#160;</a></span>UpdateDynamicVisuals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.UpdateDynamicVisuals </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizuje dynamiczne obiekty wizualne 3D na stanowisku (przedmioty, ławasz, składniki montażu). Używa systemu hashowania do unikania niepotrzebnych odświeżeń. </p>
+<p>Metoda niszczy poprzednie obiekty wizualne i tworzy nowe za pomocą <a class="el" href="class_kitchen_item_visual_factory.html" title="Statyczna klasa fabryki tworząca wizualne reprezentacje 3D składników i dań kuchennych w grze Kebab C...">KitchenItemVisualFactory</a>. Dla stanowiska montażu tworzy wizualizacje ławasza oraz poszczególnych składników rozmieszczonych w predefiniowanych slotach z offsetami i rotacjami. Składniki typu sałata i sos czosnkowy są renderowane jako rozsypane kawałki. </p>
+
+</div>
+</div>
+<a id="a1535ee640469ef8fb26d297cba422c22" name="a1535ee640469ef8fb26d297cba422c22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1535ee640469ef8fb26d297cba422c22">&#9670;&#160;</a></span>UpdatePulseEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.UpdatePulseEffect </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aktualizuje efekt pulsowania skali stanowiska. Pulsowanie jest aktywne gdy stanowisko posiada gotowy przedmiot do odebrania lub tacę z przygotowanym mięsem. </p>
+<p>Efekt pulsowania polega na cyklicznej zmianie skali obiektu w oparciu o funkcję sinus. Gdy pulsowanie nie jest potrzebne, skala jest płynnie przywracana do wartości bazowej. </p>
+
+</div>
+</div>
+<a id="a46e9fcfd4aceabaa97ee0cf63951609b" name="a46e9fcfd4aceabaa97ee0cf63951609b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46e9fcfd4aceabaa97ee0cf63951609b">&#9670;&#160;</a></span>WriteAssemblyToSnapshot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KitchenStation.WriteAssemblyToSnapshot </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="struct_station_state_snapshot.html">StationStateSnapshot</a></td>          <td class="paramname"><span class="paramname"><em>snapshot</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zapisuje aktualny stan składników montażu do migawki sieciowej. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">snapshot</td><td>Referencja do migawki stanu stanowiska, do której zostaną zapisane dane o składnikach montażu (maksymalnie 8 slotów).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a156230809f45ddda4ffec08fa05592a9" name="a156230809f45ddda4ffec08fa05592a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a156230809f45ddda4ffec08fa05592a9">&#9670;&#160;</a></span>assemblyIngredients</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a>&gt; KitchenStation.assemblyIngredients = new List&lt;<a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a>&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lista przygotowanych składników dodanych do montażu kebaba na stanowisku Assembly. </p>
+
+</div>
+</div>
+<a id="a3251d77d59e1a81c1d4f5cc1f260033e" name="a3251d77d59e1a81c1d4f5cc1f260033e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3251d77d59e1a81c1d4f5cc1f260033e">&#9670;&#160;</a></span>baseScale</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 KitchenStation.baseScale</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bazowa skala stanowiska zapamiętana przed rozpoczęciem efektu pulsowania. </p>
+
+</div>
+</div>
+<a id="af2ad95dec4b1a0842d560de0a9736b4e" name="af2ad95dec4b1a0842d560de0a9736b4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2ad95dec4b1a0842d560de0a9736b4e">&#9670;&#160;</a></span>busyColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color KitchenStation.busyColor = new Color(0.95f, 0.65f, 0.2f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor stanowiska podczas aktywnego przetwarzania składnika. </p>
+
+</div>
+</div>
+<a id="ab2edf42a5a583301d4fa1ad05e6a2c30" name="ab2edf42a5a583301d4fa1ad05e6a2c30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2edf42a5a583301d4fa1ad05e6a2c30">&#9670;&#160;</a></span>dynamicAssemblyVisuals</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;GameObject&gt; KitchenStation.dynamicAssemblyVisuals = new List&lt;GameObject&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lista dynamicznie tworzonych obiektów wizualnych reprezentujących składniki montażu kebaba. </p>
+
+</div>
+</div>
+<a id="a3c25cd6fb06253cde28d5bcdfd51d7ee" name="a3c25cd6fb06253cde28d5bcdfd51d7ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c25cd6fb06253cde28d5bcdfd51d7ee">&#9670;&#160;</a></span>dynamicLavashVisual</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject KitchenStation.dynamicLavashVisual</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dynamicznie tworzony obiekt wizualny reprezentujący ławasz na stanowisku montażu. </p>
+
+</div>
+</div>
+<a id="a91bef39b351b710cd613b9a3ee9cab05" name="a91bef39b351b710cd613b9a3ee9cab05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91bef39b351b710cd613b9a3ee9cab05">&#9670;&#160;</a></span>dynamicStationItemVisual</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject KitchenStation.dynamicStationItemVisual</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dynamicznie tworzony obiekt wizualny reprezentujący przedmiot na stanowisku. </p>
+
+</div>
+</div>
+<a id="aecd8aaff5c09ca6a9030685ca401792a" name="aecd8aaff5c09ca6a9030685ca401792a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecd8aaff5c09ca6a9030685ca401792a">&#9670;&#160;</a></span>hasLavash</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KitchenStation.hasLavash</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flaga określająca, czy na stanowisku montażu znajduje się ławasz. </p>
+
+</div>
+</div>
+<a id="a83a8f40049ff6dab5e8afe92ba8838ff" name="a83a8f40049ff6dab5e8afe92ba8838ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83a8f40049ff6dab5e8afe92ba8838ff">&#9670;&#160;</a></span>idleColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color KitchenStation.idleColor = new Color(0.35f, 0.35f, 0.35f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor stanowiska w stanie bezczynności (brak przetwarzania, brak przedmiotu). </p>
+
+</div>
+</div>
+<a id="a6beec3d3183d8686dac6a98957c62900" name="a6beec3d3183d8686dac6a98957c62900"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6beec3d3183d8686dac6a98957c62900">&#9670;&#160;</a></span>isProcessing</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KitchenStation.isProcessing</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flaga wskazująca, czy stanowisko aktualnie przetwarza składnik. </p>
+
+</div>
+</div>
+<a id="a118ed9d95ca9caf4f5e0808a6c6ec455" name="a118ed9d95ca9caf4f5e0808a6c6ec455"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a118ed9d95ca9caf4f5e0808a6c6ec455">&#9670;&#160;</a></span>lastVisualHash</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int KitchenStation.lastVisualHash</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Hash ostatniego stanu wizualnego, używany do optymalizacji odświeżania wizualizacji. Jeśli hash się nie zmienił, wizualizacja nie jest przerysowywana. </p>
+
+</div>
+</div>
+<a id="a48f2f452d63f65ce66af48c462f43750" name="a48f2f452d63f65ce66af48c462f43750"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48f2f452d63f65ce66af48c462f43750">&#9670;&#160;</a></span>linkedMeatTray</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_kitchen_station.html">KitchenStation</a> KitchenStation.linkedMeatTray</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Powiązane stanowisko tacy z mięsem, na którą trafia mięso ścięte z donera. Używane przez stanowiska typu grill-doner. </p>
+
+</div>
+</div>
+<a id="a2282e8b68aa4d018ab506bcdb428851d" name="a2282e8b68aa4d018ab506bcdb428851d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2282e8b68aa4d018ab506bcdb428851d">&#9670;&#160;</a></span>meatVisual</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform KitchenStation.meatVisual</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Transform wizualizacji mięsa na tacy, wyszukiwany jako obiekt potomny "MeatVisual". </p>
+
+</div>
+</div>
+<a id="ad7b2c07304ada13024c82d6149b6aaa5" name="ad7b2c07304ada13024c82d6149b6aaa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7b2c07304ada13024c82d6149b6aaa5">&#9670;&#160;</a></span>preparedMeatBatchSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int KitchenStation.preparedMeatBatchSize = 3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Domyślna wielkość partii mięsa wytwarzanej przy jednorazowym ścięciu z donera. Może być nadpisana przez wartość z <a class="el" href="class_shop_manager.html" title="Główna klasa zarządzająca systemem sklepu z ulepszeniami.">ShopManager</a>. </p>
+
+</div>
+</div>
+<a id="aa043c95ad389235aef709e2d7d4927d3" name="aa043c95ad389235aef709e2d7d4927d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa043c95ad389235aef709e2d7d4927d3">&#9670;&#160;</a></span>preparedMeatServings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int KitchenStation.preparedMeatServings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liczba przygotowanych porcji mięsa dostępnych na tacy z mięsem. </p>
+
+</div>
+</div>
+<a id="a30e17669e732850fb85ace3a59093a16" name="a30e17669e732850fb85ace3a59093a16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30e17669e732850fb85ace3a59093a16">&#9670;&#160;</a></span>processEndTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenStation.processEndTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czas zakończenia bieżącego procesu przetwarzania (w <code>Time.time</code>). </p>
+
+</div>
+</div>
+<a id="ae46dd3288cc277b18efcd2eacde6f7f1" name="ae46dd3288cc277b18efcd2eacde6f7f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae46dd3288cc277b18efcd2eacde6f7f1">&#9670;&#160;</a></span>processingDuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenStation.processingDuration = 2.5f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bazowy czas trwania przetwarzania składnika na stanowisku (w sekundach). Może być modyfikowany przez mnożnik prędkości ze sklepu. </p>
+
+</div>
+</div>
+<a id="ac3eab3d8cafaef65c80a270c5026eb59" name="ac3eab3d8cafaef65c80a270c5026eb59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3eab3d8cafaef65c80a270c5026eb59">&#9670;&#160;</a></span>pulsePhase</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenStation.pulsePhase</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bieżąca faza animacji pulsowania stanowiska, przyrastająca w czasie. </p>
+
+</div>
+</div>
+<a id="ac60613e24ea5c5a595807b60fb69572d" name="ac60613e24ea5c5a595807b60fb69572d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac60613e24ea5c5a595807b60fb69572d">&#9670;&#160;</a></span>readyColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color KitchenStation.readyColor = new Color(0.35f, 0.8f, 0.35f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kolor stanowiska gdy składnik jest gotowy do odebrania. </p>
+
+</div>
+</div>
+<a id="a7234a3f45a0da0c094261cd5daa651d1" name="a7234a3f45a0da0c094261cd5daa651d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7234a3f45a0da0c094261cd5daa651d1">&#9670;&#160;</a></span>sourceIngredient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_ingredient_data.html">IngredientData</a> KitchenStation.sourceIngredient</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dane składnika źródłowego dostarczanego przez to stanowisko. Używane tylko dla stanowisk typu <a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2" title="Źródło składników — stacja, z której gracz pobiera surowe składniki.">KitchenStationType.IngredientSource</a>. </p>
+
+</div>
+</div>
+<a id="a32991ddcf346de28946df08e56711671" name="a32991ddcf346de28946df08e56711671"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32991ddcf346de28946df08e56711671">&#9670;&#160;</a></span>stationItem</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_kitchen_item.html">KitchenItem</a> KitchenStation.stationItem</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przedmiot kuchenny aktualnie znajdujący się na stanowisku (przetwarzany lub gotowy). </p>
+
+</div>
+</div>
+<a id="a67ea505e895e18564517431f7a72e3c6" name="a67ea505e895e18564517431f7a72e3c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67ea505e895e18564517431f7a72e3c6">&#9670;&#160;</a></span>stationName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string KitchenStation.stationName = &quot;Stacja&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nazwa wyświetlana stanowiska kuchennego, używana w komunikatach dla gracza. </p>
+
+</div>
+</div>
+<a id="a5bd30761d2c3b58b629d3cbf7c4adf80" name="a5bd30761d2c3b58b629d3cbf7c4adf80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bd30761d2c3b58b629d3cbf7c4adf80">&#9670;&#160;</a></span>stationType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1">KitchenStationType</a> KitchenStation.stationType = <a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2">KitchenStationType.IngredientSource</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Typ stanowiska kuchennego określający jego funkcję i zachowanie. </p>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1" title="Typ wyliczeniowy określający rodzaj stacji kuchennej. Każda stacja pełni określoną rolę w procesie pr...">KitchenStationType</a></dd></dl>
+
+</div>
+</div>
+<a id="a5479b30e96196dacb9eb0c53c00e572f" name="a5479b30e96196dacb9eb0c53c00e572f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5479b30e96196dacb9eb0c53c00e572f">&#9670;&#160;</a></span>visualRenderer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Renderer KitchenStation.visualRenderer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renderer wizualny stanowiska, którego kolor zmienia się w zależności od stanu. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja właściwości</h2>
+<a id="a01bdfb6e70941cedcaadd9258c3f0fc4" name="a01bdfb6e70941cedcaadd9258c3f0fc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01bdfb6e70941cedcaadd9258c3f0fc4">&#9670;&#160;</a></span>AssemblyCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int KitchenStation.AssemblyCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liczba składników dodanych do montażu kebaba. </p>
+<p>Liczba elementów na liście składników montażu.</p>
+
+</div>
+</div>
+<a id="a2e5855f782e6a1f4684d7aec398623f3" name="a2e5855f782e6a1f4684d7aec398623f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e5855f782e6a1f4684d7aec398623f3">&#9670;&#160;</a></span>AssemblyIngredients</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_prepared_ingredient_data.html">PreparedIngredientData</a>&gt; KitchenStation.AssemblyIngredients</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lista przygotowanych składników na stanowisku montażu. </p>
+<p>Lista obiektów <a class="el" href="class_prepared_ingredient_data.html" title="Klasa reprezentująca dane przygotowanego składnika. Przechowuje informację o rodzaju składnika oraz j...">PreparedIngredientData</a> zawierających rodzaj i stan składników.</p>
+
+</div>
+</div>
+<a id="ac61b7c51ed058d529c61d2529383fdbf" name="ac61b7c51ed058d529c61d2529383fdbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac61b7c51ed058d529c61d2529383fdbf">&#9670;&#160;</a></span>HasLavash</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KitchenStation.HasLavash</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Informuje, czy na stanowisku montażu leży ławasz. </p>
+<p><code>true</code> jeśli ławasz jest obecny; w przeciwnym razie <code>false</code>.</p>
+
+</div>
+</div>
+<a id="a056a0653a9d8a10494e9b162897d92af" name="a056a0653a9d8a10494e9b162897d92af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a056a0653a9d8a10494e9b162897d92af">&#9670;&#160;</a></span>IsProcessing</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KitchenStation.IsProcessing</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Informuje, czy stanowisko aktualnie przetwarza składnik. </p>
+<p><code>true</code> jeśli trwa przetwarzanie; w przeciwnym razie <code>false</code>.</p>
+
+</div>
+</div>
+<a id="aff9469cdd11ad8855297fe5eff41a32b" name="aff9469cdd11ad8855297fe5eff41a32b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff9469cdd11ad8855297fe5eff41a32b">&#9670;&#160;</a></span>PreparedMeatServings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int KitchenStation.PreparedMeatServings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liczba gotowych porcji mięsa na tacy. </p>
+<p>Nieujemna liczba dostępnych porcji mięsa.</p>
+
+</div>
+</div>
+<a id="aa2b02d55bd3751f50250473cfcec449a" name="aa2b02d55bd3751f50250473cfcec449a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2b02d55bd3751f50250473cfcec449a">&#9670;&#160;</a></span>ProcessEndTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float KitchenStation.ProcessEndTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Czas (<code>Time.time</code>) zakończenia bieżącego przetwarzania. </p>
+<p>Moment zakończenia procesu lub 0 jeśli nic nie jest przetwarzane.</p>
+
+</div>
+</div>
+<a id="a451dda30ac4ee9405fc752022ffba764" name="a451dda30ac4ee9405fc752022ffba764"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a451dda30ac4ee9405fc752022ffba764">&#9670;&#160;</a></span>StationItem</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_kitchen_item.html">KitchenItem</a> KitchenStation.StationItem</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Przedmiot kuchenny aktualnie znajdujący się na stanowisku. </p>
+<p>Instancja <a class="el" href="class_kitchen_item.html" title="Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać l...">KitchenItem</a> lub <code>null</code> jeśli stanowisko jest puste.</p>
+
+</div>
+</div>
+<a id="a86e6919ee81fbe571a9b223171ec01c1" name="a86e6919ee81fbe571a9b223171ec01c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86e6919ee81fbe571a9b223171ec01c1">&#9670;&#160;</a></span>StationType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1">KitchenStationType</a> KitchenStation.StationType</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Typ tego stanowiska kuchennego. </p>
+<p>Wartość enumeracji <a class="el" href="_kitchen_game_models_8cs.html#ae746f497fef26a21045d5a2c501af8c1" title="Typ wyliczeniowy określający rodzaj stacji kuchennej. Każda stacja pełni określoną rolę w procesie pr...">KitchenStationType</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_kitchen_station_8cs.html">KitchenStation.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

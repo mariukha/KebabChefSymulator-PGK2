@@ -1,0 +1,322 @@
+\doxysection{Dokumentacja klasy Kitchen\+Item\+Visual\+Factory}
+\hypertarget{class_kitchen_item_visual_factory}{}\label{class_kitchen_item_visual_factory}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+
+
+Statyczna klasa fabryki tworząca wizualne reprezentacje 3D składników i dań kuchennych w grze Kebab Chef Symulator.  
+
+
+\doxysubsubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_kitchen_item_visual_factory_aa506fe52de7c8d68dd6db936ea7e79a6}{Get\+Model\+Name}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} state, bool is\+Dish)
+\begin{DoxyCompactList}\small\item\em Zwraca nazwę pliku modelu 3D odpowiadającego danemu rodzajowi składnika i jego stanowi przetworzenia. \end{DoxyCompactList}\item 
+static Game\+Object \mbox{\hyperlink{class_kitchen_item_visual_factory_af226998972f4673bbae0e84a1073bff7}{Create\+Item\+Visual}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} state, bool is\+Dish, Transform parent, Vector3 local\+Position, Vector3 local\+Rotation, float target\+Size)
+\begin{DoxyCompactList}\small\item\em Tworzy wizualną reprezentację 3D składnika lub dania jako obiekt potomny podanego rodzica. \end{DoxyCompactList}\item 
+static Material \mbox{\hyperlink{class_kitchen_item_visual_factory_a43f85b1a2e9394d21e4e83f34d9e33b4}{Get\+Cached\+Material}} (Color color)
+\begin{DoxyCompactList}\small\item\em Pobiera lub tworzy buforowany materiał o podanym kolorze. Jeśli materiał o danym kolorze już istnieje w cache, zwraca go; w przeciwnym razie tworzy nowy. \end{DoxyCompactList}\item 
+static Game\+Object \mbox{\hyperlink{class_kitchen_item_visual_factory_aacc8ef5e5e20605742c3f13be9a55f0e}{Create\+Scattered\+Visual}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} state, Transform parent, Vector3 local\+Position, int count, float spread, float piece\+Size)
+\begin{DoxyCompactList}\small\item\em Tworzy wizualizację rozproszonych kawałków składnika (np. posiekane warzywa lub krople sosu), losowo rozmieszczonych w obrębie kontenera. \end{DoxyCompactList}\item 
+static Color \mbox{\hyperlink{class_kitchen_item_visual_factory_a9efe00d954a109ea6543a20ebb7e8264}{Get\+Ingredient\+Color}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} state)
+\begin{DoxyCompactList}\small\item\em Zwraca kolor reprezentujący dany rodzaj składnika i jego stan przetworzenia. Używany do kolorowania prymitywów zastępczych i rozproszonych wizualizacji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static Shader \mbox{\hyperlink{class_kitchen_item_visual_factory_a4c17c6fe9812e106a91803dae3d69ffe}{Get\+Cached\+Shader}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera buforowany shader do tworzenia materiałów. Próbuje kolejno\+: URP Lit, Standard, Diffuse. \end{DoxyCompactList}\item 
+static Game\+Object \mbox{\hyperlink{class_kitchen_item_visual_factory_a6fd0de424128aa70577716e72e6f7e90}{Load\+Cached\+Model}} (string path)
+\begin{DoxyCompactList}\small\item\em Ładuje model 3D z Resources i buforuje go w słowniku. Przy kolejnych wywołaniach z tą samą ścieżką zwraca buforowany wynik. \end{DoxyCompactList}\item 
+static Game\+Object \mbox{\hyperlink{class_kitchen_item_visual_factory_a08010b0a16718ac082b65cf4f0591000}{Create\+Fallback\+Visual}} (\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} kind, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} state, bool is\+Dish, Transform parent, Vector3 local\+Position, float target\+Size)
+\begin{DoxyCompactList}\small\item\em Tworzy zastępczą wizualizację składnika używając prymitywów geometrycznych (kula lub cylinder), gdy model 3D nie jest dostępny w zasobach. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_kitchen_item_visual_factory_aef23eaecaac3bfddce6ca67353f990b1}{Scale\+To\+Size}} (Transform model\+Root, float target\+Size)
+\begin{DoxyCompactList}\small\item\em Skaluje model 3D tak, aby jego największy wymiar odpowiadał podanemu rozmiarowi docelowemu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{class_kitchen_item_visual_factory_a20db6278db1d0991db9744b30607ec53}{Model\+Path}} = "{}Models/"{}
+\begin{DoxyCompactList}\small\item\em Ścieżka bazowa do katalogu modeli w zasobach Unity (Resources). \end{DoxyCompactList}\item 
+static Shader \mbox{\hyperlink{class_kitchen_item_visual_factory_adcf98d25368204c9abbc80957fb6e0ed}{cached\+Shader}}
+\begin{DoxyCompactList}\small\item\em Buforowany shader używany do tworzenia materiałów. Preferuje URP Lit, awaryjnie Standard, ostatecznie Diffuse. \end{DoxyCompactList}\item 
+static readonly Dictionary$<$ Color, Material $>$ \mbox{\hyperlink{class_kitchen_item_visual_factory_a9c7dadc2e6a725cfa9ddbe82ac9766b3}{material\+Cache}} = new Dictionary$<$Color, Material$>$()
+\begin{DoxyCompactList}\small\item\em Słownik buforujący materiały po kolorze, aby uniknąć tworzenia duplikatów materiałów o tym samym kolorze. \end{DoxyCompactList}\item 
+static readonly Dictionary$<$ string, Game\+Object $>$ \mbox{\hyperlink{class_kitchen_item_visual_factory_ab35765a24094b6a8c211d26c35f06792}{model\+Cache}} = new Dictionary$<$string, Game\+Object$>$()
+\begin{DoxyCompactList}\small\item\em Słownik buforujący załadowane modele 3D (prefaby) po ścieżce zasobu, aby uniknąć wielokrotnego ładowania tego samego modelu z Resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Statyczna klasa fabryki tworząca wizualne reprezentacje 3D składników i dań kuchennych w grze Kebab Chef Symulator. 
+
+Klasa pełni rolę centralnej fabryki do tworzenia obiektów wizualnych dla systemu kuchni. Obsługuje\+:
+\begin{DoxyItemize}
+\item Ładowanie modeli 3D z katalogu Resources/\+Models/ z buforowaniem,
+\item Tworzenie prymitywów zastępczych (kula, cylinder) gdy model nie jest dostępny,
+\item Generowanie rozproszonych wizualizacji składników (posiekane warzywa, sos),
+\item Buforowanie materiałów i shaderów dla optymalizacji wydajności,
+\item Automatyczne skalowanie modeli do pożądanego rozmiaru,
+\item Integrację z systemem animacji pojawiania się (\doxylink{class_item_animator}{Item\+Animator}). 
+\end{DoxyItemize}
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_kitchen_item_visual_factory_a08010b0a16718ac082b65cf4f0591000}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!CreateFallbackVisual@{CreateFallbackVisual}}
+\index{CreateFallbackVisual@{CreateFallbackVisual}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{CreateFallbackVisual()}{CreateFallbackVisual()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_a08010b0a16718ac082b65cf4f0591000} 
+static Game\+Object Kitchen\+Item\+Visual\+Factory.\+Create\+Fallback\+Visual (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{state}{, }\item[{bool}]{is\+Dish}{, }\item[{Transform}]{parent}{, }\item[{Vector3}]{local\+Position}{, }\item[{float}]{target\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Tworzy zastępczą wizualizację składnika używając prymitywów geometrycznych (kula lub cylinder), gdy model 3D nie jest dostępny w zasobach. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em kind} & Rodzaj składnika.\\
+\hline
+{\em state} & Stan przetworzenia składnika.\\
+\hline
+{\em is\+Dish} & Czy obiekt jest gotowym daniem (kebabem) — jeśli tak, używany jest cylinder.\\
+\hline
+{\em parent} & Transformata rodzica.\\
+\hline
+{\em local\+Position} & Lokalna pozycja obiektu względem rodzica.\\
+\hline
+{\em target\+Size} & Docelowy rozmiar obiektu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony obiekt zastępczy z odpowiednim materiałem i kolorem.
+\end{DoxyReturn}
+
+
+Dania i kebaby reprezentowane są jako cylindry (0.\+4 × 0.\+7 × 0.\+4 target\+Size), pozostałe składniki jako kule. Kolider jest wyłączany. Kolor jest automatycznie dobierany na podstawie rodzaju składnika za pomocą \doxylink{class_kitchen_item_visual_factory_a9efe00d954a109ea6543a20ebb7e8264}{Get\+Ingredient\+Color}. \Hypertarget{class_kitchen_item_visual_factory_af226998972f4673bbae0e84a1073bff7}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!CreateItemVisual@{CreateItemVisual}}
+\index{CreateItemVisual@{CreateItemVisual}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{CreateItemVisual()}{CreateItemVisual()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_af226998972f4673bbae0e84a1073bff7} 
+static Game\+Object Kitchen\+Item\+Visual\+Factory.\+Create\+Item\+Visual (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{state}{, }\item[{bool}]{is\+Dish}{, }\item[{Transform}]{parent}{, }\item[{Vector3}]{local\+Position}{, }\item[{Vector3}]{local\+Rotation}{, }\item[{float}]{target\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Tworzy wizualną reprezentację 3D składnika lub dania jako obiekt potomny podanego rodzica. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em kind} & Rodzaj składnika do zwizualizowania.\\
+\hline
+{\em state} & Stan przetworzenia składnika.\\
+\hline
+{\em is\+Dish} & Czy obiekt jest gotowym daniem.\\
+\hline
+{\em parent} & Transformata rodzica, do którego zostanie dołączony model.\\
+\hline
+{\em local\+Position} & Lokalna pozycja modelu względem rodzica.\\
+\hline
+{\em local\+Rotation} & Lokalna rotacja modelu w stopniach (Euler).\\
+\hline
+{\em target\+Size} & Docelowy rozmiar obiektu (największy wymiar zostanie dopasowany).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Utworzony obiekt wizualny, lub {\ttfamily null} jeśli nie można określić modelu. Jeśli prefab nie zostanie znaleziony, tworzona jest zastępcza wizualizacja za pomocą \doxylink{class_kitchen_item_visual_factory_a08010b0a16718ac082b65cf4f0591000}{Create\+Fallback\+Visual}. 
+\end{DoxyReturn}
+
+
+Model jest skalowany za pomocą \doxylink{class_kitchen_item_visual_factory_aef23eaecaac3bfddce6ca67353f990b1}{Scale\+To\+Size} do podanego rozmiaru. Wszystkie kollidery w modelu i jego dzieciach są wyłączane. Jeśli dostępny jest \doxylink{class_item_animator}{Item\+Animator}, uruchamiana jest animacja pojawiania. \Hypertarget{class_kitchen_item_visual_factory_aacc8ef5e5e20605742c3f13be9a55f0e}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!CreateScatteredVisual@{CreateScatteredVisual}}
+\index{CreateScatteredVisual@{CreateScatteredVisual}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{CreateScatteredVisual()}{CreateScatteredVisual()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_aacc8ef5e5e20605742c3f13be9a55f0e} 
+static Game\+Object Kitchen\+Item\+Visual\+Factory.\+Create\+Scattered\+Visual (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{state}{, }\item[{Transform}]{parent}{, }\item[{Vector3}]{local\+Position}{, }\item[{int}]{count}{, }\item[{float}]{spread}{, }\item[{float}]{piece\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Tworzy wizualizację rozproszonych kawałków składnika (np. posiekane warzywa lub krople sosu), losowo rozmieszczonych w obrębie kontenera. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em kind} & Rodzaj składnika do zwizualizowania.\\
+\hline
+{\em state} & Stan przetworzenia składnika.\\
+\hline
+{\em parent} & Transformata rodzica.\\
+\hline
+{\em local\+Position} & Lokalna pozycja kontenera względem rodzica.\\
+\hline
+{\em count} & Liczba kawałków do wygenerowania.\\
+\hline
+{\em spread} & Maksymalny zasięg rozproszenia kawałków na osiach X i Z.\\
+\hline
+{\em piece\+Size} & Bazowy rozmiar pojedynczego kawałka.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Kontener Game\+Object zawierający wszystkie wygenerowane kawałki.
+\end{DoxyReturn}
+
+
+Sos czosnkowy (\doxylink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ab118c95a50b8859592f94b8d8c9dd7a3}{Ingredient\+Kind.\+Garlic\+Sauce}) jest reprezentowany jako spłaszczone kule, pozostałe składniki jako spłaszczone kostki. Każdy kawałek ma losową pozycję, rotację i lekki offset na osi Y. Kollidery kawałków są usuwane. Używany jest współdzielony materiał z cache dla optymalizacji. \Hypertarget{class_kitchen_item_visual_factory_a43f85b1a2e9394d21e4e83f34d9e33b4}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!GetCachedMaterial@{GetCachedMaterial}}
+\index{GetCachedMaterial@{GetCachedMaterial}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{GetCachedMaterial()}{GetCachedMaterial()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_a43f85b1a2e9394d21e4e83f34d9e33b4} 
+static Material Kitchen\+Item\+Visual\+Factory.\+Get\+Cached\+Material (\begin{DoxyParamCaption}\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Pobiera lub tworzy buforowany materiał o podanym kolorze. Jeśli materiał o danym kolorze już istnieje w cache, zwraca go; w przeciwnym razie tworzy nowy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em color} & Kolor materiału do pobrania lub utworzenia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Materiał o podanym kolorze z odpowiednim shaderem.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_item_visual_factory_a4c17c6fe9812e106a91803dae3d69ffe}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!GetCachedShader@{GetCachedShader}}
+\index{GetCachedShader@{GetCachedShader}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{GetCachedShader()}{GetCachedShader()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_a4c17c6fe9812e106a91803dae3d69ffe} 
+static Shader Kitchen\+Item\+Visual\+Factory.\+Get\+Cached\+Shader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Pobiera buforowany shader do tworzenia materiałów. Próbuje kolejno\+: URP Lit, Standard, Diffuse. 
+
+\begin{DoxyReturn}{Zwraca}
+Znaleziony shader, lub {\ttfamily null} jeśli żaden nie jest dostępny.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_item_visual_factory_a9efe00d954a109ea6543a20ebb7e8264}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!GetIngredientColor@{GetIngredientColor}}
+\index{GetIngredientColor@{GetIngredientColor}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{GetIngredientColor()}{GetIngredientColor()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_a9efe00d954a109ea6543a20ebb7e8264} 
+static Color Kitchen\+Item\+Visual\+Factory.\+Get\+Ingredient\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Zwraca kolor reprezentujący dany rodzaj składnika i jego stan przetworzenia. Używany do kolorowania prymitywów zastępczych i rozproszonych wizualizacji. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em kind} & Rodzaj składnika.\\
+\hline
+{\em state} & Stan przetworzenia składnika.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Kolor charakterystyczny dla danego składnika\+:
+\begin{DoxyItemize}
+\item Mięso\+: brązowy (ugotowane) lub czerwonawy (surowe),
+\item Pomidor\+: czerwony,
+\item Cebula\+: kremowy,
+\item Sałata\+: zielony,
+\item Sos czosnkowy\+: jasny beżowy,
+\item Lawasz\+: ciepły beżowy,
+\item Kebab\+: brązowo-\/złoty,
+\item Domyślny\+: szary. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_item_visual_factory_aa506fe52de7c8d68dd6db936ea7e79a6}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!GetModelName@{GetModelName}}
+\index{GetModelName@{GetModelName}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{GetModelName()}{GetModelName()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_aa506fe52de7c8d68dd6db936ea7e79a6} 
+static string Kitchen\+Item\+Visual\+Factory.\+Get\+Model\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}]{kind}{, }\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}]{state}{, }\item[{bool}]{is\+Dish}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Zwraca nazwę pliku modelu 3D odpowiadającego danemu rodzajowi składnika i jego stanowi przetworzenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em kind} & Rodzaj składnika (mięso, pomidor, cebula itp.).\\
+\hline
+{\em state} & Stan przetworzenia składnika (surowy, posiekany, ugotowany).\\
+\hline
+{\em is\+Dish} & Czy obiekt jest gotowym daniem (kebabem).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Nazwa pliku modelu (bez ścieżki i rozszerzenia), lub {\ttfamily null} jeśli nie istnieje odpowiedni model dla danego rodzaju składnika. 
+\end{DoxyReturn}
+
+
+Dla gotowych dań i kebabów zawsze zwraca "{}kebab\+\_\+wrap"{}. Pomidory i cebule mają warianty w zależności od stanu przetworzenia (cały vs posiekany). Pozostałe składniki mają stały model. \Hypertarget{class_kitchen_item_visual_factory_a6fd0de424128aa70577716e72e6f7e90}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!LoadCachedModel@{LoadCachedModel}}
+\index{LoadCachedModel@{LoadCachedModel}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{LoadCachedModel()}{LoadCachedModel()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_a6fd0de424128aa70577716e72e6f7e90} 
+static Game\+Object Kitchen\+Item\+Visual\+Factory.\+Load\+Cached\+Model (\begin{DoxyParamCaption}\item[{string}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Ładuje model 3D z Resources i buforuje go w słowniku. Przy kolejnych wywołaniach z tą samą ścieżką zwraca buforowany wynik. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em path} & Ścieżka zasobu modelu (względem katalogu Resources).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Załadowany prefab modelu, lub {\ttfamily null} jeśli zasób nie istnieje.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_item_visual_factory_aef23eaecaac3bfddce6ca67353f990b1}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!ScaleToSize@{ScaleToSize}}
+\index{ScaleToSize@{ScaleToSize}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{ScaleToSize()}{ScaleToSize()}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_aef23eaecaac3bfddce6ca67353f990b1} 
+static void Kitchen\+Item\+Visual\+Factory.\+Scale\+To\+Size (\begin{DoxyParamCaption}\item[{Transform}]{model\+Root}{, }\item[{float}]{target\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Skaluje model 3D tak, aby jego największy wymiar odpowiadał podanemu rozmiarowi docelowemu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em model\+Root} & Transformata korzenia modelu do przeskalowania.\\
+\hline
+{\em target\+Size} & Docelowy rozmiar największego wymiaru modelu.\\
+\hline
+\end{DoxyParams}
+
+
+Oblicza otoczkę (bounding box) ze wszystkich rendererów w modelu i jego dzieciach, wyznacza największy wymiar, a następnie skaluje cały model jednorodnie. Pomija modele o wymiarze mniejszym niż 0.\+001, aby uniknąć dzielenia przez zero. 
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_kitchen_item_visual_factory_adcf98d25368204c9abbc80957fb6e0ed}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!cachedShader@{cachedShader}}
+\index{cachedShader@{cachedShader}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{cachedShader}{cachedShader}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_adcf98d25368204c9abbc80957fb6e0ed} 
+Shader Kitchen\+Item\+Visual\+Factory.\+cached\+Shader\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Buforowany shader używany do tworzenia materiałów. Preferuje URP Lit, awaryjnie Standard, ostatecznie Diffuse. 
+
+\Hypertarget{class_kitchen_item_visual_factory_a9c7dadc2e6a725cfa9ddbe82ac9766b3}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!materialCache@{materialCache}}
+\index{materialCache@{materialCache}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{materialCache}{materialCache}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_a9c7dadc2e6a725cfa9ddbe82ac9766b3} 
+readonly Dictionary$<$Color, Material$>$ Kitchen\+Item\+Visual\+Factory.\+material\+Cache = new Dictionary$<$Color, Material$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Słownik buforujący materiały po kolorze, aby uniknąć tworzenia duplikatów materiałów o tym samym kolorze. 
+
+\Hypertarget{class_kitchen_item_visual_factory_ab35765a24094b6a8c211d26c35f06792}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!modelCache@{modelCache}}
+\index{modelCache@{modelCache}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{modelCache}{modelCache}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_ab35765a24094b6a8c211d26c35f06792} 
+readonly Dictionary$<$string, Game\+Object$>$ Kitchen\+Item\+Visual\+Factory.\+model\+Cache = new Dictionary$<$string, Game\+Object$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Słownik buforujący załadowane modele 3D (prefaby) po ścieżce zasobu, aby uniknąć wielokrotnego ładowania tego samego modelu z Resources. 
+
+\Hypertarget{class_kitchen_item_visual_factory_a20db6278db1d0991db9744b30607ec53}\index{KitchenItemVisualFactory@{KitchenItemVisualFactory}!ModelPath@{ModelPath}}
+\index{ModelPath@{ModelPath}!KitchenItemVisualFactory@{KitchenItemVisualFactory}}
+\doxysubsubsection{\texorpdfstring{ModelPath}{ModelPath}}
+{\footnotesize\ttfamily \label{class_kitchen_item_visual_factory_a20db6278db1d0991db9744b30607ec53} 
+const string Kitchen\+Item\+Visual\+Factory.\+Model\+Path = "{}Models/"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Ścieżka bazowa do katalogu modeli w zasobach Unity (Resources). 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_item_visual_factory_8cs}{Kitchen\+Item\+Visual\+Factory.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,147 @@
+\doxysection{Dokumentacja klasy Menu\+Button\+Hover}
+\hypertarget{class_menu_button_hover}{}\label{class_menu_button_hover}\index{MenuButtonHover@{MenuButtonHover}}
+
+
+Komponent obsługujący płynne skalowanie przycisków menu przy najechaniu kursorem.  
+
+
+Diagram dziedziczenia dla Menu\+Button\+Hover\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.282932cm]{class_menu_button_hover}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_menu_button_hover_acad9b2f264b3998a3de9b664a2417bda}{On\+Pointer\+Enter}} (Unity\+Engine.\+Event\+Systems.\+Pointer\+Event\+Data e)
+\begin{DoxyCompactList}\small\item\em Obsługuje zdarzenie wejścia kursora na przycisk — ustawia skalę docelową na powiększoną. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_button_hover_a17bf05b42eec30a0dfbd0888a8e1d5ab}{On\+Pointer\+Exit}} (Unity\+Engine.\+Event\+Systems.\+Pointer\+Event\+Data e)
+\begin{DoxyCompactList}\small\item\em Obsługuje zdarzenie wyjścia kursora z przycisku — ustawia skalę docelową na normalną. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+Vector3 \mbox{\hyperlink{class_menu_button_hover_a08f04a00c5536304b835805cc2c835bd}{normal\+Scale}} = Vector3.\+one
+\begin{DoxyCompactList}\small\item\em Skala przycisku w stanie normalnym (bez najechania kursorem). \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_menu_button_hover_ac9fca5b6cfb1277bc1b582d1bdc9c36a}{hover\+Scale}} = new Vector3(1.\+03f, 1.\+03f, 1f)
+\begin{DoxyCompactList}\small\item\em Skala przycisku po najechaniu kursorem (lekkie powiększenie). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_menu_button_hover_a2fd9756876171824eeeb72591d2cd8e6}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje komponent, pobierając Rect\+Transform i ustawiając domyślną skalę docelową. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_button_hover_a350a2be525774cf15292a1d60c1f4538}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Animuje skalę przycisku w kierunku docelowej skali za pomocą interpolacji liniowej. Używa Time.\+unscaled\+Delta\+Time, aby animacja działała nawet gdy gra jest wstrzymana. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Vector3 \mbox{\hyperlink{class_menu_button_hover_a9aa2743ca65d1800c70001975fbbdd58}{target\+Scale}}
+\begin{DoxyCompactList}\small\item\em Docelowa skala, do której animacja zmierza w bieżącej klatce. \end{DoxyCompactList}\item 
+Rect\+Transform \mbox{\hyperlink{class_menu_button_hover_a5d1ddef24262fa07fd88089be2a2f067}{rect}}
+\begin{DoxyCompactList}\small\item\em Buforowany Rect\+Transform przycisku używany do animacji skalowania. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Komponent obsługujący płynne skalowanie przycisków menu przy najechaniu kursorem. 
+
+Implementuje interfejsy IPointer\+Enter\+Handler i IPointer\+Exit\+Handler, aby reagować na zdarzenia wejścia i wyjścia kursora. Animuje skalę przycisku za pomocą interpolacji liniowej (Lerp) niezależnie od Time.\+time\+Scale. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_menu_button_hover_a2fd9756876171824eeeb72591d2cd8e6}\index{MenuButtonHover@{MenuButtonHover}!Awake@{Awake}}
+\index{Awake@{Awake}!MenuButtonHover@{MenuButtonHover}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_menu_button_hover_a2fd9756876171824eeeb72591d2cd8e6} 
+void Menu\+Button\+Hover.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje komponent, pobierając Rect\+Transform i ustawiając domyślną skalę docelową. 
+
+\Hypertarget{class_menu_button_hover_acad9b2f264b3998a3de9b664a2417bda}\index{MenuButtonHover@{MenuButtonHover}!OnPointerEnter@{OnPointerEnter}}
+\index{OnPointerEnter@{OnPointerEnter}!MenuButtonHover@{MenuButtonHover}}
+\doxysubsubsection{\texorpdfstring{OnPointerEnter()}{OnPointerEnter()}}
+{\footnotesize\ttfamily \label{class_menu_button_hover_acad9b2f264b3998a3de9b664a2417bda} 
+void Menu\+Button\+Hover.\+On\+Pointer\+Enter (\begin{DoxyParamCaption}\item[{Unity\+Engine.\+Event\+Systems.\+Pointer\+Event\+Data}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obsługuje zdarzenie wejścia kursora na przycisk — ustawia skalę docelową na powiększoną. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em e} & Dane zdarzenia wskaźnika.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_menu_button_hover_a17bf05b42eec30a0dfbd0888a8e1d5ab}\index{MenuButtonHover@{MenuButtonHover}!OnPointerExit@{OnPointerExit}}
+\index{OnPointerExit@{OnPointerExit}!MenuButtonHover@{MenuButtonHover}}
+\doxysubsubsection{\texorpdfstring{OnPointerExit()}{OnPointerExit()}}
+{\footnotesize\ttfamily \label{class_menu_button_hover_a17bf05b42eec30a0dfbd0888a8e1d5ab} 
+void Menu\+Button\+Hover.\+On\+Pointer\+Exit (\begin{DoxyParamCaption}\item[{Unity\+Engine.\+Event\+Systems.\+Pointer\+Event\+Data}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obsługuje zdarzenie wyjścia kursora z przycisku — ustawia skalę docelową na normalną. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em e} & Dane zdarzenia wskaźnika.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_menu_button_hover_a350a2be525774cf15292a1d60c1f4538}\index{MenuButtonHover@{MenuButtonHover}!Update@{Update}}
+\index{Update@{Update}!MenuButtonHover@{MenuButtonHover}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_menu_button_hover_a350a2be525774cf15292a1d60c1f4538} 
+void Menu\+Button\+Hover.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Animuje skalę przycisku w kierunku docelowej skali za pomocą interpolacji liniowej. Używa Time.\+unscaled\+Delta\+Time, aby animacja działała nawet gdy gra jest wstrzymana. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_menu_button_hover_ac9fca5b6cfb1277bc1b582d1bdc9c36a}\index{MenuButtonHover@{MenuButtonHover}!hoverScale@{hoverScale}}
+\index{hoverScale@{hoverScale}!MenuButtonHover@{MenuButtonHover}}
+\doxysubsubsection{\texorpdfstring{hoverScale}{hoverScale}}
+{\footnotesize\ttfamily \label{class_menu_button_hover_ac9fca5b6cfb1277bc1b582d1bdc9c36a} 
+Vector3 Menu\+Button\+Hover.\+hover\+Scale = new Vector3(1.\+03f, 1.\+03f, 1f)}
+
+
+
+Skala przycisku po najechaniu kursorem (lekkie powiększenie). 
+
+\Hypertarget{class_menu_button_hover_a08f04a00c5536304b835805cc2c835bd}\index{MenuButtonHover@{MenuButtonHover}!normalScale@{normalScale}}
+\index{normalScale@{normalScale}!MenuButtonHover@{MenuButtonHover}}
+\doxysubsubsection{\texorpdfstring{normalScale}{normalScale}}
+{\footnotesize\ttfamily \label{class_menu_button_hover_a08f04a00c5536304b835805cc2c835bd} 
+Vector3 Menu\+Button\+Hover.\+normal\+Scale = Vector3.\+one}
+
+
+
+Skala przycisku w stanie normalnym (bez najechania kursorem). 
+
+\Hypertarget{class_menu_button_hover_a5d1ddef24262fa07fd88089be2a2f067}\index{MenuButtonHover@{MenuButtonHover}!rect@{rect}}
+\index{rect@{rect}!MenuButtonHover@{MenuButtonHover}}
+\doxysubsubsection{\texorpdfstring{rect}{rect}}
+{\footnotesize\ttfamily \label{class_menu_button_hover_a5d1ddef24262fa07fd88089be2a2f067} 
+Rect\+Transform Menu\+Button\+Hover.\+rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowany Rect\+Transform przycisku używany do animacji skalowania. 
+
+\Hypertarget{class_menu_button_hover_a9aa2743ca65d1800c70001975fbbdd58}\index{MenuButtonHover@{MenuButtonHover}!targetScale@{targetScale}}
+\index{targetScale@{targetScale}!MenuButtonHover@{MenuButtonHover}}
+\doxysubsubsection{\texorpdfstring{targetScale}{targetScale}}
+{\footnotesize\ttfamily \label{class_menu_button_hover_a9aa2743ca65d1800c70001975fbbdd58} 
+Vector3 Menu\+Button\+Hover.\+target\+Scale\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Docelowa skala, do której animacja zmierza w bieżącej klatce. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+UI/\mbox{\hyperlink{_main_menu_u_i_8cs}{Main\+Menu\+UI.\+cs}}\end{DoxyCompactItemize}

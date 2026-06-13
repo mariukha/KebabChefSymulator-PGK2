@@ -1,0 +1,339 @@
+\doxysection{Dokumentacja klasy Kitchen\+Order\+Board}
+\hypertarget{class_kitchen_order_board}{}\label{class_kitchen_order_board}\index{KitchenOrderBoard@{KitchenOrderBoard}}
+
+
+Klasa odpowiedzialna za tworzenie i aktualizowanie tablicy zamówień wyświetlanej na monitorze 3D w scenie kuchni.  
+
+
+Diagram dziedziczenia dla Kitchen\+Order\+Board\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_kitchen_order_board}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_kitchen_order_board_a5354fc83e2695a27636459931d348e0d}{Initialize}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje tablicę zamówień, tworząc wizualne elementy monitora (bloki 3D i Canvas z tekstami). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_kitchen_order_board_ac7b04e891f10c5f8c68b9e9e6905337e}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Unity wywoływana co klatkę. Odświeża zawartość tablicy zamówień aktualnymi danymi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_order_board_adb0076c76307fca396e780a02e96ab52}{Create\+Monitor\+Visuals}} ()
+\begin{DoxyCompactList}\small\item\em Tworzy kompletną wizualizację monitora\+: bloki 3D (obudowa, rama, ekran, krawędź, dioda) oraz Canvas World Space z elementami tekstowymi i paskiem pilności. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_order_board_ae10406045fcd05d30955c7f53afd1b56}{Refresh\+Board}} ()
+\begin{DoxyCompactList}\small\item\em Odświeża zawartość tablicy zamówień danymi z \doxylink{class_order_manager}{Order\+Manager}. Aktualizuje nagłówek, metadane zamówienia, listę składników, stopkę ze statystykami oraz pasek pilności. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_order_board_a69b468f4a43f425b9b8f4aab698e0be7}{Set\+Urgency\+Progress}} (float ratio)
+\begin{DoxyCompactList}\small\item\em Ustawia postęp paska pilności poprzez zmianę jego szerokości. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_kitchen_order_board_a3704d0e6bea3f15a7dc508763755d771}{Get\+Urgency\+Color}} (float remaining\+Time, float full\+Time)
+\begin{DoxyCompactList}\small\item\em Oblicza kolor paska pilności na podstawie pozostałego czasu zamówienia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_order_board_a9869cb767ae93462a5825c17b7a561fe}{Create\+Block}} (string object\+Name, Vector3 local\+Position, Vector3 local\+Scale, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy blok 3D (sześcian) jako element fizyczny monitora. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kitchen_order_board_ac9a3a3336e51b1239269a64ee60a7f0b}{Create\+Panel}} (Transform parent, string object\+Name, Vector2 anchored\+Position, Vector2 size, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy panel UI z obrazem tła na podanej pozycji i o podanym rozmiarze. Element jest zakotwiczony centralnie. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_kitchen_order_board_aec2effb93b4640df715d980af1174219}{Create\+Image}} (Transform parent, string object\+Name, Vector2 anchored\+Position, Vector2 size, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy element obrazu UI i zwraca jego komponent Image. Podobna do \doxylink{class_kitchen_order_board_ac9a3a3336e51b1239269a64ee60a7f0b}{Create\+Panel}, ale zwraca referencję do komponentu Image. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_order_board_a3299641a20465e5b0cd74758564bd859}{Create\+Text}} (Transform parent, string object\+Name, Font font, int font\+Size, Font\+Style font\+Style, Text\+Anchor alignment, Vector2 anchored\+Position, Vector2 size, Color color)
+\begin{DoxyCompactList}\small\item\em Tworzy element tekstowy UI z określoną czcionką, rozmiarem, stylem, wyrównaniem, pozycją i kolorem. Zakotwiczony w lewym górnym rogu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Text \mbox{\hyperlink{class_kitchen_order_board_a7f10f7aefb9e34e27c01b86973b16fd7}{header\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst nagłówka tablicy zamówień (wyświetla "{}\+LIVE ORDERS"{}). \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_order_board_a578f17fc6bfe8958ace320492b2d9cb7}{meta\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst metadanych zamówienia zawierający nazwę klienta, nazwę dania, pozostały czas i kwotę nagrody. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_order_board_a5da66118ac98150d3503aea0cef7556f}{ingredients\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst listy wymaganych składników z oznaczeniami wypunktowanymi. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_kitchen_order_board_abb7d31275d6418e1b089e20e27b15161}{footer\+Text}}
+\begin{DoxyCompactList}\small\item\em Tekst stopki wyświetlający statystyki sesji (liczba ukończonych i nieudanych zamówień). \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_kitchen_order_board_aee48353e4f9fe2dd19199a06143077aa}{urgency\+Bar}}
+\begin{DoxyCompactList}\small\item\em Obraz paska pilności zamówienia, którego kolor zmienia się w zależności od proporcji pozostałego czasu do całkowitego. \end{DoxyCompactList}\item 
+Rect\+Transform \mbox{\hyperlink{class_kitchen_order_board_a110afd7d14ab36192ac2624f08186c4a}{urgency\+Bar\+Rect}}
+\begin{DoxyCompactList}\small\item\em Rect\+Transform paska pilności, używany do dynamicznej zmiany szerokości w zależności od postępu czasu zamówienia. \end{DoxyCompactList}\item 
+Shader \mbox{\hyperlink{class_kitchen_order_board_a31c5315b838d5d8a6a87cb7c7238d35d}{cached\+Lit\+Shader}}
+\begin{DoxyCompactList}\small\item\em Buforowany shader używany do tworzenia materiałów bloków 3D monitora. Preferuje URP Lit, awaryjnie Standard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa odpowiedzialna za tworzenie i aktualizowanie tablicy zamówień wyświetlanej na monitorze 3D w scenie kuchni. 
+
+Monitor składa się z fizycznych bloków 3D (rama, ekran, dioda statusu) oraz Canvas w trybie World Space wyświetlającego informacje o zamówieniu. Tablica jest aktualizowana co klatkę i wyświetla\+: nagłówek "{}\+LIVE ORDERS"{}, dane klienta i zamówienia, listę wymaganych składników, statystyki sesji oraz animowany pasek pilności zmieniający kolor w zależności od pozostałego czasu. Inicjalizacja odbywa się przez wywołanie metody \doxylink{class_kitchen_order_board_a5354fc83e2695a27636459931d348e0d}{Initialize}. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_kitchen_order_board_a9869cb767ae93462a5825c17b7a561fe}\index{KitchenOrderBoard@{KitchenOrderBoard}!CreateBlock@{CreateBlock}}
+\index{CreateBlock@{CreateBlock}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{CreateBlock()}{CreateBlock()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_a9869cb767ae93462a5825c17b7a561fe} 
+void Kitchen\+Order\+Board.\+Create\+Block (\begin{DoxyParamCaption}\item[{string}]{object\+Name}{, }\item[{Vector3}]{local\+Position}{, }\item[{Vector3}]{local\+Scale}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy blok 3D (sześcian) jako element fizyczny monitora. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em object\+Name} & Nazwa obiektu bloku.\\
+\hline
+{\em local\+Position} & Lokalna pozycja bloku względem rodzica.\\
+\hline
+{\em local\+Scale} & Lokalna skala bloku (wymiary).\\
+\hline
+{\em color} & Kolor materiału bloku.\\
+\hline
+\end{DoxyParams}
+
+
+Używa buforowanego shadera URP Lit (lub Standard jako awaryjnego). Tworzony jest nowy materiał z podanym kolorem. \Hypertarget{class_kitchen_order_board_aec2effb93b4640df715d980af1174219}\index{KitchenOrderBoard@{KitchenOrderBoard}!CreateImage@{CreateImage}}
+\index{CreateImage@{CreateImage}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{CreateImage()}{CreateImage()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_aec2effb93b4640df715d980af1174219} 
+Image Kitchen\+Order\+Board.\+Create\+Image (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{Vector2}]{anchored\+Position}{, }\item[{Vector2}]{size}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy element obrazu UI i zwraca jego komponent Image. Podobna do \doxylink{class_kitchen_order_board_ac9a3a3336e51b1239269a64ee60a7f0b}{Create\+Panel}, ale zwraca referencję do komponentu Image. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transformata rodzica.\\
+\hline
+{\em object\+Name} & Nazwa obiektu obrazu.\\
+\hline
+{\em anchored\+Position} & Pozycja zakotwiczona obrazu.\\
+\hline
+{\em size} & Rozmiar obrazu w pikselach.\\
+\hline
+{\em color} & Kolor obrazu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Komponent Image utworzonego elementu.
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_order_board_adb0076c76307fca396e780a02e96ab52}\index{KitchenOrderBoard@{KitchenOrderBoard}!CreateMonitorVisuals@{CreateMonitorVisuals}}
+\index{CreateMonitorVisuals@{CreateMonitorVisuals}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{CreateMonitorVisuals()}{CreateMonitorVisuals()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_adb0076c76307fca396e780a02e96ab52} 
+void Kitchen\+Order\+Board.\+Create\+Monitor\+Visuals (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy kompletną wizualizację monitora\+: bloki 3D (obudowa, rama, ekran, krawędź, dioda) oraz Canvas World Space z elementami tekstowymi i paskiem pilności. 
+
+Monitor ma wymiary około 3.\+5 x 2.\+05 jednostek i składa się z wielu warstw\+:
+\begin{DoxyItemize}
+\item Monitor\+Back\+: główna obudowa w ciemnym kolorze,
+\item Monitor\+Frame\+: rama w nieco jaśniejszym odcieniu,
+\item Screen\+Glow\+: powierzchnia ekranu z ciemnym odcieniem niebieskiego,
+\item Monitor\+Shadow\+Lip\+: dolna krawędź cienia,
+\item Status\+Light\+: zielona dioda statusu w prawym dolnym rogu.
+\end{DoxyItemize}
+
+Canvas jest skalowany do 0.\+00245 i obrócony o 180° wokół osi Y, aby tekst był widoczny od przodu monitora. \Hypertarget{class_kitchen_order_board_ac9a3a3336e51b1239269a64ee60a7f0b}\index{KitchenOrderBoard@{KitchenOrderBoard}!CreatePanel@{CreatePanel}}
+\index{CreatePanel@{CreatePanel}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{CreatePanel()}{CreatePanel()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_ac9a3a3336e51b1239269a64ee60a7f0b} 
+void Kitchen\+Order\+Board.\+Create\+Panel (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{Vector2}]{anchored\+Position}{, }\item[{Vector2}]{size}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy panel UI z obrazem tła na podanej pozycji i o podanym rozmiarze. Element jest zakotwiczony centralnie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transformata rodzica.\\
+\hline
+{\em object\+Name} & Nazwa obiektu panelu.\\
+\hline
+{\em anchored\+Position} & Pozycja zakotwiczona panelu.\\
+\hline
+{\em size} & Rozmiar panelu w pikselach.\\
+\hline
+{\em color} & Kolor tła panelu.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_order_board_a3299641a20465e5b0cd74758564bd859}\index{KitchenOrderBoard@{KitchenOrderBoard}!CreateText@{CreateText}}
+\index{CreateText@{CreateText}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{CreateText()}{CreateText()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_a3299641a20465e5b0cd74758564bd859} 
+Text Kitchen\+Order\+Board.\+Create\+Text (\begin{DoxyParamCaption}\item[{Transform}]{parent}{, }\item[{string}]{object\+Name}{, }\item[{Font}]{font}{, }\item[{int}]{font\+Size}{, }\item[{Font\+Style}]{font\+Style}{, }\item[{Text\+Anchor}]{alignment}{, }\item[{Vector2}]{anchored\+Position}{, }\item[{Vector2}]{size}{, }\item[{Color}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tworzy element tekstowy UI z określoną czcionką, rozmiarem, stylem, wyrównaniem, pozycją i kolorem. Zakotwiczony w lewym górnym rogu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em parent} & Transformata rodzica.\\
+\hline
+{\em object\+Name} & Nazwa obiektu tekstowego.\\
+\hline
+{\em font} & Czcionka do użycia.\\
+\hline
+{\em font\+Size} & Rozmiar czcionki w pikselach.\\
+\hline
+{\em font\+Style} & Styl czcionki (normalny, pogrubiony itp.).\\
+\hline
+{\em alignment} & Wyrównanie tekstu.\\
+\hline
+{\em anchored\+Position} & Pozycja zakotwiczona elementu.\\
+\hline
+{\em size} & Rozmiar elementu tekstowego.\\
+\hline
+{\em color} & Kolor tekstu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Komponent Text utworzonego elementu tekstowego.
+\end{DoxyReturn}
+
+
+Tekst jest konfigurowany z zawijaniem poziomym i przepełnieniem pionowym, co pozwala na wyświetlanie wieloliniowych treści. \Hypertarget{class_kitchen_order_board_a3704d0e6bea3f15a7dc508763755d771}\index{KitchenOrderBoard@{KitchenOrderBoard}!GetUrgencyColor@{GetUrgencyColor}}
+\index{GetUrgencyColor@{GetUrgencyColor}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{GetUrgencyColor()}{GetUrgencyColor()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_a3704d0e6bea3f15a7dc508763755d771} 
+Color Kitchen\+Order\+Board.\+Get\+Urgency\+Color (\begin{DoxyParamCaption}\item[{float}]{remaining\+Time}{, }\item[{float}]{full\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Oblicza kolor paska pilności na podstawie pozostałego czasu zamówienia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em remaining\+Time} & Pozostały czas zamówienia w sekundach.\\
+\hline
+{\em full\+Time} & Całkowity czas przeznaczony na zamówienie w sekundach.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Kolor paska pilności\+:
+\begin{DoxyItemize}
+\item Zielony gdy pozostało ponad 50\% czasu,
+\item Żółty gdy pozostało 25-\/50\% czasu,
+\item Czerwony gdy pozostało mniej niż 25\% czasu. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\Hypertarget{class_kitchen_order_board_a5354fc83e2695a27636459931d348e0d}\index{KitchenOrderBoard@{KitchenOrderBoard}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_a5354fc83e2695a27636459931d348e0d} 
+void Kitchen\+Order\+Board.\+Initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inicjalizuje tablicę zamówień, tworząc wizualne elementy monitora (bloki 3D i Canvas z tekstami). 
+
+\Hypertarget{class_kitchen_order_board_ae10406045fcd05d30955c7f53afd1b56}\index{KitchenOrderBoard@{KitchenOrderBoard}!RefreshBoard@{RefreshBoard}}
+\index{RefreshBoard@{RefreshBoard}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{RefreshBoard()}{RefreshBoard()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_ae10406045fcd05d30955c7f53afd1b56} 
+void Kitchen\+Order\+Board.\+Refresh\+Board (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Odświeża zawartość tablicy zamówień danymi z \doxylink{class_order_manager}{Order\+Manager}. Aktualizuje nagłówek, metadane zamówienia, listę składników, stopkę ze statystykami oraz pasek pilności. 
+
+Gdy nie ma aktywnego zamówienia, wyświetla komunikat "{}\+No active order"{} i ustawia pasek pilności na pełny (zielony). Gdy zamówienie jest aktywne, wyświetla szczegółowe informacje o kliencie, daniu, nagrodzie i wymaganych składnikach. \Hypertarget{class_kitchen_order_board_a69b468f4a43f425b9b8f4aab698e0be7}\index{KitchenOrderBoard@{KitchenOrderBoard}!SetUrgencyProgress@{SetUrgencyProgress}}
+\index{SetUrgencyProgress@{SetUrgencyProgress}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{SetUrgencyProgress()}{SetUrgencyProgress()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_a69b468f4a43f425b9b8f4aab698e0be7} 
+void Kitchen\+Order\+Board.\+Set\+Urgency\+Progress (\begin{DoxyParamCaption}\item[{float}]{ratio}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ustawia postęp paska pilności poprzez zmianę jego szerokości. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em ratio} & Proporcja postępu w zakresie 0-\/1, gdzie 1 oznacza pełny pasek.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kitchen_order_board_ac7b04e891f10c5f8c68b9e9e6905337e}\index{KitchenOrderBoard@{KitchenOrderBoard}!Update@{Update}}
+\index{Update@{Update}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_ac7b04e891f10c5f8c68b9e9e6905337e} 
+void Kitchen\+Order\+Board.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda Unity wywoływana co klatkę. Odświeża zawartość tablicy zamówień aktualnymi danymi. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_kitchen_order_board_a31c5315b838d5d8a6a87cb7c7238d35d}\index{KitchenOrderBoard@{KitchenOrderBoard}!cachedLitShader@{cachedLitShader}}
+\index{cachedLitShader@{cachedLitShader}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{cachedLitShader}{cachedLitShader}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_a31c5315b838d5d8a6a87cb7c7238d35d} 
+Shader Kitchen\+Order\+Board.\+cached\+Lit\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buforowany shader używany do tworzenia materiałów bloków 3D monitora. Preferuje URP Lit, awaryjnie Standard. 
+
+\Hypertarget{class_kitchen_order_board_abb7d31275d6418e1b089e20e27b15161}\index{KitchenOrderBoard@{KitchenOrderBoard}!footerText@{footerText}}
+\index{footerText@{footerText}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{footerText}{footerText}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_abb7d31275d6418e1b089e20e27b15161} 
+Text Kitchen\+Order\+Board.\+footer\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst stopki wyświetlający statystyki sesji (liczba ukończonych i nieudanych zamówień). 
+
+\Hypertarget{class_kitchen_order_board_a7f10f7aefb9e34e27c01b86973b16fd7}\index{KitchenOrderBoard@{KitchenOrderBoard}!headerText@{headerText}}
+\index{headerText@{headerText}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{headerText}{headerText}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_a7f10f7aefb9e34e27c01b86973b16fd7} 
+Text Kitchen\+Order\+Board.\+header\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst nagłówka tablicy zamówień (wyświetla "{}\+LIVE ORDERS"{}). 
+
+\Hypertarget{class_kitchen_order_board_a5da66118ac98150d3503aea0cef7556f}\index{KitchenOrderBoard@{KitchenOrderBoard}!ingredientsText@{ingredientsText}}
+\index{ingredientsText@{ingredientsText}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{ingredientsText}{ingredientsText}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_a5da66118ac98150d3503aea0cef7556f} 
+Text Kitchen\+Order\+Board.\+ingredients\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst listy wymaganych składników z oznaczeniami wypunktowanymi. 
+
+\Hypertarget{class_kitchen_order_board_a578f17fc6bfe8958ace320492b2d9cb7}\index{KitchenOrderBoard@{KitchenOrderBoard}!metaText@{metaText}}
+\index{metaText@{metaText}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{metaText}{metaText}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_a578f17fc6bfe8958ace320492b2d9cb7} 
+Text Kitchen\+Order\+Board.\+meta\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tekst metadanych zamówienia zawierający nazwę klienta, nazwę dania, pozostały czas i kwotę nagrody. 
+
+\Hypertarget{class_kitchen_order_board_aee48353e4f9fe2dd19199a06143077aa}\index{KitchenOrderBoard@{KitchenOrderBoard}!urgencyBar@{urgencyBar}}
+\index{urgencyBar@{urgencyBar}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{urgencyBar}{urgencyBar}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_aee48353e4f9fe2dd19199a06143077aa} 
+Image Kitchen\+Order\+Board.\+urgency\+Bar\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obraz paska pilności zamówienia, którego kolor zmienia się w zależności od proporcji pozostałego czasu do całkowitego. 
+
+\Hypertarget{class_kitchen_order_board_a110afd7d14ab36192ac2624f08186c4a}\index{KitchenOrderBoard@{KitchenOrderBoard}!urgencyBarRect@{urgencyBarRect}}
+\index{urgencyBarRect@{urgencyBarRect}!KitchenOrderBoard@{KitchenOrderBoard}}
+\doxysubsubsection{\texorpdfstring{urgencyBarRect}{urgencyBarRect}}
+{\footnotesize\ttfamily \label{class_kitchen_order_board_a110afd7d14ab36192ac2624f08186c4a} 
+Rect\+Transform Kitchen\+Order\+Board.\+urgency\+Bar\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Rect\+Transform paska pilności, używany do dynamicznej zmiany szerokości w zależności od postępu czasu zamówienia. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_kitchen_order_board_8cs}{Kitchen\+Order\+Board.\+cs}}\end{DoxyCompactItemize}

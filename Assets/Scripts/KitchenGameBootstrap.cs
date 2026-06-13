@@ -1,3 +1,11 @@
+/// \file KitchenGameBootstrap.cs
+/// \brief Główny plik bootstrapowy gry kuchennej — odpowiada za inicjalizację i budowanie całego środowiska kuchni w czasie wykonania.
+/// \details Zawiera klasę KitchenGameBootstrap, która jest punktem wejścia do procedurowego generowania
+/// sceny kuchni kebabowej. Plik obejmuje również klasy pomocnicze: BillboardLabel do etykiet śledzących kamerę,
+/// DeliveryTrayDisplay do wyświetlania serwowanego kebaba na tacy oraz CustomerAnimator do animacji klienta.
+/// Klasy te wspólnie odpowiadają za tworzenie otoczenia 3D, stacji kuchennych, oświetlenia,
+/// efektów wizualnych oraz konfigurację sieciową i menedżerów gry.
+
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -5,23 +13,107 @@ using UnityEngine.Playables;
 using UnityEngine.Animations;
 using System.Linq;
 
+/// <summary>
+/// Główna klasa bootstrapowa gry kuchennej.
+/// Odpowiada za proceduralne generowanie całej sceny kuchni kebabowej w czasie wykonania,
+/// włączając w to środowisko (podłoga, ściany, sufit), stacje kuchenne, oświetlenie,
+/// modele 3D, konfigurację sieciową oraz inicjalizację wszystkich menedżerów gry.
+/// </summary>
+/// <remarks>
+/// Klasa automatycznie uruchamia się po załadowaniu sceny dzięki atrybutowi
+/// <see cref="RuntimeInitializeOnLoadMethodAttribute"/>. Jeśli instancja bootstrapa
+/// nie istnieje w scenie, zostanie utworzona automatycznie. Wszystkie elementy kuchni
+/// są budowane proceduralnie z prymitywów oraz importowanych modeli 3D.
+/// </remarks>
 public class KitchenGameBootstrap : MonoBehaviour
 {
+    /// <summary>
+    /// Numer warstwy (layer) przypisywany obiektom interaktywnym w kuchni.
+    /// Służy do filtrowania raycastów przy interakcji gracza ze stacjami.
+    /// </summary>
     private const int InteractableLayer = 6;
+
+    /// <summary>
+    /// Licznik indeksów stacji kuchennych, inkrementowany przy tworzeniu każdej nowej stacji.
+    /// Zapewnia unikalny identyfikator sieciowy dla każdej stacji.
+    /// </summary>
     private int stationIndexCounter = 0;
+
+    /// <summary>
+    /// Ścieżka do katalogu z modelami 3D w folderze Resources.
+    /// Używana przy ładowaniu prefabrykatów modeli za pomocą <see cref="Resources.Load"/>.
+    /// </summary>
     private const string ModelPath = "Models/";
+
+    /// <summary>
+    /// Buforowany shader Lit, aby uniknąć wielokrotnego wyszukiwania go w każdym wywołaniu.
+    /// </summary>
     private Shader cachedLitShader;
+
+    /// <summary>
+    /// Wysokość oczu gracza nad podłogą w metrach.
+    /// Używana do pozycjonowania kamery i punktów patrzenia.
+    /// </summary>
     private const float PlayerEyeHeight = 1.75f;
+
+    /// <summary>
+    /// Lokalna pozycja Y blatu roboczego stacji kuchennych.
+    /// Określa wysokość, na której umieszczane są elementy wizualne na stacjach.
+    /// </summary>
     private const float WorktopLocalY = 0.34f;
+
+    /// <summary>
+    /// Bazowy rozmiar wizualny modeli stołów przygotowawczych.
+    /// Stosowany jako parametr targetMaxSize przy skalowaniu modeli stołów.
+    /// </summary>
     private const float TableVisualSize = 2.35f;
+
+    /// <summary>
+    /// Mnożnik skali głębokości stołów przygotowawczych.
+    /// Stosowany do rozciągnięcia modelu stołu wzdłuż osi Z.
+    /// </summary>
     private const float TableDepthScale = 1.6f;
+
+    /// <summary>
+    /// Pozycja X stołu przy wejściu (stół z kasą fiskalną i tacą do wydawania).
+    /// </summary>
     private const float EntranceTableX = 2.75f;
+
+    /// <summary>
+    /// Pozycja Z stołu przy wejściu (stół z kasą fiskalną i tacą do wydawania).
+    /// </summary>
     private const float EntranceTableZ = -4.58f;
+
+    /// <summary>
+    /// Wysokość Y blatu stołu przy wejściu.
+    /// Określa pozycję pionową, na której umieszczane są obiekty na stole wejściowym.
+    /// </summary>
     private const float EntranceTableTopY = 1.20f;
+
+    /// <summary>
+    /// Domyślna pozycja spawnu gracza na scenie.
+    /// </summary>
     private static readonly Vector3 PlayerSpawnPosition = new Vector3(0f, 0f, -1.9f);
+
+    /// <summary>
+    /// Pozycja klienta oczekującego na zamówienie.
+    /// </summary>
     private static readonly Vector3 CustomerPosition = new Vector3(0f, 0f, -4.8f);
+
+    /// <summary>
+    /// Punkt, na który klient patrzy — używany do orientacji modelu klienta.
+    /// </summary>
     private static readonly Vector3 CustomerLookTarget = new Vector3(0f, 1.55f, -4.8f);
 
+    /// <summary>
+    /// Statyczna metoda wywoływana automatycznie po załadowaniu sceny.
+    /// Tworzy obiekt bootstrapowy, jeśli jeszcze nie istnieje na scenie.
+    /// </summary>
+    /// <remarks>
+    /// Oznaczona atrybutem <see cref="RuntimeInitializeOnLoadMethodAttribute"/> z trybem
+    /// <see cref="RuntimeInitializeLoadType.AfterSceneLoad"/>, co zapewnia wywołanie
+    /// po pełnym załadowaniu sceny. Zapobiega duplikacji sprawdzając obecność istniejącej instancji.
+    /// </remarks>
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void BootstrapScene()
     {
@@ -34,6 +126,14 @@ public class KitchenGameBootstrap : MonoBehaviour
         bootstrapper.AddComponent<KitchenGameBootstrap>();
     }
 
+    /// <summary>
+    /// Pobiera buforowany shader URP Lit, a w razie jego braku — shader Standard.
+    /// </summary>
+    /// <returns>Shader Lit z Universal Render Pipeline lub Standard jako fallback.</returns>
+    /// <remarks>
+    /// Wynik jest buforowany w polu <see cref="cachedLitShader"/>, aby uniknąć
+    /// kosztownego wyszukiwania shadera przy każdym wywołaniu.
+    /// </remarks>
     private Shader GetLitShader()
     {
         if (cachedLitShader != null) return cachedLitShader;
@@ -42,6 +142,23 @@ public class KitchenGameBootstrap : MonoBehaviour
         return cachedLitShader;
     }
 
+    /// <summary>
+    /// Główna metoda inicjalizacyjna wywoływana przez Unity w momencie startu komponentu.
+    /// Sekwencyjnie uruchamia wszystkie etapy budowania sceny kuchni.
+    /// </summary>
+    /// <remarks>
+    /// Każdy etap inicjalizacji jest otoczony blokiem try-catch, aby awaria jednego
+    /// podsystemu nie blokowała inicjalizacji pozostałych. W przypadku braku aktywnej
+    /// sesji sieciowej, tworzy również system zdarzeń UI i menu główne.
+    /// Kolejność inicjalizacji:
+    /// 1. Konfiguracja sieci (NetworkSetup)
+    /// 2. Menedżerowie gry (ekonomia, zamówienia, zapis, ustawienia, sklep, VFX, relay)
+    /// 3. Budowa środowiska 3D (podłoga, ściany, sufit, stoły)
+    /// 4. Budowa stacji kuchennych (grill, składniki, deska, montaż, wydanie)
+    /// 5. Tablica zamówień
+    /// 6. Konfiguracja oświetlenia
+    /// 7. Efekty wizualne i dodatkowe systemy UI
+    /// </remarks>
     private void Start()
     {
         try { EnsureNetworkSetup(); } catch (System.Exception e) { Debug.LogError($"[Bootstrap] NetworkSetup failed: {e}"); }
@@ -77,6 +194,10 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Zapewnia istnienie obiektu konfiguracji sieciowej na scenie.
+    /// Tworzy komponent <see cref="NetworkSetup"/> oraz <see cref="LobbyUI"/>, jeśli nie istnieją.
+    /// </summary>
     private void EnsureNetworkSetup()
     {
         if (FindFirstObjectByType<NetworkSetup>() != null)
@@ -94,6 +215,23 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Zapewnia istnienie wszystkich menedżerów gry na scenie.
+    /// Tworzy obiekt "GameManager" i dołącza do niego brakujące komponenty menedżerów.
+    /// </summary>
+    /// <remarks>
+    /// Menedżerowie inicjalizowani przez tę metodę:
+    /// <list type="bullet">
+    /// <item><description><see cref="EconomyManager"/> — system ekonomii i salda gracza</description></item>
+    /// <item><description><see cref="OrderManager"/> — system zamówień i katalogu składników</description></item>
+    /// <item><description><see cref="SaveManager"/> — system zapisu i wczytywania stanu gry</description></item>
+    /// <item><description><see cref="GameSettingsManager"/> — zarządzanie ustawieniami gry</description></item>
+    /// <item><description><see cref="ShopManager"/> — system sklepu z ulepszeniami</description></item>
+    /// <item><description><see cref="VFXManager"/> — zarządzanie efektami wizualnymi</description></item>
+    /// <item><description><see cref="RelayManager"/> — menedżer połączeń relay dla gry wieloosobowej</description></item>
+    /// </list>
+    /// Na końcu wywołuje inicjalizację katalogu zamówień.
+    /// </remarks>
     private void EnsureManagers()
     {
         GameObject managerObject = GameObject.Find("GameManager");
@@ -141,6 +279,21 @@ public class KitchenGameBootstrap : MonoBehaviour
         orderManager.InitializeCatalogIfNeeded();
     }
 
+    /// <summary>
+    /// Zapewnia istnienie efektów wizualnych, dźwiękowych i dodatkowych komponentów UI na scenie.
+    /// </summary>
+    /// <remarks>
+    /// Tworzy następujące komponenty, jeśli jeszcze nie istnieją:
+    /// <list type="bullet">
+    /// <item><description><see cref="PostProcessSetup"/> — konfiguracja post-processingu</description></item>
+    /// <item><description><see cref="AmbientParticles"/> — cząsteczki otoczenia (pył, para)</description></item>
+    /// <item><description><see cref="AudioManager"/> — zarządzanie dźwiękiem i muzyką</description></item>
+    /// <item><description><see cref="ItemAnimator"/> — animacja przedmiotów w kuchni</description></item>
+    /// <item><description><see cref="PauseMenuUI"/> — interfejs menu pauzy</description></item>
+    /// <item><description><see cref="LoadingScreen"/> — ekran ładowania</description></item>
+    /// <item><description><see cref="AchievementPopup"/> — wyskakujące powiadomienia o osiągnięciach</description></item>
+    /// </list>
+    /// </remarks>
     private void EnsureEffects()
     {
         GameObject managerObject = GameObject.Find("GameManager");
@@ -185,6 +338,28 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Buduje wszystkie stacje kuchenne, jeśli jeszcze nie istnieją na scenie.
+    /// Tworzy pełne wyposażenie kuchni kebabowej: grill, pojemniki na składniki,
+    /// deskę do krojenia, stanowisko montażu oraz punkt wydawania.
+    /// </summary>
+    /// <remarks>
+    /// Stacje kuchenne tworzone w kolejności:
+    /// <list type="bullet">
+    /// <item><description>Grill — grillowanie mięsa (z maszyną döner)</description></item>
+    /// <item><description>Mięso — źródło składnika mięsnego (powiązane z grillem)</description></item>
+    /// <item><description>Pomidor — źródło pomidorów</description></item>
+    /// <item><description>Cebula — źródło cebuli</description></item>
+    /// <item><description>Sałata — źródło sałaty</description></item>
+    /// <item><description>Sos — źródło sosu czosnkowego</description></item>
+    /// <item><description>Ławasz — źródło chlebka ławasz</description></item>
+    /// <item><description>Deska — stacja do krojenia składników</description></item>
+    /// <item><description>Zwijanie — stanowisko montażu/zawijania kebaba</description></item>
+    /// <item><description>Wydanie — punkt wydawania gotowego zamówienia klientowi</description></item>
+    /// </list>
+    /// Po utworzeniu stacji, grill jest łączony z tacą na mięso, a na końcu
+    /// tworzony jest model klienta przy okienku.
+    /// </remarks>
     private void BuildKitchenIfNeeded()
     {
         if (FindFirstObjectByType<KitchenStation>() != null)
@@ -224,6 +399,26 @@ public class KitchenGameBootstrap : MonoBehaviour
         CreateCustomer(parent, CustomerPosition);
     }
 
+    /// <summary>
+    /// Buduje środowisko 3D kuchni, jeśli jeszcze nie istnieje na scenie.
+    /// Tworzy podłogę, ściany, sufit, panele ścienne, listwy sufitowe,
+    /// blaty robocze oraz importowane detale wizualne (modele 3D).
+    /// </summary>
+    /// <remarks>
+    /// Metoda sprawdza obecność obiektu "RuntimeEnvironment" — jeśli istnieje,
+    /// budowa środowiska jest pomijana. Środowisko składa się z:
+    /// <list type="bullet">
+    /// <item><description>Podłoga bazowa i wkładka podłogi kuchennej</description></item>
+    /// <item><description>Sufit</description></item>
+    /// <item><description>Cztery ściany (tylna, lewa, prawa, przednia)</description></item>
+    /// <item><description>Panele ścienne dekoracyjne</description></item>
+    /// <item><description>Listwy sufitowe</description></item>
+    /// <item><description>Blaty/stoły robocze wzdłuż lewej ściany i tylnej ściany</description></item>
+    /// <item><description>Narożne blokery kolizji (prawy górny róg)</description></item>
+    /// <item><description>Stół użytkowy przy wejściu</description></item>
+    /// <item><description>Importowane detale wizualne (lampy, półki, modele stołów, kasa fiskalna itp.)</description></item>
+    /// </list>
+    /// </remarks>
     private void BuildEnvironmentIfNeeded()
     {
         if (GameObject.Find("RuntimeEnvironment") != null)
@@ -260,6 +455,10 @@ public class KitchenGameBootstrap : MonoBehaviour
         CreateImportedEnvironmentDetails(environmentRoot);
     }
 
+    /// <summary>
+    /// Buduje tablicę zamówień kuchennych, jeśli jeszcze nie istnieje na scenie.
+    /// Tablica jest umieszczana na tylnej ścianie kuchni i wyświetla aktualne zamówienia.
+    /// </summary>
     private void BuildOrderBoardIfNeeded()
     {
         if (FindFirstObjectByType<KitchenOrderBoard>() != null)
@@ -275,6 +474,19 @@ public class KitchenGameBootstrap : MonoBehaviour
         board.Initialize();
     }
 
+    /// <summary>
+    /// Konfiguruje oświetlenie sceny kuchni — światło otoczenia, kierunkowe i reflektory punktowe.
+    /// </summary>
+    /// <remarks>
+    /// Ustawia tryb oświetlenia otoczenia na Trilight (trzy kolory: niebo, równik, podłoże).
+    /// Tworzy lub konfiguruje istniejące światło kierunkowe z miękkimi cieniami.
+    /// Dodaje trzy reflektory punktowe (spot light) z efektem migotania lampy:
+    /// <list type="bullet">
+    /// <item><description>PrepTaskLightLeft — nad lewym stanowiskiem przygotowawczym</description></item>
+    /// <item><description>PrepTaskLightRight — nad prawym stanowiskiem przygotowawczym</description></item>
+    /// <item><description>AssemblyTaskLight — nad stanowiskiem montażu kebaba</description></item>
+    /// </list>
+    /// </remarks>
     private void ConfigureLighting()
     {
         RenderSettings.ambientMode = AmbientMode.Trilight;
@@ -339,6 +551,29 @@ public class KitchenGameBootstrap : MonoBehaviour
             82f);
     }
 
+    /// <summary>
+    /// Tworzy pojedynczą stację kuchenną z prymitywu, konfiguruje ją i dodaje
+    /// znacznik wizualny oraz komponenty sieciowe.
+    /// </summary>
+    /// <param name="parent">Transform rodzica, pod którym stacja zostanie umieszczona.</param>
+    /// <param name="stationName">Nazwa stacji (np. "Grill", "Pomidor").</param>
+    /// <param name="stationType">Typ stacji kuchennej definiujący jej zachowanie.</param>
+    /// <param name="position">Pozycja stacji w przestrzeni świata.</param>
+    /// <param name="color">Kolor bazowy materiału stacji.</param>
+    /// <param name="sourceIngredient">Dane składnika źródłowego (null dla stacji niebędących źródłem składników).</param>
+    /// <param name="processingDuration">Czas przetwarzania w sekundach (0 dla natychmiastowych operacji).</param>
+    /// <returns>Utworzony komponent <see cref="KitchenStation"/>.</returns>
+    /// <remarks>
+    /// Stacja składa się z:
+    /// <list type="bullet">
+    /// <item><description>Sześcianu bazowego z koliderem i materiałem</description></item>
+    /// <item><description>Znacznika sferycznego nad stacją (wizualny wskaźnik)</description></item>
+    /// <item><description>Komponentu <see cref="KitchenStation"/> z konfiguracją logiki</description></item>
+    /// <item><description>Komponentu <see cref="NetworkKitchenStation"/> do synchronizacji sieciowej</description></item>
+    /// <item><description>Importowanych detali wizualnych specyficznych dla typu stacji</description></item>
+    /// </list>
+    /// Bazowe renderery prymitywów są ukrywane na rzecz importowanych modeli 3D.
+    /// </remarks>
     private KitchenStation CreateStation(
         Transform parent,
         string stationName,
@@ -389,6 +624,13 @@ public class KitchenGameBootstrap : MonoBehaviour
         return station;
     }
 
+    /// <summary>
+    /// Tworzy model klienta oczekującego przy okienku wydawania.
+    /// Próbuje załadować importowany model 3D klienta, a w razie niepowodzenia
+    /// tworzy zastępczą reprezentację z prymitywów (kapsuła + kula).
+    /// </summary>
+    /// <param name="parent">Transform rodzica dla obiektu klienta.</param>
+    /// <param name="position">Pozycja klienta w przestrzeni świata.</param>
     private void CreateCustomer(Transform parent, Vector3 position)
     {
         Transform customerRoot = new GameObject("Customer").transform;
@@ -407,6 +649,15 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tworzy blat roboczy (stół) składający się z bloku bazowego i bloku wierzchniego.
+    /// </summary>
+    /// <param name="parent">Transform rodzica dla blatu.</param>
+    /// <param name="objectName">Nazwa obiektu blatu.</param>
+    /// <param name="position">Pozycja lokalna blatu.</param>
+    /// <param name="scale">Skala bazowego bloku blatu.</param>
+    /// <param name="visible">Czy blat ma być widoczny. Jeśli false, renderery są wyłączone,
+    /// a blok bazowy jest powiększony do roli niewidocznego blokera kolizji.</param>
     private void CreateCounter(Transform parent, string objectName, Vector3 position, Vector3 scale, bool visible = true)
     {
         Transform baseBlock = CreateBlock(parent, objectName, PrimitiveType.Cube, position, scale, new Color(0.36f, 0.31f, 0.27f));
@@ -421,6 +672,11 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tworzy grupę niewidocznych koliderów blokujących narożnik prawego górnego rogu kuchni.
+    /// Zapobiega przechodzeniu gracza przez narożne blaty.
+    /// </summary>
+    /// <param name="parent">Transform rodzica dla grupy blokerów.</param>
     private void CreateCornerCounterBlockers(Transform parent)
     {
         Transform root = new GameObject("RightCornerCounterBlockers").transform;
@@ -432,6 +688,13 @@ public class KitchenGameBootstrap : MonoBehaviour
         CreateInvisibleCollider(root, "InnerCorner", new Vector3(5.45f, 0.62f, 4.75f), new Vector3(1.5f, 1.18f, 1.5f));
     }
 
+    /// <summary>
+    /// Tworzy niewidoczny obiekt z koliderem BoxCollider — używany jako bloker kolizji.
+    /// </summary>
+    /// <param name="parent">Transform rodzica dla kolidera.</param>
+    /// <param name="objectName">Nazwa obiektu kolidera.</param>
+    /// <param name="localPosition">Lokalna pozycja kolidera.</param>
+    /// <param name="localScale">Rozmiar kolidera (ustawiany jako BoxCollider.size).</param>
     private void CreateInvisibleCollider(Transform parent, string objectName, Vector3 localPosition, Vector3 localScale)
     {
         GameObject colliderObject = new GameObject(objectName);
@@ -443,6 +706,12 @@ public class KitchenGameBootstrap : MonoBehaviour
         collider.size = localScale;
     }
 
+    /// <summary>
+    /// Wyszukuje istniejące na scenie światło kierunkowe (Directional Light).
+    /// </summary>
+    /// <returns>
+    /// Znalezione światło kierunkowe lub null, jeśli żadne nie istnieje na scenie.
+    /// </returns>
     private Light FindDirectionalLight()
     {
         Light[] lights = FindObjectsByType<Light>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
@@ -457,6 +726,21 @@ public class KitchenGameBootstrap : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Tworzy lub konfiguruje istniejący reflektor punktowy (spot light) z efektem migotania lampy.
+    /// </summary>
+    /// <param name="parent">Transform rodzica dla światła.</param>
+    /// <param name="lightName">Unikalna nazwa obiektu światła.</param>
+    /// <param name="localPosition">Lokalna pozycja światła względem rodzica.</param>
+    /// <param name="localRotation">Lokalna rotacja światła w stopniach Eulera.</param>
+    /// <param name="color">Kolor światła.</param>
+    /// <param name="intensity">Intensywność światła.</param>
+    /// <param name="range">Zasięg światła w jednostkach sceny.</param>
+    /// <param name="spotAngle">Kąt stożka świetlnego w stopniach.</param>
+    /// <remarks>
+    /// Jeśli światło o podanej nazwie już istnieje jako dziecko rodzica, jest rekonfigurowane.
+    /// Każde światło otrzymuje komponent <see cref="LampFlicker"/> symulujący delikatne migotanie lampy.
+    /// </remarks>
     private void CreateSpotLight(
         Transform parent,
         string lightName,
@@ -498,12 +782,27 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tworzy dekoracyjną lampę sufitową składającą się z cylindrycznego uchwytu i sferycznego klosza.
+    /// </summary>
+    /// <param name="parent">Transform rodzica dla lampy.</param>
+    /// <param name="position">Pozycja lampy w przestrzeni lokalnej rodzica.</param>
     private void CreateCeilingLamp(Transform parent, Vector3 position)
     {
         Transform lamp = CreateBlock(parent, "Lamp", PrimitiveType.Cylinder, position, new Vector3(0.2f, 0.15f, 0.2f), new Color(0.15f, 0.15f, 0.15f));
         CreateBlock(lamp, "LightCone", PrimitiveType.Sphere, new Vector3(0f, -0.45f, 0f), new Vector3(0.5f, 0.18f, 0.5f), new Color(1f, 0.93f, 0.68f));
     }
 
+    /// <summary>
+    /// Tworzy wszystkie importowane detale wizualne środowiska kuchni:
+    /// lampy, półki, stoły, narożny blat, stół użytkowy, kasę fiskalną i wystawę z tacą.
+    /// </summary>
+    /// <param name="parent">Transform rodzica dla detali środowiska.</param>
+    /// <remarks>
+    /// Lampy otrzymują komponent <see cref="LampEmissionPulse"/> do animacji emisji świetlnej.
+    /// Stoły przygotowawcze są skalowane z mnożnikiem głębokości <see cref="TableDepthScale"/>.
+    /// Na końcu tworzona jest wystawa z tacą do serwowania za pomocą <see cref="CreateDeliveryTrayDisplay"/>.
+    /// </remarks>
     private void CreateImportedEnvironmentDetails(Transform parent)
     {
         GameObject lampLeft = CreateImportedModel(parent, "lamp", "ImportedLampLeft", new Vector3(-2.5f, 4.45f, 2f), new Vector3(0f, 0f, 0f), 0.9f);
@@ -530,6 +829,16 @@ public class KitchenGameBootstrap : MonoBehaviour
         CreateDeliveryTrayDisplay(parent);
     }
 
+    /// <summary>
+    /// Tworzy wystawę z tacą do serwowania i modelem kebaba przy wejściu.
+    /// Kebab jest początkowo ukryty i pokazywany po wydaniu zamówienia.
+    /// </summary>
+    /// <param name="parent">Transform rodzica dla wystawy.</param>
+    /// <remarks>
+    /// Wystawa składa się z modelu tacy serwującej oraz modelu kebaba w zawinięciu.
+    /// Komponent <see cref="DeliveryTrayDisplay"/> zarządza widocznością kebaba
+    /// — jest on pokazywany na określony czas po każdym wydaniu zamówienia.
+    /// </remarks>
     private void CreateDeliveryTrayDisplay(Transform parent)
     {
         Transform root = new GameObject("EntranceServingTrayDisplay").transform;
@@ -543,6 +852,23 @@ public class KitchenGameBootstrap : MonoBehaviour
         display.Configure(kebab, 5f);
     }
 
+    /// <summary>
+    /// Tworzy importowane detale wizualne specyficzne dla danego typu stacji kuchennej.
+    /// </summary>
+    /// <param name="parent">Transform stacji, do którego dołączane są modele.</param>
+    /// <param name="stationName">Nazwa stacji.</param>
+    /// <param name="stationType">Typ stacji kuchennej determinujący, jakie modele zostaną utworzone.</param>
+    /// <param name="sourceIngredient">Dane składnika źródłowego (używane dla stacji typu IngredientSource).</param>
+    /// <remarks>
+    /// W zależności od typu stacji tworzone są odpowiednie modele 3D:
+    /// <list type="bullet">
+    /// <item><description>CuttingBoard — deska do krojenia z pokrojonymi warzywami i nożem</description></item>
+    /// <item><description>Grill — maszyna döner do grillowania mięsa</description></item>
+    /// <item><description>Delivery — brak dodatkowych modeli</description></item>
+    /// <item><description>Assembly — deska z chlebkiem ławasz do zawijania</description></item>
+    /// <item><description>IngredientSource — tacka ze składnikami lub dozownik sosu</description></item>
+    /// </list>
+    /// </remarks>
     private void CreateImportedStationDetails(
         Transform parent,
         string stationName,
@@ -589,6 +915,10 @@ public class KitchenGameBootstrap : MonoBehaviour
         CreateIngredientVisual(parent, sourceIngredient);
     }
 
+    /// <summary>
+    /// Tworzy detale wizualne stacji deski do krojenia — deskę, pokrojone warzywa i nóż szefa kuchni.
+    /// </summary>
+    /// <param name="parent">Transform stacji deski do krojenia.</param>
     private void CreateCuttingBoardDetails(Transform parent)
     {
         float boardY = WorktopLocalY + 0.1f;
@@ -600,6 +930,22 @@ public class KitchenGameBootstrap : MonoBehaviour
         CreateImportedModel(parent, "chef_knife", "KnifeVisual", new Vector3(0.36f, knifeY, 0.46f), new Vector3(90f, 63f, 0f), 0.5f);
     }
 
+    /// <summary>
+    /// Tworzy wizualne reprezentacje składników na stacji źródłowej —
+    /// kilka instancji modeli 3D rozmieszczonych na tackce z różnymi rotacjami.
+    /// </summary>
+    /// <param name="parent">Transform stacji źródłowej składników.</param>
+    /// <param name="sourceIngredient">Dane składnika określające, jaki model zostanie załadowany.</param>
+    /// <remarks>
+    /// Dla każdego typu składnika tworzone są inne modele:
+    /// <list type="bullet">
+    /// <item><description>Mięso — pojedynczy kawałek ugotowanego mięsa</description></item>
+    /// <item><description>Pomidor — 5 całych pomidorów w różnych pozycjach</description></item>
+    /// <item><description>Cebula — 5 całych cebul w różnych pozycjach</description></item>
+    /// <item><description>Sałata — 3 główki sałaty</description></item>
+    /// <item><description>Ławasz — chlebek ławasz (delegowane do <see cref="CreateLavashVisual"/>)</description></item>
+    /// </list>
+    /// </remarks>
     private void CreateIngredientVisual(Transform parent, IngredientData sourceIngredient)
     {
         if (sourceIngredient == null)
@@ -641,12 +987,28 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tworzy wizualną reprezentację chlebka ławasz na stacji źródłowej.
+    /// </summary>
+    /// <param name="parent">Transform stacji źródłowej ławasza.</param>
+    /// <param name="surfaceY">Pozycja Y powierzchni blatu, na której umieszczany jest ławasz.</param>
     private void CreateLavashVisual(Transform parent, float surfaceY)
     {
         float lavashY = surfaceY + 0.055f;
         CreateImportedModel(parent, "lavash", "LavashVisual", new Vector3(0f, lavashY, 0f), new Vector3(0f, 12f, 0f), 0.72f);
     }
 
+    /// <summary>
+    /// Ładuje i tworzy instancję importowanego modelu 3D z folderu Resources.
+    /// Przeciążenie bez mnożnika skali — deleguje do pełnej wersji z mnożnikiem Vector3.one.
+    /// </summary>
+    /// <param name="parent">Transform rodzica, pod którym model zostanie umieszczony.</param>
+    /// <param name="resourceName">Nazwa zasobu modelu w katalogu Resources/Models/.</param>
+    /// <param name="objectName">Nazwa nadawana instancji obiektu na scenie.</param>
+    /// <param name="localPosition">Lokalna pozycja modelu względem rodzica.</param>
+    /// <param name="localRotation">Lokalna rotacja modelu w stopniach Eulera.</param>
+    /// <param name="targetMaxSize">Docelowy maksymalny rozmiar modelu (największy wymiar bounding box).</param>
+    /// <returns>Utworzony obiekt modelu lub null, jeśli prefabrykat nie został znaleziony.</returns>
     private GameObject CreateImportedModel(
         Transform parent,
         string resourceName,
@@ -658,6 +1020,24 @@ public class KitchenGameBootstrap : MonoBehaviour
         return CreateImportedModel(parent, resourceName, objectName, localPosition, localRotation, targetMaxSize, Vector3.one);
     }
 
+    /// <summary>
+    /// Ładuje i tworzy instancję importowanego modelu 3D z folderu Resources
+    /// z pełną kontrolą nad skalowaniem.
+    /// </summary>
+    /// <param name="parent">Transform rodzica, pod którym model zostanie umieszczony.</param>
+    /// <param name="resourceName">Nazwa zasobu modelu w katalogu Resources/Models/.</param>
+    /// <param name="objectName">Nazwa nadawana instancji obiektu na scenie.</param>
+    /// <param name="localPosition">Lokalna pozycja modelu względem rodzica.</param>
+    /// <param name="localRotation">Lokalna rotacja modelu w stopniach Eulera.</param>
+    /// <param name="targetMaxSize">Docelowy maksymalny rozmiar modelu (największy wymiar bounding box).</param>
+    /// <param name="scaleMultiplier">Dodatkowy mnożnik skali stosowany po normalizacji rozmiaru.</param>
+    /// <returns>Utworzony obiekt modelu lub null, jeśli prefabrykat nie został znaleziony.</returns>
+    /// <remarks>
+    /// Model jest najpierw skalowany uniformnie do docelowego rozmiaru za pomocą
+    /// <see cref="ScaleModelToSize"/>, następnie stosowany jest mnożnik skali,
+    /// wyrównywany jest spód modelu do żądanej wysokości Y, stosowane są materiały
+    /// zastępcze tam gdzie brakuje, a kolidery importowane z modelu są wyłączane.
+    /// </remarks>
     private GameObject CreateImportedModel(
         Transform parent,
         string resourceName,
@@ -687,6 +1067,17 @@ public class KitchenGameBootstrap : MonoBehaviour
         return model;
     }
 
+    /// <summary>
+    /// Wyrównuje spód modelu (najniższy punkt bounding box) do zadanej wysokości Y
+    /// w przestrzeni lokalnej rodzica.
+    /// </summary>
+    /// <param name="modelRoot">Transform korzenia modelu do wyrównania.</param>
+    /// <param name="targetBottomLocalY">Docelowa lokalna pozycja Y spodu modelu.</param>
+    /// <remarks>
+    /// Oblicza łączny bounding box wszystkich rendererów w modelu, przekształca
+    /// najniższy punkt do przestrzeni lokalnej rodzica i przesuwa model pionowo
+    /// tak, aby jego spód znajdował się dokładnie na żądanej wysokości.
+    /// </remarks>
     private void AlignModelBottomToLocalY(Transform modelRoot, float targetBottomLocalY)
     {
         Renderer[] renderers = modelRoot.GetComponentsInChildren<Renderer>();
@@ -708,6 +1099,17 @@ public class KitchenGameBootstrap : MonoBehaviour
         modelRoot.localPosition = position;
     }
 
+    /// <summary>
+    /// Stosuje materiały zastępcze (fallback) do rendererów importowanego modelu,
+    /// które nie posiadają poprawnie przypisanych materiałów.
+    /// </summary>
+    /// <param name="model">Obiekt modelu do przetworzenia.</param>
+    /// <param name="resourceName">Nazwa zasobu modelu — używana do doboru odpowiedniego koloru zastępczego.</param>
+    /// <remarks>
+    /// Iteruje po wszystkich rendererach w hierarchii modelu i dla tych,
+    /// które nie mają importowanego materiału (brak tekstur, domyślna nazwa),
+    /// tworzy nowy materiał z odpowiednim kolorem za pomocą <see cref="CreateImportedMaterial"/>.
+    /// </remarks>
     private void ApplyFallbackMaterialsIfMissing(GameObject model, string resourceName)
     {
         Renderer[] renderers = model.GetComponentsInChildren<Renderer>();
@@ -722,6 +1124,19 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sprawdza, czy renderer posiada poprawnie zaimportowany materiał
+    /// (z teksturą lub niestandardową nazwą).
+    /// </summary>
+    /// <param name="renderer">Renderer do sprawdzenia.</param>
+    /// <returns>True, jeśli renderer ma poprawny importowany materiał; false w przeciwnym razie.</returns>
+    /// <remarks>
+    /// Materiał jest uznawany za "importowany", jeśli:
+    /// <list type="bullet">
+    /// <item><description>Posiada przypisaną teksturę (BaseMap, MainTex lub mainTexture)</description></item>
+    /// <item><description>Jego nazwa nie zawiera "default" ani "no name"</description></item>
+    /// </list>
+    /// </remarks>
     private bool HasImportedMaterial(Renderer renderer)
     {
         if (renderer == null || renderer.sharedMaterials == null || renderer.sharedMaterials.Length == 0)
@@ -751,6 +1166,11 @@ public class KitchenGameBootstrap : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Sprawdza, czy materiał posiada przypisaną teksturę w jednym ze standardowych slotów.
+    /// </summary>
+    /// <param name="material">Materiał do sprawdzenia.</param>
+    /// <returns>True, jeśli materiał posiada teksturę w slocie _BaseMap, _MainTex lub mainTexture.</returns>
     private bool HasMaterialTexture(Material material)
     {
         if (material == null)
@@ -771,6 +1191,19 @@ public class KitchenGameBootstrap : MonoBehaviour
         return material.mainTexture != null;
     }
 
+    /// <summary>
+    /// Tworzy nowy materiał zastępczy z odpowiednim kolorem, metalicznością i gładkością
+    /// dobranym na podstawie nazwy zasobu modelu.
+    /// </summary>
+    /// <param name="resourceName">Nazwa zasobu modelu — determinuje kolor i właściwości materiału.</param>
+    /// <param name="rendererName">Nazwa renderera — używana w połączeniu z resourceName do identyfikacji.</param>
+    /// <param name="index">Indeks renderera w modelu — wprowadza delikatną wariacę odcienia.</param>
+    /// <returns>Nowo utworzony materiał z ustawionym kolorem, metalicznością i gładkością.</returns>
+    /// <remarks>
+    /// Dla modeli lamp materiał otrzymuje dodatkowo włączoną emisję świetlną o ciepłym odcieniu.
+    /// Indeks renderera jest wykorzystywany do subtelnego przyciemniania kolejnych rendererów,
+    /// co dodaje głębi wizualnej modelom wieloczęściowym.
+    /// </remarks>
     private Material CreateImportedMaterial(string resourceName, string rendererName, int index)
     {
         Material material = new Material(GetLitShader());
@@ -813,6 +1246,18 @@ public class KitchenGameBootstrap : MonoBehaviour
         return material;
     }
 
+    /// <summary>
+    /// Zwraca odpowiedni kolor zastępczy dla importowanego modelu na podstawie jego nazwy.
+    /// </summary>
+    /// <param name="resourceName">Nazwa zasobu modelu.</param>
+    /// <param name="rendererName">Nazwa renderera wewnątrz modelu.</param>
+    /// <param name="index">Indeks renderera — używany do delikatnego przyciemniania (max 4 poziomy).</param>
+    /// <returns>Kolor zastępczy dopasowany do typu modelu, z uwzględnieniem przyciemniania indeksem.</returns>
+    /// <remarks>
+    /// Mapowanie kolorów odbywa się na podstawie wyszukiwania słów kluczowych w połączonej
+    /// nazwie zasobu i renderera (np. "meat", "doner_machine", "cutting_board" itp.).
+    /// Domyślny kolor to neutralny szary w razie braku dopasowania.
+    /// </remarks>
     private Color GetImportedModelColor(string resourceName, string rendererName, int index)
     {
         string name = (resourceName + " " + rendererName).ToLowerInvariant();
@@ -881,6 +1326,15 @@ public class KitchenGameBootstrap : MonoBehaviour
         return new Color(0.62f, 0.62f, 0.6f) * shade;
     }
 
+    /// <summary>
+    /// Zwraca wartość metaliczności materiału zastępczego na podstawie nazwy modelu.
+    /// </summary>
+    /// <param name="resourceName">Nazwa zasobu modelu.</param>
+    /// <param name="rendererName">Nazwa renderera wewnątrz modelu.</param>
+    /// <returns>
+    /// Wartość metaliczności: 0.45 dla metalowych obiektów (nóż, maszyna, kasa, stoły, tace, półki),
+    /// 0.0 dla pozostałych.
+    /// </returns>
     private float GetImportedModelMetallic(string resourceName, string rendererName)
     {
         string name = (resourceName + " " + rendererName).ToLowerInvariant();
@@ -900,6 +1354,15 @@ public class KitchenGameBootstrap : MonoBehaviour
         return 0f;
     }
 
+    /// <summary>
+    /// Zwraca wartość gładkości materiału zastępczego na podstawie nazwy modelu.
+    /// </summary>
+    /// <param name="resourceName">Nazwa zasobu modelu.</param>
+    /// <param name="rendererName">Nazwa renderera wewnątrz modelu.</param>
+    /// <returns>
+    /// Wartość gładkości: 0.55 dla metalowych obiektów, 0.25 dla mięsa i desek,
+    /// 0.35 jako wartość domyślna dla pozostałych materiałów.
+    /// </returns>
     private float GetImportedModelSmoothness(string resourceName, string rendererName)
     {
         string name = (resourceName + " " + rendererName).ToLowerInvariant();
@@ -924,6 +1387,18 @@ public class KitchenGameBootstrap : MonoBehaviour
         return 0.35f;
     }
 
+    /// <summary>
+    /// Skaluje model uniformnie tak, aby jego największy wymiar (bounding box)
+    /// odpowiadał zadanemu rozmiarowi docelowemu.
+    /// </summary>
+    /// <param name="modelRoot">Transform korzenia modelu do przeskalowania.</param>
+    /// <param name="targetMaxSize">Docelowy rozmiar maksymalnego wymiaru bounding box.
+    /// Wartość 0 lub ujemna powoduje pominięcie skalowania.</param>
+    /// <remarks>
+    /// Oblicza łączny bounding box wszystkich rendererów, znajduje największy wymiar,
+    /// a następnie mnoży skalę lokalną przez współczynnik (targetMaxSize / maxSize).
+    /// Chroni przed dzieleniem przez zero dla modeli o minimalnym rozmiarze.
+    /// </remarks>
     private void ScaleModelToSize(Transform modelRoot, float targetMaxSize)
     {
         if (targetMaxSize <= 0f)
@@ -952,6 +1427,11 @@ public class KitchenGameBootstrap : MonoBehaviour
         modelRoot.localScale *= targetMaxSize / maxSize;
     }
 
+    /// <summary>
+    /// Wyłącza wszystkie kolidery w hierarchii importowanego modelu.
+    /// Zapobiega interferencji koliderów modelu z systemem fizyki gry.
+    /// </summary>
+    /// <param name="model">Obiekt modelu, w którym kolidery zostaną wyłączone.</param>
     private void DisableImportedColliders(GameObject model)
     {
         foreach (Collider collider in model.GetComponentsInChildren<Collider>())
@@ -960,6 +1440,11 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ustawia widoczność wszystkich rendererów w hierarchii danego transformu.
+    /// </summary>
+    /// <param name="root">Transform korzenia hierarchii do modyfikacji.</param>
+    /// <param name="visible">Czy renderery mają być widoczne (true) czy ukryte (false).</param>
     private void SetRendererVisible(Transform root, bool visible)
     {
         foreach (Renderer renderer in root.GetComponentsInChildren<Renderer>())
@@ -968,6 +1453,17 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tworzy blok geometryczny z prymitywu Unity z nadanym materiałem i kolorem.
+    /// Uniwersalna metoda pomocnicza do budowania elementów środowiska.
+    /// </summary>
+    /// <param name="parent">Transform rodzica dla bloku.</param>
+    /// <param name="objectName">Nazwa obiektu bloku.</param>
+    /// <param name="primitiveType">Typ prymitywu Unity (sześcian, kula, cylinder itp.).</param>
+    /// <param name="localPosition">Lokalna pozycja bloku.</param>
+    /// <param name="localScale">Lokalna skala bloku.</param>
+    /// <param name="color">Kolor materiału bloku.</param>
+    /// <returns>Transform utworzonego bloku.</returns>
     private Transform CreateBlock(
         Transform parent,
         string objectName,
@@ -988,6 +1484,17 @@ public class KitchenGameBootstrap : MonoBehaviour
         return block.transform;
     }
 
+    /// <summary>
+    /// Tworzy etykietę tekstową 3D (TextMesh) z komponentem billboard,
+    /// która zawsze jest zwrócona przodem do kamery.
+    /// </summary>
+    /// <param name="parent">Transform rodzica dla etykiety.</param>
+    /// <param name="labelText">Tekst wyświetlany na etykiecie.</param>
+    /// <param name="localPosition">Lokalna pozycja etykiety.</param>
+    /// <remarks>
+    /// Etykieta używa komponentu <see cref="BillboardLabel"/> do automatycznego
+    /// obracania się w kierunku kamery w każdej klatce. Tekst jest półprzezroczysty (alpha 0.55).
+    /// </remarks>
     private void CreateLabel(Transform parent, string labelText, Vector3 localPosition)
     {
         GameObject label = new GameObject(labelText + "_Label");
@@ -1006,10 +1513,27 @@ public class KitchenGameBootstrap : MonoBehaviour
     }
 }
 
+/// <summary>
+/// Komponent billboard — obraca obiekt tak, aby zawsze był zwrócony przodem do głównej kamery.
+/// Używany głównie do etykiet tekstowych 3D nad stacjami kuchennymi.
+/// </summary>
+/// <remarks>
+/// Aktualizacja następuje w LateUpdate, aby zapewnić poprawną orientację
+/// po ruchu kamery w danej klatce. Automatycznie wyszukuje główną kamerę
+/// przy pierwszym użyciu lub gdy referencja zostanie utracona.
+/// </remarks>
 public class BillboardLabel : MonoBehaviour
 {
+    /// <summary>
+    /// Referencja do kamery, w kierunku której obiekt jest obracany.
+    /// Automatycznie ustawiana na Camera.main, gdy jest null.
+    /// </summary>
     private Camera targetCamera;
 
+    /// <summary>
+    /// Aktualizuje orientację obiektu w każdej klatce (po Update),
+    /// ustawiając jego wektor forward na wektor forward kamery.
+    /// </summary>
     private void LateUpdate()
     {
         if (targetCamera == null)
@@ -1026,15 +1550,44 @@ public class BillboardLabel : MonoBehaviour
     }
 }
 
+/// <summary>
+/// Zarządza wyświetlaniem serwowanego kebaba na tacy przy okienku wydawania.
+/// Kebab jest pokazywany na określony czas po każdym wydaniu zamówienia,
+/// a następnie automatycznie ukrywany.
+/// </summary>
+/// <remarks>
+/// Klasa implementuje wzorzec singletona poprzez statyczne pole <see cref="activeDisplay"/>,
+/// umożliwiając łatwe wywoływanie z dowolnego miejsca kodu za pomocą
+/// metody statycznej <see cref="ShowServedKebab"/>.
+/// </remarks>
 public class DeliveryTrayDisplay : MonoBehaviour
 {
+    /// <summary>
+    /// Aktywna instancja wyświetlacza tacy — wzorzec singletona.
+    /// Umożliwia globalne wywoływanie <see cref="ShowServedKebab"/> bez referencji.
+    /// </summary>
     private static DeliveryTrayDisplay activeDisplay;
 
+    /// <summary>
+    /// Referencja do obiektu wizualnego kebaba na tacy.
+    /// Jego aktywność (SetActive) jest przełączana przy pokazywaniu/ukrywaniu.
+    /// </summary>
     [SerializeField] private GameObject servedKebab;
+
+    /// <summary>
+    /// Czas trwania widoczności kebaba w sekundach po wywołaniu Show.
+    /// </summary>
     [SerializeField] private float visibleDuration = 5f;
 
+    /// <summary>
+    /// Znacznik czasu (Time.time), po przekroczeniu którego kebab zostanie ukryty.
+    /// </summary>
     private float hideAtTime;
 
+    /// <summary>
+    /// Statyczna metoda wywoływana po wydaniu zamówienia — pokazuje kebab na tacy
+    /// przy okienku przez czas określony w <see cref="visibleDuration"/>.
+    /// </summary>
     public static void ShowServedKebab()
     {
         if (activeDisplay != null)
@@ -1043,6 +1596,12 @@ public class DeliveryTrayDisplay : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Konfiguruje wyświetlacz tacy z referencją do obiektu kebaba i czasem widoczności.
+    /// Ustawia bieżącą instancję jako aktywną i ukrywa kebab na starcie.
+    /// </summary>
+    /// <param name="servedKebab">Obiekt wizualny kebaba do pokazywania/ukrywania.</param>
+    /// <param name="visibleDuration">Czas widoczności kebaba w sekundach.</param>
     public void Configure(GameObject servedKebab, float visibleDuration)
     {
         activeDisplay = this;
@@ -1051,6 +1610,10 @@ public class DeliveryTrayDisplay : MonoBehaviour
         SetKebabVisible(false);
     }
 
+    /// <summary>
+    /// Sprawdza w każdej klatce, czy czas widoczności kebaba upłynął,
+    /// i jeśli tak — ukrywa go.
+    /// </summary>
     private void Update()
     {
         if (servedKebab == null || !servedKebab.activeSelf || Time.time < hideAtTime)
@@ -1061,6 +1624,10 @@ public class DeliveryTrayDisplay : MonoBehaviour
         SetKebabVisible(false);
     }
 
+    /// <summary>
+    /// Czyści referencję singletona przy niszczeniu obiektu,
+    /// aby uniknąć odwołań do zniszczonego komponentu.
+    /// </summary>
     private void OnDestroy()
     {
         if (activeDisplay == this)
@@ -1069,12 +1636,19 @@ public class DeliveryTrayDisplay : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Pokazuje kebab na tacy i ustawia timer automatycznego ukrycia.
+    /// </summary>
     private void Show()
     {
         hideAtTime = Time.time + visibleDuration;
         SetKebabVisible(true);
     }
 
+    /// <summary>
+    /// Ustawia widoczność obiektu wizualnego kebaba.
+    /// </summary>
+    /// <param name="visible">True aby pokazać kebab, false aby go ukryć.</param>
     private void SetKebabVisible(bool visible)
     {
         if (servedKebab != null)
@@ -1084,12 +1658,45 @@ public class DeliveryTrayDisplay : MonoBehaviour
     }
 }
 
+/// <summary>
+/// Komponent animujący model klienta za pomocą systemu Playable API Unity.
+/// Ładuje klip animacji idle z zasobów i odtwarza go w pętli.
+/// </summary>
+/// <remarks>
+/// Używa niskiego poziomu Playable API zamiast Animator Controller,
+/// co pozwala na dynamiczne ładowanie i odtwarzanie animacji bez potrzeby
+/// tworzenia kontrolera animacji w edytorze. Animacja jest ręcznie zapętlana
+/// w metodzie Update, resetując czas po osiągnięciu końca klipu.
+/// </remarks>
 public class CustomerAnimator : MonoBehaviour
 {
+    /// <summary>
+    /// Graf odtwarzania Playable — zarządza łańcuchem odtwarzania animacji.
+    /// Musi być jawnie niszczony w OnDestroy, aby uniknąć wycieków pamięci.
+    /// </summary>
     private UnityEngine.Playables.PlayableGraph graph;
+
+    /// <summary>
+    /// Playable opakowujący klip animacji idle klienta.
+    /// Pozwala na kontrolę czasu odtwarzania animacji.
+    /// </summary>
     private UnityEngine.Animations.AnimationClipPlayable idlePlayable;
+
+    /// <summary>
+    /// Długość klipu animacji idle w sekundach.
+    /// Używana do ręcznego zapętlania animacji w Update.
+    /// </summary>
     private float clipLength;
 
+    /// <summary>
+    /// Inicjalizuje system animacji klienta — ładuje klip idle z Resources,
+    /// tworzy graf Playable i rozpoczyna odtwarzanie.
+    /// </summary>
+    /// <remarks>
+    /// Wyszukuje klipy animacji w katalogu "Models/klient_idle" i wybiera
+    /// pierwszy klip, który nie jest podglądem (nie zaczyna się od "__preview").
+    /// Jeśli na obiekcie nie ma komponentu Animator, zostaje on automatycznie dodany.
+    /// </remarks>
     private void Start()
     {
         AnimationClip[] idles = Resources.LoadAll<AnimationClip>("Models/klient_idle");
@@ -1114,6 +1721,14 @@ public class CustomerAnimator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ręcznie zapętla animację idle — resetuje czas odtwarzania po osiągnięciu końca klipu.
+    /// </summary>
+    /// <remarks>
+    /// Konieczne, ponieważ Playable API nie zapętla automatycznie klipów animacji
+    /// bez dodatkowej konfiguracji. Używa operatora modulo na czasie, aby zachować
+    /// płynne przejście między iteracjami animacji.
+    /// </remarks>
     private void Update()
     {
         if (graph.IsValid() && idlePlayable.IsValid() && clipLength > 0f)
@@ -1125,6 +1740,13 @@ public class CustomerAnimator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Niszczy graf Playable przy niszczeniu komponentu, aby zwolnić zasoby natywne.
+    /// </summary>
+    /// <remarks>
+    /// Graf PlayableGraph alokuje pamięć natywną, która nie jest zarządzana przez
+    /// garbage collector .NET — musi być jawnie zwolniona wywołaniem Destroy().
+    /// </remarks>
     private void OnDestroy()
     {
         if (graph.IsValid()) graph.Destroy();

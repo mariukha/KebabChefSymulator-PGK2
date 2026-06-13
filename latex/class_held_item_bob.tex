@@ -1,0 +1,98 @@
+\doxysection{Dokumentacja klasy Held\+Item\+Bob}
+\hypertarget{class_held_item_bob}{}\label{class_held_item_bob}\index{HeldItemBob@{HeldItemBob}}
+
+
+Komponent dodający efekt delikatnego kołysania (bob) do trzymanego przedmiotu.  
+
+
+Diagram dziedziczenia dla Held\+Item\+Bob\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_held_item_bob}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_held_item_bob_af8158895ea75f58686dc550b70c6cf67}{amplitude}} = 0.\+01f
+\begin{DoxyCompactList}\small\item\em Amplituda kołysania (w jednostkach świata). Określa maksymalne odchylenie od pozycji bazowej. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_held_item_bob_a4c64db9411d5f617304b95f52b543439}{speed}} = 2.\+5f
+\begin{DoxyCompactList}\small\item\em Prędkość kołysania. Określa częstotliwość oscylacji sinusoidalnej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_held_item_bob_a7f22fd0ccc04eb8827055c1f94178bf0}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje pozycję bazową na podstawie aktualnej pozycji lokalnej obiektu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_held_item_bob_a7b9972da13c8603e1d15ab98e8f6854c}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje pozycję obiektu co klatkę, dodając sinusoidalne przesunięcie w osi Y. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+Vector3 \mbox{\hyperlink{class_held_item_bob_a9dba98a9c5314f4936b547f250561d59}{base\+Position}}
+\begin{DoxyCompactList}\small\item\em Bazowa pozycja lokalna obiektu, wokół której odbywa się kołysanie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Komponent dodający efekt delikatnego kołysania (bob) do trzymanego przedmiotu. 
+
+Animuje pozycję lokalną obiektu sinusoidalnie w osi Y, symulując naturalne kołysanie przedmiotu w ręku gracza. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_held_item_bob_a7f22fd0ccc04eb8827055c1f94178bf0}\index{HeldItemBob@{HeldItemBob}!Start@{Start}}
+\index{Start@{Start}!HeldItemBob@{HeldItemBob}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_held_item_bob_a7f22fd0ccc04eb8827055c1f94178bf0} 
+void Held\+Item\+Bob.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje pozycję bazową na podstawie aktualnej pozycji lokalnej obiektu. 
+
+\Hypertarget{class_held_item_bob_a7b9972da13c8603e1d15ab98e8f6854c}\index{HeldItemBob@{HeldItemBob}!Update@{Update}}
+\index{Update@{Update}!HeldItemBob@{HeldItemBob}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_held_item_bob_a7b9972da13c8603e1d15ab98e8f6854c} 
+void Held\+Item\+Bob.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Aktualizuje pozycję obiektu co klatkę, dodając sinusoidalne przesunięcie w osi Y. 
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_held_item_bob_af8158895ea75f58686dc550b70c6cf67}\index{HeldItemBob@{HeldItemBob}!amplitude@{amplitude}}
+\index{amplitude@{amplitude}!HeldItemBob@{HeldItemBob}}
+\doxysubsubsection{\texorpdfstring{amplitude}{amplitude}}
+{\footnotesize\ttfamily \label{class_held_item_bob_af8158895ea75f58686dc550b70c6cf67} 
+float Held\+Item\+Bob.\+amplitude = 0.\+01f}
+
+
+
+Amplituda kołysania (w jednostkach świata). Określa maksymalne odchylenie od pozycji bazowej. 
+
+\Hypertarget{class_held_item_bob_a9dba98a9c5314f4936b547f250561d59}\index{HeldItemBob@{HeldItemBob}!basePosition@{basePosition}}
+\index{basePosition@{basePosition}!HeldItemBob@{HeldItemBob}}
+\doxysubsubsection{\texorpdfstring{basePosition}{basePosition}}
+{\footnotesize\ttfamily \label{class_held_item_bob_a9dba98a9c5314f4936b547f250561d59} 
+Vector3 Held\+Item\+Bob.\+base\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bazowa pozycja lokalna obiektu, wokół której odbywa się kołysanie. 
+
+\Hypertarget{class_held_item_bob_a4c64db9411d5f617304b95f52b543439}\index{HeldItemBob@{HeldItemBob}!speed@{speed}}
+\index{speed@{speed}!HeldItemBob@{HeldItemBob}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily \label{class_held_item_bob_a4c64db9411d5f617304b95f52b543439} 
+float Held\+Item\+Bob.\+speed = 2.\+5f}
+
+
+
+Prędkość kołysania. Określa częstotliwość oscylacji sinusoidalnej. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_network_player_8cs}{Network\+Player.\+cs}}\end{DoxyCompactItemize}

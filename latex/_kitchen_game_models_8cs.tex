@@ -1,0 +1,157 @@
+\doxysection{Dokumentacja pliku Assets/\+Scripts/\+Kitchen\+Game\+Models.cs}
+\hypertarget{_kitchen_game_models_8cs}{}\label{_kitchen_game_models_8cs}\index{Assets/Scripts/KitchenGameModels.cs@{Assets/Scripts/KitchenGameModels.cs}}
+
+
+Plik zawierający modele danych i typy wyliczeniowe systemu kuchni gry kebab.  
+
+
+\doxysubsubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ingredient_requirement}{Ingredient\+Requirement}}
+\begin{DoxyCompactList}\small\item\em Klasa reprezentująca wymaganie dotyczące pojedynczego składnika w zamówieniu. Określa, jaki rodzaj składnika jest potrzebny, w jakim stanie przetworzenia oraz w jakiej ilości. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_prepared_ingredient_data}{Prepared\+Ingredient\+Data}}
+\begin{DoxyCompactList}\small\item\em Klasa reprezentująca dane przygotowanego składnika. Przechowuje informację o rodzaju składnika oraz jego aktualnym stanie przetworzenia. Używana jako element listy zawartości gotowej potrawy (\doxylink{class_kitchen_item_a17f90ea6bae8d28c174304498d81bf93}{Kitchen\+Item.\+contents}). \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_kitchen_item}{Kitchen\+Item}}
+\begin{DoxyCompactList}\small\item\em Klasa reprezentująca przedmiot kuchenny — pojedynczy składnik lub gotową potrawę. Może przechowywać listę zawartych składników w przypadku potrawy złożonej (np. kebab). Jest centralnym obiektem danych przechodzącym przez stacje kuchenne. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_kitchen_order_validator}{Kitchen\+Order\+Validator}}
+\begin{DoxyCompactList}\small\item\em Klasa statyczna odpowiedzialna za walidację zgodności przygotowanej potrawy z zamówieniem klienta. Porównuje zawartość dostarczonego przedmiotu kuchennego z wymaganiami zamówienia, sprawdzając zarówno brakujące, jak i nadmiarowe składniki. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_kitchen_naming}{Kitchen\+Naming}}
+\begin{DoxyCompactList}\small\item\em Klasa statyczna zapewniająca polskie nazwy dla składników i ich stanów przetworzenia. Używana w całym systemie kuchni do generowania czytelnych dla gracza opisów składników w interfejsie użytkownika. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Wyliczenia}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}} \{ \newline
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f}{Meat}}
+, \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5a77bd79b3dca1f49815655b6f2df760ba}{Tomato}}
+, \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5a8eaa10d1a33a28200a7c7684919b66c7}{Onion}}
+, \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5acb9c58bd185804d8e1cec059781c1f02}{Lettuce}}
+, \newline
+\mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ab118c95a50b8859592f94b8d8c9dd7a3}{Garlic\+Sauce}}
+, \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ab3327337180813aa2770410fc078a208}{Lavash}}
+, \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5a4f8ccd0f117b71878c43d4d3599fbbfc}{Kebab}}
+ \}
+\begin{DoxyCompactList}\small\item\em Typ wyliczeniowy określający rodzaj składnika w systemie kuchni. Każda wartość odpowiada konkretnemu produktowi spożywczemu wykorzystywanemu do przygotowania kebaba. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}} \{ \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}{Raw}}
+, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea984c80c3e1a5734378386e95df6b0c63}{Chopped}}
+, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea603704d17e2b294629335466e6ca92bb}{Cooked}}
+, \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea3ce67df7a55e6105f97fd40b76a5408c}{Assembled}}
+ \}
+\begin{DoxyCompactList}\small\item\em Typ wyliczeniowy określający stan przetworzenia składnika. Reprezentuje etapy przygotowania, przez które przechodzi składnik na drodze od surowego produktu do gotowej potrawy. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}} \{ \newline
+\mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2}{Ingredient\+Source}}
+, \mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a7d7c35791772d814e88efa1467a3ad18}{Cutting\+Board}}
+, \mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a475de6eac229ec35f1b543628c381d6b}{Grill}}
+, \mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1ad75c45e11c8aeb13494dba59a388a164}{Assembly}}
+, \newline
+\mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a065ab3a28ca4f16f55f103adc7d0226f}{Delivery}}
+ \}
+\begin{DoxyCompactList}\small\item\em Typ wyliczeniowy określający rodzaj stacji kuchennej. Każda stacja pełni określoną rolę w procesie przygotowania potrawy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Plik zawierający modele danych i typy wyliczeniowe systemu kuchni gry kebab. 
+
+Definiuje kluczowe struktury danych używane w całym systemie kuchni\+: typy składników, stany przetworzenia, typy stacji kuchennych, klasy reprezentujące wymagania składników, przygotowane składniki, przedmioty kuchenne oraz klasy pomocnicze do walidacji zamówień i nazewnictwa składników w języku polskim. 
+
+\doxysubsection{Dokumentacja typów wyliczanych}
+\Hypertarget{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!IngredientKind@{IngredientKind}}
+\index{IngredientKind@{IngredientKind}!KitchenGameModels.cs@{KitchenGameModels.cs}}
+\doxysubsubsection{\texorpdfstring{IngredientKind}{IngredientKind}}
+{\footnotesize\ttfamily \label{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5} 
+enum \mbox{\hyperlink{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5}{Ingredient\+Kind}}}
+
+
+
+Typ wyliczeniowy określający rodzaj składnika w systemie kuchni. Każda wartość odpowiada konkretnemu produktowi spożywczemu wykorzystywanemu do przygotowania kebaba. 
+
+\begin{DoxyEnumFields}{Wartości wyliczeń}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Meat@{Meat}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Meat@{Meat}}}\Hypertarget{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ae4b662d3892f8c0c86801919f979467f}\label{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5} 
+Meat&Mięso — główny składnik białkowy kebaba. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Tomato@{Tomato}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Tomato@{Tomato}}}\Hypertarget{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5a77bd79b3dca1f49815655b6f2df760ba}\label{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5} 
+Tomato&Pomidor — składnik warzywny dodawany jako dodatek. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Onion@{Onion}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Onion@{Onion}}}\Hypertarget{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5a8eaa10d1a33a28200a7c7684919b66c7}\label{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5} 
+Onion&Cebula — składnik warzywny nadający smak. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Lettuce@{Lettuce}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Lettuce@{Lettuce}}}\Hypertarget{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5acb9c58bd185804d8e1cec059781c1f02}\label{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5} 
+Lettuce&Sałata — składnik warzywny dodawany jako świeży dodatek. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GarlicSauce@{GarlicSauce}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!GarlicSauce@{GarlicSauce}}}\Hypertarget{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ab118c95a50b8859592f94b8d8c9dd7a3}\label{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5} 
+Garlic\+Sauce&Sos czosnkowy — sos dodawany jako przyprawienie. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Lavash@{Lavash}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Lavash@{Lavash}}}\Hypertarget{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5ab3327337180813aa2770410fc078a208}\label{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5} 
+Lavash&Lawasz — cienki chleb płaski stanowiący bazę (owijkę) kebaba. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Kebab@{Kebab}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Kebab@{Kebab}}}\Hypertarget{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5a4f8ccd0f117b71878c43d4d3599fbbfc}\label{_kitchen_game_models_8cs_a214ca6bd11da127e708701211c9ff9a5} 
+Kebab&Kebab — gotowa potrawa złożona z wielu składników. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!IngredientProcessState@{IngredientProcessState}}
+\index{IngredientProcessState@{IngredientProcessState}!KitchenGameModels.cs@{KitchenGameModels.cs}}
+\doxysubsubsection{\texorpdfstring{IngredientProcessState}{IngredientProcessState}}
+{\footnotesize\ttfamily \label{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e} 
+enum \mbox{\hyperlink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e}{Ingredient\+Process\+State}}}
+
+
+
+Typ wyliczeniowy określający stan przetworzenia składnika. Reprezentuje etapy przygotowania, przez które przechodzi składnik na drodze od surowego produktu do gotowej potrawy. 
+
+\begin{DoxyEnumFields}{Wartości wyliczeń}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Raw@{Raw}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Raw@{Raw}}}\Hypertarget{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea65e65c8ab0d8609ce12fc68a03cb8e00}\label{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e} 
+Raw&Surowy — składnik w stanie nieprzetworzonym, bezpośrednio ze źródła. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Chopped@{Chopped}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Chopped@{Chopped}}}\Hypertarget{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea984c80c3e1a5734378386e95df6b0c63}\label{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e} 
+Chopped&Pokrojony — składnik po przetworzeniu na desce do krojenia. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cooked@{Cooked}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Cooked@{Cooked}}}\Hypertarget{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea603704d17e2b294629335466e6ca92bb}\label{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e} 
+Cooked&Upieczony — składnik po obróbce termicznej na grillu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Assembled@{Assembled}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Assembled@{Assembled}}}\Hypertarget{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea3ce67df7a55e6105f97fd40b76a5408c}\label{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51e} 
+Assembled&Złożony — składnik wchodzący w skład gotowej potrawy. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!KitchenStationType@{KitchenStationType}}
+\index{KitchenStationType@{KitchenStationType}!KitchenGameModels.cs@{KitchenGameModels.cs}}
+\doxysubsubsection{\texorpdfstring{KitchenStationType}{KitchenStationType}}
+{\footnotesize\ttfamily \label{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1} 
+enum \mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}}}
+
+
+
+Typ wyliczeniowy określający rodzaj stacji kuchennej. Każda stacja pełni określoną rolę w procesie przygotowania potrawy. 
+
+\begin{DoxyEnumFields}{Wartości wyliczeń}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IngredientSource@{IngredientSource}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!IngredientSource@{IngredientSource}}}\Hypertarget{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a0b22346a0721eff4751d611ae78a81f2}\label{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1} 
+Ingredient\+Source&Źródło składników — stacja, z której gracz pobiera surowe składniki. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CuttingBoard@{CuttingBoard}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!CuttingBoard@{CuttingBoard}}}\Hypertarget{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a7d7c35791772d814e88efa1467a3ad18}\label{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1} 
+Cutting\+Board&Deska do krojenia — stacja do krojenia składników (zmiana stanu na \doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea984c80c3e1a5734378386e95df6b0c63}{Ingredient\+Process\+State.\+Chopped}). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Grill@{Grill}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Grill@{Grill}}}\Hypertarget{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a475de6eac229ec35f1b543628c381d6b}\label{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1} 
+Grill&Grill — stacja do pieczenia składników (zmiana stanu na \doxylink{_kitchen_game_models_8cs_a5f3665b6d51566ee7f9fb7d67acba51ea603704d17e2b294629335466e6ca92bb}{Ingredient\+Process\+State.\+Cooked}). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Assembly@{Assembly}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Assembly@{Assembly}}}\Hypertarget{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1ad75c45e11c8aeb13494dba59a388a164}\label{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1} 
+Assembly&Stacja montażu — miejsce składania gotowej potrawy z przygotowanych składników. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Delivery@{Delivery}!KitchenGameModels.cs@{KitchenGameModels.cs}}\index{KitchenGameModels.cs@{KitchenGameModels.cs}!Delivery@{Delivery}}}\Hypertarget{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1a065ab3a28ca4f16f55f103adc7d0226f}\label{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1} 
+Delivery&Stacja wydawania — punkt dostarczania gotowej potrawy klientowi. \\
+\hline
+
+\end{DoxyEnumFields}

@@ -1,0 +1,567 @@
+\doxysection{Dokumentacja klasy Shop\+Manager}
+\hypertarget{class_shop_manager}{}\label{class_shop_manager}\index{ShopManager@{ShopManager}}
+
+
+Główna klasa zarządzająca systemem sklepu z ulepszeniami.  
+
+
+Diagram dziedziczenia dla Shop\+Manager\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_shop_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}} $>$ \mbox{\hyperlink{class_shop_manager_a1fedf0ec1d779b5a82c96d5d5985693f}{Get\+All\+Definitions}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera listę wszystkich definicji ulepszeń w ustalonej kolejności. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}} \mbox{\hyperlink{class_shop_manager_a2e59fece8413b83dfaf8203dc3059e95}{Get\+Definition}} (\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Pobiera definicję ulepszenia na podstawie jego typu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shop_manager_a43d9ab613fe9fb37783a2ce0410a9e95}{Get\+Upgrade\+Level}} (\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Pobiera aktualny poziom wskazanego ulepszenia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shop_manager_a6261aa45afd64082aca823632af95f4d}{Set\+Upgrade\+Level}} (\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} type, int level)
+\begin{DoxyCompactList}\small\item\em Ustawia poziom wskazanego ulepszenia na podaną wartość. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_shop_manager_ae34be287f0cb9f3424ee7549a026c092}{Is\+Max\+Level}} (\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy wskazane ulepszenie osiągnęło maksymalny poziom. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_shop_manager_a1d4244eca86b20d278299db9e5433b9c}{Get\+Next\+Upgrade\+Cost}} (\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Oblicza koszt następnego poziomu wskazanego ulepszenia. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_shop_manager_a9ecc4f8b82ab0bb63a1a730a2bfd92f4}{Can\+Afford\+Upgrade}} (\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy gracz może sobie pozwolić na zakup następnego poziomu ulepszenia. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_shop_manager_a2e9ab016ade44d0c3345666690b66a83}{Try\+Purchase\+Upgrade}} (\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Próbuje zakupić następny poziom wskazanego ulepszenia. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_shop_manager_abd60441c85a8bd4dccdf5540695fd99f}{Get\+Processing\+Speed\+Multiplier}} (\mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}} station\+Type)
+\begin{DoxyCompactList}\small\item\em Pobiera mnożnik szybkości przetwarzania dla wskazanego typu stacji kuchennej. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_shop_manager_a7e82c031b6a60379b2e2d3a9b13f248b}{Get\+Reward\+Multiplier}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera mnożnik nagrody za zamówienia uwzględniający ulepszenie reputacji. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_shop_manager_a47c6de02bf1c866dc1876eb222f61735}{Get\+Order\+Time\+Bonus}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera bonus czasu dodawanego do limitu zamówień. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shop_manager_af2b4ac5f56bd15445888a64759da472e}{Get\+Meat\+Batch\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera aktualną wielkość porcji mięsa uzyskiwanej z jednego ścięcia. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_shop_save_data}{Shop\+Save\+Data}} \mbox{\hyperlink{class_shop_manager_aae20c9acbacc4dc714671f22bfb89567}{Capture\+State}} ()
+\begin{DoxyCompactList}\small\item\em Przechwytuje bieżący stan sklepu do struktury danych zapisu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shop_manager_a887f8bd4ab75242af3075319212f4483}{Restore\+State}} (\mbox{\hyperlink{class_shop_save_data}{Shop\+Save\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Przywraca stan sklepu z wcześniej zapisanych danych. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_shop_manager}{Shop\+Manager}} \mbox{\hyperlink{class_shop_manager_a258a9c9041205d3e5b2617791aaf5029}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Statyczna instancja Singleton klasy \doxylink{class_shop_manager}{Shop\+Manager}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shop_manager_acbad8ac58beb95f5b22b2b9ab5b3f652}{Total\+Upgrades\+Purchased}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera łączną liczbę zakupionych ulepszeń. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Zdarzenia}
+\begin{DoxyCompactItemize}
+\item 
+Action$<$ \mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}, int $>$ \mbox{\hyperlink{class_shop_manager_a638a39851dc34d8ad1a8a162f3bc69aa}{On\+Upgrade\+Purchased}}
+\begin{DoxyCompactList}\small\item\em Zdarzenie wywoływane po pomyślnym zakupie ulepszenia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_shop_manager_ae67795c3e802751bc4dfe0f13044c874}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje instancję Singleton oraz definicje ulepszeń. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shop_manager_a854bba6eeafed6d14701565e68cdf3fe}{Handle\+Level\+Changed}} (\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} type, int new\+Level)
+\begin{DoxyCompactList}\small\item\em Obsługuje zmianę poziomu ulepszenia, wywołując zdarzenie \doxylink{class_shop_manager_a638a39851dc34d8ad1a8a162f3bc69aa}{On\+Upgrade\+Purchased}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shop_manager_a9e384fa4c0a9edca585ef1564255c0c6}{Initialize\+Definitions}} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje wszystkie definicje ulepszeń dostępnych w sklepie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shop_manager_a6c292a756501092fd092c4681f79769b}{Register\+Definition}} (\mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}} definition)
+\begin{DoxyCompactList}\small\item\em Rejestruje definicję ulepszenia w słowniku definicji. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_shop_manager_a94f7233b9f89e5b4abce5ff202cf8c9b}{Get\+Effect\+Value}} (\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}} type, float default\+Value)
+\begin{DoxyCompactList}\small\item\em Pobiera wartość efektu ulepszenia na aktualnym poziomie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shop_manager_a2804b2fc020655950e3e3144ef29ecb7}{On\+Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Czyści referencję Singletona przy niszczeniu obiektu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+readonly Dictionary$<$ \mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}, \mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}} $>$ \mbox{\hyperlink{class_shop_manager_a7644719556a48ed739ddd0f76a22dffb}{definitions}}
+\begin{DoxyCompactList}\small\item\em Słownik przechowujący definicje ulepszeń indeksowane typem ulepszenia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shop_manager_a4d667d788a01bfb29a094e031f01f369}{grill\+Speed\+Level}}
+\begin{DoxyCompactList}\small\item\em Aktualny poziom ulepszenia szybkości grillowania. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shop_manager_ad22f0fcb75c4ffbb9047eaf81eca12e1}{cutting\+Speed\+Level}}
+\begin{DoxyCompactList}\small\item\em Aktualny poziom ulepszenia szybkości krojenia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shop_manager_a70fa29c6109e948d943ec1d22cf2c5e5}{reward\+Bonus\+Level}}
+\begin{DoxyCompactList}\small\item\em Aktualny poziom ulepszenia bonusu do nagrody. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shop_manager_a0322e6408fd8bb126a28bce283ec454a}{order\+Time\+Level}}
+\begin{DoxyCompactList}\small\item\em Aktualny poziom ulepszenia czasu na zamówienie. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shop_manager_ade5d302d9ce92b33d745e5652eff7c4a}{meat\+Batch\+Size\+Level}}
+\begin{DoxyCompactList}\small\item\em Aktualny poziom ulepszenia wielkości porcji mięsa. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shop_manager_a145f6941ff8a171b6e898f2b90771c26}{total\+Upgrades\+Purchased}}
+\begin{DoxyCompactList}\small\item\em Łączna liczba ulepszeń zakupionych przez gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Główna klasa zarządzająca systemem sklepu z ulepszeniami. 
+
+Implementuje wzorzec Singleton. Odpowiada za\+:
+\begin{DoxyItemize}
+\item Rejestrację i przechowywanie definicji dostępnych ulepszeń
+\item Śledzenie aktualnych poziomów każdego ulepszenia
+\item Obsługę zakupu ulepszeń z weryfikacją salda gracza
+\item Dostarczanie wartości efektów ulepszeń innym systemom gry (grillowanie, krojenie, nagrody, czas zamówień, wielkość porcji)
+\item Serializację i deserializację stanu sklepu dla systemu zapisu gry
+\end{DoxyItemize}
+
+Współpracuje z \doxylink{class_economy_manager}{Economy\+Manager} (system finansów) oraz \doxylink{class_save_manager}{Save\+Manager} (system zapisu). 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_shop_manager_ae67795c3e802751bc4dfe0f13044c874}\index{ShopManager@{ShopManager}!Awake@{Awake}}
+\index{Awake@{Awake}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_shop_manager_ae67795c3e802751bc4dfe0f13044c874} 
+void Shop\+Manager.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje instancję Singleton oraz definicje ulepszeń. 
+
+Jeśli instancja nie istnieje, ustawia ją i wywołuje \doxylink{class_shop_manager_a9e384fa4c0a9edca585ef1564255c0c6}{Initialize\+Definitions}. Jeśli instancja już istnieje, niszczy duplikat obiektu. \Hypertarget{class_shop_manager_a9ecc4f8b82ab0bb63a1a730a2bfd92f4}\index{ShopManager@{ShopManager}!CanAffordUpgrade@{CanAffordUpgrade}}
+\index{CanAffordUpgrade@{CanAffordUpgrade}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{CanAffordUpgrade()}{CanAffordUpgrade()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a9ecc4f8b82ab0bb63a1a730a2bfd92f4} 
+bool Shop\+Manager.\+Can\+Afford\+Upgrade (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sprawdza, czy gracz może sobie pozwolić na zakup następnego poziomu ulepszenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type} & Typ ulepszenia do sprawdzenia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli ulepszenie nie jest na maksymalnym poziomie i gracz posiada wystarczające środki; {\ttfamily false} w przeciwnym razie. 
+\end{DoxyReturn}
+
+
+Wymaga dostępności instancji \doxylink{class_economy_manager}{Economy\+Manager}. Zwraca {\ttfamily false} jeśli menedżer ekonomii nie jest dostępny. \Hypertarget{class_shop_manager_aae20c9acbacc4dc714671f22bfb89567}\index{ShopManager@{ShopManager}!CaptureState@{CaptureState}}
+\index{CaptureState@{CaptureState}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{CaptureState()}{CaptureState()}}
+{\footnotesize\ttfamily \label{class_shop_manager_aae20c9acbacc4dc714671f22bfb89567} 
+\mbox{\hyperlink{class_shop_save_data}{Shop\+Save\+Data}} Shop\+Manager.\+Capture\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Przechwytuje bieżący stan sklepu do struktury danych zapisu. 
+
+\begin{DoxyReturn}{Zwraca}
+Obiekt \doxylink{class_shop_save_data}{Shop\+Save\+Data} zawierający poziomy wszystkich ulepszeń oraz łączną liczbę zakupionych ulepszeń. 
+\end{DoxyReturn}
+
+
+Zapisuje tylko ulepszenia o poziomie większym od 0, pomijając niezakupione. Używana przez \doxylink{class_save_manager}{Save\+Manager} podczas zapisywania stanu gry. \Hypertarget{class_shop_manager_a1fedf0ec1d779b5a82c96d5d5985693f}\index{ShopManager@{ShopManager}!GetAllDefinitions@{GetAllDefinitions}}
+\index{GetAllDefinitions@{GetAllDefinitions}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{GetAllDefinitions()}{GetAllDefinitions()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a1fedf0ec1d779b5a82c96d5d5985693f} 
+List$<$ \mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}} $>$ Shop\+Manager.\+Get\+All\+Definitions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pobiera listę wszystkich definicji ulepszeń w ustalonej kolejności. 
+
+\begin{DoxyReturn}{Zwraca}
+Lista obiektów \doxylink{class_upgrade_definition}{Upgrade\+Definition} zawierająca wszystkie dostępne ulepszenia w kolejności\+: Grill\+Speed, Cutting\+Speed, Reward\+Bonus, Order\+Time, Meat\+Batch\+Size. 
+\end{DoxyReturn}
+
+
+Kolejność elementów na liście determinuje kolejność wyświetlania w interfejsie sklepu. \Hypertarget{class_shop_manager_a2e59fece8413b83dfaf8203dc3059e95}\index{ShopManager@{ShopManager}!GetDefinition@{GetDefinition}}
+\index{GetDefinition@{GetDefinition}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{GetDefinition()}{GetDefinition()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a2e59fece8413b83dfaf8203dc3059e95} 
+\mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}} Shop\+Manager.\+Get\+Definition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pobiera definicję ulepszenia na podstawie jego typu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type} & Typ ulepszenia do wyszukania.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Obiekt \doxylink{class_upgrade_definition}{Upgrade\+Definition} odpowiadający podanemu typowi lub {\ttfamily null} jeśli definicja nie została znaleziona. 
+\end{DoxyReturn}
+\Hypertarget{class_shop_manager_a94f7233b9f89e5b4abce5ff202cf8c9b}\index{ShopManager@{ShopManager}!GetEffectValue@{GetEffectValue}}
+\index{GetEffectValue@{GetEffectValue}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{GetEffectValue()}{GetEffectValue()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a94f7233b9f89e5b4abce5ff202cf8c9b} 
+float Shop\+Manager.\+Get\+Effect\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}]{type}{, }\item[{float}]{default\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Pobiera wartość efektu ulepszenia na aktualnym poziomie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type} & Typ ulepszenia, którego wartość efektu ma zostać pobrana.\\
+\hline
+{\em default\+Value} & Wartość domyślna zwracana w przypadku braku definicji lub nieprawidłowego poziomu.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Wartość efektu na aktualnym poziomie ulepszenia lub {\itshape default\+Value}  jeśli definicja nie istnieje, tablica wartości jest pusta, lub poziom jest poza zakresem. 
+\end{DoxyReturn}
+\Hypertarget{class_shop_manager_af2b4ac5f56bd15445888a64759da472e}\index{ShopManager@{ShopManager}!GetMeatBatchSize@{GetMeatBatchSize}}
+\index{GetMeatBatchSize@{GetMeatBatchSize}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{GetMeatBatchSize()}{GetMeatBatchSize()}}
+{\footnotesize\ttfamily \label{class_shop_manager_af2b4ac5f56bd15445888a64759da472e} 
+int Shop\+Manager.\+Get\+Meat\+Batch\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pobiera aktualną wielkość porcji mięsa uzyskiwanej z jednego ścięcia. 
+
+\begin{DoxyReturn}{Zwraca}
+Liczba porcji mięsa jako liczba całkowita. Domyślnie 3 porcje bez ulepszeń. 
+\end{DoxyReturn}
+\Hypertarget{class_shop_manager_a1d4244eca86b20d278299db9e5433b9c}\index{ShopManager@{ShopManager}!GetNextUpgradeCost@{GetNextUpgradeCost}}
+\index{GetNextUpgradeCost@{GetNextUpgradeCost}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{GetNextUpgradeCost()}{GetNextUpgradeCost()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a1d4244eca86b20d278299db9e5433b9c} 
+float Shop\+Manager.\+Get\+Next\+Upgrade\+Cost (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Oblicza koszt następnego poziomu wskazanego ulepszenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type} & Typ ulepszenia, dla którego obliczany jest koszt.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Koszt kolejnego poziomu ulepszenia. Zwraca float.\+Max\+Value jeśli definicja nie istnieje, lub 0 jeśli ulepszenie osiągnęło już maksymalny poziom. 
+\end{DoxyReturn}
+\Hypertarget{class_shop_manager_a47c6de02bf1c866dc1876eb222f61735}\index{ShopManager@{ShopManager}!GetOrderTimeBonus@{GetOrderTimeBonus}}
+\index{GetOrderTimeBonus@{GetOrderTimeBonus}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{GetOrderTimeBonus()}{GetOrderTimeBonus()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a47c6de02bf1c866dc1876eb222f61735} 
+float Shop\+Manager.\+Get\+Order\+Time\+Bonus (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pobiera bonus czasu dodawanego do limitu zamówień. 
+
+\begin{DoxyReturn}{Zwraca}
+Dodatkowy czas w sekundach przyznawany na realizację zamówień. Zwraca 0 jeśli ulepszenie nie zostało zakupione. 
+\end{DoxyReturn}
+\Hypertarget{class_shop_manager_abd60441c85a8bd4dccdf5540695fd99f}\index{ShopManager@{ShopManager}!GetProcessingSpeedMultiplier@{GetProcessingSpeedMultiplier}}
+\index{GetProcessingSpeedMultiplier@{GetProcessingSpeedMultiplier}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{GetProcessingSpeedMultiplier()}{GetProcessingSpeedMultiplier()}}
+{\footnotesize\ttfamily \label{class_shop_manager_abd60441c85a8bd4dccdf5540695fd99f} 
+float Shop\+Manager.\+Get\+Processing\+Speed\+Multiplier (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_kitchen_game_models_8cs_ae746f497fef26a21045d5a2c501af8c1}{Kitchen\+Station\+Type}}}]{station\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pobiera mnożnik szybkości przetwarzania dla wskazanego typu stacji kuchennej. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em station\+Type} & Typ stacji kuchennej (Grill lub Cutting\+Board).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Mnożnik szybkości przetwarzania (wartość \texorpdfstring{$<$}{<} 1.\+0 oznacza szybsze przetwarzanie). Zwraca 1.\+0 dla nieobsługiwanych typów stacji (brak modyfikacji szybkości). 
+\end{DoxyReturn}
+
+
+Mapuje typ stacji kuchennej na odpowiedni typ ulepszenia\+:
+\begin{DoxyItemize}
+\item {\ttfamily Grill} → \doxylink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10eac17698d594b271788233db7de4ae3e16}{Upgrade\+Type.\+Grill\+Speed}
+\item {\ttfamily Cutting\+Board} → \doxylink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10ea8e1b8a8a5321d50b419e85da861cd9ea}{Upgrade\+Type.\+Cutting\+Speed} 
+\end{DoxyItemize}\Hypertarget{class_shop_manager_a7e82c031b6a60379b2e2d3a9b13f248b}\index{ShopManager@{ShopManager}!GetRewardMultiplier@{GetRewardMultiplier}}
+\index{GetRewardMultiplier@{GetRewardMultiplier}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{GetRewardMultiplier()}{GetRewardMultiplier()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a7e82c031b6a60379b2e2d3a9b13f248b} 
+float Shop\+Manager.\+Get\+Reward\+Multiplier (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pobiera mnożnik nagrody za zamówienia uwzględniający ulepszenie reputacji. 
+
+\begin{DoxyReturn}{Zwraca}
+Mnożnik nagrody (1.\+0 = brak bonusu, 1.\+5 = +50\% nagrody itd.). Wartość bazowa 1.\+0 jest powiększana o wartość efektu ulepszenia Reward\+Bonus. 
+\end{DoxyReturn}
+\Hypertarget{class_shop_manager_a43d9ab613fe9fb37783a2ce0410a9e95}\index{ShopManager@{ShopManager}!GetUpgradeLevel@{GetUpgradeLevel}}
+\index{GetUpgradeLevel@{GetUpgradeLevel}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{GetUpgradeLevel()}{GetUpgradeLevel()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a43d9ab613fe9fb37783a2ce0410a9e95} 
+int Shop\+Manager.\+Get\+Upgrade\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pobiera aktualny poziom wskazanego ulepszenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type} & Typ ulepszenia, którego poziom ma zostać zwrócony.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Aktualny poziom ulepszenia jako liczba całkowita. Zwraca 0 dla nieznanych typów ulepszeń. 
+\end{DoxyReturn}
+\Hypertarget{class_shop_manager_a854bba6eeafed6d14701565e68cdf3fe}\index{ShopManager@{ShopManager}!HandleLevelChanged@{HandleLevelChanged}}
+\index{HandleLevelChanged@{HandleLevelChanged}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{HandleLevelChanged()}{HandleLevelChanged()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a854bba6eeafed6d14701565e68cdf3fe} 
+void Shop\+Manager.\+Handle\+Level\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}]{type}{, }\item[{int}]{new\+Level}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obsługuje zmianę poziomu ulepszenia, wywołując zdarzenie \doxylink{class_shop_manager_a638a39851dc34d8ad1a8a162f3bc69aa}{On\+Upgrade\+Purchased}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type} & Typ ulepszenia, którego poziom został zmieniony.\\
+\hline
+{\em new\+Level} & Nowy poziom ulepszenia po zmianie.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shop_manager_a9e384fa4c0a9edca585ef1564255c0c6}\index{ShopManager@{ShopManager}!InitializeDefinitions@{InitializeDefinitions}}
+\index{InitializeDefinitions@{InitializeDefinitions}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{InitializeDefinitions()}{InitializeDefinitions()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a9e384fa4c0a9edca585ef1564255c0c6} 
+void Shop\+Manager.\+Initialize\+Definitions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicjalizuje wszystkie definicje ulepszeń dostępnych w sklepie. 
+
+Rejestruje pięć typów ulepszeń z predefiniowanymi parametrami\+:
+\begin{DoxyItemize}
+\item Szybszy Doner (Grill\+Speed)\+: 4 poziomy, redukcja czasu grillowania
+\item Szybsze Krojenie (Cutting\+Speed)\+: 4 poziomy, redukcja czasu krojenia
+\item Lepsza Reputacja (Reward\+Bonus)\+: 5 poziomów, bonus do nagrody
+\item Więcej Czasu (Order\+Time)\+: 4 poziomy, dodatkowy czas na zamówienia
+\item Większa Porcja (Meat\+Batch\+Size)\+: 3 poziomy, więcej porcji mięsa 
+\end{DoxyItemize}\Hypertarget{class_shop_manager_ae34be287f0cb9f3424ee7549a026c092}\index{ShopManager@{ShopManager}!IsMaxLevel@{IsMaxLevel}}
+\index{IsMaxLevel@{IsMaxLevel}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{IsMaxLevel()}{IsMaxLevel()}}
+{\footnotesize\ttfamily \label{class_shop_manager_ae34be287f0cb9f3424ee7549a026c092} 
+bool Shop\+Manager.\+Is\+Max\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sprawdza, czy wskazane ulepszenie osiągnęło maksymalny poziom. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type} & Typ ulepszenia do sprawdzenia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli ulepszenie jest na maksymalnym poziomie lub definicja nie istnieje; {\ttfamily false} w przeciwnym razie. 
+\end{DoxyReturn}
+\Hypertarget{class_shop_manager_a2804b2fc020655950e3e3144ef29ecb7}\index{ShopManager@{ShopManager}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a2804b2fc020655950e3e3144ef29ecb7} 
+void Shop\+Manager.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Czyści referencję Singletona przy niszczeniu obiektu. 
+
+Zapobiega pozostawaniu nieaktualnych referencji po zniszczeniu obiektu menedżera. \Hypertarget{class_shop_manager_a6c292a756501092fd092c4681f79769b}\index{ShopManager@{ShopManager}!RegisterDefinition@{RegisterDefinition}}
+\index{RegisterDefinition@{RegisterDefinition}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{RegisterDefinition()}{RegisterDefinition()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a6c292a756501092fd092c4681f79769b} 
+void Shop\+Manager.\+Register\+Definition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}}}]{definition}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Rejestruje definicję ulepszenia w słowniku definicji. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em definition} & Obiekt \doxylink{class_upgrade_definition}{Upgrade\+Definition} do zarejestrowania.\\
+\hline
+\end{DoxyParams}
+
+
+Jeśli definicja o tym samym typie już istnieje, zostanie nadpisana. \Hypertarget{class_shop_manager_a887f8bd4ab75242af3075319212f4483}\index{ShopManager@{ShopManager}!RestoreState@{RestoreState}}
+\index{RestoreState@{RestoreState}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{RestoreState()}{RestoreState()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a887f8bd4ab75242af3075319212f4483} 
+void Shop\+Manager.\+Restore\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shop_save_data}{Shop\+Save\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Przywraca stan sklepu z wcześniej zapisanych danych. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em data} & Obiekt \doxylink{class_shop_save_data}{Shop\+Save\+Data} zawierający zapisany stan sklepu. Jeśli {\ttfamily null}, metoda nie wykonuje żadnej operacji. \\
+\hline
+\end{DoxyParams}
+
+
+Parsuje nazwy typów ulepszeń z formatu tekstowego z powrotem na wartości enum. Nieznane typy ulepszeń są pomijane (obsługa kompatybilności wstecznej). Poziomy ulepszeń są ograniczane do zakresu \mbox{[}0, max\+Level\mbox{]} odpowiedniej definicji. Używana przez \doxylink{class_save_manager}{Save\+Manager} podczas wczytywania stanu gry. \Hypertarget{class_shop_manager_a6261aa45afd64082aca823632af95f4d}\index{ShopManager@{ShopManager}!SetUpgradeLevel@{SetUpgradeLevel}}
+\index{SetUpgradeLevel@{SetUpgradeLevel}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{SetUpgradeLevel()}{SetUpgradeLevel()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a6261aa45afd64082aca823632af95f4d} 
+void Shop\+Manager.\+Set\+Upgrade\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}]{type}{, }\item[{int}]{level}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia poziom wskazanego ulepszenia na podaną wartość. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type} & Typ ulepszenia, którego poziom ma zostać zmieniony.\\
+\hline
+{\em level} & Nowa wartość poziomu do ustawienia.\\
+\hline
+\end{DoxyParams}
+
+
+Metoda nie weryfikuje, czy podany poziom mieści się w dozwolonym zakresie. Walidacja powinna być przeprowadzona przez kod wywołujący. \Hypertarget{class_shop_manager_a2e9ab016ade44d0c3345666690b66a83}\index{ShopManager@{ShopManager}!TryPurchaseUpgrade@{TryPurchaseUpgrade}}
+\index{TryPurchaseUpgrade@{TryPurchaseUpgrade}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{TryPurchaseUpgrade()}{TryPurchaseUpgrade()}}
+{\footnotesize\ttfamily \label{class_shop_manager_a2e9ab016ade44d0c3345666690b66a83} 
+bool Shop\+Manager.\+Try\+Purchase\+Upgrade (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Próbuje zakupić następny poziom wskazanego ulepszenia. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em type} & Typ ulepszenia do zakupienia.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\ttfamily true} jeśli zakup się powiódł; {\ttfamily false} jeśli ulepszenie jest na maksymalnym poziomie, brak menedżera ekonomii lub niewystarczające saldo. 
+\end{DoxyReturn}
+
+
+Metoda wykonuje pełny proces zakupu\+:
+\begin{DoxyEnumerate}
+\item Sprawdza czy ulepszenie nie osiągnęło maksymalnego poziomu
+\item Weryfikuje dostępność \doxylink{class_economy_manager}{Economy\+Manager}
+\item Próbuje pobrać koszt z salda gracza
+\item Zwiększa poziom ulepszenia
+\item Inkrementuje licznik zakupionych ulepszeń
+\item Loguje informację o zakupie
+\item Wywołuje zdarzenie zmiany poziomu
+\item Zapisuje stan gry przez \doxylink{class_save_manager}{Save\+Manager} 
+\end{DoxyEnumerate}
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_shop_manager_ad22f0fcb75c4ffbb9047eaf81eca12e1}\index{ShopManager@{ShopManager}!cuttingSpeedLevel@{cuttingSpeedLevel}}
+\index{cuttingSpeedLevel@{cuttingSpeedLevel}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{cuttingSpeedLevel}{cuttingSpeedLevel}}
+{\footnotesize\ttfamily \label{class_shop_manager_ad22f0fcb75c4ffbb9047eaf81eca12e1} 
+int Shop\+Manager.\+cutting\+Speed\+Level\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualny poziom ulepszenia szybkości krojenia. 
+
+\Hypertarget{class_shop_manager_a7644719556a48ed739ddd0f76a22dffb}\index{ShopManager@{ShopManager}!definitions@{definitions}}
+\index{definitions@{definitions}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{definitions}{definitions}}
+{\footnotesize\ttfamily \label{class_shop_manager_a7644719556a48ed739ddd0f76a22dffb} 
+readonly Dictionary$<$\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}, \mbox{\hyperlink{class_upgrade_definition}{Upgrade\+Definition}}$>$ Shop\+Manager.\+definitions\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Wartość początkowa\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Dictionary<UpgradeType,\ UpgradeDefinition>()}
+
+\end{DoxyCode}
+
+
+Słownik przechowujący definicje ulepszeń indeksowane typem ulepszenia. 
+
+Inicjalizowany w metodzie \doxylink{class_shop_manager_a9e384fa4c0a9edca585ef1564255c0c6}{Initialize\+Definitions} podczas startu aplikacji. Umożliwia szybki dostęp do definicji ulepszenia po jego typie. \Hypertarget{class_shop_manager_a4d667d788a01bfb29a094e031f01f369}\index{ShopManager@{ShopManager}!grillSpeedLevel@{grillSpeedLevel}}
+\index{grillSpeedLevel@{grillSpeedLevel}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{grillSpeedLevel}{grillSpeedLevel}}
+{\footnotesize\ttfamily \label{class_shop_manager_a4d667d788a01bfb29a094e031f01f369} 
+int Shop\+Manager.\+grill\+Speed\+Level\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualny poziom ulepszenia szybkości grillowania. 
+
+\Hypertarget{class_shop_manager_ade5d302d9ce92b33d745e5652eff7c4a}\index{ShopManager@{ShopManager}!meatBatchSizeLevel@{meatBatchSizeLevel}}
+\index{meatBatchSizeLevel@{meatBatchSizeLevel}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{meatBatchSizeLevel}{meatBatchSizeLevel}}
+{\footnotesize\ttfamily \label{class_shop_manager_ade5d302d9ce92b33d745e5652eff7c4a} 
+int Shop\+Manager.\+meat\+Batch\+Size\+Level\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualny poziom ulepszenia wielkości porcji mięsa. 
+
+\Hypertarget{class_shop_manager_a0322e6408fd8bb126a28bce283ec454a}\index{ShopManager@{ShopManager}!orderTimeLevel@{orderTimeLevel}}
+\index{orderTimeLevel@{orderTimeLevel}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{orderTimeLevel}{orderTimeLevel}}
+{\footnotesize\ttfamily \label{class_shop_manager_a0322e6408fd8bb126a28bce283ec454a} 
+int Shop\+Manager.\+order\+Time\+Level\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualny poziom ulepszenia czasu na zamówienie. 
+
+\Hypertarget{class_shop_manager_a70fa29c6109e948d943ec1d22cf2c5e5}\index{ShopManager@{ShopManager}!rewardBonusLevel@{rewardBonusLevel}}
+\index{rewardBonusLevel@{rewardBonusLevel}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{rewardBonusLevel}{rewardBonusLevel}}
+{\footnotesize\ttfamily \label{class_shop_manager_a70fa29c6109e948d943ec1d22cf2c5e5} 
+int Shop\+Manager.\+reward\+Bonus\+Level\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aktualny poziom ulepszenia bonusu do nagrody. 
+
+\Hypertarget{class_shop_manager_a145f6941ff8a171b6e898f2b90771c26}\index{ShopManager@{ShopManager}!totalUpgradesPurchased@{totalUpgradesPurchased}}
+\index{totalUpgradesPurchased@{totalUpgradesPurchased}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{totalUpgradesPurchased}{totalUpgradesPurchased}}
+{\footnotesize\ttfamily \label{class_shop_manager_a145f6941ff8a171b6e898f2b90771c26} 
+int Shop\+Manager.\+total\+Upgrades\+Purchased\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Łączna liczba ulepszeń zakupionych przez gracza. 
+
+Wartość widoczna w inspektorze Unity w celach debugowania. 
+
+\doxysubsection{Dokumentacja właściwości}
+\Hypertarget{class_shop_manager_a258a9c9041205d3e5b2617791aaf5029}\index{ShopManager@{ShopManager}!Instance@{Instance}}
+\index{Instance@{Instance}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_shop_manager_a258a9c9041205d3e5b2617791aaf5029} 
+\mbox{\hyperlink{class_shop_manager}{Shop\+Manager}} Shop\+Manager.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Statyczna instancja Singleton klasy \doxylink{class_shop_manager}{Shop\+Manager}. 
+
+Jedyna instancja menedżera sklepu dostępna globalnie.\Hypertarget{class_shop_manager_acbad8ac58beb95f5b22b2b9ab5b3f652}\index{ShopManager@{ShopManager}!TotalUpgradesPurchased@{TotalUpgradesPurchased}}
+\index{TotalUpgradesPurchased@{TotalUpgradesPurchased}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{TotalUpgradesPurchased}{TotalUpgradesPurchased}}
+{\footnotesize\ttfamily \label{class_shop_manager_acbad8ac58beb95f5b22b2b9ab5b3f652} 
+int Shop\+Manager.\+Total\+Upgrades\+Purchased\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Pobiera łączną liczbę zakupionych ulepszeń. 
+
+Całkowita liczba transakcji zakupu ulepszeń od początku gry.
+
+\doxysubsection{Dokumentacja zdarzeń}
+\Hypertarget{class_shop_manager_a638a39851dc34d8ad1a8a162f3bc69aa}\index{ShopManager@{ShopManager}!OnUpgradePurchased@{OnUpgradePurchased}}
+\index{OnUpgradePurchased@{OnUpgradePurchased}!ShopManager@{ShopManager}}
+\doxysubsubsection{\texorpdfstring{OnUpgradePurchased}{OnUpgradePurchased}}
+{\footnotesize\ttfamily \label{class_shop_manager_a638a39851dc34d8ad1a8a162f3bc69aa} 
+Action$<$\mbox{\hyperlink{_shop_manager_8cs_aed791e8d3de5c0066e62b3790b3bb10e}{Upgrade\+Type}}, int$>$ Shop\+Manager.\+On\+Upgrade\+Purchased}
+
+
+
+Zdarzenie wywoływane po pomyślnym zakupie ulepszenia. 
+
+Przekazuje typ zakupionego ulepszenia oraz nowy poziom. Subskrybenci mogą wykorzystać to zdarzenie do aktualizacji interfejsu lub zastosowania efektów ulepszenia w rozgrywce. 
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_shop_manager_8cs}{Shop\+Manager.\+cs}}\end{DoxyCompactItemize}

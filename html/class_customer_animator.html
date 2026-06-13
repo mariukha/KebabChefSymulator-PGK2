@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kebab Chef Symulator: Dokumentacja klasy CustomerAnimator</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Kebab Chef Symulator
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pri-methods">Metody prywatne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
+<a href="class_customer_animator-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy CustomerAnimator</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Komponent animujący model klienta za pomocą systemu Playable API Unity. Ładuje klip animacji idle z zasobów i odtwarza go w pętli.  
+ <a href="#details">Więcej...</a></p>
+<div class="dynheader">
+Diagram dziedziczenia dla CustomerAnimator</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_customer_animator.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Metody prywatne</h2></td></tr>
+<tr class="memitem:a843c39d51603357b97100eb7cc21dee3" id="r_a843c39d51603357b97100eb7cc21dee3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a843c39d51603357b97100eb7cc21dee3">Start</a> ()</td></tr>
+<tr class="memdesc:a843c39d51603357b97100eb7cc21dee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjalizuje system animacji klienta — ładuje klip idle z Resources, tworzy graf Playable i rozpoczyna odtwarzanie.  <br /></td></tr>
+<tr class="separator:a843c39d51603357b97100eb7cc21dee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a338e3a1fad895a706483cf8fb4915f84" id="r_a338e3a1fad895a706483cf8fb4915f84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a338e3a1fad895a706483cf8fb4915f84">Update</a> ()</td></tr>
+<tr class="memdesc:a338e3a1fad895a706483cf8fb4915f84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ręcznie zapętla animację idle — resetuje czas odtwarzania po osiągnięciu końca klipu.  <br /></td></tr>
+<tr class="separator:a338e3a1fad895a706483cf8fb4915f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a793e695c2abaeaecd51192a7ea0706ac" id="r_a793e695c2abaeaecd51192a7ea0706ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a793e695c2abaeaecd51192a7ea0706ac">OnDestroy</a> ()</td></tr>
+<tr class="memdesc:a793e695c2abaeaecd51192a7ea0706ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Niszczy graf Playable przy niszczeniu komponentu, aby zwolnić zasoby natywne.  <br /></td></tr>
+<tr class="separator:a793e695c2abaeaecd51192a7ea0706ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:a58c3f2f0663686549b540ce96687ec71" id="r_a58c3f2f0663686549b540ce96687ec71"><td class="memItemLeft" align="right" valign="top">UnityEngine.Playables.PlayableGraph&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58c3f2f0663686549b540ce96687ec71">graph</a></td></tr>
+<tr class="memdesc:a58c3f2f0663686549b540ce96687ec71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Graf odtwarzania Playable — zarządza łańcuchem odtwarzania animacji. Musi być jawnie niszczony w OnDestroy, aby uniknąć wycieków pamięci.  <br /></td></tr>
+<tr class="separator:a58c3f2f0663686549b540ce96687ec71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f0f00a093dc571291be9e1095721aa0" id="r_a8f0f00a093dc571291be9e1095721aa0"><td class="memItemLeft" align="right" valign="top">UnityEngine.Animations.AnimationClipPlayable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f0f00a093dc571291be9e1095721aa0">idlePlayable</a></td></tr>
+<tr class="memdesc:a8f0f00a093dc571291be9e1095721aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Playable opakowujący klip animacji idle klienta. Pozwala na kontrolę czasu odtwarzania animacji.  <br /></td></tr>
+<tr class="separator:a8f0f00a093dc571291be9e1095721aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae50feb554976a1c33cb0d1f3122a1132" id="r_ae50feb554976a1c33cb0d1f3122a1132"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae50feb554976a1c33cb0d1f3122a1132">clipLength</a></td></tr>
+<tr class="memdesc:ae50feb554976a1c33cb0d1f3122a1132"><td class="mdescLeft">&#160;</td><td class="mdescRight">Długość klipu animacji idle w sekundach. Używana do ręcznego zapętlania animacji w Update.  <br /></td></tr>
+<tr class="separator:ae50feb554976a1c33cb0d1f3122a1132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Komponent animujący model klienta za pomocą systemu Playable API Unity. Ładuje klip animacji idle z zasobów i odtwarza go w pętli. </p>
+<p>Używa niskiego poziomu Playable API zamiast Animator Controller, co pozwala na dynamiczne ładowanie i odtwarzanie animacji bez potrzeby tworzenia kontrolera animacji w edytorze. Animacja jest ręcznie zapętlana w metodzie Update, resetując czas po osiągnięciu końca klipu. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a793e695c2abaeaecd51192a7ea0706ac" name="a793e695c2abaeaecd51192a7ea0706ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a793e695c2abaeaecd51192a7ea0706ac">&#9670;&#160;</a></span>OnDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CustomerAnimator.OnDestroy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Niszczy graf Playable przy niszczeniu komponentu, aby zwolnić zasoby natywne. </p>
+<p>Graf PlayableGraph alokuje pamięć natywną, która nie jest zarządzana przez garbage collector .NET — musi być jawnie zwolniona wywołaniem Destroy(). </p>
+
+</div>
+</div>
+<a id="a843c39d51603357b97100eb7cc21dee3" name="a843c39d51603357b97100eb7cc21dee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a843c39d51603357b97100eb7cc21dee3">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CustomerAnimator.Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicjalizuje system animacji klienta — ładuje klip idle z Resources, tworzy graf Playable i rozpoczyna odtwarzanie. </p>
+<p>Wyszukuje klipy animacji w katalogu "Models/klient_idle" i wybiera pierwszy klip, który nie jest podglądem (nie zaczyna się od "__preview"). Jeśli na obiekcie nie ma komponentu Animator, zostaje on automatycznie dodany. </p>
+
+</div>
+</div>
+<a id="a338e3a1fad895a706483cf8fb4915f84" name="a338e3a1fad895a706483cf8fb4915f84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a338e3a1fad895a706483cf8fb4915f84">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CustomerAnimator.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ręcznie zapętla animację idle — resetuje czas odtwarzania po osiągnięciu końca klipu. </p>
+<p>Konieczne, ponieważ Playable API nie zapętla automatycznie klipów animacji bez dodatkowej konfiguracji. Używa operatora modulo na czasie, aby zachować płynne przejście między iteracjami animacji. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="ae50feb554976a1c33cb0d1f3122a1132" name="ae50feb554976a1c33cb0d1f3122a1132"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae50feb554976a1c33cb0d1f3122a1132">&#9670;&#160;</a></span>clipLength</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CustomerAnimator.clipLength</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Długość klipu animacji idle w sekundach. Używana do ręcznego zapętlania animacji w Update. </p>
+
+</div>
+</div>
+<a id="a58c3f2f0663686549b540ce96687ec71" name="a58c3f2f0663686549b540ce96687ec71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58c3f2f0663686549b540ce96687ec71">&#9670;&#160;</a></span>graph</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UnityEngine.Playables.PlayableGraph CustomerAnimator.graph</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Graf odtwarzania Playable — zarządza łańcuchem odtwarzania animacji. Musi być jawnie niszczony w OnDestroy, aby uniknąć wycieków pamięci. </p>
+
+</div>
+</div>
+<a id="a8f0f00a093dc571291be9e1095721aa0" name="a8f0f00a093dc571291be9e1095721aa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f0f00a093dc571291be9e1095721aa0">&#9670;&#160;</a></span>idlePlayable</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UnityEngine.Animations.AnimationClipPlayable CustomerAnimator.idlePlayable</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Playable opakowujący klip animacji idle klienta. Pozwala na kontrolę czasu odtwarzania animacji. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>Assets/Scripts/<a class="el" href="_kitchen_game_bootstrap_8cs.html">KitchenGameBootstrap.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>
