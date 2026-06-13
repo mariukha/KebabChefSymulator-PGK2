@@ -140,10 +140,8 @@ public class PauseMenuUI : MonoBehaviour
             NetworkSetup.Instance.Disconnect();
         }
 
-        // After disconnect, the player camera is destroyed (async) — always create a fallback
-        // so the main menu UI can render. SetupLocalPlayer will clean it up when re-entering.
         {
-            // Destroy any existing cameras that belong to network players (they'll be orphaned)
+            
             Camera[] allCams = FindObjectsByType<Camera>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             foreach (Camera c in allCams)
             {

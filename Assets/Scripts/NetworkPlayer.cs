@@ -137,7 +137,6 @@ public class NetworkPlayer : NetworkBehaviour
 
         gameObject.name = "Player_Local";
 
-        // Destroy existing scene camera so we don't have duplicates
         Camera existingMain = Camera.main;
         if (existingMain != null && existingMain.GetComponentInParent<NetworkPlayer>() == null)
         {
@@ -153,9 +152,6 @@ public class NetworkPlayer : NetworkBehaviour
         playerCamera.nearClipPlane = 0.1f;
         playerCamera.farClipPlane = 100f;
 
-        // Transfer AudioListener to the new player camera.
-        // Destroy() is deferred, so the old AudioListener would still be found by FindFirstObjectByType.
-        // We must remove it immediately before adding the new one.
         AudioListener oldListener = existingMain != null ? existingMain.GetComponent<AudioListener>() : null;
         if (oldListener != null)
         {
@@ -535,7 +531,7 @@ public class NetworkPlayer : NetworkBehaviour
     [ClientRpc]
     private void PlayVFXClientRpc(NetworkVFXType type, Vector3 pos, Color color)
     {
-        if (IsServer) return; // Server already played it
+        if (IsServer) return; 
         if (VFXManager.Instance == null) return;
 
         switch (type)

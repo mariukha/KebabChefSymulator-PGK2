@@ -19,14 +19,12 @@ public class VFXManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-    
     public void PlaySteamEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
             NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Steam, worldPosition);
         PlaySteamEffectLocal(worldPosition);
     }
-
 
     public void StopSteamEffect(Vector3 worldPosition)
     {
@@ -35,14 +33,12 @@ public class VFXManager : MonoBehaviour
         StopSteamEffectLocal(worldPosition);
     }
 
-
     public void PlayDonerSmokeEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
             NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.DonerSmoke, worldPosition);
         PlayDonerSmokeEffectLocal(worldPosition);
     }
-
 
     public void StopDonerSmokeEffect(Vector3 worldPosition)
     {
@@ -51,14 +47,12 @@ public class VFXManager : MonoBehaviour
         StopDonerSmokeEffectLocal(worldPosition);
     }
 
-
     public void PlayChopEffect(Vector3 worldPosition, Color ingredientColor)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
             NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Chop, worldPosition, ingredientColor);
         PlayChopEffectLocal(worldPosition, ingredientColor);
     }
-
 
     public void PlayPickupEffect(Vector3 worldPosition, Color tint)
     {
@@ -67,14 +61,12 @@ public class VFXManager : MonoBehaviour
         PlayPickupEffectLocal(worldPosition, tint);
     }
 
-
     public void PlayDropEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
             NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Drop, worldPosition);
         PlayDropEffectLocal(worldPosition);
     }
-
 
     public void PlayReadyEffect(Vector3 worldPosition, Color tint)
     {
@@ -83,14 +75,12 @@ public class VFXManager : MonoBehaviour
         PlayReadyEffectLocal(worldPosition, tint);
     }
 
-
     public void PlayWrapEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
             NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Wrap, worldPosition);
         PlayWrapEffectLocal(worldPosition);
     }
-
 
     public void PlayUpgradeEffect(Vector3 worldPosition, Color accent)
     {
@@ -99,14 +89,12 @@ public class VFXManager : MonoBehaviour
         PlayUpgradeEffectLocal(worldPosition, accent);
     }
 
-
     public void PlayMoneyEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
             NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.Money, worldPosition);
         PlayMoneyEffectLocal(worldPosition);
     }
-
 
     public void PlayDeliverySuccessEffect(Vector3 worldPosition)
     {
@@ -115,14 +103,12 @@ public class VFXManager : MonoBehaviour
         PlayDeliverySuccessEffectLocal(worldPosition);
     }
 
-
     public void PlayDeliveryFailEffect(Vector3 worldPosition)
     {
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsServer && NetworkPlayer.LocalInstance != null)
             NetworkPlayer.LocalInstance.BroadcastVFX(NetworkVFXType.DeliveryFail, worldPosition);
         PlayDeliveryFailEffectLocal(worldPosition);
     }
-
 
     public void PlayTimeoutEffect()
     {
