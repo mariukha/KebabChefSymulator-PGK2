@@ -1,12 +1,16 @@
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Playables;
+using UnityEngine.Animations;
+using System.Linq;
 
 public class KitchenGameBootstrap : MonoBehaviour
 {
     private const int InteractableLayer = 6;
     private int stationIndexCounter = 0;
     private const string ModelPath = "Models/";
+    private Shader cachedLitShader;
     private const float PlayerEyeHeight = 1.75f;
     private const float WorktopLocalY = 0.34f;
     private const float TableVisualSize = 2.35f;
@@ -30,23 +34,46 @@ public class KitchenGameBootstrap : MonoBehaviour
         bootstrapper.AddComponent<KitchenGameBootstrap>();
     }
 
+    private Shader GetLitShader()
+    {
+        if (cachedLitShader != null) return cachedLitShader;
+        cachedLitShader = Shader.Find("Universal Render Pipeline/Lit");
+        if (cachedLitShader == null) cachedLitShader = Shader.Find("Standard");
+        return cachedLitShader;
+    }
+
     private void Start()
     {
-        EnsureNetworkSetup();
-        EnsureManagers();
-        BuildEnvironmentIfNeeded();
-        BuildKitchenIfNeeded();
-        BuildOrderBoardIfNeeded();
-        ConfigureLighting();
+        try { EnsureNetworkSetup(); } catch (System.Exception e) { Debug.LogError($"[Bootstrap] NetworkSetup failed: {e}"); }
+        try { EnsureManagers(); } catch (System.Exception e) { Debug.LogError($"[Bootstrap] Managers failed: {e}"); }
+        try { BuildEnvironmentIfNeeded(); } catch (System.Exception e) { Debug.LogError($"[Bootstrap] Environment failed: {e}"); }
+        try { BuildKitchenIfNeeded(); } catch (System.Exception e) { Debug.LogError($"[Bootstrap] Kitchen failed: {e}"); }
+        try { BuildOrderBoardIfNeeded(); } catch (System.Exception e) { Debug.LogError($"[Bootstrap] OrderBoard failed: {e}"); }
+        try { ConfigureLighting(); } catch (System.Exception e) { Debug.LogError($"[Bootstrap] Lighting failed: {e}"); }
+        try { EnsureEffects(); } catch (System.Exception e) { Debug.LogError($"[Bootstrap] Effects failed: {e}"); }
 
-        bool networkActive = NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening;
-        if (!networkActive)
+        try
         {
-            LobbyUI lobby = FindFirstObjectByType<LobbyUI>();
-            if (lobby != null)
+            bool networkActive = NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening;
+            if (!networkActive)
             {
-                lobby.ShowLobby();
+
+                if (FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
+                {
+                    GameObject esObj = new GameObject("EventSystem");
+                    esObj.AddComponent<UnityEngine.EventSystems.EventSystem>();
+                    esObj.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
+                }
+
+                if (FindFirstObjectByType<MainMenuUI>() == null)
+                {
+                    new GameObject("MainMenuUI").AddComponent<MainMenuUI>();
+                }
             }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"[Bootstrap] Post-init UI failed: {e}");
         }
     }
 
@@ -74,8 +101,6 @@ public class KitchenGameBootstrap : MonoBehaviour
         {
             managerObject = new GameObject("GameManager");
         }
-        
-        managerObject.AddComponent<DumpHierarchy>();
 
         if (FindFirstObjectByType<EconomyManager>() == null)
         {
@@ -91,6 +116,11 @@ public class KitchenGameBootstrap : MonoBehaviour
         if (FindFirstObjectByType<SaveManager>() == null)
         {
             managerObject.AddComponent<SaveManager>();
+        }
+
+        if (FindFirstObjectByType<GameSettingsManager>() == null)
+        {
+            managerObject.AddComponent<GameSettingsManager>();
         }
 
         if (FindFirstObjectByType<ShopManager>() == null)
@@ -109,6 +139,50 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
 
         orderManager.InitializeCatalogIfNeeded();
+    }
+
+    private void EnsureEffects()
+    {
+        GameObject managerObject = GameObject.Find("GameManager");
+        if (managerObject == null)
+        {
+            managerObject = new GameObject("GameManager");
+        }
+
+        if (FindFirstObjectByType<PostProcessSetup>() == null)
+        {
+            managerObject.AddComponent<PostProcessSetup>();
+        }
+
+        if (FindFirstObjectByType<AmbientParticles>() == null)
+        {
+            managerObject.AddComponent<AmbientParticles>();
+        }
+
+        if (FindFirstObjectByType<AudioManager>() == null)
+        {
+            managerObject.AddComponent<AudioManager>();
+        }
+
+        if (FindFirstObjectByType<ItemAnimator>() == null)
+        {
+            managerObject.AddComponent<ItemAnimator>();
+        }
+
+        if (FindFirstObjectByType<PauseMenuUI>() == null)
+        {
+            new GameObject("PauseMenuUI").AddComponent<PauseMenuUI>();
+        }
+
+        if (FindFirstObjectByType<LoadingScreen>() == null)
+        {
+            new GameObject("LoadingScreen").AddComponent<LoadingScreen>();
+        }
+
+        if (FindFirstObjectByType<AchievementPopup>() == null)
+        {
+            new GameObject("AchievementPopup").AddComponent<AchievementPopup>();
+        }
     }
 
     private void BuildKitchenIfNeeded()
@@ -282,13 +356,7 @@ public class KitchenGameBootstrap : MonoBehaviour
         stationObject.layer = InteractableLayer;
 
         Renderer renderer = stationObject.GetComponent<Renderer>();
-        Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-        if (shader == null)
-        {
-            shader = Shader.Find("Standard");
-        }
-
-        renderer.material = new Material(shader);
+        renderer.material = new Material(GetLitShader());
         renderer.material.color = color;
 
         KitchenStation station = stationObject.AddComponent<KitchenStation>();
@@ -311,7 +379,7 @@ public class KitchenGameBootstrap : MonoBehaviour
         }
 
         Renderer markerRenderer = marker.GetComponent<Renderer>();
-        markerRenderer.material = new Material(shader);
+        markerRenderer.material = new Material(GetLitShader());
         markerRenderer.material.color = sourceIngredient != null ? sourceIngredient.kolorDebug : color;
 
         CreateImportedStationDetails(stationObject.transform, stationName, stationType, sourceIngredient);
@@ -327,14 +395,16 @@ public class KitchenGameBootstrap : MonoBehaviour
         customerRoot.SetParent(parent);
         customerRoot.position = position;
 
-        GameObject customerModel = CreateImportedModel(customerRoot, "customer", "CustomerVisual", Vector3.zero, new Vector3(0f, 0f, 0f), 1.95f);
+        GameObject customerModel = CreateImportedModel(customerRoot, "klient_idle", "CustomerVisual", Vector3.zero, new Vector3(0f, 0f, 0f), 1.95f);
         if (customerModel == null)
         {
             CreateBlock(customerRoot, "Body", PrimitiveType.Capsule, new Vector3(0f, 1f, 0f), new Vector3(0.9f, 1.8f, 0.9f), new Color(0.16f, 0.44f, 0.74f));
             CreateBlock(customerRoot, "Head", PrimitiveType.Sphere, new Vector3(0f, 2.25f, 0f), new Vector3(0.7f, 0.7f, 0.7f), new Color(0.92f, 0.78f, 0.63f));
         }
-
-        CreateLabel(customerRoot, "Klient", new Vector3(0f, 2.25f, 0f));
+        else
+        {
+            customerModel.AddComponent<CustomerAnimator>();
+        }
     }
 
     private void CreateCounter(Transform parent, string objectName, Vector3 position, Vector3 scale, bool visible = true)
@@ -419,6 +489,13 @@ public class KitchenGameBootstrap : MonoBehaviour
         light.shadowBias = 0.05f;
         light.shadowNormalBias = 0.4f;
         light.renderMode = LightRenderMode.ForcePixel;
+
+        LampFlicker flicker = lightObject.GetComponent<LampFlicker>();
+        if (flicker == null)
+        {
+            flicker = lightObject.AddComponent<LampFlicker>();
+            flicker.Configure(light, intensity);
+        }
     }
 
     private void CreateCeilingLamp(Transform parent, Vector3 position)
@@ -429,8 +506,18 @@ public class KitchenGameBootstrap : MonoBehaviour
 
     private void CreateImportedEnvironmentDetails(Transform parent)
     {
-        CreateImportedModel(parent, "lamp", "ImportedLampLeft", new Vector3(-2.5f, 4.45f, 2f), new Vector3(0f, 0f, 0f), 0.9f);
-        CreateImportedModel(parent, "lamp", "ImportedLampRight", new Vector3(2.5f, 4.45f, 2f), new Vector3(0f, 0f, 0f), 0.9f);
+        GameObject lampLeft = CreateImportedModel(parent, "lamp", "ImportedLampLeft", new Vector3(-2.5f, 4.45f, 2f), new Vector3(0f, 0f, 0f), 0.9f);
+        if (lampLeft != null && lampLeft.GetComponent<LampEmissionPulse>() == null)
+        {
+            lampLeft.AddComponent<LampEmissionPulse>();
+        }
+
+        GameObject lampRight = CreateImportedModel(parent, "lamp", "ImportedLampRight", new Vector3(2.5f, 4.45f, 2f), new Vector3(0f, 0f, 0f), 0.9f);
+        if (lampRight != null && lampRight.GetComponent<LampEmissionPulse>() == null)
+        {
+            lampRight.AddComponent<LampEmissionPulse>();
+        }
+
         CreateImportedModel(parent, "wall_shelf", "ImportedBackShelves", new Vector3(3.35f, 2.05f, 6.35f), new Vector3(0f, 180f, 0f), 2.2f);
         CreateImportedModel(parent, "prep_table", "ImportedLeftTableA", new Vector3(-5.55f, 0f, 4.6f), new Vector3(0f, 90f, 0f), TableVisualSize, new Vector3(1f, 1f, TableDepthScale));
         CreateImportedModel(parent, "prep_table", "ImportedLeftTableB", new Vector3(-5.55f, 0f, 1.5f), new Vector3(0f, 90f, 0f), TableVisualSize, new Vector3(1f, 1f, TableDepthScale));
@@ -686,13 +773,7 @@ public class KitchenGameBootstrap : MonoBehaviour
 
     private Material CreateImportedMaterial(string resourceName, string rendererName, int index)
     {
-        Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-        if (shader == null)
-        {
-            shader = Shader.Find("Standard");
-        }
-
-        Material material = new Material(shader);
+        Material material = new Material(GetLitShader());
         Color color = GetImportedModelColor(resourceName, rendererName, index);
 
         if (material.HasProperty("_BaseColor"))
@@ -902,13 +983,7 @@ public class KitchenGameBootstrap : MonoBehaviour
         block.transform.localScale = localScale;
 
         Renderer renderer = block.GetComponent<Renderer>();
-        Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-        if (shader == null)
-        {
-            shader = Shader.Find("Standard");
-        }
-
-        renderer.material = new Material(shader);
+        renderer.material = new Material(GetLitShader());
         renderer.material.color = color;
         return block.transform;
     }
@@ -1006,5 +1081,52 @@ public class DeliveryTrayDisplay : MonoBehaviour
         {
             servedKebab.SetActive(visible);
         }
+    }
+}
+
+public class CustomerAnimator : MonoBehaviour
+{
+    private UnityEngine.Playables.PlayableGraph graph;
+    private UnityEngine.Animations.AnimationClipPlayable idlePlayable;
+    private float clipLength;
+
+    private void Start()
+    {
+        AnimationClip[] idles = Resources.LoadAll<AnimationClip>("Models/klient_idle");
+        if (idles != null && idles.Length > 0)
+        {
+            AnimationClip idleClip = idles.FirstOrDefault(c => !c.name.StartsWith("__preview")) ?? idles.FirstOrDefault();
+            if (idleClip != null)
+            {
+                clipLength = idleClip.length;
+                Animator animator = GetComponent<Animator>();
+                if (animator == null) animator = gameObject.AddComponent<Animator>();
+
+                graph = UnityEngine.Playables.PlayableGraph.Create("CustomerAnimGraph");
+                graph.SetTimeUpdateMode(UnityEngine.Playables.DirectorUpdateMode.GameTime);
+
+                var output = UnityEngine.Animations.AnimationPlayableOutput.Create(graph, "Animation", animator);
+                idlePlayable = UnityEngine.Animations.AnimationClipPlayable.Create(graph, idleClip);
+                output.SetSourcePlayable(idlePlayable);
+
+                graph.Play();
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (graph.IsValid() && idlePlayable.IsValid() && clipLength > 0f)
+        {
+            if (idlePlayable.GetTime() >= clipLength)
+            {
+                idlePlayable.SetTime(idlePlayable.GetTime() % clipLength);
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (graph.IsValid()) graph.Destroy();
     }
 }

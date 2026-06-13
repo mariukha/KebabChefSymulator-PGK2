@@ -36,9 +36,10 @@ public class RelayManager : MonoBehaviour
             return;
         }
 
+        LastError = string.Empty;
+
         try
         {
-            
             await UnityServices.InitializeAsync();
 
             if (!AuthenticationService.Instance.IsSignedIn)
@@ -51,6 +52,7 @@ public class RelayManager : MonoBehaviour
         }
         catch (Exception e)
         {
+            IsServicesInitialized = false;
             LastError = "Blad inicjalizacji: " + e.Message;
             Debug.LogError("[RelayManager] " + LastError);
         }
@@ -58,12 +60,19 @@ public class RelayManager : MonoBehaviour
 
     public async Task<string> CreateRelay(int maxPlayers = 3)
     {
+        LastError = string.Empty;
+
         try
         {
             await InitializeServices();
 
             if (!IsServicesInitialized)
             {
+                if (string.IsNullOrEmpty(LastError))
+                {
+                    LastError = "Unity Services nie zostaly zainicjalizowane.";
+                }
+
                 return null;
             }
 
@@ -73,7 +82,12 @@ public class RelayManager : MonoBehaviour
 
             Debug.Log("[RelayManager] Relay utworzony. Kod: " + JoinCode);
 
-            UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            UnityTransport transport = GetTransport();
+            if (transport == null)
+            {
+                return null;
+            }
+
             transport.SetRelayServerData(
                 allocation.RelayServer.IpV4,
                 (ushort)allocation.RelayServer.Port,
@@ -81,6 +95,12 @@ public class RelayManager : MonoBehaviour
                 allocation.Key,
                 allocation.ConnectionData
             );
+
+            if (NetworkSetup.Instance == null)
+            {
+                LastError = "NetworkSetup nie istnieje.";
+                return null;
+            }
 
             NetworkSetup.Instance.RegisterPrefabHandler();
             bool started = NetworkManager.Singleton.StartHost();
@@ -106,12 +126,19 @@ public class RelayManager : MonoBehaviour
 
     public async Task<bool> JoinRelay(string joinCode)
     {
+        LastError = string.Empty;
+
         try
         {
             await InitializeServices();
 
             if (!IsServicesInitialized)
             {
+                if (string.IsNullOrEmpty(LastError))
+                {
+                    LastError = "Unity Services nie zostaly zainicjalizowane.";
+                }
+
                 return false;
             }
 
@@ -127,7 +154,12 @@ public class RelayManager : MonoBehaviour
 
             Debug.Log("[RelayManager] Dolaczono do Relay. Kod: " + joinCode);
 
-            UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            UnityTransport transport = GetTransport();
+            if (transport == null)
+            {
+                return false;
+            }
+
             transport.SetRelayServerData(
                 joinAllocation.RelayServer.IpV4,
                 (ushort)joinAllocation.RelayServer.Port,
@@ -136,6 +168,12 @@ public class RelayManager : MonoBehaviour
                 joinAllocation.ConnectionData,
                 joinAllocation.HostConnectionData
             );
+
+            if (NetworkSetup.Instance == null)
+            {
+                LastError = "NetworkSetup nie istnieje.";
+                return false;
+            }
 
             NetworkSetup.Instance.RegisterPrefabHandler();
             bool started = NetworkManager.Singleton.StartClient();
@@ -171,6 +209,23 @@ public class RelayManager : MonoBehaviour
             Debug.LogError("[RelayManager] " + LastError);
             return false;
         }
+    }
+
+    private UnityTransport GetTransport()
+    {
+        if (NetworkManager.Singleton == null)
+        {
+            LastError = "NetworkManager nie istnieje.";
+            return null;
+        }
+
+        UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+        if (transport == null)
+        {
+            LastError = "UnityTransport nie istnieje.";
+        }
+
+        return transport;
     }
 
     private void OnDestroy()

@@ -29,6 +29,7 @@ public class KitchenStation : Interactable
 
     private float pulsePhase;
     private Vector3 baseScale;
+    private int lastVisualHash;
 
     public bool IsProcessing => isProcessing;
     public float ProcessEndTime => processEndTime;
@@ -36,15 +37,38 @@ public class KitchenStation : Interactable
     public bool HasLavash => hasLavash;
     public int AssemblyCount => assemblyIngredients.Count;
     public KitchenItem StationItem => stationItem;
+    public KitchenStationType StationType => stationType;
+    public List<PreparedIngredientData> AssemblyIngredients => assemblyIngredients;
 
-    public void SyncNetworkState(bool netIsProcessing, float netProcessEndTime, int netPreparedMeatServings, bool netHasLavash, NetworkItemState netStationItem)
+    public void SyncNetworkState(StationStateSnapshot snapshot)
     {
-        isProcessing = netIsProcessing;
-        processEndTime = netProcessEndTime;
-        preparedMeatServings = netPreparedMeatServings;
-        hasLavash = netHasLavash;
-        stationItem = netStationItem.exists ? netStationItem.ToKitchenItem() : null;
+        isProcessing = snapshot.isProcessing;
+        processEndTime = snapshot.isProcessing
+            ? Time.time + snapshot.remainingProcessTime
+            : 0f;
+        preparedMeatServings = snapshot.preparedMeatServings;
+        hasLavash = snapshot.hasLavash;
+        stationItem = snapshot.stationItem.exists ? snapshot.stationItem.ToKitchenItem() : null;
+
+        assemblyIngredients.Clear();
+        int asmCount = Mathf.Min(snapshot.assemblyCount, 8);
+        for (int i = 0; i < asmCount; i++)
+        {
+            snapshot.GetAssemblySlot(i, out IngredientKind kind, out IngredientProcessState state);
+            assemblyIngredients.Add(new PreparedIngredientData(kind, state));
+        }
+
         RefreshVisualState();
+    }
+
+    public void WriteAssemblyToSnapshot(ref StationStateSnapshot snapshot)
+    {
+        int count = Mathf.Min(assemblyIngredients.Count, 8);
+        snapshot.assemblyCount = count;
+        for (int i = 0; i < count; i++)
+        {
+            snapshot.SetAssemblySlot(i, assemblyIngredients[i].ingredientKind, assemblyIngredients[i].state);
+        }
     }
 
     public void Configure(
@@ -77,7 +101,6 @@ public class KitchenStation : Interactable
 
     private void Update()
     {
-        
         if (Unity.Netcode.NetworkManager.Singleton != null &&
             Unity.Netcode.NetworkManager.Singleton.IsListening &&
             !Unity.Netcode.NetworkManager.Singleton.IsServer)
@@ -103,6 +126,10 @@ public class KitchenStation : Interactable
 
         if (!shouldPulse)
         {
+            if (baseScale != Vector3.zero)
+            {
+                transform.localScale = Vector3.Lerp(transform.localScale, baseScale, Time.deltaTime * 8f);
+            }
             return;
         }
 
@@ -230,6 +257,8 @@ public class KitchenStation : Interactable
         if (player.TryReceiveItem(item))
         {
             player.SetFeedback("Pobrano: " + item.BuildSummary());
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayPickupSound();
+            PlayPickupFeedback(item);
         }
     }
 
@@ -249,15 +278,18 @@ public class KitchenStation : Interactable
 
         if (stationItem != null)
         {
-            if (!player.TryReceiveItem(stationItem))
+            KitchenItem completedItem = stationItem;
+            if (!player.TryReceiveItem(completedItem))
             {
                 player.SetFeedback("Masz juz cos w rece.");
                 return;
             }
 
-            player.SetFeedback("Odebrano: " + stationItem.BuildSummary());
+            player.SetFeedback("Odebrano: " + completedItem.BuildSummary());
             stationItem = null;
             ApplyCurrentColor();
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayPickupSound();
+            PlayPickupFeedback(completedItem);
             return;
         }
 
@@ -281,10 +313,30 @@ public class KitchenStation : Interactable
         player.SetFeedback("Rozpoczeto przygotowanie: " + KitchenNaming.GetIngredientLabel(stationItem.ingredientKind));
         ApplyCurrentColor();
 
-        if (stationType == KitchenStationType.CuttingBoard && VFXManager.Instance != null)
+        if (stationType == KitchenStationType.CuttingBoard)
         {
-            Color chopColor = sourceIngredient != null ? sourceIngredient.kolorDebug : new Color(0.6f, 0.8f, 0.3f);
-            VFXManager.Instance.PlayChopEffect(transform.position, chopColor);
+            if (VFXManager.Instance != null)
+            {
+                Color chopColor = stationItem != null
+                    ? KitchenItemVisualFactory.GetIngredientColor(stationItem.ingredientKind, stationItem.state)
+                    : new Color(0.6f, 0.8f, 0.3f);
+                VFXManager.Instance.PlayChopEffect(transform.position, chopColor);
+            }
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayChopSound();
+        }
+
+        if (stationType == KitchenStationType.Grill)
+        {
+            if (VFXManager.Instance != null)
+            {
+                VFXManager.Instance.PlaySteamEffect(transform.position);
+            }
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayDropSound();
+                AudioManager.Instance.StartGrillAmbient();
+            }
         }
     }
 
@@ -313,6 +365,8 @@ public class KitchenStation : Interactable
 
         preparedMeatServings = Mathf.Max(0, preparedMeatServings - 1);
         player.SetFeedback("Pobrano: " + item.BuildSummary());
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayPickupSound();
+        PlayPickupFeedback(item);
         ApplyCurrentColor();
         linkedMeatTray?.ApplyCurrentColor();
     }
@@ -351,7 +405,13 @@ public class KitchenStation : Interactable
 
         if (VFXManager.Instance != null)
         {
-            VFXManager.Instance.PlaySteamEffect(transform.position);
+            VFXManager.Instance.PlayDonerSmokeEffect(transform.position);
+        }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayChopSound();
+            AudioManager.Instance.StartGrillAmbient();
         }
     }
 
@@ -378,7 +438,8 @@ public class KitchenStation : Interactable
                 hasLavash = true;
                 player.RemoveHeldItem();
                 player.SetFeedback("Polozono lawasz na stanowisku.");
-                ApplyCurrentColor();
+                RefreshVisualState();
+                PlayPlaceFeedback(item);
                 return;
             }
 
@@ -391,7 +452,8 @@ public class KitchenStation : Interactable
             assemblyIngredients.Add(new PreparedIngredientData(item.ingredientKind, item.state));
             player.RemoveHeldItem();
             player.SetFeedback("Dodano do kebaba: " + item.BuildSummary());
-            ApplyCurrentColor();
+            RefreshVisualState();
+            PlayPlaceFeedback(item);
             return;
         }
 
@@ -410,7 +472,13 @@ public class KitchenStation : Interactable
 
         ResetAssembly();
         player.SetFeedback("Kebab zostal zawiniety.");
-        ApplyCurrentColor();
+        RefreshVisualState();
+        if (VFXManager.Instance != null)
+        {
+            VFXManager.Instance.PlayWrapEffect(transform.position);
+            VFXManager.Instance.PlayReadyEffect(transform.position, KitchenItemVisualFactory.GetIngredientColor(IngredientKind.Kebab, IngredientProcessState.Assembled));
+        }
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayWrapSound();
     }
 
     private void HandleDelivery(PlayerInteraction player)
@@ -444,13 +512,33 @@ public class KitchenStation : Interactable
                 VFXManager.Instance.PlayDeliverySuccessEffect(transform.position);
                 VFXManager.Instance.PlayMoneyEffect(transform.position);
             }
+
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayMoneySound();
+
+            if (PostProcessSetup.Instance != null)
+            {
+                PostProcessSetup.Instance.PulseBloom(0.6f, 0.5f);
+            }
+
+            if (CameraEffects.Instance != null)
+            {
+                CameraEffects.Instance.ShakeCamera(0.08f, 0.3f);
+                CameraEffects.Instance.FlashScreen(new Color(0.15f, 0.6f, 0.3f, 0.15f), 0.3f);
+            }
         }
         else
         {
-            
             if (VFXManager.Instance != null)
             {
                 VFXManager.Instance.PlayDeliveryFailEffect(transform.position);
+            }
+
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayFailSound();
+
+            if (CameraEffects.Instance != null)
+            {
+                CameraEffects.Instance.ShakeCamera(0.06f, 0.25f);
+                CameraEffects.Instance.FlashScreen(new Color(0.6f, 0.12f, 0.1f, 0.15f), 0.25f);
             }
         }
 
@@ -551,10 +639,13 @@ public class KitchenStation : Interactable
         isProcessing = false;
         if (stationType == KitchenStationType.Grill && IsDonerStation())
         {
-            
             if (VFXManager.Instance != null)
             {
-                VFXManager.Instance.StopSteamEffect(transform.position);
+                VFXManager.Instance.StopDonerSmokeEffect(transform.position);
+            }
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopGrillAmbient();
             }
 
             if (linkedMeatTray != null)
@@ -563,9 +654,17 @@ public class KitchenStation : Interactable
                     ? ShopManager.Instance.GetMeatBatchSize()
                     : preparedMeatBatchSize;
                 linkedMeatTray.ReceivePreparedMeat(batchSize);
+                if (VFXManager.Instance != null)
+                {
+                    VFXManager.Instance.PlayReadyEffect(
+                        linkedMeatTray.transform.position,
+                        KitchenItemVisualFactory.GetIngredientColor(IngredientKind.Meat, IngredientProcessState.Cooked));
+                }
+                if (AudioManager.Instance != null) AudioManager.Instance.PlayReadySound();
             }
 
             RefreshVisualState();
+            PlayStationPulse(1.035f);
             return;
         }
 
@@ -582,9 +681,19 @@ public class KitchenStation : Interactable
         else if (stationType == KitchenStationType.Grill)
         {
             stationItem.state = IngredientProcessState.Cooked;
+            if (VFXManager.Instance != null)
+            {
+                VFXManager.Instance.StopSteamEffect(transform.position);
+            }
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopGrillAmbient();
+            }
         }
 
         RefreshVisualState();
+        PlayReadyFeedback(stationItem);
+        PlayStationPulse(1.035f);
     }
 
     private void ResetAssembly()
@@ -602,6 +711,84 @@ public class KitchenStation : Interactable
     private bool HasPreparedMeat()
     {
         return preparedMeatServings > 0;
+    }
+
+    private void PlayPickupFeedback(KitchenItem item)
+    {
+        if (VFXManager.Instance == null || item == null)
+        {
+            return;
+        }
+
+        VFXManager.Instance.PlayPickupEffect(transform.position, GetItemFeedbackColor(item));
+        PlayMicroCameraFeedback(0.012f, 0.08f);
+        PlayStationPulse(1.018f);
+    }
+
+    private void PlayPlaceFeedback(KitchenItem item)
+    {
+        if (VFXManager.Instance != null)
+        {
+            VFXManager.Instance.PlayDropEffect(transform.position);
+            if (item != null)
+            {
+                VFXManager.Instance.PlayPickupEffect(transform.position, GetItemFeedbackColor(item));
+            }
+        }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayDropSound();
+        }
+
+        PlayMicroCameraFeedback(0.010f, 0.07f);
+        PlayStationPulse(1.015f);
+    }
+
+    private void PlayReadyFeedback(KitchenItem item)
+    {
+        if (item == null)
+        {
+            return;
+        }
+
+        if (VFXManager.Instance != null)
+        {
+            VFXManager.Instance.PlayReadyEffect(transform.position, GetItemFeedbackColor(item));
+        }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayReadySound();
+        }
+
+        PlayMicroCameraFeedback(0.018f, 0.10f);
+    }
+
+    private void PlayStationPulse(float intensity)
+    {
+        if (ItemAnimator.Instance != null)
+        {
+            ItemAnimator.Instance.AnimatePop(gameObject, intensity);
+        }
+    }
+
+    private void PlayMicroCameraFeedback(float intensity, float duration)
+    {
+        if (CameraEffects.Instance != null)
+        {
+            CameraEffects.Instance.ShakeCamera(intensity, duration);
+        }
+    }
+
+    private Color GetItemFeedbackColor(KitchenItem item)
+    {
+        if (item == null)
+        {
+            return Color.white;
+        }
+
+        return KitchenItemVisualFactory.GetIngredientColor(item.ingredientKind, item.state);
     }
 
     private bool IsMeatTrayStation()
@@ -650,9 +837,32 @@ public class KitchenStation : Interactable
         visualRenderer.material.color = color;
     }
 
+    private int ComputeVisualHash()
+    {
+        int hash = 17;
+        hash = hash * 31 + (isProcessing ? 1 : 0);
+        if (stationItem != null)
+        {
+            hash = hash * 31 + (int)stationItem.ingredientKind;
+            hash = hash * 31 + (int)stationItem.state;
+            hash = hash * 31 + (stationItem.isDish ? 1 : 0);
+        }
+        hash = hash * 31 + (hasLavash ? 1 : 0);
+        hash = hash * 31 + assemblyIngredients.Count;
+        for (int i = 0; i < assemblyIngredients.Count; i++)
+        {
+            hash = hash * 31 + (int)assemblyIngredients[i].ingredientKind;
+            hash = hash * 31 + (int)assemblyIngredients[i].state;
+        }
+        return hash;
+    }
+
     private void UpdateDynamicVisuals()
     {
-        
+        int currentHash = ComputeVisualHash();
+        if (currentHash == lastVisualHash) return;
+        lastVisualHash = currentHash;
+
         if (dynamicStationItemVisual != null) Destroy(dynamicStationItemVisual);
         if (dynamicLavashVisual != null) Destroy(dynamicLavashVisual);
         foreach (var vis in dynamicAssemblyVisuals) if (vis != null) Destroy(vis);
@@ -660,9 +870,28 @@ public class KitchenStation : Interactable
 
         if (stationItem != null)
         {
-            Vector3 itemPos = new Vector3(0f, 0.38f, 0f);
-            Vector3 itemRot = stationItem.isDish ? new Vector3(0f, 0f, 90f) : Vector3.zero;
-            float itemSize = stationItem.isDish ? 0.3f : 0.25f;
+
+            Vector3 itemPos = new Vector3(0f, 0.42f, 0f);
+            Vector3 itemRot = Vector3.zero;
+            float itemSize = 0.30f;
+
+            if (stationItem.isDish)
+            {
+                itemRot = new Vector3(0f, 25f, 90f);
+                itemSize = 0.35f;
+            }
+            else if (stationType == KitchenStationType.CuttingBoard)
+            {
+
+                itemRot = new Vector3(-5f, 30f, 0f);
+                itemSize = 0.28f;
+            }
+            else if (stationType == KitchenStationType.Grill)
+            {
+
+                itemRot = new Vector3(0f, 15f, 0f);
+                itemSize = 0.30f;
+            }
 
             dynamicStationItemVisual = KitchenItemVisualFactory.CreateItemVisual(
                 stationItem.ingredientKind, stationItem.state, stationItem.isDish,
@@ -670,27 +899,84 @@ public class KitchenStation : Interactable
         }
         else if (stationType == KitchenStationType.Assembly)
         {
-            
+
+            float baseHeight = 0.425f;
+            Vector3 centerOffset = new Vector3(0.14f, 0f, 0f);
+
             if (hasLavash)
             {
                 dynamicLavashVisual = KitchenItemVisualFactory.CreateItemVisual(
                     IngredientKind.Lavash, IngredientProcessState.Raw, false,
-                    transform, new Vector3(0f, 0.36f, 0f), new Vector3(0f, 12f, 0f), 0.72f);
+                    transform, centerOffset + new Vector3(0f, baseHeight, 0f), new Vector3(0f, 12f, 0f), 0.65f);
             }
+
+            float layerHeight = baseHeight + 0.012f;
+
+            Vector3[] slotPositions = new Vector3[]
+            {
+                new Vector3( 0.00f, 0f,  0.00f),
+                new Vector3(-0.06f, 0f,  0.05f),
+                new Vector3( 0.06f, 0f,  0.04f),
+                new Vector3( 0.00f, 0f, -0.06f),
+                new Vector3(-0.05f, 0f, -0.04f),
+                new Vector3( 0.05f, 0f, -0.05f),
+                new Vector3(-0.03f, 0f,  0.00f),
+                new Vector3( 0.03f, 0f,  0.00f),
+            };
+
+            float[] slotRotations = new float[] { 0f, 25f, -15f, 45f, -30f, 60f, 10f, -45f };
 
             for (int i = 0; i < assemblyIngredients.Count; i++)
             {
                 var ingredient = assemblyIngredients[i];
-                
-                float angle = i * (360f / Mathf.Max(1, assemblyIngredients.Count)) * Mathf.Deg2Rad;
-                float radius = 0.08f;
-                Vector3 offset = new Vector3(Mathf.Cos(angle) * radius, 0.02f + (i * 0.01f), Mathf.Sin(angle) * radius);
+                int slotIndex = i % slotPositions.Length;
 
-                GameObject ingVis = KitchenItemVisualFactory.CreateItemVisual(
-                    ingredient.ingredientKind, ingredient.state, false,
-                    transform, new Vector3(0f, 0.36f, 0f) + offset, Vector3.zero, 0.18f);
+                float stackOffset = i * 0.005f;
+                Vector3 pos = centerOffset + new Vector3(
+                    slotPositions[slotIndex].x,
+                    layerHeight + stackOffset,
+                    slotPositions[slotIndex].z);
 
-                if (ingVis != null) dynamicAssemblyVisuals.Add(ingVis);
+                if (ingredient.ingredientKind == IngredientKind.Lettuce || ingredient.ingredientKind == IngredientKind.GarlicSauce)
+                {
+                    int pieces = ingredient.ingredientKind == IngredientKind.GarlicSauce ? 4 : 6;
+                    float spread = 0.035f;
+                    float pSize = ingredient.ingredientKind == IngredientKind.GarlicSauce ? 0.03f : 0.02f;
+
+                    GameObject scatteredVis = KitchenItemVisualFactory.CreateScatteredVisual(
+                        ingredient.ingredientKind, ingredient.state,
+                        transform, pos, pieces, spread, pSize);
+
+                    if (scatteredVis != null) dynamicAssemblyVisuals.Add(scatteredVis);
+                }
+                else
+                {
+
+                    float ingSize = 0.16f;
+                    Vector3 ingRot = new Vector3(0f, slotRotations[slotIndex], 0f);
+
+                    switch (ingredient.ingredientKind)
+                    {
+                        case IngredientKind.Meat:
+                            ingSize = 0.18f;
+                            ingRot.x = -10f;
+                            break;
+                        case IngredientKind.Tomato:
+                            ingSize = 0.14f;
+                            pos.y += 0.02f;
+                            break;
+                        case IngredientKind.Onion:
+                            ingSize = 0.13f;
+                            pos.y += 0.02f;
+                            break;
+                    }
+
+                    GameObject ingVis = KitchenItemVisualFactory.CreateItemVisual(
+                        ingredient.ingredientKind, ingredient.state, false,
+                        transform, pos, ingRot, ingSize);
+
+                    if (ingVis != null) dynamicAssemblyVisuals.Add(ingVis);
+                }
             }
         }
     }

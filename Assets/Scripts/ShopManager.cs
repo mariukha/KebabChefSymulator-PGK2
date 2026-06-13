@@ -124,7 +124,7 @@ public class ShopManager : MonoBehaviour
             type = UpgradeType.GrillSpeed,
             displayName = "Szybszy Doner",
             description = "Przyspiesza scinanie miesa z donera.",
-            icon = "\u2694",
+            icon = "G",
             maxLevel = 4,
             baseCost = 45f,
             costScaling = 1.9f,
@@ -137,7 +137,7 @@ public class ShopManager : MonoBehaviour
             type = UpgradeType.CuttingSpeed,
             displayName = "Szybsze Krojenie",
             description = "Przyspiesza krojenie warzyw na desce.",
-            icon = "\u2702",
+            icon = "K",
             maxLevel = 4,
             baseCost = 35f,
             costScaling = 1.85f,
@@ -150,7 +150,7 @@ public class ShopManager : MonoBehaviour
             type = UpgradeType.RewardBonus,
             displayName = "Lepsza Reputacja",
             description = "Zwieksza nagrode za kazde zamowienie.",
-            icon = "\u2605",
+            icon = "$",
             maxLevel = 5,
             baseCost = 60f,
             costScaling = 2.0f,
@@ -163,7 +163,7 @@ public class ShopManager : MonoBehaviour
             type = UpgradeType.OrderTime,
             displayName = "Wiecej Czasu",
             description = "Dodaje czas na realizacje zamowien.",
-            icon = "\u23F0",
+            icon = "T",
             maxLevel = 4,
             baseCost = 40f,
             costScaling = 1.8f,
@@ -176,7 +176,7 @@ public class ShopManager : MonoBehaviour
             type = UpgradeType.MeatBatchSize,
             displayName = "Wieksza Porcja",
             description = "Wiecej porcji miesa z jednego sciecia.",
-            icon = "\u2725",
+            icon = "M",
             maxLevel = 3,
             baseCost = 55f,
             costScaling = 2.1f,
@@ -406,6 +406,14 @@ public class ShopManager : MonoBehaviour
             int maxAllowed = definition != null ? definition.maxLevel : 10;
             int restoredLevel = Mathf.Clamp(entry.level, 0, maxAllowed);
             SetUpgradeLevel(parsedType, restoredLevel);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
         }
     }
 }

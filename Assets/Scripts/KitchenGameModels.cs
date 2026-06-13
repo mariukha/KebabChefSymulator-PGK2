@@ -53,15 +53,14 @@ public class IngredientRequirement
 
     public string ToDisplayString()
     {
-        string processName = KitchenNaming.GetProcessLabel(requiredState);
-        string ingredientName = KitchenNaming.GetIngredientLabel(ingredientKind);
+        string formattedName = KitchenNaming.FormatIngredient(ingredientKind, requiredState);
 
         if (quantity <= 1)
         {
-            return ingredientName + " (" + processName + ")";
+            return formattedName;
         }
 
-        return quantity + "x " + ingredientName + " (" + processName + ")";
+        return quantity + "x " + formattedName;
     }
 }
 
@@ -83,8 +82,7 @@ public class PreparedIngredientData
 
     public string ToDisplayString()
     {
-        return KitchenNaming.GetIngredientLabel(ingredientKind) +
-            " (" + KitchenNaming.GetProcessLabel(state) + ")";
+        return KitchenNaming.FormatIngredient(ingredientKind, state);
     }
 }
 
@@ -132,8 +130,7 @@ public class KitchenItem
     {
         if (!isDish)
         {
-            return KitchenNaming.GetIngredientLabel(ingredientKind) +
-                " (" + KitchenNaming.GetProcessLabel(state) + ")";
+            return KitchenNaming.FormatIngredient(ingredientKind, state);
         }
 
         StringBuilder builder = new StringBuilder();
@@ -262,6 +259,18 @@ public static class KitchenNaming
             default:
                 return kind.ToString();
         }
+    }
+
+    public static string FormatIngredient(IngredientKind kind, IngredientProcessState state)
+    {
+        string ingredientName = GetIngredientLabel(kind);
+
+        if (state == IngredientProcessState.Raw && kind != IngredientKind.Meat)
+        {
+            return ingredientName;
+        }
+
+        return ingredientName + " (" + GetProcessLabel(state) + ")";
     }
 
     public static string GetProcessLabel(IngredientProcessState state)

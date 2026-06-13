@@ -1,25 +1,23 @@
-using System.Net;
-using System.Net.Sockets;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LobbyUI : MonoBehaviour
 {
-    
-    private static readonly Color PanelBackground = new Color(0.035f, 0.05f, 0.075f, 0.96f);
-    private static readonly Color CardBackground = new Color(0.07f, 0.09f, 0.13f, 0.92f);
-    private static readonly Color FrameColor = new Color(0.12f, 0.12f, 0.13f);
-    private static readonly Color HeaderColor = new Color(0.07f, 0.11f, 0.18f);
-    private static readonly Color GoldText = new Color(1f, 0.92f, 0.65f);
-    private static readonly Color WhiteText = new Color(0.95f, 0.97f, 1f, 0.94f);
-    private static readonly Color SubText = new Color(0.65f, 0.70f, 0.78f);
-    private static readonly Color HostButtonColor = new Color(0.22f, 0.72f, 0.35f);
-    private static readonly Color HostButtonHover = new Color(0.28f, 0.82f, 0.42f);
-    private static readonly Color JoinButtonColor = new Color(0.25f, 0.55f, 0.88f);
-    private static readonly Color JoinButtonHover = new Color(0.35f, 0.65f, 0.95f);
-    private static readonly Color DisconnectColor = new Color(0.82f, 0.25f, 0.22f);
-    private static readonly Color InputFieldBg = new Color(0.06f, 0.08f, 0.11f);
+
+    private static readonly Color PanelBackground = new Color(0.012f, 0.014f, 0.018f, 0.95f);
+    private static readonly Color CardBackground = new Color(0.035f, 0.045f, 0.06f, 0.76f);
+    private static readonly Color FrameColor = new Color(0.16f, 0.17f, 0.19f, 0.95f);
+    private static readonly Color HeaderColor = new Color(0.032f, 0.038f, 0.052f, 0.94f);
+    private static readonly Color GoldText = new Color(0.86f, 0.68f, 0.28f);
+    private static readonly Color WhiteText = new Color(0.9f, 0.91f, 0.93f, 0.92f);
+    private static readonly Color SubText = new Color(0.58f, 0.62f, 0.69f);
+    private static readonly Color HostButtonColor = new Color(0.05f, 0.34f, 0.16f);
+    private static readonly Color HostButtonHover = new Color(0.08f, 0.46f, 0.22f);
+    private static readonly Color JoinButtonColor = new Color(0.06f, 0.19f, 0.42f);
+    private static readonly Color JoinButtonHover = new Color(0.09f, 0.28f, 0.58f);
+    private static readonly Color DisconnectColor = new Color(0.48f, 0.08f, 0.07f);
+    private static readonly Color InputFieldBg = new Color(0.035f, 0.045f, 0.06f, 0.95f);
 
     private Canvas lobbyCanvas;
     private GameObject lobbyPanel;
@@ -34,14 +32,23 @@ public class LobbyUI : MonoBehaviour
 
     public static string LocalPlayerNickname { get; private set; } = "Gracz";
 
-    private bool isLobbyVisible = true;
+    private bool isLobbyVisible;
     private float statusClearTime;
+    private float lastActionTime;
 
     public bool IsLobbyOpen => isLobbyVisible && lobbyPanel != null && lobbyPanel.activeSelf;
 
     private void Awake()
     {
         CreateLobbyCanvas();
+        if (lobbyCanvas != null)
+        {
+            lobbyCanvas.enabled = false;
+        }
+        if (lobbyPanel != null)
+        {
+            lobbyPanel.SetActive(false);
+        }
     }
 
     private void Update()
@@ -53,7 +60,18 @@ public class LobbyUI : MonoBehaviour
 
         UpdateConnectionState();
 
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (MainMenuUI.IsSoloMode)
+        {
+            if (isLobbyVisible)
+            {
+                HideLobby();
+            }
+
+            return;
+        }
+
+        bool settingsOpen = SettingsMenuUI.Instance != null && SettingsMenuUI.Instance.IsOpen;
+        if (!settingsOpen && Input.GetKeyDown(KeyCode.F1))
         {
             if (isLobbyVisible)
             {
@@ -77,6 +95,12 @@ public class LobbyUI : MonoBehaviour
 
     public void ShowLobby()
     {
+        if (MainMenuUI.IsSoloMode)
+        {
+            HideLobby();
+            return;
+        }
+
         isLobbyVisible = true;
         if (lobbyCanvas != null)
         {
@@ -97,6 +121,10 @@ public class LobbyUI : MonoBehaviour
         if (lobbyCanvas != null)
         {
             lobbyCanvas.enabled = false;
+        }
+        if (lobbyPanel != null)
+        {
+            lobbyPanel.SetActive(false);
         }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -123,7 +151,7 @@ public class LobbyUI : MonoBehaviour
 
         GameObject backdrop = CreatePanel(canvasObject.transform, "Backdrop",
             Vector2.zero, Vector2.one, new Vector2(0.5f, 0.5f),
-            Vector2.zero, Vector2.zero, new Color(0f, 0f, 0f, 0.75f));
+            Vector2.zero, Vector2.zero, new Color(0f, 0f, 0f, 0.52f));
         RectTransform backdropRect = backdrop.GetComponent<RectTransform>();
         backdropRect.anchorMin = Vector2.zero;
         backdropRect.anchorMax = Vector2.one;
@@ -132,76 +160,76 @@ public class LobbyUI : MonoBehaviour
 
         lobbyPanel = CreatePanel(canvasObject.transform, "LobbyPanel",
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
-            Vector2.zero, new Vector2(520f, 580f), PanelBackground);
+            Vector2.zero, new Vector2(500f, 540f), PanelBackground);
 
-        CreatePanelBorder(lobbyPanel.transform, new Vector2(520f, 580f), FrameColor);
+        CreatePanelBorder(lobbyPanel.transform, new Vector2(500f, 540f), FrameColor);
 
         GameObject header = CreatePanel(lobbyPanel.transform, "Header",
             new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f),
-            new Vector2(0f, -8f), new Vector2(-16f, 60f), HeaderColor);
+            new Vector2(0f, -8f), new Vector2(-16f, 70f), HeaderColor);
 
-        Text titleText = CreateText(header.transform, "Title", font, 22, TextAnchor.MiddleCenter,
+        Text titleText = CreateText(header.transform, "Title", font, 25, TextAnchor.MiddleCenter,
             GoldText, FontStyle.Bold);
-        titleText.text = "\u2726  KEBAB CHEF  —  MULTIPLAYER  \u2726";
+        titleText.text = "ONLINE LOBBY";
         RectTransform titleRect = titleText.GetComponent<RectTransform>();
         titleRect.anchorMin = Vector2.zero;
         titleRect.anchorMax = Vector2.one;
         titleRect.offsetMin = Vector2.zero;
         titleRect.offsetMax = Vector2.zero;
 
-        Text subTitle = CreateText(lobbyPanel.transform, "Subtitle", font, 13, TextAnchor.MiddleCenter,
+        Text subTitle = CreateText(lobbyPanel.transform, "Subtitle", font, 15, TextAnchor.MiddleCenter,
             SubText, FontStyle.Normal);
-        subTitle.text = "Gra wieloosobowa do 4 graczy";
-        PositionRect(subTitle, new Vector2(0.5f, 1f), new Vector2(0f, -85f), new Vector2(460f, 22f));
+        subTitle.text = "Hostuj pokoj lub dolacz kodem znajomego.";
+        PositionRect(subTitle, new Vector2(0.5f, 1f), new Vector2(0f, -96f), new Vector2(430f, 22f));
 
-        Text nickLabel = CreateText(lobbyPanel.transform, "NickLabel", font, 12, TextAnchor.MiddleLeft,
+        Text nickLabel = CreateText(lobbyPanel.transform, "NickLabel", font, 14, TextAnchor.MiddleLeft,
             WhiteText, FontStyle.Normal);
-        nickLabel.text = "Twoj nick:";
-        PositionRect(nickLabel, new Vector2(0.5f, 1f), new Vector2(-130f, -115f), new Vector2(200f, 22f));
+        nickLabel.text = "NICK";
+        PositionRect(nickLabel, new Vector2(0.5f, 1f), new Vector2(0f, -130f), new Vector2(420f, 22f));
 
         nicknameInputField = CreateInputField(lobbyPanel.transform, "NickInput", font,
             "Gracz", "Wpisz nick...",
-            new Vector2(0.5f, 1f), new Vector2(0f, -148f), new Vector2(440f, 42f));
+            new Vector2(0.5f, 1f), new Vector2(0f, -164f), new Vector2(420f, 42f));
 
         hostButton = CreateStyledButton(lobbyPanel.transform, "HostButton", font,
-            "\u25B6  STWORZ GRE (HOST)", HostButtonColor, HostButtonHover,
-            new Vector2(0.5f, 1f), new Vector2(0f, -215f), new Vector2(440f, 52f));
+            "UTWORZ POKOJ", HostButtonColor, HostButtonHover,
+            new Vector2(0.5f, 1f), new Vector2(0f, -226f), new Vector2(420f, 50f));
         hostButton.onClick.AddListener(OnHostClicked);
 
         CreatePanel(lobbyPanel.transform, "Separator",
             new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 0.5f),
-            new Vector2(0f, -260f), new Vector2(380f, 1f), new Color(1f, 1f, 1f, 0.08f));
+            new Vector2(0f, -276f), new Vector2(360f, 1f), new Color(1f, 1f, 1f, 0.08f));
 
-        Text orText = CreateText(lobbyPanel.transform, "OrText", font, 12, TextAnchor.MiddleCenter,
+        Text orText = CreateText(lobbyPanel.transform, "OrText", font, 14, TextAnchor.MiddleCenter,
             SubText, FontStyle.Normal);
-        orText.text = "lub dolacz do pokoju znajomego";
-        PositionRect(orText, new Vector2(0.5f, 1f), new Vector2(0f, -280f), new Vector2(460f, 20f));
+        orText.text = "DOLACZ DO ISTNIEJACEJ SESJI";
+        PositionRect(orText, new Vector2(0.5f, 1f), new Vector2(0f, -300f), new Vector2(430f, 20f));
 
-        Text codeLabel = CreateText(lobbyPanel.transform, "CodeLabel", font, 12, TextAnchor.MiddleLeft,
+        Text codeLabel = CreateText(lobbyPanel.transform, "CodeLabel", font, 14, TextAnchor.MiddleLeft,
             WhiteText, FontStyle.Normal);
-        codeLabel.text = "Kod pokoju:";
-        PositionRect(codeLabel, new Vector2(0.5f, 1f), new Vector2(-130f, -310f), new Vector2(200f, 22f));
+        codeLabel.text = "KOD POKOJU";
+        PositionRect(codeLabel, new Vector2(0.5f, 1f), new Vector2(0f, -332f), new Vector2(420f, 22f));
 
         ipInputField = CreateInputField(lobbyPanel.transform, "CodeInput", font,
             "", "Wpisz kod pokoju...",
-            new Vector2(0.5f, 1f), new Vector2(0f, -343f), new Vector2(440f, 42f));
+            new Vector2(0.5f, 1f), new Vector2(0f, -366f), new Vector2(420f, 42f));
 
         joinButton = CreateStyledButton(lobbyPanel.transform, "JoinButton", font,
-            "\u279C  DOLACZ DO POKOJU (JOIN)", JoinButtonColor, JoinButtonHover,
-            new Vector2(0.5f, 1f), new Vector2(0f, -400f), new Vector2(440f, 48f));
+            "DOLACZ DO POKOJU", JoinButtonColor, JoinButtonHover,
+            new Vector2(0.5f, 1f), new Vector2(0f, -424f), new Vector2(420f, 48f));
         joinButton.onClick.AddListener(OnJoinClicked);
 
-        statusText = CreateText(lobbyPanel.transform, "StatusText", font, 13, TextAnchor.MiddleCenter,
+        statusText = CreateText(lobbyPanel.transform, "StatusText", font, 15, TextAnchor.MiddleCenter,
             GoldText, FontStyle.Normal);
         statusText.text = string.Empty;
-        PositionRect(statusText, new Vector2(0.5f, 1f), new Vector2(0f, -455f), new Vector2(460f, 24f));
+        PositionRect(statusText, new Vector2(0.5f, 1f), new Vector2(0f, -470f), new Vector2(430f, 24f));
 
         connectedPanel = CreatePanel(lobbyPanel.transform, "ConnectedPanel",
             new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
-            new Vector2(0f, 15f), new Vector2(440f, 60f), new Color(0.08f, 0.14f, 0.1f, 0.9f));
+            new Vector2(0f, 16f), new Vector2(420f, 54f), CardBackground);
         connectedPanel.SetActive(false);
 
-        playerCountText = CreateText(connectedPanel.transform, "PlayerCount", font, 14,
+        playerCountText = CreateText(connectedPanel.transform, "PlayerCount", font, 16,
             TextAnchor.MiddleCenter, new Color(0.4f, 0.9f, 0.5f), FontStyle.Bold);
         playerCountText.text = "Polaczono: 1 gracz(y)";
         RectTransform pcRect = playerCountText.GetComponent<RectTransform>();
@@ -212,8 +240,8 @@ public class LobbyUI : MonoBehaviour
         pcRect.sizeDelta = new Vector2(0f, 24f);
 
         disconnectButton = CreateStyledButton(connectedPanel.transform, "DisconnectBtn", font,
-            "ROZLACZ", DisconnectColor, new Color(0.9f, 0.3f, 0.25f),
-            new Vector2(0.85f, 0.5f), new Vector2(0f, 0f), new Vector2(110f, 34f));
+            "ROZLACZ", DisconnectColor, new Color(0.58f, 0.12f, 0.10f),
+            new Vector2(0.85f, 0.5f), new Vector2(0f, 0f), new Vector2(104f, 32f));
         disconnectButton.onClick.AddListener(OnDisconnectClicked);
 
         if (FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
@@ -259,6 +287,9 @@ public class LobbyUI : MonoBehaviour
 
     private async void OnHostClicked()
     {
+        if (Time.unscaledTime - lastActionTime < 3f) return;
+        lastActionTime = Time.unscaledTime;
+
         if (RelayManager.Instance == null)
         {
             SetStatus("Blad: RelayManager nie istnieje.", 5f);
@@ -279,12 +310,12 @@ public class LobbyUI : MonoBehaviour
         if (code != null)
         {
             SetStatus("POKOJ UTWORZONY!  Kod:  " + code, 0f);
-            
+
             if (ipInputField != null)
             {
                 ipInputField.text = code;
             }
-            
+
             Invoke(nameof(HideLobby), 2f);
         }
         else
@@ -295,6 +326,9 @@ public class LobbyUI : MonoBehaviour
 
     private async void OnJoinClicked()
     {
+        if (Time.unscaledTime - lastActionTime < 3f) return;
+        lastActionTime = Time.unscaledTime;
+
         if (RelayManager.Instance == null)
         {
             SetStatus("Blad: RelayManager nie istnieje.", 5f);
@@ -322,7 +356,7 @@ public class LobbyUI : MonoBehaviour
         if (success)
         {
             SetStatus("Polaczono! Kod pokoju: " + code, 0f);
-            
+
             Invoke(nameof(HideLobby), 2f);
         }
         else
@@ -365,31 +399,6 @@ public class LobbyUI : MonoBehaviour
         }
 
         LocalPlayerNickname = nick;
-    }
-
-    private string GetLocalIPAddresses()
-    {
-        try
-        {
-            string result = "";
-            foreach (IPAddress ip in Dns.GetHostAddresses(Dns.GetHostName()))
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    string addr = ip.ToString();
-                    
-                    if (addr == "127.0.0.1") continue;
-                    if (result.Length > 0) result += ", ";
-                    result += addr;
-                }
-            }
-
-            return string.IsNullOrEmpty(result) ? "127.0.0.1" : result;
-        }
-        catch
-        {
-            return "127.0.0.1";
-        }
     }
 
     private GameObject CreatePanel(Transform parent, string name,
@@ -440,6 +449,9 @@ public class LobbyUI : MonoBehaviour
         text.fontStyle = style;
         text.horizontalOverflow = HorizontalWrapMode.Overflow;
         text.verticalOverflow = VerticalWrapMode.Overflow;
+        Shadow shadow = textObj.AddComponent<Shadow>();
+        shadow.effectColor = new Color(0f, 0f, 0f, 0.5f);
+        shadow.effectDistance = new Vector2(1f, -1f);
         return text;
     }
 
@@ -474,7 +486,7 @@ public class LobbyUI : MonoBehaviour
         btn.colors = colors;
         btn.targetGraphic = btnImage;
 
-        Text btnText = CreateText(btnObj.transform, "Label", font, 15,
+        Text btnText = CreateText(btnObj.transform, "Label", font, 17,
             TextAnchor.MiddleCenter, WhiteText, FontStyle.Bold);
         btnText.text = label;
         RectTransform textRect = btnText.GetComponent<RectTransform>();
@@ -495,7 +507,7 @@ public class LobbyUI : MonoBehaviour
 
         CreatePanelBorder(inputObj.transform, size, new Color(0.2f, 0.25f, 0.35f));
 
-        Text placeholderText = CreateText(inputObj.transform, "Placeholder", font, 14,
+        Text placeholderText = CreateText(inputObj.transform, "Placeholder", font, 15,
             TextAnchor.MiddleLeft, new Color(0.4f, 0.45f, 0.55f), FontStyle.Italic);
         placeholderText.text = placeholder;
         RectTransform phRect = placeholderText.GetComponent<RectTransform>();
@@ -504,7 +516,7 @@ public class LobbyUI : MonoBehaviour
         phRect.offsetMin = new Vector2(14f, 0f);
         phRect.offsetMax = new Vector2(-14f, 0f);
 
-        Text inputText = CreateText(inputObj.transform, "Text", font, 15,
+        Text inputText = CreateText(inputObj.transform, "Text", font, 16,
             TextAnchor.MiddleLeft, WhiteText, FontStyle.Normal);
         RectTransform itRect = inputText.GetComponent<RectTransform>();
         itRect.anchorMin = Vector2.zero;

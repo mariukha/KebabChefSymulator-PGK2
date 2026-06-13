@@ -1,6 +1,9 @@
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Animations;
+using System.Linq;
 
 public class NetworkPlayer : NetworkBehaviour
 {
@@ -17,7 +20,7 @@ public class NetworkPlayer : NetworkBehaviour
         new Vector3(0f, 0f, -0.5f)
     };
 
-    private static readonly Color[] PlayerColors = new Color[]
+    public static readonly Color[] PlayerColors = new Color[]
     {
         new Color(0.2f, 0.6f, 0.9f),
         new Color(0.9f, 0.4f, 0.3f),
@@ -50,6 +53,7 @@ public class NetworkPlayer : NetworkBehaviour
     private NetworkItemState lastVisualState;
 
     private NetworkKitchenStation[] cachedStations;
+    private float cachedStationsTime;
     private float nextStationSyncTime;
     private float nextEconomySyncTime;
     private float nextShopSyncTime;
@@ -87,9 +91,13 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void Start()
     {
+
         if (!IsSpawned && NetworkManager.Singleton != null && NetworkManager.Singleton.IsHost)
         {
-            SetupLocalPlayer();
+            if (cachedController == null && cachedInteraction == null)
+            {
+                SetupLocalPlayer();
+            }
         }
     }
 
@@ -129,11 +137,29 @@ public class NetworkPlayer : NetworkBehaviour
         playerCamera.nearClipPlane = 0.1f;
         playerCamera.farClipPlane = 100f;
 
+        UnityEngine.Rendering.Universal.UniversalAdditionalCameraData cameraData =
+            cameraObject.AddComponent<UnityEngine.Rendering.Universal.UniversalAdditionalCameraData>();
+        cameraData.renderPostProcessing = true;
+        cameraData.antialiasing = UnityEngine.Rendering.Universal.AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+        cameraData.antialiasingQuality = UnityEngine.Rendering.Universal.AntialiasingQuality.Medium;
+
         cachedController = GetComponent<SimplePlayerController>();
         if (cachedController != null)
         {
             cachedController.playerCamera = playerCamera;
             cachedController.enabled = true;
+        }
+
+        CameraEffects camFx = cameraObject.GetComponent<CameraEffects>();
+        if (camFx == null)
+        {
+            camFx = cameraObject.AddComponent<CameraEffects>();
+        }
+
+        CharacterController cc = GetComponent<CharacterController>();
+        if (cc != null)
+        {
+            camFx.SetTrackedController(cc);
         }
 
         cachedInteraction = GetComponent<PlayerInteraction>();
@@ -148,6 +174,10 @@ public class NetworkPlayer : NetworkBehaviour
         if (FindFirstObjectByType<KitchenHUD>() == null)
         {
             new GameObject("KitchenHUD").AddComponent<KitchenHUD>();
+        }
+        if (FindFirstObjectByType<InteractionHighlight>() == null)
+        {
+            new GameObject("InteractionHighlight").AddComponent<InteractionHighlight>();
         }
         if (FindFirstObjectByType<ShopUI>() == null)
         {
@@ -202,37 +232,59 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (remotePlayerVisual != null) return;
 
-        int colorIndex = playerIndex.Value % PlayerColors.Length;
-        Color bodyColor = PlayerColors[colorIndex];
+        GameObject root = new GameObject("RemoteChef");
+        root.transform.SetParent(transform);
+        root.transform.localPosition = Vector3.zero;
 
-        Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-        if (shader == null) shader = Shader.Find("Standard");
+        GameObject fbxPrefab = Resources.Load<GameObject>("Models/Gracz_Idle");
+        if (fbxPrefab != null)
+        {
+            GameObject model = Instantiate(fbxPrefab, root.transform);
+            model.name = "HumanModel";
+            model.transform.localPosition = Vector3.zero;
+            model.transform.localRotation = Quaternion.identity;
 
-        GameObject body = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        body.name = "RemoteBody";
-        body.transform.SetParent(transform);
-        body.transform.localPosition = new Vector3(0f, 1f, 0f);
-        body.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        Renderer bodyRenderer = body.GetComponent<Renderer>();
-        bodyRenderer.material = new Material(shader);
-        bodyRenderer.material.color = bodyColor;
-        Collider bodyCollider = body.GetComponent<Collider>();
-        if (bodyCollider != null) bodyCollider.enabled = false;
+            int colorIndex = playerIndex.Value % PlayerColors.Length;
+            Color bodyColor = PlayerColors[colorIndex];
+            Shader shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
+            Material playerMat = new Material(shader) { color = bodyColor };
 
-        GameObject head = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        head.name = "RemoteHead";
-        head.transform.SetParent(transform);
-        head.transform.localPosition = new Vector3(0f, 1.65f, 0f);
-        head.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
-        Renderer headRenderer = head.GetComponent<Renderer>();
-        headRenderer.material = new Material(shader);
-        headRenderer.material.color = new Color(0.92f, 0.78f, 0.63f);
-        Collider headCollider = head.GetComponent<Collider>();
-        if (headCollider != null) headCollider.enabled = false;
+            foreach (Renderer r in model.GetComponentsInChildren<Renderer>())
+            {
+                if (r.sharedMaterials == null || r.sharedMaterials.Length == 0 || (r.sharedMaterials[0] != null && r.sharedMaterials[0].name.Contains("Default")))
+                {
+                    r.material = playerMat;
+                }
+            }
+
+            RemotePlayerAnimator animator = model.AddComponent<RemotePlayerAnimator>();
+
+            AnimationClip[] idles = Resources.LoadAll<AnimationClip>("Models/Gracz_Idle");
+            AnimationClip[] walks = Resources.LoadAll<AnimationClip>("Models/Gracz_Walk");
+
+            if (idles != null && idles.Length > 0) animator.idleClip = idles.FirstOrDefault(c => !c.name.StartsWith("__preview")) ?? idles.FirstOrDefault();
+            if (walks != null && walks.Length > 0) animator.walkClip = walks.FirstOrDefault(c => !c.name.StartsWith("__preview")) ?? walks.FirstOrDefault();
+
+            animator.Initialize();
+
+            Debug.Log($"[NetworkPlayer] FBX loaded. Idle clips: {idles?.Length}, Walk clips: {walks?.Length}. Selected Idle: {animator.idleClip?.name}");
+        }
+        else
+        {
+
+            GameObject body = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+            body.name = "Torso";
+            body.transform.SetParent(root.transform);
+            body.transform.localPosition = new Vector3(0f, 1f, 0f);
+            body.transform.localScale = new Vector3(0.42f, 0.5f, 0.3f);
+            DisableCollider(body);
+
+            root.AddComponent<RemotePlayerAnimator>();
+        }
 
         GameObject labelObject = new GameObject("NameLabel");
-        labelObject.transform.SetParent(transform);
-        labelObject.transform.localPosition = new Vector3(0f, 2.1f, 0f);
+        labelObject.transform.SetParent(root.transform);
+        labelObject.transform.localPosition = new Vector3(0f, 2.3f, 0f);
         nameLabel = labelObject.AddComponent<TextMesh>();
         nameLabel.text = playerName.Value.ToString();
         nameLabel.characterSize = 0.04f;
@@ -242,12 +294,18 @@ public class NetworkPlayer : NetworkBehaviour
         nameLabel.color = new Color(1f, 1f, 1f, 0.85f);
         labelObject.AddComponent<BillboardLabel>();
 
-        remotePlayerVisual = body;
+        remotePlayerVisual = root;
+    }
+
+    private void DisableCollider(GameObject obj)
+    {
+        Collider col = obj.GetComponent<Collider>();
+        if (col != null) col.enabled = false;
     }
 
     private void UpdateHeldItemVisual(NetworkItemState itemState)
     {
-        
+
         if (heldItemVisual != null)
         {
             if (!itemState.exists ||
@@ -263,31 +321,12 @@ public class NetworkPlayer : NetworkBehaviour
         lastVisualState = itemState;
 
         if (!itemState.exists) return;
-        if (heldItemVisual != null) return; 
+        if (heldItemVisual != null) return;
 
         bool isDish = itemState.isDish;
 
-        if (IsOwner && playerCamera != null)
+        if (!IsOwner)
         {
-            
-            Vector3 localPos = new Vector3(0.3f, -0.25f, 0.5f);
-            Vector3 localRot = isDish ? new Vector3(0f, 0f, 90f) : new Vector3(15f, 25f, 0f);
-            float modelSize = isDish ? 0.25f : 0.18f;
-
-            heldItemVisual = KitchenItemVisualFactory.CreateItemVisual(
-                itemState.ingredientKind, itemState.state, isDish,
-                playerCamera.transform, localPos, localRot, modelSize);
-
-            if (heldItemVisual != null)
-            {
-                HeldItemBob bob = heldItemVisual.AddComponent<HeldItemBob>();
-                bob.amplitude = 0.008f;
-                bob.speed = 2.5f;
-            }
-        }
-        else
-        {
-            
             Vector3 localPos = new Vector3(0.25f, 1.2f, 0.35f);
             Vector3 localRot = isDish ? new Vector3(0f, 0f, 90f) : Vector3.zero;
             float modelSize = isDish ? 0.3f : 0.2f;
@@ -343,10 +382,11 @@ public class NetworkPlayer : NetworkBehaviour
         if (Time.time < nextStationSyncTime) return;
         nextStationSyncTime = Time.time + StationSyncInterval;
 
-        if (cachedStations == null)
+        if (cachedStations == null || Time.time - cachedStationsTime > 5f)
         {
             cachedStations = FindObjectsByType<NetworkKitchenStation>(
                 FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
+            cachedStationsTime = Time.time;
         }
 
         for (int i = 0; i < cachedStations.Length; i++)
@@ -362,13 +402,14 @@ public class NetworkPlayer : NetworkBehaviour
     [ClientRpc]
     private void SyncStationStateClientRpc(StationStateSnapshot snapshot)
     {
-        
+
         if (IsServer) return;
 
-        if (cachedStations == null)
+        if (cachedStations == null || Time.time - cachedStationsTime > 5f)
         {
             cachedStations = FindObjectsByType<NetworkKitchenStation>(
                 FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
+            cachedStationsTime = Time.time;
         }
 
         foreach (NetworkKitchenStation station in cachedStations)
@@ -413,7 +454,7 @@ public class NetworkPlayer : NetworkBehaviour
             float time = OrderManager.Instance.RemainingOrderTime;
             int comp = OrderManager.Instance.CompletedOrders;
             int fail = OrderManager.Instance.FailedOrders;
-            
+
             SyncOrdersClientRpc(desc, time, comp, fail);
         }
     }
@@ -500,10 +541,11 @@ public class NetworkPlayer : NetworkBehaviour
     {
         ulong senderClientId = rpcParams.Receive.SenderClientId;
 
-        if (cachedStations == null)
+        if (cachedStations == null || Time.time - cachedStationsTime > 5f)
         {
             cachedStations = FindObjectsByType<NetworkKitchenStation>(
                 FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
+            cachedStationsTime = Time.time;
         }
 
         NetworkKitchenStation targetStation = null;
@@ -528,16 +570,18 @@ public class NetworkPlayer : NetworkBehaviour
         PlayerInteraction interaction = requestingPlayer.GetComponent<PlayerInteraction>();
         if (interaction == null) return;
 
+        KitchenItem serverItem = requestingPlayer.netHeldItem.Value.ToKitchenItem();
         interaction.ClearHeldItem();
-        KitchenItem clientItem = heldItem.ToKitchenItem();
-        if (clientItem != null)
+        if (serverItem != null)
         {
-            interaction.TryReceiveItem(clientItem);
+            interaction.TryReceiveItem(serverItem);
         }
 
         targetStation.ServerInteract(interaction);
 
         NetworkItemState updatedHeld = NetworkItemState.FromKitchenItem(interaction.HeldItem);
+        requestingPlayer.netHeldItem.Value = updatedHeld;
+
         string feedback = interaction.FeedbackMessage;
 
         ClientRpcParams targetClient = new ClientRpcParams
@@ -576,9 +620,26 @@ public class NetworkPlayer : NetworkBehaviour
     [ServerRpc]
     public void SetPlayerNameServerRpc(string requestedName)
     {
-        if (string.IsNullOrWhiteSpace(requestedName)) requestedName = "Gracz";
-        if (requestedName.Length > 20) requestedName = requestedName.Substring(0, 20);
+        requestedName = SanitizePlayerName(requestedName);
         playerName.Value = new FixedString32Bytes(requestedName);
+    }
+
+    private static string SanitizePlayerName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name)) return "Gracz";
+
+        name = System.Text.RegularExpressions.Regex.Replace(name, "<.*?>", string.Empty);
+
+        var sb = new System.Text.StringBuilder(name.Length);
+        foreach (char c in name)
+        {
+            if (!char.IsControl(c)) sb.Append(c);
+        }
+        name = sb.ToString().Trim();
+
+        if (string.IsNullOrWhiteSpace(name)) return "Gracz";
+        if (name.Length > 20) name = name.Substring(0, 20);
+        return name;
     }
 
     private void OnPlayerNameChanged(FixedString32Bytes oldValue, FixedString32Bytes newValue)
@@ -655,5 +716,94 @@ public class HeldItemBob : MonoBehaviour
     {
         float offset = Mathf.Sin(Time.time * speed) * amplitude;
         transform.localPosition = basePosition + new Vector3(0f, offset, 0f);
+    }
+}
+
+/// <summary>
+/// Remote player animation using PlayableGraph.
+/// </summary>
+public class RemotePlayerAnimator : MonoBehaviour
+{
+    public AnimationClip idleClip;
+    public AnimationClip walkClip;
+
+    private PlayableGraph graph;
+    private AnimationMixerPlayable mixer;
+    private AnimationClipPlayable idlePlayable;
+    private AnimationClipPlayable walkPlayable;
+
+    private float idleLength;
+    private float walkLength;
+
+    private Vector3 lastPosition;
+    private float speedSmoothed;
+
+    public void Initialize()
+    {
+        lastPosition = transform.position;
+
+        if (idleClip != null && walkClip != null)
+        {
+            idleLength = idleClip.length;
+            walkLength = walkClip.length;
+
+            Animator animator = GetComponent<Animator>();
+            if (animator == null) animator = gameObject.AddComponent<Animator>();
+
+            graph = PlayableGraph.Create("RemotePlayerAnimGraph");
+            graph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);
+
+            var output = AnimationPlayableOutput.Create(graph, "Animation", animator);
+            mixer = AnimationMixerPlayable.Create(graph, 2);
+            output.SetSourcePlayable(mixer);
+
+            idlePlayable = AnimationClipPlayable.Create(graph, idleClip);
+            walkPlayable = AnimationClipPlayable.Create(graph, walkClip);
+
+            graph.Connect(idlePlayable, 0, mixer, 0);
+            graph.Connect(walkPlayable, 0, mixer, 1);
+
+            mixer.SetInputWeight(0, 1.0f);
+            mixer.SetInputWeight(1, 0.0f);
+
+            graph.Play();
+        }
+    }
+
+    private void Update()
+    {
+        float delta = (transform.position - lastPosition).magnitude;
+        float speed = delta / Mathf.Max(Time.deltaTime, 0.001f);
+        lastPosition = transform.position;
+
+        float targetWeight = Mathf.Clamp01(speed / 2.5f);
+        speedSmoothed = Mathf.Lerp(speedSmoothed, targetWeight, Time.deltaTime * 10f);
+
+        if (graph.IsValid() && mixer.IsValid())
+        {
+            mixer.SetInputWeight(0, 1.0f - speedSmoothed);
+            mixer.SetInputWeight(1, speedSmoothed);
+
+            if (idlePlayable.IsValid() && idleLength > 0f)
+            {
+                if (idlePlayable.GetTime() >= idleLength)
+                {
+                    idlePlayable.SetTime(idlePlayable.GetTime() % idleLength);
+                }
+            }
+
+            if (walkPlayable.IsValid() && walkLength > 0f)
+            {
+                if (walkPlayable.GetTime() >= walkLength)
+                {
+                    walkPlayable.SetTime(walkPlayable.GetTime() % walkLength);
+                }
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (graph.IsValid()) graph.Destroy();
     }
 }

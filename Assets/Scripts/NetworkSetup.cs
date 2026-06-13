@@ -58,7 +58,7 @@ public class NetworkSetup : MonoBehaviour
             GameObject go = Object.Instantiate(prefab, position, rotation);
             go.SetActive(true);
             NetworkObject no = go.GetComponent<NetworkObject>();
-            
+
             var prop = typeof(NetworkObject).GetProperty("GlobalObjectIdHash", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
             if (prop != null)
             {
@@ -88,14 +88,14 @@ public class NetworkSetup : MonoBehaviour
         transport.ConnectionData.Port = DefaultPort;
         transport.ConnectionData.ServerListenAddress = "0.0.0.0";
 
-        transport.DisconnectTimeoutMS = 300000;  
-        transport.ConnectTimeoutMS = 30000;       
+        transport.DisconnectTimeoutMS = 300000;
+        transport.ConnectTimeoutMS = 30000;
 
         networkManager.NetworkConfig = new NetworkConfig();
         networkManager.NetworkConfig.NetworkTransport = transport;
 
         playerPrefabInstance = CreatePlayerPrefab();
-        
+
         networkManager.NetworkConfig.PlayerPrefab = null;
         networkManager.NetworkConfig.ConnectionApproval = false;
 
@@ -143,7 +143,7 @@ public class NetworkSetup : MonoBehaviour
     {
         if (NetworkManager.Singleton != null && playerPrefabInstance != null)
         {
-            
+
             try { NetworkManager.Singleton.PrefabHandler.RemoveHandler(PlayerPrefabHash); } catch { }
             NetworkManager.Singleton.PrefabHandler.AddHandler(PlayerPrefabHash, new PlayerPrefabHandler(playerPrefabInstance));
         }
@@ -211,7 +211,7 @@ public class NetworkSetup : MonoBehaviour
 
         if (NetworkManager.Singleton.IsServer)
         {
-            
+
             GameObject playerInstance = Instantiate(playerPrefabInstance);
             playerInstance.SetActive(true);
             NetworkObject no = playerInstance.GetComponent<NetworkObject>();
@@ -225,6 +225,22 @@ public class NetworkSetup : MonoBehaviour
     private void OnClientDisconnected(ulong clientId)
     {
         Debug.Log("[NetworkSetup] Klient rozlaczony: " + clientId);
+        if (NetworkManager.Singleton != null
+            && clientId == NetworkManager.Singleton.LocalClientId
+            && !MainMenuUI.IsSoloMode)
+        {
+            MainMenuUI mainMenu = FindFirstObjectByType<MainMenuUI>();
+            if (mainMenu != null && mainMenu.IsMenuOpen)
+            {
+                return;
+            }
+
+            var lobby = FindFirstObjectByType<LobbyUI>();
+            if (lobby != null)
+            {
+                lobby.ShowLobby();
+            }
+        }
     }
 
     public static void SetGlobalObjectIdHash(NetworkObject networkObject, uint hash)

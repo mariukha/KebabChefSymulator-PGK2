@@ -4,23 +4,15 @@ using UnityEngine.UI;
 
 public class PlayerListUI : MonoBehaviour
 {
-    
-    private static readonly Color PanelBackground = new Color(0.025f, 0.04f, 0.065f, 0.92f);
+
+    private static readonly Color PanelBackground = new Color(0.025f, 0.03f, 0.045f, 0.94f);
     private static readonly Color HeaderColor = new Color(0.06f, 0.10f, 0.16f, 0.95f);
     private static readonly Color RowEven = new Color(0.05f, 0.07f, 0.10f, 0.80f);
     private static readonly Color RowOdd = new Color(0.07f, 0.09f, 0.13f, 0.80f);
-    private static readonly Color GoldText = new Color(1f, 0.92f, 0.65f);
-    private static readonly Color WhiteText = new Color(0.95f, 0.97f, 1f, 0.94f);
+    private static readonly Color GoldText = new Color(0.875f, 0.725f, 0.32f);
+    private static readonly Color WhiteText = new Color(0.9f, 0.91f, 0.93f, 0.92f);
     private static readonly Color SubText = new Color(0.65f, 0.70f, 0.78f);
     private static readonly Color FrameColor = new Color(0.14f, 0.16f, 0.20f);
-
-    private static readonly Color[] PlayerColors = new Color[]
-    {
-        new Color(0.2f, 0.6f, 0.9f),
-        new Color(0.9f, 0.4f, 0.3f),
-        new Color(0.3f, 0.8f, 0.4f),
-        new Color(0.9f, 0.75f, 0.2f)
-    };
 
     private Canvas listCanvas;
     private GameObject listPanel;
@@ -44,7 +36,7 @@ public class PlayerListUI : MonoBehaviour
 
     private void Update()
     {
-        
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             ShowList();
@@ -91,7 +83,7 @@ public class PlayerListUI : MonoBehaviour
         canvasObject.transform.SetParent(transform, false);
         listCanvas = canvasObject.AddComponent<Canvas>();
         listCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        listCanvas.sortingOrder = 150; 
+        listCanvas.sortingOrder = 150;
         listCanvas.enabled = false;
 
         CanvasScaler scaler = canvasObject.AddComponent<CanvasScaler>();
@@ -120,7 +112,7 @@ public class PlayerListUI : MonoBehaviour
 
         titleText = CreateText(listPanel.transform, "Title", 20, TextAnchor.MiddleCenter,
             GoldText, FontStyle.Bold);
-        titleText.text = "\u2726  GRACZE ONLINE  \u2726";
+        titleText.text = "GRACZE ONLINE";
         PositionRect(titleText, new Vector2(0.5f, 1f), new Vector2(0f, -28f), new Vector2(460f, 40f));
 
         Text colName = CreateText(listPanel.transform, "ColName", 12, TextAnchor.MiddleLeft,
@@ -166,7 +158,7 @@ public class PlayerListUI : MonoBehaviour
         GameObject dotObj = new GameObject("Dot" + index);
         dotObj.transform.SetParent(playerRows[index].transform, false);
         playerColorDots[index] = dotObj.AddComponent<Image>();
-        playerColorDots[index].color = PlayerColors[index % PlayerColors.Length];
+        playerColorDots[index].color = NetworkPlayer.PlayerColors[index % NetworkPlayer.PlayerColors.Length];
         RectTransform dotRect = dotObj.GetComponent<RectTransform>();
         dotRect.anchorMin = new Vector2(0f, 0.5f);
         dotRect.anchorMax = new Vector2(0f, 0.5f);
@@ -211,8 +203,8 @@ public class PlayerListUI : MonoBehaviour
                 NetworkPlayer np = players[i];
                 playerRows[i].SetActive(true);
 
-                int colorIdx = np.PlayerIndex % PlayerColors.Length;
-                playerColorDots[i].color = PlayerColors[colorIdx];
+                int colorIdx = np.PlayerIndex % NetworkPlayer.PlayerColors.Length;
+                playerColorDots[i].color = NetworkPlayer.PlayerColors[colorIdx];
 
                 string displayName = np.PlayerName;
                 if (np.IsOwner)
@@ -247,7 +239,7 @@ public class PlayerListUI : MonoBehaviour
         {
             if (p != null && p.IsSpawned) count++;
         }
-        titleText.text = "\u2726  GRACZE ONLINE — " + count + "/4  \u2726";
+        titleText.text = "GRACZE ONLINE  —  " + count + "/4";
     }
 
     private GameObject CreatePanel(Transform parent, string name,

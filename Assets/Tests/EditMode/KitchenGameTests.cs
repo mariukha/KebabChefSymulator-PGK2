@@ -352,6 +352,281 @@ public class KitchenGameTests
         Assert.AreEqual(2, clonedReqs.Count, "Klon powinien byc niezalezny od oryginalu.");
     }
 
+    // =========================================================================
+    //  NOWE TESTY — Mechanika gotowania i progressive difficulty
+    // =========================================================================
+
+    [Test]
+    public void KitchenItemFromIngredientCreatesCorrectItem()
+    {
+        // Test that KitchenItem.FromIngredient handles null gracefully
+        Type kitchenItemType = GetTypeByName("KitchenItem");
+
+        // Since IngredientData is a ScriptableObject we can't instantiate it directly
+        // in edit-mode tests, but we can test the null path
+        MethodInfo fromIngredient = kitchenItemType.GetMethod("FromIngredient",
+            BindingFlags.Public | BindingFlags.Static);
+
+        object item = fromIngredient.Invoke(null, new object[] { null });
+        Assert.IsNotNull(item);
+        Assert.AreEqual("Skladnik", GetField(item, "itemName"));
+        Assert.IsFalse((bool)GetField(item, "isDish"));
+    }
+
+    [Test]
+    public void KitchenItemClonePreservesContents()
+    {
+        object original = CreateDish(
+            CreatePreparedIngredient("Lavash", "Raw"),
+            CreatePreparedIngredient("Meat", "Cooked"),
+            CreatePreparedIngredient("Tomato", "Chopped"));
+
+        MethodInfo cloneMethod = GetTypeByName("KitchenItem")
+            .GetMethod("Clone", BindingFlags.Public | BindingFlags.Instance);
+        object cloned = cloneMethod.Invoke(original, null);
+
+        Assert.IsTrue((bool)GetField(cloned, "isDish"));
+        IList clonedContents = (IList)GetField(cloned, "contents");
+        Assert.AreEqual(3, clonedContents.Count);
+
+        // Verify deep copy
+        IList origContents = (IList)GetField(original, "contents");
+        origContents.Add(CreatePreparedIngredient("Onion", "Chopped"));
+        Assert.AreEqual(3, clonedContents.Count, "Klon nie powinien zmieniac sie po modyfikacji oryginalu.");
+    }
+
+    [Test]
+    public void DishBuildSummaryListsAllIngredients()
+    {
+        object dish = CreateDish(
+            CreatePreparedIngredient("Lavash", "Raw"),
+            CreatePreparedIngredient("Meat", "Cooked"));
+
+        SetField(dish, "itemName", "Kebab testowy");
+
+        MethodInfo buildSummary = GetTypeByName("KitchenItem")
+            .GetMethod("BuildSummary", BindingFlags.Public | BindingFlags.Instance);
+        string summary = (string)buildSummary.Invoke(dish, null);
+
+        StringAssert.Contains("Kebab testowy", summary);
+        StringAssert.Contains("Lawasz", summary);
+        StringAssert.Contains("Mieso", summary);
+    }
+
+    [Test]
+    public void RawIngredientBuildSummaryShowsState()
+    {
+        object item = Create("KitchenItem");
+        SetField(item, "itemName", "Pomidor");
+        SetField(item, "ingredientKind", ParseEnum("IngredientKind", "Tomato"));
+        SetField(item, "state", ParseEnum("IngredientProcessState", "Raw"));
+        SetField(item, "isDish", false);
+
+        MethodInfo buildSummary = GetTypeByName("KitchenItem")
+            .GetMethod("BuildSummary", BindingFlags.Public | BindingFlags.Instance);
+        string summary = (string)buildSummary.Invoke(item, null);
+
+        StringAssert.Contains("Pomidor", summary);
+        StringAssert.Contains("surowy", summary);
+    }
+
+    [Test]
+    public void ValidatorAcceptsCompleteClassicKebab()
+    {
+        // Full integration test: classic kebab order with exact match
+        object order = Create("Order");
+        SetField(order, "orderId", "classic-test");
+        SetField(order, "nazwaKlienta", "TestClient");
+        SetField(order, "nazwaZamowienia", "Klasyczny kebab test");
+
+        IList requirements = (IList)GetField(order, "wymaganeSkladniki");
+        requirements.Add(CreateIngredientRequirement("Lavash", "Raw"));
+        requirements.Add(CreateIngredientRequirement("Meat", "Cooked"));
+        requirements.Add(CreateIngredientRequirement("Tomato", "Chopped"));
+        requirements.Add(CreateIngredientRequirement("Onion", "Chopped"));
+        requirements.Add(CreateIngredientRequirement("GarlicSauce", "Raw"));
+
+        object dish = CreateDish(
+            CreatePreparedIngredient("Lavash", "Raw"),
+            CreatePreparedIngredient("Meat", "Cooked"),
+            CreatePreparedIngredient("Tomato", "Chopped"),
+            CreatePreparedIngredient("Onion", "Chopped"),
+            CreatePreparedIngredient("GarlicSauce", "Raw"));
+
+        object[] args = { order, dish, null };
+        bool result = (bool)GetTypeByName("KitchenOrderValidator")
+            .GetMethod("MatchesOrder", BindingFlags.Public | BindingFlags.Static)
+            .Invoke(null, args);
+
+        Assert.IsTrue(result, "Pelny klasyczny kebab powinien byc zaakceptowany. Blad: " + (args[2] as string));
+    }
+
+    [Test]
+    public void ValidatorRejectsMissingIngredient()
+    {
+        // Order requires meat + tomato, dish only has meat
+        object order = Create("Order");
+        IList requirements = (IList)GetField(order, "wymaganeSkladniki");
+        requirements.Add(CreateIngredientRequirement("Meat", "Cooked"));
+        requirements.Add(CreateIngredientRequirement("Tomato", "Chopped"));
+
+        object dish = CreateDish(
+            CreatePreparedIngredient("Meat", "Cooked"));
+
+        object[] args = { order, dish, null };
+        bool result = (bool)GetTypeByName("KitchenOrderValidator")
+            .GetMethod("MatchesOrder", BindingFlags.Public | BindingFlags.Static)
+            .Invoke(null, args);
+
+        Assert.IsFalse(result, "Kebab bez wymaganego pomidora powinien byc odrzucony.");
+        StringAssert.Contains("Brakuje", args[2] as string);
+    }
+
+    [Test]
+    public void ValidatorRejectsDoubleQuantityWhenSingleRequired()
+    {
+        // Order requires 1x meat, dish has 2x meat
+        object order = Create("Order");
+        IList requirements = (IList)GetField(order, "wymaganeSkladniki");
+        requirements.Add(CreateIngredientRequirement("Meat", "Cooked", 1));
+
+        object dish = CreateDish(
+            CreatePreparedIngredient("Meat", "Cooked"),
+            CreatePreparedIngredient("Meat", "Cooked"));
+
+        object[] args = { order, dish, null };
+        bool result = (bool)GetTypeByName("KitchenOrderValidator")
+            .GetMethod("MatchesOrder", BindingFlags.Public | BindingFlags.Static)
+            .Invoke(null, args);
+
+        Assert.IsFalse(result, "Nadmiar miesa powinien byc odrzucony.");
+        StringAssert.Contains("nadmiarowe", args[2] as string);
+    }
+
+    [Test]
+    public void KitchenNamingReturnsPolishLabels()
+    {
+        Type naming = GetTypeByName("KitchenNaming");
+        MethodInfo getIngredient = naming.GetMethod("GetIngredientLabel", BindingFlags.Public | BindingFlags.Static);
+        MethodInfo getProcess = naming.GetMethod("GetProcessLabel", BindingFlags.Public | BindingFlags.Static);
+
+        Assert.AreEqual("Mieso", getIngredient.Invoke(null, new object[] { ParseEnum("IngredientKind", "Meat") }));
+        Assert.AreEqual("Pomidor", getIngredient.Invoke(null, new object[] { ParseEnum("IngredientKind", "Tomato") }));
+        Assert.AreEqual("Cebula", getIngredient.Invoke(null, new object[] { ParseEnum("IngredientKind", "Onion") }));
+        Assert.AreEqual("Salata", getIngredient.Invoke(null, new object[] { ParseEnum("IngredientKind", "Lettuce") }));
+        Assert.AreEqual("Sos czosnkowy", getIngredient.Invoke(null, new object[] { ParseEnum("IngredientKind", "GarlicSauce") }));
+        Assert.AreEqual("Lawasz", getIngredient.Invoke(null, new object[] { ParseEnum("IngredientKind", "Lavash") }));
+        Assert.AreEqual("Kebab", getIngredient.Invoke(null, new object[] { ParseEnum("IngredientKind", "Kebab") }));
+
+        Assert.AreEqual("surowy", getProcess.Invoke(null, new object[] { ParseEnum("IngredientProcessState", "Raw") }));
+        Assert.AreEqual("pokrojony", getProcess.Invoke(null, new object[] { ParseEnum("IngredientProcessState", "Chopped") }));
+        Assert.AreEqual("upieczony", getProcess.Invoke(null, new object[] { ParseEnum("IngredientProcessState", "Cooked") }));
+        Assert.AreEqual("zlozony", getProcess.Invoke(null, new object[] { ParseEnum("IngredientProcessState", "Assembled") }));
+    }
+
+    [Test]
+    public void IngredientRequirementDisplayStringContainsNameAndState()
+    {
+        object requirement = CreateIngredientRequirement("Meat", "Cooked");
+        MethodInfo toDisplay = GetTypeByName("IngredientRequirement")
+            .GetMethod("ToDisplayString", BindingFlags.Public | BindingFlags.Instance);
+
+        string display = (string)toDisplay.Invoke(requirement, null);
+        StringAssert.Contains("Mieso", display);
+        StringAssert.Contains("upieczony", display);
+    }
+
+    [Test]
+    public void IngredientRequirementQuantityShowsMultiplier()
+    {
+        object requirement = CreateIngredientRequirement("Meat", "Cooked", 3);
+        MethodInfo toDisplay = GetTypeByName("IngredientRequirement")
+            .GetMethod("ToDisplayString", BindingFlags.Public | BindingFlags.Instance);
+
+        string display = (string)toDisplay.Invoke(requirement, null);
+        StringAssert.Contains("3x", display);
+        StringAssert.Contains("Mieso", display);
+    }
+
+    [Test]
+    public void OrderBuildDescriptionContainsClientAndDishName()
+    {
+        object order = Create("Order");
+        SetField(order, "nazwaKlienta", "Marek");
+        SetField(order, "nazwaZamowienia", "Testowy kebab");
+
+        IList reqs = (IList)GetField(order, "wymaganeSkladniki");
+        reqs.Add(CreateIngredientRequirement("Meat", "Cooked"));
+        reqs.Add(CreateIngredientRequirement("Tomato", "Chopped"));
+
+        MethodInfo buildDesc = GetTypeByName("Order")
+            .GetMethod("BuildDescription", BindingFlags.Public | BindingFlags.Instance);
+        string desc = (string)buildDesc.Invoke(order, null);
+
+        StringAssert.Contains("Marek", desc);
+        StringAssert.Contains("Testowy kebab", desc);
+        StringAssert.Contains("Mieso", desc);
+        StringAssert.Contains("Pomidor", desc);
+    }
+
+    [Test]
+    public void PreparedIngredientDisplayStringCorrect()
+    {
+        object ingredient = CreatePreparedIngredient("Tomato", "Chopped");
+        MethodInfo toDisplay = GetTypeByName("PreparedIngredientData")
+            .GetMethod("ToDisplayString", BindingFlags.Public | BindingFlags.Instance);
+
+        string display = (string)toDisplay.Invoke(ingredient, null);
+        StringAssert.Contains("Pomidor", display);
+        StringAssert.Contains("pokrojony", display);
+    }
+
+    [Test]
+    public void KitchenStationTypeEnumHasFiveValues()
+    {
+        Type stationType = GetTypeByName("KitchenStationType");
+        Assert.IsTrue(stationType.IsEnum);
+
+        string[] names = Enum.GetNames(stationType);
+        Assert.AreEqual(5, names.Length);
+        Assert.Contains("IngredientSource", names);
+        Assert.Contains("CuttingBoard", names);
+        Assert.Contains("Grill", names);
+        Assert.Contains("Assembly", names);
+        Assert.Contains("Delivery", names);
+    }
+
+    [Test]
+    public void IngredientKindEnumHasSevenValues()
+    {
+        Type kindType = GetTypeByName("IngredientKind");
+        Assert.IsTrue(kindType.IsEnum);
+
+        string[] names = Enum.GetNames(kindType);
+        Assert.AreEqual(7, names.Length);
+        Assert.Contains("Meat", names);
+        Assert.Contains("Tomato", names);
+        Assert.Contains("Onion", names);
+        Assert.Contains("Lettuce", names);
+        Assert.Contains("GarlicSauce", names);
+        Assert.Contains("Lavash", names);
+        Assert.Contains("Kebab", names);
+    }
+
+    [Test]
+    public void ProcessStateEnumHasFourValues()
+    {
+        Type stateType = GetTypeByName("IngredientProcessState");
+        Assert.IsTrue(stateType.IsEnum);
+
+        string[] names = Enum.GetNames(stateType);
+        Assert.AreEqual(4, names.Length);
+        Assert.Contains("Raw", names);
+        Assert.Contains("Chopped", names);
+        Assert.Contains("Cooked", names);
+        Assert.Contains("Assembled", names);
+    }
+
     private static object CreateDish(params object[] ingredients)
     {
         object dish = Create("KitchenItem");

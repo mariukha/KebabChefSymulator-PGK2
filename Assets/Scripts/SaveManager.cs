@@ -1,4 +1,3 @@
-using System.Collections;
 using System.IO;
 using Unity.Netcode;
 using UnityEngine;
@@ -7,12 +6,43 @@ public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
 
-    [SerializeField] private string saveFileName = "kebab-save.json";
+    private enum SaveSlot
+    {
+        Solo,
+        Online
+    }
+
     [SerializeField] private float autoSaveInterval = 15f;
 
-    private float autoSaveTimer;
+    private const string SoloSaveFileName = "kebab-save-solo.json";
+    private const string OnlineSaveFileName = "kebab-save-online.json";
 
-    public string SavePath => Path.Combine(Application.persistentDataPath, saveFileName);
+    private float autoSaveTimer;
+    private bool isDirty = false;
+    private bool hasActiveSession;
+    private SaveSlot currentSaveSlot = SaveSlot.Online;
+
+    private string CurrentSaveFileName => currentSaveSlot == SaveSlot.Solo ? SoloSaveFileName : OnlineSaveFileName;
+    private string CurrentSaveSlotName => currentSaveSlot == SaveSlot.Solo ? "solo" : "online";
+
+    public string SavePath => Path.Combine(Application.persistentDataPath, CurrentSaveFileName);
+
+    public void UseSaveSlot(bool isSolo)
+    {
+        currentSaveSlot = isSolo ? SaveSlot.Solo : SaveSlot.Online;
+    }
+
+    public void MarkSessionEnded()
+    {
+        hasActiveSession = false;
+        isDirty = false;
+        autoSaveTimer = 0f;
+    }
+
+    public void MarkDirty()
+    {
+        isDirty = true;
+    }
 
     private void Awake()
     {
@@ -32,6 +62,7 @@ public class SaveManager : MonoBehaviour
             NetworkManager.Singleton.OnServerStarted += OnServerStarted;
             if (NetworkManager.Singleton.IsServer)
             {
+                hasActiveSession = true;
                 LoadGame();
             }
         }
@@ -39,47 +70,64 @@ public class SaveManager : MonoBehaviour
 
     private void OnServerStarted()
     {
+        hasActiveSession = true;
         LoadGame();
     }
 
     private void Update()
     {
+        if (!hasActiveSession)
+        {
+            return;
+        }
+
         autoSaveTimer += Time.deltaTime;
         if (autoSaveTimer >= autoSaveInterval)
         {
-            SaveGame();
+            if (isDirty)
+            {
+                SaveGame();
+                isDirty = false;
+            }
             autoSaveTimer = 0f;
         }
     }
 
     public void SaveGame()
     {
-        
         if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening && !NetworkManager.Singleton.IsServer)
         {
             return;
         }
 
-        GameSaveData data = new GameSaveData();
-
-        if (EconomyManager.Instance != null)
+        try
         {
-            data.economy = EconomyManager.Instance.CaptureState();
-        }
+            GameSaveData data = new GameSaveData();
+            string path = SavePath;
 
-        if (OrderManager.Instance != null)
+            if (EconomyManager.Instance != null)
+            {
+                data.economy = EconomyManager.Instance.CaptureState();
+            }
+
+            if (OrderManager.Instance != null)
+            {
+                data.orderProgress = OrderManager.Instance.CaptureProgress();
+            }
+
+            if (ShopManager.Instance != null)
+            {
+                data.shop = ShopManager.Instance.CaptureState();
+            }
+
+            string json = JsonUtility.ToJson(data, true);
+            File.WriteAllText(path, json);
+            Debug.Log("Stan gry zapisany (" + CurrentSaveSlotName + "): " + path);
+        }
+        catch (System.Exception e)
         {
-            data.orderProgress = OrderManager.Instance.CaptureProgress();
+            Debug.LogError("[SaveManager] Blad zapisu: " + e.Message);
         }
-
-        if (ShopManager.Instance != null)
-        {
-            data.shop = ShopManager.Instance.CaptureState();
-        }
-
-        string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(SavePath, json);
-        Debug.Log("Stan gry zapisany do pliku: " + SavePath);
     }
 
     public void LoadGame()
@@ -89,41 +137,59 @@ public class SaveManager : MonoBehaviour
             return;
         }
 
-        if (!File.Exists(SavePath))
+        string path = SavePath;
+        if (!File.Exists(path))
         {
-            Debug.Log("Brak pliku zapisu. Start nowej sesji.");
+            Debug.Log("Brak pliku zapisu (" + CurrentSaveSlotName + "). Start nowej sesji.");
             return;
         }
 
-        string json = File.ReadAllText(SavePath);
-        GameSaveData data = JsonUtility.FromJson<GameSaveData>(json);
-        if (data == null)
+        try
         {
-            Debug.LogWarning("Nie udalo sie odczytac pliku zapisu.");
-            return;
-        }
+            string json = File.ReadAllText(path);
+            GameSaveData data = JsonUtility.FromJson<GameSaveData>(json);
+            if (data == null)
+            {
+                Debug.LogWarning("Nie udalo sie odczytac pliku zapisu.");
+                return;
+            }
 
-        if (EconomyManager.Instance != null)
+            if (data.economy != null)
+            {
+                data.economy.currentBalance = Mathf.Max(0f, data.economy.currentBalance);
+                data.economy.totalEarned = Mathf.Max(0f, data.economy.totalEarned);
+                data.economy.totalSpent = Mathf.Max(0f, data.economy.totalSpent);
+            }
+
+            if (EconomyManager.Instance != null)
+            {
+                EconomyManager.Instance.RestoreState(data.economy);
+            }
+
+            if (OrderManager.Instance != null)
+            {
+                OrderManager.Instance.RestoreProgress(data.orderProgress);
+            }
+
+            if (ShopManager.Instance != null)
+            {
+                ShopManager.Instance.RestoreState(data.shop);
+            }
+
+            Debug.Log("Stan gry wczytany (" + CurrentSaveSlotName + "): " + path);
+        }
+        catch (System.Exception e)
         {
-            EconomyManager.Instance.RestoreState(data.economy);
+            Debug.LogError("[SaveManager] Blad wczytywania: " + e.Message);
         }
-
-        if (OrderManager.Instance != null)
-        {
-            OrderManager.Instance.RestoreProgress(data.orderProgress);
-        }
-
-        if (ShopManager.Instance != null)
-        {
-            ShopManager.Instance.RestoreState(data.shop);
-        }
-
-        Debug.Log("Stan gry wczytany z pliku.");
     }
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        if (hasActiveSession)
+        {
+            SaveGame();
+        }
     }
 
     private void OnDestroy()
@@ -132,12 +198,18 @@ public class SaveManager : MonoBehaviour
         {
             NetworkManager.Singleton.OnServerStarted -= OnServerStarted;
         }
+
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 }
 
 [System.Serializable]
 public class GameSaveData
 {
+    public int version = 1;
     public EconomySaveData economy = new EconomySaveData();
     public OrderProgressSaveData orderProgress = new OrderProgressSaveData();
     public ShopSaveData shop = new ShopSaveData();

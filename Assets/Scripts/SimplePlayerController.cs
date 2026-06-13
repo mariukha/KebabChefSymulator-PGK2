@@ -39,6 +39,10 @@ public class SimplePlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        if (GameSettingsManager.Instance != null)
+        {
+            sensitivity = GameSettingsManager.Instance.MouseSensitivity;
+        }
 
         if (playerCamera == null)
         {
@@ -109,7 +113,11 @@ public class SimplePlayerController : MonoBehaviour
 
         bool shopOpen = cachedShopUI != null && cachedShopUI.IsShopOpen;
         bool lobbyOpen = cachedLobbyUI != null && cachedLobbyUI.IsLobbyOpen;
-        bool inputBlocked = shopOpen || lobbyOpen;
+        MainMenuUI mainMenu = FindFirstObjectByType<MainMenuUI>();
+        bool menuOpen = mainMenu != null && mainMenu.IsMenuOpen;
+        bool pauseOpen = PauseMenuUI.Instance != null && PauseMenuUI.Instance.IsPaused;
+        bool settingsOpen = SettingsMenuUI.Instance != null && SettingsMenuUI.Instance.IsOpen;
+        bool inputBlocked = shopOpen || lobbyOpen || menuOpen || pauseOpen || settingsOpen;
 
         if (!inputBlocked)
         {
@@ -126,15 +134,7 @@ public class SimplePlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F11))
         {
-            if (Screen.fullScreen)
-            {
-                Screen.SetResolution(1280, 720, FullScreenMode.Windowed);
-            }
-            else
-            {
-                Resolution current = Screen.currentResolution;
-                Screen.SetResolution(current.width, current.height, FullScreenMode.FullScreenWindow);
-            }
+            GameSettingsManager.EnsureInstance().ToggleWindowModeShortcut();
         }
     }
 

@@ -8,6 +8,8 @@ public class KitchenOrderBoard : MonoBehaviour
     private Text ingredientsText;
     private Text footerText;
     private Image urgencyBar;
+    private RectTransform urgencyBarRect;
+    private Shader cachedLitShader;
 
     public void Initialize()
     {
@@ -54,9 +56,11 @@ public class KitchenOrderBoard : MonoBehaviour
         urgencyBar = CreateImage(
             canvasObject.transform,
             "UrgencyBar",
-            new Vector2(0f, -304f),
+            new Vector2(-640f, -304f),
             new Vector2(1280f, 26f),
             new Color(0.2f, 0.8f, 0.4f, 1f));
+        urgencyBarRect = urgencyBar.GetComponent<RectTransform>();
+        urgencyBarRect.pivot = new Vector2(0f, 0.5f);
 
         headerText = CreateText(
             canvasObject.transform,
@@ -127,6 +131,7 @@ public class KitchenOrderBoard : MonoBehaviour
             if (urgencyBar != null)
             {
                 urgencyBar.color = new Color(0.2f, 0.75f, 0.4f, 1f);
+                SetUrgencyProgress(1f);
             }
             return;
         }
@@ -134,7 +139,7 @@ public class KitchenOrderBoard : MonoBehaviour
         float timeRemaining = Mathf.CeilToInt(OrderManager.Instance.RemainingOrderTime);
 
         headerText.text = "LIVE ORDERS";
-        
+
         Order order = OrderManager.Instance.ActiveOrder;
         if (order != null)
         {
@@ -155,7 +160,6 @@ public class KitchenOrderBoard : MonoBehaviour
         }
         else
         {
-            
             metaText.text = "TIME     " + timeRemaining + " s\n";
             ingredientsText.text = orderDesc;
         }
@@ -167,8 +171,20 @@ public class KitchenOrderBoard : MonoBehaviour
         if (urgencyBar != null)
         {
             float fullTime = order != null ? order.czasNaRealizacje : 120f;
+            float ratio = fullTime <= 0.01f ? 1f : Mathf.Clamp01(OrderManager.Instance.RemainingOrderTime / fullTime);
             urgencyBar.color = GetUrgencyColor(OrderManager.Instance.RemainingOrderTime, fullTime);
+            SetUrgencyProgress(ratio);
         }
+    }
+
+    private void SetUrgencyProgress(float ratio)
+    {
+        if (urgencyBarRect == null)
+        {
+            return;
+        }
+
+        urgencyBarRect.sizeDelta = new Vector2(1280f * Mathf.Clamp01(ratio), 26f);
     }
 
     private Color GetUrgencyColor(float remainingTime, float fullTime)
@@ -196,13 +212,13 @@ public class KitchenOrderBoard : MonoBehaviour
         block.transform.localScale = localScale;
 
         Renderer renderer = block.GetComponent<Renderer>();
-        Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-        if (shader == null)
+        if (cachedLitShader == null)
         {
-            shader = Shader.Find("Standard");
+            cachedLitShader = Shader.Find("Universal Render Pipeline/Lit");
+            if (cachedLitShader == null) cachedLitShader = Shader.Find("Standard");
         }
 
-        renderer.material = new Material(shader);
+        renderer.material = new Material(cachedLitShader);
         renderer.material.color = color;
     }
 

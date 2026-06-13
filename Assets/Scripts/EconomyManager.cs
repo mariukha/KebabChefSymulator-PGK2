@@ -4,6 +4,8 @@ public class EconomyManager : MonoBehaviour
 {
     public static EconomyManager Instance { get; private set; }
 
+    public event System.Action<float> OnBalanceChanged;
+
     [SerializeField] private float startingMoney = 100f;
 
     private float balance;
@@ -35,7 +37,8 @@ public class EconomyManager : MonoBehaviour
 
         balance += amount;
         totalEarned += amount;
-        Debug.Log("Dodano pieniadze: " + amount + ". Aktualny stan konta: " + balance);
+        OnBalanceChanged?.Invoke(balance);
+        if (SaveManager.Instance != null) SaveManager.Instance.MarkDirty();
     }
 
     public bool SpendMoney(float amount)
@@ -53,7 +56,8 @@ public class EconomyManager : MonoBehaviour
 
         balance -= amount;
         totalSpent += amount;
-        Debug.Log("Wydano: " + amount + ". Pozostalo: " + balance);
+        OnBalanceChanged?.Invoke(balance);
+        if (SaveManager.Instance != null) SaveManager.Instance.MarkDirty();
         return true;
     }
 
@@ -61,6 +65,7 @@ public class EconomyManager : MonoBehaviour
     {
         balance = newBalance;
         totalEarned = newTotalEarned;
+        OnBalanceChanged?.Invoke(balance);
     }
 
     public EconomySaveData CaptureState()
@@ -83,5 +88,14 @@ public class EconomyManager : MonoBehaviour
         balance = Mathf.Max(0f, saveData.currentBalance);
         totalEarned = Mathf.Max(0f, saveData.totalEarned);
         totalSpent = Mathf.Max(0f, saveData.totalSpent);
+        OnBalanceChanged?.Invoke(balance);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 }

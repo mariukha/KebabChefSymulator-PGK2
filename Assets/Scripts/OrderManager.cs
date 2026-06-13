@@ -27,6 +27,8 @@ public class OrderManager : MonoBehaviour
     public int FailedOrders => failedOrders;
     public string LastOrderMessage => lastMessage;
     public string ActiveOrderDescription => activeOrderDescription;
+    public bool HasActiveOrder => activeOrder != null;
+    public float RemainingTime => remainingTime;
 
     public void SyncNetworkState(string desc, float time, int comp, int fail)
     {
@@ -54,7 +56,6 @@ public class OrderManager : MonoBehaviour
 
     private void Start()
     {
-        
         if (activeOrder == null)
         {
             NoweZamowienie();
@@ -63,7 +64,6 @@ public class OrderManager : MonoBehaviour
 
     private void Update()
     {
-        
         bool isServer = Unity.Netcode.NetworkManager.Singleton == null ||
                         !Unity.Netcode.NetworkManager.Singleton.IsListening ||
                         Unity.Netcode.NetworkManager.Singleton.IsServer;
@@ -81,6 +81,7 @@ public class OrderManager : MonoBehaviour
 
         failedOrders++;
         lastMessage = "Klient odszedl. Zamowienie nie zostalo przygotowane na czas.";
+        PlayTimeoutFeedback();
         NoweZamowienie();
     }
 
@@ -155,15 +156,64 @@ public class OrderManager : MonoBehaviour
         InitializeCatalogIfNeeded();
         BuildDefaultTemplatesIfNeeded();
 
-        int index = Random.Range(0, orderTemplates.Count);
+        int maxIndex = GetAvailableTemplateCount();
+        int index = Random.Range(0, maxIndex);
         activeOrder = orderTemplates[index].Clone();
         activeOrder.nagrodaPieniezna = CalculateReward(activeOrder.wymaganeSkladniki);
         float timeBonus = ShopManager.Instance != null ? ShopManager.Instance.GetOrderTimeBonus() : 0f;
-        remainingTime = activeOrder.czasNaRealizacje + timeBonus;
+        float difficultyMultiplier = GetDifficultyTimeMultiplier();
+        remainingTime = (activeOrder.czasNaRealizacje * difficultyMultiplier) + timeBonus;
         string desc = "Nowe zamowienie: " + activeOrder.BuildDescription();
         lastMessage = desc;
         activeOrderDescription = desc;
         Debug.Log(desc);
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayNewOrderSound();
+    }
+
+    private void PlayTimeoutFeedback()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayFailSound();
+        }
+
+        if (VFXManager.Instance != null)
+        {
+            VFXManager.Instance.PlayTimeoutEffect();
+        }
+
+        if (CameraEffects.Instance != null)
+        {
+            CameraEffects.Instance.ShakeCamera(0.045f, 0.22f);
+            CameraEffects.Instance.FlashScreen(new Color(0.55f, 0.08f, 0.06f, 0.12f), 0.22f);
+        }
+    }
+
+    private float GetDifficultyTimeMultiplier()
+    {
+
+        return Mathf.Max(0.3f, 1f - (completedOrders * 0.02f));
+    }
+
+    private int GetAvailableTemplateCount()
+    {
+
+        if (orderTemplates.Count <= 3)
+        {
+            return orderTemplates.Count;
+        }
+
+        if (completedOrders < 3)
+        {
+            return 3;
+        }
+
+        if (completedOrders < 6)
+        {
+            return Mathf.Min(orderTemplates.Count, 6);
+        }
+
+        return orderTemplates.Count;
     }
 
     public void SetOrderStateFromNetwork(string description, float time, int completed, int failed, string message)
@@ -361,6 +411,60 @@ public class OrderManager : MonoBehaviour
             new IngredientRequirement(IngredientKind.Tomato, IngredientProcessState.Chopped),
             new IngredientRequirement(IngredientKind.Lettuce, IngredientProcessState.Chopped),
             new IngredientRequirement(IngredientKind.GarlicSauce, IngredientProcessState.Raw)));
+
+        orderTemplates.Add(CreateTemplate(
+            "veggie",
+            "Dawid",
+            "Kebab warzywny",
+            80f,
+            new IngredientRequirement(IngredientKind.Lavash, IngredientProcessState.Raw),
+            new IngredientRequirement(IngredientKind.Meat, IngredientProcessState.Cooked),
+            new IngredientRequirement(IngredientKind.Tomato, IngredientProcessState.Chopped),
+            new IngredientRequirement(IngredientKind.Onion, IngredientProcessState.Chopped),
+            new IngredientRequirement(IngredientKind.Lettuce, IngredientProcessState.Chopped),
+            new IngredientRequirement(IngredientKind.GarlicSauce, IngredientProcessState.Raw)));
+
+        orderTemplates.Add(CreateTemplate(
+            "garlic-bomb",
+            "Ewa",
+            "Kebab czosnkowy",
+            75f,
+            new IngredientRequirement(IngredientKind.Lavash, IngredientProcessState.Raw),
+            new IngredientRequirement(IngredientKind.Meat, IngredientProcessState.Cooked, 2),
+            new IngredientRequirement(IngredientKind.Tomato, IngredientProcessState.Chopped),
+            new IngredientRequirement(IngredientKind.GarlicSauce, IngredientProcessState.Raw)));
+
+        orderTemplates.Add(CreateTemplate(
+            "light-quick",
+            "Filip",
+            "Kebab ekspresowy",
+            60f,
+            new IngredientRequirement(IngredientKind.Lavash, IngredientProcessState.Raw),
+            new IngredientRequirement(IngredientKind.Meat, IngredientProcessState.Cooked),
+            new IngredientRequirement(IngredientKind.Lettuce, IngredientProcessState.Chopped)));
+
+        orderTemplates.Add(CreateTemplate(
+            "double-deluxe",
+            "Grzegorz",
+            "Kebab podwojny deluxe",
+            100f,
+            new IngredientRequirement(IngredientKind.Lavash, IngredientProcessState.Raw),
+            new IngredientRequirement(IngredientKind.Meat, IngredientProcessState.Cooked, 2),
+            new IngredientRequirement(IngredientKind.Tomato, IngredientProcessState.Chopped),
+            new IngredientRequirement(IngredientKind.Onion, IngredientProcessState.Chopped),
+            new IngredientRequirement(IngredientKind.Lettuce, IngredientProcessState.Chopped),
+            new IngredientRequirement(IngredientKind.GarlicSauce, IngredientProcessState.Raw)));
+
+        orderTemplates.Add(CreateTemplate(
+            "royal-feast",
+            "Hanna",
+            "Kebab krolewski",
+            110f,
+            new IngredientRequirement(IngredientKind.Lavash, IngredientProcessState.Raw),
+            new IngredientRequirement(IngredientKind.Meat, IngredientProcessState.Cooked, 2),
+            new IngredientRequirement(IngredientKind.Tomato, IngredientProcessState.Chopped),
+            new IngredientRequirement(IngredientKind.Onion, IngredientProcessState.Chopped),
+            new IngredientRequirement(IngredientKind.Lettuce, IngredientProcessState.Chopped)));
     }
 
     private Order CreateTemplate(

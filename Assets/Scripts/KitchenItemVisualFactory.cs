@@ -1,8 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class KitchenItemVisualFactory
 {
     private const string ModelPath = "Models/";
+
+    private static Shader cachedShader;
+    private static readonly Dictionary<Color, Material> materialCache = new Dictionary<Color, Material>();
+    private static readonly Dictionary<string, GameObject> modelCache = new Dictionary<string, GameObject>();
 
     public static string GetModelName(IngredientKind kind, IngredientProcessState state, bool isDish)
     {
@@ -42,10 +47,10 @@ public static class KitchenItemVisualFactory
         string modelName = GetModelName(kind, state, isDish);
         if (modelName == null) return null;
 
-        GameObject prefab = Resources.Load<GameObject>(ModelPath + modelName);
+        GameObject prefab = LoadCachedModel(ModelPath + modelName);
         if (prefab == null)
         {
-            
+
             return CreateFallbackVisual(kind, state, isDish, parent, localPosition, targetSize);
         }
 
@@ -63,6 +68,42 @@ public static class KitchenItemVisualFactory
             col.enabled = false;
         }
 
+        if (ItemAnimator.Instance != null)
+        {
+            ItemAnimator.Instance.AnimateSpawn(model);
+        }
+
+        return model;
+    }
+
+    private static Shader GetCachedShader()
+    {
+        if (cachedShader == null)
+        {
+            cachedShader = Shader.Find("Universal Render Pipeline/Lit");
+            if (cachedShader == null) cachedShader = Shader.Find("Standard");
+            if (cachedShader == null) cachedShader = Shader.Find("Diffuse");
+        }
+        return cachedShader;
+    }
+
+    public static Material GetCachedMaterial(Color color)
+    {
+        if (!materialCache.TryGetValue(color, out var mat) || mat == null)
+        {
+            mat = new Material(GetCachedShader()) { color = color };
+            materialCache[color] = mat;
+        }
+        return mat;
+    }
+
+    private static GameObject LoadCachedModel(string path)
+    {
+        if (!modelCache.TryGetValue(path, out var model))
+        {
+            model = Resources.Load<GameObject>(path);
+            modelCache[path] = model;
+        }
         return model;
     }
 
@@ -97,13 +138,73 @@ public static class KitchenItemVisualFactory
         Renderer rend = obj.GetComponent<Renderer>();
         if (rend != null)
         {
-            Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-            if (shader == null) shader = Shader.Find("Standard");
-            rend.material = new Material(shader);
-            rend.material.color = GetIngredientColor(kind, state);
+            rend.sharedMaterial = GetCachedMaterial(GetIngredientColor(kind, state));
+        }
+
+        if (ItemAnimator.Instance != null)
+        {
+            ItemAnimator.Instance.AnimateSpawn(obj);
         }
 
         return obj;
+    }
+
+    public static GameObject CreateScatteredVisual(
+        IngredientKind kind,
+        IngredientProcessState state,
+        Transform parent,
+        Vector3 localPosition,
+        int count,
+        float spread,
+        float pieceSize)
+    {
+        GameObject container = new GameObject("Scattered_" + kind);
+        container.transform.SetParent(parent, false);
+        container.transform.localPosition = localPosition;
+        container.transform.localRotation = Quaternion.identity;
+
+        Color col = GetIngredientColor(kind, state);
+        Material mat = GetCachedMaterial(col);
+
+        for (int i = 0; i < count; i++)
+        {
+            GameObject piece;
+            if (kind == IngredientKind.GarlicSauce)
+            {
+                piece = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                piece.transform.localScale = new Vector3(pieceSize, pieceSize * 0.3f, pieceSize);
+            }
+            else
+            {
+                piece = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                piece.transform.localScale = new Vector3(pieceSize, pieceSize * 0.2f, pieceSize * 1.5f);
+            }
+
+            Collider collider = piece.GetComponent<Collider>();
+            if (collider != null) Object.Destroy(collider);
+
+            float rx = Random.Range(-spread, spread);
+            float rz = Random.Range(-spread, spread);
+            float ry = Random.Range(0f, 0.015f);
+
+            piece.transform.SetParent(container.transform, false);
+            piece.transform.localPosition = new Vector3(rx, ry, rz);
+
+            float rotY = Random.Range(0f, 360f);
+            float rotX = Random.Range(-20f, 20f);
+            float rotZ = Random.Range(-20f, 20f);
+            piece.transform.localRotation = Quaternion.Euler(rotX, rotY, rotZ);
+
+            Renderer r = piece.GetComponent<Renderer>();
+            if (r != null) r.sharedMaterial = mat;
+        }
+
+        if (ItemAnimator.Instance != null)
+        {
+            ItemAnimator.Instance.AnimateSpawn(container);
+        }
+
+        return container;
     }
 
     public static Color GetIngredientColor(IngredientKind kind, IngredientProcessState state)

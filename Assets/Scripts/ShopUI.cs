@@ -21,27 +21,28 @@ public class ShopUI : MonoBehaviour
     private const float FeedbackDuration = 2.5f;
     private const float AnimationSpeed = 8f;
 
-    private static readonly Color BackgroundOverlay = new Color(0.01f, 0.02f, 0.04f, 0.88f);
-    private static readonly Color PanelColor = new Color(0.035f, 0.05f, 0.075f, 0.98f);
-    private static readonly Color PanelBorderColor = new Color(0.12f, 0.12f, 0.13f, 0.95f);
-    private static readonly Color HeaderColor = new Color(0.07f, 0.11f, 0.18f, 0.95f);
-    private static readonly Color TitleColor = new Color(1f, 0.92f, 0.65f, 1f);
+    private static readonly Color BackgroundOverlay = new Color(0.005f, 0.008f, 0.012f, 0.82f);
+    private static readonly Color PanelColor = new Color(0.018f, 0.022f, 0.028f, 0.98f);
+    private static readonly Color PanelBorderColor = new Color(0.15f, 0.16f, 0.17f, 0.95f);
+    private static readonly Color HeaderColor = new Color(0.028f, 0.034f, 0.044f, 0.96f);
+    private static readonly Color TitleColor = new Color(0.875f, 0.725f, 0.32f, 1f);
     private static readonly Color BalanceValueColor = new Color(0.22f, 0.82f, 0.42f, 1f);
-    private static readonly Color RowBackgroundColor = new Color(0.06f, 0.09f, 0.14f, 0.92f);
+    private static readonly Color RowBackgroundColor = new Color(0.035f, 0.043f, 0.056f, 0.94f);
     private static readonly Color NameColor = new Color(0.93f, 0.97f, 1f, 1f);
     private static readonly Color DescriptionColor = new Color(0.65f, 0.72f, 0.82f, 1f);
-    private static readonly Color LevelActiveColor = new Color(1f, 0.92f, 0.65f, 1f);
+    private static readonly Color LevelActiveColor = new Color(0.875f, 0.78f, 0.52f, 1f);
     private static readonly Color CostColor = new Color(0.96f, 0.97f, 0.99f, 1f);
-    private static readonly Color ButtonNormalColor = new Color(0.15f, 0.55f, 0.30f, 1f);
-    private static readonly Color ButtonDisabledColor = new Color(0.15f, 0.18f, 0.24f, 0.75f);
-    private static readonly Color ButtonMaxedColor = new Color(0.14f, 0.35f, 0.58f, 0.85f);
+    private static readonly Color ButtonNormalColor = new Color(0.08f, 0.38f, 0.18f, 1f);
+    private static readonly Color ButtonDisabledColor = new Color(0.12f, 0.13f, 0.15f, 0.82f);
+    private static readonly Color ButtonMaxedColor = new Color(0.14f, 0.28f, 0.42f, 0.9f);
     private static readonly Color ButtonTextColor = new Color(0.98f, 0.99f, 1f, 1f);
     private static readonly Color HintColor = new Color(0.50f, 0.58f, 0.68f, 0.85f);
     private static readonly Color FeedbackSuccessColor = new Color(0.22f, 0.82f, 0.42f, 1f);
     private static readonly Color FeedbackFailColor = new Color(0.92f, 0.24f, 0.2f, 1f);
-    private static readonly Color DividerColor = new Color(0.12f, 0.16f, 0.24f, 0.60f);
+    private static readonly Color DividerColor = new Color(0.16f, 0.17f, 0.18f, 0.62f);
 
     private Font cachedFont;
+    private LobbyUI cachedLobbyUI;
 
     public bool IsShopOpen => isOpen;
 
@@ -53,11 +54,14 @@ public class ShopUI : MonoBehaviour
 
     private void Update()
     {
-        
-        LobbyUI lobby = FindFirstObjectByType<LobbyUI>();
-        bool lobbyOpen = lobby != null && lobby.IsLobbyOpen;
+        if (cachedLobbyUI == null)
+        {
+            cachedLobbyUI = FindFirstObjectByType<LobbyUI>();
+        }
+        bool lobbyOpen = cachedLobbyUI != null && cachedLobbyUI.IsLobbyOpen;
+        bool settingsOpen = SettingsMenuUI.Instance != null && SettingsMenuUI.Instance.IsOpen;
 
-        if (Input.GetKeyDown(KeyCode.B) && !lobbyOpen)
+        if (Input.GetKeyDown(KeyCode.B) && !lobbyOpen && !settingsOpen)
         {
             ToggleShop();
         }
@@ -170,7 +174,7 @@ public class ShopUI : MonoBehaviour
         float balance = EconomyManager.Instance != null ? EconomyManager.Instance.CurrentBalance : 0f;
         if (balanceText != null)
         {
-            balanceText.text = "SALDO:  " + balance.ToString("F0") + " zl";
+            balanceText.text = balance.ToString("F0") + " zl";
         }
 
         List<UpgradeDefinition> definitions = ShopManager.Instance.GetAllDefinitions();
@@ -195,39 +199,32 @@ public class ShopUI : MonoBehaviour
         if (isMaxed)
         {
             row.costText.text = string.Empty;
-            row.effectText.text = "MAKSYMALNY";
+            row.effectText.text = "Maksymalny poziom";
             row.effectText.color = ButtonMaxedColor;
             row.buttonText.text = "MAX";
             row.buttonImage.color = ButtonMaxedColor;
+            row.button.interactable = false;
         }
         else
         {
             float cost = ShopManager.Instance.GetNextUpgradeCost(definition.type);
             row.costText.text = cost.ToString("F0") + " zl";
             row.costText.color = canAfford ? CostColor : FeedbackFailColor;
-            row.effectText.text = "Nastepny: " + definition.GetEffectDescription(currentLevel);
+            row.effectText.text = definition.GetEffectDescription(currentLevel);
             row.effectText.color = definition.accentColor;
             row.buttonText.text = "KUP";
             row.buttonImage.color = canAfford ? ButtonNormalColor : ButtonDisabledColor;
+            row.button.interactable = canAfford;
         }
-
-        row.iconText.color = definition.accentColor;
-        row.accentBar.color = definition.accentColor * new Color(1f, 1f, 1f, 0.55f);
     }
 
     private string BuildLevelIndicator(int currentLevel, int maxLevel)
     {
         System.Text.StringBuilder builder = new System.Text.StringBuilder();
-        builder.Append("Poz. ");
+        builder.Append("Poziom ");
         builder.Append(currentLevel);
         builder.Append("/");
         builder.Append(maxLevel);
-        builder.Append("  ");
-
-        for (int i = 0; i < maxLevel; i++)
-        {
-            builder.Append(i < currentLevel ? "\u25CF" : "\u25CB");
-        }
 
         return builder.ToString();
     }
@@ -254,16 +251,13 @@ public class ShopUI : MonoBehaviour
 
         if (Unity.Netcode.NetworkManager.Singleton != null && Unity.Netcode.NetworkManager.Singleton.IsListening)
         {
-            
             if (Unity.Netcode.NetworkManager.Singleton.IsServer)
             {
-                
                 bool success = ShopManager.Instance.TryPurchaseUpgrade(type);
                 HandlePurchaseResult(success, type);
             }
             else
             {
-                
                 NetworkPlayer localPlayer = NetworkPlayer.FindLocalPlayer();
                 if (localPlayer != null)
                 {
@@ -273,7 +267,6 @@ public class ShopUI : MonoBehaviour
         }
         else
         {
-            
             bool success = ShopManager.Instance.TryPurchaseUpgrade(type);
             HandlePurchaseResult(success, type);
         }
@@ -287,10 +280,38 @@ public class ShopUI : MonoBehaviour
             string upgradeName = definition != null ? definition.displayName : type.ToString();
             int newLevel = ShopManager.Instance.GetUpgradeLevel(type);
             ShowFeedback("Zakupiono " + upgradeName + " (poz. " + newLevel + ")!", true);
+            PlayPurchaseFeedback(definition);
         }
         else
         {
             ShowFeedback("Nie udalo sie zakupic ulepszenia.", false);
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayFailSound();
+        }
+    }
+
+    private void PlayPurchaseFeedback(UpgradeDefinition definition)
+    {
+        Color accent = definition != null ? definition.accentColor : TitleColor;
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayUpgradeSound();
+        }
+
+        if (VFXManager.Instance != null)
+        {
+            Vector3 effectPosition = VFXManager.Instance.GetCameraFacingPosition(2.0f, -0.18f);
+            VFXManager.Instance.PlayUpgradeEffect(effectPosition, accent);
+        }
+
+        if (PostProcessSetup.Instance != null)
+        {
+            PostProcessSetup.Instance.PulseBloom(0.28f, 0.32f);
+        }
+
+        if (CameraEffects.Instance != null)
+        {
+            CameraEffects.Instance.ShakeCamera(0.025f, 0.12f);
         }
     }
 
@@ -376,7 +397,7 @@ public class ShopUI : MonoBehaviour
         borderRect.anchorMin = new Vector2(0.5f, 0.5f);
         borderRect.anchorMax = new Vector2(0.5f, 0.5f);
         borderRect.pivot = new Vector2(0.5f, 0.5f);
-        borderRect.sizeDelta = new Vector2(860f, 740f);
+        borderRect.sizeDelta = new Vector2(820f, 704f);
         borderRect.anchoredPosition = Vector2.zero;
 
         GameObject contentObject = new GameObject("ContentPanel");
@@ -412,8 +433,8 @@ public class ShopUI : MonoBehaviour
         titleText = CreateTextElement(
             headerBand.transform,
             "Title",
-            "SKLEP ULEPSZEN",
-            32,
+            "ULEPSZENIA",
+            30,
             FontStyle.Bold,
             TextAnchor.MiddleLeft,
             TitleColor);
@@ -427,7 +448,7 @@ public class ShopUI : MonoBehaviour
         balanceText = CreateTextElement(
             headerBand.transform,
             "Balance",
-            "SALDO:  0 zl",
+            "0 zl",
             24,
             FontStyle.Bold,
             TextAnchor.MiddleRight,
@@ -451,8 +472,8 @@ public class ShopUI : MonoBehaviour
 
         List<UpgradeDefinition> definitions = ShopManager.Instance.GetAllDefinitions();
         float startY = -102f;
-        float rowHeight = 108f;
-        float rowSpacing = 8f;
+        float rowHeight = 96f;
+        float rowSpacing = 10f;
 
         for (int i = 0; i < definitions.Count; i++)
         {
@@ -481,40 +502,11 @@ public class ShopUI : MonoBehaviour
 
         row.rowImage = rowImage;
 
-        GameObject accentObject = new GameObject("AccentBar");
-        accentObject.transform.SetParent(rowObject.transform, false);
-
-        row.accentBar = accentObject.AddComponent<Image>();
-        row.accentBar.color = definition.accentColor * new Color(1f, 1f, 1f, 0.55f);
-
-        RectTransform accentRect = accentObject.GetComponent<RectTransform>();
-        accentRect.anchorMin = new Vector2(0f, 0f);
-        accentRect.anchorMax = new Vector2(0f, 1f);
-        accentRect.pivot = new Vector2(0f, 0.5f);
-        accentRect.sizeDelta = new Vector2(5f, 0f);
-        accentRect.anchoredPosition = Vector2.zero;
-
-        row.iconText = CreateTextElement(
-            rowObject.transform,
-            "Icon",
-            definition.icon,
-            36,
-            FontStyle.Normal,
-            TextAnchor.MiddleCenter,
-            definition.accentColor);
-
-        RectTransform iconRect = row.iconText.GetComponent<RectTransform>();
-        iconRect.anchorMin = new Vector2(0f, 0f);
-        iconRect.anchorMax = new Vector2(0f, 1f);
-        iconRect.pivot = new Vector2(0f, 0.5f);
-        iconRect.sizeDelta = new Vector2(60f, 0f);
-        iconRect.anchoredPosition = new Vector2(16f, 0f);
-
         row.nameText = CreateTextElement(
             rowObject.transform,
             "Name",
             definition.displayName,
-            20,
+            18,
             FontStyle.Bold,
             TextAnchor.UpperLeft,
             NameColor);
@@ -523,14 +515,14 @@ public class ShopUI : MonoBehaviour
         nameRect.anchorMin = new Vector2(0f, 1f);
         nameRect.anchorMax = new Vector2(0f, 1f);
         nameRect.pivot = new Vector2(0f, 1f);
-        nameRect.sizeDelta = new Vector2(340f, 30f);
-        nameRect.anchoredPosition = new Vector2(82f, -12f);
+        nameRect.sizeDelta = new Vector2(360f, 26f);
+        nameRect.anchoredPosition = new Vector2(28f, -14f);
 
         row.descriptionText = CreateTextElement(
             rowObject.transform,
             "Description",
             definition.description,
-            15,
+            13,
             FontStyle.Normal,
             TextAnchor.UpperLeft,
             DescriptionColor);
@@ -539,14 +531,14 @@ public class ShopUI : MonoBehaviour
         descRect.anchorMin = new Vector2(0f, 1f);
         descRect.anchorMax = new Vector2(0f, 1f);
         descRect.pivot = new Vector2(0f, 1f);
-        descRect.sizeDelta = new Vector2(340f, 22f);
-        descRect.anchoredPosition = new Vector2(82f, -44f);
+        descRect.sizeDelta = new Vector2(390f, 20f);
+        descRect.anchoredPosition = new Vector2(28f, -40f);
 
         row.effectText = CreateTextElement(
             rowObject.transform,
             "Effect",
             "",
-            15,
+            14,
             FontStyle.Bold,
             TextAnchor.UpperLeft,
             definition.accentColor);
@@ -555,40 +547,40 @@ public class ShopUI : MonoBehaviour
         effectRect.anchorMin = new Vector2(0f, 1f);
         effectRect.anchorMax = new Vector2(0f, 1f);
         effectRect.pivot = new Vector2(0f, 1f);
-        effectRect.sizeDelta = new Vector2(340f, 22f);
-        effectRect.anchoredPosition = new Vector2(82f, -68f);
+        effectRect.sizeDelta = new Vector2(390f, 22f);
+        effectRect.anchoredPosition = new Vector2(28f, -64f);
 
         row.levelText = CreateTextElement(
             rowObject.transform,
             "Level",
             "",
-            16,
+            14,
             FontStyle.Normal,
-            TextAnchor.MiddleCenter,
+            TextAnchor.MiddleRight,
             LevelActiveColor);
 
         RectTransform levelRect = row.levelText.GetComponent<RectTransform>();
         levelRect.anchorMin = new Vector2(1f, 0.5f);
         levelRect.anchorMax = new Vector2(1f, 0.5f);
         levelRect.pivot = new Vector2(1f, 0.5f);
-        levelRect.sizeDelta = new Vector2(180f, 26f);
-        levelRect.anchoredPosition = new Vector2(-160f, 22f);
+        levelRect.sizeDelta = new Vector2(150f, 24f);
+        levelRect.anchoredPosition = new Vector2(-160f, 18f);
 
         row.costText = CreateTextElement(
             rowObject.transform,
             "Cost",
             "",
-            17,
+            16,
             FontStyle.Bold,
-            TextAnchor.MiddleCenter,
+            TextAnchor.MiddleRight,
             CostColor);
 
         RectTransform costRect = row.costText.GetComponent<RectTransform>();
         costRect.anchorMin = new Vector2(1f, 0.5f);
         costRect.anchorMax = new Vector2(1f, 0.5f);
         costRect.pivot = new Vector2(1f, 0.5f);
-        costRect.sizeDelta = new Vector2(120f, 26f);
-        costRect.anchoredPosition = new Vector2(-160f, -10f);
+        costRect.sizeDelta = new Vector2(150f, 24f);
+        costRect.anchoredPosition = new Vector2(-160f, -14f);
 
         GameObject buttonObject = new GameObject("BuyButton");
         buttonObject.transform.SetParent(rowObject.transform, false);
@@ -600,14 +592,14 @@ public class ShopUI : MonoBehaviour
         buttonRect.anchorMin = new Vector2(1f, 0.5f);
         buttonRect.anchorMax = new Vector2(1f, 0.5f);
         buttonRect.pivot = new Vector2(1f, 0.5f);
-        buttonRect.sizeDelta = new Vector2(120f, 52f);
+        buttonRect.sizeDelta = new Vector2(112f, 44f);
         buttonRect.anchoredPosition = new Vector2(-20f, 0f);
 
         row.buttonText = CreateTextElement(
             buttonObject.transform,
             "ButtonLabel",
             "KUP",
-            19,
+            16,
             FontStyle.Bold,
             TextAnchor.MiddleCenter,
             ButtonTextColor);
@@ -623,9 +615,9 @@ public class ShopUI : MonoBehaviour
 
         ColorBlock colors = button.colors;
         colors.normalColor = Color.white;
-        colors.highlightedColor = new Color(1.15f, 1.15f, 1.15f, 1f);
+        colors.highlightedColor = new Color(1.08f, 1.08f, 1.08f, 1f);
         colors.pressedColor = new Color(0.85f, 0.85f, 0.85f, 1f);
-        colors.disabledColor = new Color(0.6f, 0.6f, 0.6f, 1f);
+        colors.disabledColor = Color.white;
         button.colors = colors;
 
         UpgradeType capturedType = definition.type;
@@ -659,8 +651,8 @@ public class ShopUI : MonoBehaviour
         hintText = CreateTextElement(
             parent,
             "HintText",
-            "[TAB] Zamknij sklep     [F11] Pelny ekran",
-            14,
+            "TAB  Zamknij",
+            13,
             FontStyle.Normal,
             TextAnchor.MiddleCenter,
             HintColor);
@@ -718,9 +710,7 @@ public class ShopUI : MonoBehaviour
     private class ShopUpgradeRow
     {
         public Image rowImage;
-        public Image accentBar;
         public Image buttonImage;
-        public Text iconText;
         public Text nameText;
         public Text descriptionText;
         public Text effectText;
